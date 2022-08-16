@@ -1,0 +1,108 @@
+import userReducer, {
+  createUserDataActionCreator,
+  editUserActionCreator,
+  loadUserDataActionCreator,
+  logInActionCreator,
+  logOutActionCreator,
+} from "./userSlice";
+
+describe("Given a userSlice reducer", () => {
+  describe("When it receives a user and a login action", () => {
+    test("Then it should return the same user but logged", () => {
+      const initialUser = {
+        id: "test",
+        name: "test",
+        username: "test",
+        isAdmin: false,
+        logged: false,
+        image: "",
+      };
+      const expectedUser = {
+        id: "test",
+        name: "test",
+        username: "test",
+        isAdmin: false,
+        logged: true,
+        image: "",
+      };
+
+      const action = logInActionCreator(initialUser);
+      const loggedUser = userReducer(initialUser, action);
+
+      expect(loggedUser).toEqual(expectedUser);
+    });
+  });
+  describe("When it receives a logout action", () => {
+    test("Then it should switch the user logged property at false", () => {
+      const loggedUser = {
+        name: "test1",
+        username: "test1",
+        isAdmin: false,
+        logged: true,
+        id: "test",
+        image: "",
+      };
+      const expectedUserStatus = false;
+
+      const logoutAction = logOutActionCreator();
+      const loggedoutUser = userReducer(loggedUser, logoutAction);
+
+      expect(loggedoutUser.logged).toEqual(expectedUserStatus);
+    });
+  });
+  describe("When loadUserData is called", () => {
+    test("Then it should switch the user logged property at false", () => {
+      const loggedUser = {
+        name: "test1",
+        username: "test1",
+        isAdmin: false,
+        logged: true,
+        id: "test",
+        image: "",
+      };
+      const expectedUserStatus = true;
+
+      const loadUser = loadUserDataActionCreator(loggedUser);
+      const loggedoutUser = userReducer(loggedUser, loadUser);
+
+      expect(loggedoutUser.logged).toEqual(expectedUserStatus);
+    });
+  });
+  describe("When editUser is called", () => {
+    test("Then it should switch the user logged property at false", () => {
+      const loggedUser = {
+        name: "test1",
+        username: "test1",
+        isAdmin: false,
+        logged: true,
+        id: "test",
+        image: "",
+      };
+      const expectedUserStatus = true;
+
+      const editUser = editUserActionCreator(loggedUser);
+      const loggedoutUser = userReducer(loggedUser, editUser);
+
+      expect(loggedoutUser.logged).toEqual(expectedUserStatus);
+    });
+  });
+
+  describe("When createUser is called", () => {
+    test("Then it should switch the user logged property at false", () => {
+      const loggedUser = {
+        name: "test1",
+        username: "test1",
+        isAdmin: false,
+        logged: true,
+        id: "test",
+        image: "",
+      };
+      const expectedUserStatus = true;
+
+      const createUser = createUserDataActionCreator(loggedUser);
+      const loggedoutUser = userReducer(loggedUser, createUser);
+
+      expect(loggedoutUser.logged).toEqual(expectedUserStatus);
+    });
+  });
+});

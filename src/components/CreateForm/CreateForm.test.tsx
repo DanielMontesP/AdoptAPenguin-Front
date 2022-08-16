@@ -1,0 +1,68 @@
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import store from "../../app/redux/store/store";
+import { mockPenguin } from "../../mocks/penguins";
+import CreateForm from "./CreateForm";
+
+describe("Given a CreateForm component", () => {
+  describe("When the word 'user1' is written to the username input field", () => {
+    test("Then the value of the username input field should be 'user1'", () => {
+      const labelToFind = "Name";
+      const inputText = "user1";
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <CreateForm penguin={mockPenguin} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByPlaceholderText(labelToFind);
+      userEvent.type(label, inputText);
+
+      expect(label).toBeInTheDocument();
+    });
+  });
+  describe("When the two inputs have text and the submit button is clicked", () => {
+    test("Then the two inputs should be empty", () => {
+      const usernameLabel = "Name";
+      const inputText = "user1";
+
+      jest.mock("react");
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <CreateForm penguin={mockPenguin} />
+          </BrowserRouter>
+        </Provider>
+      );
+      const username = screen.getByPlaceholderText(usernameLabel);
+      const submitButton = screen.getByPlaceholderText("bt-save");
+      const imageInput = screen.getByPlaceholderText("image");
+      const handleImageChange = jest.fn().mockResolvedValue(true);
+      const handleSubmit = jest.fn().mockResolvedValue(true);
+
+      userEvent.type(username, inputText);
+      userEvent.click(submitButton);
+      userEvent.click(imageInput);
+
+      handleImageChange();
+      handleSubmit();
+      jest.mock("react");
+
+      document.location.href = String(jest.fn().mockReturnValue(true));
+      expect(username).toHaveValue("penguin1");
+      expect(handleImageChange).toHaveBeenCalled();
+      expect(handleSubmit).toHaveBeenCalled();
+      expect(imageInput).not.toBeNull();
+
+      document.location.href = String(jest.fn().mockReturnValue(""));
+
+      expect(document.location.href.includes).not.toBeNull();
+    });
+  });
+});
