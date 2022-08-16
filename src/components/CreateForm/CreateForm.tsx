@@ -30,15 +30,15 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const { user } = useAppSelector((state) => state);
 
   const initialFormData: IRegisterForm = {
-    id: penguin ? penguin.id : "",
-    name: penguin ? penguin.name : "",
-    category: penguin ? penguin.category : "",
-    likers: penguin ? penguin.likers : [],
-    likes: penguin ? penguin.likes : 0,
-    favs: penguin ? penguin.favs : [],
-    description: penguin ? penguin.description : "",
-    image: penguin ? penguin.image : "",
-    imageBackup: penguin ? penguin.imageBackup : "",
+    id: penguin?.id,
+    name: penguin?.name,
+    category: penguin?.category,
+    likers: penguin?.likers,
+    likes: penguin?.likes,
+    favs: penguin?.favs,
+    description: penguin?.description,
+    image: penguin?.image,
+    imageBackup: penguin?.imageBackup,
   };
 
   const [formData, setFormData] = useState(initialFormData);
