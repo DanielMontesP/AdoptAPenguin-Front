@@ -20,6 +20,8 @@
 <br/>
 <div>
   <a href="https://adoptapenguin.netlify.app">SITE</a>
+  <br/>
+  <br/>
   REPOS
   <img src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" width="100"/>
   <br/>
@@ -27,7 +29,8 @@
   <br/>
   <a href="https://github.com/DanielMontesP/AdoptAPenguin-Back">BACK</a>
 </div>
-
+<br/>
+<br/>
 SONARCLOUD
 <br/>
 <a href="https://sonarcloud.io/summary/overall?id=DanielMontesP_AdoptAPenguin-Front <br/>">FRONT</a>
