@@ -32,7 +32,9 @@ function App() {
     if (token || logged) {
       const userData: UserInfo = jwtDecode(token as string);
       dispatch(logInActionCreator(userData));
-      dispatch(getUserThunk(userData.id));
+      if (userData.id) {
+        dispatch(getUserThunk(userData.id));
+      }
       loading ? setMenu(true) : setMenu(false);
     }
   }, [dispatch, logged, loading]);
