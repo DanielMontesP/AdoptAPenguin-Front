@@ -2,7 +2,7 @@ const DevIcons = (): JSX.Element => {
   return (
     <>
       <div className="devicons-container">
-        <span className="devicons-year">Dev Tools:</span>
+        <span className="devicons-about">Dev Tools:</span>
         <img
           src="https://media.giphy.com/media/SS8CV2rQdlYNLtBCiF/giphy.gif"
           width="30"

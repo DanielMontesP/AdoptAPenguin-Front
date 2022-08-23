@@ -88,6 +88,12 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     setMenu((prevState) => !prevState);
   };
 
+  const handleAbout = () => {
+    dispatch(modalTypeActionCreator("Wellcome"));
+
+    setModal((prevState) => !prevState);
+  };
+
   const handleBack = () => {
     switch (headerTitle) {
       case "Favourites":
@@ -216,6 +222,13 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             title="btn-menu"
           >
             Likes
+          </button>
+          <button
+            className={classButtonLikes}
+            onClick={handleAbout}
+            title="btn-about"
+          >
+            About
           </button>
         </div>
       </div>
