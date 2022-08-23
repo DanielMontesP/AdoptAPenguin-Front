@@ -39,7 +39,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const isLiker = penguin.likers.includes(idUser);
 
   const handleDelete = (): void => {
-    const message = "Confirm please, delete? ";
+    const message = "Delete? ";
     const newModalType = "delete";
 
     dispatch(modalTypeActionCreator(newModalType));
