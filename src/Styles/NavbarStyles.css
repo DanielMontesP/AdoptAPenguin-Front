@@ -66,8 +66,7 @@
 
 body {
   background-image: url("../images/background2Heart.png");
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: Roboto, sans-serif;
   margin: 0;
 }
 
@@ -104,10 +103,10 @@ h1 {
   .desktop-header {
     display: flex;
     flex-direction: column;
-    align-items: baseline;
     background-color: #292929;
     color: white;
     height: 5rem;
+    border: 1px solid black;
   }
 
   .header-title {
@@ -117,7 +116,6 @@ h1 {
   .desktop-header-buttons {
     width: 100%;
     display: flex;
-    align-items: baseline;
     background-color: #292929;
     color: white;
   }
@@ -265,9 +263,10 @@ ul {
 
 .menu-btn {
   background: url("../images/icon-menu-hamb45.png");
+  background-position: center;
   background-repeat: no-repeat;
   height: 45px;
-  margin-right: 2%;
+  margin-right: 40px;
 }
 
 .bt-back {
@@ -504,11 +503,11 @@ ul {
 
 .desktop-btn {
   width: 20%;
-  color: white;
+  border: 1px solid #292929;
+  color: rgb(255, 255, 255);
   font-size: 0.8rem;
   background: none;
   height: 30px;
-  margin-left: 20px;
 }
 
 .desktop-hr {
@@ -518,4 +517,6 @@ ul {
 
 .selected {
   color: coral;
+  background-color: #292929;
+  font-size: 0.95rem;
 }

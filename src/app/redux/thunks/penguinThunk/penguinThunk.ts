@@ -128,9 +128,7 @@ export const createFavThunk =
       dispatch(createPenguinActionCreator(penguin));
 
       dispatch(loadFavsThunk());
-
       dispatch(finishedLoadingActionCreator());
-
       setLoadingOffWithMessage(
         `CREATE Fav: ${penguin.name} created successfully.`,
         false
@@ -173,6 +171,8 @@ export const getPenguinThunk =
 
 export const deletePenguinThunk =
   (id: string) => async (dispatch: AppDispatch) => {
+    dispatch(loadingActionCreator());
+
     setLoadingOn("DELETE FAV: Deleting...");
 
     const token = localStorage.getItem("token");

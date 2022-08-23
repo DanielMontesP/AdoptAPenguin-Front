@@ -103,6 +103,8 @@ export const registerThunk =
 
 export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
   try {
+    dispatch(loadingActionCreator());
+
     const token = localStorage.getItem("token");
 
     if (token && id) {
@@ -119,9 +121,9 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
 };
 
 export const editUserThunk = (idUser: any) => async (dispatch: AppDispatch) => {
-  setLoadingOn("EDIT User...");
-
   dispatch(loadingActionCreator());
+
+  setLoadingOn("EDIT User...");
 
   const token = localStorage.getItem("token");
 

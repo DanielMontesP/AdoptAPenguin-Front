@@ -20,7 +20,7 @@ import { getUserThunk } from "./app/redux/thunks/userThunk/userThunk";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 function App() {
-  const { logged } = useAppSelector((state) => state.user);
+  const { logged, id } = useAppSelector((state) => state.user);
   const { headerTitle, loading } = useAppSelector((state) => state.ui);
   const [, setMenu] = useState(false);
 
@@ -32,12 +32,12 @@ function App() {
     if (token || logged) {
       const userData: UserInfo = jwtDecode(token as string);
       dispatch(logInActionCreator(userData));
-      if (userData.id) {
+      if (userData.id !== id) {
         dispatch(getUserThunk(userData.id));
       }
       loading ? setMenu(true) : setMenu(false);
     }
-  }, [dispatch, logged, loading]);
+  }, [dispatch, logged, loading, id]);
 
   return (
     <>
@@ -80,7 +80,7 @@ function App() {
           path="/penguins"
           element={
             <CheckInSecurity>
-              <PenguinsPage />
+              <PenguinsPage type="HomePage" />
             </CheckInSecurity>
           }
         />

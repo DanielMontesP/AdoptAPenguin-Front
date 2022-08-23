@@ -52,6 +52,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const loadFavs = () => {
+    const newModalType = "";
+
+    dispatch(modalTypeActionCreator(newModalType));
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
@@ -89,7 +92,12 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const handleAbout = () => {
-    dispatch(modalTypeActionCreator("Wellcome"));
+    dispatch(modalTypeActionCreator("About"));
+
+    classButtonAbout = `${classButtonAbout} selected`;
+    classButtonHome = `${classButton} btn-home`;
+    classButtonLikes = `${classButton} btn-likes`;
+    classButtonFavs = `${classButton} btn-favs`;
 
     setModal((prevState) => !prevState);
   };
@@ -149,29 +157,40 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   let classButtonLikes = `${classButton} btn-likes`;
   let classButtonFavs = `${classButton} btn-favs`;
   let classButtonMenu = `${classButton} btn-menu`;
+  let classButtonAbout = `${classButton} btn-about`;
 
   let hidderDesktopButtons = "";
+
+  const getModalType = () => {
+    const newModalType = modalType;
+    return newModalType;
+  };
 
   switch (headerTitle) {
     case "Home":
       classButtonHome = `${classButtonHome} selected`;
       classButtonLikes = `${classButton} btn-likes`;
       classButtonFavs = `${classButton} btn-favs`;
+      classButtonAbout = `${classButton} btn-about`;
       break;
     case "Likes":
       classButtonLikes = `${classButtonLikes} selected`;
       classButtonHome = `${classButton} btn-home`;
       classButtonFavs = `${classButton} btn-favs`;
+      classButtonAbout = `${classButton} btn-about`;
+
       break;
     case "Favourites":
       classButtonFavs = `${classButtonFavs} selected`;
       classButtonHome = `${classButton} btn-home`;
       classButtonLikes = `${classButton} btn-likes`;
+      classButtonAbout = `${classButton} btn-about`;
       break;
     case "Detail":
       classButtonFavs = `${classButtonFavs}`;
       classButtonHome = `${classButton} btn-home`;
       classButtonLikes = `${classButton} btn-likes`;
+      classButtonAbout = `${classButton} btn-about`;
       break;
     default:
       hidderDesktopButtons = " display-none";
@@ -219,12 +238,12 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
           <button
             className={classButtonLikes}
             onClick={loadLikes}
-            title="btn-menu"
+            title="btn-likes"
           >
             Likes
           </button>
           <button
-            className={classButtonLikes}
+            className={classButtonAbout}
             onClick={handleAbout}
             title="btn-about"
           >
@@ -286,7 +305,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
       {isModalOpen && (
         <Modal
-          type={modalType}
+          type={getModalType()}
           idPenguin={penguin.id}
           message={modalMessage}
           closeModal={setModal}

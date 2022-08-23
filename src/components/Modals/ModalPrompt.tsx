@@ -35,14 +35,13 @@ export const Modal = ({
   };
 
   const handleDevIcons = () => {
-    if (type === "Wellcome") {
+    if (type === "About") {
       return <DevIcons />;
     }
-    return;
   };
 
   const getMessage = (): React.ReactNode => {
-    if (type === "Wellcome") {
+    if (type === "About") {
       return <WellcomeComments />;
     }
     return <h3 className="modal-message">{message}</h3>;
@@ -67,6 +66,8 @@ export const Modal = ({
         break;
       case "Wellcome":
         break;
+      case "About":
+        break;
       default:
         correctAction("Sorry, this feature is not available yet.");
     }
@@ -77,10 +78,10 @@ export const Modal = ({
     closeModal(false);
   };
 
-  const windowTitle = type === "Wellcome" ? "Wellcome" : "Please confirm";
-  const modalClass = type === "Wellcome" ? "modal modal-wellcome" : "modal";
+  const windowTitle = type === "About" ? "About" : "Please confirm";
+  const modalClass = type === "About" ? "modal modal-wellcome" : "modal";
   const cancelClass =
-    type === "Wellcome" ? "modal-btn-cancel display-none" : "modal-btn-cancel";
+    type === "About" ? "modal-btn-cancel display-none" : "modal-btn-cancel";
 
   return (
     <div className={modalClass}>

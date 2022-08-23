@@ -19,7 +19,7 @@ describe("Given a PenguinsPage Component", () => {
       render(
         <Provider store={store}>
           <PenguinsPageStyles role={"penguins-page"}>
-            <PenguinsPage />
+            <PenguinsPage type="Home" />
           </PenguinsPageStyles>
         </Provider>
       );

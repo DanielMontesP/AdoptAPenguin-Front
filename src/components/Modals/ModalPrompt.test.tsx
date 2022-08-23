@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { headerTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 import store from "../../app/redux/store/store";
 import { Modal } from "./ModalPrompt";
 
@@ -73,7 +72,7 @@ describe("Given a LoginForm component", () => {
               closeModal={closeModal}
               idPenguin="modal"
               message="message"
-              type="xxx"
+              type="Wellcome"
             />
           </BrowserRouter>
         </Provider>
@@ -83,6 +82,57 @@ describe("Given a LoginForm component", () => {
       userEvent.type(label, inputText);
 
       expect(label).toBeInTheDocument();
+    });
+  });
+
+  describe("Given About modal", () => {
+    test("Then closeModal should be called", () => {
+      const labelToFind = "btn-accept";
+      const inputText = "user1";
+
+      const closeModal = jest.fn();
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Modal
+              closeModal={closeModal}
+              idPenguin="modal"
+              message="message"
+              type="About"
+            />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByPlaceholderText(labelToFind);
+      userEvent.click(label);
+
+      expect(closeModal).toHaveBeenCalled();
+    });
+  });
+
+  describe("Given no modal type", () => {
+    test("Then closeModal should be called", () => {
+      const labelToFind = "btn-accept";
+
+      const closeModal = jest.fn();
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Modal
+              closeModal={closeModal}
+              idPenguin="modal"
+              message="message"
+              type=""
+            />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByPlaceholderText(labelToFind);
+      userEvent.click(label);
+
+      expect(closeModal).toHaveBeenCalled();
     });
   });
 
