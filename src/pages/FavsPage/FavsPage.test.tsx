@@ -14,7 +14,7 @@ jest.mock("chalk", () => ({
 describe("Given a FavsPage Component", () => {
   describe("When it's rendered", () => {
     test("Then it should show the text 'AdoptAPenguin.com'", () => {
-      const expectedResult = "AdoptAPenguin.com";
+      const expectedResult = "penguins-container";
 
       render(
         <Provider store={store}>
@@ -24,7 +24,7 @@ describe("Given a FavsPage Component", () => {
         </Provider>
       );
 
-      const receivedResult = screen.getByText(expectedResult);
+      const receivedResult = screen.getByTitle(expectedResult);
 
       expect(receivedResult).toBeInTheDocument();
     });

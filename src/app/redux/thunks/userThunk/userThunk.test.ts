@@ -40,7 +40,7 @@ describe("Given the getuserThunk function", () => {
       const thunk = getUserThunk(mockUser.id);
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(2);
+      expect(dispatch).toHaveBeenCalledTimes(3);
     });
   });
 
@@ -54,7 +54,7 @@ describe("Given the getuserThunk function", () => {
       const thunk = getUserThunk(mockUser.id);
       await thunk(dispatch);
 
-      expect(dispatch).not.toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 

@@ -5,7 +5,7 @@ import {
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { loadLikesThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
-import Favs from "../../components/Favs/Favs";
+import Penguins from "../../components/Penguins/Penguins";
 
 const LikesPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -26,7 +26,7 @@ const LikesPage = (): JSX.Element => {
     dispatch(loadLikesThunk());
   }, [dispatch, headerTitle, thisTitle]);
 
-  return <Favs allPenguins={allPenguins} />;
+  return <Penguins allPenguins={allPenguins} />;
 };
 
 export default LikesPage;

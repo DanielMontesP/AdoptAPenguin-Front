@@ -29,6 +29,7 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
 
   return (
     <div className="item penguin-container">
+      <ActionButtons penguin={penguin} />
       <h1 className="display-none">AdoptAPenguin.com</h1>
       <h2 className="penguin-name">{toPascalCase(`${penguin.name}`)}</h2>
 
@@ -44,7 +45,6 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
       <div className="penguin-datalist">
         <span className="category">{toPascalCase(`${penguin.category}`)}</span>
         <span className="likes">{penguin.likes}</span>
-        <ActionButtons penguin={penguin} />
       </div>
       <div className="penguin-description">
         {penguin.description.substring(0, 100)}

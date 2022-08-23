@@ -59,7 +59,7 @@ const PagesStyles = styled.div`
 
   h1,
   h2 {
-    text-align: left;
+    text-align: center;
     color: black;
   }
 
@@ -264,11 +264,11 @@ const PagesStyles = styled.div`
   }
 
   .penguin-image-container {
-    height: 320px;
-    width: 85%;
+    height: 300px;
+    width: 95%;
     display: flex;
     margin-left: 10px;
-    margin-bottom: 10px;
+
     border-radius: 5px 5px 5px 5px;
     text-align: center;
     background-color: white;
@@ -278,7 +278,8 @@ const PagesStyles = styled.div`
   .penguin-image-content {
     display: flex;
     justify-content: space-between;
-    width: 300px;
+    width: 95%;
+    margin: auto;
   }
 
   .penguin-image-detail {
@@ -320,7 +321,7 @@ const PagesStyles = styled.div`
     height: 40px;
     width: 87%;
     position: relative;
-    top: -80px;
+    top: -60px;
     left: 23px;
     display: flex;
   }
@@ -393,12 +394,15 @@ const PagesStyles = styled.div`
     display: inline-flex;
     background: #fff;
     padding: 0.5em;
+
+    margin: auto;
+    margin: 20px;
     -webkit-transition: 0.5s;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-shadow: 2px 2px 10px rgb(140, 134, 134);
-    border-radius: 2px 2px 2px 2px;
+    border-radius: 5px;
     flex-wrap: wrap;
   }
 
@@ -417,65 +421,79 @@ const PagesStyles = styled.div`
     background-image: url(${iconLike});
     background-repeat: no-repeat;
     background-position: center;
-    margin-left: -48px;
+    background-size: contain;
+    position: relative;
+    left: 129px;
+    top: 309px;
   }
 
   .animatedLikeInit {
-    height: 45px;
     width: 45px;
+    height: 45px;
     background-image: url(${iconLikeInit});
     background-repeat: no-repeat;
     background-position: center;
-    margin-left: -48px;
+    background-size: contain;
+    position: relative;
+    left: 129px;
+    top: 309px;
   }
 
   .animatedFav {
-    width: 32px;
-    height: 32px;
-    flex: 1;
-    margin-left: 1px;
+    width: 45px;
+    height: 45px;
     background-image: url(${iconMenuFavs});
     background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: contain;
+    position: relative;
+    left: 300px;
+    top: 20px;
   }
 
   .animatedFavDelete {
-    width: 32px;
-    height: 32px;
-    flex: 1;
-    margin-left: 1px;
+    width: 45px;
+    height: 45px;
     background-image: url(${iconMenuFavsDelete});
     background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: contain;
+    position: relative;
+    left: 300px;
+    top: 20px;
   }
 
   .animatedDelete {
-    width: 32px;
-    height: 32px;
+    width: 45px;
+    height: 45px;
     background-image: url(${iconDelete});
+    background-size: contain;
+    position: relative;
+    left: -110px;
+    top: 20px;
   }
 
   .animatedEdit {
-    width: 32px;
-    height: 32px;
-    margin-bottom: 10px;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    left: 200px;
+    top: 290px;
     background: url(${iconEdit});
     background-repeat: no-repeat;
-    margin-top: 45px;
-    margin-right: 45px;
+    margin-top: 20px;
+    margin-right: 30px;
     background-position: right;
   }
 
   .buttons-container {
-    width: 20px;
-    height: 290px;
-    margin-left: 12px;
-    width: 20px;
+    width: fit-content;
     display: flex;
-    position: relative;
-    top: -250px;
-    flex-direction: column;
-    margin-left: 5px;
-    justify-content: flex-start;
-    align-content: flex-start;
+    justify-content: space-between;
+    align-content: space-around;
+    margin: auto;
+    margin-bottom: -50px;
+    position: absolute;
   }
 
   @-webkit-keyframes bounce {

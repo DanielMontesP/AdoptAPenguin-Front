@@ -4,9 +4,7 @@ import iconCancel from "../../images/modal-cancel-32.png";
 import iconAccept from "../../images/modal-accept-32.png";
 
 const HomePageStyles = styled.div`
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-
+  font-family: Roboto, sans-serif;
   text-align: center;
 
   body {

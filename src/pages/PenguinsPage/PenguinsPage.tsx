@@ -1,16 +1,36 @@
 import Penguins from "../../components/Penguins/Penguins";
 import { useEffect } from "react";
-import { loadPenguinsThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import {
+  loadFavsThunk,
+  loadLikesThunk,
+  loadPenguinsThunk,
+} from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 
-const PenguinsPage = () => {
+interface Props {
+  type: string;
+}
+
+const PenguinsPage = ({ type }: Props) => {
   const dispatch = useAppDispatch();
 
-  const thisTitle = "Home";
+  let thisTitle = "";
+
+  switch (type) {
+    case "Likes":
+      thisTitle = type;
+      break;
+    case "Favourites":
+      thisTitle = type;
+      break;
+
+    default:
+      thisTitle = "Home";
+  }
 
   const { allPenguins } = useAppSelector((state) => state.penguins);
   const { headerTitle } = useAppSelector((state) => state.ui);
@@ -22,8 +42,14 @@ const PenguinsPage = () => {
     };
     if (headerTitle !== thisTitle) SetTitleHeader(thisTitle, headerTitle);
 
-    dispatch(loadPenguinsThunk());
-  }, [dispatch, headerTitle]);
+    if (type === "Likes") {
+      dispatch(loadLikesThunk());
+    } else if (type === "Favourites") {
+      dispatch(loadFavsThunk());
+    } else {
+      dispatch(loadPenguinsThunk());
+    }
+  }, [dispatch, headerTitle, thisTitle, type]);
 
   return <Penguins allPenguins={allPenguins} />;
 };

@@ -7,7 +7,7 @@ import LikesPage from "./LikesPage";
 describe("Given a LikesPage Component", () => {
   describe("When it's rendered", () => {
     test("Then it should show the text 'AdoptAPenguin.com'", () => {
-      const expectedResult = "AdoptAPenguin.com";
+      const expectedResult = "penguins-container";
 
       render(
         <Provider store={store}>
@@ -17,7 +17,7 @@ describe("Given a LikesPage Component", () => {
         </Provider>
       );
 
-      const receivedResult = screen.getByText(expectedResult);
+      const receivedResult = screen.getByTitle(expectedResult);
 
       expect(receivedResult).toBeInTheDocument();
     });
