@@ -34,6 +34,13 @@ export const Modal = ({
     navigate("/");
   };
 
+  const handleDevIcons = () => {
+    if (type === "Wellcome") {
+      return <DevIcons />;
+    }
+    return;
+  };
+
   const getMessage = (): React.ReactNode => {
     if (type === "Wellcome") {
       return <WellcomeComments />;
@@ -101,7 +108,7 @@ export const Modal = ({
           placeholder="btn-cancel"
         />
       </div>
-      <DevIcons />
+      {handleDevIcons()}
     </div>
   );
 };

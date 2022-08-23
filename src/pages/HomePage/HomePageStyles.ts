@@ -72,7 +72,10 @@ const HomePageStyles = styled.div`
     text-align: right;
     margin-left: 5px;
   }
-
+  .devicons-devtools {
+    text-align: right;
+    margin-left: 5px;
+  }
   .bt-container {
     display: flex;
     justify-content: center;
@@ -85,6 +88,7 @@ const HomePageStyles = styled.div`
     text-align: right;
     color: blue;
     width: 140px;
+    flex: 2;
   }
 
   .bt-login,
