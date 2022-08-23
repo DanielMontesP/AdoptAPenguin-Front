@@ -3,7 +3,6 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { headerTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
-import { useAppDispatch } from "../../app/redux/hooks/hooks";
 import store from "../../app/redux/store/store";
 import { Modal } from "./ModalPrompt";
 

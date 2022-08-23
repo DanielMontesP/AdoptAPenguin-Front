@@ -11,6 +11,21 @@
     align-items: center;
   }
 
+  .devicons-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10px;
+    margin-top: 20px;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .devicons-by {
+    width: 140px;
+    text-align: center;
+    color: blue;
+  }
+
   .desktop-header {
     display: none;
   }
@@ -264,16 +279,55 @@ ul {
   height: 45px;
 }
 
-.bt-modal-accept {
-  background: url("../images/modal-accept-32.png");
-  background-repeat: no-repeat;
-  flex: none;
+.modal-body {
+  height: max-content;
+  display: flex;
+  justify-content: space-around;
 }
 
-.bt-modal-cancel {
-  background: url("../images/modal-cancel-32.png");
+.modal-btn-accept {
+  width: 40%;
+  height: 50px;
+  background: url("../images/modal-accept-32.png");
+  background-position: center;
   background-repeat: no-repeat;
+  background-color: rgb(29, 29, 29);
+  border-radius: 10px;
   flex: none;
+  margin: auto;
+}
+
+.modal-btn-cancel {
+  width: 40%;
+  height: 50px;
+  background: url("../images/modal-cancel-32.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgb(29, 29, 29);
+  border-radius: 10px;
+  flex: none;
+  margin: auto;
+}
+
+.modal-btn-close {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  top: 10px;
+  right: 5px;
+  background: url("../images/modal-cancel-32.png");
+  background-color: rgb(29, 29, 29);
+  font-size: 20px;
+  align-items: center;
+}
+
+.devicons-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 10px;
+  margin-top: 20px;
+  align-items: center;
+  font-size: 14px;
 }
 
 .bt-sound {
@@ -353,14 +407,17 @@ ul {
   cursor: pointer;
 }
 
+.devicons-year {
+  text-align: left;
+}
 .modal {
+  text-align: center;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 20vw;
-  height: 20vh;
-  min-width: 15rem;
+  height: 250px;
+  min-width: 20rem;
   min-height: 10rem;
   background-color: white;
   border-radius: 10px;
@@ -369,8 +426,12 @@ ul {
   flex-direction: column;
 }
 
+.modal-wellcome {
+  width: 80%;
+  height: 75%;
+}
+
 .modal .modal-header {
-  height: 2.5rem;
   border-radius: 10px 10px 0 0;
   background-color: rgb(29, 29, 29);
   position: relative;
@@ -378,8 +439,7 @@ ul {
 
 .modal-title {
   color: white;
-  font-size: 0.9em;
-
+  font-size: 1.2em;
   margin: 15px;
 }
 
@@ -393,18 +453,20 @@ ul {
   cursor: pointer;
 }
 
-.modal .modal-body {
-  height: 80%;
-  display: flex;
-  justify-content: space-around;
-
-  margin-top: 10px;
+.message-container {
+  font-size: 14px;
+  margin: auto;
+  width: 90%;
 }
-
 .modal-message {
+  height: -webkit-fill-available;
+  width: 100%;
   font-size: 16px;
   color: black;
   text-align: center;
+
+  margin: auto;
+  margin-top: 30px;
 }
 
 .app-menu {

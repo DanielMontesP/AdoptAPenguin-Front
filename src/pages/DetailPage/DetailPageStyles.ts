@@ -27,6 +27,14 @@ const DetailPageStyles = styled.div`
       margin: auto;
       margin-top: 15px;
     }
+    .detail-buttons-container {
+      width: fit-content;
+    }
+  }
+  @media only screen and (max-width: 421px) {
+    .detail-buttons-container {
+      width: auto;
+    }
   }
 
   element.style {
@@ -166,10 +174,10 @@ const DetailPageStyles = styled.div`
   }
 
   .detail-container {
+    background: white;
     margin-bottom: 10px;
     border-radius: 5px 5px 5px 5px;
     margin: auto;
-
     margin-top: 6rem;
   }
 
@@ -184,10 +192,8 @@ const DetailPageStyles = styled.div`
     display: flex;
     justify-content: space-between;
     align-content: space-around;
-
-    width: 400px;
     margin: auto;
-    margin-bottom: -30px;
+    margin-bottom: -50px;
   }
 
   .bt-back {
@@ -251,8 +257,8 @@ const DetailPageStyles = styled.div`
     flex: 2;
     margin-top: 7px;
     text-align: right;
-
     margin: auto;
+    margin-right: 10px;
   }
 
   .bt-likes {
@@ -265,7 +271,7 @@ const DetailPageStyles = styled.div`
 
   .detail-info {
     display: flex;
-    width: 275px;
+    width: 50%;
     margin: auto;
     margin-top: 15px;
   }
@@ -405,12 +411,14 @@ const DetailPageStyles = styled.div`
   .animatedLikeInit {
     display: none;
   }
+
   .detail-animatedLikeInit {
     width: 45px;
     height: 45px;
     background-image: url(${iconLikeInit});
     background-repeat: no-repeat;
     background-position: center;
+    background-size: contain;
   }
 
   .detail-animatedLike {
@@ -419,6 +427,7 @@ const DetailPageStyles = styled.div`
     background-image: url(${iconLike});
     background-repeat: no-repeat;
     background-position: center;
+    background-size: contain;
   }
 
   .animatedFav {
@@ -427,8 +436,10 @@ const DetailPageStyles = styled.div`
     background-image: url(${iconMenuFavs});
     background-repeat: no-repeat;
     background-position: inherit;
+    background-size: contain;
     position: relative;
-    left: 300px;
+    left: 320px;
+    top: -30px;
   }
 
   .animatedFavDelete {
@@ -437,18 +448,22 @@ const DetailPageStyles = styled.div`
     background-image: url(${iconMenuFavsDelete});
     background-repeat: no-repeat;
     background-position: inherit;
+    background-size: contain;
     position: relative;
-    left: 300px;
+    left: 320px;
+    top: -30px;
   }
 
   .animatedDelete {
     width: 45px;
     height: 45px;
     position: relative;
-    left: -290px;
+    left: -320px;
     background-image: url(${iconDelete});
     background-repeat: no-repeat;
     background-position: inherit;
+    background-size: contain;
+    top: -30px;
   }
 
   .animatedEdit {
@@ -456,8 +471,10 @@ const DetailPageStyles = styled.div`
     height: 45px;
     background: url(${iconEdit});
     background-repeat: no-repeat;
+    background-size: contain;
     margin: auto;
-    margin-left: 70px;
+    margin-left: 170px;
+    margin-top: -30px;
   }
 
   .form-detail-animatedEdit {

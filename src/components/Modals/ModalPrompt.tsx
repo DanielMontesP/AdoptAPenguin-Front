@@ -4,6 +4,8 @@ import { finishedLoadingActionCreator } from "../../app/redux/features/uiSlice/u
 import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { deletePenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import DevIcons from "../DevIcons/DevIcons";
+import WellcomeComments from "../WellcomeComments/WellcomeComments";
 import { correctAction } from "./Modals";
 
 interface IModalProps {
@@ -32,6 +34,13 @@ export const Modal = ({
     navigate("/");
   };
 
+  const getMessage = (): React.ReactNode => {
+    if (type === "Wellcome") {
+      return <WellcomeComments />;
+    }
+    return <h3 className="modal-message">{message}</h3>;
+  };
+
   const deletePenguin = () => {
     if (idPenguin) {
       dispatch(deletePenguinThunk(`${idPenguin}`));
@@ -41,7 +50,7 @@ export const Modal = ({
     }
   };
 
-  const handleAcceptClick = (event: React.FormEvent) => {
+  const handleAcceptClick = () => {
     switch (type) {
       case "delete":
         deletePenguin();
@@ -49,7 +58,8 @@ export const Modal = ({
       case "logOutUser":
         logOutUser();
         break;
-
+      case "Wellcome":
+        break;
       default:
         correctAction("Sorry, this feature is not available yet.");
     }
@@ -60,35 +70,38 @@ export const Modal = ({
     closeModal(false);
   };
 
-  return (
-    <div className="modal">
-      <div className="modal-header">
-        <h3 className="modal-title">Please confirm</h3>
-        <h2
-          placeholder="btn-close"
-          onClick={() => {
-            closeModal(false);
-          }}
-        >
-          X
-        </h2>
-      </div>
-      <h3 className="modal-message">{message}</h3>
+  const windowTitle = type === "Wellcome" ? "Wellcome" : "Please confirm";
+  const modalClass = type === "Wellcome" ? "modal modal-wellcome" : "modal";
+  const cancelClass =
+    type === "Wellcome" ? "modal-btn-cancel display-none" : "modal-btn-cancel";
 
+  return (
+    <div className={modalClass}>
+      <div className="modal-header">
+        <h3 className="modal-title">{windowTitle}</h3>
+        <button
+          onClick={handleAcceptClick}
+          className="modal-btn-close"
+          title="btn-close"
+          placeholder="btn-close"
+        />
+      </div>
+      {getMessage()}
       <div className="modal-body">
         <button
           onClick={handleAcceptClick}
-          className="bt-modal-accept"
+          className="modal-btn-accept"
           title="btn-accept"
           placeholder="btn-accept"
         />
         <button
           onClick={handleCancelClick}
-          className="bt-modal-cancel"
+          className={cancelClass}
           title="btn-cancel"
           placeholder="btn-cancel"
         />
       </div>
+      <DevIcons />
     </div>
   );
 };

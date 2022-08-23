@@ -19,11 +19,12 @@
 <br/>
 <br/>
 <div>
-  <a href="https://adoptapenguin.netlify.app">SITE</a>
+  <br/>
+  SITE
+  <a href="https://adoptapenguin.netlify.app">AdoptAPenguin.com</a>
   <br/>
   <br/>
   REPOS
-  <img src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" width="100"/>
   <br/>
   <a href="https://github.com/DanielMontesP/AdoptAPenguin-Front">FRONT</a>
   <br/>
