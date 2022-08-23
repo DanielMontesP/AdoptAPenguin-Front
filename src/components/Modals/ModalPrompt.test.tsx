@@ -85,35 +85,7 @@ describe("Given a LoginForm component", () => {
       expect(label).toBeInTheDocument();
     });
   });
-  describe("When close", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
-      const labelToFind = "btn-close";
-      const inputText = "user1";
 
-      const closeModal = jest.fn();
-      const dispatch = jest.fn();
-
-      dispatch(headerTitleActionCreator("Detail"));
-
-      render(
-        <Provider store={store}>
-          <BrowserRouter>
-            <Modal
-              closeModal={closeModal}
-              idPenguin="modal"
-              message="message"
-              type="delete"
-            />
-          </BrowserRouter>
-        </Provider>
-      );
-
-      const label = screen.getByPlaceholderText(labelToFind);
-      userEvent.type(label, inputText);
-
-      expect(label).toBeInTheDocument();
-    });
-  });
   describe("When cancel", () => {
     test("Then the value of the username input field should be 'user1'", () => {
       const labelToFind = "btn-cancel";
