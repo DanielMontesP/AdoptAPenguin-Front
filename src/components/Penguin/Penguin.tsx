@@ -28,7 +28,7 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
     penguin.image === "" && !isURL ? " iconPhotoEmpty" : "";
 
   return (
-    <div className="item penguin-container">
+    <div className="penguin-container item">
       <ActionButtons penguin={penguin} />
       <h1 className="display-none">AdoptAPenguin.com</h1>
       <h2 className="penguin-name">{toPascalCase(`${penguin.name}`)}</h2>

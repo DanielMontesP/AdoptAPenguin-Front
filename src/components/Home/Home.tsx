@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ReactDimmer } from "react-dimmer";
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../../app/redux/hooks/hooks";
-import HomePageStyles from "../../pages/HomePage/HomePageStyles";
+import HomePageStyles from "../../Styles/PagesStyles";
 import { Modal } from "../Modals/ModalPrompt";
 
 const Home = (): JSX.Element => {

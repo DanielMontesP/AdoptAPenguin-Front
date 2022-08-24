@@ -120,6 +120,7 @@ h1 {
     color: white;
   }
   .desktop-header-title {
+    display: flex;
     margin: auto;
   }
 
@@ -280,8 +281,14 @@ ul {
 .bt-logout {
   background: url("../images/icon-menu-logout45.png");
   background-repeat: no-repeat;
-
   height: 45px;
+}
+
+.desktop-bt-logout {
+  background: url("../images/icon-menu-logout45.png");
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: center;
 }
 
 .modal-body {

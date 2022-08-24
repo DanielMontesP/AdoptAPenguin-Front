@@ -211,6 +211,11 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       <div className={headerClassDesktop}>
         <div className={`desktop-header-title`}>
           <h1>AdoptAPenguin.com</h1>
+          <button
+            onClick={handleLogout}
+            className="desktop-bt-logout"
+            title="desktop-btn-logout"
+          />
         </div>
         <div className={`desktop-header-buttons${hidderDesktopButtons}`}>
           <button

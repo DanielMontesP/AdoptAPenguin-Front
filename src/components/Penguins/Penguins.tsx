@@ -10,6 +10,7 @@ const hidderDelete = loadedState ? "" : " display-none";
 interface Props {
   allPenguins: IPenguin[];
 }
+
 const Penguins = ({ allPenguins }: Props): JSX.Element => {
   return (
     <PagesStyles

@@ -420,7 +420,6 @@ const FormsStyles = styled.div`
     background: #fff;
     padding: 0.5em;
     margin: 0 0 1.5em;
-
     max-height: 55vh;
     -webkit-transition: 0.5s;
     box-sizing: border-box;
@@ -430,29 +429,36 @@ const FormsStyles = styled.div`
     border-radius: 2px 2px 2px 2px;
     flex-wrap: wrap;
   }
+
   .item img {
     max-width: 100%;
   }
+
   .item:nth-of-type(4n + 1) {
     transform: rotate(2deg);
     transition: all 0.35s;
   }
+
   .item:nth-of-type(4n + 2) {
     transform: rotate(-2deg);
     transition: all 0.35s;
   }
+
   .item:nth-of-type(4n + 3) {
     transform: rotate(2deg);
     transition: all 0.35s;
   }
+
   .item:nth-of-type(4n + 4) {
     transform: rotate(-2deg);
     transition: all 0.35s;
   }
+
   .item:nth-of-type(4n + 5) {
     transform: rotate(2deg);
     transition: all 0.35s;
   }
+
   .item:hover {
     transform: rotate(1deg);
   }
