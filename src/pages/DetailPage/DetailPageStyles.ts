@@ -270,7 +270,7 @@ const DetailPageStyles = styled.div`
 
   .detail-info {
     display: flex;
-    width: 50%;
+    width: 70%;
     margin: auto;
     margin-top: 15px;
   }

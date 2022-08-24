@@ -147,8 +147,7 @@ const PagesStyles = styled.div`
     height: fit-content;
     font-size: 16px;
     flex: 1;
-    margin-left: -5px;
-    margin-top: 5px;
+    margin: auto;
     background-color: #ffe02c;
     padding-left: 5px;
     padding-right: 5px;
@@ -279,7 +278,9 @@ const PagesStyles = styled.div`
     display: flex;
     justify-content: space-between;
     width: 95%;
-    margin: auto;
+    align-items: inherit;
+    margin-left: 5px;
+    margin-top: 10px;
   }
 
   .penguin-image-detail {
@@ -394,9 +395,7 @@ const PagesStyles = styled.div`
     display: inline-flex;
     background: #fff;
     padding: 0.5em;
-
-    margin: auto;
-    margin: 20px;
+    margin-right: 15px;
     -webkit-transition: 0.5s;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
