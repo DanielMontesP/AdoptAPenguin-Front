@@ -218,7 +218,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       <div className={headerClass}>
         <button title="btn-back" className={HidderBack} onClick={handleClick} />
         <img className="header-favs-icon" alt="Page Icon" />
-        <h1 className={`header-title`}>{headerTitle || "AdoptAPenguin.com"}</h1>
+        <h1 className={`header-title`}>AdoptAPenguin.com</h1>
         <button
           className={`menu-btn${HidderMenu}`}
           onClick={handleMenu}
@@ -234,9 +234,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             onClick={handleClick}
           />
           <img className={classIconHeader} alt="Page Icon" />
-          <h1 className={`desktop-header-title`}>
-            {headerTitle || "AdoptAPenguin.com"}
-          </h1>
+          <h1 className={`desktop-header-title`}>AdoptAPenguin.com</h1>
           <button
             onClick={handleLogoutHeader}
             className={`desktop-bt-logout${HidderLogout}`}
