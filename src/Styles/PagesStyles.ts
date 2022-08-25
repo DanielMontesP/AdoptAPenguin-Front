@@ -27,6 +27,7 @@ const PagesStyles = styled.div`
     width: 70%;
     margin: auto;
     margin-top: 60px;
+    max-width: 500px;
   }
 
   hr {
@@ -125,7 +126,9 @@ const PagesStyles = styled.div`
 
   .container {
     width: 100%;
+    margin: auto;
     display: flow-root;
+    max-width: 600px;
   }
 
   .category {
@@ -180,10 +183,10 @@ const PagesStyles = styled.div`
   }
 
   .img-Home {
-    margin-top: 60px;
     border: 3px solid black;
     border-radius: 25px;
     width: 80%;
+    max-width: 500px;
   }
 
   .bt-container {

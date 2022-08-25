@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../app/redux/hooks/hooks";
 import { LoginData } from "../../app/redux/types/userInterfaces/userInterfaces";
 import { loginThunk } from "../../app/redux/thunks/userThunk/userThunk";
+import imgHome from "../../images/lapanda.jpg";
 
 const LoginForm = () => {
   const blankData: LoginData = {
@@ -31,6 +32,8 @@ const LoginForm = () => {
 
   return (
     <form autoComplete="off" noValidate onSubmit={submitLogin}>
+      <img src={imgHome} title="Git" alt="Git" className="img-Home" />
+
       <div className="link">
         New user? please
         <Link to="/users/register"> register</Link>
