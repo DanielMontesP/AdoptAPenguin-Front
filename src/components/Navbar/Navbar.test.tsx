@@ -52,9 +52,9 @@ describe("Given a Navbar component", () => {
           </Provider>
         </BrowserRouter>
       );
-      const btToCLick = screen.getByTitle("btn-back");
+      const btToCLick = screen.getAllByTitle("btn-back");
 
-      userEvent.click(btToCLick);
+      userEvent.click(btToCLick[0]);
       handleBack();
       expect(handleBack).toHaveBeenCalled();
     });
@@ -71,9 +71,9 @@ describe("Given a Navbar component", () => {
           </Provider>
         </BrowserRouter>
       );
-      const btToCLick = screen.getByTitle("btn-back");
+      const btToCLick = screen.getAllByTitle("btn-back");
 
-      userEvent.click(btToCLick);
+      userEvent.click(btToCLick[0]);
       handleBack();
       expect(handleBack).toHaveBeenCalled();
     });
@@ -90,9 +90,9 @@ describe("Given a Navbar component", () => {
           </Provider>
         </BrowserRouter>
       );
-      const btToCLick = screen.getByTitle("btn-back");
+      const btToCLick = screen.getAllByTitle("btn-back");
 
-      userEvent.click(btToCLick);
+      userEvent.click(btToCLick[0]);
       handleBack();
       expect(handleBack).toHaveBeenCalled();
     });
@@ -109,9 +109,9 @@ describe("Given a Navbar component", () => {
           </Provider>
         </BrowserRouter>
       );
-      const btToCLick = screen.getByTitle("btn-back");
+      const btToCLick = screen.getAllByTitle("btn-back");
 
-      userEvent.click(btToCLick);
+      userEvent.click(btToCLick[0]);
       handleBack();
       expect(handleBack).toHaveBeenCalled();
     });

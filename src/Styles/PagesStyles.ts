@@ -63,12 +63,6 @@ const PagesStyles = styled.div`
     color: black;
   }
 
-  a {
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-  }
-
   label {
     display: flex;
     flex-direction: column;
@@ -98,21 +92,12 @@ const PagesStyles = styled.div`
     margin-right: 9px;
   }
 
-  span {
-    font-size: 20px;
-    margin-left: 50px;
-  }
-
   button {
     cursor: pointer;
-    background-repeat: no-repeat;
-    border: 0;
-    vertical-align: middle;
-    background-color: initial;
-  }
 
-  img {
-    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
   }
 
   .Toastify__toast-body {
@@ -187,6 +172,7 @@ const PagesStyles = styled.div`
     width: 65px;
     background-size: 60%;
     background-repeat: no-repeat;
+    border: 0;
   }
 
   .detail-container {
@@ -202,6 +188,7 @@ const PagesStyles = styled.div`
     background: url(${iconSoundOn});
     background-size: 60%;
     background-repeat: no-repeat;
+    border: 0;
   }
   .bt-sound-off {
     height: 65px;
@@ -209,12 +196,14 @@ const PagesStyles = styled.div`
     background: url(${iconSoundOff});
     background-size: 60%;
     background-repeat: no-repeat;
+    border: 0;
   }
 
   .bt-menu {
     background: url(${iconHamburguer});
     border-radius: 10px;
     margin-right: 20px;
+    border: 0;
   }
 
   .bt-favs-menu {
@@ -223,6 +212,7 @@ const PagesStyles = styled.div`
     height: 65px;
     background-size: 60%;
     background-repeat: no-repeat;
+    border: 0;
   }
 
   .bt-back {
@@ -230,6 +220,7 @@ const PagesStyles = styled.div`
     width: 45px;
     height: 45px;
     margin-left: 10px;
+    border: 0;
   }
 
   .menu-icons-lower {
@@ -244,22 +235,28 @@ const PagesStyles = styled.div`
     width: 65px;
     background-size: 60%;
     background-repeat: no-repeat;
+    border: 0;
   }
 
   .bt-favs {
     width: 45px;
     height: 45px;
+    background: none;
     background: url(${iconMenuFavs});
+
     position: relative;
     margin-top: 7px;
+    border: 0;
   }
 
   .bt-addfav {
     width: 65px;
     height: 65px;
+    background: none;
     background: url(${iconAddFav});
     background-size: 60%;
     background-repeat: no-repeat;
+    border: 0;
   }
 
   .penguin-image-container {
@@ -330,6 +327,7 @@ const PagesStyles = styled.div`
   .penguin-name,
   .bt-likes {
     flex: 3;
+    border: 0;
   }
 
   .bt-likes {
@@ -344,18 +342,30 @@ const PagesStyles = styled.div`
     height: 32px;
     background-repeat: no-repeat;
     padding: 0 0 0 0;
+    border: 0;
   }
 
   .bt-register {
-    width: 80px;
+    width: 40%;
+    height: 50px;
     color: white;
-    background-color: black;
-    padding: 14px 20px;
-    border: none;
-    font-weight: bold;
-    opacity: 0.9;
     font-size: 20px;
+    font-weight: bold;
+    background-color: black;
     border-radius: 15px;
+    border: 0;
+  }
+
+  .bt-login {
+    width: 40%;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: black;
+    border-radius: 10px;
+    margin: 10px;
+    border: 0;
   }
 
   .link {
@@ -417,6 +427,7 @@ const PagesStyles = styled.div`
   .animatedLike {
     width: 45px;
     height: 45px;
+    background: none;
     background-image: url(${iconLike});
     background-repeat: no-repeat;
     background-position: center;
@@ -424,11 +435,13 @@ const PagesStyles = styled.div`
     position: relative;
     left: 129px;
     top: 309px;
+    border: 0;
   }
 
   .animatedLikeInit {
     width: 45px;
     height: 45px;
+    background: none;
     background-image: url(${iconLikeInit});
     background-repeat: no-repeat;
     background-position: center;
@@ -436,11 +449,13 @@ const PagesStyles = styled.div`
     position: relative;
     left: 129px;
     top: 309px;
+    border: 0;
   }
 
   .animatedFav {
     width: 45px;
     height: 45px;
+    background: none;
     background-image: url(${iconMenuFavs});
     background-repeat: no-repeat;
     background-position: inherit;
@@ -448,11 +463,13 @@ const PagesStyles = styled.div`
     position: relative;
     left: 300px;
     top: 20px;
+    border: 0;
   }
 
   .animatedFavDelete {
     width: 45px;
     height: 45px;
+    background: none;
     background-image: url(${iconMenuFavsDelete});
     background-repeat: no-repeat;
     background-position: inherit;
@@ -460,16 +477,19 @@ const PagesStyles = styled.div`
     position: relative;
     left: 300px;
     top: 20px;
+    border: 0;
   }
 
   .animatedDelete {
     width: 45px;
     height: 45px;
+    background: none;
     background-image: url(${iconDelete});
     background-size: contain;
     position: relative;
     left: -110px;
     top: 20px;
+    border: 0;
   }
 
   .animatedEdit {
@@ -483,6 +503,7 @@ const PagesStyles = styled.div`
     margin-top: 20px;
     margin-right: 30px;
     background-position: right;
+    border: 0;
   }
 
   .buttons-container {

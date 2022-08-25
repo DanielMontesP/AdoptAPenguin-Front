@@ -3,20 +3,27 @@ const WellcomeComments = (): JSX.Element => {
     <>
       <div className="message-container">
         <h1 className="display-none">AdoptAPenguin.com</h1>
-        <br /> <br />
-        AdoptAPenguin.com is my final fullstack project at ISDI Coders.
+        AdoptAPenguin.com was my final project at ISDI Coders fullstack
+        developer bootcamp (2022).
         <br />
         <br />
-        This site is based on this project, renewed...
+        Thanks Mario and all the crazy isdi coders stuff family and thanks one
+        by one all penguins developers who share this bootcamp with me.
         <br />
         <br />
-        AdoptAPenguin.com is my final fullstack project at ISDI Coders. This
-        site is based on this project, renewed... AdoptAPenguin.com is my final
-        fullstack project at ISDI Coders. This site is based on this project,
-        renewed... AdoptAPenguin.com is my final fullstack project at ISDI
-        Coders. This site is based on this project, renewed... AdoptAPenguin.com
-        is my final fullstack project at ISDI Coders. This site is based on this
-        project, renewed...
+        This site is based on this project, tested,renewed and with new
+        features...
+        <br />
+        <br />
+        Techs (Front end):
+        <br />
+        React - Redux - Javascript - Typescript - Firebase - Jest - Axios - CSS
+        <br />
+        <br />
+        Techs (Back end):
+        <br />
+        React - Javascript - Typescript - Firebase - Jest - Axios - Mongo -
+        Express
       </div>
     </>
   );
