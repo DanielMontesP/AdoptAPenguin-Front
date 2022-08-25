@@ -218,7 +218,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       <div className={headerClass}>
         <button title="btn-back" className={HidderBack} onClick={handleClick} />
         <img className="header-favs-icon" alt="Page Icon" />
-        <h1 className={`header-title`}>AdoptAPenguin.com</h1>
+        <h1 className={`header-title`}>{headerTitle}</h1>
         <button
           className={`menu-btn${HidderMenu}`}
           onClick={handleMenu}
@@ -235,16 +235,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
           />
           <img className={classIconHeader} alt="Page Icon" />
           <h1 className={`desktop-header-title`}>AdoptAPenguin.com</h1>
-          <button
-            onClick={handleLogoutHeader}
-            className={`desktop-bt-logout${HidderLogout}`}
-            title="desktop-btn-logout"
-          />
-          <button
-            onClick={handleMenu}
-            className={`desktop-bt-menu${HidderMenu}`}
-            title="desktop-btn-menu"
-          />
         </div>
         <div className={`desktop-header-buttons${hidderDesktopButtons}`}>
           <button
@@ -275,6 +265,16 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
           >
             About
           </button>
+          <button
+            onClick={handleMenu}
+            className={`desktop-bt-menu${HidderMenu}`}
+            title="desktop-btn-menu"
+          />
+          <button
+            onClick={handleLogoutHeader}
+            className={`desktop-bt-logout${HidderLogout}`}
+            title="desktop-btn-logout"
+          />
         </div>
       </div>
       <div className="nav">
@@ -317,6 +317,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 >
                   <h3 className="menu-icon-label-vertical">Likes</h3>
                 </button>
+
                 <button onClick={loadFavs} className="bt-favs" title="bt-favs">
                   <h3 className="menu-icon-label-vertical">Favourites</h3>
                 </button>

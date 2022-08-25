@@ -276,6 +276,7 @@ const DetailPageStyles = styled.div`
     width: 70%;
     margin: auto;
     margin-top: 15px;
+    max-width: 400px;
   }
 
   .detail-description {
@@ -284,10 +285,12 @@ const DetailPageStyles = styled.div`
 
   .detail-description-container {
     margin: auto;
-    width: 80%;
+    width: 70%;
     min-height: 150px;
     border-radius: 5px;
     background-color: white;
+    max-width: 400px;
+    margin-top: 10px;
   }
 
   .description-container {

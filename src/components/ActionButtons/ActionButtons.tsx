@@ -23,7 +23,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const idUser = useAppSelector((state) => state.user.id);
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  const isFavsPage = headerTitle === "Favourites" ? true : false;
   const isDetailPage = headerTitle === "Detail" ? true : false;
 
   const [, setFormData] = useState<IPenguin>(blankFormData);
@@ -116,18 +115,15 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     : ` bounce2 animatedLikeInit`;
 
   const btContainerClasses = () => {
-    const newClass =
-      headerTitle !== "Detail"
-        ? "buttons-container"
-        : "detail-buttons-container";
+    const newClass = !isDetailPage
+      ? "buttons-container"
+      : "detail-buttons-container";
     return newClass;
   };
 
-  const classButtonEdit =
-    isDetailPage || isFavsPage ? " bounce animatedEdit" : ` display-none`;
-
-  const classButtonDelete =
-    isDetailPage || isFavsPage ? " bounce animatedDelete" : ` display-none`;
+  const HidderLikes = isDetailPage ? " display-none" : "";
+  const classButtonEdit = " bounce animatedEdit";
+  const classButtonDelete = " bounce animatedDelete";
 
   return (
     <div className={btContainerClasses()}>
@@ -152,6 +148,8 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         onClick={handleLikes}
         title="btn-likes"
       />
+      <span className={`likes${HidderLikes}`}>{penguin.likes}</span>
+
       {isModalOpen && (
         <Modal
           type={modalType}
