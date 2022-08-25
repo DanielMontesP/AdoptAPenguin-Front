@@ -361,6 +361,7 @@ ul {
   border: 0;
   position: fixed;
   margin-top: 8px;
+  margin-left: 20px;
 }
 
 .bt-logout {
