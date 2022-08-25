@@ -145,6 +145,7 @@ const FormsStyles = styled.div`
     margin-top: 400px;
     width: 100%;
     background-image: none;
+    margin-top: 50px;
   }
 
   .input-likes {

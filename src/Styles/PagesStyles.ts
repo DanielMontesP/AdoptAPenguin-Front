@@ -179,6 +179,17 @@ const PagesStyles = styled.div`
     width: 100%;
   }
 
+  .img-Home {
+    margin-top: 60px;
+    border: 3px solid black;
+    border-radius: 25px;
+    width: 80%;
+  }
+
+  .bt-container {
+    margin-top: 30px;
+  }
+
   .li-detail {
   }
 

@@ -4,14 +4,17 @@ import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../../app/redux/hooks/hooks";
 import HomePageStyles from "../../Styles/PagesStyles";
 import { Modal } from "../Modals/ModalPrompt";
+import imgHome from "../../images/lapanda.jpg";
 
 const Home = (): JSX.Element => {
   const { user } = useAppSelector((state) => state);
   const [isModalOpen, setModal] = useState(true);
 
   return (
-    <HomePageStyles className="info">
+    <HomePageStyles className="container">
       <h1 className="display-none"> Home </h1>
+      <img src={imgHome} title="Git" alt="Git" className="img-Home" />
+
       <div className="bt-container">
         <NavLink to="/login" className="link">
           <button className="bt-login">Login</button>
