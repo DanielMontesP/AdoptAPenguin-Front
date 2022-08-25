@@ -29,7 +29,7 @@ export const loginThunk =
     if (doOnce) {
       try {
         setLoadingOn(
-          `LOGIN: ${userData.username}...Sorry, first time render is slow, service has to be started...Be watter, be penguin...`
+          `LOGIN: ${userData.username}...Maybe service is sleeping...Be watter penguin...it will start as soon as possible.`
         );
         const url: string = `${process.env.REACT_APP_API_URL}users/login`;
 
