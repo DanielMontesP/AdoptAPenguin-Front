@@ -229,6 +229,8 @@ h1 {
   font-size: 1.75rem;
   cursor: pointer;
   border: 0;
+  position: fixed;
+  right: 5px;
 }
 
 /* ------------------------------------------  */
@@ -349,7 +351,7 @@ ul {
   background-position: center;
   background-repeat: no-repeat;
   height: 45px;
-  margin-right: 40px;
+  margin-right: 20px;
   border: 0;
 }
 

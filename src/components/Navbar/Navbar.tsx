@@ -145,6 +145,13 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       ? " display-none"
       : "";
 
+  const HidderLogout: string =
+    document.location.href.includes("/homepage") ||
+    document.location.href.includes("/login") ||
+    document.location.href.includes("/register")
+      ? " display-none"
+      : "";
+
   const isLikesPage = headerTitle.includes("Likes");
   const isFavsPage = headerTitle.includes("Favourites");
 
@@ -232,12 +239,12 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
           </h1>
           <button
             onClick={handleLogoutHeader}
-            className="desktop-bt-logout"
+            className={`desktop-bt-logout${HidderLogout}`}
             title="desktop-btn-logout"
           />
           <button
             onClick={handleMenu}
-            className="desktop-bt-menu"
+            className={`desktop-bt-menu${HidderMenu}`}
             title="desktop-btn-menu"
           />
         </div>

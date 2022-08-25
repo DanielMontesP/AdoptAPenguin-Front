@@ -7,7 +7,7 @@ const initialState: UISliceState = {
   finishedLoading: true,
   modalMessage: "",
   modalType: "",
-  headerTitle: "Wellcome",
+  headerTitle: "AdoptAPenguin.com",
   headerLastTitle: "",
   pages: 0,
   currentPage: 1,
