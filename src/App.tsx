@@ -12,8 +12,7 @@ import jwtDecode from "jwt-decode";
 import { logInActionCreator } from "./app/redux/features/userSlice/userSlice";
 import Navbar from "./components/Navbar/Navbar";
 import { Error404Page } from "./pages/Error404/Error404";
-import FavsPage from "./pages/FavsPage/FavsPage";
-import LikesPage from "./pages/LikesPage/LikesPage";
+
 import { ToastContainer } from "react-toastify";
 import PenguinsPage from "./pages/PenguinsPage/PenguinsPage";
 import { getUserThunk } from "./app/redux/thunks/userThunk/userThunk";
@@ -88,7 +87,7 @@ function App() {
           path="/penguins/favs"
           element={
             <CheckInSecurity>
-              <FavsPage />
+              <PenguinsPage type="Favourites" />
             </CheckInSecurity>
           }
         />
@@ -96,7 +95,7 @@ function App() {
           path="/penguins/likes"
           element={
             <CheckInSecurity>
-              <LikesPage />
+              <PenguinsPage type="Likes" />
             </CheckInSecurity>
           }
         />

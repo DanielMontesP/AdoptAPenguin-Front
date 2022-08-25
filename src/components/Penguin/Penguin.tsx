@@ -44,7 +44,6 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
       </div>
       <div className="penguin-datalist">
         <span className="category">{toPascalCase(`${penguin.category}`)}</span>
-        <span className="likes">{penguin.likes}</span>
       </div>
       <div className="penguin-description">
         {penguin.description.substring(0, 100)}

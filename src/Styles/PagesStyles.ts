@@ -15,6 +15,12 @@ import iconSoundOn from "../images/icon-sound-on.png";
 import iconEdit from "../images/icon-editar32.png";
 
 const PagesStyles = styled.div`
+  @media only screen and (min-width: 421px) {
+    .penguin-description {
+      font-size: 14px;
+    }
+  }
+
   text-align: center;
   margin-top: 100px;
 
@@ -95,7 +101,6 @@ const PagesStyles = styled.div`
 
   button {
     cursor: pointer;
-
     background-repeat: no-repeat;
     background-position: center;
     vertical-align: middle;
@@ -107,7 +112,7 @@ const PagesStyles = styled.div`
 
   .penguin-image {
     border-radius: 5px;
-    min-width: 286px;
+    min-width: 320px;
     max-height: 225px;
 
     margin-top: 5px;
@@ -133,21 +138,21 @@ const PagesStyles = styled.div`
 
   .category {
     height: fit-content;
-    font-size: 16px;
-    flex: 1;
-    margin: auto;
+    font-size: 15px;
     background-color: #ffe02c;
     padding-left: 5px;
     padding-right: 5px;
     box-shadow: 0 3px 6px #666;
+    margin-top: 10px;
   }
 
   .likes {
-    margin-right: 10px;
-    flex: 1;
+    position: relative;
+    top: 290px;
+    left: 30px;
     animation-name: bounce;
     font-size: 16px;
-    margin-top: 5px;
+    margin: auto;
   }
 
   .penguin-description {
@@ -331,7 +336,6 @@ const PagesStyles = styled.div`
 
   .penguin-datalist {
     height: 40px;
-    width: 87%;
     position: relative;
     top: -60px;
     left: 23px;
@@ -447,8 +451,8 @@ const PagesStyles = styled.div`
     background-position: center;
     background-size: contain;
     position: relative;
-    left: 129px;
-    top: 309px;
+    left: 110px;
+    top: 295px;
     border: 0;
   }
 
@@ -462,7 +466,7 @@ const PagesStyles = styled.div`
     background-size: contain;
     position: relative;
     left: 129px;
-    top: 309px;
+    top: 295px;
     border: 0;
   }
 
@@ -510,12 +514,13 @@ const PagesStyles = styled.div`
     width: 45px;
     height: 45px;
     position: relative;
-    left: 200px;
-    top: 290px;
+    left: 100px;
+    top: 275px;
     background: url(${iconEdit});
     background-repeat: no-repeat;
     margin-top: 20px;
     margin-right: 30px;
+    margin-left: 20px;
     background-position: right;
     border: 0;
   }
