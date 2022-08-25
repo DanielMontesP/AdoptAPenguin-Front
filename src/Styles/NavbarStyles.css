@@ -176,6 +176,12 @@ h1 {
     border: 0;
   }
 
+  .container {
+    width: 100%;
+    margin: auto;
+    display: flow-root;
+    max-width: 600px;
+  }
   .devicons-container {
     display: flex;
     justify-content: space-around;
@@ -183,6 +189,14 @@ h1 {
     margin-top: 20px;
     align-items: center;
     font-size: 14px;
+  }
+
+  .img-Home {
+    border: 3px solid black;
+    border-radius: 25px;
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
   }
 
   .detail-image {
@@ -249,6 +263,12 @@ ul {
 }
 
 .login-container {
+  width: 100%;
+  display: flow-root;
+  margin-top: 155px;
+}
+
+.register-container {
   width: 100%;
   display: flow-root;
   margin-top: 155px;
