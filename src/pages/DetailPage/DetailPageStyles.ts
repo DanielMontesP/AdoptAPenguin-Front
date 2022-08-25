@@ -42,6 +42,7 @@ const DetailPageStyles = styled.div`
 
   button {
     cursor: pointer;
+    border: 0;
   }
 
   .bt-menu {
@@ -353,6 +354,7 @@ const DetailPageStyles = styled.div`
     font-size: 0.85em;
     transform: translate(40px, 50px);
   }
+
   .item {
     display: inline-flex;
     background: #fff;
@@ -403,6 +405,7 @@ const DetailPageStyles = styled.div`
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
   }
+
   .animatedLike {
     display: none;
   }

@@ -24,6 +24,7 @@ export const Modal = ({
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { headerTitle } = useAppSelector((state) => state.ui);
+  const isWellcome = type === "About" || type === "Wellcome" ? true : false;
 
   const logOutUser = () => {
     dispatch(finishedLoadingActionCreator());
@@ -35,13 +36,13 @@ export const Modal = ({
   };
 
   const handleDevIcons = () => {
-    if (type === "About") {
+    if (isWellcome) {
       return <DevIcons />;
     }
   };
 
   const getMessage = (): React.ReactNode => {
-    if (type === "About") {
+    if (isWellcome) {
       return <WellcomeComments />;
     }
     return <h3 className="modal-message">{message}</h3>;
@@ -78,10 +79,11 @@ export const Modal = ({
     closeModal(false);
   };
 
-  const windowTitle = type === "About" ? "About" : "Please confirm";
-  const modalClass = type === "About" ? "modal modal-wellcome" : "modal";
-  const cancelClass =
-    type === "About" ? "modal-btn-cancel display-none" : "modal-btn-cancel";
+  const windowTitle = isWellcome ? "About" : "Please confirm";
+  const modalClass = isWellcome ? "modal modal-wellcome" : "modal";
+  const cancelClass = isWellcome
+    ? "modal-btn-cancel display-none"
+    : "modal-btn-cancel";
 
   return (
     <div className={modalClass}>

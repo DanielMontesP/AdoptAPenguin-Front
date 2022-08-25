@@ -3,12 +3,7 @@ import { ReactDimmer } from "react-dimmer";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { Modal } from "../Modals/ModalPrompt";
-import {
-  loadFavsThunk,
-  loadLikesThunk,
-  loadPenguinsThunk,
-  resetPenguinThunk,
-} from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import "../../Styles/NavbarStyles.css";
 import { toPascalCase } from "../../utils/utils";
 import {
@@ -40,25 +35,33 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = (type: string) => {
     const message = "Log out?";
     const newModalType = "logOutUser";
 
     dispatch(modalTypeActionCreator(newModalType));
     dispatch(modalMessageActionCreator(message));
 
-    setMenu((prevState) => !prevState);
+    if (type === "fromMenu") {
+      setMenu((prevState) => !prevState);
+    }
+
     setModal((prevState) => !prevState);
   };
 
-  const loadFavs = () => {
-    const newModalType = "";
+  const handleLogoutMenu = () => {
+    handleLogout("fromMenu");
+  };
 
-    dispatch(modalTypeActionCreator(newModalType));
+  const handleLogoutHeader = () => {
+    handleLogout("fromHeader");
+  };
+
+  const loadFavs = () => {
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
-    loadFavsThunk();
+    // loadFavsThunk();
     navigate("/penguins/favs");
   };
 
@@ -66,7 +69,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
-    loadLikesThunk();
+    // loadLikesThunk();
     navigate("/penguins/likes");
   };
 
@@ -74,7 +77,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
-    loadPenguinsThunk();
+    // loadPenguinsThunk();
     navigate("/penguins");
   };
 
@@ -95,9 +98,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     dispatch(modalTypeActionCreator("About"));
 
     classButtonAbout = `${classButtonAbout} selected`;
-    classButtonHome = `${classButton} btn-home`;
-    classButtonLikes = `${classButton} btn-likes`;
-    classButtonFavs = `${classButton} btn-favs`;
+    classButtonHome = `${classButton}home`;
+    classButtonLikes = `${classButton}likes`;
+    classButtonFavs = `${classButton}favs`;
 
     setModal((prevState) => !prevState);
   };
@@ -145,19 +148,22 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const isLikesPage = headerTitle.includes("Likes");
   const isFavsPage = headerTitle.includes("Favourites");
 
-  let headerIconType = isLikesPage ? "-likes" : "";
-  headerIconType = isFavsPage ? "-favs" : headerIconType;
+  let headerIconType = isLikesPage ? " header-likes" : "";
+  headerIconType = isFavsPage ? " header-favs" : headerIconType;
 
   const headerClass = `header${headerIconType}`;
-  const headerClassDesktop = `desktop-header`;
+  const headerClassDesktop = `desktop-header${headerIconType}`;
 
-  const classButton = `desktop-btn`;
+  const classButton = `desktop-btn btn-`;
 
-  let classButtonHome = `${classButton} btn-home`;
-  let classButtonLikes = `${classButton} btn-likes`;
-  let classButtonFavs = `${classButton} btn-favs`;
-  let classButtonMenu = `${classButton} btn-menu`;
-  let classButtonAbout = `${classButton} btn-about`;
+  let classIconHeader = `header`;
+  let classButtonHome = `${classButton}home`;
+  let classButtonLikes = `${classButton}likes`;
+  let classButtonFavs = `${classButton}favs`;
+  let classButtonAbout = `${classButton}about`;
+  let classIconFavs = `${classIconHeader}-favs-icon`;
+  let classIconLikes = `${classIconHeader}-likes-icon`;
+  let classIconHome = `${classIconHeader}-home-icon`;
 
   let hidderDesktopButtons = "";
 
@@ -169,28 +175,32 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   switch (headerTitle) {
     case "Home":
       classButtonHome = `${classButtonHome} selected`;
-      classButtonLikes = `${classButton} btn-likes`;
-      classButtonFavs = `${classButton} btn-favs`;
-      classButtonAbout = `${classButton} btn-about`;
+      classButtonLikes = `${classButton}likes`;
+      classButtonFavs = `${classButton}favs`;
+      classButtonAbout = `${classButton}about`;
+      classIconHeader = classIconHome;
       break;
     case "Likes":
       classButtonLikes = `${classButtonLikes} selected`;
-      classButtonHome = `${classButton} btn-home`;
-      classButtonFavs = `${classButton} btn-favs`;
-      classButtonAbout = `${classButton} btn-about`;
+      classButtonHome = `${classButton}home`;
+      classButtonFavs = `${classButton}favs`;
+      classButtonAbout = `${classButton}about`;
+      classButtonAbout = `${classButton}about`;
+      classIconHeader = classIconLikes;
 
       break;
     case "Favourites":
       classButtonFavs = `${classButtonFavs} selected`;
-      classButtonHome = `${classButton} btn-home`;
-      classButtonLikes = `${classButton} btn-likes`;
-      classButtonAbout = `${classButton} btn-about`;
+      classButtonHome = `${classButton}home`;
+      classButtonLikes = `${classButton}likes`;
+      classButtonAbout = `${classButton}about`;
+      classIconHeader = classIconFavs;
       break;
     case "Detail":
       classButtonFavs = `${classButtonFavs}`;
-      classButtonHome = `${classButton} btn-home`;
-      classButtonLikes = `${classButton} btn-likes`;
-      classButtonAbout = `${classButton} btn-about`;
+      classButtonHome = `${classButton}home`;
+      classButtonLikes = `${classButton}likes`;
+      classButtonAbout = `${classButton}about`;
       break;
     default:
       hidderDesktopButtons = " display-none";
@@ -200,6 +210,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     <div className="app">
       <div className={headerClass}>
         <button title="btn-back" className={HidderBack} onClick={handleClick} />
+        <img className="header-favs-icon" alt="Page Icon" />
         <h1 className={`header-title`}>{headerTitle || "AdoptAPenguin.com"}</h1>
         <button
           className={`menu-btn${HidderMenu}`}
@@ -209,23 +220,28 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       </div>
 
       <div className={headerClassDesktop}>
-        <div className={`desktop-header-title`}>
-          <h1>AdoptAPenguin.com</h1>
+        <div className="desktop-header">
           <button
-            onClick={handleLogout}
+            title="btn-back"
+            className={HidderBack}
+            onClick={handleClick}
+          />
+          <img className={classIconHeader} alt="Page Icon" />
+          <h1 className={`desktop-header-title`}>
+            {headerTitle || "AdoptAPenguin.com"}
+          </h1>
+          <button
+            onClick={handleLogoutHeader}
             className="desktop-bt-logout"
             title="desktop-btn-logout"
           />
+          <button
+            onClick={handleMenu}
+            className="desktop-bt-menu"
+            title="desktop-btn-menu"
+          />
         </div>
         <div className={`desktop-header-buttons${hidderDesktopButtons}`}>
-          <button
-            className={classButtonMenu}
-            onClick={handleMenu}
-            title="desktop-btn-menu"
-          >
-            Menu
-          </button>
-
           <button
             className={classButtonHome}
             onClick={loadHome}
@@ -263,7 +279,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
               <hr className="hr-menu-horizontal" />
               <div className="menu-icons-horizontal">
                 <button
-                  onClick={handleLogout}
+                  onClick={handleLogoutMenu}
                   className="bt-logout"
                   title="btn-logout"
                 />
