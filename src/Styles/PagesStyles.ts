@@ -24,6 +24,13 @@ const PagesStyles = styled.div`
   text-align: center;
   margin-top: 100px;
 
+  .container {
+    width: 90%;
+    margin: auto;
+    display: flow-root;
+    max-width: 600px;
+  }
+
   element.style {
     text-align: center;
   }
@@ -129,13 +136,6 @@ const PagesStyles = styled.div`
     width: 95%;
   }
 
-  .container {
-    width: 100%;
-    margin: auto;
-    display: flow-root;
-    max-width: 600px;
-  }
-
   .category {
     height: fit-content;
     font-size: 15px;
@@ -191,11 +191,14 @@ const PagesStyles = styled.div`
     border: 3px solid black;
     border-radius: 25px;
     width: 80%;
-    max-width: 500px;
+    max-width: 400px;
+    margin-bottom: 30px;
   }
 
   .bt-container {
     margin-top: 30px;
+    max-width: 500px;
+    margin: auto;
   }
 
   .li-detail {
@@ -389,7 +392,7 @@ const PagesStyles = styled.div`
   .link {
     margin: auto;
     color: blue;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
   }
 
@@ -533,6 +536,13 @@ const PagesStyles = styled.div`
     margin: auto;
     margin-bottom: -50px;
     position: absolute;
+  }
+
+  .container {
+    width: 90%;
+    margin: auto;
+    display: flow-root;
+    max-width: 600px;
   }
 
   @-webkit-keyframes bounce {

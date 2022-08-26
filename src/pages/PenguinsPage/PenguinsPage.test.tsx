@@ -39,4 +39,21 @@ describe("Given a PenguinsPage Component", () => {
       expect(receivedResult).toBeInTheDocument();
     });
   });
+  describe("When Favs it's rendered", () => {
+    test("Then it should show the role 'penguins-page'", () => {
+      const expectedResult = "penguins-page";
+
+      render(
+        <Provider store={store}>
+          <PenguinsPageStyles role={"penguins-page"}>
+            <PenguinsPage type="Favourites" />
+          </PenguinsPageStyles>
+        </Provider>
+      );
+
+      const receivedResult = screen.getByRole(expectedResult);
+
+      expect(receivedResult).toBeInTheDocument();
+    });
+  });
 });
