@@ -132,6 +132,14 @@ const FormsStyles = styled.div`
     width: 100%;
   }
 
+  .img-Home {
+    border: 3px solid black;
+    border-radius: 25px;
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+  }
+
   input ::placeholder {
     font-weight: bolder;
     padding-left: 220px;

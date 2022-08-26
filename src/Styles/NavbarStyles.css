@@ -109,6 +109,10 @@ h1 {
     height: 5rem;
   }
 
+  .about-icon {
+    margin-left: -40px;
+  }
+
   .desktop-bt-menu {
     top: 10;
 
@@ -174,12 +178,6 @@ h1 {
     color: white;
   }
 
-  .container {
-    width: 100%;
-    margin: auto;
-    display: flow-root;
-    max-width: 600px;
-  }
   .devicons-container {
     display: flex;
     justify-content: space-around;
@@ -187,14 +185,6 @@ h1 {
     margin-top: 20px;
     align-items: center;
     font-size: 14px;
-  }
-
-  .img-Home {
-    border: 3px solid black;
-    border-radius: 25px;
-    width: 80%;
-    max-width: 500px;
-    margin: auto;
   }
 
   .detail-image {
@@ -263,13 +253,13 @@ ul {
 .login-container {
   width: 100%;
   display: flow-root;
-  margin-top: 155px;
+  margin-top: 90px;
 }
 
 .register-container {
   width: 100%;
   display: flow-root;
-  margin-top: 155px;
+  margin-top: 90px;
 }
 
 .hr-menu-horizontal {
@@ -299,6 +289,7 @@ ul {
 .about-icon {
   width: 25px;
   height: 25px;
+  margin-left: -40px;
 }
 
 .search-input {
@@ -549,6 +540,7 @@ ul {
 .modal-wellcome {
   width: 80%;
   height: 75%;
+  max-width: 500px;
 }
 
 .modal .modal-header {
