@@ -8,14 +8,31 @@
   <img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original-wordmark.svg" title="NodeJS" alt="NodeJS" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original-wordmark.svg" title="Git" **alt="Git" width="40" height="40"/>
 </div>  
-<div id="header" align="center">
-  <img src="https://media.giphy.com/media/eNAsjO55tPbgaor7ma/giphy.gif" width="100"/>  
-  <img src="https://media.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif" width="100"/>
-  <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" width="100"/>
-  <img src="https://media.giphy.com/media/SS8CV2rQdlYNLtBCiF/giphy.gif" width="100"/>
-  <img src="https://media.giphy.com/media/gw3IWyGkC0rsazTi/giphy.gif" width="100"/>
-  <img src="https://media.giphy.com/media/w9wfZxg6RSqhq/giphy.gif" width="100"/>
-</div>
+<div className="message-container">
+        <h1 className="display-none">AdoptAPenguin.com</h1>
+        AdoptAPenguin.com was my final project at ISDI Coders fullstack
+        developer bootcamp (2022).
+        <br />
+        <br />
+        Thanks Mario and all the crazy isdi coders stuff family and thanks one
+        by one all penguins developers who share this bootcamp with me.
+        <br />
+        <br />
+        This site is based on this project, tested,renewed and with new
+        features...
+        <br />
+        <br />
+        Techs (Front end):
+        <br />
+        React - Redux - Javascript - Typescript - Firebase - Jest - Axios - CSS
+        <br />
+        <br />
+        Techs (Back end):
+        <br />
+        React - Javascript - Typescript - Firebase - Jest - Axios - Mongo -
+        Express
+      </div>
+
 <br/>
 <br/>
 <div>
