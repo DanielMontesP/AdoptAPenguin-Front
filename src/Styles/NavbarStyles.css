@@ -390,8 +390,8 @@ ul {
 }
 
 .modal-btn-accept {
-  width: 40%;
-  height: 50px;
+  width: 150px;
+  height: 40px;
   background: url("../images/modal-accept-32.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -539,7 +539,7 @@ ul {
 
 .modal-wellcome {
   width: 80%;
-  height: 75%;
+  height: 95%;
   max-width: 500px;
 }
 
