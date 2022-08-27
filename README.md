@@ -75,7 +75,7 @@
         Front end:
         <br />
         <br />
-        React - Redux - Javascript - Typescript - Firebase - Jest - Axios - CSS
+        React - Redux - Javascript - Typescript - Firebase - Jest - Axios - CSS - HTML - Git - SonarCloud
         <br />
         <img
           src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg"
@@ -140,13 +140,21 @@
           width="30"
           height="30"
         />
+        &nbsp;
+         <img
+            src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
+            title="sonarcloud"
+            alt="sonarcloud"
+            width="30"
+            height="30"
+          />
         <br />
         <br />
         <br />
         Back end:
         <br />
         <br />
-        React - Javascript - Node - Jest - Firebase - Axios - Mongo - Express
+        React - Javascript - Node - Jest - Firebase - Axios - Mongo - Express - Axios - Git - SonarCloud
         <br />
         <img
           src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg"
@@ -195,5 +203,13 @@
           width="30"
           height="30"
         />
+        &nbsp;
+         <img
+            src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
+            title="sonarcloud"
+            alt="sonarcloud"
+            width="30"
+            height="30"
+          />
       </div>
     </div>
