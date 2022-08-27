@@ -24,7 +24,19 @@ export const mockEmptyDataPenguin: IPenguin = {
   description: "",
 };
 
-export const mockPenguinsEmpty: IPenguin[] = [];
+export const mockPenguinsEmpty: IPenguin[] = [
+  {
+    id: "",
+    name: "",
+    category: "",
+    likes: 0,
+    likers: [""],
+    favs: [""],
+    image: "",
+    imageBackup: "",
+    description: "",
+  },
+];
 export const mockPenguins: IPenguin[] = [
   {
     id: "1",

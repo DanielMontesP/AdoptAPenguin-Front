@@ -1,4 +1,9 @@
-import { mockPenguin, mockPenguins } from "../../../../mocks/penguins";
+import {
+  mockEmptyDataPenguin,
+  mockPenguin,
+  mockPenguins,
+  mockPenguinsEmpty,
+} from "../../../../mocks/penguins";
 import { IPenguin } from "../../types/penguin/penguinInterfaces";
 import penguinReducer, {
   createPenguinActionCreator,
@@ -7,6 +12,7 @@ import penguinReducer, {
   loadPenguinActionCreator,
   loadPenguinsActionCreator,
   resetPenguinActionCreator,
+  resetPenguinsActionCreator,
 } from "./penguinSlice";
 
 interface SliceIniState {
@@ -125,6 +131,23 @@ describe("Given the resetPenguinActionCreator", () => {
       expect(loadedState).toEqual({
         allPenguins: mockPenguins,
         penguin: mockPenguin,
+      });
+    });
+  });
+});
+
+describe("Given resetPenguinsActionCreator", () => {
+  describe("When  invoked", () => {
+    test("Then the load list with record edited", async () => {
+      const action = resetPenguinsActionCreator(mockEmptyDataPenguin);
+      const loadedState = penguinReducer(
+        { allPenguins: mockPenguinsEmpty, penguin: mockEmptyDataPenguin },
+        action
+      );
+
+      expect(loadedState).toEqual({
+        allPenguins: mockPenguinsEmpty,
+        penguin: mockEmptyDataPenguin,
       });
     });
   });

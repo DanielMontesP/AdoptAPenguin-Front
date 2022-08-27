@@ -44,7 +44,7 @@ describe("Given the loadFavsThunk function", () => {
       loadPenguinsActionCreator(mockPenguins);
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
       axios.get = jest.fn().mockResolvedValue({
-        data: { penguins: mockPenguins },
+        data: { penguins: [] },
         status: 200,
       });
 
@@ -78,7 +78,7 @@ describe("Given the loadFavsThunk function", () => {
       loadPenguinsActionCreator(mockPenguins);
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
       axios.get = jest.fn().mockResolvedValue({
-        data: { penguins: mockPenguins },
+        data: { penguins: [] },
         status: 200,
       });
 
