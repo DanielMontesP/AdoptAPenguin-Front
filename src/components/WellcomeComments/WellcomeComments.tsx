@@ -78,7 +78,10 @@ const WellcomeComments = (): JSX.Element => {
           &nbsp;
           <img src={imgHTML5} title="HTML5" alt="HTML" width="20" height="20" />
           &nbsp;
+          <img src={imgJest} title="jest" alt="jest" width="20" height="20" />
+          &nbsp;
           <img src={imgGitHub} title="Git" alt="Git" width="20" height="20" />
+          &nbsp;
           <img
             src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
             title="sonarcloud"
@@ -88,8 +91,8 @@ const WellcomeComments = (): JSX.Element => {
           />
           <br />
           <span className="iconsNames">
-            React - Redux - Javascript - Typescript - Firebase - Jest - Axios -
-            CSS
+            React - Redux - Javascript - Typescript - Firebase - CSS - HTML -
+            Jest - Axios - CSS - Git - Sonarcloud
           </span>
           <br />
           <br />
@@ -130,6 +133,7 @@ const WellcomeComments = (): JSX.Element => {
           />
           &nbsp;
           <img src={imgGitHub} title="Git" alt="Git" width="20" height="20" />
+          &nbsp;
           <img
             src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
             title="sonarcloud"
@@ -140,7 +144,7 @@ const WellcomeComments = (): JSX.Element => {
           <br />
           <span className="iconsNames">
             React - Javascript - Node - Jest - Firebase - Axios - Mongo -
-            Express
+            Express - Git - Sonarcloud
           </span>
         </div>
 
