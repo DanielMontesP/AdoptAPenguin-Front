@@ -390,12 +390,13 @@ ul {
 }
 
 .modal-btn-accept {
-  width: 150px;
-  height: 40px;
+  width: 40%;
+  height: 50px;
   background: url("../images/modal-accept-32.png");
   background-position: center;
   background-repeat: no-repeat;
   border: 2px solid rgb(29, 29, 29);
+  background-color: rgb(29, 29, 29);
   border-radius: 10px;
   flex: none;
   margin: auto;
@@ -421,6 +422,9 @@ ul {
   border: 0;
   right: 5px;
   background: url("../images/modal-cancel-32.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25px;
   background-color: rgb(29, 29, 29);
   font-size: 20px;
   align-items: center;
@@ -539,7 +543,7 @@ ul {
 
 .modal-wellcome {
   width: 80%;
-  height: 95%;
+  height: auto;
   max-width: 500px;
 }
 
@@ -570,6 +574,7 @@ ul {
   font-size: 14px;
   margin: auto;
   width: 90%;
+  margin-top: 20px;
 }
 
 .message-content {
