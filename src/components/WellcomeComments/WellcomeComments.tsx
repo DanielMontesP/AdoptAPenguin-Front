@@ -1,25 +1,34 @@
+import imgGitHub from "../../images/github.svg";
+import imgReact from "../../images/react-40.gif";
+import imgRedux from "../../images/redux-40.png";
+import imgJS from "../../images/javascript-40.png";
+import imgTypeScript from "../../images/typescript-40.png";
+import imgFirebase from "../../images/firebase-40.png";
+import imgCSS from "../../images/css-40.png";
+import imgNode from "../../images/nodejs-40.png";
+import imgHTML5 from "../../images/html5-40.png";
+import imgJest from "../../images/jest-40.png";
+
 const WellcomeComments = (): JSX.Element => {
   return (
     <div className="message-container">
-      <div className="message-container">
+      <br />
+
+      <a href="https://adoptapenguin.netlify.app">AdoptAPenguin.com</a>
+      <br />
+      <br />
+      <div className="message-content">
         AdoptAPenguin.com was my final project at ISDI Coders fullstack
         developer bootcamp (2022).
+        <br />
         <br />
         This site is based on this project, tested,renewed and with new
         features...
         <br />
+        <br />
         Designed for mobile and desktop rendering.
         <div>
           <br />
-          <a href="https://adoptapenguin.netlify.app">AdoptAPenguin.com</a>
-          <br />
-          <img
-            src="https://github.com/devicons/devicon/blob/master/icons/git/git-plain.svg"
-            title="github"
-            alt="gitHub"
-            width="30"
-            height="30"
-          />
           <br />
           REPOS:
           <a href="https://github.com/DanielMontesP/AdoptAPenguin-Front">
@@ -28,14 +37,6 @@ const WellcomeComments = (): JSX.Element => {
           |
           <a href="https://github.com/DanielMontesP/AdoptAPenguin-Back">BACK</a>
           <br />
-          <img
-            src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
-            title="sonarcloud"
-            alt="sonarcloud"
-            width="30"
-            height="30"
-          />
-          &nbsp;
           <br />
           SONARCLOUD:
           <a href="https://sonarcloud.io/summary/overall?id=DanielMontesP_AdoptAPenguin-Front <br/>">
@@ -49,124 +50,86 @@ const WellcomeComments = (): JSX.Element => {
         <br />
         Front end:
         <br />
-        React - Redux - Javascript - Typescript - Firebase - Jest - Axios - CSS
-        <br />
-        <img
-          src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg"
-          title="React"
-          alt="React"
-          width="30"
-          height="30"
-        />
+        <img src={imgReact} title="React" alt="React" width="20" height="20" />
+        &nbsp;
+        <img src={imgRedux} title="Redux" alt="Redux " width="20" height="20" />
         &nbsp;
         <img
-          src="https://github.com/devicons/devicon/blob/master/icons/redux/redux-original.svg"
-          title="Redux"
-          alt="Redux "
-          width="30"
-          height="30"
-        />
-        &nbsp;
-        <img
-          src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg"
+          src={imgJS}
           title="JavaScript"
           alt="JavaScript"
-          width="30"
-          height="30"
+          width="20"
+          height="20"
         />
         &nbsp;
         <img
-          src="https://github.com/devicons/devicon/blob/master/icons/typescript/typescript-plain.svg"
+          src={imgTypeScript}
           title="typescript"
           alt="typescript"
-          width="30"
-          height="30"
+          width="20"
+          height="20"
         />
         &nbsp;
         <img
-          src="https://github.com/devicons/devicon/blob/master/icons/firebase/firebase-plain-wordmark.svg"
+          src={imgFirebase}
           title="Firebase"
           alt="Firebase"
-          width="30"
-          height="30"
+          width="20"
+          height="20"
         />
         &nbsp;
-        <img
-          src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-plain-wordmark.svg"
-          title="CSS3"
-          alt="CSS"
-          width="30"
-          height="30"
-        />
+        <img src={imgCSS} title="CSS3" alt="CSS" width="20" height="20" />
         &nbsp;
-        <img
-          src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg"
-          title="HTML5"
-          alt="HTML"
-          width="30"
-          height="30"
-        />
+        <img src={imgHTML5} title="HTML5" alt="HTML" width="20" height="20" />
         &nbsp;
+        <img src={imgGitHub} title="Git" alt="Git" width="20" height="20" />
         <img
-          src="https://github.com/devicons/devicon/blob/master/icons/git/git-plain.svg"
-          title="Git"
-          alt="Git"
-          width="30"
-          height="30"
+          src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
+          title="sonarcloud"
+          alt="sonarcloud"
+          width="20"
+          height="20"
         />
+        <br />
+        React - Redux - Javascript - Typescript - Firebase - Jest - Axios - CSS
+        <br />
         <br />
         <br />
         Back end:
         <br />
-        React - Javascript - Node - Jest - Firebase - Axios - Mongo - Express
-        <br />
-        <img
-          src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg"
-          title="React"
-          alt="React"
-          width="30"
-          height="30"
-        />
+        <img src={imgReact} title="React" alt="React" width="20" height="20" />
         &nbsp;
         <img
-          src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg"
+          src={imgJS}
           title="JavaScript"
           alt="JavaScript"
-          width="30"
-          height="30"
+          width="20"
+          height="20"
         />
         &nbsp;
-        <img
-          src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-plain-wordmark.svg"
-          title="NodeJS"
-          alt="NodeJS"
-          width="30"
-          height="30"
-        />
+        <img src={imgNode} title="NodeJS" alt="NodeJS" width="20" height="20" />
+        &nbsp;
+        <img src={imgJest} title="jest" alt="jest" width="20" height="20" />
         &nbsp;
         <img
-          src="https://github.com/devicons/devicon/blob/master/icons/jest/jest-plain.svg"
-          title="jest"
-          alt="jest"
-          width="30"
-          height="30"
-        />
-        &nbsp;
-        <img
-          src="https://github.com/devicons/devicon/blob/master/icons/firebase/firebase-plain-wordmark.svg"
+          src={imgFirebase}
           title="Firebase"
           alt="Firebase"
-          width="30"
-          height="30"
+          width="20"
+          height="20"
         />
         &nbsp;
+        <img src={imgGitHub} title="Git" alt="Git" width="20" height="20" />
         <img
-          src="https://github.com/devicons/devicon/blob/master/icons/git/git-plain.svg"
-          title="Git"
-          alt="Git"
-          width="30"
-          height="30"
+          src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
+          title="sonarcloud"
+          alt="sonarcloud"
+          width="20"
+          height="20"
         />
+        <br />
+        React - Javascript - Node - Jest - Firebase - Axios - Mongo - Express
+        <br />
       </div>
     </div>
   );

@@ -4,7 +4,6 @@ import { finishedLoadingActionCreator } from "../../app/redux/features/uiSlice/u
 import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { deletePenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
-import DevIcons from "../DevIcons/DevIcons";
 import WellcomeComments from "../WellcomeComments/WellcomeComments";
 import { correctAction } from "./Modals";
 
@@ -33,12 +32,6 @@ export const Modal = ({
     localStorage.removeItem("token");
 
     navigate("/");
-  };
-
-  const handleDevIcons = () => {
-    if (isWellcome) {
-      return <DevIcons />;
-    }
   };
 
   const getMessage = (): React.ReactNode => {
@@ -111,7 +104,6 @@ export const Modal = ({
           placeholder="btn-cancel"
         />
       </div>
-      {handleDevIcons()}
     </div>
   );
 };
