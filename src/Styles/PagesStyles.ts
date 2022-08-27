@@ -148,7 +148,7 @@ const PagesStyles = styled.div`
 
   .likes {
     position: relative;
-    top: 290px;
+    top: 275px;
     left: 30px;
     animation-name: bounce;
     font-size: 16px;
@@ -468,7 +468,7 @@ const PagesStyles = styled.div`
     background-position: center;
     background-size: contain;
     position: relative;
-    left: 129px;
+    left: 110px;
     top: 295px;
     border: 0;
   }
@@ -526,6 +526,10 @@ const PagesStyles = styled.div`
     margin-left: 20px;
     background-position: right;
     border: 0;
+  }
+
+  .no-visible {
+    visibility: hidden;
   }
 
   .buttons-container {

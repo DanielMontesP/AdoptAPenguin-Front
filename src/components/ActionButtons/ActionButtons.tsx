@@ -24,6 +24,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const { headerTitle } = useAppSelector((state) => state.ui);
 
   const isDetailPage = headerTitle === "Detail" ? true : false;
+  const isHomePage = headerTitle === "Home" ? true : false;
 
   const [, setFormData] = useState<IPenguin>(blankFormData);
   const [isModalOpen, setModal] = useState(false);
@@ -122,6 +123,8 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   };
 
   const HidderLikes = isDetailPage ? " display-none" : "";
+  const HidderDelete = isHomePage ? " no-visible" : "";
+  const HidderEdit = isHomePage ? " no-visible" : "";
   const classButtonEdit = " bounce animatedEdit";
   const classButtonDelete = " bounce animatedDelete";
 
@@ -133,14 +136,14 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         className={`animated${selectIconFav}`}
       />
       <button
-        className={`animated${classButtonEdit}`}
+        className={`animated${classButtonEdit}${HidderEdit}`}
         onClick={handleEdit}
         title="btn-edit"
       />
       <button
         title="btn-delete"
         placeholder="btn-delete"
-        className={`animated${classButtonDelete}`}
+        className={`animated${classButtonDelete}${HidderDelete}`}
         onClick={handleDelete}
       />
       <button

@@ -24,7 +24,7 @@ const WellcomeComments = (): JSX.Element => {
           developer bootcamp (2022).
           <br />
           <br />
-          This site is based on this project, tested,renewed and with new
+          This site is based on this project, tested, renewed and with new
           features...
           <br />
           <br />
