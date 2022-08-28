@@ -134,7 +134,7 @@ const DetailPageStyles = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
+    width: 95%;
     margin: auto;
   }
 
@@ -147,6 +147,7 @@ const DetailPageStyles = styled.div`
     background-image: url(${detailNext});
     background-repeat: no-repeat;
     background-position: 95% 50%;
+    margin-left: 5px;
   }
 
   .imgDetailPrev {
@@ -158,6 +159,7 @@ const DetailPageStyles = styled.div`
     background-image: url(${detailPrev});
     background-repeat: no-repeat;
     background-position: 5% 50%;
+    margin-right: 5px;
   }
 
   .penguin--container {
@@ -170,7 +172,7 @@ const DetailPageStyles = styled.div`
     text-align: center;
     height: 430px;
     border: 2px solid;
-    height: fit-content;
+    height: 100vh;
     width: auto;
     margin-top: 5rem;
   }
@@ -194,8 +196,9 @@ const DetailPageStyles = styled.div`
     display: flex;
     justify-content: space-between;
     align-content: space-around;
-    margin: auto;
+
     margin-bottom: -50px;
+    margin-top: 40px;
   }
 
   .bt-back {
@@ -285,12 +288,13 @@ const DetailPageStyles = styled.div`
 
   .detail-description-container {
     margin: auto;
-    width: 70%;
+    width: 300px;
     min-height: 150px;
     border-radius: 5px;
     background-color: white;
     max-width: 400px;
     margin-top: 10px;
+    min-width: 45%;
   }
 
   .description-container {
@@ -445,7 +449,7 @@ const DetailPageStyles = styled.div`
     background-position: inherit;
     background-size: contain;
     position: relative;
-    left: 320px;
+    left: 275px;
     top: -30px;
   }
 
@@ -457,7 +461,7 @@ const DetailPageStyles = styled.div`
     background-position: inherit;
     background-size: contain;
     position: relative;
-    left: 320px;
+    left: 275px;
     top: -30px;
   }
 
@@ -465,7 +469,7 @@ const DetailPageStyles = styled.div`
     width: 45px;
     height: 45px;
     position: relative;
-    left: -320px;
+    left: -275px;
     background-image: url(${iconDelete});
     background-repeat: no-repeat;
     background-position: inherit;
@@ -543,10 +547,12 @@ const DetailPageStyles = styled.div`
     -webkit-animation-name: bounce;
     animation-name: bounce;
   }
+
   .bounce2 {
     -webkit-animation-name: bounce2;
     animation-name: bounce2;
   }
+
   .header {
     justify-content: space-between;
   }

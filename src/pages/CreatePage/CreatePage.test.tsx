@@ -49,7 +49,7 @@ describe("Given a CreatePage component", () => {
         .fn()
         .mockResolvedValue({ data: { penguins: mockPenguins }, status: 200 });
       const dispatch = jest.fn();
-      document.location.href = String(jest.fn().mockReturnValue("create"));
+      document.location.href = jest.fn().mockReturnValue("create").toString();
 
       userEvent.type(name, inputText);
       userEvent.type(category, inputText);

@@ -28,7 +28,6 @@ const RegisterPageStyles = styled.div`
     border: none;
     font-weight: bold;
     cursor: pointer;
-    opacity: 0.9;
     display: flex;
     justify-content: center;
     font-size: 20px;
@@ -111,7 +110,6 @@ const RegisterPageStyles = styled.div`
     font-weight: bold;
     cursor: pointer;
     width: 80%;
-    opacity: 0.9;
     display: flex;
     justify-content: center;
     font-size: 20px;

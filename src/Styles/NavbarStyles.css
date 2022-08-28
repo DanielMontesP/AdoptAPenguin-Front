@@ -432,28 +432,6 @@ ul {
   align-items: center;
 }
 
-.bt-sound {
-  background: url("../images/icon-sound-on.png");
-  background-repeat: no-repeat;
-  margin: auto;
-  height: 45px;
-  opacity: 50%;
-  border: 0;
-}
-
-.sound-on {
-  visibility: hidden;
-}
-
-.bt-sound-off {
-  background: url("../images/icon-sound-off.png");
-}
-
-.sound-off {
-  visibility: hidden;
-  display: none;
-}
-
 .label-login {
   visibility: hidden;
   display: none;
@@ -555,19 +533,6 @@ ul {
   max-width: 500px;
 }
 
-.wellcome-sonar {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-.wellcome-repos {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-.wellcome-footer {
-  margin: auto;
-}
 .modal .modal-header {
   border-radius: 10px 10px 0 0;
   background-color: rgb(29, 29, 29);
@@ -596,6 +561,20 @@ ul {
   margin: auto;
   width: 90%;
   margin-top: 20px;
+}
+
+.penguin--container {
+  background-color: rgb(255 254 254);
+  box-shadow: 0 15px 6px #666;
+  padding: 10px 10px 150px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px 5px 5px 5px;
+  margin: auto;
+  text-align: center;
+  height: 430px;
+  border: 2px solid;
+  height: 100vh;
+  width: auto;
 }
 
 .message-content {

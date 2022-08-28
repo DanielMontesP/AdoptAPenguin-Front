@@ -59,6 +59,9 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   };
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    // const imageFile =event.target.files?.[0];
+    // const imageUrl = URL.createObjectURL(imageFile);
+
     setFormData({
       ...(formData.id || isCreate ? formData : penguin),
       image: event.target.files?.[0] as File,
@@ -136,7 +139,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         <input
           className={`penguin-image${HiderImage}`}
           type="text"
-          onChange={handleImageChange}
           autoComplete="off"
         />
 
