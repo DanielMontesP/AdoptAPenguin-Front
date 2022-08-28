@@ -61,7 +61,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
-    // loadFavsThunk();
+
     navigate("/penguins/favs");
   };
 
@@ -69,7 +69,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
-    // loadLikesThunk();
+
     navigate("/penguins/likes");
   };
 
@@ -77,7 +77,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
-    // loadPenguinsThunk();
+
     navigate("/penguins");
   };
 
@@ -96,7 +96,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
   const handleAbout = () => {
     dispatch(modalTypeActionCreator("About"));
-
+    if (isMenuOpen) {
+      setMenu((prevState) => !prevState);
+    }
     classButtonAbout = `${classButtonAbout} selected`;
     classButtonHome = `${classButton}home`;
     classButtonLikes = `${classButton}likes`;
@@ -161,7 +163,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const headerClass = `header${headerIconType}`;
   const headerClassDesktop = `desktop-header${headerIconType}`;
 
-  const classButton = `desktop-btn btn-`;
+  const classButton = `desktop-btn bt-`;
 
   let classIconHeader = `header`;
   let classButtonHome = `${classButton}home`;
@@ -289,9 +291,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                   title="btn-logout"
                 />
                 <button
-                  onClick={loadHome}
-                  className="bt-home"
-                  title="bt-home"
+                  onClick={handleAbout}
+                  className="bt-about"
+                  title="bt-about"
                 />
               </div>
             </div>
@@ -310,6 +312,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <div className="menu-header-vertical">
               <div className="menu-icons-vertical">
                 <hr className="hr-photo" />
+                <button onClick={loadHome} className="bt-home" title="bt-home">
+                  <h3 className="menu-icon-label-vertical">Home</h3>
+                </button>
                 <button
                   onClick={loadLikes}
                   className="bt-likes"

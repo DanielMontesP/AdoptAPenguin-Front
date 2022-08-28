@@ -265,6 +265,7 @@ ul {
 .hr-menu-horizontal {
   width: 75%;
   margin-left: 25px;
+  margin-bottom: 20px;
 }
 
 .hr-photo {
@@ -466,6 +467,12 @@ ul {
 
 .bt-home {
   background: url("../images/icon-menu-home45.png");
+  height: 45px;
+  border: 0;
+}
+
+.bt-about {
+  background: url("../images/about-45.png");
   height: 45px;
   border: 0;
 }

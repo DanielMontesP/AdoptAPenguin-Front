@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { useState } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
@@ -262,6 +263,24 @@ describe("Given a Navbar component", () => {
       userEvent.click(btToCLick);
       handleMenu();
       expect(handleMenu).toHaveBeenCalled();
+    });
+  });
+  describe("When bt-about is clicked", () => {
+    test("Then it should call the loadLikes action", () => {
+      const handleAbout = jest.fn();
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <Navbar headerTitle="Favourites" />
+          </Provider>
+        </BrowserRouter>
+      );
+      const btToCLick = screen.getByTitle("bt-about");
+
+      userEvent.click(btToCLick);
+      handleAbout();
+      expect(handleAbout).toHaveBeenCalled();
     });
   });
 });
