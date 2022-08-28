@@ -482,7 +482,8 @@ const FormsStyles = styled.div`
     position: absolute;
     overflow: hidden;
     border: 0;
-    width: 100%;
+    height: auto;
+    border: 0;
   }
 
   .register-parent-div {
@@ -511,14 +512,17 @@ const FormsStyles = styled.div`
   }
 
   .btn-upload {
+    width: 45px;
+    height: 45px;
     color: #000;
     background: none;
     background-image: url(${iconEdit});
     background-repeat: no-repeat;
-    height: 45px;
+    background-position: center;
     border-radius: 10px;
     font-size: 22px;
     font-weight: bold;
+    border: 0;
   }
 
   .btn-register-upload {
