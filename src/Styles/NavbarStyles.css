@@ -555,6 +555,19 @@ ul {
   max-width: 500px;
 }
 
+.wellcome-sonar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.wellcome-repos {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.wellcome-footer {
+  margin: auto;
+}
 .modal .modal-header {
   border-radius: 10px 10px 0 0;
   background-color: rgb(29, 29, 29);
