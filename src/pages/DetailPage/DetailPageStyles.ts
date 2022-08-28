@@ -196,7 +196,7 @@ const DetailPageStyles = styled.div`
     display: flex;
     justify-content: space-between;
     align-content: space-around;
-
+    margin: auto;
     margin-bottom: -50px;
     margin-top: 40px;
   }
