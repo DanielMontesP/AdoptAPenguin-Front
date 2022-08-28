@@ -23,7 +23,7 @@ const RegisterPageStyles = styled.div`
   .bt-login,
   .bt-register {
     color: white;
-    background-color: black;
+    background-color: rgb(29, 29, 29);
     padding: 14px 20px;
     border: none;
     font-weight: bold;
@@ -105,7 +105,7 @@ const RegisterPageStyles = styled.div`
 
   button {
     color: white;
-    background-color: black;
+    background-color: rgb(29, 29, 29);
     padding: 14px 20px;
     border: none;
     font-weight: bold;
