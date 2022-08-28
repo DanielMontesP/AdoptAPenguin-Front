@@ -62,6 +62,8 @@ export const Modal = ({
         break;
       case "About":
         break;
+      case "Validation":
+        break;
       default:
         correctAction("Sorry, this feature is not available yet.");
     }

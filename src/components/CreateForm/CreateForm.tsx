@@ -136,7 +136,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         <input
           className={`penguin-image${HiderImage}`}
           type="text"
-          onChange={handleImageChange}
           autoComplete="off"
         />
 
