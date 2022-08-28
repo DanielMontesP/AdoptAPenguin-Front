@@ -8,20 +8,36 @@ import imgCSS from "../../images/css-40.png";
 import imgNode from "../../images/nodejs-40.png";
 import imgHTML5 from "../../images/html5-40.png";
 import imgJest from "../../images/jest-40.png";
+import imgApp from "../../images/userPhoto.png";
 import Styles from "../../Styles/WellcomeStyles";
 
 const WellcomeComments = (): JSX.Element => {
   return (
     <Styles>
       <div className="message-container">
+        <img
+          src={imgApp}
+          title="App icon"
+          alt="App icon "
+          width="30"
+          height="30"
+        />
+        <br />
         <a href="https://adoptapenguin.netlify.app" className="wellcome-title">
           AdoptAPenguin.com
         </a>
         <br />
+
         <br />
         <div className="message-content">
-          AdoptAPenguin.com was my final project at ISDI Coders fullstack
-          developer bootcamp (2022).
+          AdoptAPenguin.com was my final{" "}
+          <a
+            href="https://daniel-montes-final-project-202204-bcn.netlify.app/"
+            className="wellcome-title"
+          >
+            project
+          </a>{" "}
+          at ISDI Coders fullstack developer bootcamp (2022).
           <br />
           <br />
           This site is based on this project, tested, renewed and with new
@@ -90,10 +106,6 @@ const WellcomeComments = (): JSX.Element => {
             height="20"
           />
           <br />
-          <span className="iconsNames">
-            React - Redux - Javascript - Typescript - Firebase - CSS - HTML -
-            Jest - Axios - CSS - Git - Sonarcloud
-          </span>
           <br />
           <br />
           <b>Back end:</b>
@@ -142,14 +154,11 @@ const WellcomeComments = (): JSX.Element => {
             height="20"
           />
           <br />
-          <span className="iconsNames">
-            React - Javascript - Node - Jest - Firebase - Axios - Mongo -
-            Express - Git - Sonarcloud
-          </span>
         </div>
 
         <div className="wellcome-footer">
           <div className="wellcome-repos">
+            <img src={imgGitHub} title="Git" alt="Git" width="20" height="20" />
             <b>REPOS:</b>&nbsp;
             <a href="https://github.com/DanielMontesP/AdoptAPenguin-Front">
               FRONT
@@ -161,6 +170,13 @@ const WellcomeComments = (): JSX.Element => {
           </div>
 
           <div className="wellcome-sonar">
+            <img
+              src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
+              title="sonarcloud"
+              alt="sonarcloud"
+              width="20"
+              height="20"
+            />
             <b>SONARCLOUD:</b>&nbsp;
             <a href="https://sonarcloud.io/summary/overall?id=DanielMontesP_AdoptAPenguin-Front <br/>">
               FRONT
