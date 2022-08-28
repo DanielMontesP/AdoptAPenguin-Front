@@ -61,7 +61,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
-    // loadFavsThunk();
+
     navigate("/penguins/favs");
   };
 
@@ -69,7 +69,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
-    // loadLikesThunk();
+
     navigate("/penguins/likes");
   };
 
@@ -77,7 +77,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
-    // loadPenguinsThunk();
+
     navigate("/penguins");
   };
 
