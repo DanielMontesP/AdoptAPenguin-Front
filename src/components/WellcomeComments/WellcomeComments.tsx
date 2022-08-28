@@ -154,7 +154,7 @@ const WellcomeComments = (): JSX.Element => {
             <a href="https://github.com/DanielMontesP/AdoptAPenguin-Front">
               FRONT
             </a>
-            |
+            &nbsp;|&nbsp;
             <a href="https://github.com/DanielMontesP/AdoptAPenguin-Back">
               BACK
             </a>
@@ -165,7 +165,7 @@ const WellcomeComments = (): JSX.Element => {
             <a href="https://sonarcloud.io/summary/overall?id=DanielMontesP_AdoptAPenguin-Front <br/>">
               FRONT
             </a>
-            |
+            &nbsp;|&nbsp;
             <a href="https://sonarcloud.io/summary/overall?id=DanielMontesP_AdoptAPenguin-Back">
               BACK
             </a>

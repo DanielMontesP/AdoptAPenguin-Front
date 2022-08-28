@@ -372,7 +372,7 @@ const PagesStyles = styled.div`
     color: white;
     font-size: 20px;
     font-weight: bold;
-    background-color: black;
+    background-color: rgb(29, 29, 29);
     border-radius: 15px;
     border: 0;
   }
@@ -383,7 +383,7 @@ const PagesStyles = styled.div`
     color: white;
     font-size: 20px;
     font-weight: bold;
-    background-color: black;
+    background-color: rgb(29, 29, 29);
     border-radius: 10px;
     margin: 10px;
     border: 0;

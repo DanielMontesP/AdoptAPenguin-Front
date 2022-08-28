@@ -164,7 +164,7 @@ const FormsStyles = styled.div`
   .bt-login,
   .bt-register {
     color: white;
-    background-color: black;
+    background-color: rgb(29, 29, 29);
     padding: 14px 20px;
     border: none;
     font-weight: bold;
@@ -369,7 +369,7 @@ const FormsStyles = styled.div`
 
   .bt-save {
     color: white;
-    background-color: black;
+    background-color: rgb(29, 29, 29);
     font-size: 20px;
     font-weight: bold;
     height: 60px;
@@ -378,7 +378,7 @@ const FormsStyles = styled.div`
 
   .bt-register {
     color: white;
-    background-color: black;
+    background-color: rgb(29, 29, 29);
     padding: 14px 20px;
     border: none;
     font-weight: bold;
