@@ -198,7 +198,7 @@ const PagesStyles = styled.div`
   .bt-container {
     margin-top: 30px;
     max-width: 500px;
-    margin: auto;
+    margin-top: 50px;
   }
 
   .li-detail {
