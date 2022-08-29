@@ -106,6 +106,7 @@ const WellcomeComments = (): JSX.Element => {
               width="20"
               height="20"
             />
+            <br />
             <b>Back end:</b>
             <br />
             <img

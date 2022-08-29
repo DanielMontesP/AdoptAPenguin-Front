@@ -5,6 +5,7 @@ import { mockPenguins } from "../../mocks/penguins";
 
 import store from "../../app/redux/store/store";
 import Penguin from "./Penguin";
+import userEvent from "@testing-library/user-event";
 
 const mockDispatch = jest.fn();
 
@@ -42,6 +43,27 @@ describe("Given the Penguin component", () => {
 
       const buttons = screen.getAllByRole("button");
       expect(buttons.length).toBeGreaterThan(3);
+    });
+  });
+  describe("When handleMoreDetail clicked", () => {
+    test("then it should call dispatch", () => {
+      const labelToFind = "btn-detail";
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Penguin penguin={mockPenguins[0]} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const handleMoreDetail = jest.fn().mockReturnValue(true);
+      const label = screen.getByTitle(labelToFind);
+      userEvent.click(label);
+
+      handleMoreDetail();
+
+      expect(handleMoreDetail).toHaveBeenCalled();
     });
   });
 });

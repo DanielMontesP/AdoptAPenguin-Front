@@ -48,7 +48,11 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
       <div className="penguin-description">
         {penguin.description.substring(0, 100)}
 
-        <span className="link effect" onClick={handleMoreDetail}>
+        <span
+          className="link effect"
+          onClick={handleMoreDetail}
+          title="btn-detail"
+        >
           ...More
         </span>
       </div>
