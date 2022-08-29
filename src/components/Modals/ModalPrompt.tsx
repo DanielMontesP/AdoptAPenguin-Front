@@ -4,6 +4,7 @@ import { finishedLoadingActionCreator } from "../../app/redux/features/uiSlice/u
 import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { deletePenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import Help from "../Help/Help";
 import WellcomeComments from "../WellcomeComments/WellcomeComments";
 import { correctAction } from "./Modals";
 
@@ -24,6 +25,10 @@ export const Modal = ({
   const navigate = useNavigate();
   const { headerTitle } = useAppSelector((state) => state.ui);
   const isWellcome = type === "About" || type === "Wellcome" ? true : false;
+  const isHelp = type === "Help";
+
+  const windowTitle = isWellcome ? "About" : isHelp ? "Help" : "Please confirm";
+  const modalClass = isWellcome ? "modal modal-wellcome" : "modal";
 
   const logOutUser = () => {
     dispatch(finishedLoadingActionCreator());
@@ -37,7 +42,10 @@ export const Modal = ({
   const getMessage = (): React.ReactNode => {
     if (isWellcome) {
       return <WellcomeComments />;
+    } else if (isHelp) {
+      return <Help />;
     }
+
     return <h3 className="modal-message">{message}</h3>;
   };
 
@@ -64,6 +72,8 @@ export const Modal = ({
         break;
       case "Validation":
         break;
+      case "Help":
+        break;
       default:
         correctAction("Sorry, this feature is not available yet.");
     }
@@ -74,11 +84,8 @@ export const Modal = ({
     closeModal(false);
   };
 
-  const windowTitle = isWellcome ? "About" : "Please confirm";
-  const modalClass = isWellcome ? "modal modal-wellcome" : "modal";
-  const cancelClass = isWellcome
-    ? "modal-btn-cancel display-none"
-    : "modal-btn-cancel";
+  const cancelClass =
+    isWellcome || isHelp ? "modal-btn-cancel display-none" : "modal-btn-cancel";
 
   return (
     <div className={modalClass}>

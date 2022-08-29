@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { headerTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 import store from "../../app/redux/store/store";
 import { Modal } from "./ModalPrompt";
 
@@ -88,7 +89,6 @@ describe("Given a LoginForm component", () => {
   describe("Given About modal", () => {
     test("Then closeModal should be called", () => {
       const labelToFind = "btn-accept";
-      const inputText = "user1";
 
       const closeModal = jest.fn();
       render(
@@ -99,6 +99,56 @@ describe("Given a LoginForm component", () => {
               idPenguin="modal"
               message="message"
               type="About"
+            />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByPlaceholderText(labelToFind);
+      userEvent.click(label);
+
+      expect(closeModal).toHaveBeenCalled();
+    });
+  });
+
+  describe("Given Help modal", () => {
+    test("Then Help Modal should be called", () => {
+      const labelToFind = "btn-accept";
+
+      const closeModal = jest.fn();
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Modal
+              closeModal={closeModal}
+              idPenguin="modal"
+              message="message"
+              type="Help"
+            />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByPlaceholderText(labelToFind);
+      userEvent.click(label);
+
+      expect(closeModal).toHaveBeenCalled();
+    });
+  });
+
+  describe("Given Validation modal", () => {
+    test("Then Help Validation should be called", () => {
+      const labelToFind = "btn-accept";
+
+      const closeModal = jest.fn();
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Modal
+              closeModal={closeModal}
+              idPenguin="modal"
+              message="message"
+              type="Validation"
             />
           </BrowserRouter>
         </Provider>
@@ -142,7 +192,9 @@ describe("Given a LoginForm component", () => {
       const inputText = "user1";
 
       const closeModal = jest.fn();
+      const dispatch = jest.fn();
 
+      dispatch(headerTitleActionCreator("Detail"));
       render(
         <Provider store={store}>
           <BrowserRouter>
