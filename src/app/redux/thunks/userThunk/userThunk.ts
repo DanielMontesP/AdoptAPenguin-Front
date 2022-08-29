@@ -74,6 +74,9 @@ export const loginThunk =
 export const registerThunk =
   (userData: any, password: string) => async (dispatch: AppDispatch) => {
     try {
+      setLoadingOn(
+        `REGISTER: Be watter penguin, probably we need to waking up render.com service...`
+      );
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_URL}users/register`,
         userData
@@ -89,6 +92,8 @@ export const registerThunk =
 
         dispatch(loginThunk(newUserData));
       }
+
+      setLoadingOffWithMessage(message, false);
     } catch (error: any) {
       setLoadingOffWithMessage(
         "Registration failed!: \nUsername: " +
