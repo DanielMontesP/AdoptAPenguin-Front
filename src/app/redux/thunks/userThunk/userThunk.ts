@@ -98,7 +98,7 @@ export const registerThunk =
       setLoadingOffWithMessage(
         "Registration failed!: \nUsername: " +
           userData.username +
-          "\nPass: " +
+          ", this username all ready exist. " +
           userData.password,
         true
       );
