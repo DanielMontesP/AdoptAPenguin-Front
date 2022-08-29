@@ -29,6 +29,25 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
   const userImage = user.image || noPhoto;
 
+  const classButton = `desktop-btn bt-`;
+
+  let classIconHeader = `header`;
+  let classButtonHome = `${classButton}home`;
+  let classButtonLikes = `${classButton}likes`;
+  let classButtonFavs = `${classButton}favs`;
+  let classButtonAbout = `${classButton}about`;
+  let classButtonHelp = `${classButton}help`;
+  let classIconFavs = `${classIconHeader}-favs-icon`;
+  let classIconLikes = `${classIconHeader}-likes-icon`;
+  let classIconHome = `${classIconHeader}-home-icon`;
+
+  let hidderDesktopButtons = "";
+
+  const isLogged =
+    document.location.href.includes("/login") ||
+    document.location.href.includes("/homepage") ||
+    document.location.href.includes("/register");
+
   const handleClick = () => {
     if (headerTitle !== "Home") {
       handleBack();
@@ -107,6 +126,20 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     setModal((prevState) => !prevState);
   };
 
+  const handleHelp = () => {
+    dispatch(modalTypeActionCreator("Help"));
+    if (isMenuOpen) {
+      setMenu((prevState) => !prevState);
+    }
+    classButtonHelp = `${classButtonHelp} selected`;
+    classButtonHome = `${classButton}home`;
+    classButtonLikes = `${classButton}likes`;
+    classButtonFavs = `${classButton}favs`;
+    classButtonAbout = `${classButton}about`;
+
+    setModal((prevState) => !prevState);
+  };
+
   const handleBack = () => {
     switch (headerTitle) {
       case "Favourites":
@@ -130,9 +163,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const HidderBack =
-    document.location.href.includes("/login") ||
-    document.location.href.includes("/homepage") ||
-    document.location.href.includes("/register") ||
+    isLogged ||
     document.location.href.substring(
       document.location.href.length,
       document.location.href.length - 3
@@ -140,19 +171,11 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       ? "bt-search"
       : "bt-back";
 
-  const HidderMenu =
-    document.location.href.includes("/homepage") ||
-    document.location.href.includes("/login") ||
-    document.location.href.includes("/register")
-      ? " display-none"
-      : "";
+  const HidderMenu = isLogged ? " display-none" : "";
 
-  const HidderLogout: string =
-    document.location.href.includes("/homepage") ||
-    document.location.href.includes("/login") ||
-    document.location.href.includes("/register")
-      ? " display-none"
-      : "";
+  const HidderLogout: string = isLogged ? " display-none" : "";
+
+  const HidderHelp: string = isLogged ? " display-none" : "";
 
   const isLikesPage = headerTitle.includes("Likes");
   const isFavsPage = headerTitle.includes("Favourites");
@@ -161,20 +184,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   headerIconType = isFavsPage ? " header-favs" : headerIconType;
 
   const headerClass = `header${headerIconType}`;
-  const headerClassDesktop = `desktop-header${headerIconType}`;
-
-  const classButton = `desktop-btn bt-`;
-
-  let classIconHeader = `header`;
-  let classButtonHome = `${classButton}home`;
-  let classButtonLikes = `${classButton}likes`;
-  let classButtonFavs = `${classButton}favs`;
-  let classButtonAbout = `${classButton}about`;
-  let classIconFavs = `${classIconHeader}-favs-icon`;
-  let classIconLikes = `${classIconHeader}-likes-icon`;
-  let classIconHome = `${classIconHeader}-home-icon`;
-
-  let hidderDesktopButtons = "";
+  const headerClassDesktop = `header-desktop${headerIconType}`;
 
   const getModalType = () => {
     const newModalType = modalType;
@@ -229,16 +239,16 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       </div>
 
       <div className={headerClassDesktop}>
-        <div className="desktop-header">
+        <div className="header-desktop">
           <button
             title="btn-back"
             className={HidderBack}
             onClick={handleClick}
           />
           <img className={classIconHeader} alt="Page Icon" />
-          <h1 className={`desktop-header-title`}>AdoptAPenguin.com</h1>
+          <h1 className={`header-desktop-title`}>AdoptAPenguin.com</h1>
         </div>
-        <div className={`desktop-header-buttons${hidderDesktopButtons}`}>
+        <div className={`header-desktop-buttons${hidderDesktopButtons}`}>
           <button
             className={classButtonHome}
             onClick={loadHome}
@@ -268,6 +278,11 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             About
           </button>
           <button
+            onClick={handleHelp}
+            className={`desktop-bt-help${HidderHelp}`}
+            title="desktop-btn-menu"
+          />
+          <button
             onClick={handleMenu}
             className={`desktop-bt-menu${HidderMenu}`}
             title="desktop-btn-menu"
@@ -280,9 +295,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
         </div>
       </div>
       <div className="nav">
-        <div className={`app-menu ${isMenuOpen ? "menu-open" : ""}`}>
+        <div className={`menu-app ${isMenuOpen ? "menu-open" : ""}`}>
           <div className="menu-header">
-            <div className="menu-header-horizontal">
+            <div className="menu-horizontal">
               <hr className="hr-menu-horizontal" />
               <div className="menu-icons-horizontal">
                 <button
@@ -290,6 +305,13 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                   className="bt-logout"
                   title="btn-logout"
                 />
+
+                <button
+                  onClick={handleHelp}
+                  className="bt-help"
+                  title="bt-help"
+                />
+
                 <button
                   onClick={handleAbout}
                   className="bt-about"
@@ -309,7 +331,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 title="btn-edit"
               />
             </div>
-            <div className="menu-header-vertical">
+            <div className="menu-vertical">
               <div className="menu-icons-vertical">
                 <hr className="hr-photo" />
                 <button onClick={loadHome} className="bt-home" title="bt-home">

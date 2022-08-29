@@ -10,7 +10,7 @@
     align-items: center;
   }
 
-  .desktop-header-buttons {
+  .header-desktop-buttons {
     display: none;
   }
 
@@ -34,7 +34,7 @@
     margin-right: 10px;
   }
 
-  .desktop-header {
+  .header-desktop {
     display: none;
   }
 
@@ -98,8 +98,50 @@ h1 {
   display: none;
 }
 
+.options {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.animatedEdit {
+  width: auto;
+  height: 32px;
+  border: none;
+  background: url("../images/icon-editar32.png");
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+}
+
+.animatedFavs {
+  width: auto;
+  height: 32px;
+  border: none;
+  background: url("../images/fav-add-32.png");
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+}
+
+.animatedLikes {
+  width: auto;
+  height: 32px;
+  border: none;
+  background: url("../images/icon-likes-empty.png");
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+}
+
+.animatedDelete {
+  width: auto;
+  height: 32px;
+  border: none;
+  background: url("../images/delete-32.png");
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+}
+
 @media only screen and (min-width: 421px) {
-  .desktop-header {
+  .header-desktop {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -113,15 +155,23 @@ h1 {
     margin-left: -40px;
   }
 
+  .desktop-bt-help {
+    top: 10;
+    background: url("../images/help-45.png");
+    background-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 25px;
+    border: 0;
+  }
+
   .desktop-bt-menu {
     top: 10;
-
     background: url("../images/icon-menu-hamb45.png");
     background-size: 20px;
     background-position: center;
     background-repeat: no-repeat;
     height: 25px;
-
     border: 0;
   }
 
@@ -170,7 +220,7 @@ h1 {
     display: none;
   }
 
-  .desktop-header-buttons {
+  .header-desktop-buttons {
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -191,6 +241,14 @@ h1 {
     min-width: 50%;
     min-height: 390px;
   }
+}
+
+.bt-help {
+  background: url("../images/help-45.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 45px;
+  border: 0;
 }
 
 .header-favs-icon {
@@ -313,7 +371,6 @@ ul {
 .user-data-container {
   display: flex;
   justify-content: left;
-
   margin-top: 15px;
 }
 
@@ -343,14 +400,14 @@ ul {
   margin-top: 30px;
 }
 
-.menu-header-vertical {
+.menu-vertical {
   display: inline;
   float: left;
   text-align: left;
   margin: auto;
 }
 
-.menu-header-horizontal {
+.menu-horizontal {
   position: absolute;
   bottom: 25px;
   width: 100%;
@@ -517,7 +574,7 @@ ul {
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 250px;
+  height: auto;
   min-width: 20rem;
   min-height: 10rem;
   background-color: white;
@@ -592,7 +649,7 @@ ul {
   margin-top: 30px;
 }
 
-.app-menu {
+.menu-app {
   color: white;
   height: 100%;
   width: 20rem;
