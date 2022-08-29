@@ -34,7 +34,11 @@ const WellcomeComments = (): JSX.Element => {
           >
             project
           </a>{" "}
-          at ISDI Coders fullstack developer bootcamp (2022).
+          at{" "}
+          <a href="https://isdicoders.com/" className="wellcome-title">
+            ISDI Coders
+          </a>{" "}
+          full-stack developer bootcamp (2022).
           <br />
           <br />
           This site is based on this project, tested, renewed and with new
@@ -160,7 +164,7 @@ const WellcomeComments = (): JSX.Element => {
             <img src={imgGitHub} title="Git" alt="Git" width="20" height="20" />
             &nbsp;
             <b>REPOS:</b>&nbsp;
-            <a href="https://github.com/DanielMontesP/AdoptAPenguin-Front">
+            <a href="https://github.com/DanielMontesP/AdoptAPenguin-Front#adoptapenguincom">
               FRONT
             </a>
             &nbsp;|&nbsp;

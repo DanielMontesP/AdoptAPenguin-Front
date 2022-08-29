@@ -4,6 +4,7 @@ const FormsStyles = styled.div`
   a {
     font-size: 12px;
     color: blue;
+    text-decoration: none;
   }
   .footer-sonar {
     display: inline-flex;
