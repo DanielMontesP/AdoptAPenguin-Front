@@ -59,10 +59,6 @@ describe("Given a CreateForm component", () => {
       expect(handleImageChange).toHaveBeenCalled();
       expect(handleSubmit).toHaveBeenCalled();
       expect(imageInput).not.toBeNull();
-
-      document.location.href = String(jest.fn().mockReturnValue(""));
-
-      expect(document.location.href.includes).not.toBeNull();
     });
   });
 });
