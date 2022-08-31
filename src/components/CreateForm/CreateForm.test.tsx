@@ -42,7 +42,7 @@ describe("Given a CreateForm component", () => {
       );
       const username = screen.getByPlaceholderText(usernameLabel);
       const submitButton = screen.getByPlaceholderText("bt-save");
-      const imageInput = screen.getByPlaceholderText("image");
+      const imageInput = screen.getByPlaceholderText("Name");
       const handleImageChange = jest.fn().mockResolvedValue(true);
       const handleSubmit = jest.fn().mockResolvedValue(true);
 

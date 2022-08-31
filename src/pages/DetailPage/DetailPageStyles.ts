@@ -29,10 +29,27 @@ const DetailPageStyles = styled.div`
     .detail-buttons-container {
       width: fit-content;
     }
+
+    .detail-image {
+      max-width: 500px;
+      max-height: 350px;
+      background-color: rgb(255 254 254);
+      box-shadow: 0 15px 6px #666;
+      border: 2px solid;
+      border-radius: 10px;
+    }
   }
   @media only screen and (max-width: 421px) {
     .detail-buttons-container {
       width: auto;
+    }
+    .detail-image {
+      max-width: 300px;
+      max-height: 300px;
+      background-color: rgb(255 254 254);
+      box-shadow: 0 15px 6px #666;
+      border: 2px solid;
+      border-radius: 10px;
     }
   }
 
@@ -118,15 +135,6 @@ const DetailPageStyles = styled.div`
   .modal-message {
     color: black;
     text-align: center;
-  }
-
-  .detail-image {
-    background-color: rgb(255 254 254);
-    box-shadow: 0 15px 6px #666;
-    border: 2px solid;
-    border-radius: 10px;
-    width: 300px;
-    height: 230px;
   }
 
   .img-container {

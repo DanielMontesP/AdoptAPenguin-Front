@@ -183,7 +183,7 @@ const FormsStyles = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    width: 95%;
+    width: 95vw;
   }
 
   .form-create {

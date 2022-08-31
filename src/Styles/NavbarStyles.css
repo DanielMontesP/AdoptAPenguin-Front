@@ -236,11 +236,6 @@ h1 {
     align-items: center;
     font-size: 14px;
   }
-
-  .detail-image {
-    min-width: 50%;
-    min-height: 390px;
-  }
 }
 
 .bt-help {
