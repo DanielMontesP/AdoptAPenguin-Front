@@ -301,12 +301,8 @@ const DetailPageStyles = styled.div`
 
   .detail-description-container {
     margin: auto;
-    min-height: 150px;
-    border-radius: 5px;
-    background-color: white;
     max-width: 500px;
     margin-top: 10px;
-    min-width: 45%;
   }
 
   .description-container {
