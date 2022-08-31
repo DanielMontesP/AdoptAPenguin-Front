@@ -190,9 +190,18 @@ const FormsStyles = styled.div`
     margin-top: 100px;
   }
 
-  .penguin-image {
+  .preview-image {
     height: 160px;
-    width: auto;
+    width: 160px;
+
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 15px;
+  }
+
+  .penguin-image {
+    height: 225px;
+    max-width: 300px;
     border: 2px solid;
     border-radius: 15px;
     background-image: url(${imagePhotoBackground});
@@ -200,6 +209,7 @@ const FormsStyles = styled.div`
     background-repeat: no-repeat;
     background-position-x: 50%;
     background-position-y: 50%;
+    margin: auto;
   }
 
   .container {

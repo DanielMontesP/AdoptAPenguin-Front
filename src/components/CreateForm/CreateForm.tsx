@@ -11,7 +11,6 @@ import {
   IPenguin,
   IRegisterForm,
 } from "../../app/redux/types/penguin/penguinInterfaces";
-
 interface Props {
   penguin: IPenguin;
 }
@@ -55,15 +54,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     modFields.push(event.target.id);
   };
 
-  const handleImageChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    setFormData({
-      ...(formData.id || isCreate ? formData : penguin),
-      image: event.target.files?.[0] as File,
-    });
-
-    modFields.push(event.target.id);
-  };
-
   const processCreate = () => {
     newFormData.append("name", formData.name);
     newFormData.append("category", formData.category);
@@ -97,6 +87,29 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     }
   };
 
+  const [{ alt, src }, setImg] = useState({
+    src: formData.image,
+    alt: "Upload an Image",
+  });
+
+  const handleImg = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files?.[0]) {
+      setFormData({
+        ...(formData.id || isCreate ? formData : penguin),
+        image: event.target.files?.[0] as File,
+      });
+      setImg({
+        src: URL.createObjectURL(event.target.files[0]),
+        alt: event.target.files[0].name,
+      });
+
+      modFields.push(event.target.id);
+    }
+  };
+
+  let HidderInputUpload = formData.image ? "" : " display-none";
+  let HidderPreview = formData.image ? " display-none" : "";
+
   return (
     <div className="container">
       <form
@@ -105,14 +118,19 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         onSubmit={handleSubmit}
         className="form-create"
       >
-        <div className="parent-div">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-            className="file-upload penguin-image"
-          />
-        </div>
+        <input
+          type="file"
+          accept=".png, .jpg, .jpeg"
+          id="photo"
+          className={`penguin-image${HidderPreview}`}
+          onChange={handleImg}
+        />
+
+        <img
+          src={src.toString()}
+          alt={alt}
+          className={`form-img__img-preview preview-image${HidderInputUpload}`}
+        />
 
         <label htmlFor="name">Name</label>
         <input
