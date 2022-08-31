@@ -81,7 +81,7 @@ const FormsStyles = styled.div`
     padding: 14px 20px;
     font-weight: bold;
     cursor: pointer;
-    width: 80%;
+    width: 70%;
     display: flex;
     justify-content: center;
     font-size: 20px;
@@ -107,7 +107,7 @@ const FormsStyles = styled.div`
     box-sizing: border-box;
     color: black;
     font-size: 18px;
-    width: 80%;
+    width: 70%;
     margin: auto;
     background: white;
     height: 50px;
@@ -121,7 +121,7 @@ const FormsStyles = styled.div`
     box-sizing: border-box;
     color: black;
     font-size: 20px;
-    width: 80%;
+    width: 70%;
     margin: auto;
     background: white;
     height: 45px;
@@ -183,7 +183,7 @@ const FormsStyles = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    width: 95%;
+    width: 95vw;
   }
 
   .form-create {
@@ -191,23 +191,22 @@ const FormsStyles = styled.div`
   }
 
   .penguin-image {
+    height: 160px;
+    width: auto;
     border: 2px solid;
     border-radius: 15px;
-    width: 80%;
-    height: 230px;
     background-image: url(${imagePhotoBackground});
     background-color: white;
     background-repeat: no-repeat;
     background-position-x: 50%;
     background-position-y: 50%;
-    margin: auto;
-    vertical-align: top;
   }
 
   .container {
     max-width: 600px;
     width: 100%;
     display: flow-root;
+    margin: auto;
   }
 
   .register-container {
@@ -473,16 +472,14 @@ const FormsStyles = styled.div`
     transform: rotate(1deg);
   }
 
+  .imgPreview {
+    width: 100px;
+    height: 100px;
+  }
   .parent-div {
-    position: relative;
-    top: 265px;
-    left: 270px;
-    display: inline-block;
-    position: absolute;
-    overflow: hidden;
-    border: 0;
-    height: auto;
-    border: 0;
+    width: auto;
+    height: 160px;
+    margin: auto;
   }
 
   .register-parent-div {
@@ -494,14 +491,6 @@ const FormsStyles = styled.div`
     width: 100%;
   }
   .register-parent-div input[type="file"] {
-    left: 0;
-    top: 0;
-    opacity: 0;
-    border: 0;
-    position: absolute;
-    font-size: 20px;
-  }
-  .parent-div input[type="file"] {
     left: 0;
     top: 0;
     opacity: 0;
@@ -541,7 +530,7 @@ const FormsStyles = styled.div`
 
   .input-description {
     height: 200px;
-    width: 80%;
+    width: 70%;
     margin: auto;
     font-family: inherit;
     border: 2px solid black;

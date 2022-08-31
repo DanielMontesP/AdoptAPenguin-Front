@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-
 import { wrongAction } from "../Modals/Modals";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
@@ -17,8 +16,6 @@ interface Props {
   penguin: IPenguin;
 }
 
-let HiderImage = "";
-let HiderImageOn = "";
 let modFields = [""];
 
 const CreateForm = ({ penguin }: Props): JSX.Element => {
@@ -100,14 +97,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     }
   };
 
-  if (!isCreate) {
-    HiderImageOn = "";
-    HiderImage = " display-none";
-  } else {
-    HiderImage = "";
-    HiderImageOn = " display-none";
-  }
-
   return (
     <div className="container">
       <form
@@ -117,27 +106,13 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         className="form-create"
       >
         <div className="parent-div">
-          <button className="btn-upload" />
           <input
-            id="image"
             type="file"
-            name="upfile"
             accept="image/*"
-            className="file-upload"
             onChange={handleImageChange}
-            placeholder="image"
+            className="file-upload penguin-image"
           />
         </div>
-        <img
-          className={`penguin-image${HiderImageOn}`}
-          src={formData.imageBackup || penguin.imageBackup}
-          alt={formData.name || penguin.name}
-        />
-        <input
-          className={`penguin-image${HiderImage}`}
-          type="text"
-          autoComplete="off"
-        />
 
         <label htmlFor="name">Name</label>
         <input
