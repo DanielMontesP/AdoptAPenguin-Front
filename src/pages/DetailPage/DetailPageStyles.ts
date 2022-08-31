@@ -26,23 +26,36 @@ const DetailPageStyles = styled.div`
       margin: auto;
       margin-top: 15px;
     }
+
     .detail-buttons-container {
-      width: fit-content;
+      display: flex;
+      justify-content: space-between;
+      align-content: space-around;
+      margin: auto;
+      margin-bottom: -15px;
+      margin-top: 20px;
+      max-width: 500px;
+      flex-direction: row-reverse;
     }
 
     .detail-image {
-      max-width: 500px;
       max-height: 350px;
       background-color: rgb(255 254 254);
       box-shadow: 0 15px 6px #666;
       border: 2px solid;
       border-radius: 10px;
+      height: 50%;
     }
   }
-  @media only screen and (max-width: 421px) {
+  @media only screen and (max-width: 420px) {
     .detail-buttons-container {
-      width: auto;
+      display: flex;
+      margin: auto;
+      flex-direction: row-reverse;
+      max-width: 300px;
+      margin-bottom: -15px;
     }
+
     .detail-image {
       max-width: 300px;
       max-height: 300px;
@@ -144,6 +157,7 @@ const DetailPageStyles = styled.div`
     justify-content: space-between;
     width: 95%;
     margin: auto;
+    margin-top: 20px;
   }
 
   .imgDetailNext {
@@ -198,15 +212,6 @@ const DetailPageStyles = styled.div`
     height: 100%;
     border-radius: 35px;
     border: px solid #fff;
-  }
-
-  .detail-buttons-container {
-    display: flex;
-    justify-content: space-between;
-    align-content: space-around;
-    margin: auto;
-    margin-bottom: -50px;
-    margin-top: 40px;
   }
 
   .bt-back {
@@ -296,11 +301,10 @@ const DetailPageStyles = styled.div`
 
   .detail-description-container {
     margin: auto;
-    width: 300px;
     min-height: 150px;
     border-radius: 5px;
     background-color: white;
-    max-width: 400px;
+    max-width: 500px;
     margin-top: 10px;
     min-width: 45%;
   }
@@ -456,9 +460,6 @@ const DetailPageStyles = styled.div`
     background-repeat: no-repeat;
     background-position: inherit;
     background-size: contain;
-    position: relative;
-    left: 275px;
-    top: -30px;
   }
 
   .animatedFavDelete {
@@ -468,21 +469,15 @@ const DetailPageStyles = styled.div`
     background-repeat: no-repeat;
     background-position: inherit;
     background-size: contain;
-    position: relative;
-    left: 275px;
-    top: -30px;
   }
 
   .animatedDelete {
     width: 45px;
     height: 45px;
-    position: relative;
-    left: -275px;
     background-image: url(${iconDelete});
     background-repeat: no-repeat;
     background-position: inherit;
     background-size: contain;
-    top: -30px;
   }
 
   .animatedEdit {
@@ -492,8 +487,6 @@ const DetailPageStyles = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     margin: auto;
-    margin-left: 170px;
-    margin-top: -30px;
   }
 
   .form-detail-animatedEdit {

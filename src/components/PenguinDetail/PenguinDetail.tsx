@@ -98,24 +98,27 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
       <h1 className="display-none">Detail</h1>
       <h2 className="detail-name">{penguin.name}</h2>
 
-      <ActionButtons penguin={penguin} />
       <div className="img-container">
         <button
           onClick={getDetailPrev}
           className="imgDetailPrev detailPrev"
           title="btn-prev"
         />
-        <img
-          src={penguinImage}
-          alt={`Pinguino ${penguin.name}`}
-          className="detail-image"
-        />
+        <div className="img-content">
+          <ActionButtons penguin={penguin} />
+          <img
+            src={penguinImage}
+            alt={`Pinguino ${penguin.name}`}
+            className="detail-image"
+          />
+        </div>
         <button
           onClick={getDetailNext}
           className="imgDetailNext detailNext"
           title="btn-next"
         />
       </div>
+
       <div className="detail-info">
         <span className="category">{penguin.category}</span>
         <span className="likes">{penguin.likes}</span>
