@@ -25,7 +25,6 @@
     "react-dom": "^18.1.0",
     "react-media": "^1.10.0",
     "react-native-indicator": "^1.2.2",
-    "react-preview-file": "^0.1.3",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
