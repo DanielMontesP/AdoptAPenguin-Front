@@ -96,7 +96,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     if (event.target.files?.[0]) {
       setFormData({
         ...(formData.id || isCreate ? formData : penguin),
-        image: event.target.files?.[0] as File,
+        image: event.target.files?.[0],
       });
       setImg({
         src: URL.createObjectURL(event.target.files[0]),
@@ -107,9 +107,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     }
   };
 
-  let HidderInputUpload = formData.image ? "" : " display-none";
-  let HidderPreview = formData.image ? " display-none" : "";
-
   return (
     <div className="container">
       <form
@@ -118,20 +115,20 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         onSubmit={handleSubmit}
         className="form-create"
       >
-        <input
-          type="file"
-          accept=".png, .jpg, .jpeg"
-          id="photo"
-          className={`penguin-image${HidderPreview}`}
-          onChange={handleImg}
-        />
-
-        <img
-          src={src.toString()}
-          alt={alt}
-          className={`form-img__img-preview preview-image${HidderInputUpload}`}
-        />
-
+        <div className="image-container">
+          <img
+            src={src.toString()}
+            alt={alt}
+            className={`form-img__img-preview preview-image`}
+          />
+          <input
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            id="photo"
+            className={`image-button-add`}
+            onChange={handleImg}
+          />
+        </div>
         <label htmlFor="name">Name</label>
         <input
           id="name"

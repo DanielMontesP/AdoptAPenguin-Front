@@ -9,10 +9,66 @@ import iconHome from "../images/icon-home.png";
 import iconDelete from "../images/icon-logout1.png";
 import iconSoundOff from "../images/icon-sound-off.png";
 import iconSoundOn from "../images/icon-sound-on.png";
-import imagePhotoBackground from "../images/contact-photo.png";
+import iconAddPhoto from "../images/icon-add_plus.png";
 import iconEdit from "../images/icon-editar.png";
 
 const FormsStyles = styled.div`
+  @media only screen and (max-width: 420px) {
+    .preview-image {
+      max-width: 280px;
+      height: 190px;
+      margin: auto;
+      border: 2px solid black;
+      border-radius: 15px;
+      background-color: white;
+      margin-top: 60px;
+      aspect-ratio: auto;
+    }
+
+    .input-description {
+      height: 150px;
+      width: 70%;
+      margin: auto;
+      font-family: inherit;
+      border: 2px solid black;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      box-sizing: border-box;
+      color: black;
+      font-size: 18px;
+    }
+  }
+
+  @media only screen and (min-width: 421px) {
+    .preview-image {
+      max-width: 250px;
+      margin: auto;
+      border: 2px solid black;
+      border-radius: 15px;
+      background-color: white;
+      margin-top: 80px;
+      background-image: url(${iconAddPhoto});
+      background-repeat: no-repeat;
+      background-position: center;
+      aspect-ratio: auto;
+    }
+
+    .input-description {
+      height: 150px;
+      width: 70%;
+      margin: auto;
+      font-family: inherit;
+      border: 2px solid black;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      box-sizing: border-box;
+      color: black;
+      font-size: 18px;
+    }
+  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -187,16 +243,24 @@ const FormsStyles = styled.div`
   }
 
   .form-create {
-    margin-top: 100px;
+    margin-top: 20px;
   }
 
-  .preview-image {
-    height: 160px;
-    width: 160px;
-
+  .image-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: auto;
     margin: auto;
-    border: 2px solid black;
-    border-radius: 15px;
+    margin-top: 20px;
+  }
+
+  .edit-image {
+    width: 160px;
+    height: 160px;
+    background-image: url(${iconAddPhoto});
+    background-color: white;
+    background-repeat: no-repeat;
   }
 
   .penguin-image {
@@ -204,7 +268,7 @@ const FormsStyles = styled.div`
     max-width: 300px;
     border: 2px solid;
     border-radius: 15px;
-    background-image: url(${imagePhotoBackground});
+    background-image: url(${iconAddPhoto});
     background-color: white;
     background-repeat: no-repeat;
     background-position-x: 50%;
@@ -486,6 +550,14 @@ const FormsStyles = styled.div`
     width: 100px;
     height: 100px;
   }
+
+  .image-button-add {
+    margin-top: 10px;
+    height: 60px;
+    border: 0;
+    background: none;
+  }
+
   .parent-div {
     width: auto;
     height: 160px;
@@ -536,20 +608,6 @@ const FormsStyles = styled.div`
     color: black;
     border: 5px solid;
     background-color: white;
-  }
-
-  .input-description {
-    height: 200px;
-    width: 70%;
-    margin: auto;
-    font-family: inherit;
-    border: 2px solid black;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    box-sizing: border-box;
-    color: black;
-    font-size: 18px;
   }
 `;
 
