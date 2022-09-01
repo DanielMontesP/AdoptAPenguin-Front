@@ -27,7 +27,8 @@ export const Modal = ({
   const isWellcome = type === "About" || type === "Wellcome" ? true : false;
   const isHelp = type === "Help";
 
-  const windowTitle = isWellcome ? "About" : isHelp ? "Help" : "Please confirm";
+  let windowTitle = isWellcome ? "About" : "";
+  windowTitle = isHelp ? "Help" : "Please confirm";
   const modalClass = isWellcome ? "modal modal-wellcome" : "modal";
 
   const logOutUser = () => {
