@@ -42,9 +42,9 @@ const PenguinsPage = ({ type }: Props) => {
     };
     if (headerTitle !== thisTitle) SetTitleHeader(thisTitle, headerTitle);
 
-    if (type === "Likes") {
+    if (thisTitle === "Likes") {
       dispatch(loadLikesThunk());
-    } else if (type === "Favourites") {
+    } else if (thisTitle === "Favourites") {
       dispatch(loadFavsThunk());
     } else {
       dispatch(loadPenguinsThunk());

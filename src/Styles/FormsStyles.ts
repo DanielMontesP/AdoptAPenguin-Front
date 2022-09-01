@@ -27,13 +27,13 @@ const FormsStyles = styled.div`
 
     .input-description {
       height: 150px;
-      width: 70%;
+      width: 40vh;
       margin: auto;
       font-family: inherit;
       border: 2px solid black;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
+      border-radius: 5px;
       box-sizing: border-box;
       color: black;
       font-size: 18px;
@@ -56,13 +56,13 @@ const FormsStyles = styled.div`
 
     .input-description {
       height: 150px;
-      width: 70%;
+      width: 40vh;
       margin: auto;
       font-family: inherit;
       border: 2px solid black;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
+      border-radius: 5px;
       box-sizing: border-box;
       color: black;
       font-size: 18px;
@@ -137,7 +137,7 @@ const FormsStyles = styled.div`
     padding: 14px 20px;
     font-weight: bold;
     cursor: pointer;
-    width: 70%;
+    width: 40vh;
     display: flex;
     justify-content: center;
     font-size: 20px;
@@ -163,7 +163,7 @@ const FormsStyles = styled.div`
     box-sizing: border-box;
     color: black;
     font-size: 18px;
-    width: 70%;
+    width: 40vh;
     margin: auto;
     background: white;
     height: 50px;
@@ -249,10 +249,8 @@ const FormsStyles = styled.div`
   .image-container {
     display: flex;
     flex-direction: column;
-    width: 70%;
-    height: auto;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 90px;
   }
 
   .edit-image {
@@ -608,6 +606,90 @@ const FormsStyles = styled.div`
     color: black;
     border: 5px solid;
     background-color: white;
+  }
+
+  .form__title {
+    margin: 32px 0;
+    text-align: center;
+    color: #002952;
+  }
+
+  .form__img-input-container {
+    position: relative;
+    margin: auto;
+    max-width: 320px;
+  }
+
+  /* this class is used to hide the file input */
+  .visually-hidden {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+
+  /* Adding the focus and focus-within styles for accessibility */
+  input.visually-hidden:focus + label,
+  input.visually-hidden:focus-within + label {
+    outline: 8px solid rgba(0, 0, 0, 0.4);
+  }
+
+  /* The file input is a labeled control, and since we hid it, 
+we're going to use its associated label to trigger it */
+  .form-img__file-label {
+    position: absolute;
+    top: 10px;
+    left: 8vh;
+    display: block;
+    width: 170px;
+    height: 170px;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: rgba(245, 245, 231, 0.3);
+    background-image: url(${iconAddPhoto});
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .no-background-image {
+    background-image: none;
+  }
+
+  .opacity-mid {
+    opacity: 0.7;
+  }
+  .opacity-mid:hover {
+    opacity: 1;
+  }
+
+  .form-img__file-label:hover {
+    background-color: rgba(245, 245, 231, 0.5);
+  }
+
+  .form-img__file-label > svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0.7;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-img__file-label:hover > svg {
+    opacity: 1;
+  }
+
+  /* The image element is going to be positioned under the 
+label element, since the label is a see through, we're going 
+to be able to see the preview of the image. */
+  .form-img__img-preview {
+    display: block;
+    width: 40vh;
+    height: 200px;
+    background: white;
+    object-fit: contain;
+    border-radius: 15px;
+    border: 2px black solid;
   }
 `;
 

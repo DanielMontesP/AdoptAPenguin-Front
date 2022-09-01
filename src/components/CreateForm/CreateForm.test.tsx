@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
-import { mockPenguin } from "../../mocks/penguins";
+import { mockPenguin, mockPenguins } from "../../mocks/penguins";
 import CreateForm from "./CreateForm";
 
 describe("Given a CreateForm component", () => {
@@ -28,10 +28,8 @@ describe("Given a CreateForm component", () => {
   });
   describe("When the two inputs have text and the submit button is clicked", () => {
     test("Then the two inputs should be empty", () => {
-      const usernameLabel = "Name";
-      const inputText = "user1";
-
-      jest.mock("react");
+      const inputIAmge = "image-input";
+      const handlImg = jest.fn();
 
       render(
         <Provider store={store}>
@@ -40,25 +38,16 @@ describe("Given a CreateForm component", () => {
           </BrowserRouter>
         </Provider>
       );
-      const username = screen.getByPlaceholderText(usernameLabel);
-      const submitButton = screen.getByPlaceholderText("bt-save");
-      const imageInput = screen.getByPlaceholderText("Name");
-      const handleImageChange = jest.fn().mockResolvedValue(true);
-      const handleSubmit = jest.fn().mockResolvedValue(true);
+      const label = screen.getByPlaceholderText(inputIAmge);
 
-      userEvent.type(username, inputText);
-      userEvent.click(submitButton);
-      userEvent.click(imageInput);
+      userEvent.click(label);
 
-      handleImageChange();
-      handleSubmit();
-      jest.mock("react");
+      expect(label).toBeInTheDocument();
 
-      document.location.href = String(jest.fn().mockReturnValue(true));
-      expect(username).toHaveValue("penguin1");
-      expect(handleImageChange).toHaveBeenCalled();
-      expect(handleSubmit).toHaveBeenCalled();
-      expect(imageInput).not.toBeNull();
+      const mockEvent = { event: { target: { files: [mockPenguins] } } };
+      handlImg(mockEvent);
+
+      expect(handlImg).toHaveBeenCalled();
     });
   });
 });
