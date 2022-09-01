@@ -11,12 +11,13 @@ import {
   IPenguin,
   IRegisterForm,
 } from "../../app/redux/types/penguin/penguinInterfaces";
+
 interface Props {
   penguin: IPenguin;
 }
 
 let modFields = [""];
-let imageAdded = false;
+let imageAdded = true;
 
 const CreateForm = ({ penguin }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -134,7 +135,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
               className={`form-img__file-label${HidderBackground}`}
             />
             <img
-              src={src.toString()}
+              src={src.toString() || penguin.imageBackup.toString()}
               alt={alt}
               className="form-img__img-preview"
             />

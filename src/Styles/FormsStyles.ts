@@ -308,10 +308,11 @@ const FormsStyles = styled.div`
     left: -36px;
   }
   .penguin-description {
+    width: 89%;
+    min-height: 40px;
     position: relative;
     top: -140px;
     left: 18px;
-    width: 89%;
     text-align: justify;
   }
 
@@ -639,11 +640,10 @@ const FormsStyles = styled.div`
 we're going to use its associated label to trigger it */
   .form-img__file-label {
     position: absolute;
-    top: 10px;
-    left: 8vh;
+    top: 4px;
     display: block;
-    width: 170px;
-    height: 170px;
+    width: 40vh;
+    height: 180px;
     border-radius: 15px;
     cursor: pointer;
     background-color: rgba(245, 245, 231, 0.3);
@@ -690,6 +690,7 @@ to be able to see the preview of the image. */
     object-fit: contain;
     border-radius: 15px;
     border: 2px black solid;
+    opacity: 1;
   }
 `;
 
