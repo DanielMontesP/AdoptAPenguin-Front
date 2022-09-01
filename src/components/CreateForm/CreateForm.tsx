@@ -16,6 +16,7 @@ interface Props {
 }
 
 let modFields = [""];
+let imageAdded = false;
 
 const CreateForm = ({ penguin }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -89,7 +90,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const [{ alt, src }, setImg] = useState({
     src: formData.image,
-    alt: "Upload an Image",
+    alt: "Add photo",
   });
 
   const handleImg = (event: ChangeEvent<HTMLInputElement>) => {
@@ -104,8 +105,11 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       });
 
       modFields.push(event.target.id);
+      imageAdded = true;
     }
   };
+
+  const HidderBackground = imageAdded ? " opacity-mid" : "";
 
   return (
     <div className="container">
@@ -116,18 +120,25 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         className="form-create"
       >
         <div className="image-container">
-          <img
-            src={src.toString()}
-            alt={alt}
-            className={`form-img__img-preview preview-image`}
-          />
-          <input
-            type="file"
-            accept=".png, .jpg, .jpeg"
-            id="photo"
-            className={`image-button-add`}
-            onChange={handleImg}
-          />
+          <div className="form__img-input-container">
+            <input
+              type="file"
+              accept=".png, .jpg, .jpeg"
+              id="photo"
+              className="visually-hidden"
+              onChange={handleImg}
+              placeholder="image-input"
+            />
+            <label
+              htmlFor="photo"
+              className={`form-img__file-label${HidderBackground}`}
+            />
+            <img
+              src={src.toString()}
+              alt={alt}
+              className="form-img__img-preview"
+            />
+          </div>
         </div>
         <label htmlFor="name">Name</label>
         <input
