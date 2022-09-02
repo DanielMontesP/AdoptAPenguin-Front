@@ -276,9 +276,9 @@ describe("Given a Navbar component", () => {
           </Provider>
         </BrowserRouter>
       );
-      const btToCLick = screen.getByTitle("bt-about");
+      const btToCLick = screen.getAllByTitle("bt-about");
 
-      userEvent.click(btToCLick);
+      userEvent.click(btToCLick[0]);
       handleAbout();
       expect(handleAbout).toHaveBeenCalled();
     });
