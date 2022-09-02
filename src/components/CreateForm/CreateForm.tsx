@@ -41,9 +41,9 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const [formData, setFormData] = useState(initialFormData);
 
-  const newFormData = new FormData();
-
   const processCreate = () => {
+    const newFormData = new FormData();
+
     newFormData.append("name", formData.name);
     newFormData.append("category", formData.category);
     newFormData.append("likes", JSON.stringify(1));
@@ -58,17 +58,15 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const processEdit = () => {
     modFields = cleanArray(modFields);
+
+    const newFormData = new FormData();
+
+    newFormData.append("id", formData.id);
     newFormData.append("name", formData.name);
     newFormData.append("category", formData.category);
-    newFormData.append("likes", JSON.stringify(1));
-    newFormData.append("likers", user.id);
-    newFormData.append("favs", user.id);
-    newFormData.append("image", formData.image);
-    newFormData.append("imageBackup", formData.imageBackup);
-    newFormData.append("description", formData.description);
 
     dispatch(
-      editPenguinThunk(newFormData, "Update fields: " + modFields.join(", "))
+      editPenguinThunk(formData, "Update fields: " + modFields.join(", "))
     );
   };
 
@@ -93,7 +91,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const handleImg = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.[0]) {
       setFormData({
-        ...(formData.id || isCreate ? formData : penguin),
+        ...(formData.id || formData.image ? formData : penguin),
         image: event.target.files?.[0],
         imageBackup: "",
       });

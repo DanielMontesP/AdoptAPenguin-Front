@@ -157,6 +157,7 @@ const PagesStyles = styled.div`
 
   .penguin-description {
     width: 89%;
+    min-height: 40px;
     position: relative;
     top: -35px;
     left: 18px;
