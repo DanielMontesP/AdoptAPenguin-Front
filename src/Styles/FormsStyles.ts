@@ -272,6 +272,7 @@ const FormsStyles = styled.div`
     background-position-x: 50%;
     background-position-y: 50%;
     margin: auto;
+    object-fit: cover;
   }
 
   .container {
@@ -688,7 +689,8 @@ to be able to see the preview of the image. */
   .form-img__img-preview {
     display: block;
     width: 40vh;
-    height: 200px;
+    height: 190px;
+    margin-top: 5px;
     background: white;
     object-fit: scale-down;
     border-radius: 15px;
@@ -698,7 +700,8 @@ to be able to see the preview of the image. */
   .form-img__img-preview-Hidden {
     display: block;
     width: 40vh;
-    height: 200px;
+    height: 190px;
+    margin-top: 5px;
     background: white;
     object-fit: scale-down;
     border-radius: 15px;

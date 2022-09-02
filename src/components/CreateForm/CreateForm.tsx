@@ -49,7 +49,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     event.preventDefault();
 
     setFormData({
-      ...(formData.id || isCreate ? formData : penguin),
+      ...(formData.id || formData.image ? formData : penguin),
       [event.target.id]: event.target.value,
     });
 
@@ -97,7 +97,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const handleImg = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.[0]) {
       setFormData({
-        ...(formData.id || isCreate ? formData : penguin),
+        ...(formData.id || isCreate || formData.image ? formData : penguin),
         image: event.target.files?.[0],
       });
       setImg({
