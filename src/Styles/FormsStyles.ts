@@ -659,7 +659,7 @@ we're going to use its associated label to trigger it */
   }
 
   .opacity-mid {
-    opacity: 0.7;
+    opacity: 0.4;
   }
 
   .opacity-mid:hover {
