@@ -646,10 +646,12 @@ we're going to use its associated label to trigger it */
     height: 180px;
     border-radius: 15px;
     cursor: pointer;
-    background-color: rgba(245, 245, 231, 0.3);
+    background-color: rgb(179 179 169 / 30%);
     background-image: url(${iconAddPhoto});
     background-repeat: no-repeat;
     background-position: center;
+    border-radius: 15px;
+    border: 2px black solid;
   }
 
   .no-background-image {
@@ -659,6 +661,7 @@ we're going to use its associated label to trigger it */
   .opacity-mid {
     opacity: 0.7;
   }
+
   .opacity-mid:hover {
     opacity: 1;
   }
@@ -667,7 +670,7 @@ we're going to use its associated label to trigger it */
     background-color: rgba(245, 245, 231, 0.5);
   }
 
-  .form-img__file-label > svg {
+  .form-img__file-label > img {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -675,7 +678,7 @@ we're going to use its associated label to trigger it */
     transform: translate(-50%, -50%);
   }
 
-  .form-img__file-label:hover > svg {
+  .form-img__file-label:hover > img {
     opacity: 1;
   }
 
@@ -687,9 +690,18 @@ to be able to see the preview of the image. */
     width: 40vh;
     height: 200px;
     background: white;
-    object-fit: contain;
+    object-fit: scale-down;
     border-radius: 15px;
-    border: 2px black solid;
+    opacity: 0;
+  }
+
+  .form-img__img-preview-Hidden {
+    display: block;
+    width: 40vh;
+    height: 200px;
+    background: white;
+    object-fit: scale-down;
+    border-radius: 15px;
     opacity: 1;
   }
 `;
