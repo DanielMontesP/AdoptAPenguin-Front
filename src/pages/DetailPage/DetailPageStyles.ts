@@ -39,12 +39,19 @@ const DetailPageStyles = styled.div`
     }
 
     .detail-image {
-      max-height: 350px;
+      height: 300px;
+      width: 488px;
+      object-fit: cover;
       background-color: rgb(255 254 254);
       box-shadow: 0 15px 6px #666;
       border: 2px solid;
       border-radius: 10px;
-      height: 50%;
+    }
+
+    .detail-description-container {
+      margin: auto;
+      max-width: 480px;
+      margin-top: 10px;
     }
   }
   @media only screen and (max-width: 420px) {
@@ -52,17 +59,24 @@ const DetailPageStyles = styled.div`
       display: flex;
       margin: auto;
       flex-direction: row-reverse;
-      max-width: 300px;
+      max-width: 500px;
       margin-bottom: -15px;
     }
 
     .detail-image {
-      max-width: 300px;
-      max-height: 300px;
+      height: 300px;
+      width: 300px;
+      object-fit: cover;
       background-color: rgb(255 254 254);
       box-shadow: 0 15px 6px #666;
       border: 2px solid;
       border-radius: 10px;
+    }
+
+    .detail-description-container {
+      margin: auto;
+      max-width: 300px;
+      margin-top: 10px;
     }
   }
 
@@ -204,7 +218,7 @@ const DetailPageStyles = styled.div`
     margin-bottom: 10px;
     border-radius: 5px 5px 5px 5px;
     margin: auto;
-    margin-top: 6rem;
+    margin-top: 5rem;
   }
 
   .penguin-image-container {
@@ -297,12 +311,6 @@ const DetailPageStyles = styled.div`
 
   .detail-description {
     font-size: 16px;
-  }
-
-  .detail-description-container {
-    margin: auto;
-    max-width: 500px;
-    margin-top: 10px;
   }
 
   .description-container {
