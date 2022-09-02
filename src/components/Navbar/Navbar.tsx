@@ -40,6 +40,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   let classIconFavs = `${classIconHeader}-favs-icon`;
   let classIconLikes = `${classIconHeader}-likes-icon`;
   let classIconHome = `${classIconHeader}-home-icon`;
+  let classButtonAddFav = `${classButton}addFav`;
 
   let hidderDesktopButtons = "";
 
@@ -172,10 +173,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       : "bt-back";
 
   const HidderMenu = isLogged ? " display-none" : "";
-
   const HidderLogout: string = isLogged ? " display-none" : "";
-
   const HidderHelp: string = isLogged ? " display-none" : "";
+  const HidderAbout: string = isLogged ? " display-none" : "";
 
   const isLikesPage = headerTitle.includes("Likes");
   const isFavsPage = headerTitle.includes("Favourites");
@@ -271,12 +271,17 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             Likes
           </button>
           <button
-            className={classButtonAbout}
-            onClick={handleAbout}
-            title="btn-about"
+            className={classButtonAddFav}
+            onClick={addFav}
+            title="btn-addFav"
           >
-            About
+            New
           </button>
+          <button
+            onClick={handleAbout}
+            className={`desktop-bt-about${HidderAbout}`}
+            title="bt-about"
+          />
           <button
             onClick={handleHelp}
             className={`desktop-bt-help${HidderHelp}`}
