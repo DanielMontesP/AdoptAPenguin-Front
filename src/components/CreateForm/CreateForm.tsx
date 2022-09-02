@@ -17,7 +17,7 @@ interface Props {
 }
 
 let modFields = [""];
-let imageAdded = true;
+let imageAdded = false;
 
 const CreateForm = ({ penguin }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -112,6 +112,11 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const HidderBackground = imageAdded ? " opacity-mid" : "";
 
+  const classImage =
+    penguin.imageBackup || src.toString()
+      ? "form-img__img-preview-Hidden"
+      : "form-img__img-preview";
+
   return (
     <div className="container">
       <form
@@ -130,14 +135,14 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
               onChange={handleImg}
               placeholder="image-input"
             />
-            <label
-              htmlFor="photo"
-              className={`form-img__file-label${HidderBackground}`}
-            />
             <img
               src={src.toString() || penguin.imageBackup.toString()}
               alt={alt}
-              className="form-img__img-preview"
+              className={`${classImage}`}
+            />
+            <label
+              htmlFor="photo"
+              className={`form-img__file-label${HidderBackground}`}
             />
           </div>
         </div>
