@@ -121,10 +121,10 @@ const PagesStyles = styled.div`
     border-radius: 5px;
     min-width: 320px;
     max-height: 225px;
-
     margin-top: 5px;
     background-color: lightgray;
     margin-left: 5px;
+    object-fit: cover;
   }
 
   .header {
