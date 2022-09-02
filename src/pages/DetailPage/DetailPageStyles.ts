@@ -52,6 +52,9 @@ const DetailPageStyles = styled.div`
       margin: auto;
       max-width: 480px;
       margin-top: 10px;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 15px 6px #666;
     }
   }
   @media only screen and (max-width: 420px) {
@@ -77,6 +80,9 @@ const DetailPageStyles = styled.div`
       margin: auto;
       max-width: 300px;
       margin-top: 10px;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 15px 6px #666;
     }
   }
 
@@ -172,6 +178,7 @@ const DetailPageStyles = styled.div`
     width: 95%;
     margin: auto;
     margin-top: 20px;
+    height: 280px;
   }
 
   .imgDetailNext {
@@ -305,7 +312,7 @@ const DetailPageStyles = styled.div`
     display: flex;
     width: 70%;
     margin: auto;
-    margin-top: 15px;
+    margin-top: 50px;
     max-width: 400px;
   }
 
