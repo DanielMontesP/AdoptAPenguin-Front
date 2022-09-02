@@ -71,8 +71,8 @@ const FormsStyles = styled.div`
 
     .form-img__img-preview {
       display: block;
-      width: 40vh;
-      height: 190px;
+      width: 40.5vh;
+      height: 191px;
       margin-top: 5px;
       background: white;
       object-fit: scale-down;
@@ -82,11 +82,11 @@ const FormsStyles = styled.div`
 
     .form-img__img-preview-Hidden {
       display: block;
-      width: 40vh;
-      height: 190px;
+      width: 40.5vh;
+      height: 191px;
       margin-top: 5px;
       background: white;
-      object-fit: scale-down;
+      object-fit: cover;
       border-radius: 15px;
       opacity: 1;
     }
@@ -163,11 +163,11 @@ const FormsStyles = styled.div`
 
     .form-img__img-preview-Hidden {
       display: block;
-      width: 50vh;
-      height: 235px;
+      width: 50.5vh;
+      height: 233px;
       margin-top: 5px;
       background: white;
-      object-fit: scale-down;
+      object-fit: cover;
       border-radius: 15px;
       opacity: 1;
     }
