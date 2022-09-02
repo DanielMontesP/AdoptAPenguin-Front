@@ -43,19 +43,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const newFormData = new FormData();
 
-  const handleInputChange = (
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
-  ): void => {
-    event.preventDefault();
-
-    setFormData({
-      ...(formData.id || formData.image ? formData : penguin),
-      [event.target.id]: event.target.value,
-    });
-
-    modFields.push(event.target.id);
-  };
-
   const processCreate = () => {
     newFormData.append("name", formData.name);
     newFormData.append("category", formData.category);
@@ -71,10 +58,53 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const processEdit = () => {
     modFields = cleanArray(modFields);
+    newFormData.append("name", formData.name);
+    newFormData.append("category", formData.category);
+    newFormData.append("likes", JSON.stringify(1));
+    newFormData.append("likers", user.id);
+    newFormData.append("favs", user.id);
+    newFormData.append("image", formData.image);
+    newFormData.append("imageBackup", formData.imageBackup);
+    newFormData.append("description", formData.description);
 
     dispatch(
-      editPenguinThunk(formData, "Update fields: " + modFields.join(", "))
+      editPenguinThunk(newFormData, "Update fields: " + modFields.join(", "))
     );
+  };
+
+  const [{ alt, src }, setImg] = useState({
+    src: formData.image,
+    alt: "Add photo",
+  });
+
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ): void => {
+    event.preventDefault();
+
+    setFormData({
+      ...(formData.id || formData.image ? formData : penguin),
+      [event.target.id]: event.target.value,
+    });
+
+    modFields.push(event.target.id);
+  };
+
+  const handleImg = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files?.[0]) {
+      setFormData({
+        ...(formData.id || isCreate ? formData : penguin),
+        image: event.target.files?.[0],
+        imageBackup: "",
+      });
+      setImg({
+        src: URL.createObjectURL(event.target.files[0]),
+        alt: event.target.files[0].name,
+      });
+
+      modFields.push(event.target.id);
+      imageAdded = true;
+    }
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -86,27 +116,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       navigate("/penguins/favs");
     } catch (error) {
       wrongAction("Error:" + error);
-    }
-  };
-
-  const [{ alt, src }, setImg] = useState({
-    src: formData.image,
-    alt: "Add photo",
-  });
-
-  const handleImg = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files?.[0]) {
-      setFormData({
-        ...(formData.id || isCreate || formData.image ? formData : penguin),
-        image: event.target.files?.[0],
-      });
-      setImg({
-        src: URL.createObjectURL(event.target.files[0]),
-        alt: event.target.files[0].name,
-      });
-
-      modFields.push(event.target.id);
-      imageAdded = true;
     }
   };
 
