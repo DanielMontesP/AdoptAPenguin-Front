@@ -507,6 +507,16 @@ ul {
   border: 0;
 }
 
+.desktop-bt-about {
+  height: 27px;
+  background: url("../images/about-45.png");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 0;
+  margin-left: 30px;
+}
+
 .bt-favs {
   background: url("../images/icon-star_full.png");
   height: 45px;
