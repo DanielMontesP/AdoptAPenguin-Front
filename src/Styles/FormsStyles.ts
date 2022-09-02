@@ -38,11 +38,63 @@ const FormsStyles = styled.div`
       color: black;
       font-size: 18px;
     }
+
+    .form-img__file-label {
+      position: absolute;
+      top: 4px;
+      display: block;
+      width: 40vh;
+      height: 180px;
+      cursor: pointer;
+      background-color: rgb(223 223 218 / 90%);
+      background-image: url(${iconAddPhoto});
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 15px;
+      border: 2px black solid;
+      opacity: 0.5;
+    }
+
+    input {
+      border: 2px solid black;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      box-sizing: border-box;
+      color: black;
+      font-size: 18px;
+      width: 40vh;
+      margin: auto;
+      background: white;
+      height: 50px;
+    }
+
+    .form-img__img-preview {
+      display: block;
+      width: 40vh;
+      height: 190px;
+      margin-top: 5px;
+      background: white;
+      object-fit: scale-down;
+      border-radius: 15px;
+      opacity: 0;
+    }
+
+    .form-img__img-preview-Hidden {
+      display: block;
+      width: 40vh;
+      height: 190px;
+      margin-top: 5px;
+      background: white;
+      object-fit: scale-down;
+      border-radius: 15px;
+      opacity: 1;
+    }
   }
 
   @media only screen and (min-width: 421px) {
     .preview-image {
-      max-width: 250px;
+      max-width: 350px;
       margin: auto;
       border: 2px solid black;
       border-radius: 15px;
@@ -56,7 +108,7 @@ const FormsStyles = styled.div`
 
     .input-description {
       height: 150px;
-      width: 40vh;
+      width: 50vh;
       margin: auto;
       font-family: inherit;
       border: 2px solid black;
@@ -66,6 +118,58 @@ const FormsStyles = styled.div`
       box-sizing: border-box;
       color: black;
       font-size: 18px;
+    }
+
+    .form-img__file-label {
+      position: absolute;
+      top: 4px;
+      display: block;
+      width: 50vh;
+      height: 220px;
+      cursor: pointer;
+      background-color: rgb(223 223 218 / 90%);
+      background-image: url(${iconAddPhoto});
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 15px;
+      border: 2px black solid;
+      opacity: 0.5;
+    }
+
+    input {
+      border: 2px solid black;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      box-sizing: border-box;
+      color: black;
+      font-size: 18px;
+      width: 50vh;
+      margin: auto;
+      background: white;
+      height: 50px;
+    }
+
+    .form-img__img-preview {
+      display: block;
+      width: 50vh;
+      height: 235px;
+      margin-top: 5px;
+      background: white;
+      object-fit: scale-down;
+      border-radius: 15px;
+      opacity: 0;
+    }
+
+    .form-img__img-preview-Hidden {
+      display: block;
+      width: 50vh;
+      height: 235px;
+      margin-top: 5px;
+      background: white;
+      object-fit: scale-down;
+      border-radius: 15px;
+      opacity: 1;
     }
   }
 
@@ -153,20 +257,6 @@ const FormsStyles = styled.div`
 
   nav {
     margin-right: 9px;
-  }
-
-  input {
-    border: 2px solid black;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    box-sizing: border-box;
-    color: black;
-    font-size: 18px;
-    width: 40vh;
-    margin: auto;
-    background: white;
-    height: 50px;
   }
 
   .input-login-user {
@@ -619,7 +709,6 @@ const FormsStyles = styled.div`
   .form__img-input-container {
     position: relative;
     margin: auto;
-    max-width: 320px;
   }
 
   /* this class is used to hide the file input */
@@ -639,21 +728,6 @@ const FormsStyles = styled.div`
 
   /* The file input is a labeled control, and since we hid it, 
 we're going to use its associated label to trigger it */
-  .form-img__file-label {
-    position: absolute;
-    top: 4px;
-    display: block;
-    width: 40vh;
-    height: 180px;
-    border-radius: 15px;
-    cursor: pointer;
-    background-color: rgb(223 223 218 / 90%);
-    background-image: url(${iconAddPhoto});
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 15px;
-    border: 2px black solid;
-  }
 
   .no-background-image {
     background-image: none;
@@ -686,27 +760,6 @@ we're going to use its associated label to trigger it */
   /* The image element is going to be positioned under the 
 label element, since the label is a see through, we're going 
 to be able to see the preview of the image. */
-  .form-img__img-preview {
-    display: block;
-    width: 40vh;
-    height: 190px;
-    margin-top: 5px;
-    background: white;
-    object-fit: scale-down;
-    border-radius: 15px;
-    opacity: 0;
-  }
-
-  .form-img__img-preview-Hidden {
-    display: block;
-    width: 40vh;
-    height: 190px;
-    margin-top: 5px;
-    background: white;
-    object-fit: scale-down;
-    border-radius: 15px;
-    opacity: 1;
-  }
 `;
 
 export default FormsStyles;
