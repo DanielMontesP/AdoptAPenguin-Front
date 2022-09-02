@@ -9,7 +9,7 @@ import iconHome from "../images/icon-home.png";
 import iconDelete from "../images/icon-logout1.png";
 import iconSoundOff from "../images/icon-sound-off.png";
 import iconSoundOn from "../images/icon-sound-on.png";
-import iconAddPhoto from "../images/icon-add_plus.png";
+import iconAddPhoto from "../images/contact-photo.png";
 import iconEdit from "../images/icon-editar.png";
 
 const FormsStyles = styled.div`
@@ -646,7 +646,7 @@ we're going to use its associated label to trigger it */
     height: 180px;
     border-radius: 15px;
     cursor: pointer;
-    background-color: rgb(179 179 169 / 30%);
+    background-color: rgb(223 223 218 / 90%);
     background-image: url(${iconAddPhoto});
     background-repeat: no-repeat;
     background-position: center;
