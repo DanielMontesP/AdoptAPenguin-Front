@@ -3,6 +3,7 @@ import { wrongAction } from "../Modals/Modals";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
   createFavThunk,
+  deletePenguinThunk,
   editPenguinThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { useNavigate } from "react-router-dom";
@@ -41,19 +42,28 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const [formData, setFormData] = useState(initialFormData);
 
-  const processCreate = () => {
+  const processCreate = (type: string) => {
     const newFormData = new FormData();
+    const isNew = type === "New";
 
     newFormData.append("name", formData.name);
     newFormData.append("category", formData.category);
     newFormData.append("likes", JSON.stringify(1));
-    newFormData.append("likers", user.id);
-    newFormData.append("favs", user.id);
+    newFormData.append(
+      "likers",
+      isNew ? user.id : JSON.stringify(formData.likers)
+    );
+    newFormData.append("favs", isNew ? user.id : JSON.stringify(formData.favs));
     newFormData.append("image", formData.image);
     newFormData.append("imageBackup", formData.imageBackup);
     newFormData.append("description", formData.description);
 
     dispatch(createFavThunk(newFormData));
+  };
+
+  const processUpdatePenguinImage = () => {
+    dispatch(deletePenguinThunk(formData.id));
+    processCreate("");
   };
 
   const processEdit = () => {
@@ -107,7 +117,11 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     try {
-      isCreate ? processCreate() : processEdit();
+      isCreate
+        ? processCreate("New")
+        : imageAdded
+        ? processUpdatePenguinImage()
+        : processEdit();
 
       setFormData(blankFormData);
 
