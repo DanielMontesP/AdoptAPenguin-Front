@@ -120,11 +120,11 @@ const PagesStyles = styled.div`
   .penguin-image {
     border-radius: 5px;
     min-width: 320px;
-    max-height: 225px;
-    margin-top: 5px;
+    max-height: 210px;
+    margin-top: 27px;
     background-color: lightgray;
     margin-left: 5px;
-    object-fit: cover;
+    object-fit: fill;
   }
 
   .header {
@@ -143,23 +143,20 @@ const PagesStyles = styled.div`
     padding-left: 5px;
     padding-right: 5px;
     box-shadow: 0 3px 6px #666;
-    margin-top: 10px;
+    margin-top: -28px;
   }
 
   .likes {
-    position: relative;
-    top: 275px;
-    left: 30px;
     animation-name: bounce;
     font-size: 16px;
-    margin: auto;
+    margin-top: 15px;
   }
 
   .penguin-description {
     width: 89%;
     min-height: 40px;
     position: relative;
-    top: -35px;
+    top: -25px;
     left: 18px;
     text-align: justify;
   }
@@ -284,11 +281,11 @@ const PagesStyles = styled.div`
   }
 
   .penguin-image-container {
-    height: 300px;
+    height: 320px;
     width: 95%;
     display: flex;
     margin-left: 10px;
-
+    margin-top: -25px;
     border-radius: 5px 5px 5px 5px;
     text-align: center;
     background-color: white;
@@ -301,7 +298,7 @@ const PagesStyles = styled.div`
     width: 95%;
     align-items: inherit;
     margin-left: 5px;
-    margin-top: 10px;
+    margin-top: -15px;
   }
 
   .penguin-image-detail {
@@ -351,6 +348,8 @@ const PagesStyles = styled.div`
   .bt-likes {
     flex: 3;
     border: 0;
+    margin-top: -45px;
+    margin-bottom: 20px;
   }
 
   .bt-likes {
@@ -455,9 +454,7 @@ const PagesStyles = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    position: relative;
-    left: 110px;
-    top: 295px;
+
     border: 0;
   }
 
@@ -469,9 +466,7 @@ const PagesStyles = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    position: relative;
-    left: 110px;
-    top: 295px;
+
     border: 0;
   }
 
@@ -483,9 +478,7 @@ const PagesStyles = styled.div`
     background-repeat: no-repeat;
     background-position: inherit;
     background-size: contain;
-    position: relative;
-    left: 300px;
-    top: 20px;
+
     border: 0;
   }
 
@@ -497,9 +490,7 @@ const PagesStyles = styled.div`
     background-repeat: no-repeat;
     background-position: inherit;
     background-size: contain;
-    position: relative;
-    left: 300px;
-    top: 20px;
+
     border: 0;
   }
 
@@ -509,18 +500,14 @@ const PagesStyles = styled.div`
     background: none;
     background-image: url(${iconDelete});
     background-size: contain;
-    position: relative;
-    left: -110px;
-    top: 20px;
+
     border: 0;
   }
 
   .animatedEdit {
     width: 45px;
     height: 45px;
-    position: relative;
-    left: 100px;
-    top: 275px;
+
     background: url(${iconEdit});
     background-repeat: no-repeat;
     margin-top: 20px;
@@ -535,13 +522,14 @@ const PagesStyles = styled.div`
   }
 
   .buttons-container {
-    width: fit-content;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-content: space-around;
-    margin: auto;
-    margin-bottom: -50px;
-    position: absolute;
+    position: relative;
+    top: 295px;
   }
 
   .container {

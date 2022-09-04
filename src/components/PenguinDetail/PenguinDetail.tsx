@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
   editPenguinThunk,
@@ -22,6 +23,8 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
 
   const idUser = useAppSelector((state) => state.user.id);
   const isLiker = penguin.likers.includes(idUser);
+
+  const navigate = useNavigate();
 
   const [, setFormData] = useState<IPenguin>(blankFormData);
 
@@ -89,9 +92,17 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
     }
   };
 
+  const handleEdit = () => {
+    dispatch(resetPenguinThunk());
+    dispatch(getPenguinThunk(penguin.id));
+    navigate(`/penguins/edit/${penguin.id}`);
+  };
+
   const selectIconLike = isLiker
     ? " bounce detail-animatedLike"
     : ` bounce2 detail-animatedLikeInit`;
+
+  const selectIconEdit = ` bounce2 form-detail-animatedEdit`;
 
   return (
     <div className="detail-container">
@@ -121,6 +132,11 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
 
       <div className="detail-info">
         <span className="category">{penguin.category}</span>
+        <button
+          className={`animated${selectIconEdit}`}
+          onClick={handleEdit}
+          title="bt-edit"
+        />
         <span className="likes">{penguin.likes}</span>
         <button
           className={`animated${selectIconLike}`}

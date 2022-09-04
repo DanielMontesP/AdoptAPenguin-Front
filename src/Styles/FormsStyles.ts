@@ -241,7 +241,7 @@ const FormsStyles = styled.div`
     padding: 14px 20px;
     font-weight: bold;
     cursor: pointer;
-    width: 40vh;
+    width: 50vh;
     display: flex;
     justify-content: center;
     font-size: 20px;

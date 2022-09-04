@@ -26,25 +26,7 @@ describe("Given a delete action", () => {
       expect(label).toBeInTheDocument();
     });
   });
-  describe("When handleEdit action is called", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
-      const labelToFind = "btn-edit";
 
-      render(
-        <Provider store={store}>
-          <BrowserRouter>
-            <ActionButtons penguin={mockPenguin} />
-          </BrowserRouter>
-        </Provider>
-      );
-      const handleEdit = jest.fn().mockReturnValue(true);
-      const label = screen.getByTitle(labelToFind);
-      userEvent.click(label);
-      handleEdit();
-
-      expect(handleEdit).toHaveBeenCalled();
-    });
-  });
   describe("When deleteFromLikers action is called", () => {
     test("Then the value of the username input field should be 'user1'", () => {
       const labelToFind = "btn-likes";
