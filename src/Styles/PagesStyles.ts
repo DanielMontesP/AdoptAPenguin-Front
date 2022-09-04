@@ -124,7 +124,7 @@ const PagesStyles = styled.div`
     margin-top: 27px;
     background-color: lightgray;
     margin-left: 5px;
-    object-fit: fill;
+    object-fit: cover;
   }
 
   .header {
@@ -143,13 +143,13 @@ const PagesStyles = styled.div`
     padding-left: 5px;
     padding-right: 5px;
     box-shadow: 0 3px 6px #666;
-    margin-top: -28px;
+    margin-top: 55px;
   }
 
   .likes {
     animation-name: bounce;
     font-size: 16px;
-    margin-top: 15px;
+    margin-top: 5px;
   }
 
   .penguin-description {
@@ -281,7 +281,7 @@ const PagesStyles = styled.div`
   }
 
   .penguin-image-container {
-    height: 320px;
+    height: 260px;
     width: 95%;
     display: flex;
     margin-left: 10px;
@@ -339,8 +339,8 @@ const PagesStyles = styled.div`
   .penguin-datalist {
     height: 40px;
     position: relative;
-    top: -60px;
-    left: 23px;
+    top: -55px;
+    left: 15px;
     display: flex;
   }
 
@@ -447,8 +447,8 @@ const PagesStyles = styled.div`
   }
 
   .animatedLike {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
     background: none;
     background-image: url(${iconLike});
     background-repeat: no-repeat;
@@ -459,8 +459,8 @@ const PagesStyles = styled.div`
   }
 
   .animatedLikeInit {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
     background: none;
     background-image: url(${iconLikeInit});
     background-repeat: no-repeat;
@@ -471,8 +471,8 @@ const PagesStyles = styled.div`
   }
 
   .animatedFav {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
     background: none;
     background-image: url(${iconMenuFavs});
     background-repeat: no-repeat;
@@ -483,8 +483,8 @@ const PagesStyles = styled.div`
   }
 
   .animatedFavDelete {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
     background: none;
     background-image: url(${iconMenuFavsDelete});
     background-repeat: no-repeat;
@@ -495,8 +495,8 @@ const PagesStyles = styled.div`
   }
 
   .animatedDelete {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
     background: none;
     background-image: url(${iconDelete});
     background-size: contain;
@@ -505,8 +505,8 @@ const PagesStyles = styled.div`
   }
 
   .animatedEdit {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
 
     background: url(${iconEdit});
     background-repeat: no-repeat;
@@ -529,7 +529,7 @@ const PagesStyles = styled.div`
     justify-content: space-around;
     align-content: space-around;
     position: relative;
-    top: 295px;
+    top: 265px;
   }
 
   .container {
