@@ -285,7 +285,7 @@ const PagesStyles = styled.div`
     width: 95%;
     display: flex;
     margin-left: 10px;
-    margin-top: -25px;
+    margin-top: -35px;
     border-radius: 5px 5px 5px 5px;
     text-align: center;
     background-color: white;
@@ -529,7 +529,7 @@ const PagesStyles = styled.div`
     justify-content: space-around;
     align-content: space-around;
     position: relative;
-    top: 265px;
+    top: 256px;
   }
 
   .container {
