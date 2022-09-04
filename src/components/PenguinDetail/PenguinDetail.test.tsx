@@ -8,6 +8,7 @@ import {
   mockPenguins,
   mockPenguinsEmpty,
 } from "../../mocks/penguins";
+import ActionButtons from "../ActionButtons/ActionButtons";
 import PenguinDetail from "./PenguinDetail";
 
 describe("Given handleDelete", () => {
@@ -129,6 +130,29 @@ describe("Given handleDelete", () => {
       getDetailNext();
 
       expect(getDetailNext).toHaveBeenCalled();
+    });
+  });
+
+  describe("When handleEdit action is called", () => {
+    test("Then the value of the username input field should be 'user1'", () => {
+      const labelToFind = "bt-edit";
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <PenguinDetail
+              allPenguins={mockPenguinsEmpty}
+              penguin={mockPenguin}
+            />
+          </BrowserRouter>
+        </Provider>
+      );
+      const handleEdit = jest.fn().mockReturnValue(true);
+      const label = screen.getByTitle(labelToFind);
+      userEvent.click(label);
+      handleEdit();
+
+      expect(handleEdit).toHaveBeenCalled();
     });
   });
 

@@ -39,7 +39,8 @@ const DetailPageStyles = styled.div`
     }
 
     .detail-image {
-      height: 300px;
+      height: 70vh;
+      max-height: 300px;
       width: 488px;
       object-fit: cover;
       background-color: rgb(255 254 254);
@@ -359,7 +360,7 @@ const DetailPageStyles = styled.div`
 
   .category {
     height: fit-content;
-    width: fit-content;
+    width: -webkit-fill-available;
     font-size: 16px;
     text-align: center;
     padding-left: 5px;
@@ -503,7 +504,7 @@ const DetailPageStyles = styled.div`
   .form-detail-animatedEdit {
     background: url(${iconEdit});
     background-repeat: no-repeat;
-    background-position: left;
+    background-position: center;
     width: 70%;
   }
 

@@ -6,11 +6,7 @@ import {
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
-import {
-  editPenguinThunk,
-  getPenguinThunk,
-  resetPenguinThunk,
-} from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import { editPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { cleanArray, blankFormData } from "../../utils/utils";
 import { Modal } from "../Modals/ModalPrompt";
@@ -46,12 +42,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     dispatch(modalMessageActionCreator(message));
 
     setModal((prevState) => !prevState);
-  };
-
-  const handleEdit = () => {
-    dispatch(resetPenguinThunk());
-    dispatch(getPenguinThunk(penguin.id));
-    navigate(`/penguins/edit/${penguin.id}`);
   };
 
   const deleteFromLikers = () => {
@@ -124,8 +114,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
   const HidderLikes = isDetailPage ? " display-none" : "";
   const HidderDelete = isHomePage ? " no-visible" : "";
-  const HidderEdit = isHomePage ? " no-visible" : "";
-  const classButtonEdit = " bounce animatedEdit";
+
   const classButtonDelete = " bounce animatedDelete";
 
   return (
@@ -135,24 +124,20 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         onClick={handleFavs}
         className={`animated${selectIconFav}`}
       />
+
+      <span className={`likes${HidderLikes}`}>{penguin.likes}</span>
       <button
-        className={`animated${classButtonEdit}${HidderEdit}`}
-        onClick={handleEdit}
-        title="btn-edit"
+        className={`animated${selectIconLike}`}
+        onClick={handleLikes}
+        title="btn-likes"
       />
+
       <button
         title="btn-delete"
         placeholder="btn-delete"
         className={`animated${classButtonDelete}${HidderDelete}`}
         onClick={handleDelete}
       />
-      <button
-        className={`animated${selectIconLike}`}
-        onClick={handleLikes}
-        title="btn-likes"
-      />
-      <span className={`likes${HidderLikes}`}>{penguin.likes}</span>
-
       {isModalOpen && (
         <Modal
           type={modalType}

@@ -42,7 +42,7 @@ describe("Given the Penguin component", () => {
       );
 
       const buttons = screen.getAllByRole("button");
-      expect(buttons.length).toBeGreaterThan(3);
+      expect(buttons.length).toBeGreaterThan(2);
     });
   });
   describe("When handleMoreDetail clicked", () => {
