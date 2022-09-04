@@ -348,7 +348,7 @@ const PagesStyles = styled.div`
   .bt-likes {
     flex: 3;
     border: 0;
-    margin-top: -45px;
+    margin-top: -40px;
     margin-bottom: 20px;
   }
 
