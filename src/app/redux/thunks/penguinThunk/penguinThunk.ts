@@ -208,7 +208,6 @@ export const editPenguinThunk =
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "mutipart/form-data",
           },
         }
       );

@@ -69,12 +69,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const processEdit = () => {
     modFields = cleanArray(modFields);
 
-    const newFormData = new FormData();
-
-    newFormData.append("id", formData.id);
-    newFormData.append("name", formData.name);
-    newFormData.append("category", formData.category);
-
     dispatch(
       editPenguinThunk(formData, "Update fields: " + modFields.join(", "))
     );
