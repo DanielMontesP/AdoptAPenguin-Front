@@ -75,7 +75,7 @@ const FormsStyles = styled.div`
       height: 191px;
       margin-top: 5px;
       background: white;
-      object-fit: scale-down;
+      object-fit: cover;
       border-radius: 15px;
       opacity: 0;
     }
