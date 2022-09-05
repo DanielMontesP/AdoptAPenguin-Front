@@ -3,7 +3,6 @@ import { wrongAction } from "../Modals/Modals";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
   createFavThunk,
-  deletePenguinThunk,
   editPenguinThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { useNavigate } from "react-router-dom";
@@ -62,7 +61,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   };
 
   const processUpdatePenguinImage = () => {
-    dispatch(deletePenguinThunk(formData.id));
     processCreate("");
   };
 

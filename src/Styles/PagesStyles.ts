@@ -149,8 +149,10 @@ const PagesStyles = styled.div`
   .likes {
     animation-name: bounce;
     font-size: 16px;
+    margin: auto;
     margin-top: 5px;
   }
+
   .animated {
     background-repeat: no-repeat;
     background-position: left top;
@@ -168,7 +170,6 @@ const PagesStyles = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-
     border: 0;
   }
 
@@ -377,10 +378,9 @@ const PagesStyles = styled.div`
 
   .penguin-name,
   .bt-likes {
-    flex: 3;
+    flex: 2;
     border: 0;
     margin-top: -45px;
-    margin-bottom: 20px;
   }
 
   .bt-likes {
@@ -476,7 +476,6 @@ const PagesStyles = styled.div`
     background-repeat: no-repeat;
     background-position: inherit;
     background-size: contain;
-
     border: 0;
   }
 
@@ -488,7 +487,6 @@ const PagesStyles = styled.div`
     background-repeat: no-repeat;
     background-position: inherit;
     background-size: contain;
-
     border: 0;
   }
 
@@ -498,8 +496,8 @@ const PagesStyles = styled.div`
     background: none;
     background-image: url(${iconDelete});
     background-size: contain;
-
     border: 0;
+    margin: auto;
   }
 
   .animatedEdit {
@@ -509,6 +507,7 @@ const PagesStyles = styled.div`
     background-repeat: no-repeat;
     background-position: right;
     border: 0;
+    margin: auto;
   }
 
   .no-visible {
@@ -516,14 +515,15 @@ const PagesStyles = styled.div`
   }
 
   .buttons-container {
-    width: 100%;
+    width: 85%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: space-around;
     position: relative;
-    top: 256px;
+    top: 250px;
+    margin: auto;
   }
 
   .container {

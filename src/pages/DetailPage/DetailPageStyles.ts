@@ -497,7 +497,6 @@ const DetailPageStyles = styled.div`
     background-position: center;
     background-size: contain;
     border: 0;
-    margin: auto;
   }
 
   .animatedLikeInit {
@@ -509,7 +508,6 @@ const DetailPageStyles = styled.div`
     background-position: center;
     background-size: contain;
     border: 0;
-    margin: auto;
   }
 
   .animatedFav {
