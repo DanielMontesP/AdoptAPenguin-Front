@@ -137,6 +137,12 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         onClick={handleEdit}
         title="btn-edit"
       />
+      <button
+        title="btn-delete"
+        placeholder="btn-delete"
+        className={`animated${classButtonDelete}${HidderDelete}`}
+        onClick={handleDelete}
+      />
       <span className={`likes`}>{penguin.likes}</span>
       <button
         className={`animated${selectIconLike}`}
@@ -144,12 +150,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         title="btn-likes"
       />
 
-      <button
-        title="btn-delete"
-        placeholder="btn-delete"
-        className={`animated${classButtonDelete}${HidderDelete}`}
-        onClick={handleDelete}
-      />
       {isModalOpen && (
         <Modal
           type={modalType}
