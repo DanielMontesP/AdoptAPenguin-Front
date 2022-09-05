@@ -111,11 +111,11 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     try {
-      isCreate
-        ? processCreate("New")
-        : imageAdded
-        ? processUpdatePenguinImage()
-        : processEdit();
+      if (isCreate) {
+        processCreate("New");
+      } else {
+        imageAdded ? processUpdatePenguinImage() : processEdit();
+      }
 
       setFormData(blankFormData);
 

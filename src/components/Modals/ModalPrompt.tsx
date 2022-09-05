@@ -23,13 +23,29 @@ export const Modal = ({
 }: IModalProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   const { headerTitle } = useAppSelector((state) => state.ui);
+
   const isWellcome = type === "About" || type === "Wellcome" ? true : false;
   const isHelp = type === "Help";
 
-  let windowTitle = isWellcome ? "About" : "";
-  windowTitle = isHelp ? "Help" : "Please confirm";
   const modalClass = isWellcome ? "modal modal-wellcome" : "modal";
+
+  let windowTitle = "";
+
+  switch (type) {
+    case "About":
+      windowTitle = "About";
+      break;
+    case "Wellcome":
+      windowTitle = "About";
+      break;
+    case "Help":
+      windowTitle = "Help";
+      break;
+    default:
+      windowTitle = "Please confirm";
+  }
 
   const logOutUser = () => {
     dispatch(finishedLoadingActionCreator());
