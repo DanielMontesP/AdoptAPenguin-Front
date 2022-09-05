@@ -1,14 +1,10 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
-  editPenguinThunk,
   getPenguinThunk,
   resetPenguinThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import iconPhotoEmpty from "../../images/contact-photo-add.png";
-import { blankFormData, cleanArray } from "../../utils/utils";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import { correctAction } from "../Modals/Modals";
 
@@ -20,13 +16,6 @@ interface Props {
 const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const thisPenguin = useAppSelector((state) => state.penguins.penguin);
-
-  const idUser = useAppSelector((state) => state.user.id);
-  const isLiker = penguin.likers.includes(idUser);
-
-  const navigate = useNavigate();
-
-  const [, setFormData] = useState<IPenguin>(blankFormData);
 
   const penguinImage =
     penguin.image === "" && !penguin.imageBackup.includes("/")
@@ -65,45 +54,6 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
     dispatch(getPenguinThunk(nextPenguinId));
   };
 
-  const deleteLikers = () => {
-    const newData = { ...penguin };
-    newData.likers = newData.likers.filter((liker) => liker !== idUser);
-    newData.likes = penguin.likes >= 1 ? penguin.likes - 1 : penguin.likes;
-
-    setFormData(newData);
-    dispatch(editPenguinThunk(newData, "Delete Like."));
-  };
-
-  const addLikers = () => {
-    const newData = { ...penguin };
-    newData.likers = newData.likers.concat(idUser);
-    newData.likes = penguin.likes + 1;
-
-    setFormData(newData);
-
-    dispatch(editPenguinThunk(newData, "Add Like."));
-  };
-
-  const handleLikes = () => {
-    if (Array(penguin.likers)) {
-      cleanArray(penguin.likers);
-
-      isLiker ? deleteLikers() : addLikers();
-    }
-  };
-
-  const handleEdit = () => {
-    dispatch(resetPenguinThunk());
-    dispatch(getPenguinThunk(penguin.id));
-    navigate(`/penguins/edit/${penguin.id}`);
-  };
-
-  const selectIconLike = isLiker
-    ? " bounce detail-animatedLike"
-    : ` bounce2 detail-animatedLikeInit`;
-
-  const selectIconEdit = ` bounce2 form-detail-animatedEdit`;
-
   return (
     <div className="detail-container">
       <h1 className="display-none">Detail</h1>
@@ -115,8 +65,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
           className="imgDetailPrev detailPrev"
           title="btn-prev"
         />
-        <div className="img-content">
-          <ActionButtons penguin={penguin} />
+        <div className="penguin--container">
           <img
             src={penguinImage}
             alt={`Pinguino ${penguin.name}`}
@@ -130,21 +79,9 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
         />
       </div>
 
-      <div className="detail-info">
+      <div className="penguin-description">
+        <ActionButtons penguin={penguin} />
         <span className="category">{penguin.category}</span>
-        <button
-          className={`animated${selectIconEdit}`}
-          onClick={handleEdit}
-          title="bt-edit"
-        />
-        <span className="likes">{penguin.likes}</span>
-        <button
-          className={`animated${selectIconLike}`}
-          onClick={handleLikes}
-          title="bt-likes"
-        />
-      </div>
-      <div className="detail-description-container">
         <span className="detail-description">{penguin.description}</span>
       </div>
     </div>
