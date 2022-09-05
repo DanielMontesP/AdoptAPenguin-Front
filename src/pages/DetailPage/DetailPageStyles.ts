@@ -20,72 +20,124 @@ const DetailPageStyles = styled.div`
   text-align: justify;
 
   @media only screen and (min-width: 421px) {
-    .detail-info {
-      display: flex;
-      width: 275px;
-      margin: auto;
-      margin-top: 15px;
-    }
-
     .detail-buttons-container {
+      margin: auto;
+      width: 90%;
+      max-width: 400px;
       display: flex;
-      justify-content: space-between;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
       align-content: space-around;
-      margin: auto;
-      margin-bottom: -15px;
-      margin-top: 20px;
-      max-width: 500px;
-      flex-direction: row-reverse;
     }
 
-    .detail-image {
-      height: 70vh;
-      max-height: 300px;
-      width: 488px;
-      object-fit: cover;
-      background-color: rgb(255 254 254);
-      box-shadow: 0 15px 6px #666;
-      border: 2px solid;
-      border-radius: 10px;
-    }
-
-    .detail-description-container {
+    .penguin-description {
+      width: 50%;
+      min-height: 40px;
       margin: auto;
-      max-width: 480px;
-      margin-top: 10px;
-      padding: 15px;
-      border-radius: 15px;
-      box-shadow: 0 15px 6px #666;
-    }
-  }
-  @media only screen and (max-width: 420px) {
-    .detail-buttons-container {
+      margin-top: 40px;
+      text-align: justify;
       display: flex;
-      margin: auto;
-      flex-direction: row-reverse;
-      max-width: 500px;
-      margin-bottom: -15px;
+      flex-direction: column;
     }
 
     .detail-image {
       height: 300px;
-      width: 300px;
+      width: 400px;
       object-fit: cover;
       background-color: rgb(255 254 254);
-      box-shadow: 0 15px 6px #666;
-      border: 2px solid;
       border-radius: 10px;
     }
 
-    .detail-description-container {
+    .penguin--container {
+      background-color: rgb(255 254 254);
+      box-shadow: 0 0 15px 6px #666;
+      padding: 10px 10px 150px 10px;
+      border-radius: 5px 5px 5px 5px;
       margin: auto;
-      max-width: 300px;
-      margin-top: 10px;
-      padding: 15px;
-      border-radius: 15px;
-      box-shadow: 0 15px 6px #666;
+      text-align: center;
+      height: 215px;
+    }
+
+    .img-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: auto;
+      margin-top: 20px;
+      height: 280px;
+      width: 80%;
     }
   }
+
+  @media only screen and (max-width: 420px) {
+    .detail-buttons-container {
+      margin: auto;
+      width: 90%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-content: space-around;
+    }
+
+    .penguin-description {
+      width: 70%;
+      min-height: 40px;
+      margin: auto;
+      margin-top: -60px;
+      text-align: justify;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .detail-image {
+      height: 200px;
+      width: 270px;
+      object-fit: cover;
+      background-color: rgb(255 254 254);
+      border-radius: 10px;
+    }
+
+    .penguin--container {
+      background-color: rgb(255 254 254);
+      box-shadow: 0 0 15px 6px #666;
+      padding: 10px 10px 150px 10px;
+      border-radius: 5px 5px 5px 5px;
+      margin: auto;
+      text-align: center;
+      height: 115px;
+      width: 270px;
+    }
+
+    .img-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: auto;
+      margin-top: 20px;
+      height: 280px;
+    }
+  }
+
+  .detail-info {
+    display: flex;
+    width: 275px;
+    margin: auto;
+    margin-top: 15px;
+  }
+
+  .detail-description-container {
+    margin: auto;
+    max-width: 480px;
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 15px 6px #666;
+  }
+  /* } */
 
   element.style {
     text-align: center;
@@ -171,17 +223,6 @@ const DetailPageStyles = styled.div`
     text-align: center;
   }
 
-  .img-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 95%;
-    margin: auto;
-    margin-top: 20px;
-    height: 280px;
-  }
-
   .imgDetailNext {
     height: 180px;
   }
@@ -192,10 +233,12 @@ const DetailPageStyles = styled.div`
     background-repeat: no-repeat;
     background-position: 95% 50%;
     margin-left: 5px;
+    width: 10%;
   }
 
   .imgDetailPrev {
     height: 180px;
+    width: 10%;
   }
 
   .detailPrev {
@@ -204,21 +247,7 @@ const DetailPageStyles = styled.div`
     background-repeat: no-repeat;
     background-position: 5% 50%;
     margin-right: 5px;
-  }
-
-  .penguin--container {
-    background-color: rgb(255 254 254);
-    box-shadow: 0 15px 6px #666;
-    padding: 10px 10px 150px 10px;
-    margin-bottom: 10px;
-    border-radius: 5px 5px 5px 5px;
-    margin: auto;
-    text-align: center;
-    height: 430px;
-    border: 2px solid;
-    height: 100vh;
-    width: auto;
-    margin-top: 5rem;
+    width: 10%;
   }
 
   .detail-container {
@@ -226,7 +255,7 @@ const DetailPageStyles = styled.div`
     margin-bottom: 10px;
     border-radius: 5px 5px 5px 5px;
     margin: auto;
-    margin-top: 5rem;
+    margin-top: 6rem;
   }
 
   .penguin-image-container {
@@ -289,16 +318,12 @@ const DetailPageStyles = styled.div`
 
   .detail-name {
     flex: 2;
-
     text-align: center;
+    margin-top: 15px;
   }
 
   .likes {
-    flex: 2;
-    margin-top: 7px;
-    text-align: right;
     margin: auto;
-    margin-right: 10px;
   }
 
   .bt-likes {
@@ -318,6 +343,9 @@ const DetailPageStyles = styled.div`
   }
 
   .detail-description {
+    box-shadow: 0 3px 6px #666;
+    border-radius: 15px;
+    padding: 15px;
     font-size: 16px;
   }
 
@@ -360,15 +388,17 @@ const DetailPageStyles = styled.div`
 
   .category {
     height: fit-content;
-    width: -webkit-fill-available;
+    width: fit-content;
     font-size: 16px;
-    text-align: center;
+    text-align: left;
     padding-left: 5px;
     padding-right: 5px;
     background-color: #ffe02c;
     border-radius: 4px;
     box-shadow: 0 3px 6px #666;
-    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 10px;
   }
 
   .projectLayout {
@@ -430,26 +460,18 @@ const DetailPageStyles = styled.div`
   }
 
   .animated {
+    background-repeat: no-repeat;
     background-position: left top;
-    background: none;
-
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
   }
 
-  .animatedLike {
-    display: none;
-  }
-
-  .animatedLikeInit {
-    display: none;
-  }
-
   .detail-animatedLikeInit {
     width: 45px;
-    height: 45px;
+    height: 90px;
+    background: none;
     background-image: url(${iconLikeInit});
     background-repeat: no-repeat;
     background-position: center;
@@ -458,16 +480,42 @@ const DetailPageStyles = styled.div`
 
   .detail-animatedLike {
     width: 45px;
-    height: 45px;
+    height: 90px;
+    background: none;
     background-image: url(${iconLike});
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
   }
 
+  .animatedLike {
+    width: 30px;
+    height: 30px;
+    background: none;
+    background-image: url(${iconLike});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 0;
+    margin: auto;
+  }
+
+  .animatedLikeInit {
+    width: 30px;
+    height: 30px;
+    background: none;
+    background-image: url(${iconLikeInit});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 0;
+    margin: auto;
+  }
+
   .animatedFav {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
+    background: none;
     background-image: url(${iconMenuFavs});
     background-repeat: no-repeat;
     background-position: inherit;
@@ -475,8 +523,9 @@ const DetailPageStyles = styled.div`
   }
 
   .animatedFavDelete {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
+    background: none;
     background-image: url(${iconMenuFavsDelete});
     background-repeat: no-repeat;
     background-position: inherit;
@@ -484,8 +533,9 @@ const DetailPageStyles = styled.div`
   }
 
   .animatedDelete {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
+    background: none;
     background-image: url(${iconDelete});
     background-repeat: no-repeat;
     background-position: inherit;
@@ -493,8 +543,9 @@ const DetailPageStyles = styled.div`
   }
 
   .animatedEdit {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
+    background: none;
     background: url(${iconEdit});
     background-repeat: no-repeat;
     background-size: contain;
@@ -502,6 +553,7 @@ const DetailPageStyles = styled.div`
   }
 
   .form-detail-animatedEdit {
+    background: none;
     background: url(${iconEdit});
     background-repeat: no-repeat;
     background-position: center;

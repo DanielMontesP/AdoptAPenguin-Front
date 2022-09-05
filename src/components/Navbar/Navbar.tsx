@@ -342,16 +342,15 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 <button onClick={loadHome} className="bt-home" title="bt-home">
                   <h3 className="menu-icon-label-vertical">Home</h3>
                 </button>
+                <button onClick={loadFavs} className="bt-favs" title="bt-favs">
+                  <h3 className="menu-icon-label-vertical">Favourites</h3>
+                </button>
                 <button
                   onClick={loadLikes}
                   className="bt-likes"
                   title="bt-likes"
                 >
                   <h3 className="menu-icon-label-vertical">Likes</h3>
-                </button>
-
-                <button onClick={loadFavs} className="bt-favs" title="bt-favs">
-                  <h3 className="menu-icon-label-vertical">Favourites</h3>
                 </button>
                 <button onClick={addFav} className="bt-addfav" title="bt-fav">
                   <h3 className="menu-icon-label-vertical">New...</h3>

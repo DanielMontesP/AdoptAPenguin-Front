@@ -37,7 +37,7 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
   dispatch(loadingActionCreator());
 
   setLoadingOn(
-    `GET Penguins: Be watter penguin, waking up render.com service...`
+    `GET Penguins: ...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`
   );
 
   const token = localStorage.getItem("token");

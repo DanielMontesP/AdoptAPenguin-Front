@@ -4,8 +4,6 @@ import iconBack from "../images/icon-back.png";
 import iconFavs from "../images/icon-stars.png";
 import iconMenuFavs from "../images/fav-add-32.png";
 import iconMenuFavsDelete from "../images/fav-delete-32.png";
-import iconLike from "../images/heartLike.png";
-import iconLikeInit from "../images/icon-likes-empty.png";
 import iconAddFav from "../images/icon-add_plus.png";
 import iconHome from "../images/icon-home.png";
 import iconLogout from "../images/icon-logout-white.png";
@@ -13,6 +11,8 @@ import iconDelete from "../images/delete-32.png";
 import iconSoundOff from "../images/icon-sound-off.png";
 import iconSoundOn from "../images/icon-sound-on.png";
 import iconEdit from "../images/icon-editar32.png";
+import iconLike from "../images/heartLike.png";
+import iconLikeInit from "../images/icon-likes-empty.png";
 
 const PagesStyles = styled.div`
   @media only screen and (min-width: 421px) {
@@ -151,7 +151,38 @@ const PagesStyles = styled.div`
     font-size: 16px;
     margin-top: 5px;
   }
+  .animated {
+    background-repeat: no-repeat;
+    background-position: left top;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
 
+  .animatedLike {
+    width: 30px;
+    height: 30px;
+    background: none;
+    background-image: url(${iconLike});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    border: 0;
+  }
+
+  .animatedLikeInit {
+    width: 30px;
+    height: 30px;
+    background: none;
+    background-image: url(${iconLikeInit});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    border: 0;
+  }
   .penguin-description {
     width: 89%;
     min-height: 40px;
@@ -348,7 +379,7 @@ const PagesStyles = styled.div`
   .bt-likes {
     flex: 3;
     border: 0;
-    margin-top: -40px;
+    margin-top: -45px;
     margin-bottom: 20px;
   }
 
@@ -437,39 +468,6 @@ const PagesStyles = styled.div`
     flex-wrap: wrap;
   }
 
-  .animated {
-    background-repeat: no-repeat;
-    background-position: left top;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-  }
-
-  .animatedLike {
-    width: 30px;
-    height: 30px;
-    background: none;
-    background-image: url(${iconLike});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-
-    border: 0;
-  }
-
-  .animatedLikeInit {
-    width: 30px;
-    height: 30px;
-    background: none;
-    background-image: url(${iconLikeInit});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-
-    border: 0;
-  }
-
   .animatedFav {
     width: 30px;
     height: 30px;
@@ -507,12 +505,8 @@ const PagesStyles = styled.div`
   .animatedEdit {
     width: 30px;
     height: 30px;
-
     background: url(${iconEdit});
     background-repeat: no-repeat;
-    margin-top: 20px;
-    margin-right: 30px;
-    margin-left: 20px;
     background-position: right;
     border: 0;
   }

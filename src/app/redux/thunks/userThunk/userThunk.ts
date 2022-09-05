@@ -29,7 +29,7 @@ export const loginThunk =
     if (doOnce) {
       try {
         setLoadingOn(
-          `LOGIN: ${userData.username}...Maybe service is sleeping...Be watter penguin...it will start as soon as possible.`
+          `LOGIN: ${userData.username}...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`
         );
         const url: string = `${process.env.REACT_APP_API_URL}users/login`;
 
@@ -75,7 +75,7 @@ export const registerThunk =
   (userData: any, password: string) => async (dispatch: AppDispatch) => {
     try {
       setLoadingOn(
-        `REGISTER: Be watter penguin, probably we need to waking up render.com service...`
+        `REGISTER:...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`
       );
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_URL}users/register`,
