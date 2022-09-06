@@ -1,9 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { headerTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 import store from "../../app/redux/store/store";
-import Navbar from "../../components/Navbar/Navbar";
 import HomePage from "./HomePage";
 
 describe("Given a HomePage Component", () => {
@@ -19,9 +17,9 @@ describe("Given a HomePage Component", () => {
         </Provider>
       );
 
-      const receivedResult = screen.getByText(expectedResult);
+      const receivedResult = screen.getAllByText(expectedResult);
 
-      expect(receivedResult).toBeInTheDocument();
+      expect(receivedResult.length).toBe(1);
     });
   });
 });
