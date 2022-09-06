@@ -60,10 +60,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     dispatch(createFavThunk(newFormData));
   };
 
-  const processUpdatePenguinImage = () => {
-    processCreate("");
-  };
-
   const processEdit = () => {
     modFields = cleanArray(modFields);
 
@@ -112,7 +108,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       if (isCreate) {
         processCreate("New");
       } else {
-        imageAdded ? processUpdatePenguinImage() : processEdit();
+        imageAdded ? processCreate("") : processEdit();
       }
 
       setFormData(blankFormData);

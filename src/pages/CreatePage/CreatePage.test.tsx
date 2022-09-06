@@ -34,6 +34,8 @@ describe("Given a CreatePage component", () => {
       const catLabel = "Category";
       const inputText = "penguin";
 
+      document.location.href = jest.fn().mockReturnThis().toString();
+
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -49,7 +51,6 @@ describe("Given a CreatePage component", () => {
         .fn()
         .mockResolvedValue({ data: { penguins: mockPenguins }, status: 200 });
       const dispatch = jest.fn();
-      document.location.href = jest.fn().mockReturnValue("create").toString();
 
       userEvent.type(name, inputText);
       userEvent.type(category, inputText);
