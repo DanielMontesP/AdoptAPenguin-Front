@@ -62,10 +62,6 @@ const PagesStyles = styled.div`
     margin-left: 10px;
   }
 
-  h3 {
-    font-size: 12px;
-    margin-left: 10px;
-  }
   h2 {
     font-size: 16px;
     margin-left: 12px;
@@ -118,12 +114,13 @@ const PagesStyles = styled.div`
   }
 
   .penguin-image {
+    width: 95%;
     border-radius: 5px;
     min-width: 320px;
-    max-height: 210px;
-    margin-top: 27px;
+    max-height: 180px;
+    margin: auto;
+    margin-top: 10px;
     background-color: lightgray;
-    margin-left: 5px;
     object-fit: cover;
   }
 
@@ -143,7 +140,6 @@ const PagesStyles = styled.div`
     padding-left: 5px;
     padding-right: 5px;
     box-shadow: 0 3px 6px #666;
-    margin-top: 55px;
   }
 
   .likes {
@@ -188,7 +184,7 @@ const PagesStyles = styled.div`
     width: 89%;
     min-height: 40px;
     position: relative;
-    top: -25px;
+    top: -5px;
     left: 18px;
     text-align: justify;
   }
@@ -313,24 +309,16 @@ const PagesStyles = styled.div`
   }
 
   .penguin-image-container {
-    height: 260px;
+    height: 230px;
     width: 95%;
     display: flex;
-    margin-left: 10px;
-    margin-top: -35px;
+    justify-content: space-between;
+    margin-left: 5px;
+    margin-top: -40px;
     border-radius: 5px 5px 5px 5px;
     text-align: center;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-
-  .penguin-image-content {
-    display: flex;
-    justify-content: space-between;
-    width: 95%;
-    align-items: inherit;
-    margin-left: 5px;
-    margin-top: -15px;
   }
 
   .penguin-image-detail {
@@ -359,19 +347,25 @@ const PagesStyles = styled.div`
 
   .penguin-container {
     width: 378px;
-    height: 470px;
-    display: flex;
+    height: 370px;
     margin-bottom: 50px;
-    background-color: grey;
+    margin-right: 15px;
     text-align: center;
-    padding: 10px 20px;
+    padding: 0.5em;
     border: 1px solid grey;
+    border-radius: 5px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    background: #fff;
+    -webkit-transition: 0.5s;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-shadow: 2px 2px 10px rgb(140, 134, 134);
   }
 
   .penguin-datalist {
-    height: 40px;
     position: relative;
-    top: -55px;
     left: 15px;
     display: flex;
   }
@@ -454,20 +448,6 @@ const PagesStyles = styled.div`
     transform: translate(40px, 50px);
   }
 
-  .item {
-    display: inline-flex;
-    background: #fff;
-    padding: 0.5em;
-    margin-right: 15px;
-    -webkit-transition: 0.5s;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-shadow: 2px 2px 10px rgb(140, 134, 134);
-    border-radius: 5px;
-    flex-wrap: wrap;
-  }
-
   .animatedFav {
     width: 30px;
     height: 30px;
@@ -522,7 +502,7 @@ const PagesStyles = styled.div`
     justify-content: space-around;
     align-content: space-around;
     position: relative;
-    top: 250px;
+    top: 206px;
     margin: auto;
   }
 

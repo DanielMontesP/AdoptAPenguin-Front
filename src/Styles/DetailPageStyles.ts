@@ -1,19 +1,19 @@
 import styled from "styled-components";
-import iconHamburguer from "../../images/menu_hamburguer.png";
-import iconBack from "../../images/icon-back.png";
-import iconFavs from "../../images/icon-stars.png";
-import iconMenuFavs from "../../images/fav-add-32.png";
-import iconMenuFavsDelete from "../../images/fav-delete-32.png";
-import iconLike from "../../images/heartLike.png";
-import iconAddFav from "../../images/icon-add_plus.png";
-import iconHome from "../../images/icon-home.png";
-import iconLogout from "../../images/icon-logout-white.png";
-import iconDelete from "../../images/delete-32.png";
-import iconSoundOff from "../../images/icon-sound-off.png";
-import iconEdit from "../../images/icon-editar32.png";
-import iconLikeInit from "../../images/icon-likes-empty.png";
-import detailPrev from "../../images/detail-prev.png";
-import detailNext from "../../images/detail-next.png";
+import iconHamburguer from "../images/menu_hamburguer.png";
+import iconBack from "../images/icon-back.png";
+import iconFavs from "../images/icon-stars.png";
+import iconMenuFavs from "../images/fav-add-32.png";
+import iconMenuFavsDelete from "../images/fav-delete-32.png";
+import iconLike from "../images/heartLike.png";
+import iconAddFav from "../images/icon-add_plus.png";
+import iconHome from "../images/icon-home.png";
+import iconLogout from "../images/icon-logout-white.png";
+import iconDelete from "../images/delete-32.png";
+import iconSoundOff from "../images/icon-sound-off.png";
+import iconEdit from "../images/icon-editar32.png";
+import iconLikeInit from "../images/icon-likes-empty.png";
+import detailPrev from "../images/detail-prev.png";
+import detailNext from "../images/detail-next.png";
 
 const DetailPageStyles = styled.div`
   font-family: Roboto, sans-serif;
@@ -35,7 +35,7 @@ const DetailPageStyles = styled.div`
       width: 50%;
       min-height: 40px;
       margin: auto;
-      margin-top: 40px;
+      margin-top: -50px;
       text-align: justify;
       display: flex;
       flex-direction: column;
@@ -66,7 +66,6 @@ const DetailPageStyles = styled.div`
       justify-content: space-between;
       margin: auto;
       margin-top: 20px;
-      height: 280px;
       width: 80%;
     }
   }
@@ -256,6 +255,7 @@ const DetailPageStyles = styled.div`
     border-radius: 5px 5px 5px 5px;
     margin: auto;
     margin-top: 6rem;
+    height: 87vh;
   }
 
   .penguin-image-container {

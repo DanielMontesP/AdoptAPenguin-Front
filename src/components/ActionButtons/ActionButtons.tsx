@@ -38,7 +38,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const { user } = useAppSelector((state) => state);
 
   const handleDelete = (): void => {
-    const message = "Delete? ";
+    const message = "Delete permanently from database? ";
     const newModalType = "delete";
 
     dispatch(modalTypeActionCreator(newModalType));

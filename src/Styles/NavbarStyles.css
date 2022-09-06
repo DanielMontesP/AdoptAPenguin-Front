@@ -323,6 +323,8 @@ ul {
 
 .hr-photo {
   width: 245px;
+  margin-bottom: 60px;
+  margin-left: 10px;
 }
 
 .user-username {
@@ -387,7 +389,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin-left: 50px;
+  margin-left: 35px;
 }
 
 .menu-icons-vertical li {
@@ -492,6 +494,7 @@ ul {
   background: url("../images/icon-menu-addFav45.png");
   height: 45px;
   border: 0;
+  margin-top: 100px;
 }
 
 .bt-home {
@@ -543,6 +546,7 @@ ul {
   font-size: 1.2rem;
   left: 70px;
 }
+
 .display-none {
   display: none;
 }

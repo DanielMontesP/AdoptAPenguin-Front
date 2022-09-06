@@ -34,13 +34,11 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
       <h2 className="penguin-name">{toPascalCase(`${penguin.name}`)}</h2>
 
       <div className="penguin-image-container">
-        <div className="penguin-image-content">
-          <img
-            src={penguinImage}
-            alt={penguin.name}
-            className={`penguin-image${contactImageClass}`}
-          />
-        </div>
+        <img
+          src={penguinImage}
+          alt={penguin.name}
+          className={`penguin-image${contactImageClass}`}
+        />
       </div>
       <div className="penguin-datalist">
         <span className="category">{toPascalCase(`${penguin.category}`)}</span>
