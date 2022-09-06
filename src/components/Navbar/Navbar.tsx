@@ -19,6 +19,7 @@ interface Props {
 const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const [isMenuOpen, setMenu] = useState(false);
   const [isModalOpen, setModal] = useState(false);
+  // const [isSearchClicked, setSearch] = useState(false);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -165,6 +166,12 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     navigate(`/users/edit/${user.id}`);
   };
 
+  // const handleSearch = () => {
+  //   setSearch((prevState) => !prevState);
+  // };
+
+  // const HidderSearch = isSearchClicked ? " opacity-full" : "";
+
   const HidderBack =
     isLogged ||
     document.location.href.substring(
@@ -284,6 +291,18 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             >
               New
             </button>
+            {/* <div className="search-container">
+              <input
+                className={`search-input${HidderSearch}`}
+                type="text"
+                placeholder="Search..."
+              />
+              <button
+                onClick={handleSearch}
+                className={`desktop-bt-search${HidderSearch}`}
+                title="bt-search"
+              />
+            </div> */}
             <button
               onClick={handleAbout}
               className={`desktop-bt-about${HidderAbout}`}
