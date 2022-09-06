@@ -6,7 +6,5 @@ export interface UISliceState {
   headerTitle: string;
   headerLastTitle: string;
   apiResponse: string;
-  pages: number;
-  currentPage: number;
-  pagination: number;
+  isDesktop: boolean;
 }

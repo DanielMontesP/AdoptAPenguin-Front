@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ReactDimmer } from "react-dimmer";
 import { useNavigate } from "react-router-dom";
 import {
   modalMessageActionCreator,
@@ -158,12 +157,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
           closeModal={setModal}
         />
       )}
-      <ReactDimmer
-        isOpen={isModalOpen}
-        exitDimmer={setModal}
-        zIndex={90}
-        blur={1.5}
-      />
     </div>
   );
 };

@@ -117,7 +117,7 @@ const PagesStyles = styled.div`
     width: 95%;
     border-radius: 5px;
     min-width: 320px;
-    max-height: 180px;
+    height: 180px;
     margin: auto;
     margin-top: 10px;
     background-color: lightgray;
@@ -311,6 +311,7 @@ const PagesStyles = styled.div`
   .penguin-image-container {
     height: 230px;
     width: 95%;
+
     display: flex;
     justify-content: space-between;
     margin-left: 5px;
@@ -348,6 +349,7 @@ const PagesStyles = styled.div`
   .penguin-container {
     width: 378px;
     height: 370px;
+    margin: auto;
     margin-bottom: 50px;
     margin-right: 15px;
     text-align: center;

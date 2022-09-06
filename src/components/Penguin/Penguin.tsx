@@ -4,7 +4,6 @@ import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { toPascalCase } from "../../utils/utils";
 import iconPhotoEmpty from "../../images/contact-photo-add.png";
 import { Modal } from "../Modals/ModalPrompt";
-import { ReactDimmer } from "react-dimmer";
 import ActionButtons from "../ActionButtons/ActionButtons";
 interface Props {
   penguin: IPenguin;
@@ -28,7 +27,7 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
     penguin.image === "" && !isURL ? " iconPhotoEmpty" : "";
 
   return (
-    <div className="penguin-container item">
+    <div className="penguin-container">
       <ActionButtons penguin={penguin} />
       <h1 className="display-none">AdoptAPenguin.com</h1>
       <h2 className="penguin-name">{toPascalCase(`${penguin.name}`)}</h2>
@@ -63,12 +62,6 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
           message={message}
         />
       )}
-      <ReactDimmer
-        isOpen={isModalOpen}
-        exitDimmer={setModal}
-        zIndex={90}
-        blur={1.5}
-      />
     </div>
   );
 };

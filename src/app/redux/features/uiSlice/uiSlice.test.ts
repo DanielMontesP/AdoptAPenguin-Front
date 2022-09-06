@@ -4,6 +4,7 @@ import uiReducer, {
   apiResponseActionCreator,
   cleanApiResponseActionCreator,
   modalMessageActionCreator,
+  isDesktopActionCreator,
 } from "./uiSlice";
 
 const initialState = {
@@ -15,10 +16,9 @@ const initialState = {
   headerTitle: "",
   headerLastTitle: "",
   apiResponse: "",
-  pages: 0,
-  currentPage: 1,
-  pagination: 5,
+  isDesktop: false,
 };
+
 const expectedState = {
   loading: false,
   finishedLoading: true,
@@ -28,9 +28,7 @@ const expectedState = {
   headerTitle: "",
   headerLastTitle: "",
   apiResponse: "Message",
-  pages: 0,
-  currentPage: 1,
-  pagination: 5,
+  isDesktop: false,
 };
 
 const expectedLoadingState = {
@@ -42,9 +40,7 @@ const expectedLoadingState = {
   headerTitle: "",
   headerLastTitle: "",
   apiResponse: "Message",
-  pages: 0,
-  currentPage: 1,
-  pagination: 5,
+  isDesktop: false,
 };
 describe("Given the loadingActionCreator", () => {
   describe("When invoked", () => {
@@ -96,6 +92,17 @@ describe("Given the modalMessage", () => {
       const loadedState = uiReducer(initialState, action);
 
       expect(loadedState).toEqual(initialState);
+    });
+  });
+
+  describe("Given the isDesktopActionCreator", () => {
+    describe("When invoked", () => {
+      test("Then the feedback ui state should change to true", () => {
+        const action = isDesktopActionCreator(false);
+        const loadedState = uiReducer(initialState, action);
+
+        expect(loadedState).toEqual(initialState);
+      });
     });
   });
 });
