@@ -11,6 +11,7 @@ import {
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import noPhoto from "../../images/userPhoto.png";
+import { ToastContainer } from "react-toastify";
 interface Props {
   headerTitle: string;
 }
@@ -26,6 +27,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const { modalMessage } = useAppSelector((state) => state.ui);
   const { modalType } = useAppSelector((state) => state.ui);
   const { penguin } = useAppSelector((state) => state.penguins);
+  const { isDesktop } = useAppSelector((state) => state.ui);
 
   const userImage = user.image || noPhoto;
 
@@ -227,78 +229,84 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
   return (
     <div className="app">
-      <div className={headerClass}>
-        <button title="btn-back" className={HidderBack} onClick={handleClick} />
-        <img className="header-favs-icon" alt="Page Icon" />
-        <h1 className={`header-title`}>{headerTitle}</h1>
-        <button
-          className={`menu-btn${HidderMenu}`}
-          onClick={handleMenu}
-          title="btn-menu"
-        />
-      </div>
-
-      <div className={headerClassDesktop}>
-        <div className="header-desktop">
+      {!isDesktop ? (
+        <div className={headerClass}>
           <button
             title="btn-back"
             className={HidderBack}
             onClick={handleClick}
           />
-          <img className={classIconHeader} alt="Page Icon" />
-          <h1 className={`header-desktop-title`}>AdoptAPenguin.com</h1>
-        </div>
-        <div className={`header-desktop-buttons${hidderDesktopButtons}`}>
+          <img className="header-favs-icon" alt="Page Icon" />
+          <h1 className={`header-title`}>{headerTitle}</h1>
           <button
-            className={classButtonHome}
-            onClick={loadHome}
-            title="btn-home"
-          >
-            Home
-          </button>
-          <button
-            className={classButtonFavs}
-            onClick={loadFavs}
-            title="btn-favs"
-          >
-            Favourites
-          </button>
-          <button
-            className={classButtonLikes}
-            onClick={loadLikes}
-            title="btn-likes"
-          >
-            Likes
-          </button>
-          <button
-            className={classButtonAddFav}
-            onClick={addFav}
-            title="btn-addFav"
-          >
-            New
-          </button>
-          <button
-            onClick={handleAbout}
-            className={`desktop-bt-about${HidderAbout}`}
-            title="bt-about"
-          />
-          <button
-            onClick={handleHelp}
-            className={`desktop-bt-help${HidderHelp}`}
-            title="desktop-btn-menu"
-          />
-          <button
+            className={`menu-btn${HidderMenu}`}
             onClick={handleMenu}
-            className={`desktop-bt-menu${HidderMenu}`}
-            title="desktop-btn-menu"
-          />
-          <button
-            onClick={handleLogoutHeader}
-            className={`desktop-bt-logout${HidderLogout}`}
-            title="desktop-btn-logout"
+            title="btn-menu"
           />
         </div>
-      </div>
+      ) : (
+        <div className={headerClassDesktop}>
+          <div className="header-desktop">
+            <button
+              title="btn-back"
+              className={HidderBack}
+              onClick={handleClick}
+            />
+            <img className={classIconHeader} alt="Page Icon" />
+            <h1 className={`header-desktop-title`}>AdoptAPenguin.com</h1>
+          </div>
+          <div className={`header-desktop-buttons${hidderDesktopButtons}`}>
+            <button
+              className={classButtonHome}
+              onClick={loadHome}
+              title="btn-home"
+            >
+              Home
+            </button>
+            <button
+              className={classButtonFavs}
+              onClick={loadFavs}
+              title="btn-favs"
+            >
+              Favourites
+            </button>
+            <button
+              className={classButtonLikes}
+              onClick={loadLikes}
+              title="btn-likes"
+            >
+              Likes
+            </button>
+            <button
+              className={classButtonAddFav}
+              onClick={addFav}
+              title="btn-addFav"
+            >
+              New
+            </button>
+            <button
+              onClick={handleAbout}
+              className={`desktop-bt-about${HidderAbout}`}
+              title="bt-about"
+            />
+            <button
+              onClick={handleHelp}
+              className={`desktop-bt-help${HidderHelp}`}
+              title="desktop-btn-menu"
+            />
+            <button
+              onClick={handleMenu}
+              className={`desktop-bt-menu${HidderMenu}`}
+              title="desktop-btn-menu"
+            />
+            <button
+              onClick={handleLogoutHeader}
+              className={`desktop-bt-logout${HidderLogout}`}
+              title="desktop-btn-logout"
+            />
+          </div>
+        </div>
+      )}
       <div className="nav">
         <div className={`menu-app ${isMenuOpen ? "menu-open" : ""}`}>
           <div className="menu-header">
@@ -360,7 +368,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
           </div>
         </div>
       </div>
-
+      <ToastContainer limit={4} />
       {isModalOpen && (
         <Modal
           type={getModalType()}
@@ -373,13 +381,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       <ReactDimmer
         isOpen={isMenuOpen}
         exitDimmer={setMenu}
-        zIndex={90}
-        blur={1.5}
-      />
-
-      <ReactDimmer
-        isOpen={isModalOpen}
-        exitDimmer={setModal}
         zIndex={90}
         blur={1.5}
       />

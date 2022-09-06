@@ -142,7 +142,8 @@ describe("Given the getuserThunk function", () => {
 
       jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      axios.post = jest.fn().mockReturnValue({});
+
+      axios.post = jest.fn().mockResolvedValue({ data: { user: mockUser } });
 
       const mockData = {
         username: mockUser.username,

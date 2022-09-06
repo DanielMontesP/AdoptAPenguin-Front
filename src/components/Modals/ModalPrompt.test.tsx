@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { headerTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 import store from "../../app/redux/store/store";
+import Navbar from "../Navbar/Navbar";
 import { Modal } from "./ModalPrompt";
 
 describe("Given a LoginForm component", () => {
@@ -224,6 +225,7 @@ describe("Given a LoginForm component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
+            <Navbar headerTitle="Detail" />
             <Modal
               closeModal={closeModal}
               idPenguin="modal"

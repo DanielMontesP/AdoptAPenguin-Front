@@ -9,10 +9,8 @@ const initialState: UISliceState = {
   modalType: "",
   headerTitle: "AdoptAPenguin.com",
   headerLastTitle: "",
-  pages: 0,
-  currentPage: 1,
-  pagination: 5,
   apiResponse: "",
+  isDesktop: false,
 };
 
 const uiSlice = createSlice({
@@ -62,6 +60,11 @@ const uiSlice = createSlice({
       feedback: false,
       apiResponse: "",
     }),
+
+    isDesktop: (ui: UISliceState, action: PayloadAction<any>) => ({
+      ...ui,
+      isDesktop: action.payload,
+    }),
   },
 });
 
@@ -74,6 +77,7 @@ export const {
   modalType: modalTypeActionCreator,
   apiResponse: apiResponseActionCreator,
   cleanApiResponse: cleanApiResponseActionCreator,
+  isDesktop: isDesktopActionCreator,
 } = uiSlice.actions;
 
 export const uiLoadSpinnerSelector = (state: RootState) => state.ui.loading;

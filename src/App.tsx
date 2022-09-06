@@ -12,11 +12,10 @@ import jwtDecode from "jwt-decode";
 import { logInActionCreator } from "./app/redux/features/userSlice/userSlice";
 import Navbar from "./components/Navbar/Navbar";
 import { Error404Page } from "./pages/Error404/Error404";
-
-import { ToastContainer } from "react-toastify";
 import PenguinsPage from "./pages/PenguinsPage/PenguinsPage";
 import { getUserThunk } from "./app/redux/thunks/userThunk/userThunk";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import { isDesktopActionCreator } from "./app/redux/features/uiSlice/uiSlice";
 
 function App() {
   const { logged, id } = useAppSelector((state) => state.user);
@@ -24,8 +23,15 @@ function App() {
   const [, setMenu] = useState(false);
 
   const dispatch = useAppDispatch();
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
+
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 420);
+  };
 
   useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+
     const token = localStorage.getItem("token");
 
     if (token || logged) {
@@ -36,11 +42,14 @@ function App() {
       }
       loading ? setMenu(true) : setMenu(false);
     }
-  }, [dispatch, logged, loading, id]);
+    dispatch(isDesktopActionCreator(isDesktop));
+    return () => window.removeEventListener("resize", updateMedia);
+  }, [dispatch, logged, loading, id, isDesktop]);
 
   return (
     <>
       <Navbar headerTitle={headerTitle} />
+
       <Routes>
         <Route path="/" element={<Navigate to="/homepage" />} />
         <Route
@@ -132,7 +141,6 @@ function App() {
           }
         />
       </Routes>
-      <ToastContainer limit={4} />
     </>
   );
 }
