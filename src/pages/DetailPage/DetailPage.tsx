@@ -10,7 +10,7 @@ import {
   loadPenguinsThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import PenguinDetail from "../../components/PenguinDetail/PenguinDetail";
-import DetailPageStyles from "./DetailPageStyles";
+import DetailPageStyles from "../../Styles/DetailPageStyles";
 
 const DetailPage = (): JSX.Element => {
   const dispatch = useAppDispatch();

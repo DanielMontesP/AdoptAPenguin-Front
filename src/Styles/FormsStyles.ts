@@ -14,6 +14,19 @@ import iconEdit from "../images/icon-editar.png";
 
 const FormsStyles = styled.div`
   @media only screen and (max-width: 420px) {
+    button {
+      padding: 14px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 40vh;
+      display: flex;
+      justify-content: center;
+      font-size: 20px;
+      border-radius: 15px;
+      align-items: center;
+      margin: auto;
+    }
+
     .preview-image {
       max-width: 280px;
       height: 190px;
@@ -93,6 +106,19 @@ const FormsStyles = styled.div`
   }
 
   @media only screen and (min-width: 421px) {
+    button {
+      padding: 14px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 50vh;
+      display: flex;
+      justify-content: center;
+      font-size: 20px;
+      border-radius: 15px;
+      align-items: center;
+      margin: auto;
+    }
+
     .preview-image {
       max-width: 350px;
       margin: auto;
@@ -235,19 +261,6 @@ const FormsStyles = styled.div`
     font-size: 20px;
     margin: auto;
     display: none;
-  }
-
-  button {
-    padding: 14px 20px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 50vh;
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
-    border-radius: 15px;
-    align-items: center;
-    margin: auto;
   }
 
   span {
