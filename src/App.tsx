@@ -23,7 +23,7 @@ function App() {
   const [, setMenu] = useState(false);
 
   const dispatch = useAppDispatch();
-  const [isDesktop, setDesktop] = useState(window.innerWidth > 1450);
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 421);
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 420);
