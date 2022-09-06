@@ -142,6 +142,114 @@ h1 {
 }
 
 @media only screen and (min-width: 421px) {
+  .search-container {
+    /* position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; */
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    background: none;
+    border-radius: 50%;
+    transition: all 1s;
+    z-index: 4;
+  }
+
+  .search-input :hover {
+    cursor: pointer;
+  }
+  .search-input ::before {
+    content: "";
+    position: absolute;
+    margin: auto;
+    top: 22px;
+    right: 0;
+    bottom: 0;
+    left: 22px;
+    width: 12px;
+    height: 2px;
+    background: white;
+    transform: rotate(45deg);
+    transition: all 0.5s;
+  }
+  .search-input ::after {
+    content: "";
+    position: absolute;
+    margin: auto;
+    top: -5px;
+    right: 0;
+    bottom: 0;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid white;
+    transition: all 0.5s;
+  }
+
+  .search-input {
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    outline: none;
+    border: none;
+    /* // border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
+    background: rgb(255, 255, 255);
+    color: rgb(87, 85, 85);
+
+    padding: 0 80px 0 20px;
+    border-radius: 30px;
+
+    transition: all 1s;
+    opacity: 0;
+    z-index: 5;
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+  }
+  .search-input:hover {
+    cursor: pointer;
+  }
+
+  .search-input :focus {
+    width: 100px;
+    opacity: 1;
+    cursor: text;
+  }
+  .search-input :focus ~ .search {
+    right: -250px;
+    background: #151515;
+    z-index: 6;
+  }
+  .search-input ::before {
+    top: 0;
+    left: 0;
+    width: 25px;
+  }
+  .search-input ::after {
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 2px;
+    border: none;
+    background: white;
+    border-radius: 0%;
+    transform: rotate(-45deg);
+  }
+
+  .search-input ::placeholder {
+    color: white;
+    opacity: 0.5;
+    font-weight: bolder;
+  }
+
   .header-desktop {
     width: 100%;
     display: flex;
@@ -163,6 +271,15 @@ h1 {
     background-position: center;
     background-repeat: no-repeat;
     height: 25px;
+    border: 0;
+  }
+
+  .desktop-bt-search {
+    background: url("../images/help-45.png");
+    background-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 30px;
     border: 0;
   }
 
@@ -349,7 +466,7 @@ ul {
 
 .search-input {
   margin: auto;
-  width: 80%;
+  width: 80px;
 }
 
 .user-photo {
@@ -494,7 +611,6 @@ ul {
   background: url("../images/icon-menu-addFav45.png");
   height: 45px;
   border: 0;
-  margin-top: 100px;
 }
 
 .bt-home {
@@ -691,4 +807,8 @@ ul {
   font-size: 1.1rem;
   border-radius: 15px;
   border: 1px solid white;
+}
+
+.opacity-full {
+  opacity: 1;
 }
