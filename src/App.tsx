@@ -20,8 +20,6 @@ import { isDesktopActionCreator } from "./app/redux/features/uiSlice/uiSlice";
 function App() {
   const { logged, id } = useAppSelector((state) => state.user);
   const { headerTitle, loading } = useAppSelector((state) => state.ui);
-  const [, setMenu] = useState(false);
-
   const dispatch = useAppDispatch();
   const [isDesktop, setDesktop] = useState(window.innerWidth > 421);
 
@@ -40,7 +38,6 @@ function App() {
       if (userData.id !== id) {
         dispatch(getUserThunk(userData.id));
       }
-      loading ? setMenu(true) : setMenu(false);
     }
     dispatch(isDesktopActionCreator(isDesktop));
     return () => window.removeEventListener("resize", updateMedia);
@@ -105,6 +102,14 @@ function App() {
           element={
             <CheckInSecurity>
               <PenguinsPage type="Likes" />
+            </CheckInSecurity>
+          }
+        />
+        <Route
+          path="/penguins/search"
+          element={
+            <CheckInSecurity>
+              <PenguinsPage type="Search" />
             </CheckInSecurity>
           }
         />

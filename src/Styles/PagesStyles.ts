@@ -94,7 +94,6 @@ const PagesStyles = styled.div`
   }
 
   input :placeholder {
-    font-weight: bolder;
     text-align: center;
   }
 
@@ -117,7 +116,7 @@ const PagesStyles = styled.div`
     width: 95%;
     border-radius: 5px;
     min-width: 320px;
-    height: 180px;
+    height: 220px;
     margin: auto;
     margin-top: 10px;
     background-color: lightgray;
@@ -183,9 +182,7 @@ const PagesStyles = styled.div`
   .penguin-description {
     width: 89%;
     min-height: 40px;
-    position: relative;
-    top: -5px;
-    left: 18px;
+    margin: auto;
     text-align: justify;
   }
 
@@ -309,13 +306,12 @@ const PagesStyles = styled.div`
   }
 
   .penguin-image-container {
-    height: 230px;
+    height: 280px;
     width: 95%;
-
     display: flex;
     justify-content: space-between;
     margin-left: 5px;
-    margin-top: -40px;
+    margin-top: -20px;
     border-radius: 5px 5px 5px 5px;
     text-align: center;
     background-color: white;
@@ -348,7 +344,7 @@ const PagesStyles = styled.div`
 
   .penguin-container {
     width: 378px;
-    height: 370px;
+    height: 420px;
     margin: auto;
     margin-bottom: 50px;
     margin-right: 15px;
@@ -376,7 +372,7 @@ const PagesStyles = styled.div`
   .bt-likes {
     flex: 2;
     border: 0;
-    margin-top: -45px;
+    margin-top: -40px;
   }
 
   .bt-likes {
@@ -504,7 +500,7 @@ const PagesStyles = styled.div`
     justify-content: space-around;
     align-content: space-around;
     position: relative;
-    top: 206px;
+    top: 260px;
     margin: auto;
   }
 

@@ -13,6 +13,7 @@ import {
   resetPenguinActionCreator,
   loadPenguinActionCreator,
   resetPenguinsActionCreator,
+  searchPenguinsActionCreator,
 } from "../../features/penguinSlice/penguinSlice";
 
 import { IPenguin } from "../../types/penguin/penguinInterfaces";
@@ -32,6 +33,8 @@ const blankFormData: IPenguin = {
   image: "",
   imageBackup: "",
 };
+
+let message = "";
 
 export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
   dispatch(loadingActionCreator());
@@ -166,6 +169,35 @@ export const getPenguinThunk =
           false
         );
       }
+    }
+  };
+
+export const searchPenguinThunk =
+  (search: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(loadingActionCreator());
+      setLoadingOn(`SEARCH Penguin: => ${search}`);
+
+      if (search !== "") {
+        const token = localStorage.getItem("token");
+
+        const { data: penguins } = await axios.get(
+          `${process.env.REACT_APP_API_URL}penguins/search/${search}`,
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        dispatch(searchPenguinsActionCreator(penguins));
+        dispatch(finishedLoadingActionCreator());
+        setLoadingOffWithMessage(`SEARCH: ${search} successfully.`, false);
+      }
+    } catch (err: any) {
+      message = `ERROR ${err.message}`;
+      dispatch(finishedLoadingActionCreator());
+      setLoadingOffWithMessage(`SEARCH: ERROR: ${message}.`, false);
     }
   };
 

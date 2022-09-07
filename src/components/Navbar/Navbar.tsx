@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { ReactDimmer } from "react-dimmer";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
@@ -19,7 +19,7 @@ interface Props {
 const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const [isMenuOpen, setMenu] = useState(false);
   const [isModalOpen, setModal] = useState(false);
-  // const [isSearchClicked, setSearch] = useState(false);
+  const [isSearchClicked, setSearch] = useState(false);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -166,11 +166,21 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     navigate(`/users/edit/${user.id}`);
   };
 
-  // const handleSearch = () => {
-  //   setSearch((prevState) => !prevState);
-  // };
+  const handleSearch = () => {
+    setSearch((prevState) => !prevState);
+  };
 
-  // const HidderSearch = isSearchClicked ? " opacity-full" : "";
+  // let stringToSearch = "";
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    // stringToSearch = event.target.value;
+  };
+
+  const handleSearchSubmit = (): void => {
+    dispatch(modalTypeActionCreator("FFeature"));
+    setModal(true);
+  };
+
+  const HidderSearch = isSearchClicked ? " opacity-full" : "";
 
   const HidderBack =
     isLogged ||
@@ -291,18 +301,24 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             >
               New
             </button>
-            {/* <div className="search-container">
-              <input
-                className={`search-input${HidderSearch}`}
-                type="text"
-                placeholder="Search..."
-              />
+            <input
+              className={`search-input${HidderSearch}`}
+              type="text"
+              placeholder="Search..."
+              onChange={handleSearchChange}
+            />
+            <div className="search-container">
               <button
                 onClick={handleSearch}
                 className={`desktop-bt-search${HidderSearch}`}
                 title="bt-search"
               />
-            </div> */}
+              <button
+                onClick={handleSearchSubmit}
+                className={`desktop-bt-search-submit${HidderSearch}`}
+                title="bt-search-submit"
+              />
+            </div>
             <button
               onClick={handleAbout}
               className={`desktop-bt-about${HidderAbout}`}
