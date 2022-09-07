@@ -32,6 +32,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const { headerLastTitle } = useAppSelector((state) => state.ui);
 
   const userImage = user.image || noPhoto;
+  const isForm = headerTitle === "New..." || headerTitle === "Edit...";
 
   const classButton = `desktop-btn bt-`;
 
@@ -183,7 +184,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
   const HidderSearch = isSearchClicked ? " opacity-full" : "";
 
-  const HidderBack =
+  const setClassBack =
     isLogged ||
     document.location.href.substring(
       document.location.href.length,
@@ -192,6 +193,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       ? "bt-search"
       : "bt-back";
 
+  const HidderBack = isDesktop && !isForm ? " display-none" : "";
+
+  const classBack = setClassBack + HidderBack;
   const HidderMenu = isLogged ? " display-none" : "";
   const HidderLogout: string = isLogged ? " display-none" : "";
   const HidderHelp: string = isLogged ? " display-none" : "";
@@ -251,7 +255,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
         <div className={headerClass}>
           <button
             title="btn-back"
-            className={HidderBack}
+            className={classBack}
             onClick={handleClick}
           />
           <img className="header-favs-icon" alt="Page Icon" />
@@ -267,7 +271,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
           <div className="header-desktop">
             <button
               title="btn-back"
-              className={HidderBack}
+              className={classBack}
               onClick={handleClick}
             />
             <img className={classIconHeader} alt="Page Icon" />
