@@ -79,7 +79,13 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     event.preventDefault();
 
     setFormData({
-      ...(formData.id || formData.image ? formData : penguin),
+      ...(formData.id ||
+      formData.image ||
+      formData.name ||
+      formData.category ||
+      formData.description
+        ? formData
+        : penguin),
       [event.target.id]: event.target.value,
     });
 
