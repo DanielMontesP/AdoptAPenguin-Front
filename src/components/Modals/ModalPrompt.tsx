@@ -43,6 +43,9 @@ export const Modal = ({
     case "Help":
       windowTitle = "Help";
       break;
+    case "FFeature":
+      windowTitle = "Notice";
+      break;
     default:
       windowTitle = "Please confirm";
   }
@@ -61,6 +64,8 @@ export const Modal = ({
       return <WellcomeComments />;
     } else if (isHelp) {
       return <Help />;
+    } else if (type === "FFeature") {
+      message = "This feature will be available soon.";
     }
 
     return <h3 className="modal-message">{message}</h3>;

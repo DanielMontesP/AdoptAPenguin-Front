@@ -88,11 +88,20 @@ const penguinSlice = createSlice({
       ...penguins,
       allPenguins: [action.payload],
     }),
+
+    searchPenguins: (
+      penguins,
+      action: PayloadAction<IPenguin[]>
+    ): SliceIniState => ({
+      ...penguins,
+      allPenguins: [...action.payload],
+    }),
   },
 });
 
 export const {
   loadPenguins: loadPenguinsActionCreator,
+  searchPenguins: searchPenguinsActionCreator,
   loadPenguin: loadPenguinActionCreator,
   deletePenguin: deletePenguinActionCreator,
   createPenguin: createPenguinActionCreator,
