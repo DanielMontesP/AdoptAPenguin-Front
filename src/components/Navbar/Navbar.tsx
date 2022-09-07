@@ -29,6 +29,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const { modalType } = useAppSelector((state) => state.ui);
   const { penguin } = useAppSelector((state) => state.penguins);
   const { isDesktop } = useAppSelector((state) => state.ui);
+  const { headerLastTitle } = useAppSelector((state) => state.ui);
 
   const userImage = user.image || noPhoto;
 
@@ -145,15 +146,15 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const handleBack = () => {
-    switch (headerTitle) {
+    switch (headerLastTitle) {
       case "Favourites":
+        navigate("/penguins/favs");
+        break;
+      case "Home":
         navigate("/penguins");
         break;
-      case "Detail":
-        navigate("/penguins/favs");
-        break;
-      case "Edit...":
-        navigate("/penguins/favs");
+      case "Likes":
+        navigate("/penguins/likes");
         break;
       default:
         navigate("/penguins");
