@@ -3,7 +3,10 @@ import { ReactDimmer } from "react-dimmer";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { Modal } from "../Modals/ModalPrompt";
-import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import {
+  resetPenguinThunk,
+  searchPenguinThunk,
+} from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import "../../Styles/NavbarStyles.css";
 import { toPascalCase } from "../../utils/utils";
 import {
@@ -172,14 +175,14 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     setSearch((prevState) => !prevState);
   };
 
-  // let stringToSearch = "";
+  let stringToSearch = "";
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    // stringToSearch = event.target.value;
+    stringToSearch = event.target.value;
   };
 
   const handleSearchSubmit = (): void => {
     dispatch(modalTypeActionCreator("FFeature"));
-    setModal(true);
+    dispatch(searchPenguinThunk(stringToSearch));
   };
 
   const HidderSearch = isSearchClicked ? " opacity-full" : "";
@@ -309,7 +312,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <input
               className={`search-input${HidderSearch}`}
               type="text"
-              placeholder="Search..."
+              placeholder="Search by name..."
               onChange={handleSearchChange}
             />
             <div className="search-container">
