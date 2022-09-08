@@ -456,11 +456,11 @@ ul {
 }
 
 .bt-search {
-  background: url("../images/icon-search-45.png");
+  background: url("../images/icon-search-white-45.png");
+  background-size: 35px;
+  background-position: center;
   background-repeat: no-repeat;
-  margin: auto;
   height: 45px;
-  display: none;
   border: 0;
 }
 
