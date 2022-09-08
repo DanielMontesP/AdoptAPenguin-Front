@@ -49,13 +49,15 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   let classIconLikes = `${classIconHeader}-likes-icon`;
   let classIconHome = `${classIconHeader}-home-icon`;
   let classButtonAddFav = `${classButton}addFav`;
-
+  let classButtonSearch = ``;
   let hidderDesktopButtons = "";
 
   const isLogged =
     document.location.href.includes("/login") ||
     document.location.href.includes("/homepage") ||
     document.location.href.includes("/register");
+
+  const isHome = headerTitle === "Home";
 
   const handleClick = () => {
     if (headerTitle !== "Home") {
@@ -172,7 +174,15 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const handleSearch = () => {
+    if (isMenuOpen) {
+      setMenu((prevState) => !prevState);
+    }
     setSearch((prevState) => !prevState);
+    classButtonSearch = ` ${classButtonSearch} selected`;
+    classButtonHome = `${classButton}home`;
+    classButtonLikes = `${classButton}likes`;
+    classButtonFavs = `${classButton}favs`;
+    classButtonSearch = `${classButton}about`;
   };
 
   let stringToSearch = "";
@@ -185,16 +195,11 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     dispatch(searchPenguinThunk(stringToSearch));
   };
 
-  const HidderSearch = isSearchClicked ? " opacity-full" : "";
+  const HidderSearch = isSearchClicked
+    ? ` opacity-full ${classButtonSearch}`
+    : ` ${classButtonSearch}`;
 
-  const setClassBack =
-    isLogged ||
-    document.location.href.substring(
-      document.location.href.length,
-      document.location.href.length - 3
-    ) === "ins"
-      ? "bt-search"
-      : "bt-back";
+  const setClassBack = "bt-back";
 
   const HidderBack = isDesktop && !isForm ? " display-none" : "";
 
@@ -256,11 +261,13 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     <div className="app">
       {!isDesktop ? (
         <div className={headerClass}>
-          <button
-            title="btn-back"
-            className={classBack}
-            onClick={handleClick}
-          />
+          {!isHome && (
+            <button
+              title="btn-back"
+              className={classBack}
+              onClick={handleClick}
+            />
+          )}
           <img className="header-favs-icon" alt="Page Icon" />
           <h1 className={`header-title`}>{headerTitle}</h1>
           <button
@@ -272,11 +279,13 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       ) : (
         <div className={headerClassDesktop}>
           <div className="header-desktop">
-            <button
-              title="btn-back"
-              className={classBack}
-              onClick={handleClick}
-            />
+            {!isHome && (
+              <button
+                title="btn-back"
+                className={classBack}
+                onClick={handleClick}
+              />
+            )}
             <img className={classIconHeader} alt="Page Icon" />
             <h1 className={`header-desktop-title`}>AdoptAPenguin.com</h1>
           </div>
@@ -314,6 +323,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
               type="text"
               placeholder="Search by name..."
               onChange={handleSearchChange}
+              autoFocus
             />
             <div className="search-container">
               <button
@@ -405,6 +415,13 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 </button>
                 <button onClick={addFav} className="bt-addfav" title="bt-fav">
                   <h3 className="menu-icon-label-vertical">New...</h3>
+                </button>
+                <button
+                  onClick={handleSearch}
+                  className="bt-search"
+                  title="bt-search"
+                >
+                  <h3 className="menu-icon-label-vertical">Search...</h3>
                 </button>
               </div>
             </div>

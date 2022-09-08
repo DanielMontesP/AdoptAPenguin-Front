@@ -43,10 +43,11 @@ const DetailPageStyles = styled.div`
 
     .detail-image {
       height: 300px;
-      width: 400px;
+      width: 450px;
       object-fit: cover;
       background-color: rgb(255 254 254);
-      border-radius: 10px;
+      border-radius: 5px;
+      flex: 1;
     }
 
     .penguin--container {
@@ -59,6 +60,10 @@ const DetailPageStyles = styled.div`
       height: 215px;
     }
 
+    .detail-content {
+      height: 450px;
+      background: white;
+    }
     .img-container {
       display: flex;
       flex-direction: row;
@@ -82,7 +87,7 @@ const DetailPageStyles = styled.div`
     }
 
     .penguin-description {
-      width: 70%;
+      width: 80%;
       min-height: 40px;
       margin: auto;
       margin-top: -60px;
@@ -93,7 +98,7 @@ const DetailPageStyles = styled.div`
 
     .detail-image {
       height: 200px;
-      width: 270px;
+      width: 320px;
       object-fit: cover;
       background-color: rgb(255 254 254);
       border-radius: 10px;
@@ -107,7 +112,6 @@ const DetailPageStyles = styled.div`
       margin: auto;
       text-align: center;
       height: 115px;
-      width: 270px;
     }
 
     .img-container {
@@ -230,9 +234,11 @@ const DetailPageStyles = styled.div`
     background: none;
     background-image: url(${detailNext});
     background-repeat: no-repeat;
-    background-position: 95% 50%;
-    margin-left: 5px;
+    background-position: center;
+    background-size: 25px;
     width: 10%;
+    height: 270px;
+    flex: 2;
   }
 
   .imgDetailPrev {
@@ -244,18 +250,19 @@ const DetailPageStyles = styled.div`
     background: none;
     background-image: url(${detailPrev});
     background-repeat: no-repeat;
-    background-position: 5% 50%;
-    margin-right: 5px;
+    background-position: center;
+    background-size: 25px;
     width: 10%;
+    height: 270px;
+    flex: 2;
   }
 
   .detail-container {
-    background: white;
     margin-bottom: 10px;
     border-radius: 5px 5px 5px 5px;
     margin: auto;
     margin-top: 6rem;
-    height: 87vh;
+    height: 87.4vh;
   }
 
   .penguin-image-container {
@@ -320,6 +327,7 @@ const DetailPageStyles = styled.div`
     flex: 2;
     text-align: center;
     margin-top: 15px;
+    background: white;
   }
 
   .likes {
@@ -347,6 +355,7 @@ const DetailPageStyles = styled.div`
     border-radius: 15px;
     padding: 15px;
     font-size: 16px;
+    background: white;
   }
 
   .description-container {

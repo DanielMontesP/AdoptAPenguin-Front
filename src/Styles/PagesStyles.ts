@@ -310,7 +310,7 @@ const PagesStyles = styled.div`
     width: 95%;
     display: flex;
     justify-content: space-between;
-    margin-left: 5px;
+    margin: auto;
     margin-top: -20px;
     border-radius: 5px 5px 5px 5px;
     text-align: center;
@@ -344,14 +344,13 @@ const PagesStyles = styled.div`
 
   .penguin-container {
     width: 378px;
-    height: 420px;
+    height: 440px;
     margin: auto;
     margin-bottom: 50px;
-    margin-right: 15px;
     text-align: center;
     padding: 0.5em;
     border: 1px solid grey;
-    border-radius: 5px;
+    border-radius: 15px;
     display: inline-flex;
     flex-wrap: wrap;
     background: #fff;
@@ -364,7 +363,7 @@ const PagesStyles = styled.div`
 
   .penguin-datalist {
     position: relative;
-    left: 15px;
+    left: 20px;
     display: flex;
   }
 
@@ -500,7 +499,7 @@ const PagesStyles = styled.div`
     justify-content: space-around;
     align-content: space-around;
     position: relative;
-    top: 260px;
+    top: 265px;
     margin: auto;
   }
 
