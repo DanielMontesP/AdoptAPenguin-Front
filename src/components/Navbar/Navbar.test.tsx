@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { headerLastTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 import store from "../../app/redux/store/store";
 import Navbar from "./Navbar";
 
@@ -44,7 +45,7 @@ describe("Given a Navbar component", () => {
   describe("When Back action is invoked", () => {
     test("Then it should call the back action", () => {
       const handleBack = jest.fn();
-
+      headerLastTitleActionCreator("Favourites");
       render(
         <BrowserRouter>
           <Provider store={store}>
@@ -300,6 +301,25 @@ describe("Given a Navbar component", () => {
       userEvent.click(btToCLick);
       handleHelp();
       expect(handleHelp).toHaveBeenCalled();
+    });
+  });
+
+  describe("When bt-search is clicked", () => {
+    test("Then it should call the loadLikes action", () => {
+      const handleSearch = jest.fn();
+
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <Navbar headerTitle="Favourites" />
+          </Provider>
+        </BrowserRouter>
+      );
+      const btToCLick = screen.getByTitle("bt-search");
+
+      userEvent.click(btToCLick);
+      handleSearch();
+      expect(handleSearch).toHaveBeenCalled();
     });
   });
 });

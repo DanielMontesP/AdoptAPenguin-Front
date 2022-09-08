@@ -223,38 +223,42 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     return newModalType;
   };
 
-  switch (headerTitle) {
-    case "Home":
-      classButtonHome = `${classButtonHome} selected`;
-      classButtonLikes = `${classButton}likes`;
-      classButtonFavs = `${classButton}favs`;
-      classButtonAbout = `${classButton}about`;
-      classIconHeader = classIconHome;
-      break;
-    case "Likes":
-      classButtonLikes = `${classButtonLikes} selected`;
-      classButtonHome = `${classButton}home`;
-      classButtonFavs = `${classButton}favs`;
-      classButtonAbout = `${classButton}about`;
-      classButtonAbout = `${classButton}about`;
-      classIconHeader = classIconLikes;
+  if (modalType !== "FFeature") {
+    switch (headerTitle) {
+      case "Home":
+        classButtonHome = `${classButtonHome} selected`;
+        classButtonLikes = `${classButton}likes`;
+        classButtonFavs = `${classButton}favs`;
+        classButtonAbout = `${classButton}about`;
+        classIconHeader = classIconHome;
+        break;
+      case "Likes":
+        classButtonLikes = `${classButtonLikes} selected`;
+        classButtonHome = `${classButton}home`;
+        classButtonFavs = `${classButton}favs`;
+        classButtonAbout = `${classButton}about`;
+        classButtonAbout = `${classButton}about`;
+        classIconHeader = classIconLikes;
 
-      break;
-    case "Favourites":
-      classButtonFavs = `${classButtonFavs} selected`;
-      classButtonHome = `${classButton}home`;
-      classButtonLikes = `${classButton}likes`;
-      classButtonAbout = `${classButton}about`;
-      classIconHeader = classIconFavs;
-      break;
-    case "Detail":
-      classButtonFavs = `${classButtonFavs}`;
-      classButtonHome = `${classButton}home`;
-      classButtonLikes = `${classButton}likes`;
-      classButtonAbout = `${classButton}about`;
-      break;
-    default:
-      hidderDesktopButtons = " display-none";
+        break;
+      case "Favourites":
+        classButtonFavs = `${classButtonFavs} selected`;
+        classButtonHome = `${classButton}home`;
+        classButtonLikes = `${classButton}likes`;
+        classButtonAbout = `${classButton}about`;
+        classIconHeader = classIconFavs;
+        break;
+      case "Detail":
+        classButtonFavs = `${classButtonFavs}`;
+        classButtonHome = `${classButton}home`;
+        classButtonLikes = `${classButton}likes`;
+        classButtonAbout = `${classButton}about`;
+        break;
+      default:
+        hidderDesktopButtons = " display-none";
+    }
+  } else {
+    classButtonSearch = `${classButtonSearch} selected`;
   }
 
   return (
