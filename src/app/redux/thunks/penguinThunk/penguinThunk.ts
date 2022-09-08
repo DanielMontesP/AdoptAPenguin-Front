@@ -178,9 +178,8 @@ export const searchPenguinThunk =
       dispatch(loadingActionCreator());
       setLoadingOn(`SEARCH Penguin: => ${search}`);
 
-      if (search !== "") {
-        const token = localStorage.getItem("token");
-
+      const token = localStorage.getItem("token");
+      if (search !== "" && token) {
         const { data: penguins } = await axios.get(
           `${process.env.REACT_APP_API_URL}penguins/search/${search}`,
           {

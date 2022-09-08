@@ -28,8 +28,13 @@ export const Modal = ({
 
   const isWellcome = type === "About" || type === "Wellcome" ? true : false;
   const isHelp = type === "Help";
+  const isAbout = type === "About";
 
-  const modalClass = isWellcome ? "modal modal-wellcome" : "modal";
+  const overflowY = isHelp || isAbout ? " overflowY-auto" : "";
+
+  const modalClass = isWellcome
+    ? `modal modal-wellcome${overflowY}`
+    : `modal${overflowY}`;
 
   let windowTitle = "";
 
