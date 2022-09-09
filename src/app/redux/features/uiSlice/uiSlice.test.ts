@@ -17,6 +17,7 @@ const initialState = {
   headerLastTitle: "",
   apiResponse: "",
   isDesktop: false,
+  stringToSearch: "",
 };
 
 const expectedState = {
@@ -29,6 +30,7 @@ const expectedState = {
   headerLastTitle: "",
   apiResponse: "Message",
   isDesktop: false,
+  stringToSearch: "",
 };
 
 const expectedLoadingState = {
@@ -41,6 +43,7 @@ const expectedLoadingState = {
   headerLastTitle: "",
   apiResponse: "Message",
   isDesktop: false,
+  stringToSearch: "",
 };
 describe("Given the loadingActionCreator", () => {
   describe("When invoked", () => {

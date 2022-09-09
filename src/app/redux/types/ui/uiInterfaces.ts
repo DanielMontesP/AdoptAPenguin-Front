@@ -7,4 +7,5 @@ export interface UISliceState {
   headerLastTitle: string;
   apiResponse: string;
   isDesktop: boolean;
+  stringToSearch: string;
 }

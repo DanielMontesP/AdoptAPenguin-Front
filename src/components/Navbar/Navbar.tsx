@@ -14,6 +14,7 @@ import {
   headerTitleActionCreator,
   modalMessageActionCreator,
   modalTypeActionCreator,
+  stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import noPhoto from "../../images/userPhoto.png";
 import { ToastContainer } from "react-toastify";
@@ -35,6 +36,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const { penguin } = useAppSelector((state) => state.penguins);
   const { isDesktop } = useAppSelector((state) => state.ui);
   const { headerLastTitle } = useAppSelector((state) => state.ui);
+  let { stringToSearch } = useAppSelector((state) => state.ui);
 
   const [, setFormData] = useState(blankFormData);
 
@@ -90,7 +92,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       setMenu((prevState) => !prevState);
     }
     dispatch(modalTypeActionCreator(""));
-    dispatch(headerTitleActionCreator("Favourites"));
+
     navigate("/penguins/favs");
   };
 
@@ -99,7 +101,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       setMenu((prevState) => !prevState);
     }
     dispatch(modalTypeActionCreator(""));
-    dispatch(headerTitleActionCreator("Likes"));
+
     navigate("/penguins/likes");
   };
 
@@ -195,10 +197,8 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     handleSearch("fromMenu");
   };
 
-  let stringToSearch = "";
-
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    stringToSearch = event.target.value;
+    dispatch(stringToSearchActionCreator(event.target.value));
   };
 
   const handleSearchSubmit = (): void => {
@@ -209,6 +209,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
     setSearch((prevState) => !prevState);
 
+    dispatch(stringToSearchActionCreator(stringToSearch));
     dispatch(headerLastTitleActionCreator(headerTitle));
     dispatch(headerTitleActionCreator("Search results..."));
   };
