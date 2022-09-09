@@ -205,7 +205,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     dispatch(modalTypeActionCreator("FFeature"));
     dispatch(searchPenguinThunk(stringToSearch));
 
-    isMenuOpen ?? setMenu((prevState) => !prevState);
+    if (isMenuOpen) {
+      setMenu((prevState) => !prevState);
+    }
 
     setSearch((prevState) => !prevState);
 
@@ -347,6 +349,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
               placeholder="Search by name..."
               onChange={handleSearchChange}
               autoFocus
+              value={stringToSearch}
             />
             <div className="search-container">
               <button
@@ -452,6 +455,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                   placeholder="Search by name..."
                   onChange={handleSearchChange}
                   autoFocus
+                  value={stringToSearch}
                 />
                 <button
                   onClick={handleSearchSubmit}
