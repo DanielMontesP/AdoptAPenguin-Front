@@ -18,39 +18,28 @@ interface Props {
 const PenguinsPage = ({ type }: Props) => {
   const dispatch = useAppDispatch();
 
-  let thisTitle = "";
-
-  switch (type) {
-    case "Likes":
-      thisTitle = type;
-      break;
-    case "Favourites":
-      thisTitle = type;
-      break;
-
-    default:
-      thisTitle = "Home";
-  }
-
   const { allPenguins } = useAppSelector((state) => state.penguins);
-  const { headerTitle } = useAppSelector((state) => state.ui);
+  const { headerTitle, modalType, headerLastTitle } = useAppSelector(
+    (state) => state.ui
+  );
 
   useEffect(() => {
     const SetTitleHeader = (title: string, lastTitle: string) => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));
     };
-    if (headerTitle !== thisTitle && headerTitle !== "Search results...")
-      SetTitleHeader(thisTitle, headerTitle);
+    if (modalType === "") {
+      SetTitleHeader(type, headerLastTitle);
 
-    if (thisTitle === "Likes") {
-      dispatch(loadLikesThunk());
-    } else if (thisTitle === "Favourites") {
-      dispatch(loadFavsThunk());
-    } else {
-      dispatch(loadPenguinsThunk());
+      if (type === "Likes") {
+        dispatch(loadLikesThunk());
+      } else if (type === "Favourites") {
+        dispatch(loadFavsThunk());
+      } else if (type === "Home") {
+        dispatch(loadPenguinsThunk());
+      }
     }
-  }, [dispatch, headerTitle, thisTitle, type]);
+  }, [dispatch, headerTitle, modalType, headerLastTitle, type]);
 
   return <Penguins allPenguins={allPenguins} />;
 };

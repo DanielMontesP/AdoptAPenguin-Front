@@ -11,6 +11,7 @@ const initialState: UISliceState = {
   headerLastTitle: "",
   apiResponse: "",
   isDesktop: false,
+  stringToSearch: "",
 };
 
 const uiSlice = createSlice({
@@ -65,6 +66,11 @@ const uiSlice = createSlice({
       ...ui,
       isDesktop: action.payload,
     }),
+
+    stringToSearch: (ui: UISliceState, action: PayloadAction<any>) => ({
+      ...ui,
+      stringToSearch: action.payload,
+    }),
   },
 });
 
@@ -73,6 +79,7 @@ export const {
   finishedLoading: finishedLoadingActionCreator,
   headerTitle: headerTitleActionCreator,
   headerLastTitle: headerLastTitleActionCreator,
+  stringToSearch: stringToSearchActionCreator,
   modalMessage: modalMessageActionCreator,
   modalType: modalTypeActionCreator,
   apiResponse: apiResponseActionCreator,
