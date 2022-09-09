@@ -40,7 +40,8 @@ const PenguinsPage = ({ type }: Props) => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));
     };
-    if (headerTitle !== thisTitle) SetTitleHeader(thisTitle, headerTitle);
+    if (headerTitle !== thisTitle && headerTitle !== "Search results...")
+      SetTitleHeader(thisTitle, headerTitle);
 
     if (thisTitle === "Likes") {
       dispatch(loadLikesThunk());

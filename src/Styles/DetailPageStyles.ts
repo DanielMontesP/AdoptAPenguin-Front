@@ -177,24 +177,16 @@ const DetailPageStyles = styled.div`
   }
 
   h1 {
-    font-size: 234px;
-    margin-left: 10px;
+    font-size: 24px;
   }
 
   h2 {
     font-size: 16px;
-    margin-left: 12px;
+    text-align: center;
   }
 
   .bt-delete {
     visibility: hidden;
-  }
-
-  h1,
-  h2 {
-    text-align: left;
-    color: black;
-    font-size: 24px;
   }
 
   .bt-logout {
@@ -324,9 +316,6 @@ const DetailPageStyles = styled.div`
   }
 
   .detail-name {
-    flex: 2;
-    text-align: center;
-    margin-top: 15px;
     background: white;
   }
 

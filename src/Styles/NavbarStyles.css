@@ -475,6 +475,38 @@ ul {
   width: 150px;
 }
 
+.menu-search-input {
+  width: 50%;
+  height: 30px;
+  margin: auto;
+  outline: none;
+  border: none;
+  background: rgb(255, 255, 255);
+  color: rgb(87, 85, 85);
+  padding: 0 80px 0 20px;
+  border-radius: 30px;
+  transition: all 1s;
+  opacity: 0;
+  letter-spacing: 0.1em;
+}
+
+.menu-bt-search-submit {
+  background: url("../images/icon-search-black-45.png");
+  background-size: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 30px;
+  border: 0;
+  margin-top: -2px;
+  opacity: 0;
+  position: relative;
+  top: -58px;
+  left: 80%;
+}
+
+.search-title {
+  margin-top: -10px;
+}
 .user-photo {
   margin-left: 20px;
   width: 100px;
@@ -511,19 +543,12 @@ ul {
   margin-top: -20px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
   margin-left: 35px;
 }
 
 .menu-icons-vertical li {
   margin-top: 30px;
-}
-
-.menu-vertical {
-  display: inline;
-  float: left;
-  text-align: left;
-  margin: auto;
 }
 
 .menu-horizontal {
@@ -717,6 +742,10 @@ ul {
 .overflowY-auto {
   overflow-y: auto;
 }
+.overflowY-auto {
+  overflow-y: unset;
+}
+
 .modal-wellcome {
   width: 80%;
   height: auto;

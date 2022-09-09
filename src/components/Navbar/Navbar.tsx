@@ -10,11 +10,14 @@ import {
 import "../../Styles/NavbarStyles.css";
 import { toPascalCase } from "../../utils/utils";
 import {
+  headerLastTitleActionCreator,
+  headerTitleActionCreator,
   modalMessageActionCreator,
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import noPhoto from "../../images/userPhoto.png";
 import { ToastContainer } from "react-toastify";
+import { blankFormData } from "../../utils/utils";
 interface Props {
   headerTitle: string;
 }
@@ -33,6 +36,8 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const { penguin } = useAppSelector((state) => state.penguins);
   const { isDesktop } = useAppSelector((state) => state.ui);
   const { headerLastTitle } = useAppSelector((state) => state.ui);
+
+  const [, setFormData] = useState(blankFormData);
 
   const userImage = user.image || noPhoto;
   const isForm = headerTitle === "New..." || headerTitle === "Edit...";
@@ -58,12 +63,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     document.location.href.includes("/register");
 
   const isHome = headerTitle === "Home";
-
-  const handleClick = () => {
-    if (headerTitle !== "Home") {
-      handleBack();
-    }
-  };
 
   const handleLogout = (type: string) => {
     const message = "Log out?";
@@ -91,7 +90,8 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
-
+    dispatch(modalTypeActionCreator(""));
+    dispatch(headerTitleActionCreator("Favourites"));
     navigate("/penguins/favs");
   };
 
@@ -99,7 +99,8 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
-
+    dispatch(modalTypeActionCreator(""));
+    dispatch(headerTitleActionCreator("Likes"));
     navigate("/penguins/likes");
   };
 
@@ -152,17 +153,22 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const handleBack = () => {
+    setFormData(blankFormData);
+    dispatch(modalTypeActionCreator(""));
+
     switch (headerLastTitle) {
       case "Favourites":
+        dispatch(headerTitleActionCreator("Favourites"));
         navigate("/penguins/favs");
         break;
-      case "Home":
-        navigate("/penguins");
-        break;
+
       case "Likes":
+        dispatch(headerTitleActionCreator("Likes"));
         navigate("/penguins/likes");
         break;
+
       default:
+        dispatch(headerTitleActionCreator("Home"));
         navigate("/penguins");
     }
   };
@@ -173,19 +179,25 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     navigate(`/users/edit/${user.id}`);
   };
 
-  const handleSearch = () => {
-    if (isMenuOpen) {
-      setMenu((prevState) => !prevState);
+  const handleSearch = (type: string) => {
+    if (type === "fromNavBar") {
+      if (isMenuOpen) {
+        setMenu((prevState) => !prevState);
+      }
     }
     setSearch((prevState) => !prevState);
-    classButtonSearch = ` ${classButtonSearch} selected`;
-    classButtonHome = `${classButton}home`;
-    classButtonLikes = `${classButton}likes`;
-    classButtonFavs = `${classButton}favs`;
-    classButtonSearch = `${classButton}about`;
+  };
+
+  const handleSearchFromNavBar = () => {
+    handleSearch("fromNavBar");
+  };
+
+  const handleSearchFromMenu = () => {
+    handleSearch("fromMenu");
   };
 
   let stringToSearch = "";
+
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     stringToSearch = event.target.value;
   };
@@ -193,6 +205,13 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const handleSearchSubmit = (): void => {
     dispatch(modalTypeActionCreator("FFeature"));
     dispatch(searchPenguinThunk(stringToSearch));
+
+    isMenuOpen ?? setMenu((prevState) => !prevState);
+
+    setSearch((prevState) => !prevState);
+
+    dispatch(headerLastTitleActionCreator(headerTitle));
+    dispatch(headerTitleActionCreator("Search results..."));
   };
 
   const HidderSearch = isSearchClicked
@@ -239,7 +258,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
         classButtonAbout = `${classButton}about`;
         classButtonAbout = `${classButton}about`;
         classIconHeader = classIconLikes;
-
         break;
       case "Favourites":
         classButtonFavs = `${classButtonFavs} selected`;
@@ -255,7 +273,10 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
         classButtonAbout = `${classButton}about`;
         break;
       default:
-        hidderDesktopButtons = " display-none";
+        classButtonHome = `${classButton}home selected`;
+        classButtonFavs = `${classButton}favs`;
+        classButtonLikes = `${classButton}likes`;
+        classButtonAbout = `${classButton}about`;
     }
   } else {
     classButtonSearch = `${classButtonSearch} selected`;
@@ -269,7 +290,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <button
               title="btn-back"
               className={classBack}
-              onClick={handleClick}
+              onClick={handleBack}
             />
           )}
           <img className="header-favs-icon" alt="Page Icon" />
@@ -287,7 +308,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
               <button
                 title="btn-back"
                 className={classBack}
-                onClick={handleClick}
+                onClick={handleBack}
               />
             )}
             <img className={classIconHeader} alt="Page Icon" />
@@ -331,7 +352,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             />
             <div className="search-container">
               <button
-                onClick={handleSearch}
+                onClick={handleSearchFromNavBar}
                 className={`desktop-bt-search${HidderSearch}`}
                 title="bt-search"
               />
@@ -421,12 +442,24 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                   <h3 className="menu-icon-label-vertical">New...</h3>
                 </button>
                 <button
-                  onClick={handleSearch}
+                  onClick={handleSearchFromMenu}
                   className="bt-search"
                   title="bt-search"
                 >
                   <h3 className="menu-icon-label-vertical">Search...</h3>
                 </button>
+                <input
+                  className={`menu-search-input${HidderSearch}`}
+                  type="text"
+                  placeholder="Search by name..."
+                  onChange={handleSearchChange}
+                  autoFocus
+                />
+                <button
+                  onClick={handleSearchSubmit}
+                  className={`menu-bt-search-submit${HidderSearch}`}
+                  title="bt-search-submit"
+                />
               </div>
             </div>
           </div>
