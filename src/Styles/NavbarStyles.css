@@ -742,7 +742,7 @@ ul {
 .overflowY-auto {
   overflow-y: auto;
 }
-.overflowY-auto {
+.overflowY-none {
   overflow-y: unset;
 }
 

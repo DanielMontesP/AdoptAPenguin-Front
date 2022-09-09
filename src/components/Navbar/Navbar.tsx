@@ -8,7 +8,7 @@ import {
   searchPenguinThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import "../../Styles/NavbarStyles.css";
-import { toPascalCase } from "../../utils/utils";
+import { toPascalCase, blankFormData } from "../../utils/utils";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
@@ -17,7 +17,6 @@ import {
 } from "../../app/redux/features/uiSlice/uiSlice";
 import noPhoto from "../../images/userPhoto.png";
 import { ToastContainer } from "react-toastify";
-import { blankFormData } from "../../utils/utils";
 interface Props {
   headerTitle: string;
 }
@@ -278,8 +277,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
         classButtonLikes = `${classButton}likes`;
         classButtonAbout = `${classButton}about`;
     }
-  } else {
-    classButtonSearch = `${classButtonSearch} selected`;
   }
 
   return (
