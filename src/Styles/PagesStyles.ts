@@ -64,13 +64,7 @@ const PagesStyles = styled.div`
 
   h2 {
     font-size: 16px;
-    margin-left: 12px;
-  }
-
-  h1,
-  h2 {
     text-align: center;
-    color: black;
   }
 
   label {
@@ -148,6 +142,11 @@ const PagesStyles = styled.div`
     margin-top: 5px;
   }
 
+  .penguin-name {
+    flex: 2;
+    border: 0;
+    margin-top: -40px;
+  }
   .animated {
     background-repeat: no-repeat;
     background-position: left top;
@@ -367,7 +366,6 @@ const PagesStyles = styled.div`
     display: flex;
   }
 
-  .penguin-name,
   .bt-likes {
     flex: 2;
     border: 0;

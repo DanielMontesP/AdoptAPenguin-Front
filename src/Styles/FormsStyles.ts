@@ -59,7 +59,7 @@ const FormsStyles = styled.div`
       width: 40vh;
       height: 180px;
       cursor: pointer;
-      background-color: rgb(223 223 218 / 90%);
+
       background-image: url(${iconAddPhoto});
       background-repeat: no-repeat;
       background-position: center;
@@ -153,7 +153,7 @@ const FormsStyles = styled.div`
       width: 50vh;
       height: 220px;
       cursor: pointer;
-      background-color: rgb(223 223 218 / 90%);
+
       background-image: url(${iconAddPhoto});
       background-repeat: no-repeat;
       background-position: center;
@@ -755,7 +755,7 @@ we're going to use its associated label to trigger it */
   }
 
   .form-img__file-label:hover {
-    background-color: rgba(245, 245, 231, 0.5);
+    background-color: rgba(192, 192, 188, 0.5);
   }
 
   .form-img__file-label > img {

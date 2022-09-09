@@ -7,11 +7,7 @@ import {
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { useNavigate } from "react-router-dom";
 import { blankFormData, cleanArray } from "../../utils/utils";
-import {
-  IPenguin,
-  IRegisterForm,
-} from "../../app/redux/types/penguin/penguinInterfaces";
-
+import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 interface Props {
   penguin: IPenguin;
 }
@@ -27,19 +23,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const { user } = useAppSelector((state) => state);
 
-  const initialFormData: IRegisterForm = {
-    id: penguin?.id,
-    name: penguin?.name,
-    category: penguin?.category,
-    likers: penguin?.likers,
-    likes: penguin?.likes,
-    favs: penguin?.favs,
-    description: penguin?.description,
-    image: penguin?.image,
-    imageBackup: penguin?.imageBackup,
-  };
-
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, setFormData] = useState(blankFormData);
 
   const processCreate = (type: string) => {
     const newFormData = new FormData();

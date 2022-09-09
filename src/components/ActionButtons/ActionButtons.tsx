@@ -34,8 +34,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const isFav = penguin.favs.includes(idUser);
   const isLiker = penguin.likers.includes(idUser);
 
-  const { user } = useAppSelector((state) => state);
-
   const handleDelete = (): void => {
     const message = "Delete permanently from database? ";
     const newModalType = "delete";
@@ -49,7 +47,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const handleEdit = () => {
     setMenu((prevState) => !prevState);
 
-    navigate(`/users/edit/${user.id}`);
+    navigate(`/penguins/edit/${penguin.id}`);
   };
 
   const deleteFromLikers = () => {
