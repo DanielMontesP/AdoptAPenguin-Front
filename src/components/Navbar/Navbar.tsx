@@ -390,6 +390,19 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
         <div className={`menu-app ${isMenuOpen ? "menu-open" : ""}`}>
           <div className="menu-header">
             <div className="menu-horizontal">
+              <input
+                className={`menu-search-input${HidderSearch}`}
+                type="text"
+                placeholder="Search by name..."
+                onChange={handleSearchChange}
+                autoFocus
+                value={stringToSearch}
+              />
+              <button
+                onClick={handleSearchSubmit}
+                className={`menu-bt-search-submit${HidderSearch}`}
+                title="bt-search-submit"
+              />
               <hr className="hr-menu-horizontal" />
               <div className="menu-icons-horizontal">
                 <button
@@ -449,19 +462,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 >
                   <h3 className="menu-icon-label-vertical">Search...</h3>
                 </button>
-                <input
-                  className={`menu-search-input${HidderSearch}`}
-                  type="text"
-                  placeholder="Search by name..."
-                  onChange={handleSearchChange}
-                  autoFocus
-                  value={stringToSearch}
-                />
-                <button
-                  onClick={handleSearchSubmit}
-                  className={`menu-bt-search-submit${HidderSearch}`}
-                  title="bt-search-submit"
-                />
               </div>
             </div>
           </div>
