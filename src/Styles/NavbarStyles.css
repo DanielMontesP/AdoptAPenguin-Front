@@ -445,9 +445,8 @@ ul {
 }
 
 .hr-photo {
-  width: 245px;
-  margin-bottom: 60px;
-  margin-left: 10px;
+  width: 150px;
+  margin-top: 10px;
 }
 
 .user-username {
@@ -500,8 +499,8 @@ ul {
   margin-top: -2px;
   opacity: 0;
   position: relative;
-  top: -40px;
-  left: 80%;
+  top: -29px;
+  left: 78%;
 }
 
 .search-title {
@@ -555,6 +554,8 @@ ul {
   position: absolute;
   bottom: 25px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .menu-btn {
