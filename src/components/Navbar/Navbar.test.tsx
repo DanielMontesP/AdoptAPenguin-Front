@@ -23,25 +23,6 @@ describe("Given a Navbar component", () => {
     });
   });
 
-  describe("When Edit action is invoked", () => {
-    test("Then it should call the edit action", () => {
-      const handleEdit = jest.fn();
-
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <Navbar headerTitle="Detail" />
-          </Provider>
-        </BrowserRouter>
-      );
-      const btToCLick = screen.getByTitle("btn-edit");
-
-      userEvent.click(btToCLick);
-      handleEdit();
-      expect(handleEdit).toHaveBeenCalled();
-    });
-  });
-
   describe("When Back action is invoked", () => {
     test("Then it should call the back action", () => {
       const handleBack = jest.fn();

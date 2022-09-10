@@ -446,12 +446,15 @@ ul {
 
 .hr-photo {
   width: 150px;
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  margin-left: 60px;
 }
 
 .user-username {
+  margin: auto;
+  margin-top: 50px;
   margin-left: 10px;
-  margin-top: auto;
 }
 
 .bt-search {
@@ -522,6 +525,17 @@ ul {
   display: flex;
   justify-content: left;
   margin-top: 15px;
+  height: fit-content;
+}
+
+.menu-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+
+  margin-left: 35px;
+  position: relative;
+  top: -50px;
 }
 
 .menu-header {
@@ -544,6 +558,8 @@ ul {
   flex-direction: column;
   gap: 10px;
   margin-left: 35px;
+  position: relative;
+  top: -18px;
 }
 
 .menu-icons-vertical li {
@@ -551,8 +567,6 @@ ul {
 }
 
 .menu-horizontal {
-  position: absolute;
-  bottom: 25px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -688,11 +702,10 @@ ul {
   gap: 1rem;
 }
 
-.menu-icons-vertical h3 {
-  position: relative;
-  color: white;
+.menu-icon-label-vertical {
   font-size: 1.2rem;
-  left: 70px;
+  color: white;
+  margin-left: 70px;
 }
 
 .display-none {
