@@ -174,12 +174,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     }
   };
 
-  const handleEdit = () => {
-    setMenu((prevState) => !prevState);
-
-    navigate(`/users/edit/${user.id}`);
-  };
-
   const handleSearch = (type: string) => {
     if (type === "fromNavBar") {
       if (isMenuOpen) {
@@ -388,81 +382,65 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       )}
       <div className="nav">
         <div className={`menu-app ${isMenuOpen ? "menu-open" : ""}`}>
-          <div className="menu-header">
-            <div className="menu-horizontal">
-              <input
-                className={`menu-search-input${HidderSearch}`}
-                type="text"
-                placeholder="Search by name..."
-                onChange={handleSearchChange}
-                autoFocus
-                value={stringToSearch}
+          <div className="user-data-container">
+            <img src={userImage} className="user-photo" alt="user" />
+            <h3 className="user-username">
+              {toPascalCase(`${user.username}`)}
+            </h3>
+          </div>
+          <div className="menu-vertical">
+            <hr className="hr-photo" />
+            <button onClick={loadHome} className="bt-home" title="bt-home">
+              <h3 className="menu-icon-label-vertical">Home</h3>
+            </button>
+            <button onClick={loadFavs} className="bt-favs" title="bt-favs">
+              <h3 className="menu-icon-label-vertical">Favourites</h3>
+            </button>
+            <button onClick={loadLikes} className="bt-likes" title="bt-likes">
+              <h3 className="menu-icon-label-vertical">Likes</h3>
+            </button>
+            <button onClick={addFav} className="bt-addfav" title="bt-fav">
+              <h3 className="menu-icon-label-vertical">New...</h3>
+            </button>
+            <button
+              onClick={handleSearchFromMenu}
+              className="bt-search"
+              title="bt-search"
+            >
+              <h3 className="menu-icon-label-vertical">Search...</h3>
+            </button>
+          </div>
+          <div className="menu-horizontal">
+            <input
+              className={`menu-search-input${HidderSearch}`}
+              type="text"
+              placeholder="Search by name..."
+              onChange={handleSearchChange}
+              autoFocus
+              value={stringToSearch}
+            />
+            <button
+              onClick={handleSearchSubmit}
+              className={`menu-bt-search-submit${HidderSearch}`}
+              title="bt-search-submit"
+            />
+            <hr className="hr-menu-horizontal" />
+            <div className="menu-icons-horizontal">
+              <button
+                onClick={handleLogoutMenu}
+                className="bt-logout"
+                title="btn-logout"
               />
               <button
-                onClick={handleSearchSubmit}
-                className={`menu-bt-search-submit${HidderSearch}`}
-                title="bt-search-submit"
+                onClick={handleHelp}
+                className="bt-help"
+                title="bt-help"
               />
-              <hr className="hr-menu-horizontal" />
-              <div className="menu-icons-horizontal">
-                <button
-                  onClick={handleLogoutMenu}
-                  className="bt-logout"
-                  title="btn-logout"
-                />
-
-                <button
-                  onClick={handleHelp}
-                  className="bt-help"
-                  title="bt-help"
-                />
-
-                <button
-                  onClick={handleAbout}
-                  className="bt-about"
-                  title="bt-about"
-                />
-              </div>
-            </div>
-
-            <div className="user-data-container">
-              <img src={userImage} className="user-photo" alt="user" />
-              <h3 className="user-username">
-                {toPascalCase(`${user.username}`)}
-              </h3>
               <button
-                className={`animated menu-animatedEdit`}
-                onClick={handleEdit}
-                title="btn-edit"
+                onClick={handleAbout}
+                className="bt-about"
+                title="bt-about"
               />
-            </div>
-            <div className="menu-vertical">
-              <div className="menu-icons-vertical">
-                <hr className="hr-photo" />
-                <button onClick={loadHome} className="bt-home" title="bt-home">
-                  <h3 className="menu-icon-label-vertical">Home</h3>
-                </button>
-                <button onClick={loadFavs} className="bt-favs" title="bt-favs">
-                  <h3 className="menu-icon-label-vertical">Favourites</h3>
-                </button>
-                <button
-                  onClick={loadLikes}
-                  className="bt-likes"
-                  title="bt-likes"
-                >
-                  <h3 className="menu-icon-label-vertical">Likes</h3>
-                </button>
-                <button onClick={addFav} className="bt-addfav" title="bt-fav">
-                  <h3 className="menu-icon-label-vertical">New...</h3>
-                </button>
-                <button
-                  onClick={handleSearchFromMenu}
-                  className="bt-search"
-                  title="bt-search"
-                >
-                  <h3 className="menu-icon-label-vertical">Search...</h3>
-                </button>
-              </div>
             </div>
           </div>
         </div>
