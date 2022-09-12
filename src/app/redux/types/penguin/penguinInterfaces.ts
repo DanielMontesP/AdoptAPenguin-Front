@@ -5,8 +5,9 @@ export interface IPenguin {
   likes: number;
   likers: {}[];
   favs: {}[];
-  image: string | File | any;
+  image: string | File;
   imageBackup: string;
+  imageResized: Blob | MediaSource | any;
   description: string;
 }
 

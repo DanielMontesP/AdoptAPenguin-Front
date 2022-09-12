@@ -32,6 +32,7 @@ const blankFormData: IPenguin = {
   description: "",
   image: "",
   imageBackup: "",
+  imageResized: "",
 };
 
 let message = "";
