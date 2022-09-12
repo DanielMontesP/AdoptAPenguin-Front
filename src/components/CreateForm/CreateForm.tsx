@@ -6,7 +6,7 @@ import {
   editPenguinThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { useNavigate } from "react-router-dom";
-import { blankFormData, cleanArray } from "../../utils/utils";
+import { blankFormData, cleanArray, resizeFile } from "../../utils/utils";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 interface Props {
   penguin: IPenguin;
@@ -76,11 +76,14 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     modFields.push(event.target.id);
   };
 
-  const handleImg = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleImg = async (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.[0]) {
+      const file = event.target.files?.[0];
+      const image = await resizeFile(file);
+
       setFormData({
         ...(formData.id || formData.image ? formData : penguin),
-        image: event.target.files?.[0],
+        image: image,
         imageBackup: "",
       });
       setImg({

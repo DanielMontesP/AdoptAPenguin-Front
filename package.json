@@ -23,6 +23,7 @@
     "react-app-polyfill": "^3.0.0",
     "react-dimmer": "^1.0.7",
     "react-dom": "^18.1.0",
+    "react-image-file-resizer": "^0.4.8",
     "react-media": "^1.10.0",
     "react-native-indicator": "^1.2.2",
     "react-redux": "^8.0.2",
