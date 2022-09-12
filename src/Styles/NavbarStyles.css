@@ -446,7 +446,7 @@ ul {
 
 .hr-photo {
   width: 150px;
-  margin-top: 30px;
+  margin-top: 43px;
   margin-bottom: 50px;
   margin-left: 60px;
 }
@@ -455,15 +455,6 @@ ul {
   margin: auto;
   margin-top: 50px;
   margin-left: 10px;
-}
-
-.bt-search {
-  background: url("../images/icon-search-white-45.png");
-  background-size: 35px;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 45px;
-  border: 0;
 }
 
 .about-icon {
@@ -532,10 +523,10 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: left;
-
   margin-left: 35px;
   position: relative;
   top: -50px;
+  gap: 5px;
 }
 
 .menu-header {
@@ -656,12 +647,18 @@ ul {
 .bt-addfav {
   background: url("../images/icon-menu-addFav45.png");
   height: 45px;
+  width: 190px;
+  background-repeat: no-repeat;
+  text-align: left;
   border: 0;
 }
 
 .bt-home {
-  background: url("../images/icon-menu-home45.png");
   height: 45px;
+  width: 190px;
+  background: url("../images/icon-menu-home45.png");
+  background-repeat: no-repeat;
+  text-align: left;
   border: 0;
 }
 
@@ -684,16 +681,28 @@ ul {
 .bt-favs {
   background: url("../images/icon-star_full.png");
   height: 45px;
+  width: 190px;
   background-repeat: no-repeat;
-  background-position: center;
+  text-align: left;
   border: 0;
 }
 
 .bt-likes {
+  height: 45px;
   background: url("../images/menu-favs.png");
   background-repeat: no-repeat;
-  background-position: center;
+  width: 190px;
+  text-align: left;
+  border: 0;
+}
+
+.bt-search {
+  background: url("../images/icon-search-white-45.png");
+  background-size: 35px;
+  background-repeat: no-repeat;
   height: 45px;
+  width: 190px;
+  text-align: left;
   border: 0;
 }
 
@@ -804,7 +813,6 @@ ul {
 }
 
 .modal-message {
-  height: -webkit-fill-available;
   width: 100%;
   font-size: 16px;
   color: black;
