@@ -11,6 +11,7 @@ export const blankFormData: IPenguin = {
   description: "",
   image: "",
   imageBackup: "",
+  imageResized: "",
 };
 
 export const toPascalCase = (strValue: string) => {

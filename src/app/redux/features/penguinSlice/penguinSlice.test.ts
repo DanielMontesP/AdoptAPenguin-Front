@@ -71,6 +71,7 @@ describe("Given the deletePenguinActionCreator", () => {
           category: "",
           image: "",
           imageBackup: "",
+          imageResized: "",
           likes: 0,
           likers: [],
           favs: [],

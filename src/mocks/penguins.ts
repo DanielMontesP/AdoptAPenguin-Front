@@ -9,6 +9,7 @@ export const mockPenguin: IPenguin = {
   favs: ["id", "id2"],
   image: "image1",
   imageBackup: "sadsadasd.jpg",
+  imageResized: "ImageBackup.jpg",
   description: "description1",
 };
 
@@ -21,6 +22,7 @@ export const mockEmptyDataPenguin: IPenguin = {
   favs: [""],
   image: "",
   imageBackup: "",
+  imageResized: "",
   description: "",
 };
 
@@ -34,6 +36,7 @@ export const mockPenguinsEmpty: IPenguin[] = [
     favs: [""],
     image: "",
     imageBackup: "",
+    imageResized: "",
     description: "",
   },
 ];
@@ -47,6 +50,7 @@ export const mockPenguins: IPenguin[] = [
     favs: ["id"],
     image: "image.jpg",
     imageBackup: "ImageBackup.jpg",
+    imageResized: "ImageBackup.jpg",
     description: "Cal is a penguin",
   },
   {
@@ -58,6 +62,7 @@ export const mockPenguins: IPenguin[] = [
     favs: ["penguin1"],
     image: "image.jpg",
     imageBackup: "ImageBackup.jpg",
+    imageResized: "ImageBackup.jpg",
     description: "Cal is a penguin",
   },
 ];

@@ -22,6 +22,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const isCreate = document.location.href.includes("create");
 
   const { user } = useAppSelector((state) => state);
+  const { headerLastTitle } = useAppSelector((state) => state.ui);
 
   const [formData, setFormData] = useState(blankFormData);
 
@@ -82,9 +83,10 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       const image = await resizeFile(file);
 
       setFormData({
-        ...(formData.id || formData.image ? formData : penguin),
-        image: image,
+        ...(formData.id || image ? formData : penguin),
+        image: event.target.files?.[0],
         imageBackup: "",
+        imageResized: image,
       });
       setImg({
         src: URL.createObjectURL(event.target.files[0]),
@@ -101,12 +103,28 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       if (isCreate) {
         processCreate("New");
       } else {
-        imageAdded ? processCreate("") : processEdit();
+        imageAdded ? processCreate("New") : processEdit();
       }
 
       setFormData(blankFormData);
 
-      navigate("/penguins/favs");
+      let navigateTo = "";
+
+      switch (headerLastTitle) {
+        case "Favourites":
+          navigateTo = "/penguins/favs";
+          break;
+        case "Home":
+          navigateTo = "/penguins";
+          break;
+        case "Likes":
+          navigateTo = "/penguins/likes";
+          break;
+        default:
+          navigateTo = "/penguins";
+      }
+
+      navigate(navigateTo);
     } catch (error) {
       wrongAction("Error:" + error);
     }
