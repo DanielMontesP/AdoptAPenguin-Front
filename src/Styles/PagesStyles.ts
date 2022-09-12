@@ -288,7 +288,6 @@ const PagesStyles = styled.div`
     height: 45px;
     background: none;
     background: url(${iconMenuFavs});
-
     position: relative;
     margin-top: 7px;
     border: 0;
