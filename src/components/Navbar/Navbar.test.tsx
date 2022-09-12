@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { useState } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { headerLastTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
@@ -288,6 +289,14 @@ describe("Given a Navbar component", () => {
   describe("When bt-search is clicked", () => {
     test("Then it should call the loadLikes action", () => {
       const handleSearch = jest.fn();
+      const handleSearchSubmit = jest.fn();
+
+      const mockMenu = jest.fn().mockResolvedValue(true);
+
+      jest.mock("react", () => ({
+        ...jest.requireActual("react"),
+        isMenuOpen: () => mockMenu,
+      }));
 
       render(
         <BrowserRouter>
@@ -297,10 +306,14 @@ describe("Given a Navbar component", () => {
         </BrowserRouter>
       );
       const btToCLick = screen.getByTitle("bt-search");
+      const btToCLickSubmit = screen.getByTitle("bt-search-submit");
 
       userEvent.click(btToCLick);
+      userEvent.click(btToCLickSubmit);
       handleSearch();
+      handleSearchSubmit();
       expect(handleSearch).toHaveBeenCalled();
+      expect(handleSearchSubmit).toHaveBeenCalled();
     });
   });
 });
