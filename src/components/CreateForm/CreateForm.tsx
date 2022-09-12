@@ -47,9 +47,23 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const processEdit = () => {
     modFields = cleanArray(modFields);
+    const newFormData = new FormData();
 
+    if (imageAdded) {
+      newFormData.append("name", formData.name);
+      newFormData.append("category", formData.category);
+      newFormData.append("likes", JSON.stringify(1));
+      newFormData.append("likers", JSON.stringify(formData.likers));
+      newFormData.append("favs", JSON.stringify(formData.favs));
+      newFormData.append("image", formData.image);
+      newFormData.append("imageBackup", formData.imageBackup);
+      newFormData.append("description", formData.description);
+    }
     dispatch(
-      editPenguinThunk(formData, "Update fields: " + modFields.join(", "))
+      editPenguinThunk(
+        imageAdded ? newFormData : formData,
+        "Update fields: " + modFields.join(", ")
+      )
     );
   };
 
@@ -88,6 +102,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         imageBackup: "",
         imageResized: image,
       });
+
       setImg({
         src: URL.createObjectURL(event.target.files[0]),
         alt: event.target.files[0].name,
@@ -103,7 +118,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       if (isCreate) {
         processCreate("New");
       } else {
-        imageAdded ? processCreate("New") : processEdit();
+        processEdit();
       }
 
       setFormData(blankFormData);
