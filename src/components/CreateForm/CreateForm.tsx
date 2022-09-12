@@ -50,13 +50,12 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     const newFormData = new FormData();
 
     if (imageAdded) {
+      newFormData.append("_id", formData.id);
       newFormData.append("name", formData.name);
       newFormData.append("category", formData.category);
-      newFormData.append("likes", JSON.stringify(1));
-      newFormData.append("likers", JSON.stringify(formData.likers));
-      newFormData.append("favs", JSON.stringify(formData.favs));
       newFormData.append("image", formData.image);
       newFormData.append("imageBackup", formData.imageBackup);
+      newFormData.append("imageResized", formData.imageResized);
       newFormData.append("description", formData.description);
     }
     dispatch(
@@ -86,6 +85,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         ? formData
         : penguin),
       [event.target.id]: event.target.value,
+      id: penguin.id,
     });
 
     modFields.push(event.target.id);
