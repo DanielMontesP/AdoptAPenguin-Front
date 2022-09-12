@@ -297,17 +297,16 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
         </div>
       ) : (
         <div className={headerClassDesktop}>
-          <div className="header-desktop">
-            {!isHome && (
-              <button
-                title="btn-back"
-                className={classBack}
-                onClick={handleBack}
-              />
-            )}
-            <img className={classIconHeader} alt="Page Icon" />
-            <h1 className={`header-desktop-title`}>AdoptAPenguin.com</h1>
-          </div>
+          {!isHome && (
+            <button
+              title="btn-back"
+              className={classBack}
+              onClick={handleBack}
+            />
+          )}
+          <img className={classIconHeader} alt="Page Icon" />
+          <h1 className={`header-desktop-title`}>AdoptAPenguin.com</h1>
+
           <div className={`header-desktop-buttons${hidderDesktopButtons}`}>
             <button
               className={classButtonHome}
