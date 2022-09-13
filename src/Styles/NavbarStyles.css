@@ -189,19 +189,16 @@ h1 {
     top: -30px;
     right: 10px;
     bottom: 0;
-    width: 30px;
     height: 30px;
     outline: none;
     border: none;
     /* // border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
     background: rgb(255, 255, 255);
     color: rgb(87, 85, 85);
-    padding: 0 80px 0 20px;
+    padding: 0 40px 0 10px;
     border-radius: 30px;
     transition: all 1s;
     opacity: 0;
-
-    letter-spacing: 0.1em;
   }
 
   .search-input:hover {
@@ -209,7 +206,7 @@ h1 {
   }
 
   .search-input :focus {
-    width: 100px;
+    width: 180px;
     opacity: 1;
     cursor: text;
   }
@@ -364,7 +361,8 @@ h1 {
   background: url("../images/help-45.png");
   background-position: center;
   background-repeat: no-repeat;
-  height: 45px;
+  background-size: 35px;
+
   border: 0;
 }
 
@@ -414,7 +412,8 @@ h1 {
 /* ------------------------------------------  */
 
 button {
-  width: 45px;
+  width: 40px;
+  height: 40px;
   background-position: center;
   background-repeat: no-repeat;
   padding: 0;
@@ -445,8 +444,8 @@ ul {
 
 .hr-photo {
   width: 150px;
-  margin-top: 85px;
-  margin-bottom: 50px;
+  margin-top: 77px;
+  margin-bottom: 15px;
   margin-left: 60px;
 }
 
@@ -464,22 +463,21 @@ ul {
 
 .search-input {
   margin: auto;
-  width: 150px;
+  width: 180px;
 }
 
 .menu-search-input {
-  width: 50%;
+  width: 180px;
   height: 30px;
   margin: auto;
   outline: none;
   border: none;
   background: rgb(255, 255, 255);
   color: rgb(87, 85, 85);
-  padding: 0 80px 0 20px;
+  padding: 0 40px 0 10px;
   border-radius: 30px;
   transition: all 1s;
   opacity: 0;
-  letter-spacing: 0.1em;
 }
 
 .menu-bt-search-submit {
@@ -487,13 +485,16 @@ ul {
   background-size: 20px;
   background-position: center;
   background-repeat: no-repeat;
-  height: 30px;
   border: 0;
   margin-top: -2px;
   opacity: 0;
   position: relative;
-  top: -29px;
-  left: 78%;
+  top: 15px;
+  left: -40px;
+}
+.menu-search-container {
+  margin-left: 35px;
+  margin-bottom: 15px;
 }
 
 .search-title {
@@ -525,7 +526,7 @@ ul {
   margin-left: 35px;
   position: fixed;
   top: 5vh;
-  gap: 5px;
+  gap: 35px;
   height: 1vw;
 }
 
@@ -534,13 +535,13 @@ ul {
 }
 
 .menu-icons-horizontal {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  margin-bottom: 10px;
   padding: 0;
-
-  width: 100%;
 }
 
 .menu-icons-vertical {
@@ -578,7 +579,6 @@ ul {
   background: url("../images/icon-menu-back45.png");
   background-repeat: no-repeat;
   background-position: center;
-  height: 45px;
   border: 0;
   position: fixed;
   margin-top: 8px;
@@ -587,8 +587,9 @@ ul {
 
 .bt-logout {
   background: url("../images/icon-menu-logout45.png");
+  background-position: center;
   background-repeat: no-repeat;
-  height: 45px;
+  background-size: 42px;
   border: 0;
 }
 
@@ -666,7 +667,9 @@ ul {
 
 .bt-about {
   background: url("../images/about-45.png");
-  height: 45px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35px;
   border: 0;
 }
 
@@ -700,10 +703,9 @@ ul {
 
 .bt-search {
   background: url("../images/icon-search-white-45.png");
-  background-size: 35px;
   background-repeat: no-repeat;
-  height: 45px;
-  width: 190px;
+  background-position: center;
+  background-size: 40px;
   text-align: left;
   border: 0;
 }

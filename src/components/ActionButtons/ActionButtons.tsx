@@ -31,8 +31,8 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const isFav = penguin.favs.includes(idUser);
-  const isLiker = penguin.likers.includes(idUser);
+  const isFav = penguin.favs?.includes(idUser);
+  const isLiker = penguin.likers?.includes(idUser);
 
   const handleDelete = (): void => {
     const message = "Delete permanently from database? ";
