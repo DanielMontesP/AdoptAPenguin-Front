@@ -58,6 +58,8 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   let classButtonSearch = ``;
   let hidderDesktopButtons = "";
 
+  const searchPlaceHolderText = "Search by name or category...";
+
   const isLogged =
     document.location.href.includes("/login") ||
     document.location.href.includes("/homepage") ||
@@ -109,7 +111,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
-
+    dispatch(modalTypeActionCreator(""));
     navigate("/penguins");
   };
 
@@ -339,7 +341,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <input
               className={`search-input${HidderSearch}`}
               type="text"
-              placeholder="Search by name..."
+              placeholder={searchPlaceHolderText}
               onChange={handleSearchChange}
               autoFocus
               value={stringToSearch}
@@ -389,6 +391,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
           </div>
           <div className="menu-vertical">
             <hr className="hr-photo" />
+
             <button onClick={loadHome} className="bt-home" title="bt-home">
               <h3 className="menu-icon-label-vertical">Home</h3>
             </button>
@@ -401,28 +404,23 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <button onClick={addFav} className="bt-addfav" title="bt-fav">
               <h3 className="menu-icon-label-vertical">New...</h3>
             </button>
-            <button
-              onClick={handleSearchFromMenu}
-              className="bt-search"
-              title="bt-search"
-            >
-              <h3 className="menu-icon-label-vertical">Search...</h3>
-            </button>
           </div>
           <div className="menu-horizontal">
-            <input
-              className={`menu-search-input${HidderSearch}`}
-              type="text"
-              placeholder="Search by name..."
-              onChange={handleSearchChange}
-              autoFocus
-              value={stringToSearch}
-            />
-            <button
-              onClick={handleSearchSubmit}
-              className={`menu-bt-search-submit${HidderSearch}`}
-              title="bt-search-submit"
-            />
+            <div className="menu-search-container">
+              <input
+                className={`menu-search-input${HidderSearch}`}
+                type="text"
+                placeholder={searchPlaceHolderText}
+                onChange={handleSearchChange}
+                autoFocus
+                value={stringToSearch}
+              />
+              <button
+                onClick={handleSearchSubmit}
+                className={`menu-bt-search-submit${HidderSearch}`}
+                title="bt-search-submit"
+              />
+            </div>
             <hr className="hr-menu-horizontal" />
             <div className="menu-icons-horizontal">
               <button
@@ -440,6 +438,13 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 className="bt-about"
                 title="bt-about"
               />
+              <button
+                onClick={handleSearchFromMenu}
+                className="bt-search"
+                title="bt-search"
+              >
+                {/* <h3 className="menu-icon-label-vertical">Search...</h3> */}
+              </button>
             </div>
           </div>
         </div>

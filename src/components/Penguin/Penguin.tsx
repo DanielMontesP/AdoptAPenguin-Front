@@ -18,7 +18,7 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
     navigate(`/detail/${penguin.id}`);
   };
 
-  const isURL = penguin.imageBackup.includes("/");
+  const isURL = penguin.imageBackup?.includes("/");
 
   const penguinImage =
     penguin.image === "" && !isURL ? iconPhotoEmpty : penguin.imageBackup;
@@ -43,7 +43,7 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
         <span className="category">{toPascalCase(`${penguin.category}`)}</span>
       </div>
       <div className="penguin-description">
-        {penguin.description.substring(0, 100)}
+        {penguin.description?.substring(0, 100)}
 
         <span
           className="link effect"
