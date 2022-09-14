@@ -56,7 +56,7 @@ const RegisterForm = (): JSX.Element => {
       <img src={imgHome} title="Git" alt="Git" className="img-Home" />
 
       <NavLink to="/login" className="link">
-        Already have an account? Please Log In
+        Already have an account? Please Login
       </NavLink>
 
       <label htmlFor="username"> Username </label>

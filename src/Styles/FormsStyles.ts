@@ -247,8 +247,7 @@ const FormsStyles = styled.div`
   a {
     text-decoration: none;
     color: black;
-    font-size: 20px;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
   }
 

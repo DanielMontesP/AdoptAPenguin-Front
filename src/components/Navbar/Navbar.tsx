@@ -218,7 +218,10 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
   const setClassBack = "bt-back";
 
-  const HidderBack = isDesktop && !isForm ? " display-none" : "";
+  const HidderBack =
+    (isDesktop && !isForm) || headerTitle === "AdoptAPenguin.com"
+      ? " display-none"
+      : "";
 
   const classBack = setClassBack + HidderBack;
   const HidderMenu = isLogged ? " display-none" : "";
@@ -232,8 +235,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   let headerIconType = isLikesPage ? " header-likes" : "";
   headerIconType = isFavsPage ? " header-favs" : headerIconType;
 
-  const headerClass = `header${headerIconType}`;
-  const headerClassDesktop = `header-desktop${headerIconType}`;
+  const hidderApp = headerTitle === "AdoptAPenguin.com" ? " display-none" : "";
+  const headerClass = `header${headerIconType}${hidderApp}`;
+  const headerClassDesktop = `header-desktop${headerIconType}${hidderApp}`;
 
   const getModalType = () => {
     const newModalType = modalType;
@@ -279,7 +283,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   }
 
   return (
-    <div className="app">
+    <div className={`app`}>
       {!isDesktop ? (
         <div className={headerClass}>
           {!isHome && (
