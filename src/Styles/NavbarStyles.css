@@ -216,11 +216,7 @@ h1 {
     background: #151515;
     z-index: 6;
   }
-  .search-input ::before {
-    top: 0;
-    left: 0;
-    width: 25px;
-  }
+
   .search-input ::after {
     top: 0;
     left: 0;
