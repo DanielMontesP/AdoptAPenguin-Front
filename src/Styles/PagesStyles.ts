@@ -146,7 +146,9 @@ const PagesStyles = styled.div`
     flex: 2;
     border: 0;
     margin-top: -40px;
+    min-width: 55px;
   }
+
   .animated {
     background-repeat: no-repeat;
     background-position: left top;

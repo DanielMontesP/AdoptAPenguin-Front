@@ -1,9 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { useState } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { headerLastTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
+import {
+  headerLastTitleActionCreator,
+  headerTitleActionCreator,
+} from "../../app/redux/features/uiSlice/uiSlice";
 import store from "../../app/redux/store/store";
 import Navbar from "./Navbar";
 
@@ -46,7 +48,7 @@ describe("Given a Navbar component", () => {
   describe("When Back with edit param  is invoked", () => {
     test("Then it should call the back action", () => {
       const handleBack = jest.fn();
-
+      headerLastTitleActionCreator("Favourites");
       render(
         <BrowserRouter>
           <Provider store={store}>
@@ -85,10 +87,18 @@ describe("Given a Navbar component", () => {
     test("Then it should call the back action", () => {
       const handleBack = jest.fn();
 
+      jest.mock("../../app/redux/features/uiSlice/uiSlice", () => ({
+        ...jest.requireActual("../../app/redux/features/uiSlice/uiSlice"),
+        useAppSelector: () =>
+          jest.fn().mockResolvedValue({
+            state: { ui: { headerLastTitle: "Favourites" } },
+          }),
+      }));
+
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navbar headerTitle="Favourites" />
+            <Navbar headerTitle="Likes" />
           </Provider>
         </BrowserRouter>
       );
@@ -209,7 +219,31 @@ describe("Given a Navbar component", () => {
       expect(handleLogout).toHaveBeenCalled();
     });
   });
+  describe("When bt-logoutHeader is clicked", () => {
+    test("Then it should call the logoutHeader action", () => {
+      const handleLogout = jest.fn();
+      const handleLogoutHeader = jest.fn();
+      jest.mock("react", () => ({
+        ...jest.requireActual("react"),
+        isMenuOpen: () => true,
+        useState: () => jest.fn().mockResolvedValue(true),
+      }));
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <Navbar headerTitle="Favourites" />
+          </Provider>
+        </BrowserRouter>
+      );
+      const btToCLick = screen.getByTitle("btn-logout");
 
+      userEvent.click(btToCLick);
+
+      handleLogout();
+      handleLogoutHeader();
+      expect(handleLogout).toHaveBeenCalled();
+    });
+  });
   describe("When headerTitle is clicked", () => {
     test("Then it should call the loadLikes action", () => {
       const loadLikes = jest.fn();
@@ -297,7 +331,10 @@ describe("Given a Navbar component", () => {
         ...jest.requireActual("react"),
         isMenuOpen: () => mockMenu,
       }));
-
+      jest.mock("../../app/redux/hooks/hooks", () => ({
+        ...jest.requireActual("../../app/redux/hooks/hooks"),
+        isMenuOpen: () => true,
+      }));
       render(
         <BrowserRouter>
           <Provider store={store}>
