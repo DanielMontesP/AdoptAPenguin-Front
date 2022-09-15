@@ -68,6 +68,71 @@
   }
 }
 
+.header-title-container {
+  display: flex;
+  height: 60px;
+  width: 100%;
+}
+.header-desktop-title1 {
+  margin: auto;
+  animation: move 15s infinite;
+}
+.header-desktop-title2 {
+  margin: auto;
+  animation: move 15s infinite reverse;
+}
+.header-desktop-title {
+  text-align: center;
+  margin: auto;
+}
+
+@-webkit-keyframes move {
+  0% {
+    -webkit-transform: translateX(0px);
+    font-size: 16px;
+  }
+  25% {
+    -webkit-transform: translateX(150px);
+    font-size: 10px;
+  }
+  50% {
+    -webkit-transform: translateX(0px);
+    font-size: 16px;
+  }
+  75% {
+    -webkit-transform: translateX(-150px);
+    font-size: 10px;
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+    font-size: 16px;
+  }
+}
+@keyframes move {
+  0% {
+    -webkit-transform: translateX(0px);
+    font-size: 16px;
+  }
+  25% {
+    -webkit-transform: translateX(350px);
+    font-size: 10px;
+    color: #292929;
+  }
+  50% {
+    -webkit-transform: translateX(0px);
+    font-size: 16px;
+    color: white;
+  }
+  75% {
+    -webkit-transform: translateX(-350px);
+    font-size: 10px;
+    color: #292929;
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+    font-size: 16px;
+  }
+}
 body {
   background-image: url("../images/background2Heart.png");
   font-family: Roboto, sans-serif;
@@ -440,7 +505,7 @@ ul {
 
 .hr-photo {
   width: 150px;
-  margin-top: 77px;
+  margin-top: 112px;
   margin-bottom: 15px;
   margin-left: 60px;
 }
@@ -495,6 +560,10 @@ ul {
 
 .search-title {
   margin-top: -10px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: normal;
+  margin-right: 20px;
 }
 .user-photo {
   margin-left: 20px;
@@ -521,7 +590,7 @@ ul {
   justify-content: left;
   margin-left: 35px;
   position: fixed;
-  top: 5vh;
+
   gap: 35px;
   height: 1vw;
 }
@@ -802,7 +871,9 @@ ul {
   font-size: 14px;
   margin: auto;
   width: 90%;
+  height: 295px;
   margin-top: 20px;
+  overflow: auto;
 }
 
 .message-content {
