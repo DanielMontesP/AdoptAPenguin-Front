@@ -56,7 +56,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   let classIconHome = `${classIconHeader}-home-icon`;
   let classButtonAddFav = `${classButton}addFav`;
   let classButtonSearch = ``;
-  let hidderDesktopButtons = "";
 
   const searchPlaceHolderText = "Search by name or category...";
 
@@ -64,6 +63,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     document.location.href.includes("/login") ||
     document.location.href.includes("/homepage") ||
     document.location.href.includes("/register");
+
+  const isHomePage = document.location.href.includes("/homepage");
+  let hidderDesktopButtons = isHomePage || isLogged ? " display-none" : "";
 
   const isHome = headerTitle === "Home";
 
@@ -235,7 +237,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   let headerIconType = isLikesPage ? " header-likes" : "";
   headerIconType = isFavsPage ? " header-favs" : headerIconType;
 
-  const hidderApp = headerTitle === "AdoptAPenguin.com" ? " display-none" : "";
+  const hidderApp = "";
   const headerClass = `header${headerIconType}${hidderApp}`;
   const headerClassDesktop = `header-desktop${headerIconType}${hidderApp}`;
 
@@ -286,15 +288,32 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     <div className={`app`}>
       {!isDesktop ? (
         <div className={headerClass}>
-          {!isHome && (
-            <button
-              title="btn-back"
-              className={classBack}
-              onClick={handleBack}
-            />
-          )}
-          <img className="header-favs-icon" alt="Page Icon" />
-          <h1 className={`header-title`}>{headerTitle}</h1>
+          <div className="header-title-container">
+            {!isHome && (
+              <button
+                title="btn-back"
+                className={classBack}
+                onClick={handleBack}
+              />
+            )}
+            <img className="header-favs-icon" alt="Page Icon" />
+            <h1
+              className={
+                isHomePage ? `header-desktop-title1` : `header-desktop-title`
+              }
+            >
+              {headerTitle || "AdoptAPenguin.com"}
+            </h1>
+            <h1
+              className={
+                isHomePage
+                  ? `header-desktop-title2`
+                  : `header-desktop-title display-none`
+              }
+            >
+              Amazing features...
+            </h1>
+          </div>
           <button
             className={`menu-btn${HidderMenu}`}
             onClick={handleMenu}
@@ -303,16 +322,32 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
         </div>
       ) : (
         <div className={headerClassDesktop}>
-          {!isHome && (
-            <button
-              title="btn-back"
-              className={classBack}
-              onClick={handleBack}
-            />
-          )}
-          <img className={classIconHeader} alt="Page Icon" />
-          <h1 className={`header-desktop-title`}>AdoptAPenguin.com</h1>
-
+          <div className="header-title-container">
+            {!isHome && (
+              <button
+                title="btn-back"
+                className={classBack}
+                onClick={handleBack}
+              />
+            )}
+            <img className={classIconHeader} alt="Page Icon" />
+            <h1
+              className={
+                isHomePage ? `header-desktop-title1` : `header-desktop-title`
+              }
+            >
+              {headerTitle || "AdoptAPenguin.com"}
+            </h1>
+            <h1
+              className={
+                isHomePage
+                  ? `header-desktop-title2`
+                  : `header-desktop-title display-none`
+              }
+            >
+              Amazing features...
+            </h1>
+          </div>
           <div className={`header-desktop-buttons${hidderDesktopButtons}`}>
             <button
               className={classButtonHome}
@@ -446,9 +481,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 onClick={handleSearchFromMenu}
                 className="bt-search"
                 title="bt-search"
-              >
-                {/* <h3 className="menu-icon-label-vertical">Search...</h3> */}
-              </button>
+              ></button>
             </div>
           </div>
         </div>

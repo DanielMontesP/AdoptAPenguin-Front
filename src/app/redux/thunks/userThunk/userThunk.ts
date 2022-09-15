@@ -21,53 +21,44 @@ import {
 } from "../../features/uiSlice/uiSlice";
 import { AppDispatch } from "../../store/store";
 
-let doOnce = true;
 let message = "";
 
 export const loginThunk =
   (userData: UserRegister) => async (dispatch: AppDispatch) => {
-    if (doOnce) {
-      try {
-        setLoadingOn(
-          `LOGIN: ${userData.username}...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`
+    try {
+      setLoadingOn(
+        `LOGIN: ${userData.username}...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`
+      );
+      const url: string = `${process.env.REACT_APP_API_URL}users/login`;
+
+      const { data, status }: DataAxiosLogin = await axios.post(url, userData);
+
+      if (status === 200) {
+        const { id, username, isAdmin, image }: LoginResponse = jwt_decode(
+          data.token
         );
-        const url: string = `${process.env.REACT_APP_API_URL}users/login`;
+        const logged = false;
 
-        const { data, status }: DataAxiosLogin = await axios.post(
-          url,
-          userData
-        );
+        localStorage.setItem("token", data.token);
 
-        if (status === 200) {
-          const { id, username, isAdmin, image }: LoginResponse = jwt_decode(
-            data.token
-          );
-          const logged = false;
+        dispatch(logInActionCreator({ id, username, logged, isAdmin, image }));
 
-          localStorage.setItem("token", data.token);
+        dispatch(finishedLoadingActionCreator());
 
-          dispatch(
-            logInActionCreator({ id, username, logged, isAdmin, image })
-          );
+        message =
+          message === ""
+            ? `${userData.username} logged successfully.`
+            : message;
 
-          dispatch(finishedLoadingActionCreator());
-
-          message =
-            message === ""
-              ? `${userData.username} logged successfully.`
-              : message;
-
-          setLoadingOffWithMessage(message, false);
-          doOnce = false;
-        }
-      } catch (error: any) {
-        setLoadingOffWithMessage(
-          "Login failed!\nCheck credentials for username: " + userData.username,
-          true
-        );
-
-        return error.message;
+        setLoadingOffWithMessage(message, false);
       }
+    } catch (error: any) {
+      setLoadingOffWithMessage(
+        "Login failed!\nCheck credentials for username: " + userData.username,
+        true
+      );
+
+      return error.message;
     }
   };
 
