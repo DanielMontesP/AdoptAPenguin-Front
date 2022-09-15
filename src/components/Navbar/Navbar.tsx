@@ -302,7 +302,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 isHomePage ? `header-desktop-title1` : `header-desktop-title`
               }
             >
-              {headerTitle || "AdoptAPenguin.com"}
+              {headerTitle || "Responsive site"}
             </h1>
             <h1
               className={
@@ -312,6 +312,15 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
               }
             >
               Amazing features...
+            </h1>
+            <h1
+              className={
+                isHomePage
+                  ? `header-desktop-title3`
+                  : `header-desktop-title display-none`
+              }
+            >
+              AdoptAPenguin.com
             </h1>
           </div>
           <button
@@ -336,7 +345,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 isHomePage ? `header-desktop-title1` : `header-desktop-title`
               }
             >
-              {headerTitle || "AdoptAPenguin.com"}
+              {headerTitle || "Responsive site"}
             </h1>
             <h1
               className={
@@ -346,6 +355,15 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
               }
             >
               Amazing features...
+            </h1>
+            <h1
+              className={
+                isHomePage
+                  ? `header-desktop-title3`
+                  : `header-desktop-title display-none`
+              }
+            >
+              AdoptAPenguin.com
             </h1>
           </div>
           <div className={`header-desktop-buttons${hidderDesktopButtons}`}>

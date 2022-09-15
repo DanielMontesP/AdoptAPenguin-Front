@@ -69,17 +69,28 @@
 }
 
 .header-title-container {
-  display: flex;
   height: 60px;
-  width: 100%;
+  margin: auto;
+  margin-top: 20px;
 }
 .header-desktop-title1 {
   margin: auto;
-  animation: move 15s infinite;
+  animation: move 20s infinite;
+  width: 300px;
+  position: fixed;
+  top: 25px;
 }
 .header-desktop-title2 {
   margin: auto;
-  animation: move 15s infinite reverse;
+  animation: move2 20s infinite;
+  position: fixed;
+  top: 25px;
+  width: 300px;
+}
+.header-desktop-title3 {
+  margin: auto;
+  width: 300px;
+  animation: titleOpacity 10s infinite;
 }
 .header-desktop-title {
   text-align: center;
@@ -88,51 +99,168 @@
 
 @-webkit-keyframes move {
   0% {
-    -webkit-transform: translateX(0px);
-    font-size: 16px;
+    -webkit-transform: translateX(-100%);
+
+    font-size: 12px;
+    color: white;
+    opacity: 0.8;
   }
   25% {
-    -webkit-transform: translateX(150px);
+    -webkit-transform: translateX(0px);
     font-size: 10px;
+    color: #292929;
   }
   50% {
-    -webkit-transform: translateX(0px);
-    font-size: 16px;
+    -webkit-transform: translateX(100%);
+    font-size: 12px;
+    color: white;
+    opacity: 0.8;
   }
   75% {
-    -webkit-transform: translateX(-150px);
+    -webkit-transform: translateX(0px);
     font-size: 10px;
+    color: #292929;
   }
   100% {
-    -webkit-transform: translateX(0%);
-    font-size: 16px;
+    -webkit-transform: translateX(-100%);
+    font-size: 12px;
+    color: white;
+    opacity: 0.8;
   }
 }
 @keyframes move {
   0% {
-    -webkit-transform: translateX(0px);
-    font-size: 16px;
+    -webkit-transform: translateX(-100%);
+    font-size: 12px;
+    color: white;
+    opacity: 0.8;
   }
   25% {
-    -webkit-transform: translateX(350px);
+    -webkit-transform: translateX(0px);
     font-size: 10px;
     color: #292929;
   }
   50% {
-    -webkit-transform: translateX(0px);
-    font-size: 16px;
+    -webkit-transform: translateX(100%);
+    font-size: 12px;
     color: white;
+    opacity: 0.8;
   }
   75% {
-    -webkit-transform: translateX(-350px);
+    -webkit-transform: translateX(0px);
     font-size: 10px;
     color: #292929;
   }
   100% {
-    -webkit-transform: translateX(0%);
-    font-size: 16px;
+    -webkit-transform: translateX(-100%);
+    font-size: 12px;
+    color: white;
+    opacity: 0.8;
   }
 }
+
+@-webkit-keyframes move2 {
+  0% {
+    -webkit-transform: translateX(100%);
+    font-size: 12px;
+    color: white;
+    opacity: 0.8;
+  }
+  25% {
+    -webkit-transform: translateX(0px);
+    font-size: 10px;
+    color: #292929;
+  }
+  50% {
+    -webkit-transform: translateX(-100%);
+    font-size: 12px;
+    color: white;
+    opacity: 0.8;
+  }
+  75% {
+    -webkit-transform: translateX(0px);
+    font-size: 10px;
+    color: #292929;
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+    font-size: 12px;
+    color: white;
+    opacity: 0.8;
+  }
+}
+
+@keyframes move2 {
+  0% {
+    -webkit-transform: translateX(100%);
+    font-size: 12px;
+    color: white;
+    opacity: 0.8;
+  }
+  25% {
+    -webkit-transform: translateX(0px);
+    font-size: 10px;
+    color: #292929;
+  }
+  50% {
+    -webkit-transform: translateX(-100%);
+    font-size: 12px;
+    color: white;
+    opacity: 0.8;
+  }
+  75% {
+    -webkit-transform: translateX(0px);
+    font-size: 10px;
+    color: #292929;
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+    font-size: 12px;
+    color: white;
+    opacity: 0.8;
+  }
+}
+
+@-webkit-keyframes titleOpacity {
+  0% {
+    color: white;
+    opacity: 1;
+  }
+  25% {
+    color: white;
+    opacity: 0.7;
+  }
+  50% {
+    color: white;
+    opacity: 0.5;
+  }
+  75% {
+    color: white;
+    opacity: 0.7;
+  }
+  100% {
+    color: white;
+    opacity: 1;
+  }
+}
+
+@keyframes titleOpacity {
+  0% {
+    color: white;
+    opacity: 1;
+  }
+
+  25% {
+    color: white;
+    opacity: 0.5;
+  }
+
+  100% {
+    color: white;
+    opacity: 1;
+  }
+}
+
 body {
   background-image: url("../images/background2Heart.png");
   font-family: Roboto, sans-serif;
@@ -872,10 +1000,15 @@ ul {
   margin: auto;
   width: 90%;
   height: 295px;
-  margin-top: 20px;
+  margin-top: 10px;
   overflow: auto;
 }
 
+.message-header {
+  display: inline-flex;
+  width: 60%;
+  justify-content: space-around;
+}
 .message-content {
   text-align: justify;
   font-size: 14px;

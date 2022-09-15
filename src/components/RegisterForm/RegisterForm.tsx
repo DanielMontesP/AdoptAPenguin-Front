@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { registerThunk } from "../../app/redux/thunks/userThunk/userThunk";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
@@ -54,10 +54,10 @@ const RegisterForm = (): JSX.Element => {
   return (
     <form noValidate autoComplete="off" onSubmit={handleSubmit}>
       <img src={imgHome} title="Git" alt="Git" className="img-Home" />
-
-      <NavLink to="/login" className="link">
-        Already have an account? Please Login
-      </NavLink>
+      <div className="link">
+        Already have an account? Please
+        <Link to="/login"> Log in</Link>
+      </div>
 
       <label htmlFor="username"> Username </label>
       <input

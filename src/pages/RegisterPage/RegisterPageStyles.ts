@@ -34,6 +34,7 @@ const RegisterPageStyles = styled.div`
     border-radius: 15px;
     align-items: center;
     margin: auto;
+    height: 50px;
   }
 
   .container {
