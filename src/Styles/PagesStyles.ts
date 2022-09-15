@@ -559,6 +559,10 @@ const PagesStyles = styled.div`
     -webkit-animation-name: bounce;
     animation-name: bounce;
   }
+  .disapear {
+    -webkit-animation-name: disapear;
+    animation-name: disapear;
+  }
   .bounce2 {
     -webkit-animation-name: bounce2;
     animation-name: bounce2;

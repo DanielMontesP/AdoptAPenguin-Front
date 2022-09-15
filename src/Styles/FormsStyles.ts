@@ -202,7 +202,7 @@ const FormsStyles = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
+    row-gap: 15px;
     width: 100%;
     max-width: 500px;
     margin: auto;
@@ -246,7 +246,7 @@ const FormsStyles = styled.div`
 
   a {
     text-decoration: none;
-    color: black;
+    color: blue;
     font-size: 16px;
     cursor: pointer;
   }
@@ -333,6 +333,7 @@ const FormsStyles = styled.div`
     border-radius: 15px;
     align-items: center;
     margin: auto;
+    height: 50px;
   }
 
   .header {

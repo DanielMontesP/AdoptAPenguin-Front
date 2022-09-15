@@ -15,17 +15,22 @@ const WellcomeComments = (): JSX.Element => {
   return (
     <Styles>
       <div className="message-container">
-        <img
-          src={imgApp}
-          title="App icon"
-          alt="App icon "
-          width="30"
-          height="30"
-        />
-        <br />
-        <a href="https://adoptapenguin.netlify.app" className="wellcome-title">
-          AdoptAPenguin.com
-        </a>
+        <div className="message-header">
+          <img
+            src={imgApp}
+            title="App icon"
+            alt="App icon "
+            width="30"
+            height="30"
+          />
+
+          <a
+            href="https://adoptapenguin.netlify.app"
+            className="wellcome-title"
+          >
+            AdoptAPenguin.com
+          </a>
+        </div>
         <div className="message-content">
           AdoptAPenguin.com was my final{" "}
           <a
