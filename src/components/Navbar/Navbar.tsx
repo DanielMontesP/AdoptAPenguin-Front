@@ -66,7 +66,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
   let hidderDesktopButtons = isLogged ? " display-none" : "";
 
-  const isHome = headerTitle === "Home";
+  const isHome = headerTitle === "Home" && !isDesktop;
 
   const handleLogout = (type: string) => {
     const message = "Log out?";
@@ -306,7 +306,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 isLogged ? `header-desktop-title1` : `header-desktop-title`
               }
             >
-              {headerTitle || "Responsive site"}
+              Responsive site
             </h1>
             <h1
               className={
@@ -324,7 +324,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                   : `header-desktop-title display-none`
               }
             >
-              AdoptAPenguin.com
+              {headerTitle}
             </h1>
           </div>
           <button
@@ -349,7 +349,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 isLogged ? `header-desktop-title1` : `header-desktop-title`
               }
             >
-              {headerTitle || "Responsive site"}
+              Responsive site
             </h1>
             <h1
               className={
@@ -367,7 +367,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                   : `header-desktop-title display-none`
               }
             >
-              AdoptAPenguin.com
+              {headerTitle}
             </h1>
           </div>
           <div className={`header-desktop-buttons${hidderDesktopButtons}`}>

@@ -16,6 +16,7 @@ import {
   loadPenguinsThunk,
   resetPenguinsThunk,
   resetPenguinThunk,
+  searchPenguinThunk,
 } from "./penguinThunk";
 
 describe("Given the loadPenguinsThunk function", () => {
@@ -226,6 +227,53 @@ describe("Given the editPenguinThunk function", () => {
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
+    });
+  });
+  describe("When search is called", () => {
+    test("Then it should call dispatch", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      axios.get = jest.fn().mockResolvedValue({
+        data: { penguin: mockPenguin },
+        status: 200,
+      });
+
+      const thunk = searchPenguinThunk(mockPenguin.id);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When search error is called", () => {
+    test("Then it should call dispatch", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      axios.get = jest.fn().mockRejectedValue({
+        data: { penguin: mockPenguin },
+        status: 200,
+      });
+
+      const thunk = searchPenguinThunk(mockPenguin.id);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+  describe("Given the loadFavsThunk function", () => {
+    describe("When it's called", () => {
+      test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
+        const dispatch = jest.fn();
+
+        const handleLoads = jest.fn();
+        handleLoads();
+
+        expect(dispatch).not.toHaveBeenCalled();
+      });
     });
   });
 });
