@@ -69,7 +69,7 @@
 }
 
 .header-title-container {
-  height: 60px;
+  height: 78px;
   width: 250px;
   margin: auto;
 }
@@ -94,6 +94,7 @@
 .header-desktop-title {
   text-align: center;
   margin: auto;
+  margin-top: 15px;
 }
 
 @-webkit-keyframes move {

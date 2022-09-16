@@ -306,7 +306,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 isLogged ? `header-desktop-title1` : `header-desktop-title`
               }
             >
-              Responsive site
+              {headerTitle}
             </h1>
             <h1
               className={
@@ -324,7 +324,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                   : `header-desktop-title display-none`
               }
             >
-              {headerTitle}
+              Responsive site
             </h1>
           </div>
           <button
@@ -346,7 +346,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <img className={classIconHeader} alt="Page Icon" />
             <h1
               className={
-                isLogged ? `header-desktop-title1` : `header-desktop-title`
+                isLogged
+                  ? `header-desktop-title1`
+                  : `header-desktop-title display-none`
               }
             >
               Responsive site
@@ -362,9 +364,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             </h1>
             <h1
               className={
-                isLogged
-                  ? `header-desktop-title3`
-                  : `header-desktop-title display-none`
+                isLogged ? `header-desktop-title3` : `header-desktop-title`
               }
             >
               {headerTitle}
