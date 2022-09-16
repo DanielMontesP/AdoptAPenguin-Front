@@ -31,17 +31,48 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const navigate = useNavigate();
 
   const { user } = useAppSelector((state) => state);
-  const { modalMessage } = useAppSelector((state) => state.ui);
-  const { modalType } = useAppSelector((state) => state.ui);
+  const {
+    modalMessage,
+    modalType,
+    isDesktop,
+    stringToSearch,
+    headerLastTitle,
+  } = useAppSelector((state) => state.ui);
+
   const { penguin } = useAppSelector((state) => state.penguins);
-  const { isDesktop } = useAppSelector((state) => state.ui);
-  const { headerLastTitle } = useAppSelector((state) => state.ui);
-  let { stringToSearch } = useAppSelector((state) => state.ui);
 
   const [, setFormData] = useState(blankFormData);
 
   const userImage = user.image || noPhoto;
-  const isForm = headerTitle === "New..." || headerTitle === "Edit...";
+
+  let isHome = false;
+  let isForm = false;
+  let isLikesPage = false;
+  let isFavsPage = false;
+
+  const isLogged = user.logged;
+
+  switch (headerTitle) {
+    case "Home":
+      isHome = true;
+
+      break;
+    case "New...":
+      isForm = true;
+
+      break;
+    case "Edit...":
+      isForm = true;
+
+      break;
+    case "Likes":
+      isLikesPage = true;
+      break;
+    case "Favourites":
+      isFavsPage = true;
+      break;
+    default:
+  }
 
   const classButton = `desktop-btn bt-`;
 
@@ -58,15 +89,11 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   let classButtonSearch = ``;
 
   const searchPlaceHolderText = "Search by name or category...";
+  let HidderDesktopButtons = "";
 
-  const isLogged =
-    document.location.href.includes("/login") ||
-    document.location.href.includes("/homepage") ||
-    document.location.href.includes("/register");
-
-  let hidderDesktopButtons = isLogged ? " display-none" : "";
-
-  const isHome = headerTitle === "Home" && !isDesktop;
+  if (!isLogged) {
+    HidderDesktopButtons = " display-none";
+  }
 
   const handleLogout = (type: string) => {
     const message = "Log out?";
@@ -95,6 +122,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       setMenu((prevState) => !prevState);
     }
     dispatch(modalTypeActionCreator(""));
+    dispatch(headerLastTitleActionCreator(headerTitle));
     dispatch(headerTitleActionCreator("Favourites"));
     navigate("/penguins/favs");
   };
@@ -104,6 +132,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       setMenu((prevState) => !prevState);
     }
     dispatch(modalTypeActionCreator(""));
+    dispatch(headerLastTitleActionCreator(headerTitle));
     dispatch(headerTitleActionCreator("Likes"));
     navigate("/penguins/likes");
   };
@@ -113,6 +142,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       setMenu((prevState) => !prevState);
     }
     dispatch(modalTypeActionCreator(""));
+    dispatch(headerLastTitleActionCreator(headerTitle));
     dispatch(headerTitleActionCreator("Home"));
     navigate("/penguins");
   };
@@ -163,16 +193,19 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
     switch (headerLastTitle) {
       case "Favourites":
+        dispatch(headerLastTitleActionCreator(headerTitle));
         dispatch(headerTitleActionCreator("Favourites"));
         navigate("/penguins/favs");
         break;
 
       case "Likes":
+        dispatch(headerLastTitleActionCreator(headerTitle));
         dispatch(headerTitleActionCreator("Likes"));
         navigate("/penguins/likes");
         break;
 
       default:
+        dispatch(headerLastTitleActionCreator(headerTitle));
         dispatch(headerTitleActionCreator("Home"));
         navigate("/penguins");
     }
@@ -231,13 +264,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       : "";
 
   const classBack = setClassBack + HidderBack;
-  const HidderMenu = isLogged ? " display-none" : "";
-  const HidderLogout: string = isLogged ? " display-none" : "";
-  const HidderHelp: string = isLogged ? " display-none" : "";
-  const HidderAbout: string = isLogged ? " display-none" : "";
-
-  const isLikesPage = headerTitle.includes("Likes");
-  const isFavsPage = headerTitle.includes("Favourites");
 
   let headerIconType = isLikesPage ? " header-likes" : "";
   headerIconType = isFavsPage ? " header-favs" : headerIconType;
@@ -304,7 +330,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <img className="header-favs-icon" alt="Page Icon" />
             <h1
               className={
-                isLogged ? `header-desktop-title1` : `header-desktop-title`
+                isLogged
+                  ? `header-desktop-title1 display-none`
+                  : `header-desktop-title1`
               }
             >
               Responsive site
@@ -312,24 +340,22 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <h1
               className={
                 isLogged
-                  ? `header-desktop-title2`
-                  : `header-desktop-title display-none`
+                  ? `header-desktop-title2 display-none`
+                  : `header-desktop-title2`
               }
             >
               Amazing features...
             </h1>
             <h1
               className={
-                isLogged
-                  ? `header-desktop-title3`
-                  : `header-desktop-title display-none`
+                isLogged ? `header-desktop-title` : `header-desktop-title3`
               }
             >
-              {headerTitle}
+              {isDesktop ? "AdoptApenguin.com" : headerTitle}
             </h1>
           </div>
           <button
-            className={`menu-btn${HidderMenu}`}
+            className={`menu-btn${HidderDesktopButtons}`}
             onClick={handleMenu}
             title="btn-menu"
           />
@@ -348,8 +374,8 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <h1
               className={
                 isLogged
-                  ? `header-desktop-title1`
-                  : `header-desktop-title display-none`
+                  ? `header-desktop-title1 display-none`
+                  : `header-desktop-title1`
               }
             >
               Responsive site
@@ -357,21 +383,21 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <h1
               className={
                 isLogged
-                  ? `header-desktop-title2`
-                  : `header-desktop-title display-none`
+                  ? `header-desktop-title2 display-none`
+                  : `header-desktop-title2`
               }
             >
               Amazing features...
             </h1>
             <h1
               className={
-                isLogged ? `header-desktop-title3` : `header-desktop-title`
+                isLogged ? `header-desktop-title` : `header-desktop-title3`
               }
             >
-              {headerTitle}
+              {isDesktop ? "AdoptApenguin.com" : headerTitle}
             </h1>
           </div>
-          <div className={`header-desktop-buttons${hidderDesktopButtons}`}>
+          <div className={`header-desktop-buttons${HidderDesktopButtons}`}>
             <button
               className={classButtonHome}
               onClick={loadHome}
@@ -422,22 +448,22 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             </div>
             <button
               onClick={handleAbout}
-              className={`desktop-bt-about${HidderAbout}`}
+              className={`desktop-bt-about${HidderDesktopButtons}`}
               title="bt-about"
             />
             <button
               onClick={handleHelp}
-              className={`desktop-bt-help${HidderHelp}`}
+              className={`desktop-bt-help${HidderDesktopButtons}`}
               title="desktop-btn-menu"
             />
             <button
               onClick={handleMenu}
-              className={`desktop-bt-menu${HidderMenu}`}
+              className={`desktop-bt-menu${HidderDesktopButtons}`}
               title="desktop-btn-menu"
             />
             <button
               onClick={handleLogoutHeader}
-              className={`desktop-bt-logout${HidderLogout}`}
+              className={`desktop-bt-logout${HidderDesktopButtons}`}
               title="desktop-btn-logout"
             />
           </div>
