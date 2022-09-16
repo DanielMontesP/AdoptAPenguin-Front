@@ -95,7 +95,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       setMenu((prevState) => !prevState);
     }
     dispatch(modalTypeActionCreator(""));
-
+    dispatch(headerTitleActionCreator("Favourites"));
     navigate("/penguins/favs");
   };
 
@@ -104,7 +104,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       setMenu((prevState) => !prevState);
     }
     dispatch(modalTypeActionCreator(""));
-
+    dispatch(headerTitleActionCreator("Likes"));
     navigate("/penguins/likes");
   };
 
@@ -113,6 +113,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       setMenu((prevState) => !prevState);
     }
     dispatch(modalTypeActionCreator(""));
+    dispatch(headerTitleActionCreator("Home"));
     navigate("/penguins");
   };
 
