@@ -176,11 +176,12 @@ export const getPenguinThunk =
 export const searchPenguinThunk =
   (search: string) => async (dispatch: AppDispatch) => {
     try {
-      dispatch(loadingActionCreator());
-      setLoadingOn(`SEARCH Penguin: => ${search}`);
-
       const token = localStorage.getItem("token");
+
       if (search !== "" && token) {
+        dispatch(loadingActionCreator());
+        setLoadingOn(`SEARCH: => ${search}`);
+
         const { data: penguins } = await axios.get(
           `${process.env.REACT_APP_API_URL}penguins/search/${search}`,
           {
@@ -189,10 +190,9 @@ export const searchPenguinThunk =
             },
           }
         );
-
         dispatch(searchPenguinsActionCreator(penguins));
         dispatch(finishedLoadingActionCreator());
-        setLoadingOffWithMessage(`SEARCH: ${search} successfully.`, false);
+        setLoadingOffWithMessage(`SEARCH: ${search} finished.`, false);
       }
     } catch (err: any) {
       message = `ERROR ${err.message}`;

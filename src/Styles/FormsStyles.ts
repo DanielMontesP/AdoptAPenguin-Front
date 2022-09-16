@@ -271,7 +271,7 @@ const FormsStyles = styled.div`
     margin-right: 9px;
   }
 
-  .input-login-user {
+  .form-input {
     border: 2px solid black;
     align-items: center;
     justify-content: center;
@@ -334,6 +334,7 @@ const FormsStyles = styled.div`
     align-items: center;
     margin: auto;
     height: 50px;
+    width: 70%;
   }
 
   .header {

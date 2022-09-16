@@ -51,6 +51,9 @@ export const Modal = ({
     case "FFeature":
       windowTitle = "Notice";
       break;
+    case "Search":
+      windowTitle = "Search";
+      break;
     default:
       windowTitle = "Please confirm";
   }
@@ -101,6 +104,8 @@ export const Modal = ({
         break;
       case "Help":
         break;
+      case "Search":
+        break;
       default:
         correctAction("Sorry, this feature is not available yet.");
     }
@@ -112,7 +117,9 @@ export const Modal = ({
   };
 
   const cancelClass =
-    isWellcome || isHelp ? "modal-btn-cancel display-none" : "modal-btn-cancel";
+    isWellcome || isHelp || type === "Search"
+      ? "modal-btn-cancel display-none"
+      : "modal-btn-cancel";
 
   return (
     <div className={modalClass}>

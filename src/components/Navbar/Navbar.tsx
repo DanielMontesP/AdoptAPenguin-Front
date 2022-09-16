@@ -64,8 +64,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     document.location.href.includes("/homepage") ||
     document.location.href.includes("/register");
 
-  const isHomePage = document.location.href.includes("/homepage");
-  let hidderDesktopButtons = isHomePage || isLogged ? " display-none" : "";
+  let hidderDesktopButtons = isLogged ? " display-none" : "";
 
   const isHome = headerTitle === "Home";
 
@@ -200,18 +199,23 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const handleSearchSubmit = (): void => {
-    dispatch(modalTypeActionCreator("FFeature"));
-    dispatch(searchPenguinThunk(stringToSearch));
-
     if (isMenuOpen) {
       setMenu((prevState) => !prevState);
     }
+    if (stringToSearch !== "") {
+      dispatch(modalTypeActionCreator("FFeature"));
+      dispatch(searchPenguinThunk(stringToSearch));
 
-    setSearch((prevState) => !prevState);
+      setSearch((prevState) => !prevState);
 
-    dispatch(stringToSearchActionCreator(stringToSearch));
-    dispatch(headerLastTitleActionCreator(headerTitle));
-    dispatch(headerTitleActionCreator("Search results..."));
+      dispatch(stringToSearchActionCreator(stringToSearch));
+      dispatch(headerLastTitleActionCreator(headerTitle));
+      dispatch(headerTitleActionCreator("Search results..."));
+    } else {
+      dispatch(modalTypeActionCreator("Search"));
+      dispatch(modalMessageActionCreator("Please enter a search term"));
+      setModal((prevState) => !prevState);
+    }
   };
 
   const HidderSearch = isSearchClicked
@@ -299,14 +303,14 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <img className="header-favs-icon" alt="Page Icon" />
             <h1
               className={
-                isHomePage ? `header-desktop-title1` : `header-desktop-title`
+                isLogged ? `header-desktop-title1` : `header-desktop-title`
               }
             >
               {headerTitle || "Responsive site"}
             </h1>
             <h1
               className={
-                isHomePage
+                isLogged
                   ? `header-desktop-title2`
                   : `header-desktop-title display-none`
               }
@@ -315,7 +319,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             </h1>
             <h1
               className={
-                isHomePage
+                isLogged
                   ? `header-desktop-title3`
                   : `header-desktop-title display-none`
               }
@@ -342,14 +346,14 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <img className={classIconHeader} alt="Page Icon" />
             <h1
               className={
-                isHomePage ? `header-desktop-title1` : `header-desktop-title`
+                isLogged ? `header-desktop-title1` : `header-desktop-title`
               }
             >
               {headerTitle || "Responsive site"}
             </h1>
             <h1
               className={
-                isHomePage
+                isLogged
                   ? `header-desktop-title2`
                   : `header-desktop-title display-none`
               }
@@ -358,7 +362,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             </h1>
             <h1
               className={
-                isHomePage
+                isLogged
                   ? `header-desktop-title3`
                   : `header-desktop-title display-none`
               }
@@ -517,6 +521,12 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       <ReactDimmer
         isOpen={isMenuOpen}
         exitDimmer={setMenu}
+        zIndex={90}
+        blur={1.5}
+      />
+      <ReactDimmer
+        isOpen={isModalOpen}
+        exitDimmer={setModal}
         zIndex={90}
         blur={1.5}
       />

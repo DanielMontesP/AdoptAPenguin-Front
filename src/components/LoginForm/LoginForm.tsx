@@ -46,7 +46,7 @@ const LoginForm = () => {
         placeholder="Username"
         autoComplete="off"
         alt="Username"
-        className="input-login-user"
+        className="form-input"
       />
 
       <label className="label-password" htmlFor="password" />
@@ -58,7 +58,7 @@ const LoginForm = () => {
         placeholder="Password"
         autoComplete="off"
         alt="Password"
-        className="input-login-user"
+        className="form-input"
       />
 
       <div className="submitContainer">
