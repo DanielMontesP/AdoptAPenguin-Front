@@ -1,3 +1,5 @@
+import { mockPenguins } from "../../../../mocks/penguins";
+import { searchPenguinsActionCreator } from "../penguinSlice/penguinSlice";
 import uiReducer, {
   loadingActionCreator,
   finishedLoadingActionCreator,
@@ -5,6 +7,7 @@ import uiReducer, {
   cleanApiResponseActionCreator,
   modalMessageActionCreator,
   isDesktopActionCreator,
+  stringToSearchActionCreator,
 } from "./uiSlice";
 
 const initialState = {
@@ -17,7 +20,7 @@ const initialState = {
   headerLastTitle: "",
   apiResponse: "",
   isDesktop: false,
-  stringToSearch: "",
+  stringToSearch: "search",
 };
 
 const expectedState = {
@@ -30,7 +33,7 @@ const expectedState = {
   headerLastTitle: "",
   apiResponse: "Message",
   isDesktop: false,
-  stringToSearch: "",
+  stringToSearch: "search",
 };
 
 const expectedLoadingState = {
@@ -106,6 +109,16 @@ describe("Given the modalMessage", () => {
 
         expect(loadedState).toEqual(initialState);
       });
+    });
+  });
+});
+describe("Given the stringToSearchActionCreator", () => {
+  describe("When invoked", () => {
+    test("Then the feedback ui state should change", () => {
+      const action = stringToSearchActionCreator("search");
+      const loadedState = uiReducer(expectedState, action);
+
+      expect(loadedState).toEqual(expectedState);
     });
   });
 });

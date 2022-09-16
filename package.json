@@ -68,6 +68,7 @@
     "collectCoverageFrom": [
       "!src/images/**",
       "!src/index.tsx",
+      "!src/App.tsx",
       "!src/reportWebVitals.ts",
       "!src/setupTests.tsx",
       "!src/types/types.ts",

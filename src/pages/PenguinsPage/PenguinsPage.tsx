@@ -19,7 +19,7 @@ const PenguinsPage = ({ type }: Props) => {
   const dispatch = useAppDispatch();
 
   const { allPenguins } = useAppSelector((state) => state.penguins);
-  const { headerTitle, modalType, headerLastTitle } = useAppSelector(
+  const { headerTitle, modalType, headerLastTitle, isDesktop } = useAppSelector(
     (state) => state.ui
   );
 
@@ -29,8 +29,9 @@ const PenguinsPage = ({ type }: Props) => {
       dispatch(headerLastTitleActionCreator(lastTitle));
     };
     if (modalType === "") {
-      SetTitleHeader(type, headerLastTitle);
-
+      if (!isDesktop) {
+        SetTitleHeader(type, headerLastTitle);
+      }
       if (type === "Likes") {
         dispatch(loadLikesThunk());
       } else if (type === "Favourites") {
@@ -39,7 +40,7 @@ const PenguinsPage = ({ type }: Props) => {
         dispatch(loadPenguinsThunk());
       }
     }
-  }, [dispatch, headerTitle, modalType, headerLastTitle, type]);
+  }, [dispatch, headerTitle, isDesktop, modalType, headerLastTitle, type]);
 
   return <Penguins allPenguins={allPenguins} />;
 };

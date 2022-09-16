@@ -13,6 +13,7 @@ import penguinReducer, {
   loadPenguinsActionCreator,
   resetPenguinActionCreator,
   resetPenguinsActionCreator,
+  searchPenguinsActionCreator,
 } from "./penguinSlice";
 
 interface SliceIniState {
@@ -149,6 +150,23 @@ describe("Given resetPenguinsActionCreator", () => {
       expect(loadedState).toEqual({
         allPenguins: mockPenguinsEmpty,
         penguin: mockEmptyDataPenguin,
+      });
+    });
+  });
+});
+
+describe("Given searchPenguinActionCreator", () => {
+  describe("When  invoked", () => {
+    test("Then the load list with record found", async () => {
+      const action = searchPenguinsActionCreator(mockPenguins);
+      const loadedState = penguinReducer(
+        { allPenguins: mockPenguins, penguin: mockPenguin },
+        action
+      );
+
+      expect(loadedState).toEqual({
+        allPenguins: mockPenguins,
+        penguin: mockPenguin,
       });
     });
   });
