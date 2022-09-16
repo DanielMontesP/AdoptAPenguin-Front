@@ -307,7 +307,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 isLogged ? `header-desktop-title1` : `header-desktop-title`
               }
             >
-              {headerTitle}
+              Responsive site
             </h1>
             <h1
               className={
@@ -325,7 +325,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                   : `header-desktop-title display-none`
               }
             >
-              Responsive site
+              {headerTitle}
             </h1>
           </div>
           <button
