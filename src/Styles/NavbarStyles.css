@@ -66,13 +66,13 @@
   button {
     width: initial;
   }
+  .header-title-container {
+    height: 78px;
+    width: 100%;
+    margin: auto;
+  }
 }
 
-.header-title-container {
-  height: 78px;
-  width: 250px;
-  margin: auto;
-}
 .header-desktop-title1 {
   margin: auto;
   animation: move 20s infinite;
@@ -94,7 +94,7 @@
 .header-desktop-title {
   text-align: center;
   margin: auto;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 @-webkit-keyframes move {
@@ -348,6 +348,7 @@ h1 {
   .search-input :hover {
     cursor: pointer;
   }
+
   .search-input ::before {
     content: "";
     position: absolute;
@@ -362,6 +363,7 @@ h1 {
     transform: rotate(45deg);
     transition: all 0.5s;
   }
+
   .search-input ::after {
     content: "";
     position: absolute;
@@ -436,6 +438,12 @@ h1 {
     background-color: #292929;
     color: white;
     height: 5rem;
+  }
+
+  .header-title-container {
+    height: 78px;
+    width: 250px;
+    margin: auto;
   }
 
   .about-icon {
@@ -775,7 +783,7 @@ ul {
   background-position: center;
   border: 0;
   position: fixed;
-
+  height: 80px;
   margin-left: 20px;
 }
 
