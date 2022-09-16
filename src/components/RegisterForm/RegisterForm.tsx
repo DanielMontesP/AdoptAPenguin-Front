@@ -9,7 +9,7 @@ import {
 import { UserRegister } from "../../app/redux/types/userInterfaces/userInterfaces";
 import imgHome from "../../images/lapanda.jpg";
 
-const thisTitle = "Wellcome";
+const thisTitle = "AdoptAPenguin.com";
 
 const RegisterForm = (): JSX.Element => {
   const initialFormData: UserRegister = {
@@ -68,6 +68,7 @@ const RegisterForm = (): JSX.Element => {
         value={formData.username}
         onChange={handleInputChange}
         name="Username"
+        className="form-input"
       />
       <label htmlFor="password"> Password </label>
       <input
@@ -78,6 +79,7 @@ const RegisterForm = (): JSX.Element => {
         placeholder="Password"
         onChange={handleInputChange}
         name="Password"
+        className="form-input"
       />
       <div className="submitContainer">
         <button type="submit" className="bt-register">

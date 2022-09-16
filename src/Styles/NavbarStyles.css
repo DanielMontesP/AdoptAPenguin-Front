@@ -70,6 +70,7 @@
 
 .header-title-container {
   height: 60px;
+  width: 100%;
   margin: auto;
   margin-top: 20px;
 }
@@ -295,7 +296,8 @@ h1 {
 .options {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 320px;
+  margin-left: 20px;
 }
 
 .animatedEdit {
@@ -774,7 +776,7 @@ ul {
   background-position: center;
   border: 0;
   position: fixed;
-  margin-top: 8px;
+
   margin-left: 20px;
 }
 
@@ -972,7 +974,7 @@ ul {
   max-width: 500px;
 }
 
-.modal .modal-header {
+.modal-header {
   border-radius: 10px 10px 0 0;
   background-color: rgb(29, 29, 29);
   position: relative;
@@ -998,10 +1000,8 @@ ul {
   text-align: center;
   font-size: 14px;
   margin: auto;
-  width: 90%;
-  height: 295px;
   margin-top: 10px;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .message-header {
