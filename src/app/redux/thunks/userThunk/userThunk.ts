@@ -17,6 +17,7 @@ import {
 } from "../../../../components/Modals/Modals";
 import {
   finishedLoadingActionCreator,
+  headerTitleActionCreator,
   loadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
 import { AppDispatch } from "../../store/store";
@@ -42,6 +43,7 @@ export const loginThunk =
         localStorage.setItem("token", data.token);
 
         dispatch(logInActionCreator({ id, username, logged, isAdmin, image }));
+        dispatch(headerTitleActionCreator("Home"));
 
         dispatch(finishedLoadingActionCreator());
 

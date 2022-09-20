@@ -59,6 +59,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       break;
     case "New...":
       isForm = true;
+
       break;
     case "Edit...":
       isForm = true;
@@ -66,9 +67,11 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       break;
     case "Likes":
       isLikesPage = true;
+
       break;
     case "Favourites":
       isFavsPage = true;
+
       break;
     default:
   }
@@ -84,6 +87,8 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   let classIconFavs = `${classIconHeader}-favs-icon`;
   let classIconLikes = `${classIconHeader}-likes-icon`;
   let classIconHome = `${classIconHeader}-home-icon`;
+  let classIconEdit = `${classIconHeader}-edit-icon`;
+  let classIconNew = `${classIconHeader}-new-icon`;
   let classButtonAddFav = `${classButton}addFav`;
   let classButtonSearch = ``;
 
@@ -305,6 +310,20 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
         classButtonLikes = `${classButton}likes`;
         classButtonAbout = `${classButton}about`;
         break;
+      case "Edit...":
+        classButtonFavs = `${classButtonFavs}`;
+        classButtonHome = `${classButton}home`;
+        classButtonLikes = `${classButton}likes`;
+        classButtonAbout = `${classButton}about`;
+        classIconHeader = classIconEdit;
+        break;
+      case "New...":
+        classButtonFavs = `${classButtonFavs}`;
+        classButtonHome = `${classButton}home`;
+        classButtonLikes = `${classButton}likes`;
+        classButtonAbout = `${classButton}about`;
+        classIconHeader = classIconNew;
+        break;
       default:
         classButtonHome = `${classButton}home selected`;
         classButtonFavs = `${classButton}favs`;
@@ -325,74 +344,30 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 onClick={handleBack}
               />
             )}
-            <img className="header-favs-icon" alt="Page Icon" />
-            <h1
-              className={
-                isLogged
-                  ? `header-desktop-title1 display-none`
-                  : `header-desktop-title1`
-              }
-            >
-              Responsive site
-            </h1>
-            <h1
-              className={
-                isLogged
-                  ? `header-desktop-title2 display-none`
-                  : `header-desktop-title2`
-              }
-            >
-              Amazing features...
-            </h1>
+            {isLogged ? <div className={classIconHeader} /> : ""}
             <h1
               className={
                 isLogged ? `header-desktop-title` : `header-desktop-title3`
               }
             >
-              {isDesktop ? "AdoptApenguin.com" : headerTitle}
+              {headerTitle}
             </h1>
+            <button
+              className={`menu-btn${HidderDesktopButtons}`}
+              onClick={handleMenu}
+              title="btn-menu"
+            />
           </div>
-          <button
-            className={`menu-btn${HidderDesktopButtons}`}
-            onClick={handleMenu}
-            title="btn-menu"
-          />
         </div>
       ) : (
         <div className={headerClassDesktop}>
           <div className="header-title-container">
-            {!isHome && (
-              <button
-                title="btn-back"
-                className={classBack}
-                onClick={handleBack}
-              />
-            )}
-            <img className={classIconHeader} alt="Page Icon" />
-            <h1
-              className={
-                isLogged
-                  ? `header-desktop-title1 display-none`
-                  : `header-desktop-title1`
-              }
-            >
-              Responsive site
-            </h1>
-            <h1
-              className={
-                isLogged
-                  ? `header-desktop-title2 display-none`
-                  : `header-desktop-title2`
-              }
-            >
-              Amazing features...
-            </h1>
             <h1
               className={
                 isLogged ? `header-desktop-title` : `header-desktop-title3`
               }
             >
-              {isDesktop ? "AdoptApenguin.com" : headerTitle}
+              {"AdoptApenguin.com"}
             </h1>
           </div>
           <div className={`header-desktop-buttons${HidderDesktopButtons}`}>
@@ -459,11 +434,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
               onClick={handleMenu}
               className={`desktop-bt-menu${HidderDesktopButtons}`}
               title="desktop-btn-menu"
-            />
-            <button
-              onClick={handleLogout}
-              className={`desktop-bt-logout${HidderDesktopButtons}`}
-              title="desktop-btn-logout"
             />
           </div>
         </div>
