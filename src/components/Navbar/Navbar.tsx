@@ -51,24 +51,28 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   let isFavsPage = false;
 
   const isLogged = user.logged;
+  let classHeaderIcon = "";
 
   switch (headerTitle) {
     case "Home":
       isHome = true;
-
+      classHeaderIcon = "header-home-icon";
       break;
     case "New...":
       isForm = true;
+      classHeaderIcon = "header-new-icon";
       break;
     case "Edit...":
       isForm = true;
-
+      classHeaderIcon = "header-edit-icon";
       break;
     case "Likes":
       isLikesPage = true;
+      classHeaderIcon = "header-likes-icon";
       break;
     case "Favourites":
       isFavsPage = true;
+      classHeaderIcon = "header-favs-icon";
       break;
     default:
   }
@@ -318,32 +322,27 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       {!isDesktop ? (
         <div className={headerClass}>
           <div className="header-title-container">
-            {!isHome && (
+            {!isHome && isLogged && (
               <button
                 title="btn-back"
                 className={classBack}
                 onClick={handleBack}
               />
             )}
-            <img className="header-favs-icon" alt="Page Icon" />
-            <h1
-              className={
-                isLogged
-                  ? `header-desktop-title1 display-none`
-                  : `header-desktop-title1`
-              }
-            >
-              Responsive site
-            </h1>
-            <h1
-              className={
-                isLogged
-                  ? `header-desktop-title2 display-none`
-                  : `header-desktop-title2`
-              }
-            >
-              Amazing features...
-            </h1>
+            {isLogged && !isDesktop ? <div className={classHeaderIcon} /> : ""}
+            {!isLogged ? (
+              <>
+                {!isLogged ? (
+                  <h1 className={`header-desktop-title2`}>
+                    Amazing features...
+                  </h1>
+                ) : (
+                  ""
+                )}
+              </>
+            ) : (
+              ""
+            )}
             <h1
               className={
                 isLogged ? `header-desktop-title` : `header-desktop-title3`
@@ -351,6 +350,12 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             >
               {isDesktop ? "AdoptApenguin.com" : headerTitle}
             </h1>
+
+            {!isLogged ? (
+              <h1 className={`header-desktop-title1`}>Responsive site</h1>
+            ) : (
+              ""
+            )}
           </div>
           <button
             className={`menu-btn${HidderDesktopButtons}`}
@@ -368,15 +373,19 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 onClick={handleBack}
               />
             )}
-            <img className={classIconHeader} alt="Page Icon" />
+
+            {isLogged && !isDesktop ? <div className={classIconHeader} /> : ""}
+            {!isLogged ? (
+              <h1 className={`header-desktop-title1`}>Responsive site</h1>
+            ) : (
+              ""
+            )}
             <h1
               className={
-                isLogged
-                  ? `header-desktop-title1 display-none`
-                  : `header-desktop-title1`
+                isLogged ? `header-desktop-title` : `header-desktop-title3`
               }
             >
-              Responsive site
+              {isDesktop ? "AdoptApenguin.com" : headerTitle}
             </h1>
             <h1
               className={
@@ -386,13 +395,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
               }
             >
               Amazing features...
-            </h1>
-            <h1
-              className={
-                isLogged ? `header-desktop-title` : `header-desktop-title3`
-              }
-            >
-              {isDesktop ? "AdoptApenguin.com" : headerTitle}
             </h1>
           </div>
           <div className={`header-desktop-buttons${HidderDesktopButtons}`}>

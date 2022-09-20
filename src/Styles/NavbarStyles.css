@@ -67,6 +67,8 @@
     width: initial;
   }
   .header-title-container {
+    display: flex;
+    justify-content: center;
     height: 78px;
     width: 100%;
     margin: auto;
@@ -78,24 +80,29 @@
   margin: auto;
   animation: move 20s infinite;
 
-  position: relative;
-  top: 30px;
+  position: fixed;
+  top: 47px;
 }
 .header-desktop-title2 {
   margin: auto;
   animation: move2 20s infinite;
-  position: relative;
-  top: 15px;
+
+  position: fixed;
+  top: 45px;
 }
 .header-desktop-title3 {
   margin: auto;
-
   animation: titleOpacity 10s infinite;
+  position: fixed;
+  top: 20px;
 }
 .header-desktop-title {
-  text-align: center;
-  margin: auto;
+  text-align: left;
+
   margin-top: 10px;
+
+  width: 25%;
+  flex: 2;
 }
 
 @-webkit-keyframes move {
@@ -557,28 +564,34 @@ h1 {
 .header-favs-icon {
   background: url("../images/icon-star_full.png");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right;
+  background-size: 45px;
   width: 45px;
   height: 45px;
-  display: none;
+  margin-right: 10px;
+  flex: 1;
 }
 
 .header-likes-icon {
   background: url("../images/menu-favs.png");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right;
+  background-size: 45px;
   width: 45px;
   height: 45px;
-  display: none;
+  margin-right: 10px;
+  flex: 1;
 }
 
 .header-home-icon {
-  background: url("../images/menu-favs.png");
+  background: url("../images/icon-home.png");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right;
+  background-size: 45px;
   width: 45px;
   height: 45px;
-  display: none;
+  margin-right: 10px;
+  flex: 2;
 }
 
 .app {
@@ -772,8 +785,8 @@ ul {
   background-repeat: no-repeat;
   background-position: center;
   border: 0;
-  position: fixed;
-  height: 80px;
+
+  height: 50px;
   margin-left: 20px;
 }
 
