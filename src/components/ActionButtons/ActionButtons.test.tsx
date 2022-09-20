@@ -3,33 +3,16 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
-import { mockPenguin } from "../../mocks/penguins";
+import { mockPenguin, mockPenguins } from "../../mocks/penguins";
 import ActionButtons from "./ActionButtons";
+import axios from "axios";
+import { hrtime } from "process";
 
-describe("Given a delete action", () => {
-  describe("When the word 'user1' is written to the username input field", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
-      const labelToFind = "btn-favs";
-      const inputText = "user1";
-
-      render(
-        <Provider store={store}>
-          <BrowserRouter>
-            <ActionButtons penguin={mockPenguin} />
-          </BrowserRouter>
-        </Provider>
-      );
-
-      const label = screen.getByPlaceholderText(labelToFind);
-      userEvent.type(label, inputText);
-
-      expect(label).toBeInTheDocument();
-    });
-  });
-
-  describe("When deleteFromLikers action is called", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+describe("Given a btn-delete action", () => {
+  describe("When clicked action is called", () => {
+    test("Then deleteFromLikers have to been called", () => {
       const labelToFind = "btn-delete";
+      const deleteFromLikers = jest.fn().mockReturnValue(true);
 
       render(
         <Provider store={store}>
@@ -39,7 +22,6 @@ describe("Given a delete action", () => {
         </Provider>
       );
 
-      const deleteFromLikers = jest.fn().mockReturnValue(true);
       const label = screen.getByTitle(labelToFind);
 
       userEvent.click(label);
@@ -48,8 +30,10 @@ describe("Given a delete action", () => {
       expect(deleteFromLikers).toHaveBeenCalled();
     });
   });
-  describe("When deleteFromFavs action is called", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+});
+describe("Given btn-favs button", () => {
+  describe("When clicked", () => {
+    test("Then handlefavs function has to been called", () => {
       const labelToFind = "btn-favs";
 
       render(

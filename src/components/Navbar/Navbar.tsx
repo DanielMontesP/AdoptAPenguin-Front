@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, MouseEvent, useState } from "react";
 import { ReactDimmer } from "react-dimmer";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
@@ -59,7 +59,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       break;
     case "New...":
       isForm = true;
-
       break;
     case "Edit...":
       isForm = true;
@@ -95,62 +94,51 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     HidderDesktopButtons = " display-none";
   }
 
-  const handleLogout = (type: string) => {
+  const handleLogout = (event: MouseEvent<HTMLButtonElement>) => {
     const message = "Log out?";
     const newModalType = "logOutUser";
 
     dispatch(modalTypeActionCreator(newModalType));
     dispatch(modalMessageActionCreator(message));
 
-    if (type === "fromMenu") {
-      setMenu((prevState) => !prevState);
-    }
+    setMenu(false);
 
     setModal((prevState) => !prevState);
   };
 
-  const handleLogoutMenu = () => {
-    handleLogout("fromMenu");
-  };
-
-  const handleLogoutHeader = () => {
-    handleLogout("fromHeader");
-  };
-
   const loadFavs = () => {
-    if (isMenuOpen) {
-      setMenu((prevState) => !prevState);
-    }
+    setMenu(false);
+
     dispatch(modalTypeActionCreator(""));
     dispatch(headerLastTitleActionCreator(headerTitle));
     dispatch(headerTitleActionCreator("Favourites"));
+
     navigate("/penguins/favs");
   };
 
   const loadLikes = () => {
-    if (isMenuOpen) {
-      setMenu((prevState) => !prevState);
-    }
+    setMenu(false);
+
     dispatch(modalTypeActionCreator(""));
     dispatch(headerLastTitleActionCreator(headerTitle));
     dispatch(headerTitleActionCreator("Likes"));
+
     navigate("/penguins/likes");
   };
 
   const loadHome = () => {
-    if (isMenuOpen) {
-      setMenu((prevState) => !prevState);
-    }
+    setMenu(false);
+
     dispatch(modalTypeActionCreator(""));
     dispatch(headerLastTitleActionCreator(headerTitle));
     dispatch(headerTitleActionCreator("Home"));
+
     navigate("/penguins");
   };
 
   const addFav = () => {
-    if (isMenuOpen) {
-      setMenu((prevState) => !prevState);
-    }
+    setMenu(false);
+
     dispatch(resetPenguinThunk());
 
     navigate("/create");
@@ -162,9 +150,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
   const handleAbout = () => {
     dispatch(modalTypeActionCreator("About"));
-    if (isMenuOpen) {
-      setMenu((prevState) => !prevState);
-    }
+
+    setMenu(false);
+
     classButtonAbout = `${classButtonAbout} selected`;
     classButtonHome = `${classButton}home`;
     classButtonLikes = `${classButton}likes`;
@@ -175,9 +163,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
   const handleHelp = () => {
     dispatch(modalTypeActionCreator("Help"));
-    if (isMenuOpen) {
-      setMenu((prevState) => !prevState);
-    }
+
+    setMenu(false);
+
     classButtonHelp = `${classButtonHelp} selected`;
     classButtonHome = `${classButton}home`;
     classButtonLikes = `${classButton}likes`;
@@ -211,36 +199,39 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     }
   };
 
-  const handleSearch = (type: string) => {
-    if (type === "fromNavBar") {
-      if (isMenuOpen) {
-        setMenu((prevState) => !prevState);
-      }
+  const handleSearch = (event: MouseEvent<HTMLButtonElement>) => {
+    const type = event.currentTarget.title;
+
+    switch (type) {
+      case "desktop-bt-search":
+        handleFocus(".menu-search-input");
+        setMenu(false);
+        break;
+      case "bt-search":
+        handleFocus(".search-input");
+        break;
+      default:
     }
     setSearch((prevState) => !prevState);
-  };
-
-  const handleSearchFromNavBar = () => {
-    handleSearch("fromNavBar");
-  };
-
-  const handleSearchFromMenu = () => {
-    handleSearch("fromMenu");
   };
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     dispatch(stringToSearchActionCreator(event.target.value));
   };
 
-  const handleSearchSubmit = (): void => {
-    if (isMenuOpen) {
-      setMenu((prevState) => !prevState);
+  const handleSearchEnter = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      dispatch(stringToSearchActionCreator(stringToSearch));
+      handleSearchSubmit();
     }
+  };
+
+  const handleSearchSubmit = (): void => {
+    setMenu(false);
+
     if (stringToSearch !== "") {
       dispatch(modalTypeActionCreator("FFeature"));
       dispatch(searchPenguinThunk(stringToSearch));
-
-      setSearch((prevState) => !prevState);
 
       dispatch(stringToSearchActionCreator(stringToSearch));
       dispatch(headerLastTitleActionCreator(headerTitle));
@@ -249,6 +240,13 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       dispatch(modalTypeActionCreator("Search"));
       dispatch(modalMessageActionCreator("Please enter a search term"));
       setModal((prevState) => !prevState);
+    }
+  };
+
+  const handleFocus = (field: string): void => {
+    const input = document.querySelector(field) as HTMLElement | null;
+    if (input != null) {
+      input.focus();
     }
   };
 
@@ -431,12 +429,13 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
               type="text"
               placeholder={searchPlaceHolderText}
               onChange={handleSearchChange}
+              onKeyDown={handleSearchEnter}
               autoFocus
               value={stringToSearch}
             />
             <div className="search-container">
               <button
-                onClick={handleSearchFromNavBar}
+                onClick={handleSearch}
                 className={`desktop-bt-search${HidderSearch}`}
                 title="bt-search"
               />
@@ -462,7 +461,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
               title="desktop-btn-menu"
             />
             <button
-              onClick={handleLogoutHeader}
+              onClick={handleLogout}
               className={`desktop-bt-logout${HidderDesktopButtons}`}
               title="desktop-btn-logout"
             />
@@ -502,6 +501,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 onChange={handleSearchChange}
                 autoFocus
                 value={stringToSearch}
+                onKeyDown={handleSearchEnter}
               />
               <button
                 onClick={handleSearchSubmit}
@@ -512,7 +512,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             <hr className="hr-menu-horizontal" />
             <div className="menu-icons-horizontal">
               <button
-                onClick={handleLogoutMenu}
+                onClick={handleLogout}
                 className="bt-logout"
                 title="btn-logout"
               />
@@ -527,7 +527,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 title="bt-about"
               />
               <button
-                onClick={handleSearchFromMenu}
+                onClick={handleSearch}
                 className="bt-search"
                 title="bt-search"
               ></button>
