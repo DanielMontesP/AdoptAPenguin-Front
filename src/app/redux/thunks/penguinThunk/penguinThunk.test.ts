@@ -79,6 +79,23 @@ describe("Given the loadFavsThunk function", () => {
       loadPenguinsActionCreator(mockPenguins);
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
       axios.get = jest.fn().mockResolvedValue({
+        data: { penguins: [{ likers: "idmocked" }] },
+        status: 200,
+      });
+
+      const thunk = loadLikesThunk();
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledTimes(3);
+    });
+  });
+
+  describe("When loadLikesThunk with no results called", () => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
+      const dispatch = jest.fn();
+      loadPenguinsActionCreator(mockPenguins);
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.get = jest.fn().mockResolvedValue({
         data: { penguins: [] },
         status: 200,
       });
@@ -205,6 +222,11 @@ describe("Given the editPenguinThunk function", () => {
         data: { penguin: mockPenguin },
         status: 200,
       });
+
+      document.location = jest
+        .fn()
+        .mockResolvedValue({ href: "likes" })
+        .toString();
 
       const thunk = editPenguinThunk(mockPenguin, "update");
       await thunk(dispatch);

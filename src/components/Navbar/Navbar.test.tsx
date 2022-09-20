@@ -1,15 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { useState } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { headerLastTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 import store from "../../app/redux/store/store";
 import Navbar from "./Navbar";
 
 describe("Given a Navbar component", () => {
   describe("When it's invoked", () => {
-    test("Then it should render a list of 24 item", () => {
+    test("Then it should render a list of 2 separators", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
@@ -27,7 +25,7 @@ describe("Given a Navbar component", () => {
   describe("When Back action is invoked", () => {
     test("Then it should call the back action", () => {
       const handleBack = jest.fn();
-      headerLastTitleActionCreator("Favourites");
+
       render(
         <BrowserRouter>
           <Provider store={store}>
@@ -46,7 +44,7 @@ describe("Given a Navbar component", () => {
   describe("When Back with edit param  is invoked", () => {
     test("Then it should call the back action", () => {
       const handleBack = jest.fn();
-      headerLastTitleActionCreator("Favourites");
+
       render(
         <BrowserRouter>
           <Provider store={store}>
@@ -325,32 +323,61 @@ describe("Given a Navbar component", () => {
       expect(handleHelp).toHaveBeenCalled();
     });
   });
-
-  describe("When bt-search is clicked", () => {
+  describe("When header is New...", () => {
     test("Then it should call the loadLikes action", () => {
-      const handleSearch = jest.fn();
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <Navbar headerTitle="New..." />
+          </Provider>
+        </BrowserRouter>
+      );
+      const headerTitle = screen.getAllByText("New...");
+
+      expect(headerTitle.length).toBeGreaterThan(1);
+    });
+  });
+});
+
+describe("Given a Search components", () => {
+  describe("When button search (bt-search) is clicked", () => {
+    test("Then it should call the handleFocus function", () => {
+      const titleSearchButton = "bt-search";
+
+      const placeHolderSearchInput = "Search by name or category...";
+
+      const handleFocus = jest.fn();
+      const handleSearchChange = jest.fn();
       const handleSearchSubmit = jest.fn();
-      jest.mock("react", () => ({
-        ...jest.requireActual("react"),
-        isMenuOpen: () => true,
-        useState: () => jest.fn().mockResolvedValue(true),
+      const handleSearchEnter = jest.fn();
+      jest.mock("../../app/redux/hooks/hooks", () => ({
+        useAppSelector: jest.fn().mockReturnValue("test"),
       }));
 
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navbar headerTitle="Test" />
+            <Navbar headerTitle="Favourites" />
           </Provider>
         </BrowserRouter>
       );
-      const btToCLick = screen.getByTitle("bt-search");
+
+      const btToCLick = screen.getByTitle(titleSearchButton);
+      const inputSearch = screen.getByPlaceholderText(placeHolderSearchInput);
       const btToCLickSubmit = screen.getByTitle("bt-search-submit");
 
       userEvent.click(btToCLick);
+      userEvent.type(inputSearch, "Enter");
       userEvent.click(btToCLickSubmit);
-      handleSearch();
+
+      handleSearchChange();
+      handleFocus(".search-input");
+      handleSearchEnter({ event: { key: "Enter" } });
       handleSearchSubmit();
-      expect(handleSearch).toHaveBeenCalled();
+
+      expect(handleSearchChange).toHaveBeenCalled();
+      expect(handleFocus).toHaveBeenCalled();
+      expect(handleSearchEnter).toHaveBeenCalled();
       expect(handleSearchSubmit).toHaveBeenCalled();
     });
   });
