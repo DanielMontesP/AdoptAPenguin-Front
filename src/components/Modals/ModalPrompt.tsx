@@ -30,7 +30,7 @@ export const Modal = ({
   const isHelp = type === "Help";
   const isAbout = type === "About";
 
-  const overflowY = isHelp || isAbout ? " overflowY-auto" : " overflowY-none";
+  const overflowY = isHelp || isAbout ? " overflow-auto" : " overflowY-none";
 
   const modalClass = isWellcome
     ? `modal modal-wellcome${overflowY}`
