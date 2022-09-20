@@ -344,7 +344,11 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
                 onClick={handleBack}
               />
             )}
-            {isLogged ? <div className={classIconHeader} /> : ""}
+            {isLogged ? (
+              <div className={classIconHeader} />
+            ) : (
+              <h1 className={`header-desktop-title1`}>Responsive site</h1>
+            )}
             <h1
               className={
                 isLogged ? `header-desktop-title` : `header-desktop-title3`
@@ -352,6 +356,11 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             >
               {headerTitle}
             </h1>
+            {!isLogged ? (
+              <h1 className={`header-desktop-title2`}>Amazing features...</h1>
+            ) : (
+              ""
+            )}
             <button
               className={`menu-btn${HidderDesktopButtons}`}
               onClick={handleMenu}
@@ -362,6 +371,11 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       ) : (
         <div className={headerClassDesktop}>
           <div className="header-title-container">
+            {!isLogged ? (
+              <h1 className={`header-desktop-title1`}>Responsive site</h1>
+            ) : (
+              ""
+            )}
             <h1
               className={
                 isLogged ? `header-desktop-title` : `header-desktop-title3`
@@ -369,6 +383,11 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             >
               {"AdoptApenguin.com"}
             </h1>
+            {!isLogged ? (
+              <h1 className={`header-desktop-title2`}>Amazing features...</h1>
+            ) : (
+              ""
+            )}
           </div>
           <div className={`header-desktop-buttons${HidderDesktopButtons}`}>
             <button
