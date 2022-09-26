@@ -75,17 +75,12 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
 
   const isMessagesSelected = document.location.href.includes("messages");
 
-  switch (isMessagesSelected) {
-    case true:
-      classDescription = " opacity-none";
-      classTabDescription = "";
-      classTabMessages = " tab-selected";
+  if (isMessagesSelected) {
+    classDescription = " opacity-none";
 
-      break;
-    default:
-      classDescription = "";
-      classTabDescription = " tab-selected";
-      classTabMessages = "";
+    classTabMessages = " tab-selected";
+  } else {
+    classTabDescription = " tab-selected";
   }
 
   return (

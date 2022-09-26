@@ -251,8 +251,6 @@ a {
 }
 
 label {
-  display: flex;
-  flex-direction: column;
   width: 80%;
   height: 60px;
   padding-bottom: 10px;
@@ -308,7 +306,7 @@ input ::placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 400px;
+
   width: 100%;
   background-image: none;
   margin-top: 50px;
@@ -481,9 +479,9 @@ input ::placeholder {
 .penguin-image-container {
   box-shadow: 0 3px 6px #666;
   padding: 10px 10px 150px 10px;
+  margin: auto;
   margin-bottom: 10px;
   border-radius: 5px 5px 5px 5px;
-  margin: auto;
   text-align: center;
   width: 100%;
 }
@@ -560,8 +558,6 @@ input ::placeholder {
   justify-content: center;
   align-items: center;
   -moz-column-count: 4;
-  -webkit-column-gap: 1.5em;
-  -moz-column-gap: 1.5em;
   column-gap: 1.5em;
   margin: 1em;
   padding: 1;
