@@ -28,6 +28,7 @@ describe("Given a CreatePage component", () => {
       expect(label).toBeInTheDocument();
     });
   });
+
   describe("When the two inputs have text and the submit button is clicked", () => {
     test("Then the two inputs should be empty", async () => {
       const nameLabel = "Name";

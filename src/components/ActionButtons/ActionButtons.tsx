@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { editPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { cleanArray, blankFormData } from "../../utils/utils";
+import MessageButton from "../MessageButton/MessageButton";
 import { Modal } from "../Modals/ModalPrompt";
 
 interface Props {
@@ -155,6 +156,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
           closeModal={setModal}
         />
       )}
+      <MessageButton penguin={penguin} />
     </div>
   );
 };

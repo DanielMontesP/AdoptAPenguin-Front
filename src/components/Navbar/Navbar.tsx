@@ -48,33 +48,8 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   let isHome = false;
   let isForm = false;
   let isLikesPage = false;
-  let isFavsPage = false;
 
   const isLogged = user.logged;
-
-  switch (headerTitle) {
-    case "Home":
-      isHome = true;
-
-      break;
-    case "New...":
-      isForm = true;
-
-      break;
-    case "Edit...":
-      isForm = true;
-
-      break;
-    case "Likes":
-      isLikesPage = true;
-
-      break;
-    case "Favourites":
-      isFavsPage = true;
-
-      break;
-    default:
-  }
 
   const classButton = `desktop-btn bt-`;
 
@@ -84,13 +59,82 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   let classButtonFavs = `${classButton}favs`;
   let classButtonAbout = `${classButton}about`;
   let classButtonHelp = `${classButton}help`;
+  let classButtonNew = `${classButton}new`;
   let classIconFavs = `${classIconHeader}-favs-icon`;
   let classIconLikes = `${classIconHeader}-likes-icon`;
   let classIconHome = `${classIconHeader}-home-icon`;
   let classIconEdit = `${classIconHeader}-edit-icon`;
   let classIconNew = `${classIconHeader}-new-icon`;
+  let classIconDetail = `${classIconHeader}-detail-icon`;
   let classButtonAddFav = `${classButton}addFav`;
   let classButtonSearch = ``;
+
+  let headerIconType = "";
+
+  switch (headerTitle) {
+    case "Home":
+      classButtonHome = `${classButtonHome} selected`;
+      classButtonLikes = `${classButton}likes`;
+      classButtonFavs = `${classButton}favs`;
+      classButtonAbout = `${classButton}about`;
+      classIconHeader = classIconHome;
+
+      isHome = true;
+      break;
+    case "New...":
+      classButtonFavs = `${classButtonFavs}`;
+      classButtonHome = `${classButton}home`;
+      classButtonLikes = `${classButton}likes`;
+      classButtonAbout = `${classButton}about`;
+      classButtonNew = `${classButtonNew} selected`;
+      classIconHeader = classIconNew;
+
+      isForm = true;
+      break;
+    case "Edit...":
+      classButtonFavs = `${classButtonFavs}`;
+      classButtonHome = `${classButton}home`;
+      classButtonLikes = `${classButton}likes`;
+      classButtonAbout = `${classButton}about`;
+      classIconHeader = classIconEdit;
+
+      isForm = true;
+      break;
+    case "Likes":
+      classButtonLikes = `${classButtonLikes} selected`;
+      classButtonHome = `${classButton}home`;
+      classButtonFavs = `${classButton}favs`;
+      classButtonAbout = `${classButton}about`;
+      classButtonAbout = `${classButton}about`;
+      classIconHeader = classIconLikes;
+
+      headerIconType = " header-likes";
+
+      isLikesPage = true;
+      break;
+    case "Favourites":
+      classButtonFavs = `${classButtonFavs} selected`;
+      classButtonHome = `${classButton}home`;
+      classButtonLikes = `${classButton}likes`;
+      classButtonAbout = `${classButton}about`;
+      classIconHeader = classIconFavs;
+      headerIconType = " header-favs";
+
+      break;
+    case "Detail":
+      classButtonFavs = `${classButtonFavs}`;
+      classButtonHome = `${classButton}home`;
+      classButtonLikes = `${classButton}likes`;
+      classButtonAbout = `${classButton}about`;
+
+      classIconHeader = classIconDetail;
+      break;
+    default:
+      classButtonHome = `${classButton}home selected`;
+      classButtonFavs = `${classButton}favs`;
+      classButtonLikes = `${classButton}likes`;
+      classButtonAbout = `${classButton}about`;
+  }
 
   const searchPlaceHolderText = "Search by name or category...";
   let HidderDesktopButtons = "";
@@ -261,15 +305,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
   const setClassBack = "bt-back";
 
-  const HidderBack =
-    (isDesktop && !isForm) || headerTitle === "AdoptAPenguin.com"
-      ? " display-none"
-      : "";
+  const HidderBack = isDesktop || isHome ? " display-none" : "";
 
   const classBack = setClassBack + HidderBack;
-
-  let headerIconType = isLikesPage ? " header-likes" : "";
-  headerIconType = isFavsPage ? " header-favs" : headerIconType;
 
   const hidderApp = "";
   const headerClass = `header${headerIconType}${hidderApp}`;
@@ -279,58 +317,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     const newModalType = modalType;
     return newModalType;
   };
-
-  if (modalType !== "FFeature") {
-    switch (headerTitle) {
-      case "Home":
-        classButtonHome = `${classButtonHome} selected`;
-        classButtonLikes = `${classButton}likes`;
-        classButtonFavs = `${classButton}favs`;
-        classButtonAbout = `${classButton}about`;
-        classIconHeader = classIconHome;
-        break;
-      case "Likes":
-        classButtonLikes = `${classButtonLikes} selected`;
-        classButtonHome = `${classButton}home`;
-        classButtonFavs = `${classButton}favs`;
-        classButtonAbout = `${classButton}about`;
-        classButtonAbout = `${classButton}about`;
-        classIconHeader = classIconLikes;
-        break;
-      case "Favourites":
-        classButtonFavs = `${classButtonFavs} selected`;
-        classButtonHome = `${classButton}home`;
-        classButtonLikes = `${classButton}likes`;
-        classButtonAbout = `${classButton}about`;
-        classIconHeader = classIconFavs;
-        break;
-      case "Detail":
-        classButtonFavs = `${classButtonFavs}`;
-        classButtonHome = `${classButton}home`;
-        classButtonLikes = `${classButton}likes`;
-        classButtonAbout = `${classButton}about`;
-        break;
-      case "Edit...":
-        classButtonFavs = `${classButtonFavs}`;
-        classButtonHome = `${classButton}home`;
-        classButtonLikes = `${classButton}likes`;
-        classButtonAbout = `${classButton}about`;
-        classIconHeader = classIconEdit;
-        break;
-      case "New...":
-        classButtonFavs = `${classButtonFavs}`;
-        classButtonHome = `${classButton}home`;
-        classButtonLikes = `${classButton}likes`;
-        classButtonAbout = `${classButton}about`;
-        classIconHeader = classIconNew;
-        break;
-      default:
-        classButtonHome = `${classButton}home selected`;
-        classButtonFavs = `${classButton}favs`;
-        classButtonLikes = `${classButton}likes`;
-        classButtonAbout = `${classButton}about`;
-    }
-  }
 
   return (
     <div className={`app`}>
@@ -351,7 +337,11 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
             )}
             <h1
               className={
-                isLogged ? `header-desktop-title` : `header-desktop-title3`
+                isLogged
+                  ? `header-desktop-title${
+                      isLikesPage || isForm ? "-likes" : ""
+                    }`
+                  : `header-desktop-title3`
               }
             >
               {headerTitle}
@@ -412,7 +402,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
               Likes
             </button>
             <button
-              className={classButtonAddFav}
+              className={classButtonNew}
               onClick={addFav}
               title="btn-addFav"
             >

@@ -10,6 +10,20 @@
     align-items: center;
   }
 
+  .messages-container {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    box-shadow: 0 0 15px 6px #666;
+    border-radius: 5px 5px 5px 5px;
+    padding: 10px 10px 20px 10px;
+    font-size: 16px;
+    background: white;
+    position: relative;
+    top: -230px;
+    text-align: justify;
+  }
+
   .header-desktop-buttons {
     display: none;
   }
@@ -104,9 +118,20 @@
 
 .header-desktop-title {
   text-align: left;
-
   margin-top: 10px;
+  width: 25%;
+  flex: 3;
+}
 
+.header-desktop-title-likes {
+  text-align: left;
+  margin-top: 10px;
+  width: 25%;
+  flex: 2;
+}
+.header-desktop-title-detail {
+  text-align: left;
+  margin-top: 10px;
   width: 25%;
   flex: 2;
 }
@@ -357,7 +382,19 @@ h1 {
     transition: all 1s;
     z-index: 4;
   }
-
+  .messages-container {
+    width: 435px;
+    margin: auto;
+    margin-top: 30px;
+    box-shadow: 0 0 15px 6px #666;
+    border-radius: 5px 5px 5px 5px;
+    padding: 10px 10px 20px 10px;
+    font-size: 16px;
+    background: white;
+    position: relative;
+    top: -175px;
+    text-align: justify;
+  }
   .search-input :hover {
     cursor: pointer;
   }
@@ -557,6 +594,48 @@ h1 {
   }
 }
 
+.message-container {
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 14px;
+  margin: auto;
+  margin-top: 10px;
+  overflow-y: auto;
+}
+
+.messages-title {
+  text-align: left;
+}
+
+.bt-messages {
+  background: url("../images/message.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 35px;
+  margin-left: 24px;
+  border: 0;
+}
+
+.message-new {
+  background: url("../images/message-new.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 35px;
+  margin-left: 24px;
+  border: 0;
+}
+
+.message-got {
+  background: url("../images/message-got.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 35px;
+  margin-left: 24px;
+  border: 0;
+}
+
 .bt-help {
   background: url("../images/help-45.png");
   background-position: center;
@@ -570,7 +649,7 @@ h1 {
   background: url("../images/icon-star_full.png");
   background-repeat: no-repeat;
   background-position: right;
-  background-size: 45px;
+  background-size: 35px;
   width: 45px;
   height: 45px;
   margin-right: 10px;
@@ -581,7 +660,7 @@ h1 {
   background: url("../images/menu-favs.png");
   background-repeat: no-repeat;
   background-position: right;
-  background-size: 45px;
+  background-size: 35px;
   width: 45px;
   height: 45px;
   margin-right: 10px;
@@ -592,7 +671,7 @@ h1 {
   background: url("../images/icon-home.png");
   background-repeat: no-repeat;
   background-position: right;
-  background-size: 45px;
+  background-size: 35px;
   width: 45px;
   height: 45px;
   margin-right: 10px;
@@ -603,7 +682,7 @@ h1 {
   background: url("../images/icon-editar.png");
   background-repeat: no-repeat;
   background-position: right;
-  background-size: 45px;
+  background-size: 35px;
   width: 45px;
   height: 45px;
   margin-right: 10px;
@@ -614,11 +693,22 @@ h1 {
   background: url("../images/icon-add_plus.png");
   background-repeat: no-repeat;
   background-position: right;
-  background-size: 45px;
+  background-size: 35px;
   width: 45px;
   height: 45px;
   margin-right: 10px;
   flex: 1;
+}
+
+.header-detail-icon {
+  background: url("../images/icon-add_plus.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 35px;
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  flex: 2;
 }
 
 .app {
@@ -1039,14 +1129,6 @@ ul {
   cursor: pointer;
 }
 
-.message-container {
-  text-align: center;
-  font-size: 14px;
-  margin: auto;
-  margin-top: 10px;
-  overflow-y: auto;
-}
-
 .message-header {
   display: inline-flex;
   width: 60%;
@@ -1119,4 +1201,8 @@ ul {
 
 .opacity-full {
   opacity: 1;
+}
+
+.opacity-none {
+  opacity: 0;
 }

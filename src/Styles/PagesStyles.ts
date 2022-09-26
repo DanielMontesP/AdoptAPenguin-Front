@@ -22,7 +22,6 @@ const PagesStyles = styled.div`
   }
 
   text-align: center;
-  margin-top: 100px;
 
   .container {
     width: 90%;

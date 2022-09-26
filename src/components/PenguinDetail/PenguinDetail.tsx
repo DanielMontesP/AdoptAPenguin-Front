@@ -1,3 +1,5 @@
+import { MouseEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
   getPenguinThunk,
@@ -6,6 +8,7 @@ import {
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import iconPhotoEmpty from "../../images/contact-photo-add.png";
 import ActionButtons from "../ActionButtons/ActionButtons";
+import Messages from "../Messages/Messages";
 import { correctAction } from "../Modals/Modals";
 
 interface Props {
@@ -16,6 +19,14 @@ interface Props {
 const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const thisPenguin = useAppSelector((state) => state.penguins.penguin);
+
+  const navigate = useNavigate();
+
+  let classDescription = "";
+  let classTabDescription = "";
+  let classTabMessages = "";
+
+  const { allMessages } = useAppSelector((state) => state.messages);
 
   const penguinImage =
     penguin.image === "" && !penguin.imageBackup.includes("/")
@@ -54,11 +65,33 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
     dispatch(getPenguinThunk(nextPenguinId));
   };
 
+  const handleTab = (event: MouseEvent<HTMLButtonElement>) => {
+    if (event.currentTarget.title === "messages") {
+      navigate("#messages");
+    } else {
+      navigate("#description");
+    }
+  };
+
+  const isMessagesSelected = document.location.href.includes("messages");
+
+  switch (isMessagesSelected) {
+    case true:
+      classDescription = " opacity-none";
+      classTabDescription = "";
+      classTabMessages = " tab-selected";
+
+      break;
+    default:
+      classDescription = "";
+      classTabDescription = " tab-selected";
+      classTabMessages = "";
+  }
+
   return (
     <div className="detail-container">
       <h1 className="display-none">Detail</h1>
       <h2 className="detail-name">{penguin.name}</h2>
-
       <div className="img-container">
         <button
           onClick={getDetailPrev}
@@ -78,12 +111,31 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
           title="btn-next"
         />
       </div>
-
-      <div className="penguin-description">
+      <div className={`penguin-description`}>
         <ActionButtons penguin={penguin} />
         <span className="category">{penguin.category}</span>
-        <span className="detail-description">{penguin.description}</span>
+        <div className="detail-tabs">
+          <button
+            className={`tab-description${classTabDescription}`}
+            title="description"
+            onClick={handleTab}
+          >
+            Description
+          </button>
+          <button
+            className={`tab-messages${classTabMessages}`}
+            title="messages"
+            onClick={handleTab}
+          >
+            Messages
+          </button>
+        </div>
+        <span className={`detail-description${classDescription}`}>
+          {penguin.description}
+        </span>
       </div>
+      {isMessagesSelected ? <Messages allMessages={allMessages} /> : ""}
+      :""
     </div>
   );
 };
