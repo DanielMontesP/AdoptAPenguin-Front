@@ -15,10 +15,9 @@ const MessageButton = ({ penguin }: Props): JSX.Element => {
 
   const getMessageType = () => {
     const gotMessages = " message-got";
-    const newMessages = "";
+    const newMessages = " bt-messages";
 
     if (Array(allMessages)) {
-      // allMessages.includes("Read");
       iconType = allMessages.length ? gotMessages : newMessages;
     } else {
       iconType = " message-got";
@@ -26,7 +25,7 @@ const MessageButton = ({ penguin }: Props): JSX.Element => {
   };
 
   const handleMessage = () => {
-    navigate("#messages");
+    navigate(`/detail/${penguin.id}#messages`);
   };
 
   getMessageType();
@@ -34,7 +33,10 @@ const MessageButton = ({ penguin }: Props): JSX.Element => {
   useEffect(() => {});
 
   return (
-    <button className={`bt-messages${iconType}`} onClick={handleMessage} />
+    <button
+      className={`bt-messages bounce ${iconType}`}
+      onClick={handleMessage}
+    />
   );
 };
 

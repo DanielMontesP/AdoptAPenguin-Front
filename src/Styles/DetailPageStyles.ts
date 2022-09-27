@@ -31,6 +31,13 @@ const DetailPageStyles = styled.div`
       align-content: space-around;
     }
 
+    .detail-container {
+      margin-bottom: 10px;
+      border-radius: 5px 5px 5px 5px;
+      margin: auto;
+      height: 87.4vh;
+    }
+
     .penguin-description {
       width: 450px;
       min-height: 40px;
@@ -64,6 +71,7 @@ const DetailPageStyles = styled.div`
       margin-top: 20px;
       width: 80%;
     }
+
     .detail-description {
       width: 435px;
       font-size: 16px;
@@ -73,7 +81,10 @@ const DetailPageStyles = styled.div`
       border-radius: 5px 5px 5px 5px;
       margin: auto;
       text-align: justify;
+      min-width: 320px;
+      min-height: 100px;
     }
+
     .detail-image {
       height: 300px;
       width: 450px;
@@ -95,6 +106,14 @@ const DetailPageStyles = styled.div`
       align-content: space-around;
     }
 
+    .detail-container {
+      margin-bottom: 10px;
+      border-radius: 5px 5px 5px 5px;
+      margin: auto;
+      margin-top: 6rem;
+      height: 87.4vh;
+    }
+
     .detail-image {
       height: 300px;
       width: 450px;
@@ -112,6 +131,8 @@ const DetailPageStyles = styled.div`
       border-radius: 5px 5px 5px 5px;
       margin: auto;
       text-align: justify;
+      min-width: 320px;
+      min-height: 100px;
     }
 
     .penguin-description {
@@ -299,14 +320,6 @@ const DetailPageStyles = styled.div`
     width: 10%;
     height: 270px;
     flex: 2;
-  }
-
-  .detail-container {
-    margin-bottom: 10px;
-    border-radius: 5px 5px 5px 5px;
-    margin: auto;
-    margin-top: 6rem;
-    height: 87.4vh;
   }
 
   .penguin-image-container {
@@ -683,11 +696,13 @@ const DetailPageStyles = styled.div`
   .bounce {
     -webkit-animation-name: bounce;
     animation-name: bounce;
+    margin: auto;
   }
 
   .bounce2 {
     -webkit-animation-name: bounce2;
     animation-name: bounce2;
+    margin: auto;
   }
 
   .header {

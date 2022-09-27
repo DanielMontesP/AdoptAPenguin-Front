@@ -10,8 +10,24 @@
     align-items: center;
   }
 
+  .penguins-container {
+    border-radius: 8px;
+    padding: 0 10px 15px;
+    margin-top: 95px;
+    text-align: center;
+    width: 95%;
+  }
+
+  .modal-wellcome {
+    width: 80%;
+    height: -webkit-fill-available;
+    max-height: 500px;
+    max-width: 500px;
+  }
+
   .messages-container {
     width: 80%;
+    min-height: 100px;
     margin: auto;
     margin-top: 30px;
     box-shadow: 0 0 15px 6px #666;
@@ -20,8 +36,17 @@
     font-size: 16px;
     background: white;
     position: relative;
-    top: -230px;
+    top: -165px;
     text-align: justify;
+  }
+
+  .message-container {
+    height: 300px;
+    text-align: center;
+    font-size: 14px;
+    margin: auto;
+    margin-top: 10px;
+    overflow-y: auto;
   }
 
   .header-desktop-buttons {
@@ -117,9 +142,9 @@
 }
 
 .header-desktop-title {
-  text-align: left;
-  margin-top: 10px;
-  width: 25%;
+  text-align: center;
+  margin: auto;
+
   flex: 3;
 }
 
@@ -374,6 +399,29 @@ h1 {
 }
 
 @media only screen and (min-width: 421px) {
+  .app {
+    height: 5rem;
+    background-color: #292929;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+    margin: auto;
+  }
+
+  .penguins-container {
+    border-radius: 8px;
+    padding: 0 10px 15px;
+    margin-top: 25px;
+    text-align: center;
+    width: 95%;
+  }
+
+  .modal-help {
+    width: 80%;
+    height: 200px;
+    max-height: 500px;
+    max-width: 500px;
+  }
   .search-container {
     width: 30px;
     height: 30px;
@@ -382,8 +430,10 @@ h1 {
     transition: all 1s;
     z-index: 4;
   }
+
   .messages-container {
     width: 435px;
+    min-height: 100px;
     margin: auto;
     margin-top: 30px;
     box-shadow: 0 0 15px 6px #666;
@@ -392,9 +442,19 @@ h1 {
     font-size: 16px;
     background: white;
     position: relative;
-    top: -175px;
+    top: -165px;
     text-align: justify;
   }
+
+  .message-container {
+    height: 300px;
+    text-align: center;
+    font-size: 14px;
+    margin: auto;
+    margin-top: 10px;
+    overflow-y: auto;
+  }
+
   .search-input :hover {
     cursor: pointer;
   }
@@ -432,9 +492,9 @@ h1 {
   .search-input {
     position: absolute;
     margin: auto;
-    top: -30px;
+    top: 5px;
     right: 10px;
-    bottom: 0;
+
     height: 30px;
     outline: none;
     border: none;
@@ -516,7 +576,7 @@ h1 {
     background-repeat: no-repeat;
     height: 30px;
     border: 0;
-    margin-top: -2px;
+    margin-top: -5px;
     opacity: 0;
     position: absolute;
     top: 11px;
@@ -582,6 +642,7 @@ h1 {
     justify-content: space-around;
     background-color: #292929;
     color: white;
+    margin-top: 15px;
   }
 
   .devicons-container {
@@ -594,26 +655,15 @@ h1 {
   }
 }
 
-.message-container {
-  height: 200px;
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-  font-size: 14px;
-  margin: auto;
-  margin-top: 10px;
-  overflow-y: auto;
-}
-
 .messages-title {
   text-align: left;
 }
 
 .bt-messages {
-  background: url("../images/message.png");
+  background: url("../images/message-45.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 35px;
+  background-size: 40px;
   margin-left: 24px;
   border: 0;
 }
@@ -622,16 +672,16 @@ h1 {
   background: url("../images/message-new.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 35px;
+  background-size: 40px;
   margin-left: 24px;
   border: 0;
 }
 
 .message-got {
-  background: url("../images/message-got.png");
+  background: url("../images/message-45.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 35px;
+  background-size: 40px;
   margin-left: 24px;
   border: 0;
 }
@@ -648,67 +698,73 @@ h1 {
 .header-favs-icon {
   background: url("../images/icon-star_full.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-position-x: 30%;
+  background-position-y: -4px;
   background-size: 35px;
   width: 45px;
   height: 45px;
-  margin-right: 10px;
-  flex: 1;
 }
 
 .header-likes-icon {
   background: url("../images/menu-favs.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-position-x: 35%;
+  background-position-y: -4px;
   background-size: 35px;
   width: 45px;
   height: 45px;
-  margin-right: 10px;
-  flex: 1;
 }
 
 .header-home-icon {
   background: url("../images/icon-home.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-position-x: 30%;
+  background-position-y: -5px;
   background-size: 35px;
   width: 45px;
   height: 45px;
-  margin-right: 10px;
-  flex: 2;
+}
+
+.header-wellcome {
+  background: rgb(29, 29, 29);
+  color: white;
+  position: fixed;
+
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 75px;
 }
 
 .header-edit-icon {
   background: url("../images/icon-editar.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-position-x: 30%;
+  background-position-y: -5px;
   background-size: 35px;
   width: 45px;
   height: 45px;
-  margin-right: 10px;
-  flex: 1;
 }
 
 .header-new-icon {
   background: url("../images/icon-add_plus.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-position-x: 35%;
+  background-position-y: -3px;
   background-size: 35px;
   width: 45px;
   height: 45px;
-  margin-right: 10px;
-  flex: 1;
 }
 
 .header-detail-icon {
-  background: url("../images/icon-add_plus.png");
+  background: url("../images/icon-editar.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-position-x: 30%;
+  background-position-y: -5px;
   background-size: 35px;
   width: 45px;
   height: 45px;
-  margin-right: 10px;
-  flex: 2;
 }
 
 .app {
@@ -746,13 +802,18 @@ ul {
 .login-container {
   width: 100%;
   display: flow-root;
-  margin-top: 90px;
 }
 
 .register-container {
   width: 100%;
   display: flow-root;
-  margin-top: 90px;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  display: flow-root;
+  margin: auto;
 }
 
 .hr-menu-horizontal {
@@ -847,8 +908,7 @@ ul {
   justify-content: left;
   margin-left: 35px;
   position: fixed;
-
-  gap: 35px;
+  gap: 40px;
   height: 1vw;
 }
 
@@ -902,9 +962,9 @@ ul {
   background-repeat: no-repeat;
   background-position: center;
   border: 0;
-
   height: 50px;
-  margin-left: 20px;
+  position: fixed;
+  left: 10px;
 }
 
 .bt-logout {
@@ -1035,6 +1095,7 @@ ul {
 .header .nav {
   display: flex;
   gap: 1rem;
+  background-color: #292929;
 }
 
 .menu-icon-label-vertical {
@@ -1100,13 +1161,6 @@ ul {
   overflow: auto;
 }
 
-.modal-wellcome {
-  width: 80%;
-  height: -webkit-fill-available;
-  max-height: 500px;
-  max-width: 500px;
-}
-
 .modal-header {
   border-radius: 10px 10px 0 0;
   background-color: rgb(29, 29, 29);
@@ -1134,11 +1188,13 @@ ul {
   width: 60%;
   justify-content: space-around;
 }
+
 .message-content {
   text-align: justify;
   font-size: 14px;
   margin: auto;
   width: 90%;
+  color: black;
 }
 
 .modal-message {
@@ -1205,4 +1261,9 @@ ul {
 
 .opacity-none {
   opacity: 0;
+}
+
+.nav {
+  background-color: #292929;
+  color: white;
 }

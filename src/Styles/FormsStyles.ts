@@ -27,6 +27,13 @@ const FormsStyles = styled.div`
       margin: auto;
     }
 
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      margin-top: 90px;
+    }
+
     .preview-image {
       max-width: 280px;
       height: 190px;
@@ -59,10 +66,10 @@ const FormsStyles = styled.div`
       width: 40vh;
       height: 180px;
       cursor: pointer;
-
       background-image: url(${iconAddPhoto});
       background-repeat: no-repeat;
       background-position: center;
+      background-color: white;
       border-radius: 15px;
       border: 2px black solid;
       opacity: 0.5;
@@ -119,6 +126,12 @@ const FormsStyles = styled.div`
       margin: auto;
     }
 
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+    }
+
     .preview-image {
       max-width: 350px;
       margin: auto;
@@ -153,10 +166,10 @@ const FormsStyles = styled.div`
       width: 50vh;
       height: 220px;
       cursor: pointer;
-
       background-image: url(${iconAddPhoto});
       background-repeat: no-repeat;
       background-position: center;
+      background-color: white;
       border-radius: 15px;
       border: 2px black solid;
       opacity: 0.5;
@@ -296,6 +309,7 @@ const FormsStyles = styled.div`
     width: 80%;
     max-width: 500px;
     margin: auto;
+    margin-top: 90px;
   }
 
   input ::placeholder {
@@ -348,13 +362,6 @@ const FormsStyles = styled.div`
 
   .form-create {
     margin-top: 20px;
-  }
-
-  .image-container {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    margin-top: 90px;
   }
 
   .edit-image {

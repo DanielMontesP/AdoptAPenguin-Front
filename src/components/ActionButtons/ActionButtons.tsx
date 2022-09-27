@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  isModalOpenActionCreator,
   modalMessageActionCreator,
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
@@ -43,6 +44,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     dispatch(modalMessageActionCreator(message));
 
     setModal((prevState) => !prevState);
+    dispatch(isModalOpenActionCreator(true));
   };
 
   const handleEdit = () => {
@@ -148,6 +150,8 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         title="btn-likes"
       />
 
+      <MessageButton penguin={penguin} />
+
       {isModalOpen && (
         <Modal
           type={modalType}
@@ -156,7 +160,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
           closeModal={setModal}
         />
       )}
-      <MessageButton penguin={penguin} />
     </div>
   );
 };

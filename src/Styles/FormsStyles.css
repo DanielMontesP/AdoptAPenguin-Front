@@ -152,10 +152,10 @@
     width: 50vh;
     height: 220px;
     cursor: pointer;
-
     background-image: url("../images/contact-photo.png");
     background-repeat: no-repeat;
     background-position: center;
+    background-color: white;
     border-radius: 15px;
     border: 2px black solid;
     opacity: 0.5;
@@ -282,17 +282,12 @@ nav {
   height: 45px;
 }
 
-.submitContainer {
-  display: flex;
-  width: 100%;
-}
-
 .img-Home {
   border: 3px solid black;
   border-radius: 25px;
   width: 80%;
   max-width: 500px;
-  margin: auto;
+  margin-top: 90px;
 }
 
 input ::placeholder {
@@ -558,7 +553,6 @@ input ::placeholder {
   justify-content: center;
   align-items: center;
   -moz-column-count: 4;
-  column-gap: 1.5em;
   margin: 1em;
   padding: 1;
   -moz-column-gap: 1em;

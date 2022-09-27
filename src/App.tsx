@@ -16,11 +16,14 @@ import PenguinsPage from "./pages/PenguinsPage/PenguinsPage";
 import { getUserThunk } from "./app/redux/thunks/userThunk/userThunk";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { isDesktopActionCreator } from "./app/redux/features/uiSlice/uiSlice";
+import NavWellcome from "./components/NavWellcome/NavWellcome";
 
 function App() {
   const { logged, id } = useAppSelector((state) => state.user);
   const { headerTitle, loading } = useAppSelector((state) => state.ui);
+
   const dispatch = useAppDispatch();
+
   const [isDesktop, setDesktop] = useState(window.innerWidth > 421);
 
   const updateMedia = () => {
@@ -45,7 +48,7 @@ function App() {
 
   return (
     <>
-      <Navbar headerTitle={headerTitle} />
+      {logged ? <Navbar headerTitle={headerTitle} /> : <NavWellcome />}
 
       <Routes>
         <Route path="/" element={<Navigate to="/homepage" />} />
