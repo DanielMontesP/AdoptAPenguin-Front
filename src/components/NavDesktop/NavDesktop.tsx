@@ -38,19 +38,12 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
 
   const classButton = `desktop-btn bt-`;
 
-  let classIconHeader = `header`;
   let classButtonHome = `${classButton}home`;
   let classButtonLikes = `${classButton}likes`;
   let classButtonFavs = `${classButton}favs`;
   let classButtonAbout = `${classButton}about`;
   let classButtonHelp = `${classButton}help`;
   let classButtonNew = `${classButton}new`;
-  let classIconFavs = `${classIconHeader}-favs-icon`;
-  let classIconLikes = `${classIconHeader}-likes-icon`;
-  let classIconHome = `${classIconHeader}-home-icon`;
-  let classIconEdit = `${classIconHeader}-edit-icon`;
-  let classIconNew = `${classIconHeader}-new-icon`;
-  let classIconDetail = `${classIconHeader}-detail-icon`;
 
   let classInputSearch = `search-input`;
 
@@ -60,7 +53,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       classButtonLikes = `${classButton}likes`;
       classButtonFavs = `${classButton}favs`;
       classButtonAbout = `${classButton}about`;
-      classIconHeader = classIconHome;
 
       break;
     case "New...":
@@ -69,7 +61,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       classButtonLikes = `${classButton}likes`;
       classButtonAbout = `${classButton}about`;
       classButtonNew = `${classButtonNew} selected`;
-      classIconHeader = classIconNew;
 
       break;
     case "Edit...":
@@ -77,7 +68,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       classButtonHome = `${classButton}home`;
       classButtonLikes = `${classButton}likes`;
       classButtonAbout = `${classButton}about`;
-      classIconHeader = classIconEdit;
 
       break;
     case "Likes":
@@ -86,7 +76,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       classButtonFavs = `${classButton}favs`;
       classButtonAbout = `${classButton}about`;
       classButtonAbout = `${classButton}about`;
-      classIconHeader = classIconLikes;
 
       break;
     case "Favourites":
@@ -94,7 +83,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       classButtonHome = `${classButton}home`;
       classButtonLikes = `${classButton}likes`;
       classButtonAbout = `${classButton}about`;
-      classIconHeader = classIconFavs;
 
       break;
     case "Detail":
@@ -103,7 +91,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       classButtonLikes = `${classButton}likes`;
       classButtonAbout = `${classButton}about`;
 
-      classIconHeader = classIconDetail;
       break;
     default:
       classButtonHome = `${classButton}home selected`;
