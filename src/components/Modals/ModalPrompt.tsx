@@ -29,11 +29,11 @@ export const Modal = ({
 
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  const isWellcome = type === "About" || type === "Wellcome" ? true : false;
-  const isHelp = type === "Help";
-  const isAbout = type === "About";
+  let isWellcome = false;
 
-  let overflowY = isHelp || isAbout ? " overflow-auto" : " overflowY-none";
+  const isHelp = type === "Help";
+
+  let overflowY = "";
 
   let modalClass = "modal";
   let windowTitle = "";
@@ -43,10 +43,12 @@ export const Modal = ({
       windowTitle = "About";
       modalClass += ` modal-about${overflowY}`;
       overflowY = " overflow-auto";
+      isWellcome = true;
       break;
     case "Wellcome":
       windowTitle = "About";
       modalClass += ` modal-wellcome${overflowY}`;
+      isWellcome = true;
       break;
     case "Help":
       windowTitle = "Help";

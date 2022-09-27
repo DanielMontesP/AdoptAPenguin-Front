@@ -1,24 +1,21 @@
 import { ChangeEvent, KeyboardEvent, MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
-import {
-  resetPenguinThunk,
-  searchPenguinThunk,
-} from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import "../../Styles/NavbarStyles.css";
 import {
-  headerLastTitleActionCreator,
-  headerTitleActionCreator,
   isMenuOpenActionCreator,
   isModalOpenActionCreator,
-  modalMessageActionCreator,
   modalTypeActionCreator,
   stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import Menu from "../Menu/Menu";
 import { Modal } from "../Modals/ModalPrompt";
 import { ReactDimmer } from "react-dimmer";
-
+import {
+  handleLogout,
+  handleSearchSubmit,
+} from "../NavbarFunctions/NavbarFunctions";
 interface Props {
   headerTitle: string;
 }
@@ -115,49 +112,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   const searchPlaceHolderText = "Search by name or category...";
   let HidderDesktopButtons = "";
 
-  const handleLogout = (event: MouseEvent<HTMLButtonElement>) => {
-    const message = "Log out?";
-    const newModalType = "logOutUser";
-
-    dispatch(modalTypeActionCreator(newModalType));
-    dispatch(modalMessageActionCreator(message));
-
-    setMenu(false);
-
-    setModal((prevState) => !prevState);
-    dispatch(isModalOpenActionCreator(true));
-  };
-
-  const loadFavs = () => {
-    setMenu(false);
-
-    dispatch(modalTypeActionCreator(""));
-    dispatch(headerLastTitleActionCreator(headerTitle));
-    dispatch(headerTitleActionCreator("Favourites"));
-
-    navigate("/penguins/favs");
-  };
-
-  const loadLikes = () => {
-    setMenu(false);
-
-    dispatch(modalTypeActionCreator(""));
-    dispatch(headerLastTitleActionCreator(headerTitle));
-    dispatch(headerTitleActionCreator("Likes"));
-
-    navigate("/penguins/likes");
-  };
-
-  const loadHome = () => {
-    setMenu(false);
-
-    dispatch(modalTypeActionCreator(""));
-    dispatch(headerLastTitleActionCreator(headerTitle));
-    dispatch(headerTitleActionCreator("Home"));
-
-    navigate("/penguins");
-  };
-
   const addFav = () => {
     setMenu(false);
 
@@ -169,6 +123,10 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   const handleMenu = () => {
     setMenu((prevState) => !prevState);
     dispatch(isMenuOpenActionCreator(true));
+  };
+
+  const handleLogoutCall = () => {
+    handleLogout(dispatch);
   };
 
   const handleAbout = () => {
@@ -221,29 +179,23 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   const handleSearchEnter = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       dispatch(stringToSearchActionCreator(stringToSearch));
-      handleSearchSubmit();
+      handleSearchSubmitCall();
     }
   };
 
-  const handleSearchSubmit = (): void => {
-    setMenu(false);
-
-    if (stringToSearch !== "") {
-      dispatch(modalTypeActionCreator("FFeature"));
-      dispatch(searchPenguinThunk(stringToSearch));
-
-      dispatch(stringToSearchActionCreator(stringToSearch));
-      dispatch(headerLastTitleActionCreator(headerTitle));
-      dispatch(headerTitleActionCreator("Search results..."));
-    } else {
-      dispatch(modalTypeActionCreator("Search"));
-      dispatch(modalMessageActionCreator("Please enter a search term"));
-      setModal((prevState) => !prevState);
-    }
+  const handleSearchSubmitCall = () => {
+    handleSearchSubmit(
+      dispatch,
+      headerTitle,
+      setMenu,
+      setModal,
+      navigate,
+      stringToSearch
+    );
   };
 
   const handleFocus = (field: string): void => {
-    const input = document.querySelector(field) as HTMLElement | null;
+    const input = document.querySelector(field) as HTMLElement;
     if (input != null) {
       input.focus();
     }
@@ -262,15 +214,23 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     <div className="nav">
       <h1 className={`header-desktop-title`}>AdoptApenguin.com</h1>
       <div className={`header-desktop-buttons${HidderDesktopButtons}`}>
-        <button className={classButtonHome} onClick={loadHome} title="btn-home">
+        <button
+          className={classButtonHome}
+          //  onClick={loadHome}
+          title="btn-home"
+        >
           Home
         </button>
-        <button className={classButtonFavs} onClick={loadFavs} title="btn-favs">
+        <button
+          className={classButtonFavs}
+          //  onClick={loadFavs}
+          title="btn-favs"
+        >
           Favourites
         </button>
         <button
           className={classButtonLikes}
-          onClick={loadLikes}
+          // onClick={loadLikes}
           title="btn-likes"
         >
           Likes
@@ -294,7 +254,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
             title="bt-search"
           />
           <button
-            onClick={handleSearchSubmit}
+            onClick={handleSearchSubmitCall}
             className={`desktop-bt-search-submit ${HidderSearch.replace(
               "search-input",
               ""
@@ -313,7 +273,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
           title="desktop-btn-help"
         />
         <button
-          onClick={handleLogout}
+          onClick={handleLogoutCall}
           className={`desktop-bt-logout${HidderDesktopButtons}`}
           title="desktop-btn-logout"
         />

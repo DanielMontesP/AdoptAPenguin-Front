@@ -5,17 +5,17 @@ import {
   headerTitleActionCreator,
   isMenuOpenActionCreator,
   isModalOpenActionCreator,
-  modalMessageActionCreator,
   modalTypeActionCreator,
   stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
-import {
-  resetPenguinThunk,
-  searchPenguinThunk,
-} from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import noPhoto from "../../images/userPhoto.png";
 import { toPascalCase } from "../../utils/utils";
+import {
+  handleLogout,
+  handleSearchSubmit,
+} from "../NavbarFunctions/NavbarFunctions";
 
 interface Props {
   isMenuOpen: boolean;
@@ -39,19 +39,6 @@ const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
   const userImage = user.image || noPhoto;
 
   const searchPlaceHolderText = "Search by name or category...";
-
-  const handleLogout = (event: MouseEvent<HTMLButtonElement>): void => {
-    const message = "Log out?";
-    const newModalType = "logOutUser";
-
-    dispatch(modalTypeActionCreator(newModalType));
-    dispatch(modalMessageActionCreator(message));
-
-    setMenu((prevState) => !prevState);
-    dispatch(isMenuOpenActionCreator(false));
-    setModal((prevState) => !prevState);
-    dispatch(isModalOpenActionCreator(true));
-  };
 
   const loadFavs = () => {
     dispatch(isMenuOpenActionCreator(false));
@@ -121,6 +108,7 @@ const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
     switch (type) {
       case "desktop-bt-search":
         handleFocus(".menu-search-input");
+        setMenu(false);
         dispatch(isMenuOpenActionCreator(false));
         break;
       case "bt-search":
@@ -138,29 +126,23 @@ const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
   const handleSearchEnter = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       dispatch(stringToSearchActionCreator(stringToSearch));
-      handleSearchSubmit();
+      handleSearchSubmitCall();
     }
   };
 
-  const handleSearchSubmit = (): void => {
-    setMenu((prevState) => !prevState);
-
-    if (stringToSearch !== "") {
-      dispatch(modalTypeActionCreator("FFeature"));
-      dispatch(searchPenguinThunk(stringToSearch));
-
-      dispatch(stringToSearchActionCreator(stringToSearch));
-      dispatch(headerLastTitleActionCreator(headerTitle));
-      dispatch(headerTitleActionCreator("Search results..."));
-    } else {
-      dispatch(modalTypeActionCreator("Search"));
-      dispatch(modalMessageActionCreator("Please enter a search term"));
-      setModal((prevState) => !prevState);
-    }
+  const handleSearchSubmitCall = () => {
+    handleSearchSubmit(
+      dispatch,
+      headerTitle,
+      setMenu,
+      setModal,
+      navigate,
+      stringToSearch
+    );
   };
 
   const handleFocus = (field: string): void => {
-    const input = document.querySelector(field) as HTMLElement | null;
+    const input = document.querySelector(field) as HTMLElement;
     if (input != null) {
       input.focus();
     }
@@ -204,7 +186,7 @@ const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
             onKeyDown={handleSearchEnter}
           />
           <button
-            onClick={handleSearchSubmit}
+            onClick={handleSearchSubmitCall}
             className={`menu-bt-search-submit${HidderSearch}`}
             title="bt-search-submit"
           />
