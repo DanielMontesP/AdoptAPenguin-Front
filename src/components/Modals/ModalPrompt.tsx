@@ -33,7 +33,7 @@ export const Modal = ({
 
   const isHelp = type === "Help";
 
-  let overflowY = "";
+  let overflowY = " overflow-auto";
 
   let modalClass = "modal";
   let windowTitle = "";
@@ -42,7 +42,6 @@ export const Modal = ({
     case "About":
       windowTitle = "About";
       modalClass += ` modal-about${overflowY}`;
-      overflowY = " overflow-auto";
       isWellcome = true;
       break;
     case "Wellcome":
@@ -53,7 +52,6 @@ export const Modal = ({
     case "Help":
       windowTitle = "Help";
       modalClass += ` modal-help${overflowY}`;
-      overflowY = " overflow-auto";
       break;
     case "FFeature":
       windowTitle = "Notice";

@@ -14,7 +14,7 @@ export const loadHome = (
   headerTitle: string,
   setMenu: any,
   navigate: any
-): void => {
+): any => {
   setMenu(false);
 
   dispatch(modalTypeActionCreator(""));
@@ -41,7 +41,7 @@ export const loadFavs = (
   headerTitle: string,
   setMenu: any,
   navigate: any
-): void => {
+): any => {
   dispatch(isMenuOpenActionCreator(false));
   setMenu(false);
 

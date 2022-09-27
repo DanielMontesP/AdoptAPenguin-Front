@@ -15,6 +15,9 @@ import { ReactDimmer } from "react-dimmer";
 import {
   handleLogout,
   handleSearchSubmit,
+  loadFavs,
+  loadHome,
+  loadLikes,
 } from "../NavbarFunctions/NavbarFunctions";
 interface Props {
   headerTitle: string;
@@ -194,6 +197,18 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     );
   };
 
+  const loadHomeCall = () => {
+    loadHome(dispatch, headerTitle, setMenu, setModal);
+  };
+
+  const loadLikesCall = () => {
+    loadLikes(dispatch, headerTitle, setMenu, navigate);
+  };
+
+  const loadFavsCall = () => {
+    loadFavs(dispatch, headerTitle, setMenu, navigate);
+  };
+
   const handleFocus = (field: string): void => {
     const input = document.querySelector(field) as HTMLElement;
     if (input != null) {
@@ -216,21 +231,21 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       <div className={`header-desktop-buttons${HidderDesktopButtons}`}>
         <button
           className={classButtonHome}
-          //  onClick={loadHome}
+          onClick={loadHomeCall}
           title="btn-home"
         >
           Home
         </button>
         <button
           className={classButtonFavs}
-          //  onClick={loadFavs}
+          onClick={loadFavsCall}
           title="btn-favs"
         >
           Favourites
         </button>
         <button
           className={classButtonLikes}
-          // onClick={loadLikes}
+          onClick={loadLikesCall}
           title="btn-likes"
         >
           Likes
