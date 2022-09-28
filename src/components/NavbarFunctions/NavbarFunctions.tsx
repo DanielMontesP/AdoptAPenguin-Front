@@ -12,12 +12,11 @@ import { searchPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinT
 export const loadHome = (
   dispatch: any,
   headerTitle: string,
-  setMenu: any,
+
   navigate: any
 ): any => {
-  setMenu(false);
-
   dispatch(modalTypeActionCreator(""));
+  dispatch(modalMessageActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
   dispatch(headerTitleActionCreator("Home"));
 

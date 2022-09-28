@@ -18,11 +18,12 @@ import {
 } from "../NavbarFunctions/NavbarFunctions";
 
 interface Props {
-  isMenuOpen: boolean;
-  isModalOpen: boolean;
+  isMenuOpened: boolean;
 }
 
-const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
+const Menu = ({ isMenuOpened }: Props): JSX.Element => {
+  const { stringToSearch, headerTitle } = useAppSelector((state) => state.ui);
+
   const { user } = useAppSelector((state) => state);
 
   const [, setModal] = useState(false);
@@ -34,16 +35,13 @@ const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
 
   let classButtonSearch = ``;
 
-  const { stringToSearch, headerTitle } = useAppSelector((state) => state.ui);
-
   const userImage = user.image || noPhoto;
 
   const searchPlaceHolderText = "Search by name or category...";
 
   const loadFavs = () => {
     dispatch(isMenuOpenActionCreator(false));
-    setMenu((prevState) => !prevState);
-
+    setMenu(false);
     dispatch(modalTypeActionCreator(""));
     dispatch(headerLastTitleActionCreator(headerTitle));
     dispatch(headerTitleActionCreator("Favourites"));
@@ -53,7 +51,6 @@ const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
 
   const loadLikes = () => {
     dispatch(isMenuOpenActionCreator(false));
-    setMenu((prevState) => !prevState);
 
     dispatch(modalTypeActionCreator(""));
     dispatch(headerLastTitleActionCreator(headerTitle));
@@ -64,7 +61,6 @@ const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
 
   const loadHome = () => {
     dispatch(isMenuOpenActionCreator(false));
-    setMenu((prevState) => !prevState);
 
     dispatch(modalTypeActionCreator(""));
     dispatch(headerLastTitleActionCreator(headerTitle));
@@ -80,6 +76,10 @@ const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
     dispatch(resetPenguinThunk());
 
     navigate("/create");
+  };
+
+  const handleLogoutCall = () => {
+    handleLogout(dispatch);
   };
 
   const handleAbout = () => {
@@ -150,7 +150,7 @@ const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
     : ` ${classButtonSearch}`;
 
   return (
-    <div className={`menu-app ${isMenuOpen ? "menu-open" : ""}`}>
+    <div className={`menu-app ${isMenuOpened ? "menu-open" : ""}`}>
       <div className="user-data-container">
         <img src={userImage} className="user-photo" alt="user" />
         <h3 className="user-username">{toPascalCase(`${user.username}`)}</h3>
@@ -191,7 +191,7 @@ const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
         <hr className="hr-menu-horizontal" />
         <div className="menu-icons-horizontal">
           <button
-            onClick={handleLogout}
+            onClick={handleLogoutCall}
             className="bt-logout"
             title="btn-logout"
           />

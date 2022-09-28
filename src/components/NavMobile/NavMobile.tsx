@@ -18,13 +18,13 @@ interface Props {
 }
 
 const NavMobile = ({ headerTitle }: Props): JSX.Element => {
-  const [, setMenu] = useState(false);
+  const [isMenuOpened, setMenuOpen] = useState(false);
   const [, setModal] = useState(false);
   const [, setFormData] = useState(blankFormData);
 
   const { penguin } = useAppSelector((state) => state.penguins);
 
-  const { modalMessage, modalType, headerLastTitle, isMenuOpen, isModalOpen } =
+  const { modalMessage, modalType, headerLastTitle, isModalOpen, isMenuOpen } =
     useAppSelector((state) => state.ui);
 
   const dispatch = useAppDispatch();
@@ -62,7 +62,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
   let HidderDesktopButtons = "";
 
   const handleMenu = () => {
-    setMenu((prevState) => !prevState);
+    setMenuOpen((prevState) => !prevState);
     dispatch(isMenuOpenActionCreator(true));
   };
 
@@ -120,7 +120,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
         </div>
       </div>
       <div className={`nav`}>
-        <Menu isMenuOpen={isMenuOpen} isModalOpen={isModalOpen} />
+        <Menu isMenuOpened={isMenuOpened && isMenuOpen} />
       </div>
       {isModalOpen && (
         <Modal
@@ -130,9 +130,10 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
           closeModal={setModal}
         />
       )}
+
       <ReactDimmer
-        isOpen={isMenuOpen || isModalOpen}
-        exitDimmer={setMenu || setModal}
+        isOpen={(isMenuOpened && isMenuOpen) || isModalOpen}
+        exitDimmer={setMenuOpen}
         zIndex={90}
         blur={1.5}
       />
