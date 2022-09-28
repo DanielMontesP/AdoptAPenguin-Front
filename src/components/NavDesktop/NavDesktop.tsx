@@ -19,6 +19,7 @@ import {
   loadHome,
   loadLikes,
 } from "../NavbarFunctions/NavbarFunctions";
+import { handleFocus } from "../../utils/utils";
 interface Props {
   headerTitle: string;
 }
@@ -41,62 +42,23 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   let classButtonHome = `${classButton}home`;
   let classButtonLikes = `${classButton}likes`;
   let classButtonFavs = `${classButton}favs`;
-  let classButtonAbout = `${classButton}about`;
-  let classButtonHelp = `${classButton}help`;
   let classButtonNew = `${classButton}new`;
-
   let classInputSearch = `search-input`;
 
   switch (headerTitle) {
     case "Home":
       classButtonHome = `${classButtonHome} selected`;
-      classButtonLikes = `${classButton}likes`;
-      classButtonFavs = `${classButton}favs`;
-      classButtonAbout = `${classButton}about`;
-
       break;
     case "New...":
-      classButtonFavs = `${classButtonFavs}`;
-      classButtonHome = `${classButton}home`;
-      classButtonLikes = `${classButton}likes`;
-      classButtonAbout = `${classButton}about`;
       classButtonNew = `${classButtonNew} selected`;
-
-      break;
-    case "Edit...":
-      classButtonFavs = `${classButtonFavs}`;
-      classButtonHome = `${classButton}home`;
-      classButtonLikes = `${classButton}likes`;
-      classButtonAbout = `${classButton}about`;
-
       break;
     case "Likes":
       classButtonLikes = `${classButtonLikes} selected`;
-      classButtonHome = `${classButton}home`;
-      classButtonFavs = `${classButton}favs`;
-      classButtonAbout = `${classButton}about`;
-      classButtonAbout = `${classButton}about`;
-
       break;
     case "Favourites":
       classButtonFavs = `${classButtonFavs} selected`;
-      classButtonHome = `${classButton}home`;
-      classButtonLikes = `${classButton}likes`;
-      classButtonAbout = `${classButton}about`;
-
-      break;
-    case "Detail":
-      classButtonFavs = `${classButtonFavs}`;
-      classButtonHome = `${classButton}home`;
-      classButtonLikes = `${classButton}likes`;
-      classButtonAbout = `${classButton}about`;
-
       break;
     default:
-      classButtonHome = `${classButton}home selected`;
-      classButtonFavs = `${classButton}favs`;
-      classButtonLikes = `${classButton}likes`;
-      classButtonAbout = `${classButton}about`;
   }
 
   const searchPlaceHolderText = "Search by name or category...";
@@ -122,25 +84,12 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   const handleAbout = () => {
     dispatch(modalTypeActionCreator("About"));
 
-    setMenu(false);
-
-    classButtonAbout = `${classButtonAbout} selected`;
-    classButtonHome = `${classButton}home`;
-    classButtonLikes = `${classButton}likes`;
-    classButtonFavs = `${classButton}favs`;
-
     setModal((prevState) => !prevState);
     dispatch(isModalOpenActionCreator(true));
   };
 
   const handleHelp = () => {
     dispatch(modalTypeActionCreator("Help"));
-
-    classButtonHelp = `${classButtonHelp} selected`;
-    classButtonHome = `${classButton}home`;
-    classButtonLikes = `${classButton}likes`;
-    classButtonFavs = `${classButton}favs`;
-    classButtonAbout = `${classButton}about`;
 
     setModal((prevState) => !prevState);
     dispatch(isModalOpenActionCreator(true));
@@ -151,11 +100,10 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
 
     switch (type) {
       case "desktop-bt-search":
-        handleFocus(".menu-search-input");
-        setMenu(false);
+        handleFocusCall(".menu-search-input");
         break;
       case "bt-search":
-        handleFocus(".search-input");
+        handleFocusCall(".search-input");
         break;
       default:
     }
@@ -196,11 +144,8 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     loadFavs(dispatch, headerTitle, setMenu, navigate);
   };
 
-  const handleFocus = (field: string): void => {
-    const input = document.querySelector(field) as HTMLElement;
-    if (input != null) {
-      input.focus();
-    }
+  const handleFocusCall = (field: string): void => {
+    handleFocus(field);
   };
 
   const getModalType = () => {

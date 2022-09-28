@@ -11,7 +11,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import noPhoto from "../../images/userPhoto.png";
-import { toPascalCase } from "../../utils/utils";
+import { handleFocus, toPascalCase } from "../../utils/utils";
 import {
   handleLogout,
   handleSearchSubmit,
@@ -107,12 +107,12 @@ const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
 
     switch (type) {
       case "desktop-bt-search":
-        handleFocus(".menu-search-input");
+        handleFocusCall(".menu-search-input");
         setMenu(false);
         dispatch(isMenuOpenActionCreator(false));
         break;
       case "bt-search":
-        handleFocus(".search-input");
+        handleFocusCall(".search-input");
         break;
       default:
     }
@@ -141,11 +141,8 @@ const Menu = ({ isMenuOpen, isModalOpen }: Props): JSX.Element => {
     );
   };
 
-  const handleFocus = (field: string): void => {
-    const input = document.querySelector(field) as HTMLElement;
-    if (input != null) {
-      input.focus();
-    }
+  const handleFocusCall = (field: string): void => {
+    handleFocus(field);
   };
 
   const HidderSearch = isSearchClicked
