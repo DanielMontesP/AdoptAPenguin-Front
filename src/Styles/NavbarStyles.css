@@ -144,7 +144,7 @@
 .header-desktop-title {
   text-align: center;
   margin: auto;
-
+  padding-top: 10px;
   flex: 3;
 }
 

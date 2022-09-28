@@ -25,17 +25,16 @@ interface Props {
 }
 
 const NavDektop = ({ headerTitle }: Props): JSX.Element => {
-  const [, setMenu] = useState(false);
-  const [, setModal] = useState(false);
-  const [isSearchClicked, setSearch] = useState(false);
-
-  const { penguin } = useAppSelector((state) => state.penguins);
-
-  const { stringToSearch, modalMessage, isMenuOpen, isModalOpen, modalType } =
-    useAppSelector((state) => state.ui);
-
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const [isModalOpened, setModal] = useState(false);
+  const [isSearchClicked, setSearch] = useState(false);
+  const [isMenuOpened, setMenu] = useState(false);
+
+  const { penguin } = useAppSelector((state) => state.penguins);
+  const { stringToSearch, modalMessage, modalType, isMenuOpen, isModalOpen } =
+    useAppSelector((state) => state.ui);
 
   const classButton = `desktop-btn bt-`;
 
@@ -44,6 +43,9 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   let classButtonFavs = `${classButton}favs`;
   let classButtonNew = `${classButton}new`;
   let classInputSearch = `search-input`;
+
+  const searchPlaceHolderText = "Search by name or category...";
+  let HidderDesktopButtons = "";
 
   switch (headerTitle) {
     case "Home":
@@ -60,9 +62,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       break;
     default:
   }
-
-  const searchPlaceHolderText = "Search by name or category...";
-  let HidderDesktopButtons = "";
 
   const addFav = () => {
     setMenu(false);
@@ -133,7 +132,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const loadHomeCall = () => {
-    loadHome(dispatch, headerTitle, setMenu, setModal);
+    loadHome(dispatch, headerTitle, navigate);
   };
 
   const loadLikesCall = () => {
@@ -231,9 +230,9 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
         />
       </div>{" "}
       <div className={`nav`}>
-        <Menu isMenuOpen={isMenuOpen} isModalOpen={isModalOpen} />
+        <Menu isMenuOpened={isMenuOpened && isMenuOpen} />
       </div>
-      {isModalOpen && (
+      {(isModalOpen || isModalOpened) && (
         <Modal
           type={getModalType()}
           idPenguin={penguin.id}
@@ -242,7 +241,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
         />
       )}
       <ReactDimmer
-        isOpen={isMenuOpen || isModalOpen}
+        isOpen={(isMenuOpen && isMenuOpened) || isModalOpen || isModalOpened}
         exitDimmer={setMenu || setModal}
         zIndex={90}
         blur={1.5}
