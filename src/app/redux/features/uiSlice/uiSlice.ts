@@ -12,6 +12,8 @@ const initialState: UISliceState = {
   apiResponse: "",
   isDesktop: false,
   stringToSearch: "",
+  isMenuOpen: false,
+  isModalOpen: false,
 };
 
 const uiSlice = createSlice({
@@ -71,6 +73,16 @@ const uiSlice = createSlice({
       ...ui,
       stringToSearch: action.payload,
     }),
+
+    isMenuOpen: (ui: UISliceState, action: PayloadAction<any>) => ({
+      ...ui,
+      isMenuOpen: action.payload,
+    }),
+
+    isModalOpen: (ui: UISliceState, action: PayloadAction<any>) => ({
+      ...ui,
+      isModalOpen: action.payload,
+    }),
   },
 });
 
@@ -85,6 +97,8 @@ export const {
   apiResponse: apiResponseActionCreator,
   cleanApiResponse: cleanApiResponseActionCreator,
   isDesktop: isDesktopActionCreator,
+  isMenuOpen: isMenuOpenActionCreator,
+  isModalOpen: isModalOpenActionCreator,
 } = uiSlice.actions;
 
 export const uiLoadSpinnerSelector = (state: RootState) => state.ui.loading;

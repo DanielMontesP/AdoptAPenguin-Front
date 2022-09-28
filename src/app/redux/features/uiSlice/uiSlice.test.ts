@@ -1,5 +1,3 @@
-import { mockPenguins } from "../../../../mocks/penguins";
-import { searchPenguinsActionCreator } from "../penguinSlice/penguinSlice";
 import uiReducer, {
   loadingActionCreator,
   finishedLoadingActionCreator,
@@ -21,6 +19,8 @@ const initialState = {
   apiResponse: "",
   isDesktop: false,
   stringToSearch: "search",
+  isMenuOpen: false,
+  isModalOpen: false,
 };
 
 const expectedState = {
@@ -34,6 +34,8 @@ const expectedState = {
   apiResponse: "Message",
   isDesktop: false,
   stringToSearch: "search",
+  isMenuOpen: false,
+  isModalOpen: false,
 };
 
 const expectedLoadingState = {
@@ -47,7 +49,10 @@ const expectedLoadingState = {
   apiResponse: "Message",
   isDesktop: false,
   stringToSearch: "",
+  isMenuOpen: false,
+  isModalOpen: false,
 };
+
 describe("Given the loadingActionCreator", () => {
   describe("When invoked", () => {
     test("Then the loading ui state should change to true", () => {

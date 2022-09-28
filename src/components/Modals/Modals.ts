@@ -29,7 +29,7 @@ const toastOptionsWrong = {
 };
 
 export const correctAction = (message: string) => {
-  if (!toast.isActive(customID)) {
+  if (!toast?.isActive(customID)) {
     customID = toast.success(message, toastOptionsSuccess);
   }
 
@@ -37,33 +37,33 @@ export const correctAction = (message: string) => {
 };
 
 export const wrongAction = (message: string) => {
-  if (!toast.isActive(customID)) {
+  if (!toast?.isActive(customID)) {
     customID = toast.error(message, toastOptionsWrong);
   }
   toast.clearWaitingQueue();
 };
 
 export const warnAction = (message: string) => {
-  if (!toast.isActive(customID)) {
+  if (!toast?.isActive(customID)) {
     customID = toast.warning(message, toastOptionsSuccess);
   }
   toast.clearWaitingQueue();
 };
 
 export const infoAction = (message: string) => {
-  if (!toast.isActive(customID)) {
+  if (!toast?.isActive(customID)) {
     customID = toast.loading(message, toastOptions);
   }
   toast.clearWaitingQueue();
 };
 
 export const stopLoadingAction = () => {
-  toast.dismiss(customID);
-  toast.clearWaitingQueue();
+  toast?.dismiss(customID);
+  toast?.clearWaitingQueue();
 };
 
 export const setLoadingOn = (message: string) => {
-  toast.loading(message, {
+  toast?.loading(message, {
     position: toast.POSITION.BOTTOM_CENTER,
     closeOnClick: true,
     toastId: `${customID}`,

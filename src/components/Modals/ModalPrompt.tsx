@@ -1,6 +1,9 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import { finishedLoadingActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
+import {
+  finishedLoadingActionCreator,
+  isModalOpenActionCreator,
+} from "../../app/redux/features/uiSlice/uiSlice";
 import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { deletePenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
@@ -26,27 +29,29 @@ export const Modal = ({
 
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  const isWellcome = type === "About" || type === "Wellcome" ? true : false;
+  let isWellcome = false;
+
   const isHelp = type === "Help";
-  const isAbout = type === "About";
 
-  const overflowY = isHelp || isAbout ? " overflow-auto" : " overflowY-none";
+  let overflowY = " overflow-auto";
 
-  const modalClass = isWellcome
-    ? `modal modal-wellcome${overflowY}`
-    : `modal${overflowY}`;
-
+  let modalClass = "modal";
   let windowTitle = "";
 
   switch (type) {
     case "About":
       windowTitle = "About";
+      modalClass += ` modal-about${overflowY}`;
+      isWellcome = true;
       break;
     case "Wellcome":
       windowTitle = "About";
+      modalClass += ` modal-wellcome${overflowY}`;
+      isWellcome = true;
       break;
     case "Help":
       windowTitle = "Help";
+      modalClass += ` modal-help${overflowY}`;
       break;
     case "FFeature":
       windowTitle = "Notice";
@@ -110,10 +115,12 @@ export const Modal = ({
         correctAction("Sorry, this feature is not available yet.");
     }
     closeModal(false);
+    dispatch(isModalOpenActionCreator(false));
   };
 
   const handleCancelClick = () => {
     closeModal(false);
+    dispatch(isModalOpenActionCreator(false));
   };
 
   const cancelClass =
@@ -126,7 +133,7 @@ export const Modal = ({
       <div className="modal-header">
         <h3 className="modal-title">{windowTitle}</h3>
         <button
-          onClick={handleAcceptClick}
+          onClick={handleCancelClick}
           className="modal-btn-close"
           title="btn-close"
           placeholder="btn-close"

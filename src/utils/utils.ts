@@ -44,3 +44,10 @@ export const resizeFile = (file: File) =>
       "base64"
     );
   });
+
+export const handleFocus = (field: string): void => {
+  const input = document.querySelector(field) as HTMLElement;
+  if (input != null) {
+    input.focus();
+  }
+};

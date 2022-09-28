@@ -31,23 +31,21 @@ const DetailPageStyles = styled.div`
       align-content: space-around;
     }
 
+    .detail-container {
+      margin-bottom: 10px;
+      border-radius: 5px 5px 5px 5px;
+      margin: auto;
+      height: 87.4vh;
+    }
+
     .penguin-description {
-      width: 50%;
+      width: 450px;
       min-height: 40px;
       margin: auto;
       margin-top: -50px;
       text-align: justify;
       display: flex;
       flex-direction: column;
-    }
-
-    .detail-image {
-      height: 300px;
-      width: 450px;
-      object-fit: cover;
-      background-color: rgb(255 254 254);
-      border-radius: 5px;
-      flex: 1;
     }
 
     .penguin--container {
@@ -73,6 +71,28 @@ const DetailPageStyles = styled.div`
       margin-top: 20px;
       width: 80%;
     }
+
+    .detail-description {
+      width: 435px;
+      font-size: 16px;
+      background: white;
+      box-shadow: 0 0 15px 6px #666;
+      padding: 10px 10px 20px 10px;
+      border-radius: 5px 5px 5px 5px;
+      margin: auto;
+      text-align: justify;
+      min-width: 320px;
+      min-height: 100px;
+    }
+
+    .detail-image {
+      height: 300px;
+      width: 450px;
+      object-fit: cover;
+      background-color: rgb(255 254 254);
+      border-radius: 5px;
+      flex: 1;
+    }
   }
 
   @media only screen and (max-width: 420px) {
@@ -84,6 +104,35 @@ const DetailPageStyles = styled.div`
       flex-wrap: wrap;
       justify-content: space-around;
       align-content: space-around;
+    }
+
+    .detail-container {
+      margin-bottom: 10px;
+      border-radius: 5px 5px 5px 5px;
+      margin: auto;
+      margin-top: 6rem;
+      height: 87.4vh;
+    }
+
+    .detail-image {
+      height: 300px;
+      width: 450px;
+      object-fit: cover;
+      background-color: rgb(255 254 254);
+      border-radius: 5px;
+      flex: 1;
+    }
+
+    .detail-description {
+      font-size: 16px;
+      background: white;
+      box-shadow: 0 0 15px 6px #666;
+      padding: 10px 10px 20px 10px;
+      border-radius: 5px 5px 5px 5px;
+      margin: auto;
+      text-align: justify;
+      min-width: 320px;
+      min-height: 100px;
     }
 
     .penguin-description {
@@ -123,6 +172,30 @@ const DetailPageStyles = styled.div`
       margin-top: 20px;
       height: 280px;
     }
+  }
+
+  .tab-description {
+    width: 80px;
+    background: grey;
+    border: 1px solid;
+    border-radius: 10px 10px 0px 0;
+    color: white;
+  }
+
+  .tab-messages {
+    width: 80px;
+    background: grey;
+    border: 1px solid;
+    border-radius: 10px 10px 0px 0;
+    color: white;
+  }
+
+  .tab-selected {
+    width: 80px;
+    background: white;
+    border: 1px solid;
+    border-radius: 10px 10px 0px 0;
+    color: black;
   }
 
   .detail-info {
@@ -249,14 +322,6 @@ const DetailPageStyles = styled.div`
     flex: 2;
   }
 
-  .detail-container {
-    margin-bottom: 10px;
-    border-radius: 5px 5px 5px 5px;
-    margin: auto;
-    margin-top: 6rem;
-    height: 87.4vh;
-  }
-
   .penguin-image-container {
     width: 100%;
     height: 100%;
@@ -339,19 +404,43 @@ const DetailPageStyles = styled.div`
     max-width: 400px;
   }
 
-  .detail-description {
-    box-shadow: 0 3px 6px #666;
-    border-radius: 15px;
-    padding: 15px;
-    font-size: 16px;
-    background: white;
-  }
-
   .description-container {
     background-color: rgb(255 254 254);
     margin-left: 18px;
     margin-right: 18px;
   }
+
+  .message-content {
+    display: none;
+  }
+
+  .message-subject {
+    text-align: left;
+    margin-left: 10px;
+    flex: 2;
+  }
+
+  .message-read-img {
+    background: url(${iconEdit});
+    background-repeat: no-repeat;
+    background-size: 25px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .message-noread-img {
+    background: url(${iconAddFav});
+    background-size: 25px;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+  }
+
+  .detail-title {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
   .image-delete {
     position: relative;
     top: -140px;
@@ -607,11 +696,13 @@ const DetailPageStyles = styled.div`
   .bounce {
     -webkit-animation-name: bounce;
     animation-name: bounce;
+    margin: auto;
   }
 
   .bounce2 {
     -webkit-animation-name: bounce2;
     animation-name: bounce2;
+    margin: auto;
   }
 
   .header {

@@ -15,13 +15,11 @@ const CreatePage = (): JSX.Element => {
   const { penguin } = useAppSelector((state) => state.penguins);
 
   const isCreate = document.location.href.includes("create");
-  const isRegister = document.location.href.includes("register");
 
   let thisTitle = "";
+
   if (isCreate) {
     thisTitle = "New...";
-  } else if (isRegister) {
-    thisTitle = "Register...";
   } else {
     thisTitle = "Edit...";
   }

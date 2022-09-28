@@ -117,55 +117,7 @@ describe("Given a Navbar component", () => {
       expect(loadFavs).toHaveBeenCalled();
     });
   });
-  describe("When bt-logout is clicked", () => {
-    test("Then it should call the handleLogout action", () => {
-      const handleLogout = jest.fn();
 
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <Navbar headerTitle="Favourites" />
-          </Provider>
-        </BrowserRouter>
-      );
-      const btToCLick = screen.getByTitle("btn-logout");
-
-      userEvent.click(btToCLick);
-      handleLogout();
-      expect(handleLogout).toHaveBeenCalled();
-    });
-  });
-  describe("When bt-logoutHeader is clicked", () => {
-    test("Then it should call the logoutHeader action", () => {
-      const handleLogout = jest.fn();
-      const handleLogoutHeader = jest.fn();
-
-      jest.mock("../../app/redux/hooks/hooks", () => ({
-        ...jest.requireActual("../../app/redux/hooks/hooks"),
-        useAppSelector: () =>
-          jest.fn().mockResolvedValue({
-            state: {
-              ui: { headerLastTitle: "Favourites", stringToSearch: "dsd" },
-            },
-          }),
-      }));
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <Navbar headerTitle="Favourites" />
-          </Provider>
-        </BrowserRouter>
-      );
-      const btToCLick = screen.getByTitle("btn-logout");
-
-      userEvent.click(btToCLick);
-
-      handleLogout("fromHeader");
-      handleLogoutHeader();
-      expect(handleLogout).toHaveBeenCalled();
-      expect(handleLogoutHeader).toHaveBeenCalled();
-    });
-  });
   describe("When loadLikes is clicked", () => {
     test("Then it should call the loadLikes action", () => {
       const loadLikes = jest.fn();

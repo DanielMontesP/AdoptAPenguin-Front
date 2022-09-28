@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  isModalOpenActionCreator,
   modalMessageActionCreator,
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
@@ -8,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { editPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { cleanArray, blankFormData } from "../../utils/utils";
+import MessageButton from "../MessageButton/MessageButton";
 import { Modal } from "../Modals/ModalPrompt";
 
 interface Props {
@@ -42,6 +44,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     dispatch(modalMessageActionCreator(message));
 
     setModal((prevState) => !prevState);
+    dispatch(isModalOpenActionCreator(true));
   };
 
   const handleEdit = () => {
@@ -146,6 +149,8 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         onClick={handleLikes}
         title="btn-likes"
       />
+
+      <MessageButton penguin={penguin} />
 
       {isModalOpen && (
         <Modal

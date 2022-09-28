@@ -40,6 +40,7 @@ const FormsStyles = styled.div`
     display: flex;
     flex-direction: column;
     font-size: 12px;
+    color: black;
   }
 `;
 

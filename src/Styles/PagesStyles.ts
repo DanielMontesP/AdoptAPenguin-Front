@@ -22,7 +22,6 @@ const PagesStyles = styled.div`
   }
 
   text-align: center;
-  margin-top: 100px;
 
   .container {
     width: 90%;
@@ -139,7 +138,6 @@ const PagesStyles = styled.div`
     animation-name: bounce;
     font-size: 16px;
     margin: auto;
-    margin-top: 5px;
   }
 
   .penguin-name {
@@ -216,7 +214,8 @@ const PagesStyles = styled.div`
     border-radius: 25px;
     width: 80%;
     max-width: 400px;
-    margin-bottom: 30px;
+
+    margin-top: 90px;
   }
 
   .bt-container {
@@ -336,10 +335,6 @@ const PagesStyles = styled.div`
     right: -14px;
     display: flex;
     justify-content: flex-end;
-  }
-
-  .penguins-container {
-    padding: 0 10px 15px;
   }
 
   .penguin-container {
@@ -498,7 +493,7 @@ const PagesStyles = styled.div`
     justify-content: space-around;
     align-content: space-around;
     position: relative;
-    top: 265px;
+    top: 270px;
     margin: auto;
   }
 
@@ -558,14 +553,18 @@ const PagesStyles = styled.div`
   .bounce {
     -webkit-animation-name: bounce;
     animation-name: bounce;
+    margin: auto;
   }
+
   .disapear {
     -webkit-animation-name: disapear;
     animation-name: disapear;
   }
+
   .bounce2 {
     -webkit-animation-name: bounce2;
     animation-name: bounce2;
+    margin: auto;
   }
 `;
 

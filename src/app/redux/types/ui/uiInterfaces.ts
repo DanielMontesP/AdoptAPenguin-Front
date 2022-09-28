@@ -8,4 +8,6 @@ export interface UISliceState {
   apiResponse: string;
   isDesktop: boolean;
   stringToSearch: string;
+  isMenuOpen: boolean;
+  isModalOpen: boolean;
 }
