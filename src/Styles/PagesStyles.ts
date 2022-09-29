@@ -13,6 +13,8 @@ import iconSoundOn from "../images/icon-sound-on.png";
 import iconEdit from "../images/icon-editar32.png";
 import iconLike from "../images/heartLike.png";
 import iconLikeInit from "../images/icon-likes-empty.png";
+import iconMesssagesGot from "../images/message-45.png";
+import iconMesssagesNew from "../images/message-new.png";
 
 const PagesStyles = styled.div`
   @media only screen and (min-width: 421px) {
@@ -301,6 +303,24 @@ const PagesStyles = styled.div`
     background: url(${iconAddFav});
     background-size: 60%;
     background-repeat: no-repeat;
+    border: 0;
+  }
+
+  .bt-message-new {
+    background: url(${iconMesssagesNew});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    margin-left: 24px;
+    border: 0;
+  }
+
+  .bt-message-got {
+    background: url(${iconMesssagesGot});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    margin-left: 24px;
     border: 0;
   }
 

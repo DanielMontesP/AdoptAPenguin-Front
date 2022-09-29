@@ -659,33 +659,6 @@ h1 {
   text-align: left;
 }
 
-.bt-messages {
-  background: url("../images/message-45.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 40px;
-  margin-left: 24px;
-  border: 0;
-}
-
-.message-new {
-  background: url("../images/message-new.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 40px;
-  margin-left: 24px;
-  border: 0;
-}
-
-.message-got {
-  background: url("../images/message-45.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 40px;
-  margin-left: 24px;
-  border: 0;
-}
-
 .bt-help {
   background: url("../images/help-45.png");
   background-position: center;

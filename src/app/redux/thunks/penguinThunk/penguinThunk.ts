@@ -21,7 +21,7 @@ import {
   finishedLoadingActionCreator,
   loadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
-import { getMessagesThunk } from "../messageThunk/MessageThunk";
+import { getMessagesThunk } from "../messageThunk/messageThunk";
 
 const blankFormData: IPenguin = {
   id: "",
@@ -149,7 +149,6 @@ export const createFavThunk =
 export const getPenguinThunk =
   (id: string) => async (dispatch: AppDispatch) => {
     dispatch(loadingActionCreator());
-    setLoadingOn(`GET Penguin: id => ${id}`);
 
     if (id !== "") {
       const token = localStorage.getItem("token");
