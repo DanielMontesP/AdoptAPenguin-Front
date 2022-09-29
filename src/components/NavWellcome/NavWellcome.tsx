@@ -1,6 +1,6 @@
 import "../../Styles/NavbarStyles.css";
 
-const NavWellcome = (): JSX.Element => {
+export const NavWellcome = (): JSX.Element => {
   return (
     <div className={`header-wellcome`}>
       <div className="header-title-container">
@@ -11,5 +11,3 @@ const NavWellcome = (): JSX.Element => {
     </div>
   );
 };
-
-export default NavWellcome;
