@@ -12,6 +12,8 @@ import iconDelete from "../images/delete-32.png";
 import iconSoundOff from "../images/icon-sound-off.png";
 import iconEdit from "../images/icon-editar32.png";
 import iconLikeInit from "../images/icon-likes-empty.png";
+import iconMesssagesGot from "../images/message-45.png";
+import iconMesssagesNew from "../images/message-new.png";
 import detailPrev from "../images/detail-prev.png";
 import detailNext from "../images/detail-next.png";
 
@@ -635,6 +637,33 @@ const DetailPageStyles = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     margin: auto;
+  }
+
+  .bt-messages {
+    background: url("../images/message-45.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    margin-left: 24px;
+    border: 0;
+  }
+
+  .bt-message-new {
+    background: url(${iconMesssagesNew});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    margin-left: 24px;
+    border: 0;
+  }
+
+  .bt-message-got {
+    background: url(${iconMesssagesGot});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    margin-left: 24px;
+    border: 0;
   }
 
   .form-detail-animatedEdit {

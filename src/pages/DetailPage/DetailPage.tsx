@@ -30,6 +30,7 @@ const DetailPage = (): JSX.Element => {
     headerLastTitle === "Favourites"
       ? dispatch(loadFavsThunk())
       : dispatch(loadPenguinsThunk());
+
     dispatch(getPenguinThunk(idPenguin));
 
     const SetTitleHeader = (title: string, lastTitle: string) => {

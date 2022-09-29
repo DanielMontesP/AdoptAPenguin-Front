@@ -114,6 +114,10 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     ? " bounce animatedLike"
     : ` bounce2 animatedLikeInit`;
 
+  const selectIconEdit = isFav
+    ? " bounce animatedEdit"
+    : " bounce2 animatedEdit";
+
   const btContainerClasses = () => {
     const newClass = !isDetailPage
       ? "buttons-container"
@@ -123,7 +127,9 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
   const HidderDelete = isHomePage ? " no-visible" : "";
 
-  const classButtonDelete = " bounce animatedDelete";
+  const classButtonDelete = isFav
+    ? " bounce animatedDelete"
+    : " bounce2 animatedDelete";
 
   return (
     <div className={btContainerClasses()}>
@@ -133,7 +139,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         className={`animated${selectIconFav}`}
       />
       <button
-        className={`animated bounce animatedEdit`}
+        className={`animated${selectIconEdit}`}
         onClick={handleEdit}
         title="btn-edit"
       />

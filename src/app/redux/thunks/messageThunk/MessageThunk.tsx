@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AppDispatch } from "../../store/store";
 import {
-  setLoadingOff,
+  setLoadingOffWithMessage,
   setLoadingOn,
 } from "../../../../components/Modals/Modals";
 import { getMessagesActionCreator } from "../../features/messageSlice/messageSlice";
@@ -34,6 +34,6 @@ export const getMessagesThunk =
 
       dispatch(getMessagesActionCreator(messages));
       dispatch(finishedLoadingActionCreator());
-      setLoadingOff();
+      setLoadingOffWithMessage("GET Messages: Finished successfully.", false);
     }
   };
