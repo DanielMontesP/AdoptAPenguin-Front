@@ -23,7 +23,7 @@ const toastOptionsSuccess = {
 };
 
 const toastOptionsWrong = {
-  autoClose: 5000,
+  autoClose: 1000,
   closeOnClick: true,
   toastId: `${customID}`,
 };

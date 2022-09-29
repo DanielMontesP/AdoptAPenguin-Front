@@ -34,6 +34,6 @@ export const getMessagesThunk =
 
       dispatch(getMessagesActionCreator(messages));
       dispatch(finishedLoadingActionCreator());
-      setLoadingOffWithMessage("GET Messages: Finished successfully.", false);
+      setLoadingOffWithMessage("", false);
     }
   };

@@ -83,7 +83,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   const handleAbout = () => {
     dispatch(modalTypeActionCreator("About"));
 
-    setModal((prevState) => !prevState);
     dispatch(isModalOpenActionCreator(true));
   };
 
@@ -232,7 +231,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       <div className={`nav`}>
         <Menu isMenuOpened={isMenuOpened && isMenuOpen} />
       </div>
-      {(isModalOpen || isModalOpened) && (
+      {isModalOpen && (
         <Modal
           type={getModalType()}
           idPenguin={penguin.id}
