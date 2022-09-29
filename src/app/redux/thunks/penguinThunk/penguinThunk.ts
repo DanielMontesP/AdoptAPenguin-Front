@@ -149,7 +149,6 @@ export const createFavThunk =
 export const getPenguinThunk =
   (id: string) => async (dispatch: AppDispatch) => {
     dispatch(loadingActionCreator());
-    // setLoadingOn(`GET Penguin: id => ${id}`);
 
     if (id !== "") {
       const token = localStorage.getItem("token");
