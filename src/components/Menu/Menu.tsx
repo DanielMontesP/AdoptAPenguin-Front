@@ -41,7 +41,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
 
   const loadFavs = () => {
     dispatch(isMenuOpenActionCreator(false));
-    setMenu(false);
+
     dispatch(modalTypeActionCreator(""));
     dispatch(headerLastTitleActionCreator(headerTitle));
     dispatch(headerTitleActionCreator("Favourites"));
@@ -84,21 +84,17 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
 
   const handleAbout = () => {
     dispatch(isMenuOpenActionCreator(false));
-    setMenu((prevState) => !prevState);
 
     dispatch(modalTypeActionCreator("About"));
 
-    setModal((prevState) => !prevState);
     dispatch(isModalOpenActionCreator(true));
   };
 
   const handleHelp = () => {
     dispatch(isMenuOpenActionCreator(false));
-    setMenu((prevState) => !prevState);
 
     dispatch(modalTypeActionCreator("Help"));
 
-    setModal((prevState) => !prevState);
     dispatch(isModalOpenActionCreator(true));
   };
 

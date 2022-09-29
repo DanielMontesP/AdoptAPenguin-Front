@@ -1,7 +1,6 @@
 import axios from "axios";
 import { AppDispatch } from "../../store/store";
 import {
-  setLoadingOff,
   setLoadingOffWithMessage,
   setLoadingOn,
 } from "../../../../components/Modals/Modals";
@@ -58,7 +57,7 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
 
     dispatch(loadPenguinsActionCreator(penguins));
     dispatch(finishedLoadingActionCreator());
-    setLoadingOff();
+    setLoadingOffWithMessage("Finished successfully", false);
   }
 };
 
