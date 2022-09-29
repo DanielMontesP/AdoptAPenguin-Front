@@ -16,7 +16,7 @@ import PenguinsPage from "./pages/PenguinsPage/PenguinsPage";
 import { getUserThunk } from "./app/redux/thunks/userThunk/userThunk";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { isDesktopActionCreator } from "./app/redux/features/uiSlice/uiSlice";
-import NavWellcome from "./components/NavWellcome/NavWellcome";
+import { NavWellcome } from "./components/NavWellcome/NavWellcome";
 
 function App() {
   const { logged, id } = useAppSelector((state) => state.user);

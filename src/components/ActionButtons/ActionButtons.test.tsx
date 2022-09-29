@@ -3,10 +3,8 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
-import { mockPenguin, mockPenguins } from "../../mocks/penguins";
+import { mockPenguin } from "../../mocks/penguins";
 import ActionButtons from "./ActionButtons";
-import axios from "axios";
-import { hrtime } from "process";
 
 describe("Given a btn-delete action", () => {
   describe("When clicked action is called", () => {
