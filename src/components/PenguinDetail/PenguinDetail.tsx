@@ -77,7 +77,6 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
 
   if (isMessagesSelected) {
     classDescription = " opacity-none";
-
     classTabMessages = " tab-selected";
   } else {
     classTabDescription = " tab-selected";

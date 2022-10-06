@@ -53,6 +53,8 @@ describe("Given a CreatePage component", () => {
         .mockResolvedValue({ data: { penguins: mockPenguins }, status: 200 });
       const dispatch = jest.fn();
 
+      document.location = jest.fn().mockResolvedValue(true).toString();
+
       userEvent.type(name, inputText);
       userEvent.type(category, inputText);
       userEvent.click(submitButton);
