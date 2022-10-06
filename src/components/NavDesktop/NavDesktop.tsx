@@ -18,6 +18,7 @@ import {
   loadFavs,
   loadHome,
   loadLikes,
+  handleSearchEnter,
 } from "../NavbarFunctions/NavbarFunctions";
 import { handleFocus } from "../../utils/utils";
 interface Props {
@@ -112,21 +113,26 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     dispatch(stringToSearchActionCreator(event.target.value));
   };
 
-  const handleSearchEnter = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      dispatch(stringToSearchActionCreator(stringToSearch));
-      handleSearchSubmitCall();
-    }
-  };
-
   const handleSearchSubmitCall = () => {
     handleSearchSubmit(
       dispatch,
       headerTitle,
       setMenu,
       setModal,
-      navigate,
       stringToSearch
+    );
+  };
+
+  const handleSearchEnterCall = (
+    event: KeyboardEvent<HTMLInputElement>
+  ): void => {
+    handleSearchEnter(
+      event,
+      stringToSearch,
+      dispatch,
+      setModal,
+      setMenu,
+      headerTitle
     );
   };
 
@@ -188,7 +194,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
           type="text"
           placeholder={searchPlaceHolderText}
           onChange={handleSearchChange}
-          onKeyDown={handleSearchEnter}
+          onKeyDown={handleSearchEnterCall}
           autoFocus
           value={stringToSearch}
         />

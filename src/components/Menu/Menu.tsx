@@ -132,7 +132,6 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
       headerTitle,
       setMenu,
       setModal,
-      navigate,
       stringToSearch
     );
   };
