@@ -45,7 +45,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     dispatch(createFavThunk(newFormData));
   };
 
-  const processEdit = () => {
+  const processEdit = (imageAdded: boolean) => {
     modFields = cleanArray(modFields);
     const newFormData = new FormData();
 
@@ -118,7 +118,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       if (isCreate) {
         processCreate("New");
       } else {
-        processEdit();
+        processEdit(imageAdded);
       }
 
       setFormData(blankFormData);

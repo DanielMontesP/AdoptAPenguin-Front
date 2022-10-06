@@ -1,11 +1,7 @@
 import axios from "axios";
-import {
-  mockPenguin,
-  mockPenguins,
-  mockPenguinsEmpty,
-} from "../../../../mocks/penguins";
+import { mockPenguins, mockPenguinsEmpty } from "../../../../mocks/penguins";
 import { loadPenguinsActionCreator } from "../../features/penguinSlice/penguinSlice";
-
+import { render } from "@testing-library/react";
 import {
   createFavThunk,
   deletePenguinThunk,
@@ -18,6 +14,11 @@ import {
   resetPenguinThunk,
   searchPenguinThunk,
 } from "./penguinThunk";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import store from "../../store/store";
+import { mockPenguin } from "../../../../mocks/penguins";
+import Home from "../../../../components/Home/Home";
 
 describe("Given the loadPenguinsThunk function", () => {
   describe("When it's called", () => {
@@ -286,12 +287,21 @@ describe("Given the editPenguinThunk function", () => {
       expect(dispatch).toHaveBeenCalled();
     });
   });
+
   describe("Given the loadFavsThunk function", () => {
     describe("When it's called", () => {
-      test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
+      test("Then it should call dispatch with the load penguins action with penguins received from axios request", () => {
         const dispatch = jest.fn();
 
         const handleLoads = jest.fn();
+
+        render(
+          <Provider store={store}>
+            <BrowserRouter>
+              <Home></Home>
+            </BrowserRouter>
+          </Provider>
+        );
         handleLoads();
 
         expect(dispatch).not.toHaveBeenCalled();

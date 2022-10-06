@@ -7,13 +7,6 @@ import Penguins from "./Penguins";
 import { mockPenguins } from "../../mocks/penguins";
 import Navbar from "../Navbar/Navbar";
 
-jest.mock("chalk", () => ({
-  green: jest.fn(),
-  white: jest.fn(),
-  red: jest.fn(),
-  yellow: jest.fn(),
-}));
-
 describe("Given a Penguins component", () => {
   describe("When the word 'penguin1' is written to the username input field", () => {
     test("Then the value of the username input field should be 'user1'", () => {
