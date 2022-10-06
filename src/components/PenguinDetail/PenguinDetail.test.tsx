@@ -81,4 +81,31 @@ describe("When bt-prev is clicked", () => {
       expect(getDetailNext).toHaveBeenCalled();
     });
   });
+  describe("When handleTab is clicked and array is empty", () => {
+    test("handleTab is called", () => {
+      const handleTab = jest.fn();
+      document.location.href = jest
+        .fn()
+        .mockResolvedValue("messages")
+        .toString();
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <PenguinDetail
+              allPenguins={mockPenguinsEmpty}
+              penguin={mockPenguin}
+            />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const btToClick = screen.getByTitle("description");
+
+      userEvent.click(btToClick);
+      handleTab();
+
+      expect(handleTab).toHaveBeenCalled();
+    });
+  });
 });

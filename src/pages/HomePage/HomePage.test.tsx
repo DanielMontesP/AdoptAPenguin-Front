@@ -12,15 +12,7 @@ describe("Given a HomePage Component", () => {
 
       jest.mock("../../app/redux/hooks/hooks", () => ({
         ...jest.requireActual("../../app/redux/hooks/hooks"),
-        useAppSelector: jest.fn().mockReturnValue({
-          state: {
-            ui: {
-              headerLastTitle: "Favourites",
-              stringToSearch: "dsd",
-              headerTitle: "Test",
-            },
-          },
-        }),
+        useAppSelector: jest.fn().mockReturnValue("Favourites"),
       }));
       render(
         <Provider store={store}>
