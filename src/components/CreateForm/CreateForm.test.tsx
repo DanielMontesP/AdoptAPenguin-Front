@@ -15,7 +15,10 @@ describe("Given a CreateForm component", () => {
       const labelImgToFind = "image-input";
       const labelSubmit = "image-input";
       const handleSubmit = jest.fn();
-      document.location.href = jest.fn().mockReturnValue("create").toString();
+      const processEdit = jest.fn();
+      const processCreate = jest.fn();
+
+      document.location = jest.fn().mockReturnValue("create").toString();
 
       render(
         <Provider store={store}>
@@ -35,11 +38,15 @@ describe("Given a CreateForm component", () => {
 
       handleImg();
       handleSubmit();
+      processCreate();
+      processEdit(true);
 
       expect(label).toBeInTheDocument();
       expect(Img).toBeInTheDocument();
       expect(handleImg).toHaveBeenCalled();
       expect(handleSubmit).toHaveBeenCalled();
+      expect(processCreate).toHaveBeenCalled();
+      expect(processEdit).toHaveBeenCalled();
     });
   });
 });

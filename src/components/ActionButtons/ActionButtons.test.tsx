@@ -3,14 +3,38 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
-import { mockPenguin } from "../../mocks/penguins";
+import { mockEmptyDataPenguin, mockPenguin } from "../../mocks/penguins";
 import ActionButtons from "./ActionButtons";
 
 describe("Given a btn-delete action", () => {
   describe("When clicked action is called", () => {
     test("Then deleteFromLikers have to been called", () => {
+      const labelToFind = "btn-likes";
+      const handleLikes = jest.fn().mockReturnValue(true);
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <ActionButtons penguin={mockEmptyDataPenguin} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByTitle(labelToFind);
+
+      userEvent.click(label);
+      handleLikes();
+
+      expect(handleLikes).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a btn-add action", () => {
+  describe("When clicked action is called", () => {
+    test("Then deleteFromLikers have to been called", () => {
       const labelToFind = "btn-delete";
-      const deleteFromLikers = jest.fn().mockReturnValue(true);
+      const handleLikes = jest.fn().mockReturnValue(true);
 
       render(
         <Provider store={store}>
@@ -23,12 +47,13 @@ describe("Given a btn-delete action", () => {
       const label = screen.getByTitle(labelToFind);
 
       userEvent.click(label);
-      deleteFromLikers();
+      handleLikes();
 
-      expect(deleteFromLikers).toHaveBeenCalled();
+      expect(handleLikes).toHaveBeenCalled();
     });
   });
 });
+
 describe("Given btn-favs button", () => {
   describe("When clicked", () => {
     test("Then handlefavs function has to been called", () => {
@@ -51,6 +76,29 @@ describe("Given btn-favs button", () => {
       expect(handleFavs).toHaveBeenCalled();
     });
   });
+
+  describe("When handleFavs clicked and is already fav", () => {
+    test("Then handlefavs function has to been called to delete", () => {
+      const labelToFind = "btn-favs";
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <ActionButtons penguin={mockEmptyDataPenguin} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const handleFavs = jest.fn().mockReturnValue(true);
+      const label = screen.getByPlaceholderText(labelToFind);
+
+      userEvent.click(label);
+      handleFavs();
+
+      expect(handleFavs).toHaveBeenCalled();
+    });
+  });
+
   describe("When edit action is called", () => {
     test("Then the value of the username input field should be 'user1'", () => {
       const labelToFind = "btn-edit";
