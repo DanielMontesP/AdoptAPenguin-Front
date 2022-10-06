@@ -52,3 +52,28 @@ describe("Given a loadLikes function", () => {
     });
   });
 });
+
+describe("Given a handleSearchEnter function", () => {
+  describe("When called", () => {
+    test("Then dispatch have to been called", () => {
+      const event = jest.fn().mockReturnValue({ key: "Enter" });
+      const stringToSearch = jest.fn();
+      const dispatch = jest.fn();
+
+      const setMenu = jest.fn();
+      const headerTitle = jest.fn();
+      const handleSearchEnter = jest.fn();
+
+      handleSearchEnter(
+        event,
+        stringToSearch,
+        dispatch,
+        setMenu,
+        setMenu,
+        headerTitle
+      );
+
+      expect(handleSearchEnter).toHaveBeenCalled();
+    });
+  });
+});

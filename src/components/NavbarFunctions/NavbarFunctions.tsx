@@ -1,3 +1,4 @@
+import { KeyboardEvent } from "react";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
@@ -71,9 +72,9 @@ export const handleSearchSubmit = (
   headerTitle: string,
   setMenu: any,
   setModal: any,
-  navigate: any,
+
   stringToSearch: string
-): void => {
+) => {
   setMenu(false);
 
   if (stringToSearch !== "") {
@@ -87,5 +88,25 @@ export const handleSearchSubmit = (
     dispatch(modalTypeActionCreator("Search"));
     dispatch(modalMessageActionCreator("Please enter a search term"));
     setModal(false);
+  }
+};
+
+export const handleSearchEnter = (
+  event: KeyboardEvent<HTMLInputElement>,
+  stringToSearch: string,
+  dispatch: any,
+  setModal: any,
+  setMenu: any,
+  headerTitle: string
+) => {
+  if (event.key === "Enter") {
+    dispatch(stringToSearchActionCreator(stringToSearch));
+    handleSearchSubmit(
+      dispatch,
+      headerTitle,
+      setMenu,
+      setModal,
+      stringToSearch
+    );
   }
 };
