@@ -19,7 +19,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const isCreate = document.location.href.includes("create");
+  const isCreate = useAppSelector((state) => state.ui.headerTitle === "New...");
 
   const { user } = useAppSelector((state) => state);
   const { headerLastTitle } = useAppSelector((state) => state.ui);
@@ -159,6 +159,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         autoComplete="off"
         onSubmit={handleSubmit}
         className="form-create"
+        title="form-create"
       >
         <div className="image-container">
           <div className="form__img-input-container">

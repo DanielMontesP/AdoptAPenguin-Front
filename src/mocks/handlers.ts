@@ -7,3 +7,7 @@ export const usersHandlers = [
     res(ctx.status(200), ctx.json({ token: mockTokenKey }))
   ),
 ];
+
+export const mockState = {
+  ui: { headerTitle: "New...", headerLastTitle: "Test" },
+};
