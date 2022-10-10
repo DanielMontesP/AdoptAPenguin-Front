@@ -14,7 +14,13 @@ const MessageButton = ({ penguin }: Props): JSX.Element => {
     navigate(`/detail/${penguin.id}#messages`);
   };
 
-  return <button className={`animated${iconType}`} onClick={handleMessage} />;
+  return (
+    <button
+      className={`animated${iconType}`}
+      onClick={handleMessage}
+      title="bt-message"
+    />
+  );
 };
 
 export default MessageButton;
