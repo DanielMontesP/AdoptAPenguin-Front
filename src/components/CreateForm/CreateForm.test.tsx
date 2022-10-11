@@ -2,15 +2,9 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { useAppSelector } from "../../app/redux/hooks/hooks";
 import store from "../../app/redux/store/store";
-import { mockPenguin } from "../../mocks/penguins";
+import { mockEmptyDataPenguin, mockPenguin } from "../../mocks/penguins";
 import CreateForm from "./CreateForm";
-
-jest.mock("react-redux", () => ({
-  ...jest.requireActual("react-redux"),
-  useAppSelector: jest.fn(),
-}));
 
 describe("Given a CreateForm component", () => {
   describe("When the word 'user1' is written to the username input field", () => {
@@ -21,7 +15,7 @@ describe("Given a CreateForm component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <CreateForm penguin={mockPenguin} />
+            <CreateForm penguin={mockEmptyDataPenguin} />
           </BrowserRouter>
         </Provider>
       );
@@ -36,7 +30,10 @@ describe("Given a CreateForm component", () => {
 
   describe("When last title is Favourites and submit form", () => {
     test("Then navigate to favourites'", () => {
-      const labelName = "form-create";
+      const labelButtonSubmit = "bt-save";
+      const labelImg = "bt-save";
+
+      const handleImg = jest.fn();
       const handleSubmit = jest.fn();
 
       render(
@@ -47,12 +44,19 @@ describe("Given a CreateForm component", () => {
         </Provider>
       );
 
-      const buttonSubmit = screen.getByTitle(labelName);
+      const buttonSubmit = screen.getByPlaceholderText(labelButtonSubmit);
       userEvent.click(buttonSubmit);
 
+      const imageInput = screen.getByPlaceholderText(labelButtonSubmit);
+      userEvent.type(imageInput, "");
+
+      handleImg();
       handleSubmit();
 
       expect(buttonSubmit).toBeInTheDocument();
+      expect(imageInput).toBeInTheDocument();
+
+      expect(handleImg).toHaveBeenCalled();
       expect(handleSubmit).toHaveBeenCalled();
     });
   });

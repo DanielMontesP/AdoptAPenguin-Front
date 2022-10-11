@@ -19,7 +19,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const isCreate = useAppSelector((state) => state.ui.headerTitle === "New...");
+  const isCreate = penguin.id === "";
 
   const { user } = useAppSelector((state) => state);
   const { headerLastTitle } = useAppSelector((state) => state.ui);
