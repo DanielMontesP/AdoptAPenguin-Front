@@ -45,7 +45,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   let classButtonNew = `${classButton}new`;
   let classInputSearch = `search-input`;
 
-  const searchPlaceHolderText = "Search by name or category...";
+  const searchPlaceHolderText = "Search by name/category/description...";
   let HidderDesktopButtons = "";
 
   switch (headerTitle) {

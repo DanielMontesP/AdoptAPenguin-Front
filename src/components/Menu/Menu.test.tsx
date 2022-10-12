@@ -8,7 +8,7 @@ import userEvent from "@testing-library/user-event";
 describe("Given a Menu component", () => {
   describe("When bt-search clicked", () => {
     test("Then handleSearch have to been called", () => {
-      const stringToFind1 = "Search by name or category...";
+      const stringToFind1 = "Search by name/category/description...";
       const handleSearchEnter = jest.fn();
 
       render(

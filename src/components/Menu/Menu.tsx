@@ -37,7 +37,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
 
   const userImage = user.image || noPhoto;
 
-  const searchPlaceHolderText = "Search by name or category...";
+  const searchPlaceHolderText = "Search by name/category/description...";
 
   const loadFavs = () => {
     dispatch(isMenuOpenActionCreator(false));

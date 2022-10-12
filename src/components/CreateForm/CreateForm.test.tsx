@@ -28,10 +28,10 @@ describe("Given a CreateForm component", () => {
     });
   });
 
-  describe("When last title is Favourites and submit form", () => {
-    test("Then navigate to favourites'", () => {
+  describe("When last title is Favourites and is create form", () => {
+    test("Then navigate to favourites'", async () => {
       const labelButtonSubmit = "bt-save";
-      const labelImg = "bt-save";
+      const labelImg = "image-input";
 
       const handleImg = jest.fn();
       const handleSubmit = jest.fn();
@@ -46,18 +46,18 @@ describe("Given a CreateForm component", () => {
 
       const buttonSubmit = screen.getByPlaceholderText(labelButtonSubmit);
       userEvent.click(buttonSubmit);
-
-      const imageInput = screen.getByPlaceholderText(labelButtonSubmit);
-      userEvent.type(imageInput, "");
-
-      handleImg();
       handleSubmit();
 
       expect(buttonSubmit).toBeInTheDocument();
-      expect(imageInput).toBeInTheDocument();
-
-      expect(handleImg).toHaveBeenCalled();
       expect(handleSubmit).toHaveBeenCalled();
+
+      const imageInput = screen.getByPlaceholderText(labelImg);
+      userEvent.type(imageInput, "ss");
+
+      handleImg();
+
+      expect(imageInput).toBeInTheDocument();
+      expect(handleImg).toHaveBeenCalled();
     });
   });
 });
