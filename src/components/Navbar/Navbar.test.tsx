@@ -220,7 +220,7 @@ describe("Given a Search components", () => {
     test("Then it should call the handleFocus function", () => {
       const titleSearchButton = "bt-search";
 
-      const placeHolderSearchInput = "Search by name or category...";
+      const placeHolderSearchInput = "Search by name/category/description...";
 
       const handleFocus = jest.fn();
       const handleSearchChange = jest.fn();

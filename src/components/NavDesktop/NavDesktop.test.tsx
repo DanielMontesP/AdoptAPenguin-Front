@@ -128,7 +128,7 @@ describe("Given a handleLogoutCall button NavDesktop component", () => {
       const labelSearch = "bt-search-submit";
       const labelHelp = "desktop-btn-help";
       const labelSearch2 = "bt-search";
-      const searchPlaceHolderText = "Search by name or category...";
+      const searchPlaceHolderText = "Search by name/category/description...";
 
       const labelHome = "btn-home";
       const labelFavs = "btn-favs";
