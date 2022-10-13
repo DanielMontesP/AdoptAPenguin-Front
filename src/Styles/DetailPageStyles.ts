@@ -75,7 +75,8 @@ const DetailPageStyles = styled.div`
     }
 
     .detail-description {
-      width: 435px;
+      display: flex;
+      width: 428px;
       font-size: 16px;
       background: white;
       border: 1px solid;
@@ -127,15 +128,17 @@ const DetailPageStyles = styled.div`
     }
 
     .detail-description {
+      display: flex;
+      width: 314px;
       font-size: 16px;
       background: white;
       border: 1px solid;
-      padding: 10px 10px 20px 10px;
+      padding: 10px;
       border-radius: 0 5px 5px 5px;
       border-top: 0;
       margin: auto;
       text-align: justify;
-      min-width: 320px;
+
       min-height: 100px;
     }
 
