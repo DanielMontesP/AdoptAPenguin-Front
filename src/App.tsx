@@ -25,13 +25,26 @@ function App() {
   const dispatch = useAppDispatch();
 
   const [isDesktop, setDesktop] = useState(window.innerWidth > 421);
+  const [scrollPosition, setSrollPosition] = useState(0);
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 420);
   };
 
+  let notScrolled = false;
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setSrollPosition(position);
+  };
+
+  if (scrollPosition) {
+    notScrolled = isDesktop ? false : true;
+  }
+
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
+    window.addEventListener("scroll", handleScroll);
 
     const token = localStorage.getItem("token");
 
@@ -42,13 +55,24 @@ function App() {
         dispatch(getUserThunk(userData.id));
       }
     }
+
     dispatch(isDesktopActionCreator(isDesktop));
-    return () => window.removeEventListener("resize", updateMedia);
+
+    return () => {
+      window.removeEventListener("resize", updateMedia);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [dispatch, logged, loading, id, isDesktop]);
 
   return (
     <>
-      {logged ? <Navbar headerTitle={headerTitle} /> : <NavWellcome />}
+      {logged && !notScrolled ? (
+        <Navbar headerTitle={headerTitle} />
+      ) : !logged ? (
+        <NavWellcome />
+      ) : (
+        ""
+      )}
 
       <Routes>
         <Route path="/" element={<Navigate to="/homepage" />} />
