@@ -33,6 +33,10 @@ const DetailPageStyles = styled.div`
       align-content: space-around;
     }
 
+    .detail-name {
+      height: 15px;
+    }
+
     .detail-container {
       margin: auto;
       margin-bottom: 10px;
@@ -58,6 +62,7 @@ const DetailPageStyles = styled.div`
       margin: auto;
       text-align: center;
       height: 215px;
+      width: 80%;
     }
 
     .detail-content {
@@ -76,7 +81,7 @@ const DetailPageStyles = styled.div`
 
     .detail-description {
       display: flex;
-      width: 428px;
+
       font-size: 16px;
       background: white;
       border: 1px solid;
@@ -101,9 +106,9 @@ const DetailPageStyles = styled.div`
       width: 70%;
       margin: auto;
       margin-bottom: 50px;
-      margin-top: 20px;
+      margin-top: 90px;
       text-align: center;
-      padding: 0.5em;
+
       border: 1px solid grey;
       border-radius: 15px;
       background: #fff;
