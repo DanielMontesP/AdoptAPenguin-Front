@@ -78,9 +78,10 @@ const DetailPageStyles = styled.div`
       width: 435px;
       font-size: 16px;
       background: white;
-      box-shadow: 0 0 15px 6px #666;
+      border: 1px solid;
       padding: 10px 10px 20px 10px;
-      border-radius: 5px 5px 5px 5px;
+      border-radius: 0 5px 5px 5px;
+      border-top: 0;
       margin: auto;
       text-align: justify;
       min-width: 320px;
@@ -112,7 +113,7 @@ const DetailPageStyles = styled.div`
       margin-bottom: 10px;
       border-radius: 5px 5px 5px 5px;
       margin: auto;
-      margin-top: 6rem;
+      margin-top: 5.2rem;
       height: 87.4vh;
     }
 
@@ -128,9 +129,10 @@ const DetailPageStyles = styled.div`
     .detail-description {
       font-size: 16px;
       background: white;
-      box-shadow: 0 0 15px 6px #666;
+      border: 1px solid;
       padding: 10px 10px 20px 10px;
-      border-radius: 5px 5px 5px 5px;
+      border-radius: 0 5px 5px 5px;
+      border-top: 0;
       margin: auto;
       text-align: justify;
       min-width: 320px;
@@ -197,6 +199,7 @@ const DetailPageStyles = styled.div`
     background: white;
     border: 1px solid;
     border-radius: 10px 10px 0px 0;
+    border-bottom: 0;
     color: black;
   }
 
@@ -380,10 +383,6 @@ const DetailPageStyles = styled.div`
 
   .bt-likes {
     flex: 2;
-  }
-
-  .detail-name {
-    background: white;
   }
 
   .likes {

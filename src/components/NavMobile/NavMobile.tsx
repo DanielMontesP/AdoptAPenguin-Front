@@ -119,7 +119,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
           />
         </div>
       </div>
-      <div className={`nav`}>
+      <div className={`menu-nav`}>
         <Menu isMenuOpened={isMenuOpened && isMenuOpen} />
       </div>
       {isModalOpen && (

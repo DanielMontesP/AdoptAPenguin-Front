@@ -151,7 +151,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
         <h3 className="user-username">{toPascalCase(`${user.username}`)}</h3>
       </div>
       <div className="menu-vertical">
-        <hr className="hr-photo" />
+        <hr className="menu-hr-photo" />
 
         <button onClick={loadHome} className="bt-home" title="bt-home">
           <h3 className="menu-icon-label-vertical">Home</h3>
@@ -183,7 +183,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
             title="bt-search-submit"
           />
         </div>
-        <hr className="hr-menu-horizontal" />
+        <hr className="menu-hr-horizontal" />
         <div className="menu-icons-horizontal">
           <button
             onClick={handleLogoutCall}

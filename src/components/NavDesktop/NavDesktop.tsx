@@ -234,7 +234,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
           title="desktop-btn-menu"
         />
       </div>{" "}
-      <div className={`nav`}>
+      <div className={`menu-nav`}>
         <Menu isMenuOpened={isMenuOpened && isMenuOpen} />
       </div>
       {isModalOpen && (

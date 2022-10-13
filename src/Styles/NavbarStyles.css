@@ -26,21 +26,23 @@
   }
 
   .messages-container {
-    width: 80%;
+    width: 235px;
     min-height: 100px;
+    min-width: 320px;
     margin: auto;
-    margin-top: 30px;
-    box-shadow: 0 0 15px 6px #666;
-    border-radius: 5px 5px 5px 5px;
+
+    border: 1px solid;
+    border-top: 0;
+    border-radius: 0 5px 5px 5px;
     padding: 10px 10px 20px 10px;
     font-size: 16px;
     background: white;
-    position: relative;
-    top: -165px;
+
     text-align: justify;
   }
 
   .message-container {
+    display: flex;
     height: 300px;
     text-align: center;
     font-size: 14px;
@@ -433,20 +435,22 @@ h1 {
 
   .messages-container {
     width: 435px;
+    min-width: 120px;
     min-height: 100px;
     margin: auto;
-    margin-top: 30px;
-    box-shadow: 0 0 15px 6px #666;
-    border-radius: 5px 5px 5px 5px;
+
+    border: 1px solid;
+    border-top: 0;
+    border-radius: 0 5px 5px 5px;
     padding: 10px 10px 20px 10px;
     font-size: 16px;
     background: white;
-    position: relative;
-    top: -165px;
+
     text-align: justify;
   }
 
   .message-container {
+    display: flex;
     height: 300px;
     text-align: center;
     font-size: 14px;
@@ -789,12 +793,12 @@ ul {
   margin: auto;
 }
 
-.hr-menu-horizontal {
+.menu-hr-horizontal {
   width: 85%;
   margin-left: 25px;
 }
 
-.hr-photo {
+.menu-hr-photo {
   width: 150px;
   margin-top: 112px;
   margin-bottom: 15px;
@@ -849,7 +853,7 @@ ul {
   margin-bottom: 15px;
 }
 
-.search-title {
+.view-list-counter {
   margin-top: -10px;
   text-align: right;
   font-size: 14px;
