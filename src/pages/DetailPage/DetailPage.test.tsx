@@ -4,17 +4,11 @@ import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
 import DetailPage from "./DetailPage";
 
-jest.mock("chalk", () => ({
-  green: jest.fn(),
-  white: jest.fn(),
-  red: jest.fn(),
-  yellow: jest.fn(),
-}));
-
 describe("Given a CreatePage component", () => {
   describe("When the word 'penguin' is written to the username input field", () => {
     test("Then the value of the username input field should be 'penguin'", () => {
-      const ToFind = "Detail";
+      const stringToFind1 = "Messages";
+      const stringToFind2 = "Description";
 
       render(
         <Provider store={store}>
@@ -24,9 +18,11 @@ describe("Given a CreatePage component", () => {
         </Provider>
       );
 
-      const label = screen.getByText(ToFind);
+      const label1 = screen.getByText(stringToFind1);
+      const label2 = screen.getByText(stringToFind2);
 
-      expect(label).toHaveTextContent(ToFind);
+      expect(label1).toHaveTextContent(stringToFind1);
+      expect(label2).toHaveTextContent(stringToFind2);
     });
   });
 });
