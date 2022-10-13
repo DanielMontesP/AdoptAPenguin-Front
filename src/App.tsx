@@ -34,13 +34,29 @@ function App() {
   let notScrolled = false;
 
   const handleScroll = () => {
-    const position = window.pageYOffset;
+    const position = window.scrollY;
     setSrollPosition(position);
   };
 
   if (scrollPosition) {
     notScrolled = isDesktop ? false : true;
   }
+
+  let result = <></>;
+
+  const handleNav = () => {
+    if (logged && !notScrolled) {
+      result = <Navbar headerTitle={headerTitle} />;
+    } else {
+      if (!logged) {
+        result = <NavWellcome />;
+      }
+
+      return result;
+    }
+  };
+
+  handleNav();
 
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
@@ -66,13 +82,7 @@ function App() {
 
   return (
     <>
-      {logged && !notScrolled ? (
-        <Navbar headerTitle={headerTitle} />
-      ) : !logged ? (
-        <NavWellcome />
-      ) : (
-        ""
-      )}
+      {result}
 
       <Routes>
         <Route path="/" element={<Navigate to="/homepage" />} />
