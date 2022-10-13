@@ -18,6 +18,14 @@
     width: 95%;
   }
 
+  .detail-container {
+    margin-bottom: 10px;
+    border-radius: 5px 5px 5px 5px;
+    margin: auto;
+    margin-top: 5.2rem;
+    height: 87.4vh;
+  }
+
   .modal-wellcome {
     width: 80%;
     height: -webkit-fill-available;
@@ -410,6 +418,14 @@ h1 {
     margin: auto;
   }
 
+  .detail-container {
+    margin-bottom: 10px;
+    border-radius: 5px 5px 5px 5px;
+    margin: auto;
+
+    height: 87.4vh;
+  }
+
   .penguins-container {
     border-radius: 8px;
     padding: 0 10px 15px;
@@ -768,6 +784,7 @@ button {
   background-position: center;
   background-repeat: no-repeat;
   padding: 0;
+  cursor: pointer;
 }
 
 ul {
