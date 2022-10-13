@@ -41,7 +41,7 @@ const DetailPageStyles = styled.div`
     }
 
     .penguin-description {
-      width: 450px;
+      width: 80%;
       min-height: 40px;
       margin: auto;
       margin-top: -50px;
@@ -91,15 +91,48 @@ const DetailPageStyles = styled.div`
 
     .detail-image {
       height: 300px;
-      width: 450px;
+      width: 100%;
       object-fit: cover;
       background-color: rgb(255 254 254);
       border-radius: 5px;
       flex: 1;
     }
+    .penguin-container {
+      width: 70%;
+      margin: auto;
+      margin-bottom: 50px;
+      margin-top: 20px;
+      text-align: center;
+      padding: 0.5em;
+      border: 1px solid grey;
+      border-radius: 15px;
+      background: #fff;
+      -webkit-transition: 0.5s;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-shadow: 2px 2px 10px rgb(140, 134, 134);
+    }
   }
 
   @media only screen and (max-width: 420px) {
+    .penguin-container {
+      width: 90%;
+      margin: auto;
+      margin-bottom: 50px;
+      margin-top: 20px;
+      text-align: center;
+      padding: 0.5em;
+      border: 1px solid grey;
+      border-radius: 15px;
+
+      background: #fff;
+      -webkit-transition: 0.5s;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-shadow: 2px 2px 10px rgb(140, 134, 134);
+    }
     .detail-buttons-container {
       margin: auto;
       width: 90%;
@@ -119,17 +152,17 @@ const DetailPageStyles = styled.div`
     }
 
     .detail-image {
-      height: 300px;
-      width: 450px;
+      height: 200px;
+      width: 295px;
       object-fit: cover;
       background-color: rgb(255 254 254);
-      border-radius: 5px;
+      border-radius: 1px;
       flex: 1;
     }
 
     .detail-description {
       display: flex;
-      width: 314px;
+
       font-size: 16px;
       background: white;
       border: 1px solid;
@@ -143,21 +176,12 @@ const DetailPageStyles = styled.div`
     }
 
     .penguin-description {
-      width: 80%;
       min-height: 40px;
       margin: auto;
       margin-top: -60px;
       text-align: justify;
       display: flex;
       flex-direction: column;
-    }
-
-    .detail-image {
-      height: 200px;
-      width: 320px;
-      object-fit: cover;
-      background-color: rgb(255 254 254);
-      border-radius: 10px;
     }
 
     .penguin--container {
@@ -168,6 +192,8 @@ const DetailPageStyles = styled.div`
       margin: auto;
       text-align: center;
       height: 115px;
+      margin-left: 5px;
+      margin-right: 5px;
     }
 
     .img-container {
@@ -308,7 +334,7 @@ const DetailPageStyles = styled.div`
     background-image: url(${detailNext});
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 25px;
+    background-size: 20px;
     width: 10%;
     height: 270px;
     flex: 2;
@@ -324,7 +350,7 @@ const DetailPageStyles = styled.div`
     background-image: url(${detailPrev});
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 25px;
+    background-size: 20px;
     width: 10%;
     height: 270px;
     flex: 2;

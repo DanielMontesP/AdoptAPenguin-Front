@@ -85,53 +85,56 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
 
   return (
     <DetailPageStyles className="detail-container">
-      <h1 className="detail-name">{penguin.name}</h1>
-      <div className="img-container">
-        <button
-          onClick={getDetailPrev}
-          className="imgDetailPrev detailPrev"
-          title="btn-prev"
-        />
-        <div className="penguin--container">
-          <img
-            src={penguinImage}
-            alt={`Pinguino ${penguin.name}`}
-            className="detail-image"
+      <div className="penguin-container">
+        <h1 className="detail-name">{penguin.name}</h1>
+        <div className="img-container">
+          <button
+            onClick={getDetailPrev}
+            className="imgDetailPrev detailPrev"
+            title="btn-prev"
+          />
+          <div className="penguin--container">
+            <img
+              src={penguinImage}
+              alt={`Pinguino ${penguin.name}`}
+              className="detail-image"
+            />
+          </div>
+          <button
+            onClick={getDetailNext}
+            className="imgDetailNext detailNext"
+            title="btn-next"
           />
         </div>
-        <button
-          onClick={getDetailNext}
-          className="imgDetailNext detailNext"
-          title="btn-next"
-        />
-      </div>
-      <div className={`penguin-description`}>
-        <ActionButtons penguin={penguin} />
-        <span className="category">{penguin.category}</span>
-        <div className="detail-tabs">
-          <button
-            className={`tab-description${classTabDescription}`}
-            title="description"
-            onClick={handleTab}
-          >
-            Description
-          </button>
-          <button
-            className={`tab-messages${classTabMessages}`}
-            title="messages"
-            onClick={handleTab}
-          >
-            Messages
-          </button>
+        <div className={`penguin-description`}>
+          <ActionButtons penguin={penguin} />
+          <span className="category">{penguin.category}</span>
+          <div className="detail-tabs">
+            <button
+              className={`tab-description${classTabDescription}`}
+              title="description"
+              onClick={handleTab}
+            >
+              Description
+            </button>
+            <button
+              className={`tab-messages${classTabMessages}`}
+              title="messages"
+              onClick={handleTab}
+            >
+              Messages
+            </button>
+
+            {isMessagesSelected ? (
+              <Messages allMessages={allMessages} />
+            ) : (
+              <span className={`detail-description${classDescription}`}>
+                {penguin.description}
+              </span>
+            )}
+          </div>
         </div>
       </div>
-      {isMessagesSelected ? (
-        <Messages allMessages={allMessages} />
-      ) : (
-        <span className={`detail-description${classDescription}`}>
-          {penguin.description}
-        </span>
-      )}
     </DetailPageStyles>
   );
 };

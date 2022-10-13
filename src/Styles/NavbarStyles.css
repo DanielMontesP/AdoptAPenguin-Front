@@ -34,7 +34,6 @@
   }
 
   .messages-container {
-    width: 235px;
     min-height: 100px;
     min-width: 312px;
     margin: auto;
@@ -152,10 +151,10 @@
 }
 
 .header-desktop-title {
-  text-align: center;
-  margin: auto;
-  padding-top: 10px;
-  flex: 3;
+  text-align: left;
+  flex: 4;
+
+  margin-left: 10px;
 }
 
 .header-desktop-title-likes {
@@ -691,31 +690,31 @@ h1 {
 .header-favs-icon {
   background: url("../images/icon-star_full.png");
   background-repeat: no-repeat;
-  background-position-x: 30%;
-  background-position-y: -4px;
+  background-position: right;
   background-size: 35px;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
+  flex: 3;
 }
 
 .header-likes-icon {
   background: url("../images/menu-favs.png");
   background-repeat: no-repeat;
-  background-position-x: 35%;
-  background-position-y: -4px;
+  background-position: right;
   background-size: 35px;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
+  flex: 3;
 }
 
 .header-home-icon {
   background: url("../images/icon-home.png");
   background-repeat: no-repeat;
-  background-position-x: 30%;
-  background-position-y: -5px;
+  background-position: right;
   background-size: 35px;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
+  flex: 3;
 }
 
 .header-wellcome {
@@ -738,26 +737,28 @@ h1 {
   background-size: 35px;
   width: 45px;
   height: 45px;
+  flex: 3;
 }
 
 .header-new-icon {
   background: url("../images/icon-add_plus.png");
   background-repeat: no-repeat;
-  background-position-x: 35%;
-  background-position-y: -3px;
+
+  background-position: right;
   background-size: 35px;
   width: 45px;
   height: 45px;
+  flex: 3;
 }
 
 .header-detail-icon {
   background: url("../images/icon-editar.png");
   background-repeat: no-repeat;
-  background-position-x: 30%;
-  background-position-y: -5px;
+  background-position: right;
   background-size: 35px;
   width: 45px;
   height: 45px;
+  flex: 3;
 }
 
 .app {
