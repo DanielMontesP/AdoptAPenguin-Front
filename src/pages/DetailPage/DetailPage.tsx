@@ -10,7 +10,6 @@ import {
   loadPenguinsThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import PenguinDetail from "../../components/PenguinDetail/PenguinDetail";
-import DetailPageStyles from "../../Styles/DetailPageStyles";
 
 const DetailPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -41,11 +40,7 @@ const DetailPage = (): JSX.Element => {
     if (headerTitle !== thisTitle) SetTitleHeader(thisTitle, headerTitle);
   }, [dispatch, idPenguin, headerTitle, headerLastTitle]);
 
-  return (
-    <DetailPageStyles className="penguin--container">
-      <PenguinDetail allPenguins={allPenguins} penguin={penguin} />
-    </DetailPageStyles>
-  );
+  return <PenguinDetail allPenguins={allPenguins} penguin={penguin} />;
 };
 
 export default DetailPage;

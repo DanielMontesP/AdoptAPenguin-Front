@@ -8,7 +8,7 @@ interface Props {
 
 const Messages = ({ allMessages }: Props): JSX.Element => {
   return (
-    <PagesStyles className={`messages-container`} title="penguins-container">
+    <PagesStyles className={`messages-container`} title="messages-container">
       <h3 className={"view-list-counter"}>
         {allMessages.length} result/s found.
       </h3>

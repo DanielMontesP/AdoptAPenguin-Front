@@ -34,9 +34,9 @@ const DetailPageStyles = styled.div`
     }
 
     .detail-container {
+      margin: auto;
       margin-bottom: 10px;
       border-radius: 5px 5px 5px 5px;
-      margin: auto;
       height: 87.4vh;
     }
 
@@ -111,9 +111,9 @@ const DetailPageStyles = styled.div`
     }
 
     .detail-container {
+      margin: auto;
       margin-bottom: 10px;
       border-radius: 5px 5px 5px 5px;
-      margin: auto;
       margin-top: 5.2rem;
       height: 87.4vh;
     }

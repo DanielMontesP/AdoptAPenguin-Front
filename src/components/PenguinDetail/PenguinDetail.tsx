@@ -7,6 +7,7 @@ import {
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import iconPhotoEmpty from "../../images/contact-photo-add.png";
+import DetailPageStyles from "../../Styles/DetailPageStyles";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import Messages from "../Messages/Messages";
 import { correctAction } from "../Modals/Modals";
@@ -83,7 +84,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
   }
 
   return (
-    <div className="detail-container">
+    <DetailPageStyles className="detail-container">
       <h1 className="detail-name">{penguin.name}</h1>
       <div className="img-container">
         <button
@@ -131,7 +132,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
           {penguin.description}
         </span>
       )}
-    </div>
+    </DetailPageStyles>
   );
 };
 
