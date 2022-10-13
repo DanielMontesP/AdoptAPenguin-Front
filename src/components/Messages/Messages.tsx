@@ -9,7 +9,9 @@ interface Props {
 const Messages = ({ allMessages }: Props): JSX.Element => {
   return (
     <PagesStyles className={`messages-container`} title="penguins-container">
-      <h3 className={"search-title"}>{allMessages.length} result/s found.</h3>
+      <h3 className={"view-list-counter"}>
+        {allMessages.length} result/s found.
+      </h3>
       {allMessages.map((message, index) => {
         return <Message key={index} message={message} />;
       })}

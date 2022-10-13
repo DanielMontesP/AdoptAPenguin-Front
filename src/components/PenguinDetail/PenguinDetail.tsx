@@ -84,8 +84,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
 
   return (
     <div className="detail-container">
-      <h1 className="display-none">Detail</h1>
-      <h2 className="detail-name">{penguin.name}</h2>
+      <h1 className="detail-name">{penguin.name}</h1>
       <div className="img-container">
         <button
           onClick={getDetailPrev}
@@ -124,12 +123,14 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
             Messages
           </button>
         </div>
-        <span className={`detail-description${classDescription}`}>
-          {penguin.description}
-        </span>
+        {isMessagesSelected ? (
+          <Messages allMessages={allMessages} />
+        ) : (
+          <span className={`detail-description${classDescription}`}>
+            {penguin.description}
+          </span>
+        )}
       </div>
-      {isMessagesSelected ? <Messages allMessages={allMessages} /> : ""}
-      :""
     </div>
   );
 };

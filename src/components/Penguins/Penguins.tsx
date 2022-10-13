@@ -16,7 +16,9 @@ const Penguins = ({ allPenguins }: Props): JSX.Element => {
       className={`penguins-container${hidderDelete}`}
       title="penguins-container"
     >
-      <h3 className={"search-title"}>{allPenguins.length} result/s found.</h3>
+      <h3 className={"view-list-counter"}>
+        {allPenguins.length} result/s found.
+      </h3>
       {allPenguins.map((penguin, index) => {
         return <Penguin key={index} penguin={penguin} />;
       })}
