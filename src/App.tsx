@@ -25,13 +25,42 @@ function App() {
   const dispatch = useAppDispatch();
 
   const [isDesktop, setDesktop] = useState(window.innerWidth > 421);
+  const [scrollPosition, setSrollPosition] = useState(0);
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 420);
   };
 
+  let notScrolled = false;
+
+  const handleScroll = () => {
+    const position = window.scrollY;
+    setSrollPosition(position);
+  };
+
+  if (scrollPosition) {
+    notScrolled = isDesktop ? false : true;
+  }
+
+  let result = <></>;
+
+  const handleNav = () => {
+    if (logged && !notScrolled) {
+      result = <Navbar headerTitle={headerTitle} />;
+    } else {
+      if (!logged) {
+        result = <NavWellcome />;
+      }
+
+      return result;
+    }
+  };
+
+  handleNav();
+
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
+    window.addEventListener("scroll", handleScroll);
 
     const token = localStorage.getItem("token");
 
@@ -42,13 +71,18 @@ function App() {
         dispatch(getUserThunk(userData.id));
       }
     }
+
     dispatch(isDesktopActionCreator(isDesktop));
-    return () => window.removeEventListener("resize", updateMedia);
+
+    return () => {
+      window.removeEventListener("resize", updateMedia);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [dispatch, logged, loading, id, isDesktop]);
 
   return (
     <>
-      {logged ? <Navbar headerTitle={headerTitle} /> : <NavWellcome />}
+      {result}
 
       <Routes>
         <Route path="/" element={<Navigate to="/homepage" />} />

@@ -10,6 +10,12 @@
     align-items: center;
   }
 
+  .header-desktop-title {
+    text-align: left;
+    flex: 4;
+    margin-left: 10px;
+  }
+
   .penguins-container {
     border-radius: 8px;
     padding: 0 10px 15px;
@@ -148,13 +154,6 @@
   animation: titleOpacity 10s infinite;
   position: fixed;
   top: 25px;
-}
-
-.header-desktop-title {
-  text-align: left;
-  flex: 4;
-
-  margin-left: 10px;
 }
 
 .header-desktop-title-likes {
@@ -349,7 +348,6 @@ h1 {
   font-size: 1.3rem;
   font-weight: bold;
   text-align: center;
-  margin-top: 1rem;
 }
 
 .menu-animatedEdit {
@@ -417,11 +415,15 @@ h1 {
     margin: auto;
   }
 
+  .header-desktop-title {
+    background: #292929;
+    margin: 0;
+    padding: 2px;
+  }
   .detail-container {
     margin: auto;
     margin-bottom: 10px;
     border-radius: 5px 5px 5px 5px;
-
     height: 87.4vh;
   }
 
@@ -1261,4 +1263,8 @@ ul {
 .nav {
   background-color: #292929;
   color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
