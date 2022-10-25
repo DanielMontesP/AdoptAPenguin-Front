@@ -416,7 +416,6 @@ h1 {
   .options {
     display: flex;
     flex-direction: column;
-    width: 320px;
     margin-left: 20px;
     text-align: center;
     width: 100%;

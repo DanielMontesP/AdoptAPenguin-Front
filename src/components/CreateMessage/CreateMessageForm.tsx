@@ -31,8 +31,6 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
     newFormData.append("data", formData.data);
     newFormData.append("idPenguin", formData.idPenguin);
     newFormData.append("read", JSON.stringify(false));
-
-    // dispatch(createMessageThunk(newFormData));
   };
 
   const handleInputChange = (
@@ -63,8 +61,6 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
       newFormData.append("_id", formData.id);
       newFormData.append("name", formData.subject);
     }
-    // dispatch();
-    // editMessageThunk(formData, "Update fields: " + modFields.join(", "))
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
