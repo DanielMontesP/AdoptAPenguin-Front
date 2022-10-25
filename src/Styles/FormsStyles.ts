@@ -47,13 +47,13 @@ const FormsStyles = styled.div`
 
     .input-description {
       height: 150px;
-      width: 40vh;
+      width: 70%;
       margin: auto;
       font-family: inherit;
       border: 2px solid black;
       align-items: center;
       justify-content: center;
-      border-radius: 5px;
+      border-radius: 15px;
       box-sizing: border-box;
       color: black;
       font-size: 18px;
@@ -147,13 +147,13 @@ const FormsStyles = styled.div`
 
     .input-description {
       height: 150px;
-      width: 50vh;
+      width: 70%;
       margin: auto;
       font-family: inherit;
       border: 2px solid black;
       align-items: center;
       justify-content: center;
-      border-radius: 5px;
+      border-radius: 15px;
       box-sizing: border-box;
       color: black;
       font-size: 18px;
@@ -361,7 +361,7 @@ const FormsStyles = styled.div`
   }
 
   .form-create {
-    margin-top: 20px;
+    margin-top: 220px;
   }
 
   .edit-image {
@@ -557,6 +557,7 @@ const FormsStyles = styled.div`
     font-weight: bold;
     height: 60px;
     border-radius: 15px;
+    width: 70%;
   }
 
   .bt-register {

@@ -6,7 +6,14 @@ import {
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
-import { deletePenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import {
+  resetMessagesThunk,
+  resetMessageThunk,
+} from "../../app/redux/thunks/messageThunk/messageThunk";
+import {
+  deletePenguinThunk,
+  resetPenguinsThunk,
+} from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import Help from "../Help/Help";
 import WellcomeComments from "../WellcomeComments/WellcomeComments";
 import { correctAction } from "./Modals";
@@ -66,6 +73,11 @@ export const Modal = ({
   const logOutUser = () => {
     dispatch(finishedLoadingActionCreator());
     dispatch(logOutActionCreator());
+
+    dispatch(resetMessagesThunk);
+    dispatch(resetMessageThunk);
+
+    dispatch(resetPenguinsThunk);
 
     localStorage.removeItem("token");
 

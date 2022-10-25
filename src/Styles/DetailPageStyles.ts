@@ -458,6 +458,20 @@ const DetailPageStyles = styled.div`
   .message-read-img {
     background: url(${iconEdit});
     background-repeat: no-repeat;
+    background-size: 20px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .message-buttons {
+    width: 100%;
+    display: flex;
+    text-align: left;
+  }
+
+  .message-new {
+    background: url(${iconAddFav});
+    background-repeat: no-repeat;
     background-size: 25px;
     width: 24px;
     height: 24px;
@@ -469,6 +483,10 @@ const DetailPageStyles = styled.div`
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;
+  }
+
+  .message-data {
+    color: grey;
   }
 
   .detail-title {

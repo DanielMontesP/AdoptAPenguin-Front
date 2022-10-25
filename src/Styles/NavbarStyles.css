@@ -15,7 +15,12 @@
     flex: 4;
     margin-left: 10px;
   }
-
+  .options {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    margin-left: 20px;
+  }
   .penguins-container {
     border-radius: 8px;
     padding: 0 10px 15px;
@@ -362,13 +367,6 @@ h1 {
   display: none;
 }
 
-.options {
-  display: flex;
-  flex-direction: column;
-  width: 320px;
-  margin-left: 20px;
-}
-
 .animatedEdit {
   width: auto;
   height: 32px;
@@ -415,6 +413,17 @@ h1 {
     margin: auto;
   }
 
+  .options {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    margin-left: 20px;
+    text-align: center;
+    width: 100%;
+    gap: 25px;
+    margin-top: 25px;
+  }
+
   .header-desktop-title {
     background: #292929;
     margin: 0;
@@ -430,7 +439,7 @@ h1 {
   .penguins-container {
     border-radius: 8px;
     padding: 0 10px 15px;
-    margin-top: 25px;
+    margin-top: 65px;
     text-align: center;
     width: 95%;
   }
@@ -474,6 +483,17 @@ h1 {
     margin: auto;
     margin-top: 10px;
     overflow-y: auto;
+  }
+
+  .prompt-container {
+    display: flex;
+    height: 300px;
+    text-align: center;
+    font-size: 14px;
+    margin: auto;
+    margin-top: 10px;
+    overflow-y: auto;
+    flex-direction: column;
   }
 
   .search-input :hover {
@@ -734,8 +754,7 @@ h1 {
 .header-edit-icon {
   background: url("../images/icon-editar.png");
   background-repeat: no-repeat;
-  background-position-x: 30%;
-  background-position-y: -5px;
+  background-position: right;
   background-size: 35px;
   width: 45px;
   height: 45px;

@@ -4,11 +4,17 @@ import {
   setLoadingOffWithMessage,
   setLoadingOn,
 } from "../../../../components/Modals/Modals";
-import { getMessagesActionCreator } from "../../features/messageSlice/messageSlice";
+import {
+  getMessageActionCreator,
+  getMessagesActionCreator,
+  resetMessageActionCreator,
+  resetMessagesActionCreator,
+} from "../../features/messageSlice/messageSlice";
 import {
   finishedLoadingActionCreator,
   loadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
+import { blankMessageData } from "../../../../utils/utils";
 
 export const getMessagesThunk =
   (formPenguin: any) => async (dispatch: AppDispatch) => {
@@ -37,3 +43,47 @@ export const getMessagesThunk =
       setLoadingOffWithMessage("", false);
     }
   };
+
+export const getMessageThunk =
+  (id: string) => async (dispatch: AppDispatch) => {
+    dispatch(loadingActionCreator());
+
+    if (id !== "") {
+      const token = localStorage.getItem("token");
+
+      if (token) {
+        const { data: message } = await axios.get(
+          `${process.env.REACT_APP_API_URL}messages/${id}`,
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        dispatch(getMessageActionCreator(message));
+        dispatch(finishedLoadingActionCreator());
+        setLoadingOffWithMessage(
+          `GET Message: ${message.subject} successfully.`,
+          false
+        );
+      }
+    }
+  };
+
+export const resetMessageThunk = () => async (dispatch: AppDispatch) => {
+  dispatch(loadingActionCreator());
+
+  dispatch(resetMessageActionCreator(blankMessageData));
+  dispatch(finishedLoadingActionCreator());
+
+  setLoadingOffWithMessage("RESET Penguin: Finished successfully.", false);
+};
+
+export const resetMessagesThunk = () => async (dispatch: AppDispatch) => {
+  dispatch(loadingActionCreator());
+
+  dispatch(resetMessagesActionCreator(blankMessageData));
+  dispatch(finishedLoadingActionCreator());
+
+  setLoadingOffWithMessage("RESET Messages: Finished successfully.", false);
+};

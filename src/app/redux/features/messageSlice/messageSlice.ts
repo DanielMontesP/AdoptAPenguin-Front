@@ -15,6 +15,7 @@ const initialState: SliceIniState = {
     content: "",
     data: "",
     read: false,
+    id: "",
   },
 };
 
@@ -30,6 +31,11 @@ const messageSlice = createSlice({
       allMessages: [...action.payload],
     }),
 
+    getMessage: (messages, action: PayloadAction<IMessage>): SliceIniState => ({
+      ...messages,
+      message: action.payload,
+    }),
+
     createMessage: (
       messages,
       action: PayloadAction<IMessage>
@@ -37,12 +43,31 @@ const messageSlice = createSlice({
       ...messages,
       message: action.payload,
     }),
+
+    resetMessage: (
+      messages,
+      action: PayloadAction<IMessage>
+    ): SliceIniState => ({
+      ...messages,
+      message: initialState.message,
+    }),
+
+    resetMessages: (
+      messages,
+      action: PayloadAction<IMessage>
+    ): SliceIniState => ({
+      ...messages,
+      allMessages: initialState.allMessages,
+    }),
   },
 });
 
 export const {
+  getMessage: getMessageActionCreator,
   getMessages: getMessagesActionCreator,
   createMessage: createMessageActionCreator,
+  resetMessage: resetMessageActionCreator,
+  resetMessages: resetMessagesActionCreator,
 } = messageSlice.actions;
 
 export default messageSlice.reducer;
