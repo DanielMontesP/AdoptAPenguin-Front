@@ -42,16 +42,16 @@ export const mockPenguinsEmpty: IPenguin[] = [
 ];
 export const mockPenguins: IPenguin[] = [
   {
-    id: "1",
-    name: "Penguin1",
-    category: "Penguin",
-    likes: 2,
-    likers: ["id"],
-    favs: ["id"],
-    image: "image.jpg",
-    imageBackup: "ImageBackup.jpg",
+    id: "mockPenguin",
+    name: "penguin1",
+    category: "category1",
+    likes: 0,
+    likers: ["id", "id2"],
+    favs: ["id", "id2"],
+    image: "image1",
+    imageBackup: "sadsadasd.jpg",
     imageResized: "ImageBackup.jpg",
-    description: "Cal is a penguin",
+    description: "description1",
   },
   {
     id: "2",

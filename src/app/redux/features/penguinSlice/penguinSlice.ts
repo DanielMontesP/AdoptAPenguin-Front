@@ -79,7 +79,7 @@ const penguinSlice = createSlice({
       action: PayloadAction<IPenguin>
     ): SliceIniState => ({
       ...penguins,
-      penguin: action.payload,
+      penguin: initialState.penguin,
     }),
 
     resetPenguins: (
@@ -87,7 +87,7 @@ const penguinSlice = createSlice({
       action: PayloadAction<IPenguin>
     ): SliceIniState => ({
       ...penguins,
-      allPenguins: [action.payload],
+      allPenguins: initialState.allPenguins,
     }),
 
     searchPenguins: (

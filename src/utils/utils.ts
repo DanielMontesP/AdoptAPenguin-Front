@@ -1,5 +1,6 @@
 import { IPenguin } from "../app/redux/types/penguin/penguinInterfaces";
 import Resizer from "react-image-file-resizer";
+import { IMessage } from "../app/redux/types/message/messageInterfaces";
 
 export const blankFormData: IPenguin = {
   id: "",
@@ -12,6 +13,16 @@ export const blankFormData: IPenguin = {
   image: "",
   imageBackup: "",
   imageResized: "",
+};
+
+export const blankMessageData: IMessage = {
+  content: "",
+  data: "",
+  id: "",
+  idPenguin: "",
+  idUser: "",
+  read: false,
+  subject: "",
 };
 
 export const toPascalCase = (strValue: string) => {

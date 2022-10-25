@@ -82,6 +82,12 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
         navigate("/penguins/likes");
         break;
 
+      case "Detail":
+        dispatch(headerLastTitleActionCreator(headerTitle));
+        dispatch(headerTitleActionCreator("Detail"));
+        navigate(`/detail/${penguin.id}`);
+        break;
+
       default:
         dispatch(headerLastTitleActionCreator(headerTitle));
         dispatch(headerTitleActionCreator("Home"));

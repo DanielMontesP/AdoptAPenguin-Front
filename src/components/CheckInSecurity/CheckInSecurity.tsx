@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../app/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
+import { resetMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
+import { resetPenguinsThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 
 type Props = {
   children: JSX.Element;
@@ -9,12 +11,15 @@ type Props = {
 const CheckInSecurity = ({ children }: Props) => {
   const { id, logged } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (!logged || !id) {
       navigate("/login");
+      dispatch(resetMessagesThunk);
+      dispatch(resetPenguinsThunk);
     }
-  }, [logged, navigate, id]);
+  }, [dispatch, logged, navigate, id]);
 
   if (logged) {
     return children;

@@ -1,5 +1,4 @@
 import { mockMessage, mockMessages } from "../../../../mocks/messages";
-import { mockPenguin, mockPenguins } from "../../../../mocks/penguins";
 import { IMessage } from "../../types/message/messageInterfaces";
 
 import penguinReducer, {
@@ -21,6 +20,7 @@ const initialState: SliceIniState = {
     content: "content",
     data: "data",
     read: false,
+    id: "",
   },
 };
 

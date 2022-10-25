@@ -14,7 +14,7 @@ import Styles from "../../Styles/WellcomeStyles";
 const WellcomeComments = (): JSX.Element => {
   return (
     <Styles>
-      <div className="message-container">
+      <div className="prompt-container">
         <div className="message-header">
           <img
             src={imgApp}
