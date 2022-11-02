@@ -25,20 +25,10 @@ const CreatePage = ({ type }: Props): JSX.Element => {
 
   let thisTitle = "";
 
-  switch (type) {
-    case "Message":
-      if (isCreate) {
-        thisTitle = "New message...";
-      } else {
-        thisTitle = "Edit message...";
-      }
-      break;
-    default:
-      if (isCreate) {
-        thisTitle = "New...";
-      } else {
-        thisTitle = "Edit...";
-      }
+  if (type === "Message") {
+    thisTitle = isCreate ? "New message..." : "Edit message...";
+  } else {
+    thisTitle = isCreate ? "New..." : "Edit...";
   }
 
   const idToProcess = document.location.href.substring(
