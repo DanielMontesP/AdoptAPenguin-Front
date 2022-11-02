@@ -7,7 +7,7 @@ export const mockMessage: IMessage = {
   content: "content",
   data: "data",
   read: false,
-  id: "",
+  id: "id",
 };
 
 export const mockMessages: IMessage[] = [
@@ -18,6 +18,6 @@ export const mockMessages: IMessage[] = [
     content: "content",
     data: "data",
     read: false,
-    id: "",
+    id: "id",
   },
 ];

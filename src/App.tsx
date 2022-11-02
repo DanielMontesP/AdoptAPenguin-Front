@@ -17,7 +17,6 @@ import { getUserThunk } from "./app/redux/thunks/userThunk/userThunk";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { isDesktopActionCreator } from "./app/redux/features/uiSlice/uiSlice";
 import { NavWellcome } from "./components/NavWellcome/NavWellcome";
-import CreateMessagePage from "./pages/CreateMessage/CreateMessagePage";
 
 function App() {
   const { logged, id } = useAppSelector((state) => state.user);
@@ -115,7 +114,7 @@ function App() {
           path="/users/edit/:id"
           element={
             <CheckInSecurity>
-              <CreatePage />
+              <CreatePage type="User" />
             </CheckInSecurity>
           }
         />
@@ -123,7 +122,7 @@ function App() {
           path="/message/edit/:id"
           element={
             <CheckInSecurity>
-              <CreateMessagePage />
+              <CreatePage type="Message" />
             </CheckInSecurity>
           }
         />
@@ -131,7 +130,7 @@ function App() {
           path="/message/create"
           element={
             <CheckInSecurity>
-              <CreateMessagePage />
+              <CreatePage type="Message" />
             </CheckInSecurity>
           }
         />
@@ -171,7 +170,7 @@ function App() {
           path="/create"
           element={
             <CheckInSecurity>
-              <CreatePage />
+              <CreatePage type="Penguin" />
             </CheckInSecurity>
           }
         />
@@ -179,7 +178,7 @@ function App() {
           path="/penguins/edit/:id"
           element={
             <CheckInSecurity>
-              <CreatePage />
+              <CreatePage type="Penguin" />
             </CheckInSecurity>
           }
         />

@@ -226,7 +226,7 @@ describe("Given the editPenguinThunk function", () => {
 
       document.location = jest
         .fn()
-        .mockResolvedValue({ href: "likes" })
+        .mockReturnValue({ href: "likes" })
         .toString();
 
       const thunk = editPenguinThunk(mockPenguin, "update");
@@ -235,6 +235,51 @@ describe("Given the editPenguinThunk function", () => {
       expect(dispatch).toHaveBeenCalledTimes(5);
     });
   });
+
+  describe("When editPenguinThunk with likes it's called", () => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.put = jest.fn().mockResolvedValue({
+        data: { penguin: mockPenguin },
+        status: 200,
+      });
+
+      document.location = jest
+        .fn()
+        .mockReturnValue({ href: "likes" })
+        .toString();
+
+      const thunk = editPenguinThunk(mockPenguin, "likes");
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledTimes(4);
+    });
+  });
+
+  describe("When editPenguinThunk with favs it's called", () => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.put = jest.fn().mockResolvedValue({
+        data: { penguin: mockPenguin },
+        status: 200,
+      });
+
+      document.location = jest
+        .fn()
+        .mockReturnValue({ href: "favs" })
+        .toString();
+
+      const thunk = editPenguinThunk(mockPenguin, "favs");
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledTimes(4);
+    });
+  });
+
   describe("When delete is called", () => {
     test("Then it should call dispatch", async () => {
       const dispatch = jest.fn();
@@ -292,7 +337,6 @@ describe("Given the editPenguinThunk function", () => {
     describe("When it's called", () => {
       test("Then it should call dispatch with the load penguins action with penguins received from axios request", () => {
         const dispatch = jest.fn();
-
         const handleLoads = jest.fn();
 
         render(

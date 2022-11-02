@@ -48,14 +48,12 @@
     min-height: 100px;
     min-width: 312px;
     margin: auto;
-
     border: 1px solid;
     border-top: 0;
     border-radius: 0 5px 5px 5px;
     padding: 10px 10px 20px 10px;
     font-size: 16px;
     background: white;
-
     text-align: justify;
   }
 
@@ -459,18 +457,15 @@ h1 {
   }
 
   .messages-container {
-    width: 426px;
     min-width: 120px;
     min-height: 100px;
     margin: auto;
-
     border: 1px solid;
     border-top: 0;
     border-radius: 0 5px 5px 5px;
     padding: 10px 10px 20px 10px;
     font-size: 16px;
     background: white;
-
     text-align: justify;
   }
 

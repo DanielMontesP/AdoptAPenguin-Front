@@ -4,24 +4,41 @@ import {
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
+import { getMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import CreateForm from "../../components/CreateForm/CreateForm";
+import CreateMessageForm from "../../components/CreateMessage/CreateMessageForm";
 import FormsStyles from "../../Styles/FormsStyles";
 
-const CreatePage = (): JSX.Element => {
+interface Props {
+  type: string;
+}
+
+const CreatePage = ({ type }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const { headerTitle } = useAppSelector((state) => state.ui);
   const { penguin } = useAppSelector((state) => state.penguins);
+  const { message } = useAppSelector((state) => state.messages);
 
   const isCreate = document.location.href.includes("create");
 
   let thisTitle = "";
 
-  if (isCreate) {
-    thisTitle = "New...";
-  } else {
-    thisTitle = "Edit...";
+  switch (type) {
+    case "Message":
+      if (isCreate) {
+        thisTitle = "New message...";
+      } else {
+        thisTitle = "Edit message...";
+      }
+      break;
+    default:
+      if (isCreate) {
+        thisTitle = "New...";
+      } else {
+        thisTitle = "Edit...";
+      }
   }
 
   const idToProcess = document.location.href.substring(
@@ -38,13 +55,19 @@ const CreatePage = (): JSX.Element => {
     if (headerTitle !== thisTitle) SetTitleHeader(thisTitle, headerTitle);
 
     if (!isCreate) {
-      dispatch(getPenguinThunk(idToProcess));
+      type === "Message"
+        ? dispatch(getMessageThunk(idToProcess))
+        : dispatch(getPenguinThunk(idToProcess));
     }
-  }, [dispatch, idToProcess, headerTitle, thisTitle, isCreate]);
+  }, [dispatch, idToProcess, type, headerTitle, thisTitle, isCreate]);
 
   return (
     <FormsStyles>
-      <CreateForm penguin={penguin} />
+      {type === "Message" ? (
+        <CreateMessageForm message={message} />
+      ) : (
+        <CreateForm penguin={penguin} />
+      )}
     </FormsStyles>
   );
 };
