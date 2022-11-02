@@ -244,8 +244,8 @@ export const editPenguinThunk =
         }
       );
 
-      const isLikesPage = document.location.href.includes("likes");
-      const isFavsPage = document.location.href.includes("favs");
+      const isLikesPage = type === "likes";
+      const isFavsPage = type === "favs";
 
       let loadType = isFavsPage ? "favs" : "";
       loadType = isLikesPage ? "likes" : loadType;

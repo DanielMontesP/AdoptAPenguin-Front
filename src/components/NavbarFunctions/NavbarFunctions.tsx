@@ -72,7 +72,6 @@ export const handleSearchSubmit = (
   headerTitle: string,
   setMenu: any,
   setModal: any,
-
   stringToSearch: string
 ) => {
   setMenu(false);

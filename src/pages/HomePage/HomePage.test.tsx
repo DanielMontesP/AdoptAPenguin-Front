@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
-import Navbar from "../../components/Navbar/Navbar";
 import HomePage from "./HomePage";
 
 describe("Given a HomePage Component", () => {

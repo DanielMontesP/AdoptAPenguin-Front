@@ -17,7 +17,7 @@ describe("Given a CreatePage component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <CreatePage />
+            <CreatePage type="Penguin" />
           </BrowserRouter>
         </Provider>
       );
@@ -40,7 +40,7 @@ describe("Given a CreatePage component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <CreatePage />
+            <CreatePage type="Penguin" />
           </BrowserRouter>
         </Provider>
       );

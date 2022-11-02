@@ -3,7 +3,10 @@ import { IMessage } from "../../types/message/messageInterfaces";
 
 import penguinReducer, {
   createMessageActionCreator,
+  getMessageActionCreator,
   getMessagesActionCreator,
+  resetMessageActionCreator,
+  resetMessagesActionCreator,
 } from "./messageSlice";
 
 interface SliceIniState {
@@ -20,7 +23,7 @@ const initialState: SliceIniState = {
     content: "content",
     data: "data",
     read: false,
-    id: "",
+    id: "id",
   },
 };
 
@@ -34,6 +37,48 @@ describe("Given the getMessagesActionCreator", () => {
       );
 
       expect(loadedState).toEqual(initialState);
+    });
+  });
+});
+
+describe("Given the getMessageActionCreator", () => {
+  describe("When invoked", () => {
+    test("Then the loading ui state should change to true", () => {
+      const action = getMessageActionCreator(mockMessage);
+      const loadedState = penguinReducer(
+        { allMessages: mockMessages, message: mockMessage },
+        action
+      );
+
+      expect(loadedState).toEqual(initialState);
+    });
+  });
+});
+
+describe("Given the resetMessageActionCreator", () => {
+  describe("When invoked", () => {
+    test("Then the load list with record edited", () => {
+      const action = resetMessageActionCreator(mockMessage);
+      const loadedState = penguinReducer(
+        { allMessages: mockMessages, message: mockMessage },
+        action
+      );
+
+      expect(loadedState.message.id).toBe("");
+    });
+  });
+});
+
+describe("Given resetPenguinsActionCreator", () => {
+  describe("When  invoked", () => {
+    test("Then the load list with record edited", async () => {
+      const action = resetMessagesActionCreator(mockMessage);
+      const loadedState = penguinReducer(
+        { allMessages: mockMessages, message: mockMessage },
+        action
+      );
+
+      expect(loadedState.allMessages.length).toEqual(0);
     });
   });
 });

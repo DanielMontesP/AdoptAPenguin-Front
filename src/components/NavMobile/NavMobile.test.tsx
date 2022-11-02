@@ -93,15 +93,15 @@ describe("Given a NavWellcome with headerTitle Favourites", () => {
 describe("Given a handleMenu button NavDesktop component", () => {
   describe("When click handleMenu", () => {
     test("Then AddFav have to been called", () => {
-      const stringToFind = "Home";
-      const labelAddFav = "btn-menu";
+      const stringToFind = "Likes";
+      const labelAddFav = "btn-back";
 
-      const handleMenu = jest.fn();
+      const handleBack = jest.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <NavMobile headerTitle="Home" />
+            <NavMobile headerTitle="Likes" />
           </BrowserRouter>
         </Provider>
       );
@@ -112,8 +112,8 @@ describe("Given a handleMenu button NavDesktop component", () => {
       const buttonAddFav = screen.getByTitle(labelAddFav);
       userEvent.click(buttonAddFav);
 
-      handleMenu();
-      expect(handleMenu).toHaveBeenCalled();
+      handleBack();
+      expect(handleBack).toHaveBeenCalled();
     });
   });
 });
@@ -183,6 +183,57 @@ describe("Given a handleBack button NavDesktop component", () => {
       expect(label.length).toBe(1);
 
       const buttonAddFav = screen.getByTitle(labelBack);
+      userEvent.click(buttonAddFav);
+
+      handleBack();
+      expect(handleBack).toHaveBeenCalled();
+    });
+  });
+
+  describe("When click btn-back and title Detail", () => {
+    test("Then handleBack have to been called", () => {
+      const stringToFind = "Detail";
+      const labelAddFav = "btn-back";
+
+      const handleBack = jest.fn();
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <NavMobile headerTitle="Detail" />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getAllByText(stringToFind);
+      expect(label.length).toBe(1);
+
+      const buttonAddFav = screen.getByTitle(labelAddFav);
+      userEvent.click(buttonAddFav);
+
+      handleBack();
+      expect(handleBack).toHaveBeenCalled();
+    });
+  });
+  describe("When click btn-back and title DeEdit..ail", () => {
+    test("Then handleBack have to been called", () => {
+      const stringToFind = "Edit...";
+      const labelAddFav = "btn-back";
+
+      const handleBack = jest.fn();
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <NavMobile headerTitle="Edit..." />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getAllByText(stringToFind);
+      expect(label.length).toBe(1);
+
+      const buttonAddFav = screen.getByTitle(labelAddFav);
       userEvent.click(buttonAddFav);
 
       handleBack();
