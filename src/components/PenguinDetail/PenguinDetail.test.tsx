@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
 import {
+  mockEmptyDataPenguin,
   mockPenguin,
   mockPenguins,
   mockPenguinsEmpty,
@@ -17,11 +18,22 @@ describe("When bt-prev is clicked", () => {
       const expectedButtons = 9;
 
       const getDetailPrev = jest.fn();
+      let mockLogged = true;
 
+      jest.mock("../../app/redux/hooks/hooks", () => ({
+        useAppSelector: () => ({
+          logged: mockLogged,
+          id: "id",
+          penguins: mockPenguinsEmpty,
+        }),
+      }));
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <PenguinDetail allPenguins={mockPenguins} penguin={mockPenguin} />
+            <PenguinDetail
+              allPenguins={mockPenguinsEmpty}
+              penguin={mockEmptyDataPenguin}
+            />
           </BrowserRouter>
         </Provider>
       );
@@ -30,6 +42,7 @@ describe("When bt-prev is clicked", () => {
       const btToClick = screen.getByTitle("btn-prev");
 
       userEvent.click(btToClick);
+
       getDetailPrev();
 
       expect(bt.length).toBe(expectedButtons);
@@ -84,11 +97,18 @@ describe("When bt-prev is clicked", () => {
   describe("When handleTab is clicked and array is empty", () => {
     test("handleTab is called", () => {
       const handleTab = jest.fn();
-      document.location.href = jest
-        .fn()
-        .mockResolvedValue("messages")
-        .toString();
 
+      const mockResponse = jest.fn();
+      Object.defineProperty(window, "location", {
+        value: {
+          hash: {
+            endsWith: mockResponse,
+            includes: mockResponse,
+          },
+          assign: mockResponse,
+        },
+        writable: true,
+      });
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -100,9 +120,16 @@ describe("When bt-prev is clicked", () => {
         </Provider>
       );
 
-      const btToClick = screen.getByTitle("description");
+      const btToClick = screen.getByTitle("messages");
 
       userEvent.click(btToClick);
+      handleTab();
+
+      expect(handleTab).toHaveBeenCalled();
+
+      const btToClick2 = screen.getByTitle("description");
+
+      userEvent.click(btToClick2);
       handleTab();
 
       expect(handleTab).toHaveBeenCalled();

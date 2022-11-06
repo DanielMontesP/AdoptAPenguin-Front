@@ -44,6 +44,19 @@ const messageSlice = createSlice({
       message: action.payload,
     }),
 
+    editMessage: (
+      messages,
+      action: PayloadAction<IMessage>
+    ): SliceIniState => ({
+      ...messages,
+      allMessages: messages.allMessages.map((message) =>
+        message.id === action.payload.id
+          ? { ...action.payload }
+          : { ...message }
+      ),
+      message: action.payload,
+    }),
+
     resetMessage: (
       messages,
       action: PayloadAction<IMessage>
@@ -65,6 +78,7 @@ const messageSlice = createSlice({
 export const {
   getMessage: getMessageActionCreator,
   getMessages: getMessagesActionCreator,
+  editMessage: editMessageActionCreator,
   createMessage: createMessageActionCreator,
   resetMessage: resetMessageActionCreator,
   resetMessages: resetMessagesActionCreator,

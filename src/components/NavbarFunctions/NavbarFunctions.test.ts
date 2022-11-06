@@ -1,4 +1,5 @@
 import { handleLogout, loadFavs, loadHome, loadLikes } from "./NavbarFunctions";
+import userEvent from "@testing-library/user-event";
 
 describe("Given a loadFavs function", () => {
   describe("When called", () => {
@@ -63,6 +64,7 @@ describe("Given a handleSearchEnter function", () => {
       const setMenu = jest.fn();
       const headerTitle = jest.fn();
       const handleSearchEnter = jest.fn();
+      userEvent.keyboard("Enter");
 
       handleSearchEnter(
         event,
