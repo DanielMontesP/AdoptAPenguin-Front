@@ -65,7 +65,10 @@ describe("Given the editMessageActionCreator", () => {
         action
       );
 
-      expect(loadedState).toEqual(mockMessage);
+      expect(loadedState).toEqual({
+        allMessages: mockMessages,
+        message: mockMessage,
+      });
     });
   });
 });
