@@ -22,9 +22,10 @@ const Message = ({ message }: Props): JSX.Element => {
   return (
     <div className="messages-content">
       <div className="message-container">
+        <span className="message-read" />
         <span className="message-data">{message.data}</span>
         <span className="message-subject">{message.subject}</span>
-        <span className="message-read">{message.read}</span>
+
         <span className="message-content">{message.content}</span>
         <button className={"message-read-img"} onClick={handleClick} />
       </div>
