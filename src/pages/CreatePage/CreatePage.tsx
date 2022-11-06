@@ -31,10 +31,7 @@ const CreatePage = ({ type }: Props): JSX.Element => {
     thisTitle = isCreate ? "New..." : "Edit...";
   }
 
-  const idToProcess = document.location.href.substring(
-    document.location.href.lastIndexOf("/") + 1,
-    document.location.href.length
-  );
+  const idToProcess = message.id;
 
   useEffect(() => {
     const SetTitleHeader = (title: string, lastTitle: string) => {

@@ -8,8 +8,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { editPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
-import { cleanArray, blankFormData } from "../../utils/utils";
-import MessageButton from "../MessageButton/MessageButton";
+import { cleanArray, blankFormData, hasNewMessages } from "../../utils/utils";
 import { Modal } from "../Modals/ModalPrompt";
 
 interface Props {
@@ -29,12 +28,20 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
   const { modalMessage } = useAppSelector((state) => state.ui);
   const { modalType } = useAppSelector((state) => state.ui);
+  const iconType = " bounce bt-message-got";
 
+  const { allMessages } = useAppSelector((state) => state.messages);
+
+  const countNewMessages = hasNewMessages(allMessages, penguin);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const isFav = penguin.favs?.includes(idUser);
   const isLiker = penguin.likers?.includes(idUser);
+
+  const handleMessage = () => {
+    navigate(`/detail/${penguin.id}#messages`);
+  };
 
   const handleDelete = (): void => {
     const message = "Delete permanently from database? ";
@@ -156,7 +163,13 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         title="btn-likes"
       />
 
-      <MessageButton penguin={penguin} />
+      <button
+        className={`animated${iconType}`}
+        onClick={handleMessage}
+        title="bt-message"
+      >
+        <span className="new-messages-counter">{countNewMessages}</span>
+      </button>
 
       {isModalOpen && (
         <Modal

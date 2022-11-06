@@ -106,7 +106,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           id="sendto"
           type="text"
           placeholder="Send To"
-          value={penguin.name}
+          value={message.idUser || penguin.name}
           autoComplete="off"
           className="form-input"
           disabled

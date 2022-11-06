@@ -8,7 +8,6 @@ import {
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import iconPhotoEmpty from "../../images/contact-photo-add.png";
 import DetailPageStyles from "../../Styles/DetailPageStyles";
-import { hasNewMessages } from "../../utils/utils";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import Messages from "../Messages/Messages";
 import { correctAction } from "../Modals/Modals";
@@ -24,8 +23,6 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
 
   const thisPenguin = useAppSelector((state) => state.penguins.penguin);
   const { allMessages } = useAppSelector((state) => state.messages);
-
-  const countNewMessages = hasNewMessages(allMessages);
 
   const [isMessagesSelected, setMessageSelected] = useState(false);
 
@@ -129,9 +126,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
               onClick={handleTab}
             >
               Messages
-              <span className="new-messages-counter">{countNewMessages}</span>
             </button>
-
             {isMessagesSelected ? (
               <Messages allMessages={allMessages} />
             ) : (

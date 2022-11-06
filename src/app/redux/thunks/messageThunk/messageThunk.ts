@@ -55,7 +55,7 @@ export const getMessageThunk =
 
       if (token) {
         const { data: message } = await axios.get(
-          `${process.env.REACT_APP_API_URL}messages/${id}`,
+          `${process.env.REACT_APP_API_URL}messages/message/${id}`,
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -77,9 +77,17 @@ export const createMessageThunk =
     dispatch(loadingActionCreator());
     setLoadingOn(`CREATE Message: Creating Message...`);
 
+    const token = localStorage.getItem("token");
+
     const { data: message } = await axios.post(
       `${process.env.REACT_APP_API_URL}messages/create`,
-      formMessage
+      formMessage,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "mutipart/form-data",
+        },
+      }
     );
 
     dispatch(createMessageActionCreator(message));

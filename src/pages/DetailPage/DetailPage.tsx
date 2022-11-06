@@ -4,6 +4,7 @@ import {
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
+import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import {
   getPenguinThunk,
   loadFavsThunk,
@@ -31,6 +32,7 @@ const DetailPage = (): JSX.Element => {
       : dispatch(loadPenguinsThunk());
 
     dispatch(getPenguinThunk(idPenguin));
+    dispatch(getMessagesThunk(idPenguin));
 
     const SetTitleHeader = (title: string, lastTitle: string) => {
       dispatch(headerTitleActionCreator(title));

@@ -214,7 +214,7 @@ const DetailPageStyles = styled.div`
   }
 
   .tab-description {
-    width: 80px;
+    width: 100px;
     background: grey;
     border: 1px solid;
     border-radius: 10px 10px 0px 0;
@@ -222,19 +222,17 @@ const DetailPageStyles = styled.div`
   }
 
   .tab-messages {
-    width: auto;
+    width: 100px;
     background: grey;
     border: 1px solid;
     border-radius: 10px 10px 0px 0;
     color: white;
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
+
     padding: 5px;
   }
 
   .tab-selected {
-    width: auto;
+    width: 100px;
     background: white;
     border: 1px solid;
     border-radius: 10px 10px 0px 0;
@@ -461,11 +459,13 @@ const DetailPageStyles = styled.div`
   }
 
   .message-read {
-    background: url(${iconMesssagesNew});
-    background-repeat: no-repeat;
+    width: 8px;
+    height: 8px;
     background-size: 20px;
-    width: 24px;
-    height: 24px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #2fc925;
+    box-shadow: 1px 1px 2px black;
   }
 
   .message-read-img {
@@ -481,12 +481,13 @@ const DetailPageStyles = styled.div`
   }
 
   .message-new {
-    background: url(${iconAddFav});
-    background-repeat: no-repeat;
-    background-size: 25px;
-    width: 140px;
+    width: 120px;
     height: 24px;
     margin-bottom: 5px;
+    color: black;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid grey;
   }
 
   .message-noread-img {
@@ -737,21 +738,6 @@ const DetailPageStyles = styled.div`
     width: 70%;
   }
 
-  .new-messages-counter {
-    width: 20px;
-    height: 20px;
-    color: white;
-    font-weight: bold;
-    font-size: 0.9em;
-    border: 2px solid white;
-    box-shadow: 1px 1px 1px 1px grey;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #57e22b;
-    margin-left: 5px;
-  }
   @-webkit-keyframes bounce {
     0%,
     20%,

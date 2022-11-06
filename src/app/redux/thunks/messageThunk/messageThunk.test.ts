@@ -1,5 +1,6 @@
 import axios from "axios";
 import { mockMessage } from "../../../../mocks/messages";
+import { mockPenguin } from "../../../../mocks/penguins";
 
 import {
   getMessagesThunk,
@@ -19,7 +20,7 @@ describe("Given the loadPenguinsThunk function", () => {
         status: 200,
       });
 
-      const thunk = getMessagesThunk(mockMessage);
+      const thunk = getMessagesThunk(mockPenguin.id);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();

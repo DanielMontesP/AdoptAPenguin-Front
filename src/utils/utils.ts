@@ -8,10 +8,11 @@ export function getCurrentDate(separator = "/") {
   return `${newDate.toLocaleString()}`;
 }
 
-export function hasNewMessages(allMessages: IMessage[]) {
+export function hasNewMessages(allMessages: IMessage[], penguin: IPenguin) {
   let countNewMessages = 0;
+
   allMessages.forEach((message) => {
-    if (message.read === false) {
+    if (message.read === false && penguin.id === message.idPenguin) {
       countNewMessages += 1;
     }
   });
