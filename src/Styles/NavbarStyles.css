@@ -64,6 +64,7 @@
     margin: auto;
     margin-top: 10px;
     overflow-y: auto;
+    align-items: center;
   }
 
   .header-desktop-buttons {
@@ -476,6 +477,7 @@ h1 {
     margin: auto;
     margin-top: 10px;
     overflow-y: auto;
+    align-items: center;
   }
 
   .prompt-container {
@@ -1279,4 +1281,23 @@ ul {
   top: 0;
   width: 100%;
   z-index: 1;
+}
+.new-messages-counter {
+  width: 20px;
+  height: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  border: 2px solid white;
+  box-shadow: 1px 1px 1px 1px grey;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2fc925;
+  margin-left: 5px;
+  position: relative;
+  left: 15px;
+  top: -10px;
+  display: inline-flex;
 }

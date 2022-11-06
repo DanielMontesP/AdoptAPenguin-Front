@@ -18,12 +18,10 @@ const Messages = ({ allMessages }: Props): JSX.Element => {
     <PagesStyles className={`messages-container`} title="messages-container">
       <div className="message-buttons">
         <button className={"message-new"} onClick={handleClick}>
-          New Message
+          + New Message
         </button>
+        <h3 className={"view-list-counter"}>{allMessages.length} message/s.</h3>
       </div>
-      <h3 className={"view-list-counter"}>
-        {allMessages.length} message/s found.
-      </h3>
       {allMessages.map((message, index) => {
         return <Message key={index} message={message} />;
       })}
