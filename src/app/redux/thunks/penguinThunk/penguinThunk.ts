@@ -57,7 +57,7 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
 
     dispatch(loadPenguinsActionCreator(penguins));
     dispatch(finishedLoadingActionCreator());
-    setLoadingOffWithMessage("Finished successfully", false);
+    setLoadingOffWithMessage("GET Penguins: Finished successfully", false);
   }
 };
 
