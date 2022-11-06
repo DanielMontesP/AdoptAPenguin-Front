@@ -29,6 +29,24 @@ describe("Given a CreatePage component", () => {
     });
   });
 
+  describe("When CreatePage is rendered with type Message", () => {
+    test("Then the value of the Name input field should be 'penguin'", () => {
+      const textToFind = "Subject";
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <CreatePage type="Message" />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByText(textToFind);
+
+      expect(label).toBeInTheDocument();
+    });
+  });
+
   describe("When the two inputs have text and the submit button is clicked", () => {
     test("Then the two inputs should be empty", async () => {
       const nameLabel = "Name";
