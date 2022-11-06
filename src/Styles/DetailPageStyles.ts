@@ -14,6 +14,7 @@ import iconEdit from "../images/icon-editar32.png";
 import iconLikeInit from "../images/icon-likes-empty.png";
 import iconMesssagesGot from "../images/message-45.png";
 import iconMesssagesNew from "../images/message-new.png";
+import iconMesssagesView from "../images/view-16.png";
 import detailPrev from "../images/detail-prev.png";
 import detailNext from "../images/detail-next.png";
 
@@ -455,8 +456,16 @@ const DetailPageStyles = styled.div`
     flex: 2;
   }
 
+  .message-read {
+    background: url(${iconMesssagesNew});
+    background-repeat: no-repeat;
+    background-size: 20px;
+    width: 24px;
+    height: 24px;
+  }
+
   .message-read-img {
-    background: url(${iconEdit});
+    background: url(${iconMesssagesView});
     background-repeat: no-repeat;
     background-size: 20px;
     width: 24px;
@@ -464,8 +473,6 @@ const DetailPageStyles = styled.div`
   }
 
   .message-buttons {
-    width: 100%;
-    display: flex;
     text-align: left;
   }
 
@@ -473,8 +480,9 @@ const DetailPageStyles = styled.div`
     background: url(${iconAddFav});
     background-repeat: no-repeat;
     background-size: 25px;
-    width: 24px;
+    width: 140px;
     height: 24px;
+    margin-bottom: 5px;
   }
 
   .message-noread-img {
