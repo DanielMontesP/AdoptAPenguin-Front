@@ -77,7 +77,6 @@ const DetailPageStyles = styled.div`
       justify-content: space-between;
       margin: auto;
       margin-top: 20px;
-      width: 80%;
     }
 
     .detail-description {
@@ -104,7 +103,7 @@ const DetailPageStyles = styled.div`
       flex: 1;
     }
     .penguin-container {
-      width: 70%;
+      width: 80%;
       margin: auto;
       margin-bottom: 50px;
       margin-top: 90px;
@@ -188,6 +187,7 @@ const DetailPageStyles = styled.div`
       text-align: justify;
       display: flex;
       flex-direction: column;
+      width: 85%;
     }
 
     .penguin--container {
@@ -222,15 +222,19 @@ const DetailPageStyles = styled.div`
   }
 
   .tab-messages {
-    width: 80px;
+    width: auto;
     background: grey;
     border: 1px solid;
     border-radius: 10px 10px 0px 0;
     color: white;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
   }
 
   .tab-selected {
-    width: 80px;
+    width: auto;
     background: white;
     border: 1px solid;
     border-radius: 10px 10px 0px 0;
@@ -733,6 +737,21 @@ const DetailPageStyles = styled.div`
     width: 70%;
   }
 
+  .new-messages-counter {
+    width: 20px;
+    height: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+    border: 2px solid white;
+    box-shadow: 1px 1px 1px 1px grey;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #57e22b;
+    margin-left: 5px;
+  }
   @-webkit-keyframes bounce {
     0%,
     20%,

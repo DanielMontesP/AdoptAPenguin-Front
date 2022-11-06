@@ -141,6 +141,6 @@ export const editUserThunk = (idUser: any) => async (dispatch: AppDispatch) => {
 
     dispatch(finishedLoadingActionCreator());
 
-    setLoadingOffWithMessage(`Edit user finished successfully.`, false);
+    setLoadingOffWithMessage(`EDIT user: Finished successfully.`, false);
   }
 };

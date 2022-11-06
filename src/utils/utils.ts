@@ -8,6 +8,16 @@ export function getCurrentDate(separator = "/") {
   return `${newDate.toLocaleString()}`;
 }
 
+export function hasNewMessages(allMessages: IMessage[]) {
+  let countNewMessages = 0;
+  allMessages.forEach((message) => {
+    if (message.read === false) {
+      countNewMessages += 1;
+    }
+  });
+  return countNewMessages;
+}
+
 export const blankFormData: IPenguin = {
   id: "",
   name: "",

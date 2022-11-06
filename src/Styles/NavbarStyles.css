@@ -60,7 +60,7 @@
   .message-container {
     display: flex;
     text-align: center;
-    font-size: 14px;
+    font-size: 0.8em;
     margin: auto;
     margin-top: 10px;
     overflow-y: auto;
@@ -472,7 +472,7 @@ h1 {
     display: flex;
 
     text-align: center;
-    font-size: 14px;
+    font-size: 0.8em;
     margin: auto;
     margin-top: 10px;
     overflow-y: auto;
