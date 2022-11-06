@@ -3,6 +3,7 @@ import { IMessage } from "../../types/message/messageInterfaces";
 
 import penguinReducer, {
   createMessageActionCreator,
+  editMessageActionCreator,
   getMessageActionCreator,
   getMessagesActionCreator,
   resetMessageActionCreator,
@@ -51,6 +52,20 @@ describe("Given the getMessageActionCreator", () => {
       );
 
       expect(loadedState).toEqual(initialState);
+    });
+  });
+});
+
+describe("Given the editMessageActionCreator", () => {
+  describe("When invoked", () => {
+    test("Then the loading ui state should change to true", () => {
+      const action = editMessageActionCreator(mockMessage);
+      const loadedState = penguinReducer(
+        { allMessages: mockMessages, message: mockMessage },
+        action
+      );
+
+      expect(loadedState).toEqual(mockMessage);
     });
   });
 });
