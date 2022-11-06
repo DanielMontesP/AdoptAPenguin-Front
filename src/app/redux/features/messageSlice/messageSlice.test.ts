@@ -30,7 +30,7 @@ const initialState: SliceIniState = {
 
 describe("Given the getMessagesActionCreator", () => {
   describe("When invoked", () => {
-    test("Then the loading ui state should change to true", () => {
+    test("Then load list with messages", () => {
       const action = getMessagesActionCreator(mockMessages);
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
@@ -75,7 +75,7 @@ describe("Given the editMessageActionCreator", () => {
 
 describe("Given the resetMessageActionCreator", () => {
   describe("When invoked", () => {
-    test("Then the load list with record edited", () => {
+    test("Then rest message data", () => {
       const action = resetMessageActionCreator(mockMessage);
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
@@ -89,7 +89,7 @@ describe("Given the resetMessageActionCreator", () => {
 
 describe("Given resetPenguinsActionCreator", () => {
   describe("When  invoked", () => {
-    test("Then the load list with record edited", async () => {
+    test("Then load list with no messages", async () => {
       const action = resetMessagesActionCreator(mockMessage);
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
@@ -103,7 +103,7 @@ describe("Given resetPenguinsActionCreator", () => {
 
 describe("Given the createPenguinActionCreator", () => {
   describe("When invoked", () => {
-    test("Then the load list with new record", () => {
+    test("Then the load list with new penguin", () => {
       const action = createMessageActionCreator(mockMessage);
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },

@@ -1,7 +1,7 @@
 import { IPenguin } from "../app/redux/types/penguin/penguinInterfaces";
 
 export const mockPenguin: IPenguin = {
-  id: "mockPenguin",
+  id: "idPenguin",
   name: "penguin1",
   category: "category1",
   likes: 0,

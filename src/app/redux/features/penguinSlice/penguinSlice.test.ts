@@ -65,7 +65,7 @@ describe("Given the deletePenguinActionCreator", () => {
 
 describe("Given the createPenguinActionCreator", () => {
   describe("When invoked", () => {
-    test("Then the load list with new record", () => {
+    test("Then it will create a penguin", () => {
       const action = createPenguinActionCreator(mockPenguin);
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },
@@ -82,7 +82,7 @@ describe("Given the createPenguinActionCreator", () => {
 
 describe("Given the editPenguinActionCreator", () => {
   describe("When invoked", () => {
-    test("Then the load list with record edited", () => {
+    test("Then penguin will be edited", () => {
       const action = editPenguinActionCreator(mockPenguin);
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },
@@ -99,7 +99,7 @@ describe("Given the editPenguinActionCreator", () => {
 
 describe("Given the resetPenguinActionCreator", () => {
   describe("When invoked", () => {
-    test("Then the load list with record edited", () => {
+    test("Then penguin data will be reseted", () => {
       const action = resetPenguinActionCreator(mockPenguin);
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },
@@ -113,7 +113,7 @@ describe("Given the resetPenguinActionCreator", () => {
 
 describe("Given resetPenguinsActionCreator", () => {
   describe("When  invoked", () => {
-    test("Then the load list with record edited", async () => {
+    test("Then  penguins data will be reseted", async () => {
       const action = resetPenguinsActionCreator(mockEmptyDataPenguin);
       const loadedState = penguinReducer(
         { allPenguins: mockPenguinsEmpty, penguin: mockEmptyDataPenguin },
@@ -127,7 +127,7 @@ describe("Given resetPenguinsActionCreator", () => {
 
 describe("Given searchPenguinActionCreator", () => {
   describe("When  invoked", () => {
-    test("Then the load list with record found", async () => {
+    test("Then string will be used to find penguin data matches", async () => {
       const action = searchPenguinsActionCreator(mockPenguins);
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },
