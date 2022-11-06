@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../app/redux/hooks/hooks";
-import { getMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
+import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
+import {
+  getMessagesThunk,
+  getMessageThunk,
+} from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 
 interface Props {
@@ -11,10 +14,12 @@ const Message = ({ message }: Props): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  const { penguin } = useAppSelector((state) => state.penguins);
   const idMessage = message.id;
 
   const handleClick = () => {
-    dispatch(getMessageThunk(idMessage));
+    dispatch(getMessagesThunk(penguin.id));
+    dispatch(getMessageThunk(penguin.id));
 
     navigate(`../message/edit/${idMessage}`);
   };

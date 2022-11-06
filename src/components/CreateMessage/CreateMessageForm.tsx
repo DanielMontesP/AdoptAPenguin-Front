@@ -33,6 +33,15 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const [formData, setFormData] = useState(blankMessageData);
 
   const processCreate = (type: string) => {
+    // const newFormData = new FormData();
+
+    // newFormData.append("idUser", user.id);
+    // newFormData.append("idPenguin", penguin.id);
+    // newFormData.append("subject", formData.subject);
+    // newFormData.append("content", formData.content);
+    // newFormData.append("data", formData.data);
+    // newFormData.append("read", JSON.stringify(formData.read));
+
     dispatch(createMessageThunk(formData));
   };
 
