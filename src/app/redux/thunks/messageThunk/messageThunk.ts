@@ -5,6 +5,8 @@ import {
   setLoadingOn,
 } from "../../../../components/Modals/Modals";
 import {
+  createMessageActionCreator,
+  editMessageActionCreator,
   getMessageActionCreator,
   getMessagesActionCreator,
   resetMessageActionCreator,
@@ -17,7 +19,7 @@ import {
 import { blankMessageData } from "../../../../utils/utils";
 
 export const getMessagesThunk =
-  (formPenguin: any) => async (dispatch: AppDispatch) => {
+  (formMessage: any) => async (dispatch: AppDispatch) => {
     dispatch(loadingActionCreator());
 
     setLoadingOn(
@@ -30,7 +32,7 @@ export const getMessagesThunk =
       const {
         data: { messages },
       } = await axios.get(
-        `${process.env.REACT_APP_API_URL}messages/${formPenguin.id}`,
+        `${process.env.REACT_APP_API_URL}messages/${formMessage.id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -70,13 +72,58 @@ export const getMessageThunk =
     }
   };
 
+export const createMessageThunk =
+  (formMessage: any) => async (dispatch: AppDispatch) => {
+    dispatch(loadingActionCreator());
+    setLoadingOn(`CREATE Message: Creating Message...`);
+
+    const { data: message } = await axios.post(
+      `${process.env.REACT_APP_API_URL}messages/create`,
+      formMessage
+    );
+
+    dispatch(createMessageActionCreator(message));
+
+    dispatch(getMessagesThunk(message));
+    dispatch(finishedLoadingActionCreator());
+    setLoadingOffWithMessage(
+      `CREATE Message: ${message.name} created successfully.`,
+      false
+    );
+  };
+
+export const editMessageThunk =
+  (formMessage: any, type: string) => async (dispatch: AppDispatch) => {
+    dispatch(loadingActionCreator());
+    setLoadingOn("EDIT Message...");
+
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const { data: message } = await axios.put(
+        `${process.env.REACT_APP_API_URL}messages/${formMessage.id}?task=${type}`,
+        formMessage,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      dispatch(editMessageActionCreator(message));
+
+      dispatch(finishedLoadingActionCreator());
+      setLoadingOffWithMessage(`${type}`, false);
+    }
+  };
+
 export const resetMessageThunk = () => async (dispatch: AppDispatch) => {
   dispatch(loadingActionCreator());
 
   dispatch(resetMessageActionCreator(blankMessageData));
   dispatch(finishedLoadingActionCreator());
 
-  setLoadingOffWithMessage("RESET Penguin: Finished successfully.", false);
+  setLoadingOffWithMessage("RESET Message: Finished successfully.", false);
 };
 
 export const resetMessagesThunk = () => async (dispatch: AppDispatch) => {

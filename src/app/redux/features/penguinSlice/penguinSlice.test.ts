@@ -4,7 +4,6 @@ import {
   mockPenguins,
   mockPenguinsEmpty,
 } from "../../../../mocks/penguins";
-import { IPenguin } from "../../types/penguin/penguinInterfaces";
 import penguinReducer, {
   createPenguinActionCreator,
   deletePenguinActionCreator,
@@ -15,11 +14,6 @@ import penguinReducer, {
   resetPenguinsActionCreator,
   searchPenguinsActionCreator,
 } from "./penguinSlice";
-
-interface SliceIniState {
-  allPenguins: IPenguin[];
-  penguin: IPenguin;
-}
 
 describe("Given the loadPenguinsActionCreator", () => {
   describe("When invoked", () => {
@@ -64,7 +58,7 @@ describe("Given the deletePenguinActionCreator", () => {
         action
       );
 
-      expect(loadedState.allPenguins.length).toEqual(1);
+      expect(loadedState.allPenguins.length).toEqual(2);
     });
   });
 });

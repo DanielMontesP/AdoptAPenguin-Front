@@ -2,6 +2,12 @@ import { IPenguin } from "../app/redux/types/penguin/penguinInterfaces";
 import Resizer from "react-image-file-resizer";
 import { IMessage } from "../app/redux/types/message/messageInterfaces";
 
+export function getCurrentDate(separator = "/") {
+  let newDate = new Date();
+
+  return `${newDate.toLocaleString()}`;
+}
+
 export const blankFormData: IPenguin = {
   id: "",
   name: "",
@@ -16,13 +22,13 @@ export const blankFormData: IPenguin = {
 };
 
 export const blankMessageData: IMessage = {
-  content: "",
-  data: "",
   id: "",
   idPenguin: "",
   idUser: "",
-  read: false,
   subject: "",
+  content: "",
+  data: "",
+  read: false,
 };
 
 export const toPascalCase = (strValue: string) => {

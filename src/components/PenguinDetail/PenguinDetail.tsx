@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
@@ -19,15 +19,16 @@ interface Props {
 
 const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
-  const thisPenguin = useAppSelector((state) => state.penguins.penguin);
-
   const navigate = useNavigate();
+
+  const thisPenguin = useAppSelector((state) => state.penguins.penguin);
+  const { allMessages } = useAppSelector((state) => state.messages);
+
+  const [isMessagesSelected, setMessageSelected] = useState(false);
 
   let classDescription = "";
   let classTabDescription = "";
   let classTabMessages = "";
-
-  const { allMessages } = useAppSelector((state) => state.messages);
 
   const penguinImage =
     penguin.image === "" && !penguin.imageBackup.includes("/")
@@ -35,7 +36,9 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
       : penguin.imageBackup;
 
   const getDetailPrev = () => {
-    const actualPos = allPenguins.map((e) => e.id).indexOf(thisPenguin.id);
+    const actualPos = allPenguins
+      .map((penguin) => penguin.id)
+      .indexOf(thisPenguin.id);
     let prevPenguinId = "";
 
     if (actualPos === 0 || actualPos <= -1) {
@@ -68,13 +71,13 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
 
   const handleTab = (event: MouseEvent<HTMLButtonElement>) => {
     if (event.currentTarget.title === "messages") {
+      setMessageSelected(true);
       navigate("#messages");
     } else {
+      setMessageSelected(false);
       navigate("#description");
     }
   };
-
-  const isMessagesSelected = document.location.href.includes("messages");
 
   if (isMessagesSelected) {
     classDescription = " opacity-none";
