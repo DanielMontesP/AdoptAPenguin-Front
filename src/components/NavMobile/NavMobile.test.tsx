@@ -5,7 +5,7 @@ import NavMobile from "./NavMobile";
 import store from "../../app/redux/store/store";
 import userEvent from "@testing-library/user-event";
 
-describe("Given a NavDesktop component", () => {
+describe("Given a NavMobile component", () => {
   describe("When click AddFav", () => {
     test("Then AddFav have to been called", () => {
       const stringToFind = "Home";
@@ -33,7 +33,7 @@ describe("Given a NavDesktop component", () => {
   });
 });
 
-describe("Given a NavWellcome component", () => {
+describe("Given a NavMobile and headerTitle New component", () => {
   describe("When headerTitle is New...", () => {
     test("Then AdoptApenguin.com have to been in the document", () => {
       const stringToFind = "Home";
@@ -90,7 +90,7 @@ describe("Given a NavWellcome with headerTitle Favourites", () => {
   });
 });
 
-describe("Given a handleMenu button NavDesktop component", () => {
+describe("Given a handleMenu button NavMobile component", () => {
   describe("When click handleMenu", () => {
     test("Then AddFav have to been called", () => {
       const stringToFind = "Likes";
@@ -101,13 +101,13 @@ describe("Given a handleMenu button NavDesktop component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <NavMobile headerTitle="Likes" />
+            <NavMobile headerTitle="Favourites" />
           </BrowserRouter>
         </Provider>
       );
 
       const label = screen.getAllByText(stringToFind);
-      expect(label.length).toBe(2);
+      expect(label.length).toBe(1);
 
       const buttonAddFav = screen.getByTitle(labelAddFav);
       userEvent.click(buttonAddFav);
@@ -118,7 +118,7 @@ describe("Given a handleMenu button NavDesktop component", () => {
   });
 });
 
-describe("Given a handleLogoutCall button NavDesktop component", () => {
+describe("Given a handleLogoutCall button NavMobile component", () => {
   describe("When click handleMenu", () => {
     test("Then AddFav have to been called", () => {
       const stringToFind = "Home";
@@ -134,13 +134,13 @@ describe("Given a handleLogoutCall button NavDesktop component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <NavMobile headerTitle="Home" />
+            <NavMobile headerTitle="Likes" />
           </BrowserRouter>
         </Provider>
       );
 
       const label = screen.getAllByText(stringToFind);
-      expect(label.length).toBe(2);
+      expect(label.length).toBe(1);
 
       const button6 = screen.getByTitle(labelHome);
       userEvent.click(button6);
@@ -174,7 +174,7 @@ describe("Given a handleBack button NavDesktop component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <NavMobile headerTitle="Test" />
+            <NavMobile headerTitle="Likes" />
           </BrowserRouter>
         </Provider>
       );

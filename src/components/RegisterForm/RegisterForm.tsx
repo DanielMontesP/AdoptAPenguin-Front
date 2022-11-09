@@ -82,7 +82,7 @@ const RegisterForm = (): JSX.Element => {
         className="form-input"
       />
       <div className="submitContainer">
-        <button type="submit" className="bt-register">
+        <button type="submit" className="bt-register" placeholder="bt-submit">
           Register
         </button>
       </div>

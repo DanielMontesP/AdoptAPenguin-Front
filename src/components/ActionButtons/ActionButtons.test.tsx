@@ -145,4 +145,25 @@ describe("Given btn-favs button", () => {
       expect(deleteFromLikers).toHaveBeenCalled();
     });
   });
+  describe("When message action is called", () => {
+    test("Then the value of the username input field should be 'user1'", () => {
+      const labelToFind = "bt-message";
+      const handleMessage = jest.fn();
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <ActionButtons penguin={mockPenguin} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByTitle(labelToFind);
+
+      userEvent.click(label);
+      handleMessage();
+
+      expect(handleMessage).toHaveBeenCalled();
+    });
+  });
 });
