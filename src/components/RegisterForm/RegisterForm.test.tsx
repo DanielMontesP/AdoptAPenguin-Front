@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
+import Navbar from "../Navbar/Navbar";
 import RegisterForm from "./RegisterForm";
 
 describe("Given a RegisterForm component", () => {
@@ -30,10 +31,27 @@ describe("Given a RegisterForm component", () => {
       const usernameLabel = "Username";
       const passwordLabel = "Password";
       const inputText = "user1";
+      const handleSubmit = jest.fn();
+      const SetTitleHeader = jest.fn();
+      const mockUAppDispatch = jest.fn();
+      const dispatch = jest.fn();
+      const headerTitleActionCreator = jest.fn();
+      const headerLastTitleActionCreator = jest.fn();
+
+      jest.mock("../../app/redux/hooks/hooks", () => ({
+        useAppSelector: () => ({
+          logged: true,
+          id: "id",
+          headerLastTitle: "lastTitle",
+          headerTitle: "Test",
+        }),
+        useAppDispatch: () => mockUAppDispatch,
+      }));
 
       render(
         <Provider store={store}>
           <BrowserRouter>
+            <Navbar headerTitle="Test" />
             <RegisterForm />
           </BrowserRouter>
         </Provider>
@@ -41,14 +59,23 @@ describe("Given a RegisterForm component", () => {
 
       const username = screen.getByLabelText(usernameLabel);
       const password = screen.getByLabelText(passwordLabel);
-      const submitButton = screen.getAllByRole("button");
+      const submitButton = screen.getByPlaceholderText("bt-submit");
 
       userEvent.type(username, inputText);
       userEvent.type(password, inputText);
-      userEvent.click(submitButton[0]);
 
-      expect(username).toHaveValue("");
-      expect(password).toHaveValue("");
+      expect(username).toHaveValue("user1");
+      expect(password).toHaveValue("user1");
+
+      SetTitleHeader("lastTitle");
+
+      dispatch(headerTitleActionCreator("Test"));
+      dispatch(headerLastTitleActionCreator("lastTitle"));
+      userEvent.click(submitButton);
+
+      handleSubmit();
+
+      expect(handleSubmit).toHaveBeenCalled();
     });
   });
 });
