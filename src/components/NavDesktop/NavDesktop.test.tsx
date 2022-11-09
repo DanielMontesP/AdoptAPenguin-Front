@@ -193,7 +193,7 @@ describe("Given a handleLogoutCall button NavDesktop component", () => {
       handleSearchChange();
       expect(handleSearchChange).toHaveBeenCalled();
 
-      userEvent.type(inputSearch[0], "Enter");
+      userEvent.type(inputSearch[0], "{Enter}");
 
       handleSearchEnter({ event: { key: "Enter" } });
       expect(handleSearchEnter).toHaveBeenCalled();

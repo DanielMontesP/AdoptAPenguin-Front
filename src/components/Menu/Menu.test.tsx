@@ -8,8 +8,10 @@ import userEvent from "@testing-library/user-event";
 describe("Given a Menu component", () => {
   describe("When bt-search clicked", () => {
     test("Then handleSearch have to been called", () => {
-      const stringToFind1 = "Search by name/category/description...";
       const handleSearchEnter = jest.fn();
+      const handleSearch = jest.fn();
+
+      const searchPlaceHolderText = "Search by name/category/description...";
 
       render(
         <Provider store={store}>
@@ -19,13 +21,24 @@ describe("Given a Menu component", () => {
         </Provider>
       );
 
-      const label1 = screen.getByPlaceholderText(stringToFind1);
-      userEvent.type(label1, "search");
+      const label1 = screen.getByTitle("bt-search");
+      const label2 = screen.getByPlaceholderText(searchPlaceHolderText);
 
-      handleSearchEnter({ event: { key: "Enter" } });
+      userEvent.type(label2, "search");
+
+      userEvent.click(label1);
+
+      handleSearch({
+        event: { key: "Enter", currentTarget: { title: "desktop-bt-search" } },
+      });
+      handleSearchEnter({
+        event: { key: "Enter", currentTarget: { title: "desktop-bt-search" } },
+      });
 
       expect(label1).toBeInTheDocument();
+      expect(label2).toBeInTheDocument();
       expect(handleSearchEnter).toHaveBeenCalled();
+      expect(handleSearch).toHaveBeenCalled();
     });
   });
 });

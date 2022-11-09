@@ -163,7 +163,7 @@ export const getPenguinThunk =
         );
 
         dispatch(loadPenguinActionCreator(penguin));
-        dispatch(getMessagesThunk(penguin));
+        dispatch(getMessagesThunk(penguin.id));
         dispatch(finishedLoadingActionCreator());
         setLoadingOffWithMessage(
           `GET Penguin: ${penguin.name} successfully.`,

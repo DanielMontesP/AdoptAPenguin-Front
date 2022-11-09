@@ -10,6 +10,16 @@ export const mockMessage: IMessage = {
   id: "id",
 };
 
+export const mockMessageEmpty: IMessage = {
+  idUser: "",
+  idPenguin: "",
+  subject: "",
+  content: "",
+  data: "",
+  read: false,
+  id: "",
+};
+
 export const mockMessages: IMessage[] = [
   {
     idUser: "idUser",

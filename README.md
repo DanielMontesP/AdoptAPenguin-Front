@@ -212,4 +212,25 @@
           <br />
         React - Javascript - Node - Jest - Firebase - Axios - Mongo - Express - Axios - Git - SonarCloud
       </div>
+      <div className="features-container">
+      Features
+      <ul>
+      <li>
+      Controlled by state
+      <ul>
+      <li>Screen Size resolution to set mobile/desktop design </li>
+      <li>Header title</li>
+      <li>Header last title to perform back navigation operations</li>
+      <li>Status for detect loading data process is working or not</li>
+      <li>User data for token and logged status</li>
+      <li>Penguin list calculated depending view (Home, Favourites, Likes)</li>
+      <li>Penguin data of selected penguin</li>
+      <li>Messages list of current user/selected penguin</li>
+      <li>Message data used by selected message</li>
+      </ul>
+      </li>
+      <li>Responsive</li>
+      <li>Preview loaded image</li>
+      </ul>
+      </div>
     </div>
