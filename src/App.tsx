@@ -114,15 +114,15 @@ function App() {
           path="/users/edit/:id"
           element={
             <CheckInSecurity>
-              <CreatePage type="User" />
+              <CreatePage type="Edit" form="User" />
             </CheckInSecurity>
           }
         />
         <Route
-          path="/message/edit/:id"
+          path="/message/edit/:idMessage"
           element={
             <CheckInSecurity>
-              <CreatePage type="Message" />
+              <CreatePage type="Edit" form="Message" />
             </CheckInSecurity>
           }
         />
@@ -130,7 +130,7 @@ function App() {
           path="/message/create"
           element={
             <CheckInSecurity>
-              <CreatePage type="Message" />
+              <CreatePage type="Create" form="Message" />
             </CheckInSecurity>
           }
         />
@@ -170,7 +170,7 @@ function App() {
           path="/create"
           element={
             <CheckInSecurity>
-              <CreatePage type="Penguin" />
+              <CreatePage type="Create" form="Penguin" />
             </CheckInSecurity>
           }
         />
@@ -178,7 +178,7 @@ function App() {
           path="/penguins/edit/:id"
           element={
             <CheckInSecurity>
-              <CreatePage type="Penguin" />
+              <CreatePage type="Edit" form="Penguin" />
             </CheckInSecurity>
           }
         />

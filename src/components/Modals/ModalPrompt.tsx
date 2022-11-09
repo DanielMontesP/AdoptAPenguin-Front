@@ -66,6 +66,9 @@ export const Modal = ({
     case "Search":
       windowTitle = "Search";
       break;
+    case "Error":
+      windowTitle = "Error";
+      break;
     default:
       windowTitle = "Please confirm";
   }
@@ -123,6 +126,8 @@ export const Modal = ({
         break;
       case "Search":
         break;
+      case "Error":
+        break;
       default:
         correctAction("Sorry, this feature is not available yet.");
     }
@@ -136,7 +141,7 @@ export const Modal = ({
   };
 
   const cancelClass =
-    isWellcome || isHelp || type === "Search"
+    isWellcome || isHelp || type === "Search" || type === "Error"
       ? "modal-btn-cancel display-none"
       : "modal-btn-cancel";
 

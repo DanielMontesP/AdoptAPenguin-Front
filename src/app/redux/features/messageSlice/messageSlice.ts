@@ -9,31 +9,32 @@ interface SliceIniState {
 const initialState: SliceIniState = {
   allMessages: [],
   message: {
+    id: "",
     idUser: "",
     idPenguin: "",
     subject: "",
     content: "",
     data: "",
     read: false,
-    id: "",
   },
 };
 
-const messageSlice = createSlice({
+const messagesSlice = createSlice({
   name: "messages",
   initialState,
   reducers: {
+    getMessage: (messages, action: PayloadAction<IMessage>): SliceIniState => ({
+      ...messages,
+      message: action.payload,
+    }),
+
     getMessages: (
       messages,
       action: PayloadAction<IMessage[]>
     ): SliceIniState => ({
       ...messages,
       allMessages: [...action.payload],
-    }),
-
-    getMessage: (messages, action: PayloadAction<IMessage>): SliceIniState => ({
-      ...messages,
-      message: action.payload,
+      message: initialState.message,
     }),
 
     createMessage: (
@@ -42,6 +43,17 @@ const messageSlice = createSlice({
     ): SliceIniState => ({
       ...messages,
       message: action.payload,
+    }),
+
+    deleteMessage: (
+      messages,
+      action: PayloadAction<string>
+    ): SliceIniState => ({
+      ...messages,
+      allMessages: messages.allMessages.filter(
+        (message) => message.id !== action.payload
+      ),
+      message: initialState.message,
     }),
 
     editMessage: (
@@ -80,8 +92,9 @@ export const {
   getMessages: getMessagesActionCreator,
   editMessage: editMessageActionCreator,
   createMessage: createMessageActionCreator,
+  deleteMessage: deleteMessageActionCreator,
   resetMessage: resetMessageActionCreator,
   resetMessages: resetMessagesActionCreator,
-} = messageSlice.actions;
+} = messagesSlice.actions;
 
-export default messageSlice.reducer;
+export default messagesSlice.reducer;

@@ -17,7 +17,7 @@ describe("Given a CreateForm component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <CreateMessageForm message={mockMessage} />
+            <CreateMessageForm messageId={mockMessage.id} />
           </BrowserRouter>
         </Provider>
       );

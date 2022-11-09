@@ -17,7 +17,7 @@ describe("Given a CreatePage component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <CreatePage type="Penguin" />
+            <CreatePage form="Penguin" type="Create" />
           </BrowserRouter>
         </Provider>
       );
@@ -31,12 +31,12 @@ describe("Given a CreatePage component", () => {
 
   describe("When CreatePage is rendered with type Message", () => {
     test("Then the value of the Name input field should be 'penguin'", () => {
-      const textToFind = "Subject";
+      const textToFind = "Name";
 
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <CreatePage type="Message" />
+            <CreatePage form="Penguin" type="Create" />
           </BrowserRouter>
         </Provider>
       );
@@ -58,7 +58,7 @@ describe("Given a CreatePage component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <CreatePage type="Penguin" />
+            <CreatePage form="Penguin" type="Create" />
           </BrowserRouter>
         </Provider>
       );

@@ -14,10 +14,12 @@ describe("Given a LoginForm component", () => {
       const inputText = "user1";
 
       const closeModal = jest.fn();
-
+      const deletePenguin = jest.fn();
+      const handleAcceptClick = jest.fn();
       render(
         <Provider store={store}>
           <BrowserRouter>
+            <Navbar headerTitle="Detail" />
             <Modal
               closeModal={closeModal}
               idPenguin="modal"
@@ -29,9 +31,15 @@ describe("Given a LoginForm component", () => {
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
+      expect(label).toBeInTheDocument();
+
       userEvent.type(label, inputText);
 
-      expect(label).toBeInTheDocument();
+      handleAcceptClick();
+      deletePenguin();
+
+      expect(handleAcceptClick).toHaveBeenCalled();
+      expect(deletePenguin).toHaveBeenCalled();
     });
   });
 
@@ -199,6 +207,7 @@ describe("Given a LoginForm component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
+            <Navbar headerTitle="Detail" />
             <Modal
               closeModal={closeModal}
               idPenguin="modal"
@@ -221,6 +230,7 @@ describe("Given a LoginForm component", () => {
       const inputText = "user1";
 
       const closeModal = jest.fn();
+      const deletePenguin = jest.fn();
 
       render(
         <Provider store={store}>
@@ -231,6 +241,68 @@ describe("Given a LoginForm component", () => {
               idPenguin="modal"
               message="message"
               type="delete"
+            />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByPlaceholderText(labelToFind);
+      userEvent.type(label, inputText);
+      const handleAcceptClick = jest.fn();
+
+      handleAcceptClick();
+      deletePenguin();
+
+      expect(handleAcceptClick).toHaveBeenCalled();
+      expect(deletePenguin).toHaveBeenCalled();
+    });
+  });
+  describe("When Error modal", () => {
+    test("Then the value of the username input field should be 'user1'", () => {
+      const labelToFind = "btn-accept";
+      const inputText = "user1";
+
+      const closeModal = jest.fn();
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Navbar headerTitle="Detail" />
+            <Modal
+              closeModal={closeModal}
+              idPenguin="modal"
+              message="message"
+              type="Error"
+            />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByPlaceholderText(labelToFind);
+      userEvent.type(label, inputText);
+      const handleAcceptClick = jest.fn();
+
+      handleAcceptClick();
+      expect(handleAcceptClick).toHaveBeenCalled();
+    });
+  });
+
+  describe("When Search modal", () => {
+    test("Then the value of the username input field should be 'user1'", () => {
+      const labelToFind = "btn-accept";
+      const inputText = "user1";
+
+      const closeModal = jest.fn();
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Navbar headerTitle="Detail" />
+            <Modal
+              closeModal={closeModal}
+              idPenguin="modal"
+              message="message"
+              type="Search"
             />
           </BrowserRouter>
         </Provider>

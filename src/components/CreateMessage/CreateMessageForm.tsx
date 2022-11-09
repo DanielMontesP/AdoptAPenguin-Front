@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { wrongAction } from "../Modals/Modals";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { useNavigate } from "react-router-dom";
@@ -7,20 +7,21 @@ import {
   cleanArray,
   getCurrentDate,
 } from "../../utils/utils";
-import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 import {
   createMessageThunk,
   editMessageThunk,
+  getMessageThunk,
 } from "../../app/redux/thunks/messageThunk/messageThunk";
-
-interface Props {
-  message: IMessage;
-}
+import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 
 let modFields = [""];
 let imageAdded = false;
 
-const CreateMessageForm = ({ message }: Props): JSX.Element => {
+interface Props {
+  messageId?: string;
+}
+
+const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -28,9 +29,10 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const { user } = useAppSelector((state) => state);
   const { headerTitle } = useAppSelector((state) => state.ui);
 
+  const { message } = useAppSelector((state) => state.messages);
   const isCreate = headerTitle === "New message...";
 
-  const [formData, setFormData] = useState(blankMessageData);
+  const [formData, setFormData] = useState<IMessage>(blankMessageData);
 
   const processCreate = (type: string) => {
     dispatch(createMessageThunk(formData));
@@ -42,13 +44,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
     event.preventDefault();
 
     setFormData({
-      ...(formData.subject ||
-      formData.content ||
-      formData.data ||
-      formData.idPenguin ||
-      formData.idUser
-        ? formData
-        : message),
+      ...formData,
       [event.target.id]: event.target.value,
       idUser: user.id,
       idPenguin: penguin.id,
@@ -92,6 +88,18 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
     }
   };
 
+  useEffect(() => {
+    if (messageId) {
+      dispatch(getMessageThunk(messageId));
+    }
+  }, [dispatch, messageId]);
+
+  useEffect(() => {
+    if (messageId) {
+      setFormData(message);
+    }
+  }, [dispatch, message, messageId]);
+
   return (
     <div className="container">
       <form
@@ -106,7 +114,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           id="sendto"
           type="text"
           placeholder="Send To"
-          value={message.idUser || penguin.name}
+          value={penguin.name}
           autoComplete="off"
           className="form-input"
           disabled
@@ -116,7 +124,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           id="subject"
           type="text"
           placeholder="Subject"
-          value={formData.subject || message.subject}
+          value={formData.subject}
           autoComplete="off"
           className="form-input"
           onChange={handleInputChange}
@@ -127,7 +135,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           id="content"
           type="text"
           placeholder="Message"
-          value={formData.content || message.content}
+          value={formData.content}
           autoComplete="off"
           className="input-description"
           onChange={handleInputChange}

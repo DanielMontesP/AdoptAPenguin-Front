@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
-  getMessagesThunk,
-  getMessageThunk,
-} from "../../app/redux/thunks/messageThunk/messageThunk";
+  isModalOpenActionCreator,
+  modalMessageActionCreator,
+  modalTypeActionCreator,
+} from "../../app/redux/features/uiSlice/uiSlice";
+import { useAppDispatch } from "../../app/redux/hooks/hooks";
+import { getMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 
 interface Props {
@@ -14,14 +16,19 @@ const Message = ({ message }: Props): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const { penguin } = useAppSelector((state) => state.penguins);
-  const idMessage = message.id;
-
   const handleClick = () => {
-    dispatch(getMessagesThunk(penguin.id));
-    dispatch(getMessageThunk(penguin.id));
+    if (message.id === "" || message.id === undefined) {
+      const message = "Message id not found.";
+      const newModalType = "Error";
 
-    navigate(`../message/edit/${idMessage}`);
+      dispatch(modalTypeActionCreator(newModalType));
+      dispatch(modalMessageActionCreator(message));
+
+      dispatch(isModalOpenActionCreator(true));
+    } else {
+      dispatch(getMessageThunk(message.id));
+      navigate(`../message/edit/${message.id}`);
+    }
   };
 
   return (
@@ -32,7 +39,11 @@ const Message = ({ message }: Props): JSX.Element => {
         <span className="message-subject">{message.subject}</span>
 
         <span className="message-content">{message.content}</span>
-        <button className={"message-read-img"} onClick={handleClick} />
+        <button
+          className={"message-read-img"}
+          onClick={handleClick}
+          placeholder="bt-click"
+        />
       </div>
     </div>
   );

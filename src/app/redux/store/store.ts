@@ -1,15 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import usersReducer from "../features/userSlice/userSlice";
 import penguinsReducer from "../features/penguinSlice/penguinSlice";
-import messageReducer from "../features/messageSlice/messageSlice";
+import messagesReducer from "../features/messageSlice/messageSlice";
 import uiReducer from "../features/uiSlice/uiSlice";
 
 const store = configureStore({
   reducer: {
     user: usersReducer,
     penguins: penguinsReducer,
+    messages: messagesReducer,
     ui: uiReducer,
-    messages: messageReducer,
   },
 });
 

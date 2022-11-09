@@ -19,12 +19,9 @@ import {
 import { blankMessageData } from "../../../../utils/utils";
 
 export const getMessagesThunk =
-  (formMessage: any) => async (dispatch: AppDispatch) => {
+  (idPenguin: string) => async (dispatch: AppDispatch) => {
     dispatch(loadingActionCreator());
-
-    setLoadingOn(
-      `GET Messages: ...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`
-    );
+    setLoadingOn(`GET Messages: Loading data...`);
 
     const token = localStorage.getItem("token");
 
@@ -32,7 +29,7 @@ export const getMessagesThunk =
       const {
         data: { messages },
       } = await axios.get(
-        `${process.env.REACT_APP_API_URL}messages/${formMessage.id}`,
+        `${process.env.REACT_APP_API_URL}messages/${idPenguin}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -42,7 +39,7 @@ export const getMessagesThunk =
 
       dispatch(getMessagesActionCreator(messages));
       dispatch(finishedLoadingActionCreator());
-      setLoadingOffWithMessage("", false);
+      setLoadingOffWithMessage(messages, false);
     }
   };
 
@@ -50,7 +47,7 @@ export const getMessageThunk =
   (id: string) => async (dispatch: AppDispatch) => {
     dispatch(loadingActionCreator());
 
-    if (id !== "") {
+    if (id !== "undefined") {
       const token = localStorage.getItem("token");
 
       if (token) {
@@ -62,6 +59,7 @@ export const getMessageThunk =
             },
           }
         );
+
         dispatch(getMessageActionCreator(message));
         dispatch(finishedLoadingActionCreator());
         setLoadingOffWithMessage(
@@ -69,6 +67,11 @@ export const getMessageThunk =
           false
         );
       }
+    } else {
+      setLoadingOffWithMessage(
+        `GET Message: id undefined, process canceled.`,
+        false
+      );
     }
   };
 
@@ -92,7 +95,6 @@ export const createMessageThunk =
 
     dispatch(createMessageActionCreator(message));
 
-    dispatch(getMessagesThunk(message));
     dispatch(finishedLoadingActionCreator());
     setLoadingOffWithMessage(
       `CREATE Message: ${message.name} created successfully.`,
@@ -109,7 +111,7 @@ export const editMessageThunk =
 
     if (token) {
       const { data: message } = await axios.put(
-        `${process.env.REACT_APP_API_URL}messages/${formMessage.id}?task=${type}`,
+        `${process.env.REACT_APP_API_URL}messages/message/${formMessage.id}?task=${type}`,
         formMessage,
         {
           headers: {

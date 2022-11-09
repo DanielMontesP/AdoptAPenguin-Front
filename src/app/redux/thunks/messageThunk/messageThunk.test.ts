@@ -3,6 +3,8 @@ import { mockMessage } from "../../../../mocks/messages";
 import { mockPenguin } from "../../../../mocks/penguins";
 
 import {
+  createMessageThunk,
+  editMessageThunk,
   getMessagesThunk,
   getMessageThunk,
   resetMessagesThunk,
@@ -77,6 +79,63 @@ describe("Given the resetMessagesThunk function", () => {
       });
 
       const thunk = resetMessagesThunk();
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledTimes(3);
+    });
+  });
+});
+
+describe("Given the createMessageThunk function", () => {
+  describe("When it's called", () => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.post = jest.fn().mockResolvedValue({
+        data: { message: mockMessage },
+        status: 200,
+      });
+
+      const thunk = createMessageThunk(mockMessage);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledTimes(3);
+    });
+  });
+});
+
+describe("Given the editMessageThunk function", () => {
+  describe("When it's called", () => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.put = jest.fn().mockResolvedValue({
+        data: { message: mockMessage },
+        status: 200,
+      });
+
+      const thunk = editMessageThunk(mockMessage.id, "Message");
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledTimes(3);
+    });
+  });
+});
+
+describe("Given the editMessageThunk with no token function", () => {
+  describe("When it's called", () => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("error");
+      axios.put = jest.fn().mockResolvedValue({
+        data: { message: mockMessage },
+        status: 200,
+      });
+
+      const thunk = editMessageThunk(mockMessage.id, "Message");
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledTimes(3);

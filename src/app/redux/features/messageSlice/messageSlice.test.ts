@@ -1,8 +1,13 @@
 import { mockMessage, mockMessages } from "../../../../mocks/messages";
+import {
+  mockEmptyDataPenguin,
+  mockPenguinsEmpty,
+} from "../../../../mocks/penguins";
 import { IMessage } from "../../types/message/messageInterfaces";
 
 import penguinReducer, {
   createMessageActionCreator,
+  deleteMessageActionCreator,
   editMessageActionCreator,
   getMessageActionCreator,
   getMessagesActionCreator,
@@ -37,7 +42,7 @@ describe("Given the getMessagesActionCreator", () => {
         action
       );
 
-      expect(loadedState).toEqual(initialState);
+      expect(loadedState.allMessages).toEqual(mockMessages);
     });
   });
 });
@@ -91,6 +96,20 @@ describe("Given resetPenguinsActionCreator", () => {
   describe("When  invoked", () => {
     test("Then load list with no messages", async () => {
       const action = resetMessagesActionCreator(mockMessage);
+      const loadedState = penguinReducer(
+        { allMessages: mockMessages, message: mockMessage },
+        action
+      );
+
+      expect(loadedState.allMessages.length).toEqual(0);
+    });
+  });
+});
+
+describe("Given deletePenguinActionCreator", () => {
+  describe("When  invoked", () => {
+    test("Then load list without deleted penguin", async () => {
+      const action = deleteMessageActionCreator(mockMessage.id);
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
         action
