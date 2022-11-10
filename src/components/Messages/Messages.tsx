@@ -1,18 +1,23 @@
 import { useNavigate } from "react-router-dom";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
+import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import PagesStyles from "../../Styles/PagesStyles";
+import { hasNewMessages } from "../../utils/utils";
 import Message from "../Message/Message";
 
 interface Props {
   allMessages: IMessage[];
+  penguin: IPenguin;
 }
 
-const Messages = ({ allMessages }: Props): JSX.Element => {
+const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
   const navigate = useNavigate();
 
   const handleClick = () => {
     navigate(`../message/create/`);
   };
+
+  const counterNewMessages = hasNewMessages(allMessages, penguin);
 
   return (
     <PagesStyles className={`messages-container`} title="messages-container">
@@ -20,7 +25,12 @@ const Messages = ({ allMessages }: Props): JSX.Element => {
         <button className={"message-new"} onClick={handleClick}>
           + New Message
         </button>
-        <h3 className={"view-list-counter"}>{allMessages.length} message/s.</h3>
+        <h3 className={"view-list-counter"}>
+          Total {allMessages.length} message
+          {allMessages.length === 1 ? ". " : "s. "}
+          {counterNewMessages} new message
+          {counterNewMessages === 1 ? "." : "s."}
+        </h3>
       </div>
       {allMessages.map((message, index) => {
         return <Message key={index} message={message} />;

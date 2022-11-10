@@ -5,7 +5,6 @@ import {
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch } from "../../app/redux/hooks/hooks";
-import { getMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 
 interface Props {
@@ -26,7 +25,6 @@ const Message = ({ message }: Props): JSX.Element => {
 
       dispatch(isModalOpenActionCreator(true));
     } else {
-      dispatch(getMessageThunk(message.id));
       navigate(`../message/edit/${message.id}`);
     }
   };

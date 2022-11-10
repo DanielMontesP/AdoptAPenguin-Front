@@ -20,7 +20,6 @@ import {
   finishedLoadingActionCreator,
   loadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
-import { getMessagesThunk } from "../messageThunk/messageThunk";
 
 const blankFormData: IPenguin = {
   id: "",
@@ -163,7 +162,6 @@ export const getPenguinThunk =
         );
 
         dispatch(loadPenguinActionCreator(penguin));
-        dispatch(getMessagesThunk(penguin.id));
         dispatch(finishedLoadingActionCreator());
         setLoadingOffWithMessage(
           `GET Penguin: ${penguin.name} successfully.`,

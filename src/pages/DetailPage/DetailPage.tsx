@@ -5,6 +5,7 @@ import {
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
+
 import {
   getPenguinThunk,
   loadFavsThunk,
@@ -25,7 +26,6 @@ const DetailPage = (): JSX.Element => {
     document.location.href.lastIndexOf("/") + 1,
     document.location.href.length
   );
-
   useEffect(() => {
     headerLastTitle === "Favourites"
       ? dispatch(loadFavsThunk())
@@ -40,7 +40,7 @@ const DetailPage = (): JSX.Element => {
     };
 
     if (headerTitle !== thisTitle) SetTitleHeader(thisTitle, headerTitle);
-  }, [dispatch, idPenguin, headerTitle, headerLastTitle]);
+  }, [dispatch, headerTitle, headerLastTitle, idPenguin]);
 
   return <PenguinDetail allPenguins={allPenguins} penguin={penguin} />;
 };

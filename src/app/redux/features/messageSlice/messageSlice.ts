@@ -34,7 +34,6 @@ const messagesSlice = createSlice({
     ): SliceIniState => ({
       ...messages,
       allMessages: [...action.payload],
-      message: initialState.message,
     }),
 
     createMessage: (

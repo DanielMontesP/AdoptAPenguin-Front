@@ -128,7 +128,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
               Messages
             </button>
             {isMessagesSelected ? (
-              <Messages allMessages={allMessages} />
+              <Messages allMessages={allMessages} penguin={penguin} />
             ) : (
               <span className={`detail-description${classDescription}`}>
                 {penguin.description}

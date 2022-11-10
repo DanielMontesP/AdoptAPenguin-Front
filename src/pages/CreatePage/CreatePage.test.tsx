@@ -11,7 +11,7 @@ import CreatePage from "./CreatePage";
 describe("Given a CreatePage component", () => {
   describe("When the word 'penguin' is written to the username input field", () => {
     test("Then the value of the username input field should be 'penguin'", () => {
-      const labelToFind = "Name";
+      const labelToFind = "Message";
       const inputText = "penguin1";
 
       render(

@@ -170,7 +170,7 @@ describe("Given the getPenguinThunk function", () => {
       const thunk = getPenguinThunk(mockPenguin.id);
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(3);
     });
   });
 });

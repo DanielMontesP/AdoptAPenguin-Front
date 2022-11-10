@@ -156,13 +156,14 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         className={`animated${classButtonDelete}${HidderDelete}`}
         onClick={handleDelete}
       />
-      <span className={`likes`}>{penguin.likes}</span>
+
       <button
         className={`animated${selectIconLike}`}
         onClick={handleLikes}
         title="btn-likes"
-      />
-
+      >
+        <span className={`likes`}>{penguin.likes}</span>
+      </button>
       <button
         className={`animated${iconType}`}
         onClick={handleMessage}

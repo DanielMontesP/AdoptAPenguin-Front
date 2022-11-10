@@ -60,7 +60,7 @@
   .message-container {
     display: flex;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.9rem;
     margin: auto;
     margin-top: 10px;
     overflow-y: auto;
@@ -170,6 +170,21 @@
   margin-top: 10px;
   width: 25%;
   flex: 2;
+}
+
+.likes {
+  width: 75%;
+  position: relative;
+  left: 28px;
+  top: -10px;
+  margin-left: 5px;
+  padding: 3px;
+  display: inline-flex;
+  border: 2px solid rgb(6, 6, 6);
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
 }
 
 @-webkit-keyframes move {
@@ -378,7 +393,7 @@ h1 {
   width: auto;
   height: 32px;
   border: none;
-  background: url("../images/fav-add-32.png");
+  background: url("../images/star-add-32.png");
   background-repeat: no-repeat;
   margin-bottom: 5px;
 }
@@ -436,7 +451,7 @@ h1 {
   .penguins-container {
     border-radius: 8px;
     padding: 0 10px 15px;
-    margin-top: 65px;
+    margin-top: 75px;
     text-align: center;
     width: 95%;
   }
@@ -469,11 +484,21 @@ h1 {
     text-align: justify;
   }
 
+  .message-read {
+    width: 8px;
+    height: 8px;
+    background-size: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #2fc925;
+    box-shadow: 1px 1px 2px black;
+  }
+
   .message-container {
     display: flex;
 
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.9rem;
     margin: auto;
     margin-top: 10px;
     overflow-y: auto;
@@ -890,7 +915,7 @@ ul {
 .view-list-counter {
   margin-top: -10px;
   text-align: right;
-  font-size: 0.7em;
+  font-size: 0.9rem;
   font-weight: normal;
   margin-right: 20px;
 }
@@ -1282,22 +1307,17 @@ ul {
   width: 100%;
   z-index: 1;
 }
+
 .new-messages-counter {
   width: 20px;
-  height: 20px;
-  color: white;
-  font-weight: bold;
-  font-size: 1.2em;
-  border: 2px solid white;
-  box-shadow: 1px 1px 1px 1px grey;
-  border-radius: 50%;
-
+  padding: 2px;
+  border: 2px solid rgb(91, 193, 94);
+  border-radius: 5px;
   align-items: center;
   justify-content: center;
-  background-color: #2fc925;
   margin-left: 5px;
   position: relative;
-  left: 15px;
+  left: 30px;
   top: -10px;
   display: inline-flex;
 }

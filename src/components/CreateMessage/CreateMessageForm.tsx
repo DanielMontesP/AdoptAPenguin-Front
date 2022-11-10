@@ -87,18 +87,12 @@ const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
       wrongAction("Error:" + error);
     }
   };
-
+  const idMessage = "636760fc7a19ee62356d435d";
   useEffect(() => {
-    if (messageId) {
-      dispatch(getMessageThunk(messageId));
+    if (idMessage) {
+      dispatch(getMessageThunk(idMessage));
     }
-  }, [dispatch, messageId]);
-
-  useEffect(() => {
-    if (messageId) {
-      setFormData(message);
-    }
-  }, [dispatch, message, messageId]);
+  }, [dispatch, idMessage]);
 
   return (
     <div className="container">
@@ -124,7 +118,7 @@ const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
           id="subject"
           type="text"
           placeholder="Subject"
-          value={formData.subject}
+          value={message.subject || formData.subject}
           autoComplete="off"
           className="form-input"
           onChange={handleInputChange}
@@ -135,7 +129,7 @@ const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
           id="content"
           type="text"
           placeholder="Message"
-          value={formData.content}
+          value={message.content || formData.content}
           autoComplete="off"
           className="input-description"
           onChange={handleInputChange}
