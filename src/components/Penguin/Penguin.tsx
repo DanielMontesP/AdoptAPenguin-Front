@@ -30,7 +30,7 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
     <div className="penguin-container">
       <ActionButtons penguin={penguin} />
 
-      <h2 className="penguin-name">{toPascalCase(`${penguin.name}`)}</h2>
+      <h1 className="penguin-name">{toPascalCase(`${penguin.name}`)}</h1>
 
       <div className="penguin-image-container">
         <img

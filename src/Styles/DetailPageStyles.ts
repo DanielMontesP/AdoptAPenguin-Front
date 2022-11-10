@@ -2,7 +2,7 @@ import styled from "styled-components";
 import iconHamburguer from "../images/menu_hamburguer.png";
 import iconBack from "../images/icon-back.png";
 import iconFavs from "../images/icon-stars.png";
-import iconMenuFavs from "../images/fav-add-32.png";
+import iconMenuFavs from "../images/star-add-32.png";
 import iconMenuFavsDelete from "../images/fav-delete-32.png";
 import iconLike from "../images/heartLike.png";
 import iconAddFav from "../images/icon-add_plus.png";
@@ -82,7 +82,7 @@ const DetailPageStyles = styled.div`
     .detail-description {
       display: flex;
 
-      font-size: 16px;
+      font-size: 1rem;
       background: white;
       border: 1px solid;
       padding: 10px 10px 20px 10px;
@@ -168,7 +168,7 @@ const DetailPageStyles = styled.div`
     .detail-description {
       display: flex;
 
-      font-size: 16px;
+      font-size: 1rem;
       background: white;
       border: 1px solid;
       padding: 10px;
@@ -215,6 +215,7 @@ const DetailPageStyles = styled.div`
 
   .tab-description {
     width: 100px;
+    font-size: 0.9rem;
     background: grey;
     border: 1px solid;
     border-radius: 10px 10px 0px 0;
@@ -222,6 +223,7 @@ const DetailPageStyles = styled.div`
   }
 
   .tab-messages {
+    font-size: 0.9rem;
     width: 100px;
     background: grey;
     border: 1px solid;
@@ -232,6 +234,8 @@ const DetailPageStyles = styled.div`
   }
 
   .tab-selected {
+    font-size: 1rem;
+    font-weight: bold;
     width: 100px;
     background: white;
     border: 1px solid;
@@ -292,7 +296,7 @@ const DetailPageStyles = styled.div`
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 1.3em;
   }
 
   h2 {
@@ -422,10 +426,6 @@ const DetailPageStyles = styled.div`
     flex: 2;
   }
 
-  .likes {
-    margin: auto;
-  }
-
   .bt-likes {
     width: 32px;
     height: 32px;
@@ -458,16 +458,6 @@ const DetailPageStyles = styled.div`
     flex: 2;
   }
 
-  .message-read {
-    width: 8px;
-    height: 8px;
-    background-size: 20px;
-    border-radius: 50%;
-    margin-right: 10px;
-    background-color: #2fc925;
-    box-shadow: 1px 1px 2px black;
-  }
-
   .message-read-img {
     background: url(${iconMesssagesView});
     background-repeat: no-repeat;
@@ -481,7 +471,8 @@ const DetailPageStyles = styled.div`
   }
 
   .message-new {
-    width: 120px;
+    font-size: 1rem;
+    width: 130px;
     height: 24px;
     margin-bottom: 5px;
     color: black;
@@ -542,7 +533,7 @@ const DetailPageStyles = styled.div`
   .category {
     height: fit-content;
     width: fit-content;
-    font-size: 16px;
+    font-size: 1rem;
     text-align: left;
     padding-left: 5px;
     padding-right: 5px;

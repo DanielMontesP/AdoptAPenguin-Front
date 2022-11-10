@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import Messages from "./Messages";
 import store from "../../app/redux/store/store";
 import { mockMessages } from "../../mocks/messages";
+import { mockPenguin } from "../../mocks/penguins";
 
 describe("Given a Messages component", () => {
   describe("When rendered", () => {
@@ -14,7 +15,7 @@ describe("Given a Messages component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <Messages allMessages={mockMessages} />
+            <Messages allMessages={mockMessages} penguin={mockPenguin} />
           </BrowserRouter>
         </Provider>
       );

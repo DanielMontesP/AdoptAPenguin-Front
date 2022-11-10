@@ -2,7 +2,7 @@ import styled from "styled-components";
 import iconHamburguer from "../images/menu_hamburguer.png";
 import iconBack from "../images/icon-back.png";
 import iconFavs from "../images/icon-stars.png";
-import iconMenuFavs from "../images/fav-add-32.png";
+import iconMenuFavs from "../images/star-add-32.png";
 import iconMenuFavsDelete from "../images/fav-delete-32.png";
 import iconAddFav from "../images/icon-add_plus.png";
 import iconHome from "../images/icon-home.png";

@@ -44,15 +44,16 @@ export const getMessagesThunk =
   };
 
 export const getMessageThunk =
-  (id: string) => async (dispatch: AppDispatch) => {
+  (idMessage: string) => async (dispatch: AppDispatch) => {
     dispatch(loadingActionCreator());
+    setLoadingOn(`GET Message: Loading data...`);
 
-    if (id !== "undefined") {
+    if (idMessage !== "undefined") {
       const token = localStorage.getItem("token");
 
       if (token) {
         const { data: message } = await axios.get(
-          `${process.env.REACT_APP_API_URL}messages/message/${id}`,
+          `${process.env.REACT_APP_API_URL}messages/message/${idMessage}`,
           {
             headers: {
               authorization: `Bearer ${token}`,
