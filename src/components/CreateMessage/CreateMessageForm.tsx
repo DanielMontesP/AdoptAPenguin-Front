@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   blankMessageData,
   cleanArray,
+  getCurrentDate,
   newMessageData,
 } from "../../utils/utils";
 import {
@@ -36,14 +37,9 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   );
 
   const processCreate = (type: string) => {
-    const newFormData = new FormData();
-
-    newFormData.append("idUser", idUser);
-    newFormData.append("idPenguin", formData.idPenguin);
-    newFormData.append("subject", formData.subject);
-    newFormData.append("content", formData.content);
-    newFormData.append("data", formData.data);
-    newFormData.append("read", formData.read);
+    formData.idPenguin = penguin.id;
+    formData.idUser = idUser;
+    formData.data = getCurrentDate();
 
     dispatch(createMessageThunk(formData));
   };
