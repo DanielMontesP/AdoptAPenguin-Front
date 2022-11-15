@@ -39,8 +39,8 @@ const CreatePage = ({ type, form }: Props): JSX.Element => {
 
   useEffect(() => {
     isMessage
-      ? dispatch(getMessageThunk(idToEdit ? idToEdit.toString() : ""))
-      : dispatch(getPenguinThunk(idToEdit ? idToEdit.toString() : ""));
+      ? dispatch(getMessageThunk(idToEdit))
+      : dispatch(getPenguinThunk(idToEdit));
     const SetTitleHeader = (title: string, lastTitle: string) => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));
