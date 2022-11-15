@@ -100,7 +100,7 @@ describe("Given the createMessageThunk function", () => {
       const thunk = createMessageThunk(mockMessage);
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(4);
     });
   });
 });

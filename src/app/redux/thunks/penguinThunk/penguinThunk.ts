@@ -15,24 +15,11 @@ import {
   searchPenguinsActionCreator,
 } from "../../features/penguinSlice/penguinSlice";
 
-import { IPenguin } from "../../types/penguin/penguinInterfaces";
 import {
   finishedLoadingActionCreator,
   loadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
-
-const blankFormData: IPenguin = {
-  id: "",
-  name: "",
-  category: "",
-  likes: 0,
-  likers: [],
-  favs: [],
-  description: "",
-  image: "",
-  imageBackup: "",
-  imageResized: "",
-};
+import { blankFormData } from "../../../../utils/utils";
 
 let message = "";
 
@@ -258,7 +245,7 @@ export const editPenguinThunk =
             break;
           default:
             dispatch(loadPenguinsThunk());
-            dispatch(getPenguinThunk(formPenguin.id));
+            dispatch(getPenguinThunk(penguin.id));
         }
       };
       dispatch(editPenguinActionCreator(penguin));

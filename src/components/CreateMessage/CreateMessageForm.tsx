@@ -10,12 +10,12 @@ import {
 import {
   createMessageThunk,
   editMessageThunk,
+  getMessagesThunk,
   getMessageThunk,
+  resetMessageThunk,
 } from "../../app/redux/thunks/messageThunk/messageThunk";
-import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 
 let modFields = [""];
-let imageAdded = false;
 
 interface Props {
   messageId?: string;
@@ -25,38 +25,16 @@ const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  const idUser = useAppSelector((state) => state.user.id);
   const { penguin } = useAppSelector((state) => state.penguins);
-  const { user } = useAppSelector((state) => state);
   const { headerTitle } = useAppSelector((state) => state.ui);
 
   const { message } = useAppSelector((state) => state.messages);
   const isCreate = headerTitle === "New message...";
 
-  const [formData, setFormData] = useState<IMessage>(blankMessageData);
+  const [formData, setFormData] = useState(blankMessageData);
 
   const processCreate = (type: string) => {
-    dispatch(createMessageThunk(formData));
-  };
-
-  const handleInputChange = (
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
-  ): void => {
-    event.preventDefault();
-
-    setFormData({
-      ...formData,
-      [event.target.id]: event.target.value,
-      idUser: user.id,
-      idPenguin: penguin.id,
-      data: getCurrentDate(),
-      read: false,
-    });
-
-    modFields.push(event.target.id);
-  };
-
-  const processEdit = (imageAdded: boolean) => {
-    modFields = cleanArray(modFields);
     const newFormData = new FormData();
 
     newFormData.append("idUser", formData.idUser);
@@ -64,11 +42,39 @@ const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
     newFormData.append("subject", formData.subject);
     newFormData.append("content", formData.content);
     newFormData.append("data", formData.data);
-    newFormData.append("read", JSON.stringify(formData.read));
+    newFormData.append("read", JSON.stringify(false));
+
+    dispatch(createMessageThunk(newFormData));
+  };
+
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ): void => {
+    event.preventDefault();
+
+    isCreate
+      ? setFormData({
+          ...formData,
+          [event.target.id]: event.target.value,
+          idUser: idUser,
+          idPenguin: penguin.id.toString(),
+          data: getCurrentDate().toString(),
+        })
+      : setFormData({
+          ...message,
+          [event.target.id]: event.target.value,
+        });
+
+    modFields.push(event.target.id);
+  };
+
+  const processEdit = () => {
+    modFields = cleanArray(modFields);
 
     dispatch(
       editMessageThunk(formData, "Update fields: " + modFields.join(", "))
     );
+    dispatch(getMessagesThunk(penguin.id));
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -77,22 +83,24 @@ const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
       if (isCreate) {
         processCreate("New");
       } else {
-        processEdit(imageAdded);
+        processEdit();
       }
 
+      dispatch(getMessagesThunk(penguin.id));
       setFormData(blankMessageData);
+      dispatch(resetMessageThunk());
 
       navigate(`/detail/${penguin.id}#messages`);
     } catch (error) {
       wrongAction("Error:" + error);
     }
   };
-  const idMessage = "636760fc7a19ee62356d435d";
+
   useEffect(() => {
-    if (idMessage) {
-      dispatch(getMessageThunk(idMessage));
+    if (messageId) {
+      dispatch(getMessageThunk(messageId));
     }
-  }, [dispatch, idMessage]);
+  }, [dispatch, messageId]);
 
   return (
     <div className="container">
@@ -118,7 +126,7 @@ const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
           id="subject"
           type="text"
           placeholder="Subject"
-          value={message.subject || formData.subject}
+          value={formData.subject || message.subject}
           autoComplete="off"
           className="form-input"
           onChange={handleInputChange}
@@ -129,7 +137,7 @@ const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
           id="content"
           type="text"
           placeholder="Message"
-          value={message.content || formData.content}
+          value={formData.content || message.content}
           autoComplete="off"
           className="input-description"
           onChange={handleInputChange}

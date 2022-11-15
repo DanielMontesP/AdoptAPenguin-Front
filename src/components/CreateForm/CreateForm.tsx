@@ -8,6 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { blankFormData, cleanArray, resizeFile } from "../../utils/utils";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
+
 interface Props {
   penguin: IPenguin;
 }

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
@@ -29,7 +30,7 @@ const CreatePage = ({ type, form }: Props): JSX.Element => {
     thisTitle = isCreate ? "New..." : "Edit...";
   }
 
-  const idMessage = "636760fc7a19ee62356d435d";
+  const { idMessage } = useParams();
   useEffect(() => {
     const SetTitleHeader = (title: string, lastTitle: string) => {
       dispatch(headerTitleActionCreator(title));

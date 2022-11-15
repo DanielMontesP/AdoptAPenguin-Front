@@ -82,25 +82,31 @@ export const createMessageThunk =
     setLoadingOn(`CREATE Message: Creating Message...`);
 
     const token = localStorage.getItem("token");
+    if (token) {
+      const { data: message } = await axios.post(
+        `${process.env.REACT_APP_API_URL}messages/create`,
+        formMessage,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    const { data: message } = await axios.post(
-      `${process.env.REACT_APP_API_URL}messages/create`,
-      formMessage,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "mutipart/form-data",
-        },
-      }
-    );
+      dispatch(createMessageActionCreator(message));
 
-    dispatch(createMessageActionCreator(message));
-
-    dispatch(finishedLoadingActionCreator());
-    setLoadingOffWithMessage(
-      `CREATE Message: ${message.name} created successfully.`,
-      false
-    );
+      dispatch(getMessagesThunk(message.idPenguin));
+      dispatch(finishedLoadingActionCreator());
+      setLoadingOffWithMessage(
+        `CREATE Message: ${message.subject} created successfully.`,
+        false
+      );
+    } else {
+      setLoadingOffWithMessage(
+        "CREATE Message: Sorry, no token no cookies...",
+        true
+      );
+    }
   };
 
 export const editMessageThunk =
@@ -112,7 +118,7 @@ export const editMessageThunk =
 
     if (token) {
       const { data: message } = await axios.put(
-        `${process.env.REACT_APP_API_URL}messages/message/${formMessage.id}?task=${type}`,
+        `${process.env.REACT_APP_API_URL}messages/message/edit/${formMessage.id}?task=${type}`,
         formMessage,
         {
           headers: {

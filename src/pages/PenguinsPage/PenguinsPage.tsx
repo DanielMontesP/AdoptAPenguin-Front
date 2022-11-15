@@ -10,10 +10,7 @@ import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
-import {
-  resetMessagesThunk,
-  resetMessageThunk,
-} from "../../app/redux/thunks/messageThunk/messageThunk";
+import { resetMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 
 interface Props {
   type: string;
@@ -45,7 +42,6 @@ const PenguinsPage = ({ type }: Props) => {
       }
     }
 
-    dispatch(resetMessagesThunk());
     dispatch(resetMessageThunk());
   }, [dispatch, headerTitle, isDesktop, modalType, headerLastTitle, type]);
 
