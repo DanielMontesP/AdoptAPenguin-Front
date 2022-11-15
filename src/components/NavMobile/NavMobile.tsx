@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import "../../Styles/NavbarStyles.css";
-import { blankFormData } from "../../utils/utils";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
@@ -12,15 +11,25 @@ import {
 import Menu from "../Menu/Menu";
 import { Modal } from "../Modals/ModalPrompt";
 import { ReactDimmer } from "react-dimmer";
+import { blankMessageDataInterface } from "../../app/redux/types/message/messageInterfaces";
 
 interface Props {
   headerTitle: string;
 }
 
 const NavMobile = ({ headerTitle }: Props): JSX.Element => {
+  const blankData: blankMessageDataInterface = {
+    idPenguin: "",
+    idUser: "",
+    subject: "",
+    content: "",
+    data: "",
+    read: "false",
+  };
+
   const [isMenuOpened, setMenuOpen] = useState(false);
   const [, setModal] = useState(false);
-  const [, setFormData] = useState(blankFormData);
+  const [, setFormData] = useState(blankData);
 
   const { penguin } = useAppSelector((state) => state.penguins);
 
@@ -66,7 +75,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const handleBack = () => {
-    setFormData(blankFormData);
+    setFormData(blankData);
     dispatch(modalTypeActionCreator(""));
 
     switch (headerLastTitle) {

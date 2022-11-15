@@ -12,35 +12,12 @@ export function hasNewMessages(allMessages: IMessage[], penguin: IPenguin) {
   let countNewMessages = 0;
 
   allMessages.forEach((message) => {
-    if (message.read === false && penguin.id === message.idPenguin) {
+    if (message.read === "false" && penguin.id === message.idPenguin) {
       countNewMessages += 1;
     }
   });
   return countNewMessages;
 }
-
-export const blankFormData: IPenguin = {
-  id: "",
-  name: "",
-  category: "",
-  likers: [] || "",
-  likes: 0,
-  favs: [] || "",
-  description: "",
-  image: "",
-  imageBackup: "",
-  imageResized: "",
-};
-
-export const blankMessageData: IMessage = {
-  id: "",
-  idPenguin: "",
-  idUser: "",
-  subject: "",
-  content: "",
-  data: "",
-  read: false,
-};
 
 export const toPascalCase = (strValue: string) => {
   return strValue.replace(/\w+/g, function (w) {
@@ -78,4 +55,26 @@ export const handleFocus = (field: string): void => {
   if (input != null) {
     input.focus();
   }
+};
+
+export const blankMessageData: IMessage = {
+  id: "",
+  idPenguin: "",
+  idUser: "",
+  subject: "",
+  content: "",
+  data: "",
+  read: "false",
+};
+export const blankFormData: IPenguin = {
+  id: "",
+  name: "",
+  category: "",
+  likes: 0,
+  likers: [],
+  favs: [],
+  description: "",
+  image: "",
+  imageBackup: "",
+  imageResized: "",
 };

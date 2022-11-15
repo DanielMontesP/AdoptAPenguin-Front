@@ -15,7 +15,7 @@ const CheckInSecurity = ({ children }: Props) => {
 
   useEffect(() => {
     if (!logged || !id) {
-      navigate("/login");
+      navigate("../login");
       dispatch(resetMessagesThunk);
       dispatch(resetPenguinsThunk);
     }
@@ -24,7 +24,7 @@ const CheckInSecurity = ({ children }: Props) => {
   if (logged) {
     return children;
   } else {
-    navigate("/login");
+    navigate("../login");
     return null;
   }
 };

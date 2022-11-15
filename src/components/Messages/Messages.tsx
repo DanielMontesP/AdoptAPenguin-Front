@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../app/redux/hooks/hooks";
+import { resetMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import PagesStyles from "../../Styles/PagesStyles";
@@ -12,8 +14,10 @@ interface Props {
 
 const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleClick = () => {
+    dispatch(resetMessageThunk());
     navigate(`../message/create/`);
   };
 
