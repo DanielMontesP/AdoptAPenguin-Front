@@ -26,7 +26,11 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
   return (
     <PagesStyles className={`messages-container`} title="messages-container">
       <div className="message-buttons">
-        <button className={"message-new"} onClick={handleClick}>
+        <button
+          className={"message-new"}
+          onClick={handleClick}
+          placeholder="bt-submit"
+        >
           + New Message
         </button>
         <h3 className={"view-list-counter"}>
