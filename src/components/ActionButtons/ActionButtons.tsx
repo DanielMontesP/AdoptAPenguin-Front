@@ -57,7 +57,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const handleEdit = () => {
     setMenu((prevState) => !prevState);
 
-    navigate(`/penguins/edit/${penguin.id}`);
+    navigate(`/penguins/edit/id=${penguin.id}`);
   };
 
   const deleteFromLikers = () => {

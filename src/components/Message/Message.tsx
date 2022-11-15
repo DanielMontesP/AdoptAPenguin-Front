@@ -25,7 +25,7 @@ const Message = ({ message }: Props): JSX.Element => {
 
       dispatch(isModalOpenActionCreator(true));
     } else {
-      navigate(`../message/edit/${message.id}`);
+      navigate(`../message/edit/id=${message.id}`);
     }
   };
 

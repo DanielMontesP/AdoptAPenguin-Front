@@ -6,7 +6,12 @@ import {
   editPenguinThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { useNavigate } from "react-router-dom";
-import { blankFormData, cleanArray, resizeFile } from "../../utils/utils";
+import {
+  blankFormData,
+  cleanArray,
+  newPenguinFormData,
+  resizeFile,
+} from "../../utils/utils";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 
 interface Props {
@@ -25,22 +30,21 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const { user } = useAppSelector((state) => state);
   const { headerLastTitle } = useAppSelector((state) => state.ui);
 
-  const [formData, setFormData] = useState(blankFormData);
+  const [formData, setFormData] = useState(
+    isCreate ? newPenguinFormData(user.id) : blankFormData
+  );
 
   const processCreate = (type: string) => {
     const newFormData = new FormData();
-    const isNew = type === "New";
 
     newFormData.append("name", formData.name);
     newFormData.append("category", formData.category);
     newFormData.append("likes", JSON.stringify(1));
-    newFormData.append(
-      "likers",
-      isNew ? user.id : JSON.stringify(formData.likers)
-    );
-    newFormData.append("favs", isNew ? user.id : JSON.stringify(formData.favs));
+    newFormData.append("likers", user.id);
+    newFormData.append("favs", user.id);
     newFormData.append("image", formData.image);
     newFormData.append("imageBackup", formData.imageBackup);
+    newFormData.append("imageResized", formData.imageResized);
     newFormData.append("description", formData.description);
 
     dispatch(createFavThunk(newFormData));

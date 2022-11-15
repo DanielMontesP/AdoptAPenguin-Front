@@ -17,33 +17,19 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
       id: mockUser.id,
     },
     penguin: mockPenguin,
-    headerTitle: "New message...",
+    headerTitle: "Test",
   }),
   useAppDispatch: () => jest.fn(),
 }));
 
-afterEach(() =>
-  jest.mock("../../app/redux/hooks/hooks", () => ({
-    useAppSelector: () => ({
-      user: {
-        logged: mockLogged,
-        id: mockUser.id,
-      },
-      penguin: mockPenguin,
-      headerTitle: "New message...",
-    }),
-    useAppDispatch: () => jest.fn(),
-  }))
-);
-
 describe("Given a CreateMessageForm component", () => {
-  describe("When submit create Message", () => {
-    test("Then createProcess is called", () => {
+  describe("When edit Message is submited", () => {
+    test("Then processEdit is called", () => {
       const textToFind = "Subject";
       const placeHolderSubmit = "bt-save";
 
       const handleSubmit = jest.fn();
-      const processCreate = jest.fn();
+      const processEdit = jest.fn();
 
       render(
         <Provider store={store}>
@@ -62,10 +48,10 @@ describe("Given a CreateMessageForm component", () => {
       userEvent.click(btSave);
 
       handleSubmit();
-      processCreate("New");
+      processEdit();
 
       expect(handleSubmit).toHaveBeenCalled();
-      expect(processCreate).toHaveBeenCalled();
+      expect(processEdit).toHaveBeenCalled();
     });
   });
 });

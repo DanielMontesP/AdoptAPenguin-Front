@@ -1,5 +1,5 @@
 import { MouseEvent, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
   getPenguinThunk,
@@ -27,7 +27,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
   const [isMessagesSelected, setMessageSelected] = useState(
     document.location.href.includes("#messages")
   );
-  useParams();
+
   let classDescription = "";
   let classTabDescription = "";
   let classTabMessages = "";
@@ -133,7 +133,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
               <Messages allMessages={allMessages} penguin={penguin} />
             ) : (
               <span className={`detail-description${classDescription}`}>
-                {penguin.description}
+                {thisPenguin.description}
               </span>
             )}
           </div>

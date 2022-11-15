@@ -4,15 +4,18 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
 import { mockEmptyDataPenguin, mockPenguin } from "../../mocks/penguins";
+import { mockUser } from "../../mocks/users";
 import CreateForm from "./CreateForm";
 
 let mockLogged = true;
 
 jest.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
-    logged: mockLogged,
-    id: "id",
-    headerLastTitle: "Favourites",
+    user: {
+      logged: mockLogged,
+      id: mockUser.id,
+      headerLastTitle: "Favourites",
+    },
   }),
   useAppDispatch: () => jest.fn(),
 }));
