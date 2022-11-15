@@ -245,7 +245,7 @@ export const editPenguinThunk =
             break;
           default:
             dispatch(loadPenguinsThunk());
-            dispatch(getPenguinThunk(penguin.id));
+            dispatch(getPenguinThunk(formPenguin.id));
         }
       };
       dispatch(editPenguinActionCreator(penguin));

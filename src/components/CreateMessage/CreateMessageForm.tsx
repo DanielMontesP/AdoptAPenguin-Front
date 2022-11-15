@@ -1,27 +1,27 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { wrongAction } from "../Modals/Modals";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import {
   blankMessageData,
   cleanArray,
-  getCurrentDate,
+  newMessageData,
 } from "../../utils/utils";
 import {
   createMessageThunk,
   editMessageThunk,
   getMessagesThunk,
-  getMessageThunk,
   resetMessageThunk,
 } from "../../app/redux/thunks/messageThunk/messageThunk";
+import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 
 let modFields = [""];
 
 interface Props {
-  messageId?: string;
+  message: IMessage;
 }
 
-const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
+const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -29,22 +29,23 @@ const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
   const { penguin } = useAppSelector((state) => state.penguins);
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  const { message } = useAppSelector((state) => state.messages);
   const isCreate = headerTitle === "New message...";
 
-  const [formData, setFormData] = useState(blankMessageData);
+  const [formData, setFormData] = useState(
+    isCreate ? newMessageData(idUser, penguin.id) : blankMessageData
+  );
 
   const processCreate = (type: string) => {
     const newFormData = new FormData();
 
-    newFormData.append("idUser", formData.idUser);
+    newFormData.append("idUser", idUser);
     newFormData.append("idPenguin", formData.idPenguin);
     newFormData.append("subject", formData.subject);
     newFormData.append("content", formData.content);
     newFormData.append("data", formData.data);
-    newFormData.append("read", JSON.stringify(false));
+    newFormData.append("read", formData.read);
 
-    dispatch(createMessageThunk(newFormData));
+    dispatch(createMessageThunk(formData));
   };
 
   const handleInputChange = (
@@ -56,9 +57,6 @@ const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
       ? setFormData({
           ...formData,
           [event.target.id]: event.target.value,
-          idUser: idUser,
-          idPenguin: penguin.id.toString(),
-          data: getCurrentDate().toString(),
         })
       : setFormData({
           ...message,
@@ -95,12 +93,6 @@ const CreateMessageForm = ({ messageId }: Props): JSX.Element => {
       wrongAction("Error:" + error);
     }
   };
-
-  useEffect(() => {
-    if (messageId) {
-      dispatch(getMessageThunk(messageId));
-    }
-  }, [dispatch, messageId]);
 
   return (
     <div className="container">
