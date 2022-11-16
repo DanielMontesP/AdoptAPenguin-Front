@@ -138,10 +138,11 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
       </div>
       {isModalOpen && (
         <Modal
-          type={getModalType()}
-          idPenguin={penguin.id}
-          message={modalMessage}
+          idToProcess={penguin.id}
+          content={modalMessage}
           closeModal={setModal}
+          type={getModalType()}
+          form="Penguin"
         />
       )}
 

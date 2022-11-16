@@ -22,8 +22,9 @@ describe("Given a LoginForm component", () => {
             <Navbar headerTitle="Detail" />
             <Modal
               closeModal={closeModal}
-              idPenguin="modal"
-              message="message"
+              idToProcess="modal"
+              content="message"
+              form="Penguin"
               type="delete"
             />
           </BrowserRouter>
@@ -55,8 +56,9 @@ describe("Given a LoginForm component", () => {
           <BrowserRouter>
             <Modal
               closeModal={closeModal}
-              idPenguin="modal"
-              message="message"
+              idToProcess="modal"
+              content="message"
+              form="Penguin"
               type="logOutUser"
             />
           </BrowserRouter>
@@ -80,8 +82,9 @@ describe("Given a LoginForm component", () => {
           <BrowserRouter>
             <Modal
               closeModal={closeModal}
-              idPenguin="modal"
-              message="message"
+              idToProcess="modal"
+              content="message"
+              form="Penguin"
               type="Wellcome"
             />
           </BrowserRouter>
@@ -105,8 +108,9 @@ describe("Given a LoginForm component", () => {
           <BrowserRouter>
             <Modal
               closeModal={closeModal}
-              idPenguin="modal"
-              message="message"
+              idToProcess="modal"
+              content="message"
+              form="Penguin"
               type="About"
             />
           </BrowserRouter>
@@ -130,8 +134,9 @@ describe("Given a LoginForm component", () => {
           <BrowserRouter>
             <Modal
               closeModal={closeModal}
-              idPenguin="modal"
-              message="message"
+              idToProcess="modal"
+              content="message"
+              form="Penguin"
               type="Help"
             />
           </BrowserRouter>
@@ -155,8 +160,9 @@ describe("Given a LoginForm component", () => {
           <BrowserRouter>
             <Modal
               closeModal={closeModal}
-              idPenguin="modal"
-              message="message"
+              idToProcess="modal"
+              content="message"
+              form="Penguin"
               type="Validation"
             />
           </BrowserRouter>
@@ -180,9 +186,10 @@ describe("Given a LoginForm component", () => {
           <BrowserRouter>
             <Modal
               closeModal={closeModal}
-              idPenguin="modal"
-              message="message"
+              idToProcess="modal"
+              content="message"
               type=""
+              form="Penguin"
             />
           </BrowserRouter>
         </Provider>
@@ -210,9 +217,10 @@ describe("Given a LoginForm component", () => {
             <Navbar headerTitle="Detail" />
             <Modal
               closeModal={closeModal}
-              idPenguin="modal"
-              message="message"
+              idToProcess="modal"
+              content="message"
               type="delete"
+              form="Penguin"
             />
           </BrowserRouter>
         </Provider>
@@ -238,9 +246,10 @@ describe("Given a LoginForm component", () => {
             <Navbar headerTitle="Detail" />
             <Modal
               closeModal={closeModal}
-              idPenguin="modal"
-              message="message"
+              idToProcess="modal"
+              content="message"
               type="delete"
+              form="Penguin"
             />
           </BrowserRouter>
         </Provider>
@@ -270,9 +279,10 @@ describe("Given a LoginForm component", () => {
             <Navbar headerTitle="Detail" />
             <Modal
               closeModal={closeModal}
-              idPenguin="modal"
-              message="message"
+              idToProcess="modal"
+              content="message"
               type="Error"
+              form="=Penguin"
             />
           </BrowserRouter>
         </Provider>
@@ -300,9 +310,10 @@ describe("Given a LoginForm component", () => {
             <Navbar headerTitle="Detail" />
             <Modal
               closeModal={closeModal}
-              idPenguin="modal"
-              message="message"
+              idToProcess="modal"
+              content="message"
               type="Search"
+              form="Penguin"
             />
           </BrowserRouter>
         </Provider>

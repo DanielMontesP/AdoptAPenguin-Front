@@ -239,10 +239,11 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       </div>
       {isModalOpen && (
         <Modal
-          type={getModalType()}
-          idPenguin={penguin.id}
-          message={modalMessage}
+          idToProcess={penguin.id}
           closeModal={setModal}
+          content={modalMessage}
+          type={getModalType()}
+          form="Penguin"
         />
       )}
       <ReactDimmer

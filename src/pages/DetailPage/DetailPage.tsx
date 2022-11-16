@@ -26,6 +26,7 @@ const DetailPage = (): JSX.Element => {
     document.location.href.lastIndexOf("/") + 1,
     document.location.href.length
   );
+
   useEffect(() => {
     headerLastTitle === "Favourites"
       ? dispatch(loadFavsThunk())
