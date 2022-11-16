@@ -63,7 +63,10 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
     });
 
     if (penguins.length === 0) {
-      setLoadingOffWithMessage("GET favs: No favs added yet", false);
+      setLoadingOffWithMessage(
+        "GET Favourites: No Favourites added yet",
+        false
+      );
     }
 
     dispatch(loadPenguinsActionCreator(penguins));
@@ -100,7 +103,7 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
 export const createFavThunk =
   (formPenguin: any) => async (dispatch: AppDispatch) => {
     dispatch(loadingActionCreator());
-    setLoadingOn(`CREATE Fav: Creating fav...`);
+    setLoadingOn(`CREATE Favourite: Creating fav...`);
 
     const token = localStorage.getItem("token");
     if (token) {
@@ -125,7 +128,7 @@ export const createFavThunk =
       );
     } else {
       setLoadingOffWithMessage(
-        "CREATE fav: Sorry, no token no cookies...",
+        "CREATE Favourite: Sorry, no token no cookies...",
         true
       );
     }

@@ -175,9 +175,10 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
       {isModalOpen && (
         <Modal
           type={modalType}
-          idPenguin={penguin.id}
-          message={modalMessage}
+          idToProcess={penguin.id}
+          content={modalMessage}
           closeModal={setModal}
+          form="Penguin"
         />
       )}
     </div>

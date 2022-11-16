@@ -58,8 +58,9 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
         <Modal
           closeModal={setModal}
           type="delete"
-          idPenguin={penguin.id}
-          message={message}
+          idToProcess={penguin.id}
+          content={message}
+          form="Message"
         />
       )}
     </div>

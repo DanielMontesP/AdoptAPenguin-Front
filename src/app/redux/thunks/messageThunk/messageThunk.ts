@@ -6,6 +6,7 @@ import {
 } from "../../../../components/Modals/Modals";
 import {
   createMessageActionCreator,
+  deleteMessageActionCreator,
   editMessageActionCreator,
   getMessageActionCreator,
   getMessagesActionCreator,
@@ -131,6 +132,31 @@ export const editMessageThunk =
 
       dispatch(finishedLoadingActionCreator());
       setLoadingOffWithMessage(`${type}`, false);
+    }
+  };
+
+export const deleteMessageThunk =
+  (id: string) => async (dispatch: AppDispatch) => {
+    dispatch(loadingActionCreator());
+
+    setLoadingOn("DELETE Message: Deleting...");
+
+    const token = localStorage.getItem("token");
+
+    const { status } = await axios.delete(
+      `${process.env.REACT_APP_API_URL}messages/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (status === 200) {
+      dispatch(deleteMessageActionCreator(id));
+
+      dispatch(finishedLoadingActionCreator());
+      setLoadingOffWithMessage("DELETE Message: Finished successfully!", false);
     }
   };
 

@@ -7,6 +7,7 @@ import {
 import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
+  deleteMessageThunk,
   resetMessagesThunk,
   resetMessageThunk,
 } from "../../app/redux/thunks/messageThunk/messageThunk";
@@ -20,16 +21,18 @@ import { correctAction } from "./Modals";
 
 interface IModalProps {
   closeModal: React.Dispatch<React.SetStateAction<boolean>>;
-  idPenguin: string;
+  idToProcess: string;
+  content: string;
   type: string;
-  message: string;
+  form: string;
 }
 
 export const Modal = ({
   closeModal,
-  idPenguin,
-  message,
+  idToProcess,
+  content,
   type,
+  form,
 }: IModalProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -39,6 +42,7 @@ export const Modal = ({
   let isWellcome = false;
 
   const isHelp = type === "Help";
+  const isMessage = form === "Message";
 
   let overflowY = " overflow-auto";
 
@@ -93,25 +97,31 @@ export const Modal = ({
     } else if (isHelp) {
       return <Help />;
     } else if (type === "FFeature") {
-      message = "This feature will be available soon.";
+      content = "This feature will be available soon.";
     }
 
-    return <h3 className="modal-message">{message}</h3>;
+    return <h3 className="modal-message">{content}</h3>;
   };
 
   const deletePenguin = () => {
-    if (idPenguin) {
-      dispatch(deletePenguinThunk(`${idPenguin}`));
+    if (idToProcess) {
+      dispatch(deletePenguinThunk(`${idToProcess}`));
       if (headerTitle === "Detail") {
         navigate("/penguins/favs");
       }
     }
   };
 
+  const deleteMessage = () => {
+    if (idToProcess) {
+      dispatch(deleteMessageThunk(idToProcess));
+    }
+  };
+
   const handleAcceptClick = () => {
     switch (type) {
       case "delete":
-        deletePenguin();
+        isMessage ? deleteMessage() : deletePenguin();
         break;
       case "logOutUser":
         logOutUser();

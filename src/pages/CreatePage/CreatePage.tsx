@@ -24,10 +24,13 @@ const CreatePage = ({ type, form }: Props): JSX.Element => {
 
   const isCreate = type === "Create";
 
-  const idToEdit = document.location.href.substring(
-    document.location.href.lastIndexOf("/") + 4,
-    document.location.href.length
-  );
+  const idToEdit = isCreate
+    ? ""
+    : document.location.href.substring(
+        document.location.href.lastIndexOf("/") + 4,
+        document.location.href.length
+      );
+
   let thisTitle = "";
   const isMessage = form === "Message";
 

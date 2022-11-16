@@ -9,7 +9,7 @@ import userEvent from "@testing-library/user-event";
 describe("Given a Message component with no data", () => {
   describe("When rendered", () => {
     test("Then handleClick have to been called", () => {
-      const buttonClick = "bt-click";
+      const buttonClick = "bt-view";
       const handleClick = jest.fn();
 
       render(
@@ -35,7 +35,7 @@ describe("Given a Message component with data", () => {
   describe("When rendered", () => {
     test("Then deleteFromLikers have to been called", () => {
       const stringToFind1 = "subject";
-      const buttonClick = "bt-click";
+      const buttonClick = "bt-view";
       const handleClick = jest.fn();
 
       render(
