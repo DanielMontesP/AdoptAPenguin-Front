@@ -14,8 +14,9 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
     user: {
       logged: mockLogged,
       id: mockUser.id,
-      headerLastTitle: "Favourites",
     },
+    ui: { headerLastTitle: "Favourites" },
+    headerLastTitle: "Favourites",
   }),
   useAppDispatch: () => jest.fn(),
 }));
