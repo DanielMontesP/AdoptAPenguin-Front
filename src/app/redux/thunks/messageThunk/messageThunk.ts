@@ -119,7 +119,7 @@ export const editMessageThunk =
 
     if (token) {
       const { data: message } = await axios.put(
-        `${process.env.REACT_APP_API_URL}messages/message/edit/${formMessage.id}?task=${type}`,
+        `${process.env.REACT_APP_API_URL}messages/${formMessage.id}?task=${type}`,
         formMessage,
         {
           headers: {

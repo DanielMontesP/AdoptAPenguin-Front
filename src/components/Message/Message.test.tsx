@@ -35,8 +35,8 @@ describe("Given a Message component with data", () => {
   describe("When rendered", () => {
     test("Then deleteFromLikers have to been called", () => {
       const stringToFind1 = "subject";
-      const buttonClick = "bt-view";
-      const handleClick = jest.fn();
+      const buttonClick = "bt-delete";
+      const handleDelete = jest.fn();
 
       render(
         <Provider store={store}>
@@ -53,8 +53,8 @@ describe("Given a Message component with data", () => {
       expect(button).toBeInTheDocument();
 
       userEvent.click(button);
-      handleClick();
-      expect(handleClick).toHaveBeenCalled();
+      handleDelete();
+      expect(handleDelete).toHaveBeenCalled();
     });
   });
 });

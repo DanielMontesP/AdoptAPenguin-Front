@@ -1,9 +1,10 @@
 import axios from "axios";
-import { mockMessage } from "../../../../mocks/messages";
+import { mockMessageEmpty, mockMessage } from "../../../../mocks/messages";
 import { mockPenguin } from "../../../../mocks/penguins";
 
 import {
   createMessageThunk,
+  deleteMessageThunk,
   editMessageThunk,
   getMessagesThunk,
   getMessageThunk,
@@ -136,6 +137,25 @@ describe("Given the editMessageThunk with no token function", () => {
       });
 
       const thunk = editMessageThunk(mockMessage.id, "Message");
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledTimes(3);
+    });
+  });
+});
+
+describe("Given the deleteMessageThunk", () => {
+  describe("When it's called", () => {
+    test("Then it should call dispatch with the deleteMessage  action with penguins received from axios request", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.delete = jest.fn().mockResolvedValue({
+        data: { mockMessageEmpty },
+        status: 200,
+      });
+
+      const thunk = deleteMessageThunk(mockMessage.id);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledTimes(3);

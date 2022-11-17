@@ -6,6 +6,7 @@ import {
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
+import { getMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 import { Modal } from "../Modals/ModalPrompt";
 
@@ -24,7 +25,8 @@ const Message = ({ message }: Props): JSX.Element => {
   const { penguin } = useAppSelector((state) => state.penguins);
 
   const handleClick = () => {
-    if (message.id === "" || message.id === undefined) {
+    const idMessage = message.id;
+    if (idMessage === "" || idMessage === undefined) {
       const message = "Message id not found.";
       const newModalType = "Error";
 
@@ -33,7 +35,9 @@ const Message = ({ message }: Props): JSX.Element => {
 
       dispatch(isModalOpenActionCreator(true));
     } else {
-      navigate(`../message/edit/id=${message.id}`);
+      dispatch(getMessageThunk(idMessage));
+
+      navigate(`../message/edit/id=${idMessage}`);
     }
   };
 
