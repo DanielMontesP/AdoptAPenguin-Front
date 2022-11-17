@@ -175,7 +175,7 @@ function App() {
           }
         />
         <Route
-          path="/penguins/edit/:id"
+          path="/penguins/:id"
           element={
             <CheckInSecurity>
               <CreatePage type="Edit" form="Penguin" />

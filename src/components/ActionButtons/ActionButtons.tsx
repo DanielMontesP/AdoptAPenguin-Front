@@ -6,7 +6,10 @@ import {
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
-import { editPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import {
+  editPenguinThunk,
+  getPenguinThunk,
+} from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { cleanArray, blankFormData, hasNewMessages } from "../../utils/utils";
 import { Modal } from "../Modals/ModalPrompt";
@@ -57,7 +60,9 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const handleEdit = () => {
     setMenu((prevState) => !prevState);
 
-    navigate(`/penguins/edit/id=${penguin.id}`);
+    dispatch(getPenguinThunk(penguin.id));
+
+    navigate(`/penguins/id=${penguin.id}`);
   };
 
   const deleteFromLikers = () => {

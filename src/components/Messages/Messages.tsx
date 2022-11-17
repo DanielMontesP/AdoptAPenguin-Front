@@ -18,6 +18,7 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
 
   const handleClick = () => {
     dispatch(resetMessageThunk());
+
     navigate(`../message/create/`);
   };
 

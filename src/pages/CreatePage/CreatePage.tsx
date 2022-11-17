@@ -1,11 +1,9 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
-import { getMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
-import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import CreateForm from "../../components/CreateForm/CreateForm";
 import CreateMessageForm from "../../components/CreateMessage/CreateMessageForm";
 import FormsStyles from "../../Styles/FormsStyles";
@@ -24,15 +22,8 @@ const CreatePage = ({ type, form }: Props): JSX.Element => {
 
   const isCreate = type === "Create";
 
-  const idToEdit = isCreate
-    ? ""
-    : document.location.href.substring(
-        document.location.href.lastIndexOf("/") + 4,
-        document.location.href.length
-      );
-
   let thisTitle = "";
-  const isMessage = form === "Message";
+  const isMessage = headerTitle.includes("message");
 
   if (isMessage) {
     thisTitle = isCreate ? "New message..." : "Edit message...";
@@ -41,25 +32,13 @@ const CreatePage = ({ type, form }: Props): JSX.Element => {
   }
 
   useEffect(() => {
-    isMessage
-      ? dispatch(getMessageThunk(idToEdit))
-      : dispatch(getPenguinThunk(idToEdit));
     const SetTitleHeader = (title: string, lastTitle: string) => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));
     };
 
     if (headerTitle !== thisTitle) SetTitleHeader(thisTitle, headerTitle);
-  }, [
-    dispatch,
-    isMessage,
-    idToEdit,
-    penguin,
-    type,
-    headerTitle,
-    thisTitle,
-    isCreate,
-  ]);
+  }, [dispatch, penguin, headerTitle, thisTitle, isCreate]);
 
   return (
     <FormsStyles>
