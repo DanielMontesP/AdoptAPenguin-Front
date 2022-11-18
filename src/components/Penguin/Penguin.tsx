@@ -5,16 +5,24 @@ import { toPascalCase } from "../../utils/utils";
 import iconPhotoEmpty from "../../images/contact-photo-add.png";
 import { Modal } from "../Modals/ModalPrompt";
 import ActionButtons from "../ActionButtons/ActionButtons";
+import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
+import { useAppDispatch } from "../../app/redux/hooks/hooks";
 interface Props {
   penguin: IPenguin;
 }
 
 const Penguin = ({ penguin }: Props): JSX.Element => {
+  const dispatch = useAppDispatch();
+
   const [isModalOpen, setModal] = useState(false);
   const message = "Delete penguin: " + penguin?.name + "?";
   const navigate = useNavigate();
 
   const handleMoreDetail = () => {
+    dispatch(getPenguinThunk(penguin.id));
+    dispatch(getMessagesThunk(penguin.id));
+
     navigate(`/detail/${penguin.id}`);
   };
 

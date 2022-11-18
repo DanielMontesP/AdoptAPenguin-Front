@@ -41,7 +41,6 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
       },
     });
 
-    dispatch(resetPenguinThunk());
     dispatch(loadPenguinsActionCreator(penguins));
     dispatch(finishedLoadingActionCreator());
     setLoadingOffWithMessage("GET Penguins: Finished successfully", false);
@@ -69,7 +68,7 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
         false
       );
     }
-    dispatch(resetPenguinThunk());
+
     dispatch(loadPenguinsActionCreator(penguins));
     dispatch(finishedLoadingActionCreator());
     setLoadingOffWithMessage("GET Favourites: Finished successfully.", false);
@@ -224,7 +223,7 @@ export const editPenguinThunk =
 
     if (token) {
       const { data: penguin } = await axios.put(
-        `${process.env.REACT_APP_API_URL}penguins/?${formPenguin.id}?task=${type}`,
+        `${process.env.REACT_APP_API_URL}penguins/${formPenguin.id}?task=${type}`,
         formPenguin,
         {
           headers: {
