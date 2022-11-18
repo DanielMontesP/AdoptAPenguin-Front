@@ -24,7 +24,7 @@ describe("Given a Menu component", () => {
       const label1 = screen.getByTitle("bt-search");
       const label2 = screen.getByPlaceholderText(searchPlaceHolderText);
 
-      userEvent.type(label2, "search");
+      userEvent.type(label2, "Enter");
 
       userEvent.click(label1);
 

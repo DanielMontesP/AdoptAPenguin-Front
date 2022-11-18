@@ -4,12 +4,28 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { headerTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 import store from "../../app/redux/store/store";
+import { mockPenguin } from "../../mocks/penguins";
+import { mockUser } from "../../mocks/users";
 import Navbar from "../Navbar/Navbar";
 import { Modal } from "./ModalPrompt";
 
-describe("Given a LoginForm component", () => {
-  describe("When the word 'user1' is written to the username input field", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+let mockLogged = true;
+
+jest.mock("../../app/redux/hooks/hooks", () => ({
+  useAppSelector: () => ({
+    user: {
+      logged: mockLogged,
+      id: mockUser.id,
+    },
+    penguin: mockPenguin,
+    headerTitle: "Detail",
+  }),
+  useAppDispatch: () => jest.fn(),
+}));
+
+describe("Given a Modal component", () => {
+  describe("When asked to delete a penguin and user click Accept button", () => {
+    test("Then delete function has to be callled", () => {
       const labelToFind = "btn-accept";
       const inputText = "user1";
 
@@ -41,6 +57,42 @@ describe("Given a LoginForm component", () => {
 
       expect(handleAcceptClick).toHaveBeenCalled();
       expect(deletePenguin).toHaveBeenCalled();
+    });
+  });
+
+  describe("When asked to delete message and user click Accept button", () => {
+    test("Then delete function has to be callled", () => {
+      const labelToFind = "btn-accept";
+      const inputText = "user1";
+
+      const closeModal = jest.fn();
+      const deleteMessage = jest.fn();
+      const handleAcceptClick = jest.fn();
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Navbar headerTitle="Detail" />
+            <Modal
+              closeModal={closeModal}
+              idToProcess="modal"
+              content="message"
+              form="Message"
+              type="delete"
+            />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByPlaceholderText(labelToFind);
+      expect(label).toBeInTheDocument();
+
+      userEvent.type(label, inputText);
+
+      handleAcceptClick();
+      deleteMessage();
+
+      expect(handleAcceptClick).toHaveBeenCalled();
+      expect(deleteMessage).toHaveBeenCalled();
     });
   });
 

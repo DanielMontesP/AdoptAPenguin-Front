@@ -4,10 +4,8 @@ import {
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
-import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 
 import {
-  getPenguinThunk,
   loadFavsThunk,
   loadPenguinsThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
@@ -22,18 +20,10 @@ const DetailPage = (): JSX.Element => {
 
   const thisTitle = "Detail";
 
-  const idPenguin = document.location.href.substring(
-    document.location.href.lastIndexOf("/") + 1,
-    document.location.href.length
-  );
-
   useEffect(() => {
     headerLastTitle === "Favourites"
       ? dispatch(loadFavsThunk())
       : dispatch(loadPenguinsThunk());
-
-    dispatch(getPenguinThunk(idPenguin));
-    dispatch(getMessagesThunk(idPenguin));
 
     const SetTitleHeader = (title: string, lastTitle: string) => {
       dispatch(headerTitleActionCreator(title));
@@ -41,7 +31,7 @@ const DetailPage = (): JSX.Element => {
     };
 
     if (headerTitle !== thisTitle) SetTitleHeader(thisTitle, headerTitle);
-  }, [dispatch, headerTitle, headerLastTitle, idPenguin]);
+  }, [dispatch, headerTitle, headerLastTitle]);
 
   return <PenguinDetail allPenguins={allPenguins} penguin={penguin} />;
 };

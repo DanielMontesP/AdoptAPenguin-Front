@@ -31,3 +31,15 @@ export const mockMessages: IMessage[] = [
     id: "id",
   },
 ];
+
+export const mockMessagesEmpty: IMessage[] = [
+  {
+    idUser: "",
+    idPenguin: "",
+    subject: "",
+    content: "",
+    data: "",
+    read: "false",
+    id: "",
+  },
+];

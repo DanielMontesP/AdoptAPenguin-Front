@@ -17,7 +17,7 @@ import {
   finishedLoadingActionCreator,
   loadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
-import { blankMessageData } from "../../../../utils/utils";
+import { blankMessageData } from "../../initializers/iniMessages";
 
 export const getMessagesThunk =
   (idPenguin: string) => async (dispatch: AppDispatch) => {

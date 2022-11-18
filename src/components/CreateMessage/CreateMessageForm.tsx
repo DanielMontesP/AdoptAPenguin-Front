@@ -1,13 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { wrongAction } from "../Modals/Modals";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { useNavigate } from "react-router-dom";
-import {
-  blankMessageData,
-  cleanArray,
-  getCurrentDate,
-  newMessageData,
-} from "../../utils/utils";
+import { cleanArray, getCurrentDate } from "../../utils/utils";
 import {
   createMessageThunk,
   editMessageThunk,
@@ -15,6 +9,10 @@ import {
   resetMessageThunk,
 } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
+import {
+  blankMessageData,
+  newMessageData,
+} from "../../app/redux/initializers/iniMessages";
 
 let modFields = [""];
 
@@ -73,21 +71,18 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    try {
-      if (isCreate) {
-        processCreate("New");
-      } else {
-        processEdit();
-      }
 
-      dispatch(getMessagesThunk(penguin.id));
-      setFormData(blankMessageData);
-      dispatch(resetMessageThunk());
-
-      navigate(`/detail/${penguin.id}#messages`);
-    } catch (error) {
-      wrongAction("Error:" + error);
+    if (isCreate) {
+      processCreate("New");
+    } else {
+      processEdit();
     }
+
+    dispatch(getMessagesThunk(penguin.id));
+    setFormData(blankMessageData);
+    dispatch(resetMessageThunk());
+
+    navigate(`/detail/${penguin.id}#messages`);
   };
 
   return (

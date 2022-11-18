@@ -6,12 +6,13 @@ import {
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
+import { blankFormData } from "../../app/redux/initializers/iniPenguins";
 import {
   editPenguinThunk,
   getPenguinThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
-import { cleanArray, blankFormData, hasNewMessages } from "../../utils/utils";
+import { cleanArray, hasNewMessages } from "../../utils/utils";
 import { Modal } from "../Modals/ModalPrompt";
 
 interface Props {

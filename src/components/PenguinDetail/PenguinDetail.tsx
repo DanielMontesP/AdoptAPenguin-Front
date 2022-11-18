@@ -1,6 +1,7 @@
 import { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
+import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import {
   getPenguinThunk,
   resetPenguinThunk,
@@ -53,6 +54,8 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
 
     dispatch(resetPenguinThunk());
     dispatch(getPenguinThunk(prevPenguinId));
+
+    dispatch(getMessagesThunk(prevPenguinId));
   };
 
   const getDetailNext = () => {
@@ -69,6 +72,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
 
     dispatch(resetPenguinThunk());
     dispatch(getPenguinThunk(nextPenguinId));
+    dispatch(getMessagesThunk(nextPenguinId));
   };
 
   const handleTab = (event: MouseEvent<HTMLButtonElement>) => {
@@ -101,7 +105,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
           <div className="penguin--container">
             <img
               src={penguinImage}
-              alt={`Pinguino ${penguin.name}`}
+              alt={`Pinguino ${thisPenguin.name}`}
               className="detail-image"
             />
           </div>
