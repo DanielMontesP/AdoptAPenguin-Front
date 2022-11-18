@@ -54,6 +54,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
     if (imageAdded) {
       newFormData.append("_id", penguin.id);
+      newFormData.append("id", penguin.id);
       newFormData.append("name", formData.name);
       newFormData.append("category", formData.category);
       newFormData.append("image", formData.image);
