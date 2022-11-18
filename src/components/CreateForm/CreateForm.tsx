@@ -6,20 +6,18 @@ import {
   editPenguinThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { useNavigate } from "react-router-dom";
+import { cleanArray, resizeFile } from "../../utils/utils";
+import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import {
   blankFormData,
-  cleanArray,
   newPenguinFormData,
-  resizeFile,
-} from "../../utils/utils";
-import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
+} from "../../app/redux/initializers/iniPenguins";
 
 interface Props {
   penguin: IPenguin;
 }
 
 let modFields = [""];
-let imageAdded = false;
 
 const CreateForm = ({ penguin }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -114,7 +112,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       });
 
       modFields.push(event.target.id);
-      imageAdded = true;
     }
   };
 
@@ -123,7 +120,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       if (isCreate) {
         processCreate("New");
       } else {
-        processEdit(imageAdded);
+        processEdit(formData.image !== "");
       }
 
       setFormData(blankFormData);
@@ -150,7 +147,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     }
   };
 
-  const HidderBackground = imageAdded ? " opacity-mid" : "";
+  const HidderBackground = formData.image !== "" ? " opacity-mid" : "";
 
   const classImage =
     penguin.imageBackup || src.toString()

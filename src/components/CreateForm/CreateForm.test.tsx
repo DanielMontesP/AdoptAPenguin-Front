@@ -72,6 +72,18 @@ describe("Given a CreateForm component", () => {
       const handleSubmit = jest.fn();
       const handleImg = jest.fn();
 
+      jest.mock("../../app/redux/hooks/hooks", () => ({
+        useAppSelector: () => ({
+          user: {
+            logged: mockLogged,
+            id: mockUser.id,
+          },
+          ui: { headerLastTitle: "Home" },
+          headerLastTitle: "Home",
+        }),
+        useAppDispatch: () => jest.fn(),
+      }));
+
       render(
         <Provider store={store}>
           <BrowserRouter>

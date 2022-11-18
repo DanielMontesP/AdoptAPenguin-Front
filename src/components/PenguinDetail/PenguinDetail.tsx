@@ -54,6 +54,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
 
     dispatch(resetPenguinThunk());
     dispatch(getPenguinThunk(prevPenguinId));
+
     dispatch(getMessagesThunk(prevPenguinId));
   };
 

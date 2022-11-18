@@ -4,12 +4,30 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
 import {
-  mockEmptyDataPenguin,
+  mockMessage,
+  mockMessages,
+  mockMessagesEmpty,
+} from "../../mocks/messages";
+import {
   mockPenguin,
   mockPenguins,
   mockPenguinsEmpty,
 } from "../../mocks/penguins";
 import PenguinDetail from "./PenguinDetail";
+
+let mockLogged = true;
+
+jest.mock("../../app/redux/hooks/hooks", () => ({
+  useAppSelector: () => ({
+    logged: mockLogged,
+    id: "id",
+    penguins: { allPenguins: mockPenguins, penguin: mockPenguin },
+    messages: { allMessages: mockMessages, message: mockMessage },
+    allMessages: mockMessages,
+    penguin: mockPenguin,
+  }),
+  useAppDispatch: () => jest.fn(),
+}));
 
 describe("When bt-prev is clicked", () => {
   describe("When bt-prev is clicked", () => {
@@ -18,22 +36,11 @@ describe("When bt-prev is clicked", () => {
       const expectedButtons = 9;
 
       const getDetailPrev = jest.fn();
-      let mockLogged = true;
 
-      jest.mock("../../app/redux/hooks/hooks", () => ({
-        useAppSelector: () => ({
-          logged: mockLogged,
-          id: "id",
-          penguins: mockPenguinsEmpty,
-        }),
-      }));
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <PenguinDetail
-              allPenguins={mockPenguinsEmpty}
-              penguin={mockEmptyDataPenguin}
-            />
+            <PenguinDetail allPenguins={mockPenguins} penguin={mockPenguin} />
           </BrowserRouter>
         </Provider>
       );
@@ -112,10 +119,7 @@ describe("When bt-prev is clicked", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <PenguinDetail
-              allPenguins={mockPenguinsEmpty}
-              penguin={mockPenguin}
-            />
+            <PenguinDetail allPenguins={mockPenguins} penguin={mockPenguin} />
           </BrowserRouter>
         </Provider>
       );
