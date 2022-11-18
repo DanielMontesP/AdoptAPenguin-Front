@@ -16,7 +16,6 @@ const CheckInSecurity = ({ children }: Props) => {
     if (!logged || !id) {
       navigate("../login");
       dispatch(resetMessagesThunk);
-      // dispatch(resetPenguinsThunk);
     }
   }, [dispatch, logged, navigate, id]);
 
