@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { wrongAction } from "../Modals/Modals";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import { cleanArray, getCurrentDate } from "../../utils/utils";
