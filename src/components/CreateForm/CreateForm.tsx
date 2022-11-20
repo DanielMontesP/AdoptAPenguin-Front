@@ -50,21 +50,31 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const processEdit = (imageAdded: boolean) => {
     modFields = cleanArray(modFields);
+
     const newFormData = new FormData();
 
-    if (imageAdded) {
-      newFormData.append("_id", penguin.id);
-      newFormData.append("id", penguin.id);
-      newFormData.append("name", formData.name);
-      newFormData.append("category", formData.category);
-      newFormData.append("image", formData.image);
-      newFormData.append("imageBackup", formData.imageBackup);
-      newFormData.append("imageResized", formData.imageResized);
-      newFormData.append("description", formData.description);
-    }
+    newFormData.append(
+      "name",
+      formData.name === "" ? penguin.name : formData.name
+    );
+    newFormData.append(
+      "category",
+      formData.category === "" ? penguin.category : formData.category
+    );
+    newFormData.append("likes", JSON.stringify(penguin.likes));
+    newFormData.append("likers", JSON.stringify(penguin.likers));
+    newFormData.append("favs", JSON.stringify(penguin.favs));
+    newFormData.append("image", formData.image);
+    newFormData.append("imageBackup", formData.imageBackup);
+    newFormData.append("imageResized", formData.imageResized);
+    newFormData.append(
+      "description",
+      formData.description === "" ? penguin.description : formData.description
+    );
+
     dispatch(
       editPenguinThunk(
-        imageAdded ? newFormData : formData,
+        formData.image ? formData : newFormData,
         "Update fields: " + modFields.join(", ")
       )
     );
@@ -81,15 +91,8 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     event.preventDefault();
 
     setFormData({
-      ...(formData.id ||
-      formData.image ||
-      formData.name ||
-      formData.category ||
-      formData.description
-        ? formData
-        : penguin),
+      ...(isCreate ? formData : penguin),
       [event.target.id]: event.target.value,
-      id: penguin.id,
     });
 
     modFields.push(event.target.id);
@@ -101,7 +104,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       const image = await resizeFile(file);
 
       setFormData({
-        ...(formData.id || image ? formData : penguin),
+        ...(isCreate ? formData : penguin),
         image: event.target.files?.[0],
         imageBackup: "",
         imageResized: image,
