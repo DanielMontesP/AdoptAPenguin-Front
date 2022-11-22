@@ -150,7 +150,7 @@
 .header-desktop-title3 {
   margin: auto;
   animation: titleOpacity 10s infinite;
-  font-size: 60px;
+  font-size: 4rem;
   text-align: left;
 }
 
@@ -453,7 +453,7 @@ h1 {
   .header-desktop-title3 {
     margin: auto;
     animation: titleOpacity 10s infinite;
-    font-size: 130px;
+    font-size: 6em;
     text-align: left;
   }
 
@@ -773,9 +773,9 @@ h1 {
   color: white;
   align-items: center;
   display: flex;
-  justify-content: space-between;
   width: 100%;
   height: 75px;
+  text-align: center;
 }
 
 .header-edit-icon {
