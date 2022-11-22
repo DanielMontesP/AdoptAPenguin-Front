@@ -12,7 +12,7 @@ describe("Given a NavWellcome component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <NavWellcome headerTitle="Test" />
+            <NavWellcome headerTitle="HomePage" />
           </BrowserRouter>
         </Provider>
       );
