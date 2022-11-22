@@ -5,7 +5,6 @@ const Home = (): JSX.Element => {
   return (
     <HomePageStyles className="container">
       <h1 className="display-none"> Home </h1>
-
       <div className="bt-container">
         <NavLink to="/login" className="link">
           <button className="bt-login">Login</button>
@@ -14,6 +13,7 @@ const Home = (): JSX.Element => {
           <button className="bt-register">Sign Up</button>
         </NavLink>
       </div>
+      <div className="footer">2022 Penguins Inc.</div>
     </HomePageStyles>
   );
 };

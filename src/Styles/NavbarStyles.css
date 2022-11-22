@@ -385,6 +385,12 @@ h1 {
   margin-bottom: 5px;
 }
 
+.footer {
+  position: fixed;
+  bottom: 5%;
+  color: grey;
+}
+
 .animatedFavs {
   width: auto;
   height: 32px;
