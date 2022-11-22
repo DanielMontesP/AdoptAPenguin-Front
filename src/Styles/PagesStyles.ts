@@ -3,8 +3,8 @@ import iconHamburguer from "../images/menu_hamburguer.png";
 import iconBack from "../images/icon-back.png";
 import iconFavs from "../images/icon-stars.png";
 import iconMenuFavs from "../images/star-add-32.png";
-import iconMenuFavsDelete from "../images/fav-delete-32.png";
-import iconAddFav from "../images/icon-add_plus.png";
+import iconMenuFavsDelete from "../images/fav-full.png";
+import iconAddFav from "../images/fav-empty.png";
 import iconHome from "../images/icon-home.png";
 import iconLogout from "../images/icon-logout-white.png";
 import iconDelete from "../images/delete-32.png";
@@ -224,7 +224,7 @@ const PagesStyles = styled.div`
     width: 100%;
     margin: auto;
     position: fixed;
-    bottom: 5%;
+    bottom: 15%;
     display: flex;
     justify-content: center;
   }
@@ -415,7 +415,9 @@ const PagesStyles = styled.div`
     border-radius: 15px;
     border: 0;
   }
-
+  .header-wellcome {
+    display: none;
+  }
   .bt-login {
     width: 100%;
     height: 50px;
@@ -464,7 +466,7 @@ const PagesStyles = styled.div`
     width: 30px;
     height: 30px;
     background: none;
-    background-image: url(${iconMenuFavs});
+    background-image: url(${iconAddFav});
     background-repeat: no-repeat;
     background-position: inherit;
     background-size: contain;

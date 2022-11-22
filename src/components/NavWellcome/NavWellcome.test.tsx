@@ -6,18 +6,19 @@ import store from "../../app/redux/store/store";
 
 describe("Given a NavWellcome component", () => {
   describe("When rendered", () => {
-    test("Then deleteFromLikers have to been called", () => {
-      const stringToFind = "Responsive site";
+    test("Then place holder text header-wellcome is rendered", () => {
+      const stringToFind = "header-wellcome";
 
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <NavWellcome headerTitle="Test" />
+            <NavWellcome headerTitle="HomePage" />
           </BrowserRouter>
         </Provider>
       );
 
-      const label = screen.getByText(stringToFind);
+      const label = screen.getByPlaceholderText(stringToFind);
+
       expect(label).toBeInTheDocument();
     });
   });

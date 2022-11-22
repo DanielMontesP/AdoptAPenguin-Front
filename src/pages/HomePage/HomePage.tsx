@@ -9,7 +9,7 @@ import Home from "../../components/Home/Home";
 const HomePage = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
-  const thisTitle = "AdoptAPenguin.com";
+  const thisTitle = "HomePage";
 
   const { headerTitle } = useAppSelector((state) => state.ui);
 
