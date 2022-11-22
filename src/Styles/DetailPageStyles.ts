@@ -19,7 +19,7 @@ import detailPrev from "../images/detail-prev.png";
 import detailNext from "../images/detail-next.png";
 
 const DetailPageStyles = styled.div`
-  font-family: Roboto, sans-serif;
+  font-family: Montserrat, sans-serif;
   text-align: justify;
 
   @media only screen and (min-width: 421px) {
