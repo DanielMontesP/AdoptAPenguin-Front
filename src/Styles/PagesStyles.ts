@@ -226,7 +226,8 @@ const PagesStyles = styled.div`
     position: fixed;
     bottom: 15%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    max-width: 75%;
   }
 
   .li-detail {
