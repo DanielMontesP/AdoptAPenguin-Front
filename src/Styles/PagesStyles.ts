@@ -441,10 +441,9 @@ const PagesStyles = styled.div`
 
   .submitContainer {
     display: flex;
-
-    justify-content: space-around;
-    flex-direction: column;
     width: 100%;
+    flex-direction: column;
+    align-items: center;
   }
 
   .display-none {
