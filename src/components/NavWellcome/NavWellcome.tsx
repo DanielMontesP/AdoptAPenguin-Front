@@ -1,6 +1,9 @@
 import "../../Styles/NavbarStyles.css";
 
-export const NavWellcome = (): JSX.Element => {
+interface Props {
+  headerTitle: string;
+}
+export const NavWellcome = ({ headerTitle }: Props): JSX.Element => {
   return (
     <div className={`header-wellcome`}>
       <div className="header-title-container">

@@ -134,9 +134,8 @@
 }
 
 .header-desktop-title1 {
+  color: white;
   width: inherit;
-  position: fixed;
-  top: 47px;
   margin: auto;
   margin-left: 20px;
   animation: move 30s infinite;
@@ -144,8 +143,6 @@
 
 .header-desktop-title2 {
   width: inherit;
-  position: fixed;
-  top: 45px;
   margin: auto;
   margin-left: 10px;
   animation: move2 30s infinite;
@@ -155,8 +152,6 @@
   width: inherit;
   margin: auto;
   animation: titleOpacity 10s infinite;
-  position: fixed;
-  top: 25px;
 }
 
 .header-desktop-title-likes {
@@ -351,10 +346,11 @@
 }
 
 body {
-  background-image: url("../images/background2Heart.png");
+  height: 100vh;
+  width: 100%;
   font-family: Nunito, sans-serif;
   margin: 0;
-  width: -webkit-fill-available;
+  margin: auto;
 }
 
 .devicons-by {
@@ -760,10 +756,9 @@ h1 {
 }
 
 .header-wellcome {
-  background: rgb(29, 29, 29);
-  color: white;
   position: fixed;
-
+  top: 40%;
+  color: white;
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -846,10 +841,11 @@ ul {
 }
 
 .container {
-  max-width: 600px;
-  width: 100%;
-  display: flow-root;
-  margin: auto;
+  background-image: url("../images/HomePage.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-position: center;
 }
 
 .menu-hr-horizontal {

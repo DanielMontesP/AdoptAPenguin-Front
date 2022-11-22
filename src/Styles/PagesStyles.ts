@@ -221,10 +221,12 @@ const PagesStyles = styled.div`
   }
 
   .bt-container {
-    margin-top: 30px;
-    max-width: 500px;
+    width: 100%;
     margin: auto;
-    margin-top: 50px;
+    position: fixed;
+    bottom: 5%;
+    display: flex;
+    justify-content: center;
   }
 
   .li-detail {
@@ -404,30 +406,29 @@ const PagesStyles = styled.div`
   }
 
   .bt-register {
-    width: 40%;
+    width: 100%;
     height: 50px;
-    color: white;
+    color: black;
     font-size: 20px;
     font-weight: bold;
-    background-color: rgb(29, 29, 29);
+    background-color: white;
     border-radius: 15px;
     border: 0;
   }
 
   .bt-login {
-    width: 40%;
+    width: 100%;
     height: 50px;
     color: white;
     font-size: 20px;
     font-weight: bold;
-    background-color: rgb(29, 29, 29);
-    border-radius: 10px;
-    margin: 10px;
-    border: 0;
+    background-color: transparent;
+    border-radius: 15px;
+    border: 1px solid white;
   }
-
   .link {
-    margin: auto;
+    width: 200px;
+    margin: 10px;
     color: blue;
     font-size: 14px;
     cursor: pointer;
