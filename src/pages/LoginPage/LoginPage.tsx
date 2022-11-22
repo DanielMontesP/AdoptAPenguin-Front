@@ -4,7 +4,7 @@ import FormsStyles from "../../Styles/FormsStyles";
 
 const LoginPage = (): JSX.Element => {
   return (
-    <FormsStyles className="login-container">
+    <FormsStyles className="container">
       <h1 className="display-none">AdoptaUnPingüino.com</h1>
       <LoginForm />
     </FormsStyles>

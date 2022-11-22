@@ -49,13 +49,11 @@ function App() {
       result = <Navbar headerTitle={headerTitle} />;
     } else {
       if (!logged) {
-        result = <NavWellcome />;
+        result = <NavWellcome headerTitle={headerTitle} />;
       }
-
       return result;
     }
   };
-
   handleNav();
 
   useEffect(() => {
@@ -78,7 +76,7 @@ function App() {
       window.removeEventListener("resize", updateMedia);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [dispatch, logged, loading, id, isDesktop]);
+  }, [dispatch, logged, loading, id, isDesktop, notScrolled, headerTitle]);
 
   return (
     <>

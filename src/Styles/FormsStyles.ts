@@ -213,6 +213,8 @@ const FormsStyles = styled.div`
   }
 
   form {
+    position: fixed;
+    top: 30%;
     display: flex;
     flex-direction: column;
     row-gap: 15px;
@@ -257,9 +259,10 @@ const FormsStyles = styled.div`
     margin-left: 12px;
   }
 
-  a {
+  a,
+  a:visited {
+    color: white;
     text-decoration: none;
-    color: blue;
     font-size: 16px;
     cursor: pointer;
   }
@@ -335,20 +338,14 @@ const FormsStyles = styled.div`
 
   .bt-login,
   .bt-register {
-    color: white;
-    background-color: rgb(29, 29, 29);
-    padding: 14px 20px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
-    border-radius: 15px;
-    align-items: center;
-    margin: auto;
-    height: 50px;
     width: 70%;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    border-radius: 15px;
+    border: 1px solid white;
   }
 
   .header {
@@ -576,6 +573,7 @@ const FormsStyles = styled.div`
   }
 
   .link {
+    color: white;
     margin: auto;
   }
 
