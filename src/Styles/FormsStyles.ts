@@ -262,7 +262,7 @@ const FormsStyles = styled.div`
   a:visited {
     color: white;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
   }
 
@@ -322,11 +322,15 @@ const FormsStyles = styled.div`
   }
 
   .bt-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 400px;
     width: 100%;
+    font-size: 20px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    column-gap: 40px;
+    align-items: center;
+    margin: auto;
+    margin-top: 400px;
     background-image: none;
     margin-top: 50px;
   }
@@ -574,11 +578,7 @@ const FormsStyles = styled.div`
   .link {
     color: white;
     margin: auto;
-  }
-
-  .submitContainer {
-    display: flex;
-    width: 100%;
+    font-size: 20px;
   }
 
   .display-none {

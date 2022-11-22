@@ -10,6 +10,16 @@
     align-items: center;
   }
 
+  .header-desktop-title3 {
+    width: min-content;
+    margin: auto;
+    animation: titleOpacity 10s infinite;
+    font-size: 4em;
+    text-align: left;
+    position: fixed;
+    top: 20%;
+  }
+
   .header-desktop-title {
     text-align: left;
     flex: 4;
@@ -145,13 +155,6 @@
   margin: auto;
   margin-left: 10px;
   animation: move2 30s infinite;
-}
-
-.header-desktop-title3 {
-  margin: auto;
-  animation: titleOpacity 10s infinite;
-  font-size: 4rem;
-  text-align: left;
 }
 
 .header-desktop-title-likes {
@@ -349,7 +352,7 @@ body {
   height: 100vh;
   width: 100%;
   font-family: Nunito, sans-serif;
-  margin: 0;
+
   margin: auto;
 }
 
@@ -387,8 +390,11 @@ h1 {
 
 .footer {
   position: fixed;
-  bottom: 5%;
+  top: 90%;
   color: grey;
+  text-align: center;
+  margin: auto;
+  width: 100%;
 }
 
 .animatedFavs {
@@ -428,6 +434,16 @@ h1 {
     margin: auto;
   }
 
+  .header-desktop-title3 {
+    width: min-content;
+    margin: auto;
+    animation: titleOpacity 10s infinite;
+    font-size: 5.5em;
+    text-align: left;
+    position: fixed;
+    top: 20%;
+  }
+
   .options {
     display: flex;
     flex-direction: column;
@@ -448,13 +464,6 @@ h1 {
     margin-bottom: 10px;
     border-radius: 5px 5px 5px 5px;
     height: 87.4vh;
-  }
-
-  .header-desktop-title3 {
-    margin: auto;
-    animation: titleOpacity 10s infinite;
-    font-size: 6em;
-    text-align: left;
   }
 
   .penguins-container {
@@ -856,6 +865,7 @@ ul {
   height: 100vh;
   display: flex;
   justify-content: center;
+
   background-image: url("../images/HomePage.png");
   background-size: cover;
   background-repeat: no-repeat;
