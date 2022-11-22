@@ -213,12 +213,13 @@ const FormsStyles = styled.div`
   }
 
   form {
+    width: 100%;
+    max-width: 500px;
+    row-gap: 15px;
     position: fixed;
     top: 30%;
     display: flex;
     flex-direction: column;
-    row-gap: 15px;
-    width: 100%;
   }
 
   .form-register {
@@ -557,9 +558,9 @@ const FormsStyles = styled.div`
 
   .bt-register {
     color: white;
-    background-color: rgb(29, 29, 29);
+    background-color: transparent;
     padding: 14px 20px;
-    border: none;
+    border: 1px solid white;
     font-weight: bold;
     cursor: pointer;
     display: flex;

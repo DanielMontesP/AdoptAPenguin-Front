@@ -3,7 +3,7 @@ import FormsStyles from "../../Styles/FormsStyles";
 
 const RegisterPage = (): JSX.Element => {
   return (
-    <FormsStyles className="register-container">
+    <FormsStyles className="container">
       <RegisterForm />;
     </FormsStyles>
   );
