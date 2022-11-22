@@ -4,13 +4,25 @@ interface Props {
   headerTitle: string;
 }
 export const NavWellcome = ({ headerTitle }: Props): JSX.Element => {
-  return (
-    <div className={`header-wellcome`}>
-      <div className="header-title-container">
-        <h1 className={`header-desktop-title1`}>Responsive site</h1>
-        <h1 className={`header-desktop-title3`}>AdoptApenguin.com</h1>
-        <h1 className={`header-desktop-title2`}>Amazing features...</h1>
+  const isWellcome = headerTitle === "HomePage";
+
+  const content = () => {
+    return (
+      <div className={`header-wellcome`}>
+        <div className="header-title-container">
+          <h1 className={`header-desktop-title1`}>Responsive site</h1>
+          <h1 className={`header-desktop-title3`}>
+            Adopt
+            <br />
+            Apenguin
+            <br />
+            .com
+          </h1>
+          <h1 className={`header-desktop-title2`}>Amazing features...</h1>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
+
+  return <>{isWellcome ? content() : ""}</>;
 };

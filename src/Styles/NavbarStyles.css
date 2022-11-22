@@ -127,7 +127,6 @@
     display: flex;
     justify-content: center;
     height: 78px;
-    width: 100%;
     margin: auto;
     margin-top: 15px;
   }
@@ -149,9 +148,10 @@
 }
 
 .header-desktop-title3 {
-  width: inherit;
   margin: auto;
   animation: titleOpacity 10s infinite;
+  font-size: 60px;
+  text-align: left;
 }
 
 .header-desktop-title-likes {
@@ -444,6 +444,13 @@ h1 {
     height: 87.4vh;
   }
 
+  .header-desktop-title3 {
+    margin: auto;
+    animation: titleOpacity 10s infinite;
+    font-size: 130px;
+    text-align: left;
+  }
+
   .penguins-container {
     border-radius: 8px;
     padding: 0 10px 15px;
@@ -598,7 +605,6 @@ h1 {
 
   .header-title-container {
     height: 78px;
-    width: 250px;
     margin: auto;
   }
 
@@ -757,7 +763,7 @@ h1 {
 
 .header-wellcome {
   position: fixed;
-  top: 40%;
+  top: 15%;
   color: white;
   align-items: center;
   display: flex;
