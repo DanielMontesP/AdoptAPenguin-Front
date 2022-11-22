@@ -13,6 +13,8 @@ import iconAddPhoto from "../images/contact-photo.png";
 import iconEdit from "../images/icon-editar.png";
 
 const FormsStyles = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
+
   @media only screen and (max-width: 420px) {
     button {
       padding: 14px 20px;
@@ -49,7 +51,6 @@ const FormsStyles = styled.div`
       height: 150px;
       width: 70%;
       margin: auto;
-      font-family: inherit;
       border: 2px solid black;
       align-items: center;
       justify-content: center;
@@ -149,7 +150,6 @@ const FormsStyles = styled.div`
       height: 150px;
       width: 70%;
       margin: auto;
-      font-family: inherit;
       border: 2px solid black;
       align-items: center;
       justify-content: center;

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
+
 @media only screen and (max-width: 420px) {
   .app .header {
     height: 5rem;
@@ -11,12 +12,12 @@
     align-items: center;
   }
 
-  .header-desktop-title3 {
+  .title-big {
     width: min-content;
     margin: auto;
     animation: titleOpacity 10s infinite;
     font-size: 4em;
-    text-align: left;
+    text-align: justify;
     position: fixed;
     top: 20%;
   }
@@ -435,12 +436,16 @@ h1 {
     margin: auto;
   }
 
-  .header-desktop-title3 {
-    width: min-content;
+  .title-big {
+    width: 275px;
+    height: 240px;
     margin: auto;
     animation: titleOpacity 10s infinite;
     font-size: 5.5em;
-    text-align: left;
+
+    text-align: justify;
+    text-justify: inter-word;
+    overflow: overlay;
     position: fixed;
     top: 20%;
   }
