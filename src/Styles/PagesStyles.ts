@@ -218,7 +218,7 @@ const PagesStyles = styled.div`
   .bt-container {
     margin: auto;
     position: fixed;
-    bottom: 15%;
+    bottom: 25%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -441,6 +441,9 @@ const PagesStyles = styled.div`
 
   .submitContainer {
     display: flex;
+
+    justify-content: space-around;
+    flex-direction: column;
     width: 100%;
   }
 

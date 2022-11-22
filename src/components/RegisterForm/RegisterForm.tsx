@@ -88,7 +88,6 @@ const RegisterForm = (): JSX.Element => {
         <button type="submit" className="bt-register" placeholder="bt-submit">
           Register
         </button>
-
         <div className="footer">2022 Penguins Inc.</div>
       </div>
     </form>

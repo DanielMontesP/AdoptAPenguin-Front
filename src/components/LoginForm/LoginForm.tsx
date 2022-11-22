@@ -62,8 +62,8 @@ const LoginForm = () => {
         <button disabled={buttonDisabled} className="bt-login">
           Login
         </button>
+        <div className="footer">2022 Penguins Inc.</div>
       </div>
-      <div className="footer">2022 Penguins Inc.</div>
     </form>
   );
 };
