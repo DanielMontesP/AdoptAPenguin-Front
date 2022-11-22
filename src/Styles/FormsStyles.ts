@@ -219,8 +219,6 @@ const FormsStyles = styled.div`
     flex-direction: column;
     row-gap: 15px;
     width: 100%;
-    max-width: 500px;
-    margin: auto;
   }
 
   .form-register {

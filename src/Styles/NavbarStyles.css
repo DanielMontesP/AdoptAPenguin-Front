@@ -841,10 +841,12 @@ ul {
 }
 
 .container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
   background-image: url("../images/HomePage.png");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
   background-position: center;
 }
 
