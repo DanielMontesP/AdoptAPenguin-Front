@@ -45,7 +45,7 @@ function App() {
 
   const handleNav = () => {
     if (logged && !notScrolled) {
-      return <Navbar headerTitle={headerTitle} />;
+      result = <Navbar headerTitle={headerTitle} />;
     }
   };
 
