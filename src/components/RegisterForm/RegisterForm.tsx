@@ -7,7 +7,6 @@ import {
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { UserRegister } from "../../app/redux/types/userInterfaces/userInterfaces";
-import imgHome from "../../images/lapanda.jpg";
 
 const thisTitle = "AdoptAPenguin.com";
 
@@ -52,8 +51,12 @@ const RegisterForm = (): JSX.Element => {
   }, [dispatch, headerTitle]);
 
   return (
-    <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-      <img src={imgHome} title="Git" alt="Git" className="img-Home" />
+    <form
+      className="form"
+      noValidate
+      autoComplete="off"
+      onSubmit={handleSubmit}
+    >
       <div className="link">
         Already have an account? Please
         <Link to="/login"> Log in</Link>
