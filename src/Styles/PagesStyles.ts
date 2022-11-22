@@ -58,11 +58,6 @@ const PagesStyles = styled.div`
     width: 200px;
   }
 
-  h1 {
-    font-size: 20px;
-    margin-left: 10px;
-  }
-
   h2 {
     font-size: 16px;
     text-align: center;
@@ -221,13 +216,19 @@ const PagesStyles = styled.div`
   }
 
   .bt-container {
-    width: 100%;
     margin: auto;
     position: fixed;
     bottom: 15%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: space-evenly;
+    -webkit-justify-content: space-evenly;
+    -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
-    max-width: 75%;
+    column-gap: 30px;
+    max-width: 71%;
   }
 
   .li-detail {
@@ -432,8 +433,9 @@ const PagesStyles = styled.div`
   .link {
     width: 200px;
     margin: 10px;
-    color: blue;
-    font-size: 14px;
+    color: white;
+    margin: auto;
+    font-size: 20px;
     cursor: pointer;
   }
 

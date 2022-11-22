@@ -4,7 +4,7 @@ import HomePageStyles from "../../Styles/PagesStyles";
 const Home = (): JSX.Element => {
   return (
     <HomePageStyles className="container">
-      <h1 className="display-none"> Home </h1>
+      <h1 className={`header-desktop-title3`}>Adopt Apenguin .com</h1>
       <div className="bt-container">
         <NavLink to="/login" className="link">
           <button className="bt-login">Login</button>

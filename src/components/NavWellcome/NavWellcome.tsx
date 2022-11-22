@@ -8,17 +8,7 @@ export const NavWellcome = ({ headerTitle }: Props): JSX.Element => {
 
   const content = () => {
     return (
-      <div className={`header-wellcome`} placeholder="header-wellcome">
-        <div className="header-title-container">
-          <h1 className={`header-desktop-title3`}>
-            Adopt
-            <br />
-            Apenguin
-            <br />
-            .com
-          </h1>
-        </div>
-      </div>
+      <div className={`header-wellcome`} placeholder="header-wellcome"></div>
     );
   };
 

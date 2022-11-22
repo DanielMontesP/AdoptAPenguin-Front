@@ -23,8 +23,8 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
 
 describe("Given a HomePage Component", () => {
   describe("When it's rendered", () => {
-    test("Then it should show the text 'Home'", () => {
-      const expectedResult = "Home";
+    test("Then it should show the text 'Login'", () => {
+      const expectedResult = "Login";
 
       const SetTitleHeader = jest.fn();
 

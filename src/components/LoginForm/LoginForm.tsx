@@ -63,6 +63,7 @@ const LoginForm = () => {
           Login
         </button>
       </div>
+      <div className="footer">2022 Penguins Inc.</div>
     </form>
   );
 };
