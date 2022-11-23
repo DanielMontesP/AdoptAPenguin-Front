@@ -18,7 +18,7 @@
     margin: auto;
     position: fixed;
     top: 20%;
-    font-family: "Montserrat";
+    font-family: Montserrat, sans-serif;
     font-weight: bolder;
     background-color: transparent;
     font-size: 3.8em;
@@ -447,7 +447,7 @@ h1 {
     margin: auto;
     position: fixed;
     top: 20%;
-    font-family: "Montserrat";
+    font-family: Montserrat, sans-serif;
     font-weight: bolder;
     background-color: transparent;
     font-size: 5em;
