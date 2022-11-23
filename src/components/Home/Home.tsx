@@ -4,8 +4,12 @@ import HomePageStyles from "../../Styles/PagesStyles";
 const Home = (): JSX.Element => {
   return (
     <HomePageStyles className="container">
-      <textarea className={`title-big`}>Adopt Apenguin .com</textarea>
       <div className="bt-container">
+        <textarea
+          className={`title-big`}
+          value="Adopt Apenguin .com"
+          readOnly
+        />
         <NavLink to="/login" className="link">
           <button className="bt-login">Login</button>
         </NavLink>
