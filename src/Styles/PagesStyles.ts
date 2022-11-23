@@ -10,11 +10,11 @@ import iconLogout from "../images/icon-logout-white.png";
 import iconDelete from "../images/delete-32.png";
 import iconSoundOff from "../images/icon-sound-off.png";
 import iconSoundOn from "../images/icon-sound-on.png";
-import iconEdit from "../images/icon-editar32.png";
-import iconLike from "../images/heartLike.png";
-import iconLikeInit from "../images/icon-likes-empty.png";
-import iconMesssagesGot from "../images/message-45.png";
-import iconMesssagesNew from "../images/message-new.png";
+import iconEdit from "../images/edit.png";
+import iconLike from "../images/like-full.png";
+import iconLikeInit from "../images/like-add.png";
+import iconMesssagesGot from "../images/mail-empty.png";
+import iconMesssagesNew from "../images/mail-empty.png";
 
 const PagesStyles = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
@@ -105,13 +105,11 @@ const PagesStyles = styled.div`
   }
 
   .penguin-image {
-    width: 95%;
-    border-radius: 5px;
-    min-width: 320px;
     height: 220px;
+    width: 100%;
+    min-width: 320px;
+    border-radius: 5px;
     margin: auto;
-    margin-top: 10px;
-    background-color: lightgray;
     object-fit: cover;
   }
 
@@ -126,8 +124,9 @@ const PagesStyles = styled.div`
 
   .category {
     height: fit-content;
+
     font-size: 15px;
-    background-color: #ffe02c;
+    background-color: lightgrey;
     padding-left: 5px;
     padding-right: 5px;
     box-shadow: 0 3px 6px #666;
@@ -140,10 +139,10 @@ const PagesStyles = styled.div`
   }
 
   .penguin-name {
+    height: 0;
+    text-align: left;
+    margin-left: 10px;
     flex: 2;
-    border: 0;
-    margin-top: -40px;
-    min-width: 55px;
   }
 
   .animated {
@@ -156,8 +155,6 @@ const PagesStyles = styled.div`
   }
 
   .animatedLike {
-    width: 30px;
-    height: 30px;
     background: none;
     background-image: url(${iconLike});
     background-repeat: no-repeat;
@@ -167,8 +164,6 @@ const PagesStyles = styled.div`
   }
 
   .animatedLikeInit {
-    width: 30px;
-    height: 30px;
     background: none;
     background-image: url(${iconLikeInit});
     background-repeat: no-repeat;
@@ -178,9 +173,9 @@ const PagesStyles = styled.div`
     border: 0;
   }
   .penguin-description {
-    width: 89%;
     min-height: 40px;
     margin: auto;
+    margin-top: 20px;
     text-align: justify;
   }
 
@@ -316,31 +311,27 @@ const PagesStyles = styled.div`
     background: url(${iconMesssagesNew});
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 40px;
+    background-size: contain;
     margin-left: 24px;
     border: 0;
+    flex: 1;
   }
 
   .bt-message-got {
     background: url(${iconMesssagesGot});
-    background-position: center;
+    background-position: right;
     background-repeat: no-repeat;
-    background-size: 40px;
+    background-size: contain;
     margin-left: 24px;
     border: 0;
+    flex: 1;
   }
 
   .penguin-image-container {
     height: 280px;
-    width: 95%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    margin: auto;
-    margin-top: -20px;
     border-radius: 5px 5px 5px 5px;
-    text-align: center;
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
   .penguin-image-detail {
@@ -370,22 +361,15 @@ const PagesStyles = styled.div`
     margin-bottom: 50px;
     text-align: center;
     padding: 0.5em;
-    border: 1px solid grey;
     border-radius: 15px;
     display: inline-flex;
     flex-wrap: wrap;
     background: #fff;
     -webkit-transition: 0.5s;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-shadow: 2px 2px 10px rgb(140, 134, 134);
   }
 
   .penguin-datalist {
-    position: relative;
-    left: 20px;
-    display: flex;
+    margin-top: 15px;
   }
 
   .bt-likes {
@@ -470,25 +454,23 @@ const PagesStyles = styled.div`
   }
 
   .animatedFav {
-    width: 30px;
-    height: 30px;
     background: none;
     background-image: url(${iconAddFav});
     background-repeat: no-repeat;
-    background-position: inherit;
+    background-position: right;
     background-size: contain;
     border: 0;
+    flex: 2;
   }
 
   .animatedFavDelete {
-    width: 30px;
-    height: 30px;
     background: none;
     background-image: url(${iconMenuFavsDelete});
     background-repeat: no-repeat;
-    background-position: inherit;
+    background-position: right;
     background-size: contain;
     border: 0;
+    flex: 2;
   }
 
   .animatedDelete {
@@ -507,6 +489,7 @@ const PagesStyles = styled.div`
     background: url(${iconEdit});
     background-repeat: no-repeat;
     background-position: right;
+    background-size: contain;
     border: 0;
     margin: auto;
   }
@@ -516,15 +499,13 @@ const PagesStyles = styled.div`
   }
 
   .buttons-container {
-    width: 85%;
+    width: 100%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: space-around;
-    position: relative;
-    top: 270px;
     margin: auto;
+  }
+
+  .edit-buttons-container {
+    height: 30px;
   }
 
   .container {

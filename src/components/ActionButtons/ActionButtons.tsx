@@ -1,16 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  isModalOpenActionCreator,
-  modalMessageActionCreator,
-  modalTypeActionCreator,
-} from "../../app/redux/features/uiSlice/uiSlice";
+
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { blankFormData } from "../../app/redux/initializers/iniPenguins";
-import {
-  editPenguinThunk,
-  getPenguinThunk,
-} from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import { editPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { cleanArray, hasNewMessages } from "../../utils/utils";
 import { Modal } from "../Modals/ModalPrompt";
@@ -24,9 +17,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const { headerTitle } = useAppSelector((state) => state.ui);
 
   const isDetailPage = headerTitle === "Detail" ? true : false;
-  const isHomePage = headerTitle === "Home" ? true : false;
-
-  const [, setMenu] = useState(false);
   const [, setFormData] = useState<IPenguin>(blankFormData);
   const [isModalOpen, setModal] = useState(false);
 
@@ -45,25 +35,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
   const handleMessage = () => {
     navigate(`/detail/${penguin.id}#messages`);
-  };
-
-  const handleDelete = (): void => {
-    const message = "Delete permanently from database? ";
-    const newModalType = "delete";
-
-    dispatch(modalTypeActionCreator(newModalType));
-    dispatch(modalMessageActionCreator(message));
-
-    setModal((prevState) => !prevState);
-    dispatch(isModalOpenActionCreator(true));
-  };
-
-  const handleEdit = () => {
-    setMenu((prevState) => !prevState);
-
-    dispatch(getPenguinThunk(penguin.id));
-
-    navigate(`/penguins/id=${penguin.id}`);
   };
 
   const deleteFromLikers = () => {
@@ -127,10 +98,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     ? " bounce animatedLike"
     : ` bounce2 animatedLikeInit`;
 
-  const selectIconEdit = isFav
-    ? " bounce animatedEdit"
-    : " bounce2 animatedEdit";
-
   const btContainerClasses = () => {
     const newClass = !isDetailPage
       ? "buttons-container"
@@ -138,31 +105,8 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     return newClass;
   };
 
-  const HidderDelete = isHomePage ? " no-visible" : "";
-
-  const classButtonDelete = isFav
-    ? " bounce animatedDelete"
-    : " bounce2 animatedDelete";
-
   return (
     <div className={btContainerClasses()}>
-      <button
-        placeholder="btn-favs"
-        onClick={handleFavs}
-        className={`animated${selectIconFav}`}
-      />
-      <button
-        className={`animated${selectIconEdit}`}
-        onClick={handleEdit}
-        title="btn-edit"
-      />
-      <button
-        title="btn-delete"
-        placeholder="btn-delete"
-        className={`animated${classButtonDelete}${HidderDelete}`}
-        onClick={handleDelete}
-      />
-
       <button
         className={`animated${selectIconLike}`}
         onClick={handleLikes}
@@ -177,7 +121,11 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
       >
         <span className="new-messages-counter">{countNewMessages}</span>
       </button>
-
+      <button
+        placeholder="btn-favs"
+        onClick={handleFavs}
+        className={`animated${selectIconFav}`}
+      />
       {isModalOpen && (
         <Modal
           type={modalType}

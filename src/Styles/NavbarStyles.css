@@ -186,14 +186,16 @@ body {
 
 .likes {
   width: 75%;
+  color: white;
   position: relative;
   left: 28px;
   top: -10px;
   margin-left: 5px;
   padding: 3px;
   display: inline-flex;
-  border: 2px solid rgb(6, 6, 6);
-  border-radius: 8px;
+  border: 2px solid rgb(241, 14, 14);
+  background-color: rgb(241, 14, 14);
+  border-radius: 15px;
   align-items: center;
   justify-content: center;
   font-size: 1em;
@@ -377,7 +379,7 @@ h1 {
   width: 32px;
   height: 32px;
   margin-bottom: 10px;
-  background: url("../images/icon-editar32.png");
+  background: url("../images/edit.png");
   background-repeat: no-repeat;
   margin-top: 45px;
   margin-right: 45px;
@@ -389,7 +391,7 @@ h1 {
   width: auto;
   height: 32px;
   border: none;
-  background: url("../images/icon-editar32.png");
+  background: url("../images/edit.png");
   background-repeat: no-repeat;
   margin-bottom: 5px;
 }
@@ -407,7 +409,7 @@ h1 {
   width: auto;
   height: 32px;
   border: none;
-  background: url("../images/star-add-32.png");
+  background: url("../images/fav-empty.png");
   background-repeat: no-repeat;
   margin-bottom: 5px;
 }
@@ -416,7 +418,8 @@ h1 {
   width: auto;
   height: 32px;
   border: none;
-  background: url("../images/icon-likes-empty.png");
+  background: url("../images/like-add.png");
+
   background-repeat: no-repeat;
   margin-bottom: 5px;
 }
@@ -768,7 +771,7 @@ h1 {
 }
 
 .header-likes-icon {
-  background: url("../images/menu-favs.png");
+  background: url("../images/like-full.png");
   background-repeat: no-repeat;
   background-position: right;
   background-size: 35px;
@@ -799,7 +802,7 @@ h1 {
 }
 
 .header-edit-icon {
-  background: url("../images/icon-editar.png");
+  background: url("../images/edit.png");
   background-repeat: no-repeat;
   background-position: right;
   background-size: 35px;
@@ -820,7 +823,7 @@ h1 {
 }
 
 .header-detail-icon {
-  background: url("../images/icon-editar.png");
+  background: url("../images/edit.png");
   background-repeat: no-repeat;
   background-position: right;
   background-size: 35px;
@@ -1097,7 +1100,7 @@ ul {
 }
 
 .bt-addfav {
-  background: url("../images/icon-menu-addFav45.png");
+  background: url("../images/add.png");
   height: 45px;
   width: 190px;
   background-repeat: no-repeat;
@@ -1133,20 +1136,18 @@ ul {
 }
 
 .bt-favs {
-  background: url("../images/icon-star_full.png");
-  height: 45px;
-  width: 190px;
+  background: url("../images/fav-white.png");
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  text-align: left;
   border: 0;
 }
 
 .bt-likes {
-  height: 45px;
-  background: url("../images/menu-favs.png");
+  background: url("../images/like-white.png");
+  background-size: 44px;
+  background-position: center;
   background-repeat: no-repeat;
-  width: 190px;
-  text-align: left;
   border: 0;
 }
 
@@ -1342,13 +1343,16 @@ ul {
 .new-messages-counter {
   width: 20px;
   padding: 2px;
-  border: 2px solid rgb(91, 193, 94);
-  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  border: 2px solid rgb(241, 14, 14);
+  background-color: rgb(241, 14, 14);
+  border-radius: 15px;
   align-items: center;
   justify-content: center;
   margin-left: 5px;
   position: relative;
-  left: 30px;
+  left: 45px;
   top: -10px;
   display: inline-flex;
 }
