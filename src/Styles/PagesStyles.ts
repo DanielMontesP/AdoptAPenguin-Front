@@ -14,7 +14,7 @@ import iconEdit from "../images/edit.png";
 import iconLike from "../images/like-full.png";
 import iconLikeInit from "../images/like-add.png";
 import iconMesssagesGot from "../images/mail-empty.png";
-import iconMesssagesNew from "../images/mail-empty.png";
+import iconMesssagesNew from "../images/mail-full.png";
 
 const PagesStyles = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
