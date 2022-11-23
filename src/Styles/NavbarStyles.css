@@ -13,13 +13,18 @@
   }
 
   .title-big {
-    width: min-content;
+    height: 300px;
+    width: 307px;
     margin: auto;
-    animation: titleOpacity 10s infinite;
-    font-size: 4em;
-    text-align: justify;
     position: fixed;
     top: 20%;
+    font-family: Montserrat, sans-serif;
+    font-weight: bolder;
+    background-color: transparent;
+    font-size: 3.8em;
+    text-align: justify;
+    animation: titleOpacity 10s infinite;
+    border: 0;
   }
 
   .header-desktop-title {
@@ -437,17 +442,18 @@ h1 {
   }
 
   .title-big {
-    width: 275px;
-    height: 240px;
+    height: 300px;
+    max-width: 410px;
     margin: auto;
-    animation: titleOpacity 10s infinite;
-    font-size: 5.5em;
-
-    text-align: justify;
-    text-justify: inter-word;
-    overflow: overlay;
     position: fixed;
     top: 20%;
+    font-family: Montserrat, sans-serif;
+    font-weight: bolder;
+    background-color: transparent;
+    font-size: 5em;
+    text-align: justify;
+    animation: titleOpacity 10s infinite;
+    border: 0;
   }
 
   .options {
