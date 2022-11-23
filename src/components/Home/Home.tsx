@@ -17,6 +17,7 @@ const Home = (): JSX.Element => {
           <button className="bt-register">Sign Up</button>
         </NavLink>
       </div>
+
       <div className="footer">2022 Penguins Inc.</div>
     </HomePageStyles>
   );
