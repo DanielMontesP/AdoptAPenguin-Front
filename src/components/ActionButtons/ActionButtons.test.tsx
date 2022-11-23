@@ -30,10 +30,10 @@ describe("Given a btn-delete action", () => {
   });
 });
 
-describe("Given a btn-add action", () => {
-  describe("When clicked action is called", () => {
-    test("Then deleteFromLikers have to been called", () => {
-      const labelToFind = "btn-delete";
+describe("Given a ActionButtons component", () => {
+  describe("When btn-likes is clicked", () => {
+    test("Then handleLikes have to been called", () => {
+      const labelToFind = "btn-likes";
       const handleLikes = jest.fn().mockReturnValue(true);
 
       render(
@@ -99,9 +99,9 @@ describe("Given btn-favs button", () => {
     });
   });
 
-  describe("When edit action is called", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
-      const labelToFind = "btn-edit";
+  describe("When handleEdit is called", () => {
+    test("Then bt-message is rendered", () => {
+      const labelToFind = "bt-message";
 
       render(
         <Provider store={store}>

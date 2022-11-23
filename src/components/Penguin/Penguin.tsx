@@ -8,6 +8,7 @@ import ActionButtons from "../ActionButtons/ActionButtons";
 import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { useAppDispatch } from "../../app/redux/hooks/hooks";
+import EditButtons from "../EditButtons/EditButtons";
 interface Props {
   penguin: IPenguin;
 }
@@ -36,10 +37,8 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
 
   return (
     <div className="penguin-container">
-      <ActionButtons penguin={penguin} />
-
       <h1 className="penguin-name">{toPascalCase(`${penguin.name}`)}</h1>
-
+      <EditButtons penguin={penguin} />
       <div className="penguin-image-container">
         <img
           src={penguinImage}
@@ -47,6 +46,7 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
           className={`penguin-image${contactImageClass}`}
         />
       </div>
+      <ActionButtons penguin={penguin} />
       <div className="penguin-datalist">
         <span className="category">{toPascalCase(`${penguin.category}`)}</span>
       </div>
