@@ -10,6 +10,7 @@ import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import iconPhotoEmpty from "../../images/contact-photo-add.png";
 import DetailPageStyles from "../../Styles/DetailPageStyles";
 import ActionButtons from "../ActionButtons/ActionButtons";
+import EditActions from "../EditActions/EditActions";
 import Messages from "../Messages/Messages";
 import { correctAction } from "../Modals/Modals";
 
@@ -94,53 +95,54 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
 
   return (
     <DetailPageStyles className="detail-container">
-      <div className="penguin-container">
+      <div className="detail-header">
         <h1 className="detail-name">{penguin.name}</h1>
-        <div className="img-container">
-          <button
-            onClick={getDetailPrev}
-            className="imgDetailPrev detailPrev"
-            title="btn-prev"
-          />
-          <div className="penguin--container">
-            <img
-              src={penguinImage}
-              alt={`Pinguino ${thisPenguin.name}`}
-              className="detail-image"
-            />
-          </div>
-          <button
-            onClick={getDetailNext}
-            className="imgDetailNext detailNext"
-            title="btn-next"
+        <EditActions penguin={penguin} />
+      </div>
+      <div className="img-container">
+        <button
+          onClick={getDetailPrev}
+          className="imgDetailPrev detailPrev"
+          title="btn-prev"
+        />
+        <div className="penguin--container">
+          <img
+            src={penguinImage}
+            alt={`Pinguino ${thisPenguin.name}`}
+            className="detail-image"
           />
         </div>
-        <div className={`penguin-description`}>
-          <ActionButtons penguin={penguin} />
+        <button
+          onClick={getDetailNext}
+          className="imgDetailNext detailNext"
+          title="btn-next"
+        />
+      </div>
+      <div className={`penguin-description`}>
+        <ActionButtons penguin={penguin} />
+        <div className="detail-tabs">
           <span className="category">{penguin.category}</span>
-          <div className="detail-tabs">
-            <button
-              className={`tab-description${classTabDescription}`}
-              title="description"
-              onClick={handleTab}
-            >
-              Description
-            </button>
-            <button
-              className={`tab-messages${classTabMessages}`}
-              title="messages"
-              onClick={handleTab}
-            >
-              Messages
-            </button>
-            {isMessagesSelected ? (
-              <Messages allMessages={allMessages} penguin={penguin} />
-            ) : (
-              <span className={`detail-description${classDescription}`}>
-                {thisPenguin.description}
-              </span>
-            )}
-          </div>
+          <button
+            className={`tab-description${classTabDescription}`}
+            title="description"
+            onClick={handleTab}
+          >
+            Description
+          </button>
+          <button
+            className={`tab-messages${classTabMessages}`}
+            title="messages"
+            onClick={handleTab}
+          >
+            Messages
+          </button>
+          {isMessagesSelected ? (
+            <Messages allMessages={allMessages} penguin={penguin} />
+          ) : (
+            <span className={`detail-description${classDescription}`}>
+              {thisPenguin.description}
+            </span>
+          )}
         </div>
       </div>
     </DetailPageStyles>

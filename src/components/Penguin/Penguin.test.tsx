@@ -47,7 +47,7 @@ describe("Given the Penguin component", () => {
   });
   describe("When handleMoreDetail clicked", () => {
     test("then it should call dispatch", () => {
-      const labelToFind = "btn-detail";
+      const labelToFind = "btn-click";
 
       render(
         <Provider store={store}>

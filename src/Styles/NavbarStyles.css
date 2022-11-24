@@ -48,7 +48,7 @@ body {
   .penguins-container {
     border-radius: 8px;
     padding: 0 10px 15px;
-    margin-top: 95px;
+    margin-top: 80px;
     text-align: center;
     width: 95%;
   }
@@ -507,7 +507,7 @@ h1 {
   .penguins-container {
     border-radius: 8px;
     padding: 0 10px 15px;
-    margin-top: 75px;
+    margin-top: 80px;
     text-align: center;
     width: 95%;
   }
@@ -971,7 +971,6 @@ ul {
 }
 
 .view-list-counter {
-  margin-top: -10px;
   text-align: right;
   font-size: 0.9rem;
   font-weight: normal;
@@ -1052,9 +1051,11 @@ ul {
 }
 
 .bt-back {
-  background: url("../images/icon-menu-back45.png");
+  background: url("../images/detailPrev-white.png");
   background-repeat: no-repeat;
   background-position: center;
+  background-color: #000000;
+  background-size: 80px;
   border: 0;
   height: 50px;
   position: fixed;

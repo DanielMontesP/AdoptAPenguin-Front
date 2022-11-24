@@ -12,7 +12,7 @@ export function hasNewMessages(allMessages: IMessage[], penguin: IPenguin) {
   let countNewMessages = 0;
 
   allMessages.forEach((message) => {
-    if (message.read === "false" && penguin.id === message.idPenguin) {
+    if (!message.read && penguin.id === message.idPenguin) {
       countNewMessages += 1;
     }
   });

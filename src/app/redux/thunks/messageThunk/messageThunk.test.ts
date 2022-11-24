@@ -63,7 +63,7 @@ describe("Given the resetMessageThunk function", () => {
       const thunk = resetMessageThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });
