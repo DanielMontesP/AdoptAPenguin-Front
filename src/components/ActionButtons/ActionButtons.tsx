@@ -17,7 +17,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const isDetailPage = headerTitle === "Detail" ? true : false;
   const [, setFormData] = useState<IPenguin>(blankFormData);
 
-  const iconType = " bounce bt-message-got";
+  const iconType = " bt-message-got";
 
   const { allMessages } = useAppSelector((state) => state.messages);
 
@@ -85,18 +85,12 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     }
   };
 
-  const selectIconFav = isFav
-    ? " bounce animatedFavDelete"
-    : " bounce2 animatedFav";
+  const selectIconFav = isFav ? " animatedFavDelete" : " animatedFav";
 
-  const selectIconLike = isLiker
-    ? " bounce animatedLike"
-    : ` bounce2 animatedLikeInit`;
+  const selectIconLike = isLiker ? " animatedLike" : ` animatedLikeInit`;
 
   const btContainerClasses = () => {
-    const newClass = !isDetailPage
-      ? "buttons-container"
-      : "detail-buttons-container";
+    const newClass = !isDetailPage ? "buttons-container" : "buttons-container";
     return newClass;
   };
 

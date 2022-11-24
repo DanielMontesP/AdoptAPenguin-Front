@@ -1,41 +1,54 @@
 import styled from "styled-components";
 import iconHamburguer from "../images/menu_hamburguer.png";
-import iconBack from "../images/icon-back.png";
-import iconFavs from "../images/icon-stars.png";
-import iconMenuFavs from "../images/star-add-32.png";
-import iconMenuFavsDelete from "../images/fav-delete-32.png";
+import iconBack from "../images/detailPrev.png";
+import iconFavs from "../images/fav-full.png";
+import iconMenuFavs from "../images/fav-empty.png";
+import iconMenuFavsDelete from "../images/fav-full.png";
 import iconLike from "../images/like-full.png";
 import iconLikeInit from "../images/like-add.png";
-import iconAddFav from "../images/icon-add_plus.png";
+import iconAddFav from "../images/fav-empty.png";
 import iconHome from "../images/icon-home.png";
 import iconLogout from "../images/icon-logout-white.png";
-import iconDelete from "../images/delete-32.png";
+import iconDelete from "../images/delete.png";
 import iconSoundOff from "../images/icon-sound-off.png";
-import iconEdit from "../images/icon-editar32.png";
-import iconMesssagesGot from "../images/message-45.png";
-import iconMesssagesNew from "../images/message-new.png";
+import iconEdit from "../images/edit.png";
+import iconMesssagesGot from "../images/mail-empty.png";
+import iconMesssagesNew from "../images/mail-full.png";
 import iconMesssagesView from "../images/view-16.png";
-import detailPrev from "../images/detail-prev.png";
-import detailNext from "../images/detail-next.png";
+import detailPrev from "../images/detailPrev.png";
+import detailNext from "../images/detailNext.png";
 
 const DetailPageStyles = styled.div`
   font-family: Montserrat, sans-serif;
   text-align: justify;
 
+  .detail-name {
+    height: 15px;
+    width: 90%;
+    text-align: left;
+  }
+
   @media only screen and (min-width: 421px) {
-    .detail-buttons-container {
+    .detail-header {
+      display: flex;
+      width: 95%;
+      max-width: 690px;
       margin: auto;
-      width: 90%;
-      max-width: 400px;
+
+      position: relative;
+      top: 80px;
+    }
+    .buttons-container {
+      margin: auto;
+      width: 95%;
+      max-width: 690px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-around;
       align-content: space-around;
-    }
 
-    .detail-name {
-      height: 15px;
+      margin-top: 40px;
     }
 
     .detail-container {
@@ -46,24 +59,23 @@ const DetailPageStyles = styled.div`
     }
 
     .penguin-description {
-      width: 80%;
+      width: 95%;
       min-height: 40px;
       margin: auto;
-      margin-top: -50px;
       text-align: justify;
       display: flex;
       flex-direction: column;
     }
 
     .penguin--container {
-      background-color: rgb(255 254 254);
-      box-shadow: 0 0 15px 6px #666;
-      padding: 10px 10px 150px 10px;
       border-radius: 5px 5px 5px 5px;
       margin: auto;
+      position: fixed;
+      top: 130px;
+      width: 100%;
+      max-height: 354px;
+
       text-align: center;
-      height: 215px;
-      width: 80%;
     }
 
     .detail-content {
@@ -71,12 +83,14 @@ const DetailPageStyles = styled.div`
       background: white;
     }
     .img-container {
+      max-width: 690px;
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       margin: auto;
-      margin-top: 20px;
+      margin-top: 50px;
+      height: 280px;
     }
 
     .detail-description {
@@ -91,61 +105,58 @@ const DetailPageStyles = styled.div`
       margin: auto;
       text-align: justify;
       min-width: 320px;
+      max-width: 690px;
       min-height: 100px;
     }
 
     .detail-image {
-      height: 300px;
-      width: 100%;
-      object-fit: cover;
-      background-color: rgb(255 254 254);
-      border-radius: 5px;
-      flex: 1;
-    }
-    .penguin-container {
-      width: 80%;
+      height: 270px;
+      width: 95%;
+      max-width: 690px;
       margin: auto;
-      margin-bottom: 50px;
-      margin-top: 90px;
-      text-align: center;
+      object-fit: cover;
+    }
 
-      border: 1px solid grey;
+    .penguin-container {
+      margin: auto;
+      text-align: center;
       border-radius: 15px;
       background: #fff;
       -webkit-transition: 0.5s;
-      box-sizing: border-box;
       -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      box-shadow: 2px 2px 10px rgb(140, 134, 134);
+      display: flow-root;
+      margin-top: 80px;
     }
   }
 
   @media only screen and (max-width: 420px) {
     .penguin-container {
-      width: 90%;
       margin: auto;
-      margin-bottom: 50px;
-      margin-top: 20px;
       text-align: center;
-      padding: 0.5em;
-      border: 1px solid grey;
       border-radius: 15px;
-
       background: #fff;
       -webkit-transition: 0.5s;
-      box-sizing: border-box;
       -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      box-shadow: 2px 2px 10px rgb(140, 134, 134);
+      display: flow-root;
+      margin-top: 80px;
     }
-    .detail-buttons-container {
+
+    .detail-header {
+      display: flex;
+      width: 95%;
+      max-width: 690px;
+      margin: auto;
+    }
+    .buttons-container {
       margin: auto;
       width: 90%;
+      max-width: 690px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-around;
       align-content: space-around;
+      margin-top: 20px;
     }
 
     .detail-container {
@@ -157,17 +168,15 @@ const DetailPageStyles = styled.div`
     }
 
     .detail-image {
-      height: 200px;
-      width: 295px;
       object-fit: cover;
-      background-color: rgb(255 254 254);
-      border-radius: 1px;
-      flex: 1;
+      -ms-flex: 1;
+      width: 100%;
+      max-width: 690px;
+      height: 280px;
     }
 
     .detail-description {
       display: flex;
-
       font-size: 1rem;
       background: white;
       border: 1px solid;
@@ -176,40 +185,34 @@ const DetailPageStyles = styled.div`
       border-top: 0;
       margin: auto;
       text-align: justify;
-
       min-height: 100px;
     }
 
     .penguin-description {
-      min-height: 40px;
+      width: 95%;
+      max-width: 690px;
       margin: auto;
-      margin-top: -60px;
       text-align: justify;
       display: flex;
       flex-direction: column;
-      width: 85%;
     }
 
     .penguin--container {
-      background-color: rgb(255 254 254);
-      box-shadow: 0 0 15px 6px #666;
-      padding: 10px 10px 150px 10px;
       border-radius: 5px 5px 5px 5px;
       margin: auto;
-      text-align: center;
-      height: 115px;
-      margin-left: 5px;
-      margin-right: 5px;
+      position: absolute;
+      top: 130px;
+      width: 95%;
     }
 
     .img-container {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       margin: auto;
-      margin-top: 20px;
       height: 280px;
+      width: 95%;
     }
   }
 
@@ -346,15 +349,15 @@ const DetailPageStyles = styled.div`
     background-image: url(${detailNext});
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 20px;
-    width: 10%;
-    height: 270px;
-    flex: 2;
+    background-size: contain;
+    width: 60px;
+    z-index: 1;
+    position: absolute;
+    right: 15px;
   }
 
   .imgDetailPrev {
     height: 180px;
-    width: 10%;
   }
 
   .detailPrev {
@@ -362,10 +365,11 @@ const DetailPageStyles = styled.div`
     background-image: url(${detailPrev});
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 20px;
-    width: 10%;
-    height: 270px;
-    flex: 2;
+    background-size: contain;
+    width: 60px;
+    z-index: 1;
+    position: absolute;
+    left: 15px;
   }
 
   .penguin-image-container {
@@ -498,6 +502,10 @@ const DetailPageStyles = styled.div`
     margin-bottom: 20px;
   }
 
+  .detail-tabs {
+    max-width: 660px;
+    margin: auto;
+  }
   .image-delete {
     position: relative;
     top: -140px;
@@ -531,8 +539,12 @@ const DetailPageStyles = styled.div`
   }
 
   .category {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
-    width: fit-content;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    max-width: 690px;
     color: white;
     font-size: 1rem;
     text-align: left;
@@ -541,9 +553,10 @@ const DetailPageStyles = styled.div`
     background-color: grey;
     border-radius: 4px;
     box-shadow: 0 3px 6px #666;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 10px;
+    display: flex;
   }
 
   .projectLayout {
@@ -634,8 +647,6 @@ const DetailPageStyles = styled.div`
   }
 
   .animatedLike {
-    width: 30px;
-    height: 30px;
     background: none;
     background-image: url(${iconLike});
     background-repeat: no-repeat;
@@ -645,34 +656,33 @@ const DetailPageStyles = styled.div`
   }
 
   .animatedLikeInit {
-    width: 30px;
-    height: 30px;
     background: none;
     background-image: url(${iconLikeInit});
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+
     border: 0;
   }
 
   .animatedFav {
-    width: 30px;
-    height: 30px;
     background: none;
-    background-image: url(${iconMenuFavs});
+    background-image: url(${iconAddFav});
     background-repeat: no-repeat;
-    background-position: inherit;
+    background-position: right;
     background-size: contain;
+    border: 0;
+    flex: 2;
   }
 
   .animatedFavDelete {
-    width: 30px;
-    height: 30px;
     background: none;
     background-image: url(${iconMenuFavsDelete});
     background-repeat: no-repeat;
-    background-position: inherit;
+    background-position: right;
     background-size: contain;
+    border: 0;
+    flex: 2;
   }
 
   .animatedDelete {
@@ -686,12 +696,12 @@ const DetailPageStyles = styled.div`
   }
 
   .animatedEdit {
-    width: 30px;
     height: 30px;
     background: none;
     background: url(${iconEdit});
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
     margin: auto;
   }
 
@@ -717,9 +727,10 @@ const DetailPageStyles = styled.div`
     background: url(${iconMesssagesGot});
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 40px;
-    margin-left: 24px;
+    background-size: cover;
+    margin-left: 40px;
     border: 0;
+    width: 45px;
   }
 
   .form-detail-animatedEdit {

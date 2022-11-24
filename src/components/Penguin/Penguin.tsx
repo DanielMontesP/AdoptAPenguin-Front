@@ -39,7 +39,7 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
     <div className="penguin-container">
       <h1 className="penguin-name">{toPascalCase(`${penguin.name}`)}</h1>
       <EditActions penguin={penguin} />
-      <div className="penguin-image-container">
+      <div className="penguin-image-container link" onClick={handleMoreDetail}>
         <img
           src={penguinImage}
           alt={penguin.name}
@@ -50,16 +50,8 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
       <div className="penguin-datalist">
         <span className="category">{toPascalCase(`${penguin.category}`)}</span>
       </div>
-      <div className="penguin-description">
+      <div className="penguin-description link" onClick={handleMoreDetail}>
         {penguin.description?.substring(0, 100)}
-
-        <span
-          className="link effect"
-          onClick={handleMoreDetail}
-          title="btn-detail"
-        >
-          ...More
-        </span>
       </div>
 
       {isModalOpen && (
