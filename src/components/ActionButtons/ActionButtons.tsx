@@ -12,9 +12,7 @@ interface Props {
 
 const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const idUser = useAppSelector((state) => state.user.id);
-  const { headerTitle } = useAppSelector((state) => state.ui);
 
-  const isDetailPage = headerTitle === "Detail" ? true : false;
   const [, setFormData] = useState<IPenguin>(blankFormData);
 
   const iconType = " bt-message-got";
@@ -27,6 +25,9 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
   const isFav = penguin.favs?.includes(idUser);
   const isLiker = penguin.likers?.includes(idUser);
+
+  const selectIconFav = isFav ? " animatedFavDelete" : " animatedFav";
+  const selectIconLike = isLiker ? " animatedLike" : ` animatedLikeInit`;
 
   const handleMessage = () => {
     navigate(`/detail/${penguin.id}#messages`);
@@ -85,17 +86,8 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     }
   };
 
-  const selectIconFav = isFav ? " animatedFavDelete" : " animatedFav";
-
-  const selectIconLike = isLiker ? " animatedLike" : ` animatedLikeInit`;
-
-  const btContainerClasses = () => {
-    const newClass = !isDetailPage ? "buttons-container" : "buttons-container";
-    return newClass;
-  };
-
   return (
-    <div className={btContainerClasses()}>
+    <div className={"buttons-container"}>
       <button
         className={`animated${selectIconLike}`}
         onClick={handleLikes}
