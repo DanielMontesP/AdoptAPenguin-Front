@@ -15,6 +15,7 @@ import {
   deletePenguinThunk,
   resetPenguinsThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import EditButtons from "../EditButtons/EditButtons";
 import Help from "../Help/Help";
 import WellcomeComments from "../WellcomeComments/WellcomeComments";
 import { correctAction } from "./Modals";
@@ -37,6 +38,8 @@ export const Modal = ({
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const { penguin } = useAppSelector((state) => state.penguins);
+
   const { headerTitle } = useAppSelector((state) => state.ui);
 
   let isWellcome = false;
@@ -46,7 +49,7 @@ export const Modal = ({
 
   let overflowY = " overflow-auto";
 
-  let modalClass = "modal";
+  let modalClass = type === "Edit" ? "modal-black" : "modal";
   let windowTitle = "";
 
   switch (type) {
@@ -72,6 +75,9 @@ export const Modal = ({
       break;
     case "Error":
       windowTitle = "Error";
+      break;
+    case "Edit":
+      windowTitle = "Options";
       break;
     default:
       windowTitle = "Please confirm";
@@ -100,7 +106,7 @@ export const Modal = ({
       content = "This feature will be available soon.";
     }
 
-    return <h3 className="modal-message">{content}</h3>;
+    return type !== "Edit" ? <h3 className="modal-message">{content}</h3> : "";
   };
 
   const deletePenguin = () => {
@@ -167,20 +173,24 @@ export const Modal = ({
         />
       </div>
       {getMessage()}
-      <div className="modal-body">
-        <button
-          onClick={handleAcceptClick}
-          className="modal-btn-accept"
-          title="btn-accept"
-          placeholder="btn-accept"
-        />
-        <button
-          onClick={handleCancelClick}
-          className={cancelClass}
-          title="btn-cancel"
-          placeholder="btn-cancel"
-        />
-      </div>
+      {type === "Edit" ? (
+        <EditButtons penguin={penguin} />
+      ) : (
+        <div className="modal-body">
+          <button
+            onClick={handleAcceptClick}
+            className="modal-btn-accept"
+            title="btn-accept"
+            placeholder="btn-accept"
+          />
+          <button
+            onClick={handleCancelClick}
+            className={cancelClass}
+            title="btn-cancel"
+            placeholder="btn-cancel"
+          />
+        </div>
+      )}
     </div>
   );
 };

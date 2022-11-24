@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { blankFormData } from "../../app/redux/initializers/iniPenguins";
 import { editPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { cleanArray, hasNewMessages } from "../../utils/utils";
-import { Modal } from "../Modals/ModalPrompt";
 
 interface Props {
   penguin: IPenguin;
@@ -18,10 +16,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
   const isDetailPage = headerTitle === "Detail" ? true : false;
   const [, setFormData] = useState<IPenguin>(blankFormData);
-  const [isModalOpen, setModal] = useState(false);
 
-  const { modalMessage } = useAppSelector((state) => state.ui);
-  const { modalType } = useAppSelector((state) => state.ui);
   const iconType = " bounce bt-message-got";
 
   const { allMessages } = useAppSelector((state) => state.messages);
@@ -126,15 +121,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         onClick={handleFavs}
         className={`animated${selectIconFav}`}
       />
-      {isModalOpen && (
-        <Modal
-          type={modalType}
-          idToProcess={penguin.id}
-          content={modalMessage}
-          closeModal={setModal}
-          form="Penguin"
-        />
-      )}
     </div>
   );
 };

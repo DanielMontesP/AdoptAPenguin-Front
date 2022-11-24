@@ -416,12 +416,14 @@ const PagesStyles = styled.div`
     border-radius: 15px;
     border: 1px solid white;
   }
+
   .link {
     width: 200px;
+    color: black;
     margin: 10px;
-    color: white;
+
     margin: auto;
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
   }
 

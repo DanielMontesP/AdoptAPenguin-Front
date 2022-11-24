@@ -387,13 +387,35 @@ h1 {
   display: none;
 }
 
+.menu-Edit {
+  width: 35px;
+  height: 35px;
+  color: white;
+  font-size: 1.1em;
+  margin-left: 10px;
+  border: 0;
+  margin-bottom: 10px;
+  background: url("../images/edit-empty.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+}
+
 .animatedEdit {
-  width: auto;
-  height: 32px;
   border: none;
   background: url("../images/edit.png");
   background-repeat: no-repeat;
+  background-size: cover;
   margin-bottom: 5px;
+}
+
+.edit-buttons-container {
+  height: 145px;
+  width: 100%;
+  background-color: #292929;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 
 .footer {
@@ -425,12 +447,14 @@ h1 {
 }
 
 .animatedDelete {
-  width: auto;
-  height: 32px;
   border: none;
-  background: url("../images/delete-32.png");
+  height: 39px;
+  width: 32px;
+  background: url("../images/delete.png");
   background-repeat: no-repeat;
-  margin-bottom: 5px;
+  background-position: center;
+  background-size: cover;
+  margin-left: 10px;
 }
 
 @media only screen and (min-width: 421px) {
@@ -1211,6 +1235,18 @@ ul {
   min-width: 20rem;
   min-height: 10rem;
   background-color: white;
+  border-radius: 10px;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+}
+.modal-black {
+  text-align: center;
+  position: fixed;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 12rem;
   border-radius: 10px;
   z-index: 101;
   display: flex;
