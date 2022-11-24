@@ -77,7 +77,7 @@ export const Modal = ({
       windowTitle = "Error";
       break;
     case "Edit":
-      windowTitle = "";
+      windowTitle = "Options";
       break;
     default:
       windowTitle = "Please confirm";
