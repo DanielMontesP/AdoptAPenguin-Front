@@ -33,7 +33,7 @@ describe("When bt-prev is clicked", () => {
   describe("When bt-prev is clicked", () => {
     test("getDetailPrev is called", () => {
       const ToFind = "button";
-      const expectedButtons = 7;
+      const expectedButtons = 8;
 
       const getDetailPrev = jest.fn();
 

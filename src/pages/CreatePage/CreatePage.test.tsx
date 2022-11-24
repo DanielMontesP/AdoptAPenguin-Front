@@ -5,8 +5,23 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
 import { createFavThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
-import { mockPenguins } from "../../mocks/penguins";
+import { mockMessage, mockMessages } from "../../mocks/messages";
+import { mockPenguin, mockPenguins } from "../../mocks/penguins";
 import CreatePage from "./CreatePage";
+
+let mockLogged = true;
+
+jest.mock("../../app/redux/hooks/hooks", () => ({
+  useAppSelector: () => ({
+    logged: mockLogged,
+    id: "id",
+    allMessages: mockMessages,
+    message: mockMessage,
+    penguin: mockPenguin,
+    headerTitle: "penguin",
+  }),
+  useAppDispatch: () => jest.fn(),
+}));
 
 describe("Given a CreatePage component", () => {
   describe("When the word 'penguin' is written to the username input field", () => {
@@ -28,8 +43,10 @@ describe("Given a CreatePage component", () => {
       expect(label).toBeInTheDocument();
     });
   });
+});
 
-  describe("When CreatePage is rendered with type Message", () => {
+describe("Given a penguin CreatePage component", () => {
+  describe("When CreatePage is rendered with type penguin", () => {
     test("Then the value of the Name input field should be 'penguin'", () => {
       const textToFind = "Name";
 
@@ -48,12 +65,10 @@ describe("Given a CreatePage component", () => {
   });
 
   describe("When the two inputs have text and the submit button is clicked", () => {
-    test("Then the two inputs should be empty", async () => {
+    test("Then the two input name should have value penguin1", async () => {
       const nameLabel = "Name";
       const catLabel = "Category";
       const inputText = "penguin";
-
-      document.location.href = jest.fn().mockReturnThis().toString();
 
       render(
         <Provider store={store}>
@@ -71,14 +86,12 @@ describe("Given a CreatePage component", () => {
         .mockResolvedValue({ data: { penguins: mockPenguins }, status: 200 });
       const dispatch = jest.fn();
 
-      document.location.href = jest.fn().mockResolvedValue(true).toString();
-
       userEvent.type(name, inputText);
       userEvent.type(category, inputText);
       userEvent.click(submitButton);
 
-      expect(name).toHaveValue("");
-      expect(category).toHaveValue("");
+      expect(name).toHaveValue("penguin1");
+      expect(category).toHaveValue("category1");
       await dispatch(createFavThunk);
 
       expect(dispatch).toHaveBeenCalled();
