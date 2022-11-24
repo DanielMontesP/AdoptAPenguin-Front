@@ -1,12 +1,9 @@
 import styled from "styled-components";
 import iconHamburguer from "../images/menu_hamburguer.png";
-import iconBack from "../images/detailPrev.png";
 import iconFavs from "../images/fav-full.png";
 import iconMenuFavs from "../images/fav-empty.png";
-import iconMenuFavsDelete from "../images/fav-full.png";
 import iconLike from "../images/like-full.png";
 import iconLikeInit from "../images/like-add.png";
-import iconAddFav from "../images/fav-empty.png";
 import iconHome from "../images/icon-home.png";
 import iconLogout from "../images/icon-logout-white.png";
 import iconDelete from "../images/delete.png";
@@ -380,7 +377,7 @@ const DetailPageStyles = styled.div`
   }
 
   .bt-back {
-    background: url(${iconBack});
+    background: url(${detailPrev});
     background-position: center;
     width: 45px;
     height: 5rem;
@@ -421,7 +418,7 @@ const DetailPageStyles = styled.div`
   .bt-addfav {
     width: 65px;
     height: 65px;
-    background: url(${iconAddFav});
+    background: url(${iconFavs});
     background-size: 60%;
     background-repeat: no-repeat;
   }
@@ -486,7 +483,7 @@ const DetailPageStyles = styled.div`
   }
 
   .message-noread-img {
-    background: url(${iconAddFav});
+    background: url(${iconFavs});
     background-size: 25px;
     background-repeat: no-repeat;
     width: 24px;
@@ -667,7 +664,7 @@ const DetailPageStyles = styled.div`
 
   .animatedFav {
     background: none;
-    background-image: url(${iconAddFav});
+    background-image: url(${iconFavs});
     background-repeat: no-repeat;
     background-position: right;
     background-size: contain;
@@ -677,7 +674,7 @@ const DetailPageStyles = styled.div`
 
   .animatedFavDelete {
     background: none;
-    background-image: url(${iconMenuFavsDelete});
+    background-image: url(${iconMenuFavs});
     background-repeat: no-repeat;
     background-position: right;
     background-size: contain;

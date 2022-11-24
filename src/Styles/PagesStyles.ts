@@ -4,7 +4,6 @@ import iconBack from "../images/detailPrev.png";
 import iconFavs from "../images/icon-stars.png";
 import iconMenuFavs from "../images/fav-empty.png";
 import iconMenuFavsDelete from "../images/fav-full.png";
-import iconAddFav from "../images/fav-empty.png";
 import iconHome from "../images/icon-home.png";
 import iconLogout from "../images/icon-logout-white.png";
 import iconDelete from "../images/delete-32.png";
@@ -301,7 +300,7 @@ const PagesStyles = styled.div`
     width: 65px;
     height: 65px;
     background: none;
-    background: url(${iconAddFav});
+    background: url(${iconMenuFavs});
     background-size: 60%;
     background-repeat: no-repeat;
     border: 0;
@@ -455,7 +454,7 @@ const PagesStyles = styled.div`
 
   .animatedFav {
     background: none;
-    background-image: url(${iconAddFav});
+    background-image: url(${iconMenuFavs});
     background-repeat: no-repeat;
     background-position: right;
     background-size: contain;
