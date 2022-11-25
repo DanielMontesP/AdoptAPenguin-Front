@@ -28,7 +28,7 @@ const DetailPageStyles = styled.div`
   @media only screen and (min-width: 421px) {
     .detail-header {
       display: flex;
-      width: 95%;
+      width: 80%;
       max-width: 690px;
       margin: auto;
 
@@ -37,7 +37,7 @@ const DetailPageStyles = styled.div`
     }
     .buttons-container {
       margin: auto;
-      width: 95%;
+      width: 85%;
       max-width: 690px;
       display: flex;
       flex-direction: row;
@@ -45,7 +45,7 @@ const DetailPageStyles = styled.div`
       justify-content: space-around;
       align-content: space-around;
 
-      margin-top: 40px;
+      margin-top: 15px;
     }
 
     .detail-container {
@@ -86,7 +86,7 @@ const DetailPageStyles = styled.div`
       align-items: center;
       justify-content: center;
       margin: auto;
-      margin-top: 50px;
+      margin-top: 80px;
       height: 280px;
     }
 
@@ -350,7 +350,7 @@ const DetailPageStyles = styled.div`
     width: 60px;
     z-index: 1;
     position: absolute;
-    right: 15px;
+    right: 15%;
   }
 
   .imgDetailPrev {
@@ -366,7 +366,7 @@ const DetailPageStyles = styled.div`
     width: 60px;
     z-index: 1;
     position: absolute;
-    left: 15px;
+    left: 15%;
   }
 
   .penguin-image-container {
@@ -542,17 +542,16 @@ const DetailPageStyles = styled.div`
     width: -webkit-fit-content;
     width: -moz-fit-content;
     max-width: 690px;
-    color: white;
+    color: black;
     font-size: 1rem;
     text-align: left;
     padding-left: 5px;
     padding-right: 5px;
-    background-color: grey;
+    background-color: lightgrey;
     border-radius: 4px;
     box-shadow: 0 3px 6px #666;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 10px;
     display: flex;
   }
 

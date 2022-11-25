@@ -132,9 +132,21 @@ const PagesStyles = styled.div`
   }
 
   .likes {
-    animation-name: bounce;
-    font-size: 16px;
-    margin: auto;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -15px;
+    left: -5px;
+    color: white;
+    padding: 2px;
+    display: inline-flex;
+    border: 2px solid white;
+    box-shadow: 0 1px 1px black;
+    background-color: rgb(241, 14, 14);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
   }
 
   .penguin-name {
@@ -311,7 +323,6 @@ const PagesStyles = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    margin-left: 24px;
     border: 0;
     flex: 1;
   }
@@ -321,7 +332,6 @@ const PagesStyles = styled.div`
     background-position: right;
     background-repeat: no-repeat;
     background-size: contain;
-    margin-left: 24px;
     border: 0;
     flex: 1;
   }

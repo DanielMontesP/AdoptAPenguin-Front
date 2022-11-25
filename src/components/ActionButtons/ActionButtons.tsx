@@ -92,16 +92,14 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         className={`animated${selectIconLike}`}
         onClick={handleLikes}
         title="btn-likes"
-      >
-        <span className={`likes`}>{penguin.likes}</span>
-      </button>
+      />
+      <span className={`likes`}>{penguin.likes}</span>
       <button
         className={`animated${iconType}`}
         onClick={handleMessage}
         title="bt-message"
-      >
-        <span className="new-messages-counter">{countNewMessages}</span>
-      </button>
+      />
+      <span className="new-messages-counter">{countNewMessages}</span>
       <button
         placeholder="btn-favs"
         onClick={handleFavs}
