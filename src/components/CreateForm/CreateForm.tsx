@@ -158,7 +158,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       : "form-img__img-preview";
 
   return (
-    <div className="container">
+    <div className="create-container">
       <form
         noValidate
         autoComplete="off"
@@ -167,25 +167,23 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         title="form-create"
       >
         <div className="image-container">
-          <div className="form__img-input-container">
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              id="photo"
-              className="visually-hidden"
-              onChange={handleImg}
-              placeholder="image-input"
-            />
-            <img
-              src={src.toString() || penguin.imageBackup.toString()}
-              alt={alt}
-              className={`${classImage}`}
-            />
-            <label
-              htmlFor="photo"
-              className={`form-img__file-label${HidderBackground}`}
-            />
-          </div>
+          <input
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            id="photo"
+            className="visually-hidden"
+            onChange={handleImg}
+            placeholder="image-input"
+          />
+          <img
+            src={src.toString() || penguin.imageBackup.toString()}
+            alt={alt}
+            className={`${classImage}`}
+          />
+          <label
+            htmlFor="photo"
+            className={`form-img__file-label${HidderBackground}`}
+          />
         </div>
         <label htmlFor="name">Name</label>
         <input

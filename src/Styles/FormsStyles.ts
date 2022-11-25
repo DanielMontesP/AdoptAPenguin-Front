@@ -11,6 +11,7 @@ import iconSoundOff from "../images/icon-sound-off.png";
 import iconSoundOn from "../images/icon-sound-on.png";
 import iconAddPhoto from "../images/contact-photo.png";
 import iconEdit from "../images/icon-editar.png";
+import PageBackground from "../images/HomePage.png";
 
 const FormsStyles = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
@@ -49,7 +50,6 @@ const FormsStyles = styled.div`
 
     .input-description {
       height: 150px;
-      width: 70%;
       margin: auto;
       border: 2px solid black;
       align-items: center;
@@ -80,7 +80,7 @@ const FormsStyles = styled.div`
       border: 2px solid black;
       align-items: center;
       justify-content: center;
-      border-radius: 5px;
+      border-radius: 15px;
       box-sizing: border-box;
       color: black;
       font-size: 18px;
@@ -99,6 +99,7 @@ const FormsStyles = styled.div`
       object-fit: cover;
       border-radius: 15px;
       opacity: 0;
+      display: none;
     }
 
     .form-img__img-preview-Hidden {
@@ -131,8 +132,14 @@ const FormsStyles = styled.div`
       display: flex;
       flex-direction: column;
       margin: auto;
-    }
 
+      align-items: center;
+    }
+    .form-create {
+      display: flex;
+      flex-direction: column;
+      margin-top: 100px;
+    }
     .preview-image {
       max-width: 350px;
       margin: auto;
@@ -148,7 +155,7 @@ const FormsStyles = styled.div`
 
     .input-description {
       height: 150px;
-      width: 70%;
+      width: 100%;
       margin: auto;
       border: 2px solid black;
       align-items: center;
@@ -157,11 +164,10 @@ const FormsStyles = styled.div`
       box-sizing: border-box;
       color: black;
       font-size: 18px;
+      font-family: Montserrat, sans-serif;
     }
 
     .form-img__file-label {
-      position: absolute;
-      top: 4px;
       display: block;
       width: 50vh;
       height: 220px;
@@ -179,7 +185,7 @@ const FormsStyles = styled.div`
       border: 2px solid black;
       align-items: center;
       justify-content: center;
-      border-radius: 5px;
+      border-radius: 15px;
       box-sizing: border-box;
       color: black;
       font-size: 18px;
@@ -198,12 +204,14 @@ const FormsStyles = styled.div`
       object-fit: scale-down;
       border-radius: 15px;
       opacity: 0;
+
+      display: none;
     }
 
     .form-img__img-preview-Hidden {
-      display: block;
+      position: absolute;
       width: 50.5vh;
-      height: 233px;
+      height: 226px;
       margin-top: 5px;
       background: white;
       object-fit: cover;
@@ -212,7 +220,7 @@ const FormsStyles = styled.div`
     }
   }
 
-  form {
+  .form {
     width: 100%;
     max-width: 500px;
     row-gap: 15px;
@@ -220,6 +228,7 @@ const FormsStyles = styled.div`
     top: 30%;
     display: flex;
     flex-direction: column;
+    text-align: center;
   }
 
   .form-register {
@@ -260,7 +269,7 @@ const FormsStyles = styled.div`
 
   a,
   a:visited {
-    color: white;
+    color: #c2c2c2;
     text-decoration: none;
     font-size: 20px;
     cursor: pointer;
@@ -294,7 +303,7 @@ const FormsStyles = styled.div`
     box-sizing: border-box;
     color: black;
     font-size: 20px;
-    width: 70%;
+    width: 82%;
     margin: auto;
     background: white;
     height: 45px;
@@ -324,7 +333,7 @@ const FormsStyles = styled.div`
   }
 
   .bt-container {
-    width: 100%;
+    width: 50%;
     font-size: 20px;
     display: flex;
     color: white;
@@ -343,7 +352,7 @@ const FormsStyles = styled.div`
 
   .bt-login,
   .bt-register {
-    width: 70%;
+    width: 82%;
     height: 50px;
     color: white;
     font-size: 20px;
@@ -363,7 +372,6 @@ const FormsStyles = styled.div`
   }
 
   .form-create {
-    margin-top: 220px;
   }
 
   .edit-image {
@@ -393,6 +401,19 @@ const FormsStyles = styled.div`
     width: 100%;
     display: flow-root;
     margin: auto;
+  }
+
+  .create-container {
+    height: 100vh;
+    display: flex;
+    background-image: url(${PageBackground});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-content: center;
+    flex-direction: row;
+    align-content: space-around;
+    align-items: flex-start;
   }
 
   .register-container {
@@ -554,12 +575,13 @@ const FormsStyles = styled.div`
 
   .bt-save {
     color: white;
-    background-color: rgb(29, 29, 29);
+    background-color: transparent;
+    border: 2px solid white;
     font-size: 20px;
     font-weight: bold;
     height: 60px;
     border-radius: 15px;
-    width: 70%;
+    width: 100%;
   }
 
   .bt-register {
@@ -578,6 +600,7 @@ const FormsStyles = styled.div`
   }
 
   .link {
+    width: 100%;
     color: white;
     margin: auto;
     font-size: 20px;

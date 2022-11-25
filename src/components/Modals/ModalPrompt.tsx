@@ -46,10 +46,11 @@ export const Modal = ({
 
   const isHelp = type === "Help";
   const isMessage = form === "Message";
+  const isEditPage = type === "Edit";
 
   let overflowY = " overflow-auto";
 
-  let modalClass = type === "Edit" ? "modal-black" : "modal";
+  let modalClass = isEditPage ? "modal-black" : "modal";
   let windowTitle = "";
 
   switch (type) {
@@ -163,17 +164,21 @@ export const Modal = ({
 
   return (
     <div className={modalClass}>
-      <div className="modal-header">
-        <h3 className="modal-title">{windowTitle}</h3>
-        <button
-          onClick={handleCancelClick}
-          className="modal-btn-close"
-          title="btn-close"
-          placeholder="btn-close"
-        />
-      </div>
+      {!isEditPage ? (
+        <div className="modal-header">
+          <h3 className="modal-title">{windowTitle}</h3>
+          <button
+            onClick={handleCancelClick}
+            className="modal-btn-close"
+            title="btn-close"
+            placeholder="btn-close"
+          />
+        </div>
+      ) : (
+        ""
+      )}
       {getMessage()}
-      {type === "Edit" ? (
+      {isEditPage ? (
         <EditButtons penguin={penguin} />
       ) : (
         <div className="modal-body">
