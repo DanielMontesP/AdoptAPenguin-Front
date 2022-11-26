@@ -35,6 +35,31 @@ const DetailPageStyles = styled.div`
       position: relative;
       top: 80px;
     }
+
+    .detailPrev {
+      background: none;
+      background-image: url(${detailPrev});
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      width: 60px;
+      z-index: 1;
+      position: absolute;
+      left: 1%;
+    }
+
+    .detailNext {
+      background: none;
+      background-image: url(${detailNext});
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      width: 60px;
+      z-index: 1;
+      position: absolute;
+      right: 1%;
+    }
+
     .buttons-container {
       margin: auto;
       width: 85%;
@@ -136,6 +161,30 @@ const DetailPageStyles = styled.div`
       -moz-box-sizing: border-box;
       display: flow-root;
       margin-top: 80px;
+    }
+
+    .detailPrev {
+      background: none;
+      background-image: url(${detailPrev});
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      width: 60px;
+      z-index: 1;
+      position: absolute;
+      left: 20%;
+    }
+
+    .detailNext {
+      background: none;
+      background-image: url(${detailNext});
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      width: 60px;
+      z-index: 1;
+      position: absolute;
+      right: 20%;
     }
 
     .detail-header {
@@ -341,32 +390,8 @@ const DetailPageStyles = styled.div`
     height: 180px;
   }
 
-  .detailNext {
-    background: none;
-    background-image: url(${detailNext});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    width: 60px;
-    z-index: 1;
-    position: absolute;
-    right: 15%;
-  }
-
   .imgDetailPrev {
     height: 180px;
-  }
-
-  .detailPrev {
-    background: none;
-    background-image: url(${detailPrev});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    width: 60px;
-    z-index: 1;
-    position: absolute;
-    left: 15%;
   }
 
   .penguin-image-container {
@@ -500,7 +525,8 @@ const DetailPageStyles = styled.div`
   }
 
   .detail-tabs {
-    max-width: 660px;
+    width: 85%;
+    max-width: 690px;
     margin: auto;
   }
   .image-delete {
