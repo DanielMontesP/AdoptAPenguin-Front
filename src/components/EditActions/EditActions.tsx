@@ -33,7 +33,7 @@ const EditActions = ({ penguin }: Props): JSX.Element => {
     <button
       title="btn-click"
       placeholder="btn-click"
-      className={`animatedEdit`}
+      className={`bt-Edit`}
       onClick={handleClick}
     />
   );
