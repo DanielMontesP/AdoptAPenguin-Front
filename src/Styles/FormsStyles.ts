@@ -62,7 +62,7 @@ const FormsStyles = styled.div`
     }
 
     .input-description {
-      width: 80%;
+      width: 100%;
       height: 150px;
       margin: auto;
       border: 2px solid black;
@@ -168,7 +168,7 @@ const FormsStyles = styled.div`
 
     .input-description {
       height: 150px;
-      width: 80%;
+      width: 100%;
       margin: auto;
       border: 2px solid black;
       align-items: center;
@@ -427,6 +427,7 @@ const FormsStyles = styled.div`
   }
 
   .create-container {
+    height: 100vh;
     display: flex;
     background-image: url(${PageBackground});
     background-size: cover;

@@ -38,12 +38,14 @@ const FormsStyles = styled.div`
   }
 
   .footer {
+    width: 100%;
     position: fixed;
     top: 90%;
+    display: flex;
+    flex-direction: column;
     color: grey;
     text-align: center;
     margin: auto;
-    width: 100%;
   }
 `;
 

@@ -164,19 +164,16 @@ export const Modal = ({
 
   return (
     <div className={modalClass}>
-      {!isEditPage ? (
-        <div className="modal-header">
-          <h3 className="modal-title">{windowTitle}</h3>
-          <button
-            onClick={handleCancelClick}
-            className="modal-btn-close"
-            title="btn-close"
-            placeholder="btn-close"
-          />
-        </div>
-      ) : (
-        ""
-      )}
+      <div className="modal-header">
+        <h3 className="modal-title">{windowTitle}</h3>
+        <button
+          onClick={handleCancelClick}
+          className="modal-btn-close"
+          title="btn-close"
+          placeholder="btn-close"
+        />
+      </div>
+
       {getMessage()}
       {isEditPage ? (
         <EditButtons penguin={penguin} />

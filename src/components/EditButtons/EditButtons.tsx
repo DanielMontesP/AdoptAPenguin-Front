@@ -9,16 +9,14 @@ import { useAppDispatch } from "../../app/redux/hooks/hooks";
 import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
-import { Modal } from "../Modals/ModalPrompt";
 
 interface Props {
   penguin: IPenguin;
 }
 
 const EditButtons = ({ penguin }: Props): JSX.Element => {
-  const [isModalOpen, setModal] = useState(false);
+  const [, setModal] = useState(false);
   const navigate = useNavigate();
-
   const dispatch = useAppDispatch();
   let message = "";
 
@@ -57,15 +55,6 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
       >
         <h3 className="menu-icon-label-vertical"> Delete</h3>
       </button>
-      {isModalOpen && (
-        <Modal
-          closeModal={setModal}
-          type="delete"
-          idToProcess={penguin.id}
-          content={message}
-          form="Message"
-        />
-      )}
     </div>
   );
 };
