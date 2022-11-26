@@ -260,19 +260,11 @@ export const editPenguinThunk =
   };
 
 export const resetPenguinThunk = () => async (dispatch: AppDispatch) => {
-  dispatch(loadingActionCreator());
-
   dispatch(resetPenguinActionCreator(blankFormData));
   dispatch(finishedLoadingActionCreator());
-
-  setLoadingOffWithMessage("RESET Penguin: Finished successfully.", false);
 };
 
 export const resetPenguinsThunk = () => async (dispatch: AppDispatch) => {
-  dispatch(loadingActionCreator());
-
   dispatch(resetPenguinsActionCreator(blankFormData));
   dispatch(finishedLoadingActionCreator());
-
-  setLoadingOffWithMessage("RESET Penguins: Finished successfully.", false);
 };

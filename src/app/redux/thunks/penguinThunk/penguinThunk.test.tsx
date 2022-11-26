@@ -189,7 +189,7 @@ describe("Given the resetPenguinsThunk function", () => {
       const thunk = resetPenguinsThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });
@@ -208,7 +208,7 @@ describe("Given the resetPenguinThunk function", () => {
       const thunk = resetPenguinThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });
