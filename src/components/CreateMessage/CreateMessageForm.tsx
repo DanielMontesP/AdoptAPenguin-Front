@@ -28,7 +28,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const { penguin } = useAppSelector((state) => state.penguins);
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  const isCreate = headerTitle === "New message...";
+  const isCreate = headerTitle === "New...";
 
   const [formData, setFormData] = useState(
     isCreate ? newMessageData(idUser, penguin.id) : blankMessageData
@@ -95,15 +95,9 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
         title="form-create"
       >
         <label htmlFor="description">Send To</label>
-        <input
-          id="sendto"
-          type="text"
-          placeholder="Send To"
-          value={penguin.name}
-          autoComplete="off"
-          className="form-input"
-          disabled
-        />
+        <span id="sendto" placeholder="Send To" className="form-input-disabled">
+          {penguin.name}
+        </span>
         <label htmlFor="subject">Subject</label>
         <input
           id="subject"
@@ -126,7 +120,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           onChange={handleInputChange}
         />
 
-        <button type="submit" className="bt-save" placeholder="bt-save">
+        <button type="submit" className="bt-message-save" placeholder="bt-save">
           {isCreate ? "Send" : "Save"}
         </button>
       </form>

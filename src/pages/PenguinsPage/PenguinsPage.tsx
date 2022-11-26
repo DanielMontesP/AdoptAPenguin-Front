@@ -10,7 +10,10 @@ import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
-import { resetMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
+import {
+  getMessagesThunk,
+  resetMessageThunk,
+} from "../../app/redux/thunks/messageThunk/messageThunk";
 
 interface Props {
   type: string;
@@ -19,7 +22,7 @@ interface Props {
 const PenguinsPage = ({ type }: Props) => {
   const dispatch = useAppDispatch();
 
-  const { allPenguins } = useAppSelector((state) => state.penguins);
+  const { allPenguins, penguin } = useAppSelector((state) => state.penguins);
   const { headerTitle, modalType, headerLastTitle, isDesktop } = useAppSelector(
     (state) => state.ui
   );
@@ -41,9 +44,17 @@ const PenguinsPage = ({ type }: Props) => {
         dispatch(loadPenguinsThunk());
       }
     }
-
+    dispatch(getMessagesThunk(penguin.id));
     dispatch(resetMessageThunk());
-  }, [dispatch, headerTitle, isDesktop, modalType, headerLastTitle, type]);
+  }, [
+    dispatch,
+    headerTitle,
+    isDesktop,
+    modalType,
+    headerLastTitle,
+    penguin,
+    type,
+  ]);
 
   return <Penguins allPenguins={allPenguins} />;
 };

@@ -41,31 +41,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
 
   let isHomePage = false;
 
-  let headerIconType = "";
   let classHeaderTitle = "header-desktop-title";
-
-  switch (headerTitle) {
-    case "Home":
-      isHomePage = true;
-      headerIconType = "header-home-icon";
-      break;
-    case "Likes":
-      headerIconType = "header-likes-icon";
-      break;
-    case "Favourites":
-      headerIconType = "header-favs-icon";
-      break;
-    case "Detail":
-      headerIconType = "header-detail-icon";
-      break;
-    case "New...":
-      headerIconType = "header-new-icon";
-      break;
-    case "Edit...":
-      headerIconType = "header-edit-icon";
-      break;
-    default:
-  }
 
   let HidderDesktopButtons = "";
 
@@ -123,7 +99,6 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
               onClick={handleBack}
             />
           )}
-          <div className={headerIconType} />
           <h1 className={classHeaderTitle}>{headerTitle}</h1>
 
           <button

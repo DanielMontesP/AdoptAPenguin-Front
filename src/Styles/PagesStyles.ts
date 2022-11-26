@@ -6,7 +6,7 @@ import iconMenuFavs from "../images/fav-empty.png";
 import iconMenuFavsDelete from "../images/fav-full.png";
 import iconHome from "../images/icon-home.png";
 import iconLogout from "../images/icon-logout-white.png";
-import iconDelete from "../images/delete-32.png";
+import iconDeleteBlack from "../images/delete-black.png";
 import iconSoundOff from "../images/icon-sound-off.png";
 import iconSoundOn from "../images/icon-sound-on.png";
 import iconEdit from "../images/edit.png";
@@ -483,13 +483,14 @@ const PagesStyles = styled.div`
   }
 
   .animatedDelete {
-    width: 30px;
-    height: 30px;
-    background: none;
-    background-image: url(${iconDelete});
+    border: none;
+    height: 17px;
+    width: 17px;
+    background: url(${iconDeleteBlack});
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: contain;
-    border: 0;
-    margin: auto;
+    margin-left: 30px;
   }
 
   .animatedEdit {

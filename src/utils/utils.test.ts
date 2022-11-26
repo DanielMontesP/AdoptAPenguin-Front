@@ -37,7 +37,7 @@ describe("Given a hasNewMessages function", () => {
   describe("When called", () => {
     test("Then it return number of messages with unread flag", () => {
       const dispatch = jest.fn();
-      dispatch(hasNewMessages(mockMessages, mockPenguin));
+      dispatch(hasNewMessages(mockMessages, mockPenguin.id));
 
       expect(dispatch).toHaveBeenCalled();
     });

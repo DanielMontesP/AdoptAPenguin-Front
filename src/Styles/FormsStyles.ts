@@ -15,7 +15,12 @@ import PageBackground from "../images/HomePage.png";
 
 const FormsStyles = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
-
+  textarea,
+  input,
+  button,
+  h3 {
+    font-family: Montserrat, sans-serif;
+  }
   @media only screen and (max-width: 420px) {
     button {
       padding: 14px 20px;
@@ -34,21 +39,30 @@ const FormsStyles = styled.div`
       display: flex;
       flex-direction: column;
       margin: auto;
-      margin-top: 90px;
+      align-items: center;
+    }
+
+    .form-create {
+      display: flex;
+      flex-direction: column;
+      margin-top: 110px;
     }
 
     .preview-image {
-      max-width: 280px;
-      height: 190px;
+      max-width: 350px;
       margin: auto;
       border: 2px solid black;
       border-radius: 15px;
       background-color: white;
-      margin-top: 60px;
+      margin-top: 80px;
+      background-image: url(${iconAddPhoto});
+      background-repeat: no-repeat;
+      background-position: center;
       aspect-ratio: auto;
     }
 
     .input-description {
+      width: 80%;
       height: 150px;
       margin: auto;
       border: 2px solid black;
@@ -61,8 +75,6 @@ const FormsStyles = styled.div`
     }
 
     .form-img__file-label {
-      position: absolute;
-      top: 4px;
       display: block;
       width: 40vh;
       height: 180px;
@@ -132,14 +144,15 @@ const FormsStyles = styled.div`
       display: flex;
       flex-direction: column;
       margin: auto;
-
       align-items: center;
     }
+
     .form-create {
       display: flex;
       flex-direction: column;
       margin-top: 100px;
     }
+
     .preview-image {
       max-width: 350px;
       margin: auto;
@@ -155,7 +168,7 @@ const FormsStyles = styled.div`
 
     .input-description {
       height: 150px;
-      width: 100%;
+      width: 80%;
       margin: auto;
       border: 2px solid black;
       align-items: center;
@@ -164,7 +177,6 @@ const FormsStyles = styled.div`
       box-sizing: border-box;
       color: black;
       font-size: 18px;
-      font-family: Montserrat, sans-serif;
     }
 
     .form-img__file-label {
@@ -279,11 +291,9 @@ const FormsStyles = styled.div`
     display: flex;
     flex-direction: column;
     width: 80%;
-    height: 60px;
-    padding-bottom: 10px;
+    color: white;
     font-size: 20px;
     margin: auto;
-    display: none;
   }
 
   span {
@@ -303,9 +313,22 @@ const FormsStyles = styled.div`
     box-sizing: border-box;
     color: black;
     font-size: 20px;
-    width: 82%;
+    width: 80%;
     margin: auto;
     background: white;
+    height: 45px;
+  }
+  .form-input-disabled {
+    border: 2px solid black;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: black;
+    font-size: 20px;
+    width: 80%;
+    margin: auto;
+    background: lightgrey;
     height: 45px;
   }
 
@@ -397,14 +420,13 @@ const FormsStyles = styled.div`
   }
 
   .container {
-    max-width: 600px;
     width: 100%;
     display: flow-root;
     margin: auto;
+    height: 100vh;
   }
 
   .create-container {
-    height: 100vh;
     display: flex;
     background-image: url(${PageBackground});
     background-size: cover;
@@ -582,6 +604,17 @@ const FormsStyles = styled.div`
     height: 60px;
     border-radius: 15px;
     width: 100%;
+  }
+  .bt-message-save {
+    height: 60px;
+    width: 80%;
+    margin-top: 20px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 15px;
   }
 
   .bt-register {
