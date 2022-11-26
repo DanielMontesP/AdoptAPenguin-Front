@@ -505,6 +505,18 @@ const PagesStyles = styled.div`
     margin-right: 10px;
   }
 
+  .bt-Edit {
+    width: 30px;
+    height: 30px;
+    background: url(${iconEdit});
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    border: 0;
+    margin: auto;
+    margin-right: 10px;
+  }
+
   .no-visible {
     visibility: hidden;
   }

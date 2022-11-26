@@ -1,4 +1,4 @@
-import imgGitHub from "../../images/github.svg";
+import imgGitHub from "../../images/github-icon-white-256.png";
 import imgReact from "../../images/react-40.gif";
 import imgRedux from "../../images/redux-40.png";
 import imgJS from "../../images/javascript-40.png";

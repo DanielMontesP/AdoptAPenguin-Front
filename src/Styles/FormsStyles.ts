@@ -35,6 +35,19 @@ const FormsStyles = styled.div`
       margin: auto;
     }
 
+    .create-container {
+      height: 100vh;
+      display: flex;
+      background-image: url(${PageBackground});
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      justify-content: center;
+      flex-direction: row;
+      align-content: space-around;
+      align-items: flex-start;
+    }
+
     .image-container {
       display: flex;
       flex-direction: column;
@@ -62,7 +75,7 @@ const FormsStyles = styled.div`
     }
 
     .input-description {
-      width: 100%;
+      width: 80%;
       height: 150px;
       margin: auto;
       border: 2px solid black;
@@ -140,6 +153,19 @@ const FormsStyles = styled.div`
       margin: auto;
     }
 
+    .create-container {
+      height: 100vh;
+      display: flex;
+      background-image: url(${PageBackground});
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      justify-content: center;
+      flex-direction: row;
+      align-content: space-around;
+      align-items: flex-start;
+    }
+
     .image-container {
       display: flex;
       flex-direction: column;
@@ -168,7 +194,7 @@ const FormsStyles = styled.div`
 
     .input-description {
       height: 150px;
-      width: 100%;
+      width: 80%;
       margin: auto;
       border: 2px solid black;
       align-items: center;
@@ -424,19 +450,6 @@ const FormsStyles = styled.div`
     display: flow-root;
     margin: auto;
     height: 100vh;
-  }
-
-  .create-container {
-    height: 100vh;
-    display: flex;
-    background-image: url(${PageBackground});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    justify-content: center;
-    flex-direction: row;
-    align-content: space-around;
-    align-items: flex-start;
   }
 
   .register-container {

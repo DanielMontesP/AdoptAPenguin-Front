@@ -206,16 +206,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
           autoComplete="off"
           onChange={handleInputChange}
         />
-        <label htmlFor="likes">Likes</label>
-        <input
-          id="likes"
-          type="number"
-          placeholder="Likes"
-          value={formData.likes || penguin.likes}
-          autoComplete="off"
-          className="input-likes"
-          onChange={handleInputChange}
-        />
+
         <label htmlFor="description">Description</label>
         <textarea
           id="description"
