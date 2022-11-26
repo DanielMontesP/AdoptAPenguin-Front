@@ -6,6 +6,13 @@ body {
   margin: auto;
   font-family: Montserrat, sans-serif;
 }
+textarea,
+input,
+button,
+h3 {
+  font-family: Montserrat, sans-serif;
+  color: white;
+}
 
 @media only screen and (max-width: 420px) {
   .app .header {
@@ -72,10 +79,7 @@ body {
     min-height: 100px;
     min-width: 312px;
     margin: auto;
-    border: 1px solid;
-    border-top: 0;
-    border-radius: 0 5px 5px 5px;
-    padding: 10px 10px 20px 10px;
+    padding: 0px 10px 20px 10px;
     font-size: 16px;
     background: white;
     text-align: justify;
@@ -86,7 +90,6 @@ body {
     text-align: center;
     font-size: 0.9rem;
     margin: auto;
-    margin-top: 10px;
     overflow-y: auto;
     align-items: center;
   }
@@ -406,15 +409,6 @@ h1 {
   border-radius: 15px;
 }
 
-.footer {
-  position: fixed;
-  top: 90%;
-  color: grey;
-  text-align: center;
-  margin: auto;
-  width: 50%;
-}
-
 .animatedFavs {
   width: auto;
   height: 32px;
@@ -437,7 +431,7 @@ h1 {
   border: none;
   height: 39px;
   width: 32px;
-  background: url("../images/delete.png");
+  background: url("../images/delete-black.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -518,9 +512,6 @@ h1 {
     min-width: 120px;
     min-height: 100px;
     margin: auto;
-    border: 1px solid;
-    border-top: 0;
-    border-radius: 0 5px 5px 5px;
     padding: 10px 10px 20px 10px;
     font-size: 16px;
     background: white;
@@ -543,7 +534,6 @@ h1 {
     text-align: center;
     font-size: 0.9rem;
     margin: auto;
-    margin-top: 10px;
     overflow-y: auto;
     align-items: center;
   }
@@ -856,7 +846,7 @@ h1 {
   cursor: pointer;
   border: 0;
   position: fixed;
-  right: 5px;
+  right: -5px;
 }
 
 /* ------------------------------------------  */
@@ -959,9 +949,10 @@ ul {
 
 .view-list-counter {
   text-align: right;
-  font-size: 0.9rem;
+  font-size: 12px;
   font-weight: normal;
   margin-right: 20px;
+  color: black;
 }
 .user-photo {
   margin-left: 20px;
@@ -1071,8 +1062,8 @@ ul {
   background: url("../images/modal-accept-32.png");
   background-position: center;
   background-repeat: no-repeat;
-  border: 2px solid rgb(29, 29, 29);
-  background-color: rgb(29, 29, 29);
+  border: 2px solid white;
+  background-color: transparent;
   border-radius: 10px;
   flex: none;
   margin: auto;
@@ -1084,8 +1075,9 @@ ul {
   background: url("../images/modal-cancel-32.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-color: rgb(29, 29, 29);
+  background-color: transparent;
   border-radius: 10px;
+  border: 2px solid white;
   flex: none;
   margin: auto;
 }
@@ -1216,13 +1208,15 @@ ul {
 .modal {
   text-align: center;
   position: fixed;
+  color: white;
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: auto;
+  height: fit-content;
+  width: 75%;
   min-width: 20rem;
   min-height: 10rem;
-  background-color: white;
+  background-color: rgb(29, 29, 29);
   border-radius: 10px;
   z-index: 101;
   display: flex;
@@ -1261,7 +1255,7 @@ ul {
 
 .modal-title {
   color: white;
-  font-size: 1.2em;
+  font-size: 16px;
   margin: 15px;
 }
 
@@ -1286,13 +1280,13 @@ ul {
   font-size: 14px;
   margin: auto;
   width: 90%;
-  color: black;
+  color: white;
 }
 
 .modal-message {
   width: 100%;
-  font-size: 16px;
-  color: black;
+  font-size: 18px;
+  color: white;
   text-align: center;
   margin: auto;
   margin-top: 30px;

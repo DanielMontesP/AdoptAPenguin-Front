@@ -96,7 +96,7 @@ export const createMessageThunk =
 
       dispatch(createMessageActionCreator(message));
 
-      dispatch(getMessagesThunk(message.idPenguin));
+      dispatch(getMessagesThunk(formMessage.idPenguin));
       dispatch(finishedLoadingActionCreator());
       setLoadingOffWithMessage(
         `CREATE Message: ${message.subject} created successfully.`,

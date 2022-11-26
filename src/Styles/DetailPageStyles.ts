@@ -6,7 +6,6 @@ import iconLike from "../images/like-full.png";
 import iconLikeInit from "../images/like-add.png";
 import iconHome from "../images/icon-home.png";
 import iconLogout from "../images/icon-logout-white.png";
-import iconDelete from "../images/delete.png";
 import iconSoundOff from "../images/icon-sound-off.png";
 import iconEdit from "../images/edit.png";
 import iconMesssagesGot from "../images/mail-empty.png";
@@ -28,8 +27,8 @@ const DetailPageStyles = styled.div`
   @media only screen and (min-width: 421px) {
     .detail-header {
       display: flex;
-      width: 80%;
-      max-width: 690px;
+      width: 70%;
+      max-width: 550px;
       margin: auto;
 
       position: relative;
@@ -43,9 +42,8 @@ const DetailPageStyles = styled.div`
       background-position: center;
       background-size: contain;
       width: 60px;
-      z-index: 1;
-      position: absolute;
-      left: 20%;
+      position: relative;
+      left: 12%;
     }
 
     .detailNext {
@@ -55,15 +53,14 @@ const DetailPageStyles = styled.div`
       background-position: center;
       background-size: contain;
       width: 60px;
-      z-index: 1;
-      position: absolute;
-      right: 20%;
+      position: relative;
+      right: 12%;
     }
 
     .buttons-container {
       margin: auto;
-      width: 85%;
-      max-width: 690px;
+      width: 95%;
+      max-width: 550px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -81,7 +78,7 @@ const DetailPageStyles = styled.div`
     }
 
     .penguin-description {
-      width: 95%;
+      width: 80%;
       min-height: 40px;
       margin: auto;
       text-align: justify;
@@ -92,8 +89,6 @@ const DetailPageStyles = styled.div`
     .penguin--container {
       border-radius: 5px 5px 5px 5px;
       margin: auto;
-      position: fixed;
-      top: 130px;
       width: 100%;
       max-height: 354px;
 
@@ -117,13 +112,10 @@ const DetailPageStyles = styled.div`
 
     .detail-description {
       display: flex;
-
       font-size: 1rem;
       background: white;
-      border: 1px solid;
       padding: 10px 10px 20px 10px;
       border-radius: 0 5px 5px 5px;
-      border-top: 0;
       margin: auto;
       text-align: justify;
       min-width: 320px;
@@ -170,9 +162,8 @@ const DetailPageStyles = styled.div`
       background-position: center;
       background-size: contain;
       width: 60px;
-      z-index: 1;
-      position: absolute;
-      left: 1%;
+      position: fixed;
+      left: 3%;
     }
 
     .detailNext {
@@ -182,20 +173,19 @@ const DetailPageStyles = styled.div`
       background-position: center;
       background-size: contain;
       width: 60px;
-      z-index: 1;
-      position: absolute;
-      right: 1%;
+      position: fixed;
+      right: 3%;
     }
 
     .detail-header {
       display: flex;
-      width: 95%;
-      max-width: 690px;
+      width: 80%;
+      max-width: 550px;
       margin: auto;
     }
     .buttons-container {
       margin: auto;
-      width: 90%;
+      width: 95%;
       max-width: 690px;
       display: flex;
       flex-direction: row;
@@ -225,18 +215,16 @@ const DetailPageStyles = styled.div`
       display: flex;
       font-size: 1rem;
       background: white;
-      border: 1px solid;
       padding: 10px;
-      border-radius: 0 5px 5px 5px;
-      border-top: 0;
+
       margin: auto;
       text-align: justify;
       min-height: 100px;
     }
 
     .penguin-description {
-      width: 95%;
-      max-width: 690px;
+      width: 80%;
+      max-width: 550px;
       margin: auto;
       text-align: justify;
       display: flex;
@@ -246,8 +234,6 @@ const DetailPageStyles = styled.div`
     .penguin--container {
       border-radius: 5px 5px 5px 5px;
       margin: auto;
-      position: absolute;
-      top: 130px;
       width: 95%;
     }
 
@@ -264,21 +250,16 @@ const DetailPageStyles = styled.div`
 
   .tab-description {
     width: 100px;
+    background: none;
     font-size: 0.9rem;
-    background: grey;
-    border: 1px solid;
-    border-radius: 10px 10px 0px 0;
-    color: white;
+    color: black;
   }
 
   .tab-messages {
     font-size: 0.9rem;
     width: 100px;
-    background: grey;
-    border: 1px solid;
-    border-radius: 10px 10px 0px 0;
-    color: white;
-
+    color: black;
+    background: none;
     padding: 5px;
   }
 
@@ -289,7 +270,9 @@ const DetailPageStyles = styled.div`
     background: white;
     border: 1px solid;
     border-radius: 10px 10px 0px 0;
-    border-bottom: 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
     color: black;
   }
 
@@ -497,14 +480,14 @@ const DetailPageStyles = styled.div`
   }
 
   .message-new {
-    font-size: 1rem;
-    width: 130px;
-    height: 24px;
-    margin-bottom: 5px;
     color: black;
-    background-color: white;
-    border-radius: 8px;
-    border: 1px solid grey;
+    background-color: transparent;
+    border: 2px solid black;
+    font-size: 16px;
+    font-weight: bold;
+    height: 40px;
+    border-radius: 15px;
+    width: 100%;
   }
 
   .message-noread-img {
@@ -525,7 +508,7 @@ const DetailPageStyles = styled.div`
   }
 
   .detail-tabs {
-    width: 85%;
+    width: 100%;
     max-width: 690px;
     margin: auto;
   }
@@ -578,6 +561,7 @@ const DetailPageStyles = styled.div`
     box-shadow: 0 3px 6px #666;
     margin-top: 20px;
     margin-bottom: 20px;
+    margin-left: 10px;
     display: flex;
   }
 
@@ -705,16 +689,6 @@ const DetailPageStyles = styled.div`
     background-size: contain;
     border: 0;
     flex: 2;
-  }
-
-  .animatedDelete {
-    width: 30px;
-    height: 30px;
-    background: none;
-    background-image: url(${iconDelete});
-    background-repeat: no-repeat;
-    background-position: inherit;
-    background-size: contain;
   }
 
   .animatedEdit {

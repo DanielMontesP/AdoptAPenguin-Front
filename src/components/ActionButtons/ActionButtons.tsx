@@ -19,7 +19,10 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
   const { allMessages } = useAppSelector((state) => state.messages);
 
-  const countNewMessages = hasNewMessages(allMessages, penguin);
+  const countNewMessages = () => {
+    return hasNewMessages(allMessages, penguin.id);
+  };
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -99,7 +102,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         onClick={handleMessage}
         title="bt-message"
       />
-      <span className="new-messages-counter">{countNewMessages}</span>
+      <span className="new-messages-counter">{countNewMessages()}</span>
       <button
         placeholder="btn-favs"
         onClick={handleFavs}

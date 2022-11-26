@@ -5,7 +5,7 @@ const FormsStyles = styled.div`
 
   a {
     font-size: 12px;
-    color: blue;
+    color: grey;
     text-decoration: none;
   }
   .footer-sonar {
@@ -38,11 +38,12 @@ const FormsStyles = styled.div`
   }
 
   .footer {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    font-size: 12px;
-    color: black;
+    position: fixed;
+    top: 90%;
+    color: grey;
+    text-align: center;
+    margin: auto;
+    width: 100%;
   }
 `;
 

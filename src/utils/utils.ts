@@ -1,4 +1,3 @@
-import { IPenguin } from "../app/redux/types/penguin/penguinInterfaces";
 import Resizer from "react-image-file-resizer";
 import { IMessage } from "../app/redux/types/message/messageInterfaces";
 
@@ -8,11 +7,11 @@ export function getCurrentDate(separator = "/") {
   return `${newDate.toLocaleString()}`;
 }
 
-export function hasNewMessages(allMessages: IMessage[], penguin: IPenguin) {
+export function hasNewMessages(allMessages: IMessage[], idPenguin: string) {
   let countNewMessages = 0;
 
   allMessages.forEach((message) => {
-    if (!message.read && penguin.id === message.idPenguin) {
+    if (!message.read && idPenguin === message.idPenguin && idPenguin !== "") {
       countNewMessages += 1;
     }
   });
