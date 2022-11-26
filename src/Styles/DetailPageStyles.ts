@@ -45,7 +45,7 @@ const DetailPageStyles = styled.div`
       width: 60px;
       z-index: 1;
       position: absolute;
-      left: 1%;
+      left: 20%;
     }
 
     .detailNext {
@@ -57,7 +57,7 @@ const DetailPageStyles = styled.div`
       width: 60px;
       z-index: 1;
       position: absolute;
-      right: 1%;
+      right: 20%;
     }
 
     .buttons-container {
@@ -172,7 +172,7 @@ const DetailPageStyles = styled.div`
       width: 60px;
       z-index: 1;
       position: absolute;
-      left: 20%;
+      left: 1%;
     }
 
     .detailNext {
@@ -184,7 +184,7 @@ const DetailPageStyles = styled.div`
       width: 60px;
       z-index: 1;
       position: absolute;
-      right: 20%;
+      right: 1%;
     }
 
     .detail-header {
