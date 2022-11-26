@@ -431,6 +431,17 @@ h1 {
   border: none;
   height: 39px;
   width: 32px;
+  background: url("../images/delete.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-left: 30px;
+}
+
+.animatedDeleteBlack {
+  border: none;
+  height: 39px;
+  width: 32px;
   background: url("../images/delete-black.png");
   background-repeat: no-repeat;
   background-position: center;

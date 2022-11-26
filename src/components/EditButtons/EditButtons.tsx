@@ -6,6 +6,8 @@ import {
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch } from "../../app/redux/hooks/hooks";
+import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
+import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { Modal } from "../Modals/ModalPrompt";
 
@@ -32,7 +34,11 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
   };
 
   const handleEdit = () => {
-    setModal(false);
+    dispatch(getPenguinThunk(penguin.id));
+    if (penguin.id !== "") {
+      dispatch(getMessagesThunk(penguin.id));
+    }
+    setModal((prevState) => !prevState);
     dispatch(isModalOpenActionCreator(false));
 
     navigate(`/penguins/id=${penguin.id}`);
