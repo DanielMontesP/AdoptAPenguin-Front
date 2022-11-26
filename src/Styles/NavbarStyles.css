@@ -406,7 +406,6 @@ h1 {
   align-items: flex-start;
   align-content: center;
   gap: 15px;
-  border-radius: 15px;
 }
 
 .animatedFavs {
@@ -1060,11 +1059,7 @@ ul {
 }
 
 .modal-body {
-  height: max-content;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: space-around;
+  margin-bottom: 80px;
 }
 
 .modal-btn-accept {
@@ -1260,7 +1255,7 @@ ul {
 
 .modal-header {
   border-radius: 10px 10px 0 0;
-  background-color: rgb(29, 29, 29);
+  background-color: #292929;
   position: relative;
 }
 
