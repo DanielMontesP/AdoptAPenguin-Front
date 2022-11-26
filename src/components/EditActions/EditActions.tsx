@@ -5,6 +5,7 @@ import {
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch } from "../../app/redux/hooks/hooks";
+import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 
 interface Props {
@@ -20,6 +21,7 @@ const EditActions = ({ penguin }: Props): JSX.Element => {
     const message = "Options: ";
     const newModalType = "Edit";
 
+    dispatch(getPenguinThunk(penguin.id));
     dispatch(modalTypeActionCreator(newModalType));
     dispatch(modalMessageActionCreator(message));
 

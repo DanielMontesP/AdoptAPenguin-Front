@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { blankFormData } from "../../app/redux/initializers/iniPenguins";
-import { editPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
+import {
+  editPenguinThunk,
+  getPenguinThunk,
+} from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { cleanArray, hasNewMessages } from "../../utils/utils";
 
@@ -33,6 +37,9 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const selectIconLike = isLiker ? " animatedLike" : ` animatedLikeInit`;
 
   const handleMessage = () => {
+    dispatch(getPenguinThunk(penguin.id));
+    dispatch(getMessagesThunk(penguin.id));
+
     navigate(`/detail/${penguin.id}#messages`);
   };
 
