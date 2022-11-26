@@ -7,20 +7,21 @@ import {
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch } from "../../app/redux/hooks/hooks";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
+import { Modal } from "../Modals/ModalPrompt";
 
 interface Props {
   penguin: IPenguin;
 }
 
 const EditButtons = ({ penguin }: Props): JSX.Element => {
-  const [, setModal] = useState(false);
+  const [isModalOpen, setModal] = useState(false);
   const navigate = useNavigate();
-  const [, setMenu] = useState(false);
 
   const dispatch = useAppDispatch();
+  let message = "";
 
   const handleDelete = (): void => {
-    const message = "Delete permanently from database? ";
+    message = "Delete permanently from database? ";
     const newModalType = "delete";
 
     dispatch(modalTypeActionCreator(newModalType));
@@ -31,9 +32,10 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
   };
 
   const handleEdit = () => {
-    setMenu((prevState) => !prevState);
+    setModal(false);
+    dispatch(isModalOpenActionCreator(false));
 
-    navigate(`/penguins?id=${penguin.id}`);
+    navigate(`/penguins/id=${penguin.id}`);
   };
 
   return (
@@ -49,6 +51,15 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
       >
         <h3 className="menu-icon-label-vertical"> Delete</h3>
       </button>
+      {isModalOpen && (
+        <Modal
+          closeModal={setModal}
+          type="delete"
+          idToProcess={penguin.id}
+          content={message}
+          form="Message"
+        />
+      )}
     </div>
   );
 };
