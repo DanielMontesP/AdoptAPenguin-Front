@@ -118,7 +118,7 @@ const FormsStyles = styled.div`
     .form-img__img-preview {
       display: block;
       width: 40.5vh;
-      height: 191px;
+      height: 220px;
       margin-top: 5px;
       background: white;
       object-fit: cover;
@@ -194,7 +194,7 @@ const FormsStyles = styled.div`
 
     .input-description {
       height: 150px;
-      width: 80%;
+      width: 100%;
       margin: auto;
       border: 2px solid black;
       align-items: center;
@@ -208,7 +208,7 @@ const FormsStyles = styled.div`
     .form-img__file-label {
       display: block;
       width: 50vh;
-      height: 220px;
+      height: 230px;
       cursor: pointer;
       background-image: url(${iconAddPhoto});
       background-repeat: no-repeat;
@@ -216,7 +216,7 @@ const FormsStyles = styled.div`
       background-color: white;
       border-radius: 15px;
       border: 2px black solid;
-      opacity: 0.5;
+      opacity: 0.8;
     }
 
     input {
@@ -236,14 +236,11 @@ const FormsStyles = styled.div`
     .form-img__img-preview {
       display: block;
       width: 50vh;
-      height: 235px;
+      height: 220px;
       margin-top: 5px;
       background: white;
       object-fit: scale-down;
       border-radius: 15px;
-      opacity: 0;
-
-      display: none;
     }
 
     .form-img__img-preview-Hidden {
@@ -837,10 +834,13 @@ we're going to use its associated label to trigger it */
   }
 
   .form-img__file-label > img {
-    position: absolute;
-    top: 50%;
+    position: relative;
+    top: 48%;
+    height: 100%;
+    width: 100%;
     left: 50%;
     opacity: 0.7;
+    object-fit: cover;
     transform: translate(-50%, -50%);
   }
 
