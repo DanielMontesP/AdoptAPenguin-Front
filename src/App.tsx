@@ -16,21 +16,36 @@ import PenguinsPage from "./pages/PenguinsPage/PenguinsPage";
 import { getUserThunk } from "./app/redux/thunks/userThunk/userThunk";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { isDesktopActionCreator } from "./app/redux/features/uiSlice/uiSlice";
+import { Modal } from "./components/Modals/ModalPrompt";
+import { ReactDimmer } from "react-dimmer";
 
 function App() {
   const { logged, id } = useAppSelector((state) => state.user);
   const { headerTitle, loading } = useAppSelector((state) => state.ui);
+  const { penguin } = useAppSelector((state) => state.penguins);
 
   const dispatch = useAppDispatch();
 
+  const [isMenuOpened, setMenuOpen] = useState(false);
+  const [, setModal] = useState(false);
+
   const [isDesktop, setDesktop] = useState(window.innerWidth > 421);
   const [scrollPosition, setSrollPosition] = useState(0);
+
+  const { modalMessage, modalType, isModalOpen, isMenuOpen } = useAppSelector(
+    (state) => state.ui
+  );
+
+  const getModalType = () => {
+    const newModalType = modalType;
+    return newModalType;
+  };
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 420);
   };
 
-  let notScrolled = false;
+  let scrolledUp = false;
 
   const handleScroll = () => {
     const position = window.scrollY;
@@ -38,14 +53,18 @@ function App() {
   };
 
   if (scrollPosition) {
-    notScrolled = isDesktop ? false : true;
+    scrolledUp = true;
   }
 
   let result = <></>;
 
   const handleNav = () => {
-    if (logged && !notScrolled) {
-      result = <Navbar headerTitle={headerTitle} />;
+    const navComponent = <Navbar headerTitle={headerTitle} />;
+
+    if ((logged && isDesktop) || (logged && !isDesktop && !scrolledUp)) {
+      result = navComponent;
+    } else {
+      result = <></>;
     }
   };
 
@@ -71,7 +90,7 @@ function App() {
       window.removeEventListener("resize", updateMedia);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [dispatch, logged, loading, id, isDesktop, notScrolled, headerTitle]);
+  }, [dispatch, logged, loading, id, isDesktop, scrolledUp, headerTitle]);
 
   return (
     <>
@@ -192,6 +211,22 @@ function App() {
           }
         />
       </Routes>
+      {isModalOpen && (
+        <Modal
+          idToProcess={penguin.id}
+          content={modalMessage}
+          closeModal={setModal}
+          type={getModalType()}
+          form="Penguin"
+        />
+      )}
+
+      <ReactDimmer
+        isOpen={(isMenuOpened && isMenuOpen) || isModalOpen}
+        exitDimmer={setMenuOpen}
+        zIndex={90}
+        blur={1.5}
+      />
     </>
   );
 }

@@ -10,8 +10,6 @@ import {
   stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import Menu from "../Menu/Menu";
-import { Modal } from "../Modals/ModalPrompt";
-import { ReactDimmer } from "react-dimmer";
 import {
   handleLogout,
   handleSearchSubmit,
@@ -29,13 +27,11 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const [isModalOpened, setModal] = useState(false);
+  const [, setModal] = useState(false);
   const [isSearchClicked, setSearch] = useState(false);
   const [isMenuOpened, setMenu] = useState(false);
 
-  const { penguin } = useAppSelector((state) => state.penguins);
-  const { stringToSearch, modalMessage, modalType, isMenuOpen, isModalOpen } =
-    useAppSelector((state) => state.ui);
+  const { stringToSearch, isMenuOpen } = useAppSelector((state) => state.ui);
 
   const classButton = `desktop-btn bt-`;
 
@@ -152,11 +148,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     handleFocus(field);
   };
 
-  const getModalType = () => {
-    const newModalType = modalType;
-    return newModalType;
-  };
-
   const HidderSearch = isSearchClicked
     ? `${classInputSearch} opacity-full`
     : `${classInputSearch}`;
@@ -237,21 +228,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       <div className={`menu-nav`}>
         <Menu isMenuOpened={isMenuOpened && isMenuOpen} />
       </div>
-      {isModalOpen && (
-        <Modal
-          idToProcess={penguin.id}
-          closeModal={setModal}
-          content={modalMessage}
-          type={getModalType()}
-          form="Penguin"
-        />
-      )}
-      <ReactDimmer
-        isOpen={(isMenuOpen && isMenuOpened) || isModalOpen || isModalOpened}
-        exitDimmer={setMenu || setModal}
-        zIndex={90}
-        blur={1.5}
-      />
     </div>
   );
 };

@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 const FormsStyles = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
-
   a {
     font-size: 12px;
     color: grey;

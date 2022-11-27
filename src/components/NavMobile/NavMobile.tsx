@@ -9,8 +9,6 @@ import {
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import Menu from "../Menu/Menu";
-import { Modal } from "../Modals/ModalPrompt";
-import { ReactDimmer } from "react-dimmer";
 import { blankMessageDataInterface } from "../../app/redux/types/message/messageInterfaces";
 
 interface Props {
@@ -27,19 +25,18 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
     read: "false",
   };
 
-  const [isMenuOpened, setMenuOpen] = useState(false);
-  const [, setModal] = useState(false);
   const [, setFormData] = useState(blankData);
 
   const { penguin } = useAppSelector((state) => state.penguins);
 
-  const { modalMessage, modalType, headerLastTitle, isModalOpen, isMenuOpen } =
-    useAppSelector((state) => state.ui);
+  const { headerLastTitle, isMenuOpen } = useAppSelector((state) => state.ui);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  let isHomePage = false;
+  const [isMenuOpened, setMenuOpen] = useState(false);
+
+  let isHomePage = headerTitle === "Home";
 
   let classHeaderTitle = "header-desktop-title";
 
@@ -83,11 +80,6 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
   const headerClass = `header`;
   const classBack = "bt-back";
 
-  const getModalType = () => {
-    const newModalType = modalType;
-    return newModalType;
-  };
-
   return (
     <div className={`app`}>
       <div className={headerClass}>
@@ -111,22 +103,6 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
       <div className={`menu-nav`}>
         <Menu isMenuOpened={isMenuOpened && isMenuOpen} />
       </div>
-      {isModalOpen && (
-        <Modal
-          idToProcess={penguin.id}
-          content={modalMessage}
-          closeModal={setModal}
-          type={getModalType()}
-          form="Penguin"
-        />
-      )}
-
-      <ReactDimmer
-        isOpen={(isMenuOpened && isMenuOpen) || isModalOpen}
-        exitDimmer={setMenuOpen}
-        zIndex={90}
-        blur={1.5}
-      />
     </div>
   );
 };
