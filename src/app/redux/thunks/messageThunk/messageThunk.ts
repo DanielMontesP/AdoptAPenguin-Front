@@ -22,7 +22,6 @@ import { blankMessageData } from "../../initializers/iniMessages";
 export const getMessagesThunk =
   (idPenguin: string) => async (dispatch: AppDispatch) => {
     dispatch(loadingActionCreator());
-    setLoadingOn(`GET Messages: Loading data...`);
 
     const token = localStorage.getItem("token");
 
@@ -40,7 +39,6 @@ export const getMessagesThunk =
 
       dispatch(getMessagesActionCreator(messages));
       dispatch(finishedLoadingActionCreator());
-      setLoadingOffWithMessage(messages, false);
     }
   };
 

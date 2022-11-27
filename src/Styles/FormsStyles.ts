@@ -14,7 +14,6 @@ import iconEdit from "../images/icon-editar.png";
 import PageBackground from "../images/HomePage.png";
 
 const FormsStyles = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
   textarea,
   input,
   button,
@@ -75,7 +74,7 @@ const FormsStyles = styled.div`
     }
 
     .input-description {
-      width: 80%;
+      width: 100%;
       height: 150px;
       margin: auto;
       border: 2px solid black;
@@ -607,14 +606,15 @@ const FormsStyles = styled.div`
   }
 
   .bt-save {
+    height: 60px;
+    width: 100%;
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
     color: white;
     background-color: transparent;
     border: 2px solid white;
-    font-size: 20px;
-    font-weight: bold;
-    height: 60px;
     border-radius: 15px;
-    width: 100%;
   }
   .bt-message-save {
     height: 60px;

@@ -102,13 +102,13 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const handleImg = async (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.[0]) {
       const file = event.target.files?.[0];
-      const image = await resizeFile(file);
+      const imageResized = await resizeFile(file);
 
       setFormData({
         ...(isCreate ? formData : penguin),
         image: event.target.files?.[0],
         imageBackup: "",
-        imageResized: image,
+        imageResized: imageResized,
       });
 
       setImg({
@@ -171,7 +171,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         <div className="image-container">
           <input
             type="file"
-            accept=".png, .jpg, .jpeg"
+            accept=".png, .jpg, .jpeg, .gif"
             id="photo"
             className="visually-hidden"
             onChange={handleImg}

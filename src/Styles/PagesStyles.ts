@@ -16,8 +16,6 @@ import iconMesssagesGot from "../images/mail-empty.png";
 import iconMesssagesNew from "../images/mail-full.png";
 
 const PagesStyles = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
-
   @media only screen and (min-width: 421px) {
     .penguin-description {
       font-size: 14px;
@@ -364,7 +362,7 @@ const PagesStyles = styled.div`
   }
 
   .penguin-container {
-    width: 378px;
+    max-width: 378px;
     height: 440px;
     margin: auto;
     margin-bottom: 50px;
