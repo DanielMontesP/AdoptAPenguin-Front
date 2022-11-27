@@ -45,7 +45,7 @@ function App() {
     setDesktop(window.innerWidth > 420);
   };
 
-  let scrolledUp = true;
+  let scrolledUp = false;
 
   const handleScroll = () => {
     const position = window.scrollY;
@@ -53,16 +53,18 @@ function App() {
   };
 
   if (scrollPosition) {
-    scrolledUp = false;
+    scrolledUp = true;
   }
 
   let result = <></>;
 
   const handleNav = () => {
-    if (logged && !isDesktop && scrolledUp) {
-      result = <Navbar headerTitle={headerTitle} />;
-    } else if (logged && isDesktop) {
-      result = <Navbar headerTitle={headerTitle} />;
+    const navComponent = <Navbar headerTitle={headerTitle} />;
+
+    if ((logged && isDesktop) || (logged && !isDesktop && !scrolledUp)) {
+      result = navComponent;
+    } else {
+      result = <></>;
     }
   };
 
