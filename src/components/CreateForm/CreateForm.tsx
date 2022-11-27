@@ -177,15 +177,20 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
             onChange={handleImg}
             placeholder="image-input"
           />
-          <img
-            src={src.toString() || penguin.imageBackup.toString()}
-            alt={alt}
-            className={`${classImage}`}
-          />
           <label
             htmlFor="photo"
             className={`form-img__file-label${HidderBackground}`}
-          />
+          >
+            <img
+              src={
+                src.toString() ||
+                penguin.image.toString() ||
+                penguin.imageBackup.toString()
+              }
+              alt={alt}
+              className={`${classImage}`}
+            />
+          </label>
         </div>
         <label htmlFor="name">Name</label>
         <input
