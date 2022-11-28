@@ -1072,7 +1072,7 @@ ul {
 }
 
 .modal-body {
-  margin-bottom: 80px;
+  margin-top: 10px;
 }
 
 .modal-btn-accept {
@@ -1226,6 +1226,7 @@ ul {
 }
 
 .modal {
+  width: fit-content;
   text-align: center;
   position: fixed;
   color: white;
