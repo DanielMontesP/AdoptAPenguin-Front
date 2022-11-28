@@ -97,19 +97,19 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   };
 
   const handleImg = async (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files?.[0]) {
-      const file = event.target.files?.[0];
+    const file = event.target.files?.[0];
+    if (file) {
       const imageResized = await resizeFile(file);
 
       setFormData({
         ...(formData.image ? formData : penguin),
-        image: event.target.files?.[0],
+        image: file,
         imageResized: imageResized,
       });
 
       setImg({
-        src: URL.createObjectURL(event.target.files[0]),
-        alt: event.target.files[0].name,
+        src: URL.createObjectURL(file),
+        alt: file.name,
       });
 
       modFields.push(event.target.id);
