@@ -74,10 +74,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     );
 
     dispatch(
-      editPenguinThunk(
-        formData.image ? formData : newFormData,
-        "Update fields: " + modFields.join(", ")
-      )
+      editPenguinThunk(formData, "Update fields: " + modFields.join(", "))
     );
   };
 
@@ -105,7 +102,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       const imageResized = await resizeFile(file);
 
       setFormData({
-        ...formData,
+        ...(formData.image ? formData : penguin),
         image: event.target.files?.[0],
         imageResized: imageResized,
       });
