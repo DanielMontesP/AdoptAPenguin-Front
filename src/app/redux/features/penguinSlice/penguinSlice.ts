@@ -9,6 +9,7 @@ interface SliceIniState {
 const initialState: SliceIniState = {
   allPenguins: [],
   penguin: {
+    _id: "",
     id: "",
     name: "",
     category: "",
