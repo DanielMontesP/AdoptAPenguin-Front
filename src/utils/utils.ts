@@ -39,7 +39,7 @@ export const resizeFile = (file: File) =>
       file,
       300,
       300,
-      file.name.includes("gif") ? "GIF" : "JPEG",
+      "JPEG",
       100,
       0,
       (uri) => {

@@ -107,7 +107,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       setFormData({
         ...(isCreate ? formData : penguin),
         image: event.target.files?.[0],
-        imageBackup: "",
         imageResized: imageResized,
       });
 
@@ -184,8 +183,8 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
             <img
               src={
                 src.toString() ||
-                penguin.image.toString() ||
-                penguin.imageBackup.toString()
+                penguin.imageBackup.toString() ||
+                penguin.image.toString()
               }
               alt={alt}
               className={`${classImage}`}
