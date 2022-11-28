@@ -153,6 +153,7 @@ const FormsStyles = styled.div`
     }
 
     .create-container {
+      width: 100vh;
       display: flex;
       background-image: url(${PageBackground});
       background-size: cover;
