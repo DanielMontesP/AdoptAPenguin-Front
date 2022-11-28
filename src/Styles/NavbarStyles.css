@@ -1234,7 +1234,6 @@ ul {
   left: 50%;
   transform: translate(-50%, -50%);
   height: fit-content;
-  width: 75%;
   min-width: 20rem;
   min-height: 10rem;
   background-color: rgb(29, 29, 29);
