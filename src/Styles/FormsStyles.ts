@@ -153,7 +153,6 @@ const FormsStyles = styled.div`
     }
 
     .create-container {
-      height: 100vh;
       display: flex;
       background-image: url(${PageBackground});
       background-size: cover;
@@ -610,6 +609,7 @@ const FormsStyles = styled.div`
     width: 100%;
     font-size: 20px;
     margin-top: 20px;
+    margin-bottom: 20px;
     font-weight: bold;
     color: white;
     background-color: transparent;
