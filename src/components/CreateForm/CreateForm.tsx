@@ -88,10 +88,18 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   ): void => {
     event.preventDefault();
 
-    setFormData({
-      ...(isCreate ? formData : penguin),
-      [event.target.id]: event.target.value,
-    });
+    if (isCreate) {
+      setFormData({
+        ...formData,
+        [event.target.id]: event.target.value,
+      });
+    } else {
+      setFormData({
+        ...penguin,
+        [event.target.id]: event.target.value,
+        _id: penguin.id,
+      });
+    }
 
     modFields.push(event.target.id);
   };

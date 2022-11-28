@@ -1,6 +1,7 @@
 import { IPenguin } from "../app/redux/types/penguin/penguinInterfaces";
 
 export const mockPenguin: IPenguin = {
+  _id: "idPenguin",
   id: "idPenguin",
   name: "penguin1",
   category: "category1",
@@ -14,6 +15,7 @@ export const mockPenguin: IPenguin = {
 };
 
 export const mockEmptyDataPenguin: IPenguin = {
+  _id: "idPenguin",
   id: "",
   name: "",
   category: "",
@@ -28,6 +30,7 @@ export const mockEmptyDataPenguin: IPenguin = {
 
 export const mockPenguinsEmpty: IPenguin[] = [
   {
+    _id: "idPenguin",
     id: "",
     name: "",
     category: "",
@@ -42,6 +45,7 @@ export const mockPenguinsEmpty: IPenguin[] = [
 ];
 export const mockPenguins: IPenguin[] = [
   {
+    _id: "idPenguin",
     id: "id",
     name: "penguin1",
     category: "category1",
@@ -54,6 +58,7 @@ export const mockPenguins: IPenguin[] = [
     description: "description1",
   },
   {
+    _id: "idPenguin",
     id: "2",
     name: "Penguin2",
     category: "Penguin",
