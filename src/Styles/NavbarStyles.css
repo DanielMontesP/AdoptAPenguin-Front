@@ -1116,7 +1116,7 @@ ul {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 25px;
-  background-color: rgb(29, 29, 29);
+  background-color: transparent;
   font-size: 20px;
   align-items: center;
 }
@@ -1294,8 +1294,9 @@ ul {
 }
 
 .message-header {
-  display: inline-flex;
   width: 60%;
+  margin: auto;
+  display: inline-flex;
   justify-content: space-around;
 }
 

@@ -16,9 +16,6 @@ const FormsStyles = styled.div`
     justify-content: center;
     align-items: center;
   }
-  .footer {
-    margin: auto;
-  }
 
   .wellcome-techs {
     margin-top: 20px;
@@ -38,7 +35,7 @@ const FormsStyles = styled.div`
   .footer {
     width: 100%;
     position: fixed;
-    top: 90%;
+    top: 70%;
     display: flex;
     flex-direction: column;
     color: grey;
