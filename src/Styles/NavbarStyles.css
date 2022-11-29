@@ -27,7 +27,7 @@ h3 {
   .title-big {
     font-family: Montserrat, sans-serif;
     height: 300px;
-    width: 307px;
+    width: 315px;
     margin: auto;
     position: fixed;
     top: 20%;
@@ -481,7 +481,7 @@ h1 {
 
   .title-big {
     height: 300px;
-    max-width: 410px;
+    max-width: 430px;
     margin: auto;
     position: fixed;
     top: 20%;
