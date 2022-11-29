@@ -37,7 +37,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
   const penguinImage =
     penguin.image === "" && !penguin.imageBackup.includes("/")
       ? iconPhotoEmpty
-      : penguin.imageBackup || penguin.image.toString();
+      : penguin.image.toString() || penguin.imageBackup;
 
   const getDetailPrev = () => {
     const actualPos = allPenguins
