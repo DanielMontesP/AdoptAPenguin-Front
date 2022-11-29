@@ -1305,10 +1305,10 @@ ul {
 }
 
 .message-content {
+  margin: auto;
   margin-bottom: 50px;
   text-align: justify;
   font-size: 14px;
-  margin: auto;
   width: 90%;
   color: white;
 }
