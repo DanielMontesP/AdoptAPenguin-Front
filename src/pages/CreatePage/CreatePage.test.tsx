@@ -67,8 +67,7 @@ describe("Given a penguin CreatePage component", () => {
   describe("When the two inputs have text and the submit button is clicked", () => {
     test("Then the two input name should have value penguin1", async () => {
       const nameLabel = "Name";
-      const catLabel = "Category";
-      const inputText = "penguin";
+      const inputText = "";
 
       render(
         <Provider store={store}>
@@ -79,7 +78,6 @@ describe("Given a penguin CreatePage component", () => {
       );
 
       const name = screen.getByPlaceholderText(nameLabel);
-      const category = screen.getByPlaceholderText(catLabel);
       const submitButton = screen.getByPlaceholderText("bt-save");
       axios.get = jest
         .fn()
@@ -87,11 +85,9 @@ describe("Given a penguin CreatePage component", () => {
       const dispatch = jest.fn();
 
       userEvent.type(name, inputText);
-      userEvent.type(category, inputText);
       userEvent.click(submitButton);
 
       expect(name).toHaveValue("penguin1");
-      expect(category).toHaveValue("category1");
       await dispatch(createFavThunk);
 
       expect(dispatch).toHaveBeenCalled();

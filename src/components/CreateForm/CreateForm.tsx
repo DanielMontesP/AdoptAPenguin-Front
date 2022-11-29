@@ -131,9 +131,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         processEdit(formData.image !== "");
       }
 
-      setFormData(blankFormData);
-
-      navigate(`../detail/${formData.id || penguin.id}`);
+      navigate(`/detail/${formData.id || penguin.id}`);
     } catch (error) {
       wrongAction("Error:" + error);
     }
