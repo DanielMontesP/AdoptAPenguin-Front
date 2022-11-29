@@ -32,7 +32,7 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
   const penguinImage =
     penguin.image === "" && !isURL
       ? iconPhotoEmpty
-      : penguin.imageBackup || penguin.image.toString();
+      : penguin.image.toString() || penguin.imageBackup;
 
   const contactImageClass =
     penguin.image === "" && !isURL ? " iconPhotoEmpty" : "";

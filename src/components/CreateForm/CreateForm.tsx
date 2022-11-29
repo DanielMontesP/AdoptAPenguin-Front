@@ -133,21 +133,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
       setFormData(blankFormData);
 
-      let navigateTo = "";
-
-      switch (headerLastTitle) {
-        case "Favourites":
-          navigateTo = "/penguins/favs";
-          break;
-        case "Home":
-          navigateTo = "/penguins";
-          break;
-        case "Likes":
-          navigateTo = "/penguins/likes";
-          break;
-        default:
-          navigateTo = "/penguins";
-      }
+      const navigateTo = `detail/${penguin.id}`;
 
       navigate(navigateTo);
     } catch (error) {
@@ -187,8 +173,8 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
             <img
               src={
                 src.toString() ||
-                penguin.imageBackup.toString() ||
-                penguin.image.toString()
+                penguin.image.toString() ||
+                penguin.imageBackup.toString()
               }
               alt={alt}
               className={`${classImage}`}
