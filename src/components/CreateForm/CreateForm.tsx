@@ -133,7 +133,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
       setFormData(blankFormData);
 
-      const navigateTo = `/detail/${penguin.id}`;
+      const navigateTo = `../detail/${penguin.id}`;
 
       navigate(navigateTo);
     } catch (error) {
