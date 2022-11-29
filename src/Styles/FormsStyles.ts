@@ -71,6 +71,19 @@ const FormsStyles = styled.div`
       height: 45px;
     }
 
+    .bt-save {
+      height: 60px;
+      width: 100%;
+      font-size: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: white;
+      background-color: transparent;
+      border: 2px solid white;
+      border-radius: 15px;
+    }
+
     label {
       display: flex;
       flex-direction: column;
@@ -93,7 +106,6 @@ const FormsStyles = styled.div`
     }
 
     .create-container {
-      height: 100vh;
       display: flex;
       background-image: url(${PageBackground});
       background-size: cover;
@@ -153,6 +165,8 @@ const FormsStyles = styled.div`
     }
 
     input {
+      height: 50px;
+      width: 100%;
       border: 2px solid black;
       align-items: center;
       justify-content: center;
@@ -160,10 +174,8 @@ const FormsStyles = styled.div`
       box-sizing: border-box;
       color: black;
       font-size: 18px;
-      width: 40vh;
       margin: auto;
       background: white;
-      height: 50px;
     }
 
     .form-img__img-preview {
@@ -244,6 +256,19 @@ const FormsStyles = styled.div`
       border-radius: 15px;
     }
 
+    .bt-save {
+      height: 60px;
+      width: 80%;
+      font-size: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: white;
+      background-color: transparent;
+      border: 2px solid white;
+      border-radius: 15px;
+    }
+
     label {
       display: flex;
       flex-direction: column;
@@ -313,6 +338,8 @@ const FormsStyles = styled.div`
     }
 
     input {
+      width: 80%;
+      height: 50px;
       border: 2px solid black;
       align-items: center;
       justify-content: center;
@@ -320,10 +347,8 @@ const FormsStyles = styled.div`
       box-sizing: border-box;
       color: black;
       font-size: 18px;
-      width: 50vh;
       margin: auto;
       background: white;
-      height: 50px;
     }
 
     .form-img__img-preview {
@@ -658,19 +683,6 @@ const FormsStyles = styled.div`
     position: relative;
     top: -140px;
     left: -10px;
-  }
-
-  .bt-save {
-    height: 60px;
-    width: 100%;
-    font-size: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    color: white;
-    background-color: transparent;
-    border: 2px solid white;
-    border-radius: 15px;
   }
 
   .bt-register {

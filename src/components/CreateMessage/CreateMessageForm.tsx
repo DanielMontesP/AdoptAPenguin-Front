@@ -53,7 +53,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           [event.target.id]: event.target.value,
         })
       : setFormData({
-          ...message,
+          ...(formData.id ? formData : message),
           [event.target.id]: event.target.value,
         });
 

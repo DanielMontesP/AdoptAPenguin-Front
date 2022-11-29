@@ -95,7 +95,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       });
     } else {
       setFormData({
-        ...penguin,
+        ...(formData.id ? formData : penguin),
         [event.target.id]: event.target.value,
       });
     }
