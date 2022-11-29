@@ -74,6 +74,7 @@ const FormsStyles = styled.div`
     .bt-save {
       height: 60px;
       width: 100%;
+      max-width: 500px;
       font-size: 20px;
       margin-top: 20px;
       margin-bottom: 20px;
@@ -139,6 +140,7 @@ const FormsStyles = styled.div`
 
     .input-description {
       width: 100%;
+      max-width: 500px;
       height: 150px;
       margin: auto;
       border: 2px solid black;
@@ -152,7 +154,7 @@ const FormsStyles = styled.div`
 
     .form-img__file-label {
       display: block;
-      width: 40vh;
+      width: 45vh;
       height: 180px;
       cursor: pointer;
       background-image: url(${iconAddPhoto});
@@ -167,6 +169,7 @@ const FormsStyles = styled.div`
     input {
       height: 50px;
       width: 100%;
+      max-width: 500px;
       border: 2px solid black;
       align-items: center;
       justify-content: center;
@@ -259,6 +262,8 @@ const FormsStyles = styled.div`
     .bt-save {
       height: 60px;
       width: 80%;
+
+      max-width: 500px;
       font-size: 20px;
       margin-top: 20px;
       margin-bottom: 20px;
@@ -270,9 +275,10 @@ const FormsStyles = styled.div`
     }
 
     label {
+      width: 80%;
+      max-width: 500px;
       display: flex;
       flex-direction: column;
-      width: 80%;
       color: white;
       font-size: 20px;
       margin: auto;
@@ -313,6 +319,7 @@ const FormsStyles = styled.div`
     .input-description {
       height: 150px;
       width: 80%;
+      max-width: 500px;
       margin: auto;
       border: 2px solid black;
       align-items: center;
@@ -325,8 +332,8 @@ const FormsStyles = styled.div`
 
     .form-img__file-label {
       display: block;
-      width: 50vh;
-      height: 230px;
+      width: 65vh;
+      height: 225px;
       cursor: pointer;
       background-image: url(${iconAddPhoto});
       background-repeat: no-repeat;
@@ -339,6 +346,7 @@ const FormsStyles = styled.div`
 
     input {
       width: 80%;
+      max-width: 500px;
       height: 50px;
       border: 2px solid black;
       align-items: center;
