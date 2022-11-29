@@ -78,7 +78,7 @@ const DetailPageStyles = styled.div`
     }
 
     .penguin-description {
-      width: 80%;
+      max-width: 590px;
       min-height: 40px;
       margin: auto;
       text-align: justify;
@@ -223,8 +223,7 @@ const DetailPageStyles = styled.div`
     }
 
     .penguin-description {
-      width: 80%;
-      max-width: 550px;
+      max-width: 380px;
       margin: auto;
       text-align: justify;
       display: flex;
@@ -477,6 +476,7 @@ const DetailPageStyles = styled.div`
 
   .message-buttons {
     text-align: left;
+    margin-bottom: 10px;
   }
 
   .message-new {

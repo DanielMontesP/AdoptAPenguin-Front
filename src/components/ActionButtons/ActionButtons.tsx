@@ -23,7 +23,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
   const { allMessages } = useAppSelector((state) => state.messages);
 
-  const countNewMessages = () => {
+  const countNewMessages = (penguin: IPenguin) => {
     return hasNewMessages(allMessages, penguin.id);
   };
 
@@ -107,7 +107,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         onClick={handleMessage}
         title="bt-message"
       />
-      <span className="new-messages-counter">{countNewMessages()}</span>
+      <span className="new-messages-counter">{countNewMessages(penguin)}</span>
       <button
         placeholder="btn-favs"
         onClick={handleFavs}
