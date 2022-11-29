@@ -20,6 +20,15 @@ const FormsStyles = styled.div`
   h3 {
     font-family: Montserrat, sans-serif;
   }
+
+  .form-create {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 110px;
+    width: 80%;
+  }
+
   @media only screen and (max-width: 420px) {
     button {
       padding: 14px 20px;
@@ -32,6 +41,55 @@ const FormsStyles = styled.div`
       border-radius: 15px;
       align-items: center;
       margin: auto;
+    }
+
+    .form-input {
+      width: 100%;
+      height: 45px;
+      border: 2px solid black;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      box-sizing: border-box;
+      color: black;
+      font-size: 20px;
+      margin: auto;
+      background: white;
+    }
+
+    .form-input-disabled {
+      border: 2px solid black;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      box-sizing: border-box;
+      color: black;
+      font-size: 20px;
+      width: 100%;
+      margin: auto;
+      background: lightgrey;
+      height: 45px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      width: 95%;
+      color: white;
+      font-size: 20px;
+      margin: auto;
+    }
+
+    .bt-message-save {
+      height: 60px;
+      width: 100%;
+      margin-top: 20px;
+      color: white;
+      background-color: transparent;
+      border: 2px solid white;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 15px;
     }
 
     .create-container {
@@ -52,12 +110,6 @@ const FormsStyles = styled.div`
       flex-direction: column;
       margin: auto;
       align-items: center;
-    }
-
-    .form-create {
-      display: flex;
-      flex-direction: column;
-      margin-top: 110px;
     }
 
     .preview-image {
@@ -152,6 +204,55 @@ const FormsStyles = styled.div`
       margin: auto;
     }
 
+    .form-input {
+      width: 80%;
+      height: 45px;
+      border: 2px solid black;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      box-sizing: border-box;
+      color: black;
+      font-size: 20px;
+      margin: auto;
+      background: white;
+    }
+
+    .form-input-disabled {
+      border: 2px solid black;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      box-sizing: border-box;
+      color: black;
+      font-size: 20px;
+      width: 80%;
+      margin: auto;
+      background: lightgrey;
+      height: 45px;
+    }
+
+    .bt-message-save {
+      height: 60px;
+      width: 80%;
+      margin-top: 20px;
+      color: white;
+      background-color: transparent;
+      border: 2px solid white;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 15px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      color: white;
+      font-size: 20px;
+      margin: auto;
+    }
+
     .create-container {
       display: flex;
       background-image: url(${PageBackground});
@@ -171,12 +272,6 @@ const FormsStyles = styled.div`
       align-items: center;
     }
 
-    .form-create {
-      display: flex;
-      flex-direction: column;
-      margin-top: 100px;
-    }
-
     .preview-image {
       max-width: 350px;
       margin: auto;
@@ -192,7 +287,7 @@ const FormsStyles = styled.div`
 
     .input-description {
       height: 150px;
-      width: 100%;
+      width: 80%;
       margin: auto;
       border: 2px solid black;
       align-items: center;
@@ -308,15 +403,6 @@ const FormsStyles = styled.div`
     cursor: pointer;
   }
 
-  label {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    color: white;
-    font-size: 20px;
-    margin: auto;
-  }
-
   span {
     font-size: 20px;
     margin-left: 50px;
@@ -324,33 +410,6 @@ const FormsStyles = styled.div`
 
   nav {
     margin-right: 9px;
-  }
-
-  .form-input {
-    border: 2px solid black;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    box-sizing: border-box;
-    color: black;
-    font-size: 20px;
-    width: 80%;
-    margin: auto;
-    background: white;
-    height: 45px;
-  }
-  .form-input-disabled {
-    border: 2px solid black;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    box-sizing: border-box;
-    color: black;
-    font-size: 20px;
-    width: 80%;
-    margin: auto;
-    background: lightgrey;
-    height: 45px;
   }
 
   .submitContainer {
@@ -413,9 +472,6 @@ const FormsStyles = styled.div`
     display: flex;
     justify-content: space-between;
     width: 95vw;
-  }
-
-  .form-create {
   }
 
   .edit-image {
@@ -614,17 +670,6 @@ const FormsStyles = styled.div`
     color: white;
     background-color: transparent;
     border: 2px solid white;
-    border-radius: 15px;
-  }
-  .bt-message-save {
-    height: 60px;
-    width: 80%;
-    margin-top: 20px;
-    color: white;
-    background-color: transparent;
-    border: 2px solid white;
-    font-size: 20px;
-    font-weight: bold;
     border-radius: 15px;
   }
 
