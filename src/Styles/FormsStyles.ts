@@ -822,7 +822,7 @@ we're going to use its associated label to trigger it */
   }
 
   .opacity-mid {
-    opacity: 0.4;
+    opacity: 0.8;
   }
 
   .opacity-mid:hover {
