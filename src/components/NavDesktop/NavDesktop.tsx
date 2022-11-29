@@ -19,6 +19,8 @@ import {
   handleSearchEnter,
 } from "../NavbarFunctions/NavbarFunctions";
 import { handleFocus } from "../../utils/utils";
+import { ReactDimmer } from "react-dimmer";
+import { Modal } from "../Modals/ModalPrompt";
 interface Props {
   headerTitle: string;
 }
@@ -27,12 +29,13 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const { penguin } = useAppSelector((state) => state.penguins);
+
+  const [isMenuOpened, setMenuOpen] = useState(false);
   const [, setModal] = useState(false);
   const [isSearchClicked, setSearch] = useState(false);
-  const [isMenuOpened, setMenu] = useState(false);
-
-  const { stringToSearch, isMenuOpen } = useAppSelector((state) => state.ui);
-
+  const { modalMessage, modalType, isModalOpen, isMenuOpen, stringToSearch } =
+    useAppSelector((state) => state.ui);
   const classButton = `desktop-btn bt-`;
 
   let classButtonHome = `${classButton}home`;
@@ -43,6 +46,11 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
 
   const searchPlaceHolderText = "Search by name/category/description...";
   let HidderDesktopButtons = "";
+
+  const getModalType = () => {
+    const newModalType = modalType;
+    return newModalType;
+  };
 
   switch (headerTitle) {
     case "Home":
@@ -61,7 +69,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   }
 
   const addFav = () => {
-    setMenu(false);
+    setMenuOpen(false);
 
     dispatch(resetPenguinThunk());
 
@@ -69,7 +77,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const handleMenu = () => {
-    setMenu((prevState) => !prevState);
+    setMenuOpen((prevState) => !prevState);
     dispatch(isMenuOpenActionCreator(true));
   };
 
@@ -113,7 +121,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     handleSearchSubmit(
       dispatch,
       headerTitle,
-      setMenu,
+      setMenuOpen,
       setModal,
       stringToSearch
     );
@@ -127,7 +135,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       stringToSearch,
       dispatch,
       setModal,
-      setMenu,
+      setMenuOpen,
       headerTitle
     );
   };
@@ -137,11 +145,11 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const loadLikesCall = () => {
-    loadLikes(dispatch, headerTitle, setMenu, navigate);
+    loadLikes(dispatch, headerTitle, setMenuOpen, navigate);
   };
 
   const loadFavsCall = () => {
-    loadFavs(dispatch, headerTitle, setMenu, navigate);
+    loadFavs(dispatch, headerTitle, setMenuOpen, navigate);
   };
 
   const handleFocusCall = (field: string): void => {
@@ -228,6 +236,21 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       <div className={`menu-nav`}>
         <Menu isMenuOpened={isMenuOpened && isMenuOpen} />
       </div>
+      {isModalOpen && (
+        <Modal
+          idToProcess={penguin.id}
+          content={modalMessage}
+          closeModal={setModal}
+          type={getModalType()}
+          form="Penguin"
+        />
+      )}
+      <ReactDimmer
+        isOpen={(isMenuOpened && isMenuOpen) || isModalOpen}
+        exitDimmer={setMenuOpen}
+        zIndex={90}
+        blur={1.5}
+      />
     </div>
   );
 };

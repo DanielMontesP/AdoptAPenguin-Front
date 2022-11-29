@@ -262,7 +262,6 @@ const FormsStyles = styled.div`
     .bt-save {
       height: 60px;
       width: 80%;
-
       max-width: 500px;
       font-size: 20px;
       margin-top: 20px;

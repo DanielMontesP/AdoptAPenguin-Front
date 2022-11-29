@@ -44,12 +44,15 @@ h3 {
     flex: 4;
     margin-left: 10px;
   }
+
   .options {
+    width: 320px;
     display: flex;
     flex-direction: column;
-    width: 320px;
-    margin-left: 20px;
+    gap: 20px;
+    padding: 20px;
   }
+
   .penguins-container {
     border-radius: 8px;
     padding: 0 10px 15px;
@@ -439,15 +442,16 @@ h1 {
   margin: auto;
   margin-right: 10px;
 }
+
 .animatedDelete {
+  width: auto;
   border: none;
   height: 32px;
   background: url("../images/delete.png");
   background-repeat: no-repeat;
-  background-position: center;
   background-size: contain;
-  margin-bottom: 25px;
-  margin-left: 25px;
+  margin-bottom: 5px;
+  margin-left: 6px;
 }
 
 .animatedDeleteBlack {
@@ -489,11 +493,11 @@ h1 {
   .options {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
     text-align: center;
     width: 100%;
     gap: 25px;
     margin-top: 25px;
+    padding: 20px;
   }
 
   .header-desktop-title {
@@ -1230,7 +1234,7 @@ ul {
 }
 
 .modal {
-  width: fit-content;
+  width: -webkit-fill-available;
   text-align: center;
   position: fixed;
   color: white;
@@ -1301,6 +1305,7 @@ ul {
 }
 
 .message-content {
+  margin-bottom: 50px;
   text-align: justify;
   font-size: 14px;
   margin: auto;
