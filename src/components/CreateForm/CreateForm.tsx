@@ -127,11 +127,13 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     try {
       if (isCreate) {
         processCreate("New");
+
+        navigate(`/penguins/favs`);
       } else {
         processEdit(formData.image !== "");
-      }
 
-      navigate(`/detail/${formData.id || penguin.id}`);
+        navigate(`/detail/${formData.id || penguin.id}`);
+      }
     } catch (error) {
       wrongAction("Error:" + error);
     }
