@@ -154,8 +154,8 @@ const FormsStyles = styled.div`
 
     .form-img__file-label {
       display: block;
-      width: 45vh;
-      height: 180px;
+      width: 100%;
+      height: 225px;
       cursor: pointer;
       background-image: url(${iconAddPhoto});
       background-repeat: no-repeat;
@@ -163,7 +163,7 @@ const FormsStyles = styled.div`
       background-color: white;
       border-radius: 15px;
       border: 2px black solid;
-      opacity: 0.5;
+      opacity: 0.8;
     }
 
     input {
@@ -331,7 +331,7 @@ const FormsStyles = styled.div`
 
     .form-img__file-label {
       display: block;
-      width: 65vh;
+      width: 100%;
       height: 225px;
       cursor: pointer;
       background-image: url(${iconAddPhoto});

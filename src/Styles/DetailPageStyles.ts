@@ -27,7 +27,7 @@ const DetailPageStyles = styled.div`
   @media only screen and (min-width: 421px) {
     .detail-header {
       display: flex;
-      width: 70%;
+      width: 80%;
       max-width: 550px;
       margin: auto;
 
@@ -179,7 +179,7 @@ const DetailPageStyles = styled.div`
 
     .detail-header {
       display: flex;
-      width: 80%;
+      width: 90%;
       max-width: 550px;
       margin: auto;
     }
