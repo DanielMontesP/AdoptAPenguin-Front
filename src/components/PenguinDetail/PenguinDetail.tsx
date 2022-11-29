@@ -39,7 +39,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
   const penguinImage =
     penguin.image === "" && !isURL
       ? iconPhotoEmpty
-      : !penguin.image.toString().includes("uploads")
+      : penguin.image !== "" && !penguin.image.toString().includes("uploads")
       ? penguin.image.toString()
       : penguin.imageBackup;
 
