@@ -19,6 +19,7 @@ const FormsStyles = styled.div`
 
   .wellcome-techs {
     margin-top: 20px;
+    margin-bottom: 30px;
   }
   .message-content {
     margin-top: 20px;
