@@ -91,8 +91,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
       cleanArray(penguin.favs);
 
       isFav ? deleteFromFavs() : addToFavs();
-
-      navigate("/penguins/favs");
     }
   };
 
