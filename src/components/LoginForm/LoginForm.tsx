@@ -31,11 +31,7 @@ const LoginForm = () => {
 
   return (
     <form className="form" autoComplete="off" noValidate onSubmit={submitLogin}>
-      <div className="link">
-        New user? please
-        <Link to="/users/register"> register</Link>
-      </div>
-      <label htmlFor="username" />
+      <label htmlFor="username">Username</label>
       <input
         id="username"
         value={formData.username}
@@ -46,7 +42,9 @@ const LoginForm = () => {
         className="form-input"
       />
 
-      <label className="label-password" htmlFor="password" />
+      <label className="label-password" htmlFor="password">
+        Password
+      </label>
       <input
         id="password"
         type="password"
@@ -57,6 +55,10 @@ const LoginForm = () => {
         alt="Password"
         className="form-input"
       />
+      <div className="link">
+        New user? please
+        <Link to="/users/register"> Register</Link>
+      </div>
 
       <div className="submitContainer">
         <button disabled={buttonDisabled} className="bt-login">

@@ -57,11 +57,6 @@ const RegisterForm = (): JSX.Element => {
       autoComplete="off"
       onSubmit={handleSubmit}
     >
-      <div className="link">
-        Already have an account? Please
-        <Link to="/login"> Log in</Link>
-      </div>
-
       <label htmlFor="username"> Username </label>
       <input
         type="text"
@@ -84,6 +79,10 @@ const RegisterForm = (): JSX.Element => {
         name="Password"
         className="form-input"
       />
+      <div className="link">
+        Already registered? Please
+        <Link to="/login"> Log in</Link>
+      </div>
       <div className="submitContainer">
         <button type="submit" className="bt-register" placeholder="bt-submit">
           Register
