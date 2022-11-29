@@ -221,7 +221,7 @@ export const editPenguinThunk =
 
     const token = localStorage.getItem("token");
 
-    if (token) {
+    if (token && formPenguin.id) {
       const { data: penguin } = await axios.put(
         `${process.env.REACT_APP_API_URL}penguins/${formPenguin.id}?task=${type}`,
         formPenguin,
