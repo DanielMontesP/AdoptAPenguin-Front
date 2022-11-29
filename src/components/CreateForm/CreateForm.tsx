@@ -133,7 +133,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
       setFormData(blankFormData);
 
-      const navigateTo = `detail/${penguin.id}`;
+      const navigateTo = `/detail/${penguin.id}`;
 
       navigate(navigateTo);
     } catch (error) {
@@ -173,8 +173,10 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
             <img
               src={
                 src.toString() ||
-                penguin.image.toString() ||
-                penguin.imageBackup.toString()
+                (penguin.image.toString() &&
+                  !penguin.image.toString().includes("uploads"))
+                  ? penguin.image.toString()
+                  : penguin.imageBackup.toString()
               }
               alt={alt}
               className={`${classImage}`}

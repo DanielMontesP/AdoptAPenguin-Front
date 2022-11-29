@@ -34,10 +34,14 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
   let classTabDescription = "";
   let classTabMessages = "";
 
+  const isURL = penguin.imageBackup?.includes("/");
+
   const penguinImage =
-    penguin.image === "" && !penguin.imageBackup.includes("/")
+    penguin.image === "" && !isURL
       ? iconPhotoEmpty
-      : penguin.image.toString() || penguin.imageBackup;
+      : !penguin.image.toString().includes("uploads")
+      ? penguin.image.toString()
+      : penguin.imageBackup;
 
   const getDetailPrev = () => {
     const actualPos = allPenguins
