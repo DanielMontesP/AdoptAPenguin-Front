@@ -16,18 +16,54 @@ import iconMesssagesGot from "../images/mail-empty.png";
 import iconMesssagesNew from "../images/mail-full.png";
 
 const PagesStyles = styled.div`
+  text-align: center;
+
   .footer {
     color: lightgrey;
     position: fixed;
     bottom: 20px;
   }
+
   @media only screen and (min-width: 421px) {
     .penguin-description {
       font-size: 14px;
     }
+
+    .bt-container {
+      width: 50%;
+      max-width: 450px;
+      margin: auto;
+      position: fixed;
+      bottom: 25%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: space-evenly;
+      -webkit-justify-content: space-evenly;
+      -ms-flex-pack: space-evenly;
+      justify-content: space-evenly;
+      column-gap: 30px;
+    }
   }
 
-  text-align: center;
+  @media only screen and (max-width: 420px) {
+    .bt-container {
+      width: 75%;
+      margin: auto;
+      position: fixed;
+      bottom: 25%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: space-evenly;
+      -webkit-justify-content: space-evenly;
+      -ms-flex-pack: space-evenly;
+      justify-content: space-evenly;
+      column-gap: 30px;
+    }
+  }
 
   .container {
     width: 90%;
@@ -224,22 +260,6 @@ const PagesStyles = styled.div`
     max-width: 400px;
 
     margin-top: 90px;
-  }
-
-  .bt-container {
-    width: 70%;
-    margin: auto;
-    position: fixed;
-    bottom: 25%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: space-evenly;
-    -webkit-justify-content: space-evenly;
-    -ms-flex-pack: space-evenly;
-    justify-content: space-evenly;
-    column-gap: 30px;
   }
 
   .li-detail {
