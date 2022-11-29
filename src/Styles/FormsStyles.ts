@@ -839,7 +839,7 @@ we're going to use its associated label to trigger it */
     height: 100%;
     width: 100%;
     left: 50%;
-    opacity: 0.7;
+    opacity: 0.9;
     object-fit: cover;
     transform: translate(-50%, -50%);
   }
