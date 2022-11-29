@@ -232,28 +232,9 @@ export const editPenguinThunk =
         }
       );
 
-      const isLikesPage = type === "likes";
-      const isFavsPage = type === "favs";
-
-      let loadType = isFavsPage ? "favs" : "";
-      loadType = isLikesPage ? "likes" : loadType;
-
-      const handleLoads = () => {
-        switch (loadType) {
-          case "favs":
-            dispatch(loadFavsThunk());
-            break;
-          case "likes":
-            dispatch(loadLikesThunk());
-            break;
-          default:
-            dispatch(loadPenguinsThunk());
-            dispatch(getPenguinThunk(formPenguin.id));
-        }
-      };
+      dispatch(getPenguinThunk(formPenguin.id));
       dispatch(editPenguinActionCreator(penguin));
 
-      handleLoads();
       dispatch(finishedLoadingActionCreator());
       setLoadingOffWithMessage(`${type}`, false);
     }

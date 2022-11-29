@@ -232,7 +232,7 @@ describe("Given the editPenguinThunk function", () => {
       const thunk = editPenguinThunk(mockPenguin, "update");
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(5);
+      expect(dispatch).toHaveBeenCalledTimes(4);
     });
   });
 

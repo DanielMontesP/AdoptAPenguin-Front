@@ -39,7 +39,7 @@ export const resizeFile = (file: File) =>
       file,
       300,
       300,
-      "JPEG",
+      "JPEG,GIF",
       100,
       0,
       (uri) => {
