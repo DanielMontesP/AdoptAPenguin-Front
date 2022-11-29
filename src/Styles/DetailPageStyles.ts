@@ -78,12 +78,12 @@ const DetailPageStyles = styled.div`
     }
 
     .penguin-description {
-      max-width: 590px;
       min-height: 40px;
       margin: auto;
       text-align: justify;
       display: flex;
       flex-direction: column;
+      width: 80%;
     }
 
     .penguin--container {
@@ -162,7 +162,7 @@ const DetailPageStyles = styled.div`
       background-position: center;
       background-size: contain;
       width: 60px;
-      position: fixed;
+      position: absolute;
       left: 3%;
     }
 
@@ -173,7 +173,7 @@ const DetailPageStyles = styled.div`
       background-position: center;
       background-size: contain;
       width: 60px;
-      position: fixed;
+      position: absolute;
       right: 3%;
     }
 
@@ -509,7 +509,7 @@ const DetailPageStyles = styled.div`
 
   .detail-tabs {
     width: 100%;
-    max-width: 690px;
+    max-width: 550px;
     margin: auto;
   }
   .image-delete {

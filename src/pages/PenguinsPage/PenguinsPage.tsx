@@ -10,10 +10,7 @@ import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
-import {
-  getMessagesThunk,
-  resetMessageThunk,
-} from "../../app/redux/thunks/messageThunk/messageThunk";
+import { resetMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 
 interface Props {
   type: string;
@@ -44,9 +41,7 @@ const PenguinsPage = ({ type }: Props) => {
         dispatch(loadPenguinsThunk());
       }
     }
-    if (penguin.id !== "") {
-      dispatch(getMessagesThunk(penguin.id));
-    }
+
     dispatch(resetMessageThunk());
   }, [
     dispatch,
