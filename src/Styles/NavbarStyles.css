@@ -1072,33 +1072,37 @@ ul {
 }
 
 .modal-body {
+  display: flex;
+  gap: 10px;
   margin-top: 10px;
+  padding: 10px;
 }
 
 .modal-btn-accept {
-  width: 40%;
-  height: 50px;
-  background: url("../images/modal-accept-32.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 2px solid white;
-  background-color: transparent;
-  border-radius: 10px;
-  flex: none;
+  height: 60px;
+  width: 50%;
+  font-size: 20px;
   margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 15px;
 }
 
 .modal-btn-cancel {
-  width: 40%;
-  height: 50px;
-  background: url("../images/modal-cancel-32.png");
-  background-position: center;
-  background-repeat: no-repeat;
+  height: 60px;
+  width: 50%;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: white;
   background-color: transparent;
-  border-radius: 10px;
   border: 2px solid white;
-  flex: none;
-  margin: auto;
+  border-radius: 15px;
 }
 
 .modal-btn-close {

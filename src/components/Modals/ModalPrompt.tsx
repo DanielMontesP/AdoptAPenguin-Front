@@ -184,13 +184,21 @@ export const Modal = ({
             className="modal-btn-accept"
             title="btn-accept"
             placeholder="btn-accept"
-          />
-          <button
-            onClick={handleCancelClick}
-            className={cancelClass}
-            title="btn-cancel"
-            placeholder="btn-cancel"
-          />
+          >
+            Ok
+          </button>
+          {type === "delete" || type === "logOutUser" ? (
+            <button
+              onClick={handleCancelClick}
+              className={cancelClass}
+              title="btn-cancel"
+              placeholder="btn-cancel"
+            >
+              Cancel
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       )}
     </div>

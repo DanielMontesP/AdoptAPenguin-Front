@@ -16,6 +16,11 @@ import iconMesssagesGot from "../images/mail-empty.png";
 import iconMesssagesNew from "../images/mail-full.png";
 
 const PagesStyles = styled.div`
+  .footer {
+    color: lightgrey;
+    position: fixed;
+    bottom: 20px;
+  }
   @media only screen and (min-width: 421px) {
     .penguin-description {
       font-size: 14px;
@@ -222,6 +227,7 @@ const PagesStyles = styled.div`
   }
 
   .bt-container {
+    width: 70%;
     margin: auto;
     position: fixed;
     bottom: 25%;
@@ -234,7 +240,6 @@ const PagesStyles = styled.div`
     -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
     column-gap: 30px;
-    max-width: 71%;
   }
 
   .li-detail {
@@ -427,6 +432,7 @@ const PagesStyles = styled.div`
   }
 
   .link {
+    width: 100%;
     color: black;
     font-size: 18px;
     cursor: pointer;
