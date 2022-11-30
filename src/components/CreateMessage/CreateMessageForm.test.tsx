@@ -17,24 +17,10 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
       id: mockUser.id,
     },
     penguin: mockPenguin,
-    headerTitle: "New message...",
+    headerTitle: "New...",
   }),
   useAppDispatch: () => jest.fn(),
 }));
-
-afterEach(() =>
-  jest.mock("../../app/redux/hooks/hooks", () => ({
-    useAppSelector: () => ({
-      user: {
-        logged: mockLogged,
-        id: mockUser.id,
-      },
-      penguin: mockPenguin,
-      headerTitle: "New message...",
-    }),
-    useAppDispatch: () => jest.fn(),
-  }))
-);
 
 describe("Given a CreateMessageForm component", () => {
   describe("When submit create Message", () => {
@@ -59,6 +45,7 @@ describe("Given a CreateMessageForm component", () => {
       expect(textSubject).toBeInTheDocument();
       expect(btSave).toBeInTheDocument();
 
+      userEvent.type(textSubject, textToFind);
       userEvent.click(btSave);
 
       handleSubmit();
