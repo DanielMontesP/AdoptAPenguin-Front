@@ -12,6 +12,16 @@ h3 {
   color: white;
 }
 
+.message-read {
+  width: 8px;
+  height: 8px;
+  background-size: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #2fc925;
+  box-shadow: 1px 1px 2px black;
+}
+
 @media only screen and (max-width: 420px) {
   .app .header {
     height: 5rem;
@@ -87,7 +97,6 @@ h3 {
   }
 
   .message-container {
-    width: 95%;
     display: flex;
     text-align: center;
     font-size: 0.9rem;
@@ -547,16 +556,6 @@ h1 {
     font-size: 16px;
     background: white;
     text-align: justify;
-  }
-
-  .message-read {
-    width: 8px;
-    height: 8px;
-    background-size: 20px;
-    border-radius: 50%;
-    margin-right: 10px;
-    background-color: #2fc925;
-    box-shadow: 1px 1px 2px black;
   }
 
   .message-container {

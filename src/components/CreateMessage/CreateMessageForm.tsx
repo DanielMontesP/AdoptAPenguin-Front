@@ -84,6 +84,8 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
 
     navigate(`/detail/${penguin.id}#messages`);
   };
+  const classRead = message.read ? "stateRead" : "stateUnread";
+  const textRead = message.read ? "Read" : "New";
 
   return (
     <div className="container">
@@ -94,6 +96,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
         className="form-create"
         title="form-create"
       >
+        <div className={classRead}>{textRead}</div>
         <label htmlFor="description">Send To</label>
         <span id="sendto" placeholder="Send To" className="form-input-disabled">
           {penguin.name}
