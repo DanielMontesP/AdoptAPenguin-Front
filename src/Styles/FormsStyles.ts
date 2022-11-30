@@ -297,6 +297,7 @@ const FormsStyles = styled.div`
     }
 
     .image-container {
+      width: 80%;
       display: flex;
       flex-direction: column;
       margin: auto;
