@@ -171,8 +171,8 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
             <img
               src={
                 src.toString() ||
-                penguin.image.toString() ||
-                penguin.imageBackup.toString()
+                penguin.imageBackup.toString() ||
+                penguin.image.toString()
               }
               alt={alt}
               className={`${classImage}`}
