@@ -97,7 +97,6 @@ h3 {
   }
 
   .message-container {
-    width: 95%;
     display: flex;
     text-align: center;
     font-size: 0.9rem;
