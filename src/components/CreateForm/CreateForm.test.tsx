@@ -144,6 +144,7 @@ describe("Given a CreateForm component", () => {
       );
       const handleSubmit = jest.fn();
       const handleImg = jest.fn();
+      const processCreate = jest.fn();
 
       const textSubject = screen.getByPlaceholderText(textToFind);
       const btSave = screen.getByPlaceholderText(placeHolderSubmit);
@@ -163,7 +164,7 @@ describe("Given a CreateForm component", () => {
 
       handleImg();
       handleSubmit();
-      processEdit(true);
+      processCreate("New");
 
       expect(handleSubmit).toHaveBeenCalled();
     });

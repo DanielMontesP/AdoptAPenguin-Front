@@ -30,7 +30,7 @@ describe("When handleEdit clicked and is already fav", () => {
   });
   describe("When handleDelete action is called", () => {
     test("Then the value of the username input field should be 'user1'", () => {
-      const labelToFind = "btn-edit";
+      const labelToFind = "btn-delete";
 
       render(
         <Provider store={store}>

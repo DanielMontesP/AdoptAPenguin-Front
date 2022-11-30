@@ -44,7 +44,7 @@ const FormsStyles = styled.div`
     }
 
     .form-input {
-      width: 100%;
+      width: 80%;
       height: 45px;
       border: 2px solid black;
       align-items: center;
@@ -88,7 +88,8 @@ const FormsStyles = styled.div`
     label {
       display: flex;
       flex-direction: column;
-      width: 95%;
+      width: 80%;
+      text-align: left;
       color: white;
       font-size: 20px;
       margin: auto;
@@ -487,7 +488,7 @@ const FormsStyles = styled.div`
 
   .bt-login,
   .bt-register {
-    width: 82%;
+    width: 80%;
     height: 50px;
     color: white;
     font-size: 20px;
@@ -712,6 +713,8 @@ const FormsStyles = styled.div`
     color: white;
     margin: auto;
     font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
   }
 
   .display-none {

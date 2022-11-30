@@ -7,8 +7,8 @@ import FormsStyles from "../../Styles/FormsStyles";
 
 describe("Given a LoginPage Component", () => {
   describe("When it's rendered", () => {
-    test("Then it should show the text 'Name'", () => {
-      const expectedResult = "register";
+    test("Then it should show the text 'Register'", () => {
+      const expectedResult = "Register";
 
       render(
         <BrowserRouter>
