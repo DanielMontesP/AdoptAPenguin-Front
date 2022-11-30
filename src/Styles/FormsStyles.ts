@@ -29,6 +29,20 @@ const FormsStyles = styled.div`
     width: 80%;
   }
 
+  .stateRead {
+    width: 90%;
+    text-align: right;
+    color: white;
+  }
+  .stateUnread {
+    background-color: white;
+    border-radius: 20px;
+    width: 50px;
+    text-align: center;
+    color: black;
+    margin: auto;
+  }
+
   @media only screen and (max-width: 420px) {
     button {
       padding: 14px 20px;
@@ -44,7 +58,7 @@ const FormsStyles = styled.div`
     }
 
     .form-input {
-      width: 80%;
+      width: 100%;
       height: 45px;
       border: 2px solid black;
       align-items: center;
@@ -58,6 +72,8 @@ const FormsStyles = styled.div`
     }
 
     .form-input-disabled {
+      width: 100%;
+      max-width: 500px;
       border: 2px solid black;
       align-items: center;
       justify-content: center;
@@ -65,7 +81,6 @@ const FormsStyles = styled.div`
       box-sizing: border-box;
       color: black;
       font-size: 20px;
-      width: 100%;
       margin: auto;
       background: lightgrey;
       height: 45px;
@@ -88,7 +103,7 @@ const FormsStyles = styled.div`
     label {
       display: flex;
       flex-direction: column;
-      width: 80%;
+      width: 100%;
       text-align: left;
       color: white;
       font-size: 20px;
@@ -98,6 +113,7 @@ const FormsStyles = styled.div`
     .bt-message-save {
       height: 60px;
       width: 100%;
+      max-width: 500px;
       margin-top: 20px;
       color: white;
       background-color: transparent;
@@ -235,6 +251,8 @@ const FormsStyles = styled.div`
     }
 
     .form-input-disabled {
+      width: 80%;
+      max-width: 500px;
       border: 2px solid black;
       align-items: center;
       justify-content: center;
@@ -242,7 +260,6 @@ const FormsStyles = styled.div`
       box-sizing: border-box;
       color: black;
       font-size: 20px;
-      width: 80%;
       margin: auto;
       background: lightgrey;
       height: 45px;
@@ -251,6 +268,7 @@ const FormsStyles = styled.div`
     .bt-message-save {
       height: 60px;
       width: 80%;
+      max-width: 500px;
       margin-top: 20px;
       color: white;
       background-color: transparent;
