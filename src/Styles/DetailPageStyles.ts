@@ -44,6 +44,7 @@ const DetailPageStyles = styled.div`
       width: 60px;
       position: relative;
       left: 12%;
+      border: 0;
     }
 
     .detailNext {
@@ -55,6 +56,7 @@ const DetailPageStyles = styled.div`
       width: 60px;
       position: relative;
       right: 12%;
+      border: 0;
     }
 
     .buttons-container {
@@ -252,6 +254,7 @@ const DetailPageStyles = styled.div`
     background: none;
     font-size: 0.9rem;
     color: black;
+    border: 0;
   }
 
   .tab-messages {
@@ -260,6 +263,7 @@ const DetailPageStyles = styled.div`
     color: black;
     background: none;
     padding: 5px;
+    border: 0;
   }
 
   .tab-selected {
@@ -298,7 +302,6 @@ const DetailPageStyles = styled.div`
 
   button {
     cursor: pointer;
-    border: 0;
   }
 
   .bt-menu {
@@ -364,16 +367,18 @@ const DetailPageStyles = styled.div`
   }
 
   .modal-message {
-    color: black;
+    color: white;
     text-align: center;
   }
 
   .imgDetailNext {
     height: 180px;
+    border: 0;
   }
 
   .imgDetailPrev {
     height: 180px;
+    border: 0;
   }
 
   .penguin-image-container {
@@ -472,6 +477,7 @@ const DetailPageStyles = styled.div`
     background-size: 20px;
     width: 24px;
     height: 24px;
+    border: 0;
   }
 
   .message-buttons {

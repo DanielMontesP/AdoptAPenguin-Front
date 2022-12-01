@@ -8,7 +8,7 @@ export const blankMessageData: IMessage = {
   subject: "",
   content: "",
   data: "",
-  read: "false",
+  read: false,
 };
 
 export const newMessageData = (idUser: string, idPenguin: string): IMessage => {
@@ -19,7 +19,7 @@ export const newMessageData = (idUser: string, idPenguin: string): IMessage => {
     subject: "",
     content: "",
     data: getCurrentDate(),
-    read: "false",
+    read: false,
   };
   return formData;
 };

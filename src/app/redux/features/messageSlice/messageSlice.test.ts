@@ -28,7 +28,7 @@ const initialState: SliceIniState = {
     subject: "subject",
     content: "content",
     data: "data",
-    read: "false",
+    read: false,
     id: "id",
   },
 };
