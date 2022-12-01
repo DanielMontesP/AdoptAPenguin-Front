@@ -38,7 +38,7 @@ const CreatePage = ({ type, form }: Props): JSX.Element => {
     };
 
     if (headerTitle !== thisTitle) SetTitleHeader(thisTitle, headerTitle);
-  }, [dispatch, penguin, headerTitle, thisTitle, isCreate]);
+  }, [dispatch, penguin, headerTitle, thisTitle, isCreate, message]);
 
   return (
     <FormsStyles>

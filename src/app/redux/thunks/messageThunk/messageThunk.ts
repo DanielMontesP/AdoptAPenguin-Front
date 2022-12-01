@@ -18,6 +18,7 @@ import {
   loadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
 import { blankMessageData } from "../../initializers/iniMessages";
+import { getPenguinThunk } from "../penguinThunk/penguinThunk";
 
 export const getMessagesThunk =
   (idPenguin: string) => async (dispatch: AppDispatch) => {
@@ -60,6 +61,7 @@ export const getMessageThunk =
           }
         );
 
+        dispatch(getPenguinThunk(message.idPenguin));
         dispatch(getMessageActionCreator(message));
         dispatch(finishedLoadingActionCreator());
         setLoadingOffWithMessage(

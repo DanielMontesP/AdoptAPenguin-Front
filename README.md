@@ -29,9 +29,9 @@
         <br />
         <br />
         Designed for mobile and desktop rendering.
-        <div>
-          <br />
-          <br />
+        <br />
+        <br />
+        <div>         
           <a href="https://adoptapenguin.netlify.app">AdoptAPenguin.com</a>
           <br />
           <br />
@@ -212,6 +212,9 @@
           <br />
         React - Javascript - Node - Jest - Firebase - Axios - Mongo - Express - Axios - Git - SonarCloud
       </div>
+      </br>
+      </br>
+      </br>
       <div className="features-container">     
        <ul>
       <li>

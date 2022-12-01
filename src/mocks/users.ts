@@ -19,6 +19,7 @@ export const mockloggedUser = {
   id: "test",
   image: "",
   allMessages: [],
+  newMessages: [],
 };
 
 export const mocklogOutUser = {
@@ -29,4 +30,5 @@ export const mocklogOutUser = {
   id: "test",
   image: "",
   allMessages: [],
+  newMessages: [],
 };

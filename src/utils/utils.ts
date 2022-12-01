@@ -1,5 +1,10 @@
 import Resizer from "react-image-file-resizer";
-import { IMessage } from "../app/redux/types/message/messageInterfaces";
+import { getUserNewMessagesActionCreator } from "../app/redux/features/userSlice/userSlice";
+import { editMessageThunk } from "../app/redux/thunks/messageThunk/messageThunk";
+import {
+  IMessage,
+  INewMessage,
+} from "../app/redux/types/message/messageInterfaces";
 
 export function getCurrentDate(separator = "/") {
   let newDate = new Date();
@@ -23,6 +28,28 @@ export function hasNewMessages(allMessages: IMessage[], idPenguin: string) {
     return countNewMessages;
   }
 }
+
+export const getUserNewMessages = (messages: IMessage[], dispatch: any) => {
+  const newMessages: INewMessage[] = [];
+  messages.forEach((message) => {
+    if (!message.read) {
+      newMessages.push({
+        id: message.id,
+        idPenguin: message.idPenguin,
+        subject: message.subject,
+        data: message.data,
+      });
+    }
+  });
+  dispatch(getUserNewMessagesActionCreator(newMessages));
+};
+
+export const setMessageRead = (message: IMessage, dispatch: any) => {
+  const newData = { ...message };
+  newData.read = !message.read ? true : false;
+
+  dispatch(editMessageThunk(newData, "Delete Like."));
+};
 
 export const toPascalCase = (strValue: string) => {
   return strValue.replace(/\w+/g, function (w) {

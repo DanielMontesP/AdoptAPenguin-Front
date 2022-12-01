@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { useNavigate } from "react-router-dom";
-import { cleanArray, getCurrentDate } from "../../utils/utils";
+import { cleanArray, getCurrentDate, setMessageRead } from "../../utils/utils";
 import {
   createMessageThunk,
   editMessageThunk,
@@ -13,7 +13,6 @@ import {
   blankMessageData,
   newMessageData,
 } from "../../app/redux/initializers/iniMessages";
-import { setMessageRead } from "../NavbarFunctions/NavbarFunctions";
 
 let modFields = [""];
 

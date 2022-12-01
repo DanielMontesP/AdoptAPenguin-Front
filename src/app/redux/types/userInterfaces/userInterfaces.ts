@@ -1,4 +1,4 @@
-import { IMessage } from "../message/messageInterfaces";
+import { IMessage, INewMessage } from "../message/messageInterfaces";
 
 export interface UserInfo {
   id: string;
@@ -7,6 +7,7 @@ export interface UserInfo {
   isAdmin: boolean;
   image: string;
   allMessages: IMessage[];
+  newMessages: INewMessage[];
 }
 
 export interface UserState {
@@ -16,6 +17,7 @@ export interface UserState {
   isAdmin: boolean;
   image: string;
   allMessages: IMessage[];
+  newMessages: INewMessage[];
 }
 
 export interface LoginResponse {
@@ -25,6 +27,7 @@ export interface LoginResponse {
   isAdmin: boolean;
   image: string;
   allMessages: IMessage[];
+  newMessages: INewMessage[];
 }
 
 export interface LoginData {

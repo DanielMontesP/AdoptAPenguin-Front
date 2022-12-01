@@ -22,6 +22,7 @@ import {
   loadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
 import { AppDispatch } from "../../store/store";
+import { getUserNewMessages } from "../../../../utils/utils";
 
 let message = "";
 
@@ -36,8 +37,14 @@ export const loginThunk =
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
 
       if (status === 200) {
-        const { id, username, isAdmin, image, allMessages }: LoginResponse =
-          jwt_decode(data.token);
+        const {
+          id,
+          username,
+          isAdmin,
+          image,
+          allMessages,
+          newMessages,
+        }: LoginResponse = jwt_decode(data.token);
         const logged = false;
 
         localStorage.setItem("token", data.token);
@@ -50,6 +57,7 @@ export const loginThunk =
             isAdmin,
             image,
             allMessages,
+            newMessages,
           })
         );
         dispatch(headerTitleActionCreator("Home"));
@@ -171,7 +179,7 @@ export const getUserMessagesThunk =
           },
         }
       );
-
+      getUserNewMessages(messages, dispatch);
       dispatch(getUserMessagesActionCreator(messages));
       dispatch(finishedLoadingActionCreator());
     }
