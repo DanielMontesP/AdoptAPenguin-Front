@@ -212,25 +212,52 @@
           <br />
         React - Javascript - Node - Jest - Firebase - Axios - Mongo - Express - Axios - Git - SonarCloud
       </div>
-      <div className="features-container">
+      <div className="features-container">     
+       <ul>
+      <li>
+      Description
+      <ul>
+      <li>Login/Register user</li>
+      <li>User profiles: Admin or User</li>
+      <li>Add to user favorites list</li>
+      <li>Add to user likes list</li>
+      <li>Count global likes individually</li>
+      <li>Create new penguin (Will be added automatically to personal likes and favorites lists</li>
+      <li>Edit penguin data</li>
+      <li>Delete penguin</li>
+      <li>Send new message</li>
+      <li>View messages</li>
+      <li>Delete message</li>
+      <li>Count unread messages</li>
+      </ul>
+      </li>
+      </ul>
       Features
       <ul>
+      <li>Responsive</li>
+      <li>Preview loaded image</li>
       <li>
-      Controlled by state
+      States
       <ul>
       <li>Screen Size resolution to set mobile/desktop design </li>
       <li>Header title</li>
       <li>Header last title to perform back navigation operations</li>
-      <li>Status for detect loading data process is working or not</li>
+      <li>Loading data status</li>
       <li>User data for token and logged status</li>
-      <li>Penguin list calculated depending view (Home, Favourites, Likes)</li>
-      <li>Penguin data of selected penguin</li>
+      <li>Penguin list calculated depending view (Home, Favorites, Likes)</li>
+      <li>Selected Penguin data</li>
       <li>Messages list of current user/selected penguin</li>
-      <li>Message data used by selected message</li>
+      <li>Selected message data</li>
       </ul>
       </li>
-      <li>Responsive</li>
+      <li>
+      Images
+      <ul>
       <li>Preview loaded image</li>
+      <li>Resize image</li>
+      <li>Backup image to firebase storage</li>
+      </ul>
+      </li>
       </ul>
       </div>
     </div>

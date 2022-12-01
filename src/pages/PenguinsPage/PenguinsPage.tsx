@@ -35,7 +35,7 @@ const PenguinsPage = ({ type }: Props) => {
       }
       if (type === "Likes") {
         dispatch(loadLikesThunk());
-      } else if (type === "Favourites") {
+      } else if (type === "Favorites") {
         dispatch(loadFavsThunk());
       } else if (type === "Home") {
         dispatch(loadPenguinsThunk());

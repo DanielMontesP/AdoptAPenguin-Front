@@ -71,7 +71,7 @@ describe("Given a NavWellcome with headerTitle  Likes", () => {
   });
 });
 
-describe("Given a NavWellcome with headerTitle Favourites", () => {
+describe("Given a NavWellcome with headerTitle Favorites", () => {
   describe("When rendered", () => {
     test("Then AdoptApenguin.com have to been in the document", () => {
       const stringToFind = "Home";
@@ -79,7 +79,7 @@ describe("Given a NavWellcome with headerTitle Favourites", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <NavMobile headerTitle="Favourites" />
+            <NavMobile headerTitle="Favorites" />
           </BrowserRouter>
         </Provider>
       );
@@ -101,7 +101,7 @@ describe("Given a handleMenu button NavMobile component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <NavMobile headerTitle="Favourites" />
+            <NavMobile headerTitle="Favorites" />
           </BrowserRouter>
         </Provider>
       );

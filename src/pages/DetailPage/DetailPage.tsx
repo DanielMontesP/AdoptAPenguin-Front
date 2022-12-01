@@ -21,7 +21,7 @@ const DetailPage = (): JSX.Element => {
   const thisTitle = "Detail";
 
   useEffect(() => {
-    headerLastTitle === "Favourites"
+    headerLastTitle === "Favorites"
       ? dispatch(loadFavsThunk())
       : dispatch(loadPenguinsThunk());
 

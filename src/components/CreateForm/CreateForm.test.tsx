@@ -15,8 +15,8 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
       logged: mockLogged,
       id: mockUser.id,
     },
-    ui: { headerLastTitle: "Favourites" },
-    headerLastTitle: "Favourites",
+    ui: { headerLastTitle: "Favorites" },
+    headerLastTitle: "Favorites",
   }),
   useAppDispatch: () => jest.fn(),
 }));
@@ -62,7 +62,7 @@ describe("Given a CreateForm component", () => {
   });
 
   describe("When rendered", () => {
-    test("Then navigate to favourites'", async () => {
+    test("Then navigate to Favorites'", async () => {
       const textToFind = "Name";
       const placeHolderSubmit = "bt-save";
       const inputToFind = "Name";
@@ -117,7 +117,7 @@ describe("Given a CreateForm component", () => {
   });
 
   describe("When rendered and lastTile Home", () => {
-    test("Then navigate to favourites'", async () => {
+    test("Then navigate to Favorites'", async () => {
       const textToFind = "Name";
       const placeHolderSubmit = "bt-save";
       const inputToFind = "Name";

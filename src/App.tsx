@@ -158,7 +158,7 @@ function App() {
           path="/penguins/favs"
           element={
             <CheckInSecurity>
-              <PenguinsPage type="Favourites" />
+              <PenguinsPage type="Favorites" />
             </CheckInSecurity>
           }
         />

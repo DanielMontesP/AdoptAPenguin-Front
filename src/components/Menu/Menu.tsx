@@ -44,7 +44,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
 
     dispatch(modalTypeActionCreator(""));
     dispatch(headerLastTitleActionCreator(headerTitle));
-    dispatch(headerTitleActionCreator("Favourites"));
+    dispatch(headerTitleActionCreator("Favorites"));
 
     navigate("/penguins/favs");
   };
@@ -157,7 +157,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
           <h3 className="menu-icon-label-vertical">Home</h3>
         </button>
         <button onClick={loadFavs} className="bt-favs" title="bt-favs">
-          <h3 className="menu-icon-label-vertical">Favourites</h3>
+          <h3 className="menu-icon-label-vertical">Favorites</h3>
         </button>
         <button onClick={loadLikes} className="bt-likes" title="bt-likes">
           <h3 className="menu-icon-label-vertical">Likes</h3>

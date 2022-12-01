@@ -49,7 +49,7 @@ export const loadFavs = (
 
   dispatch(modalTypeActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
-  dispatch(headerTitleActionCreator("Favourites"));
+  dispatch(headerTitleActionCreator("Favorites"));
 
   navigate("/penguins/favs");
 };
