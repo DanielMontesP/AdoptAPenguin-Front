@@ -2,11 +2,14 @@ import { mockUser } from "../../../../mocks/users";
 import { server } from "../../../../mocks/server";
 import {
   editUserThunk,
+  getUserMessagesThunk,
   getUserThunk,
   loginThunk,
   registerThunk,
 } from "./userThunk";
 import axios from "axios";
+import { mockMessages } from "../../../../mocks/messages";
+import { loadingActionCreator } from "../../features/uiSlice/uiSlice";
 
 beforeAll(() => {
   server.listen({ onUnhandledRequest: "bypass" });
@@ -21,9 +24,10 @@ afterAll(() => server.close());
 
 jest.mock("jwt-decode", () => () => ({
   username: "user1",
-  id: "1",
+  id: "idUser",
   image: "image.jpg",
 }));
+
 jest.mock("axios");
 
 HTMLAnchorElement.prototype.click = jest.fn();

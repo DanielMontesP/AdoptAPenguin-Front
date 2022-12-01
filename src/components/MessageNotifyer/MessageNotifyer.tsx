@@ -29,7 +29,7 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
     navigate(`/message/edit/id=${idMessage}`);
   };
 
-  const hidder = isHide ? " display-none" : "";
+  const hidder = isHide || messages?.length === 0 ? " display-none" : "";
 
   return (
     <PagesStyles
@@ -38,7 +38,11 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
     >
       <div className="notifyer-header">
         You have new messages
-        <button className="notifyer-bt-close" onClick={handleHidder}>
+        <button
+          className="notifyer-bt-close"
+          onClick={handleHidder}
+          placeholder="notifyer-bt-close"
+        >
           X
         </button>
       </div>
@@ -49,6 +53,7 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
             key={index}
             onClick={handleClick}
             id={message.id}
+            placeholder="messages-notifyer"
           >
             {message.data} - {message.subject}
           </div>

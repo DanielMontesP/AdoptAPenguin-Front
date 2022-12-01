@@ -47,7 +47,7 @@ describe("Given the Penguin component", () => {
   });
   describe("When handleMoreDetail clicked", () => {
     test("then it should call dispatch", () => {
-      const labelToFind = "btn-click";
+      const labelToFind = "bt-more-detail";
 
       render(
         <Provider store={store}>
@@ -58,7 +58,7 @@ describe("Given the Penguin component", () => {
       );
 
       const handleMoreDetail = jest.fn().mockReturnValue(true);
-      const label = screen.getByTitle(labelToFind);
+      const label = screen.getByPlaceholderText(labelToFind);
       userEvent.click(label);
 
       handleMoreDetail();

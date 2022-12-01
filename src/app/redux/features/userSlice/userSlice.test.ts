@@ -1,7 +1,10 @@
+import { mockMessages } from "../../../../mocks/messages";
 import { mockloggedUser, mocklogOutUser } from "../../../../mocks/users";
 import userReducer, {
   createUserDataActionCreator,
   editUserActionCreator,
+  getUserMessagesActionCreator,
+  getUserNewMessagesActionCreator,
   loadUserDataActionCreator,
   logInActionCreator,
   logOutActionCreator,
@@ -53,6 +56,28 @@ describe("Given a userSlice reducer", () => {
 
       const createUser = createUserDataActionCreator(mockloggedUser);
       const loggedoutUser = userReducer(mockloggedUser, createUser);
+
+      expect(loggedoutUser.logged).toEqual(expectedUserStatus);
+    });
+  });
+
+  describe("When getUserMessages is called", () => {
+    test("Then it should switch the user logged property at false", () => {
+      const expectedUserStatus = true;
+
+      const getUserMessages = getUserMessagesActionCreator(mockMessages);
+      const loggedoutUser = userReducer(mockloggedUser, getUserMessages);
+
+      expect(loggedoutUser.logged).toEqual(expectedUserStatus);
+    });
+  });
+
+  describe("When getUserNewMessages is called", () => {
+    test("Then it should switch the user logged property at false", () => {
+      const expectedUserStatus = true;
+
+      const getUserNewMessages = getUserNewMessagesActionCreator(mockMessages);
+      const loggedoutUser = userReducer(mockloggedUser, getUserNewMessages);
 
       expect(loggedoutUser.logged).toEqual(expectedUserStatus);
     });

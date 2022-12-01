@@ -6,7 +6,7 @@ export const mockUserLogin: UserRegister = {
 };
 
 export const mockUser = {
-  id: "id",
+  id: "idUser",
   username: "user1xxx",
   password: "user1",
 };
@@ -16,7 +16,7 @@ export const mockloggedUser = {
   username: "test1",
   isAdmin: false,
   logged: true,
-  id: "test",
+  id: "idUser",
   image: "",
   allMessages: [],
   newMessages: [],
@@ -27,7 +27,7 @@ export const mocklogOutUser = {
   username: "test1",
   isAdmin: false,
   logged: false,
-  id: "test",
+  id: "idUser",
   image: "",
   allMessages: [],
   newMessages: [],

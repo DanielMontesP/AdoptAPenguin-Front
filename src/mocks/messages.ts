@@ -28,7 +28,16 @@ export const mockMessages: IMessage[] = [
     content: "content",
     data: "data",
     read: false,
-    id: "id",
+    id: "id1",
+  },
+  {
+    idUser: "idUser",
+    idPenguin: "idPenguin",
+    subject: "subject2",
+    content: "content2",
+    data: "data2",
+    read: false,
+    id: "id2",
   },
 ];
 
