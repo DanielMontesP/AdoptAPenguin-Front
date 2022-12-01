@@ -8,9 +8,7 @@ import {
   modalTypeActionCreator,
   stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
-import { editMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { searchPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
-import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 
 export const loadHome = (
   dispatch: any,
@@ -110,11 +108,4 @@ export const handleSearchEnter = (
       stringToSearch
     );
   }
-};
-
-export const setMessageRead = (message: IMessage, dispatch: any) => {
-  const newData = { ...message };
-  newData.read = !message.read ? true : false;
-
-  dispatch(editMessageThunk(newData, "Delete Like."));
 };

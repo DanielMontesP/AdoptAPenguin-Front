@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IMessage } from "../../types/message/messageInterfaces";
+import { IMessage, INewMessage } from "../../types/message/messageInterfaces";
 import { UserInfo, UserState } from "../../types/userInterfaces/userInterfaces";
 
 interface SliceIniState {
@@ -9,6 +9,7 @@ interface SliceIniState {
   isAdmin: boolean;
   image: string;
   allMessages: IMessage[];
+  newMessages: INewMessage[];
 }
 
 const initialState: SliceIniState = {
@@ -18,6 +19,7 @@ const initialState: SliceIniState = {
   isAdmin: false,
   image: "",
   allMessages: [],
+  newMessages: [],
 };
 
 const userSlice = createSlice({
@@ -41,6 +43,7 @@ const userSlice = createSlice({
       logged: false,
       image: "",
       allMessages: [],
+      newMessages: [],
     }),
 
     loadUserData: (user: UserState, action: PayloadAction<UserInfo>) => ({
@@ -51,6 +54,7 @@ const userSlice = createSlice({
       logged: true,
       image: action.payload.image,
       allMessages: action.payload.allMessages,
+      newMessages: action.payload.allMessages,
     }),
 
     editUser: (user: UserState, action: PayloadAction<UserInfo>) => ({
@@ -63,6 +67,10 @@ const userSlice = createSlice({
       ...messages,
       allMessages: [...action.payload],
     }),
+    getUserNewMessages: (messages, action: PayloadAction<INewMessage[]>) => ({
+      ...messages,
+      newMessages: [...action.payload],
+    }),
   },
 });
 
@@ -73,6 +81,7 @@ export const {
   loadUserData: loadUserDataActionCreator,
   createUser: createUserDataActionCreator,
   getUserMessages: getUserMessagesActionCreator,
+  getUserNewMessages: getUserNewMessagesActionCreator,
 } = userSlice.actions;
 
 export default userSlice.reducer;
