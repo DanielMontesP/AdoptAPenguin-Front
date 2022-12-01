@@ -115,7 +115,7 @@ describe("Given deletePenguinActionCreator", () => {
         action
       );
 
-      expect(loadedState.allMessages.length).toEqual(0);
+      expect(loadedState.allMessages.length).toEqual(2);
     });
   });
 });
