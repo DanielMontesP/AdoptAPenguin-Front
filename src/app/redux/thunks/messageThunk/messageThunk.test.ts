@@ -44,7 +44,7 @@ describe("Given the getMessageThunk function", () => {
       const thunk = getMessageThunk(mockMessage.id);
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(4);
     });
   });
 });
