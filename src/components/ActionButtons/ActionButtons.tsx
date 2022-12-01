@@ -21,7 +21,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
   const iconType = " bt-message-got";
 
-  const { allMessages } = useAppSelector((state) => state.messages);
+  const { allMessages } = useAppSelector((state) => state.user);
 
   const countNewMessages = (penguin: IPenguin) => {
     return hasNewMessages(allMessages, penguin.id);

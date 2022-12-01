@@ -23,26 +23,43 @@ const FormsStyles = styled.div`
 
   .form-create {
     display: flex;
+    align-items: end;
     flex-direction: column;
     margin: auto;
     margin-top: 110px;
     width: 80%;
   }
 
-  .stateRead {
-    width: 90%;
+  .message-read {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 5px;
     text-align: right;
     color: white;
   }
-  .stateUnread {
-    background-color: white;
-    border-radius: 20px;
-    width: 50px;
-    text-align: center;
-    color: black;
-    margin: auto;
-  }
 
+  .message-unread {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 5px;
+    text-align: right;
+    color: black;
+  }
+  .checkbox-message {
+    width: 15px;
+    color: white;
+    font-size: 12px;
+  }
   @media only screen and (max-width: 420px) {
     button {
       padding: 14px 20px;
