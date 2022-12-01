@@ -18,11 +18,8 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       ) : (
         <NavMobile headerTitle={headerTitle} />
       )}
-      {newMessages?.length > 0 ? (
-        <MessageNotifyer messages={newMessages} />
-      ) : (
-        ""
-      )}
+      <MessageNotifyer messages={newMessages} />
+
       <ToastContainer limit={4} />
     </>
   );
