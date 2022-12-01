@@ -29,7 +29,7 @@ describe("Given a Navbar component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navbar headerTitle="Favourites" />
+            <Navbar headerTitle="Favorites" />
           </Provider>
         </BrowserRouter>
       );
@@ -47,7 +47,7 @@ describe("Given a Navbar component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navbar headerTitle="Favourites" />
+            <Navbar headerTitle="Favorites" />
           </Provider>
         </BrowserRouter>
       );
@@ -106,7 +106,7 @@ describe("Given a Navbar component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navbar headerTitle="Favourites" />
+            <Navbar headerTitle="Favorites" />
           </Provider>
         </BrowserRouter>
       );
@@ -131,7 +131,7 @@ describe("Given a Navbar component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navbar headerTitle="Favourites" />
+            <Navbar headerTitle="Favorites" />
           </Provider>
         </BrowserRouter>
       );
@@ -150,7 +150,7 @@ describe("Given a Navbar component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navbar headerTitle="Favourites" />
+            <Navbar headerTitle="Favorites" />
           </Provider>
         </BrowserRouter>
       );
@@ -169,7 +169,7 @@ describe("Given a Navbar component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navbar headerTitle="Favourites" />
+            <Navbar headerTitle="Favorites" />
           </Provider>
         </BrowserRouter>
       );
@@ -188,7 +188,7 @@ describe("Given a Navbar component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navbar headerTitle="Favourites" />
+            <Navbar headerTitle="Favorites" />
           </Provider>
         </BrowserRouter>
       );
@@ -233,7 +233,7 @@ describe("Given a Search components", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navbar headerTitle="Favourites" />
+            <Navbar headerTitle="Favorites" />
           </Provider>
         </BrowserRouter>
       );

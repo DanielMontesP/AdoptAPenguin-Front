@@ -62,7 +62,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     case "Likes":
       classButtonLikes = `${classButtonLikes} selected`;
       break;
-    case "Favourites":
+    case "Favorites":
       classButtonFavs = `${classButtonFavs} selected`;
       break;
     default:
@@ -176,7 +176,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
           onClick={loadFavsCall}
           title="btn-favs"
         >
-          Favourites
+          Favorites
         </button>
         <button
           className={classButtonLikes}

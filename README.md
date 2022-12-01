@@ -222,7 +222,7 @@
       <li>Add to user favorites list</li>
       <li>Add to user likes list</li>
       <li>Count global likes individually</li>
-      <li>Create new penguin (Will be added automatically to personal likes and favourites lists</li>
+      <li>Create new penguin (Will be added automatically to personal likes and favorites lists</li>
       <li>Edit penguin data</li>
       <li>Delete penguin</li>
       <li>Send new message</li>
@@ -244,7 +244,7 @@
       <li>Header last title to perform back navigation operations</li>
       <li>Loading data status</li>
       <li>User data for token and logged status</li>
-      <li>Penguin list calculated depending view (Home, Favourites, Likes)</li>
+      <li>Penguin list calculated depending view (Home, Favorites, Likes)</li>
       <li>Selected Penguin data</li>
       <li>Messages list of current user/selected penguin</li>
       <li>Selected message data</li>

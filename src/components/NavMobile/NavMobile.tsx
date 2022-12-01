@@ -52,9 +52,9 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
     dispatch(modalTypeActionCreator(""));
 
     switch (headerLastTitle) {
-      case "Favourites":
+      case "Favorites":
         dispatch(headerLastTitleActionCreator(headerTitle));
-        dispatch(headerTitleActionCreator("Favourites"));
+        dispatch(headerTitleActionCreator("Favorites"));
         navigate("/penguins/favs");
         break;
 
