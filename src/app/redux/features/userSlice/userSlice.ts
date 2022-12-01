@@ -1,12 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IMessage } from "../../types/message/messageInterfaces";
 import { UserInfo, UserState } from "../../types/userInterfaces/userInterfaces";
 
-const initialState: UserState = {
+interface SliceIniState {
+  id: string;
+  username: string;
+  logged: boolean;
+  isAdmin: boolean;
+  image: string;
+  allMessages: IMessage[];
+}
+
+const initialState: SliceIniState = {
   id: "",
   username: "",
   logged: localStorage.getItem("token") ? true : false,
-  image: "",
   isAdmin: false,
+  image: "",
+  allMessages: [],
 };
 
 const userSlice = createSlice({
@@ -14,7 +25,7 @@ const userSlice = createSlice({
   initialState,
 
   reducers: {
-    login: (user: UserState, action: PayloadAction<UserInfo>) => ({
+    login: (user: UserInfo, action: PayloadAction<UserInfo>) => ({
       ...user,
       username: action.payload.username,
       isAdmin: action.payload.isAdmin,
@@ -29,6 +40,7 @@ const userSlice = createSlice({
       isAdmin: false,
       logged: false,
       image: "",
+      allMessages: [],
     }),
 
     loadUserData: (user: UserState, action: PayloadAction<UserInfo>) => ({
@@ -38,6 +50,7 @@ const userSlice = createSlice({
       isAdmin: action.payload.isAdmin,
       logged: true,
       image: action.payload.image,
+      allMessages: action.payload.allMessages,
     }),
 
     editUser: (user: UserState, action: PayloadAction<UserInfo>) => ({
@@ -45,6 +58,10 @@ const userSlice = createSlice({
     }),
     createUser: (user: UserState, action: PayloadAction<UserInfo>) => ({
       ...action.payload,
+    }),
+    getUserMessages: (messages, action: PayloadAction<IMessage[]>) => ({
+      ...messages,
+      allMessages: [...action.payload],
     }),
   },
 });
@@ -55,6 +72,7 @@ export const {
   editUser: editUserActionCreator,
   loadUserData: loadUserDataActionCreator,
   createUser: createUserDataActionCreator,
+  getUserMessages: getUserMessagesActionCreator,
 } = userSlice.actions;
 
 export default userSlice.reducer;

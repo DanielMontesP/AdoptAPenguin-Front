@@ -5,7 +5,7 @@ export interface IMessage {
   subject: string;
   content: string;
   data: string;
-  read: string;
+  read: boolean;
 }
 
 export interface blankMessageDataInterface {
@@ -14,5 +14,5 @@ export interface blankMessageDataInterface {
   subject: string;
   content: string;
   data: string;
-  read: string;
+  read: boolean;
 }

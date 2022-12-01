@@ -22,7 +22,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
     subject: "",
     content: "",
     data: "",
-    read: "false",
+    read: false,
   };
 
   const [, setFormData] = useState(blankData);

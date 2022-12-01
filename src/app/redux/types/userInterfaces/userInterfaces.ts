@@ -1,9 +1,12 @@
+import { IMessage } from "../message/messageInterfaces";
+
 export interface UserInfo {
   id: string;
   username: string;
   logged: boolean;
   isAdmin: boolean;
   image: string;
+  allMessages: IMessage[];
 }
 
 export interface UserState {
@@ -12,6 +15,7 @@ export interface UserState {
   logged: boolean;
   isAdmin: boolean;
   image: string;
+  allMessages: IMessage[];
 }
 
 export interface LoginResponse {
@@ -20,6 +24,7 @@ export interface LoginResponse {
   username: string;
   isAdmin: boolean;
   image: string;
+  allMessages: IMessage[];
 }
 
 export interface LoginData {

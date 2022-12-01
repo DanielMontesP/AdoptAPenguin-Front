@@ -27,12 +27,6 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
   return (
     <PagesStyles className={`messages-container`} title="messages-container">
       <div className="message-buttons">
-        <h3 className={"view-list-counter"}>
-          Total {allMessages.length} message
-          {allMessages.length === 1 ? ". " : "s. "}
-          {counterNewMessages} new message
-          {counterNewMessages === 1 ? "." : "s."}
-        </h3>
         <button
           className={"message-new"}
           onClick={handleClick}
@@ -40,6 +34,12 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
         >
           + New Message
         </button>
+        <h3 className={"view-list-counter"}>
+          Total {allMessages.length} message
+          {allMessages.length === 1 ? ". " : "s. "}
+          {counterNewMessages} unread message
+          {counterNewMessages === 1 ? "." : "s."}
+        </h3>
       </div>
       {allMessages.map((message, index) => {
         return <Message key={index} message={message} />;

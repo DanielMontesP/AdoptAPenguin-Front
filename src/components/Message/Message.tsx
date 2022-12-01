@@ -42,19 +42,19 @@ const Message = ({ message }: Props): JSX.Element => {
   };
 
   const handleDelete = () => {
-    const message = "Delete permanently from database? ";
+    const message = "Delete message permanently from database? ";
     const newModalType = "delete";
 
     dispatch(modalTypeActionCreator(newModalType));
     dispatch(modalMessageActionCreator(message));
 
     setModal((prevState) => !prevState);
-    dispatch(isModalOpenActionCreator(true));
   };
 
+  const classIconIsRead = message.read ? "message-unread" : "message-read";
   return (
     <div className="message-container">
-      <span className="message-read" />
+      <span className={classIconIsRead} />
       <span className="message-data">{message.data}</span>
       <span className="message-subject">{message.subject}</span>
 

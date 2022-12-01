@@ -8,14 +8,20 @@ export function getCurrentDate(separator = "/") {
 }
 
 export function hasNewMessages(allMessages: IMessage[], idPenguin: string) {
-  let countNewMessages = 0;
+  if (allMessages !== undefined) {
+    let countNewMessages = 0;
 
-  allMessages.forEach((message) => {
-    if (!message.read && idPenguin === message.idPenguin && idPenguin !== "") {
-      countNewMessages += 1;
-    }
-  });
-  return countNewMessages;
+    allMessages.forEach((message) => {
+      if (
+        !message.read &&
+        idPenguin === message.idPenguin &&
+        idPenguin !== ""
+      ) {
+        countNewMessages += 1;
+      }
+    });
+    return countNewMessages;
+  }
 }
 
 export const toPascalCase = (strValue: string) => {

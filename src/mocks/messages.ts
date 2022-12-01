@@ -6,7 +6,7 @@ export const mockMessage: any = {
   subject: "subject",
   content: "content",
   data: "data",
-  read: "false",
+  read: false,
   id: "id",
 };
 
@@ -16,7 +16,7 @@ export const mockMessageEmpty: IMessage = {
   subject: "",
   content: "",
   data: "",
-  read: "false",
+  read: false,
   id: "",
 };
 
@@ -27,7 +27,7 @@ export const mockMessages: IMessage[] = [
     subject: "subject",
     content: "content",
     data: "data",
-    read: "false",
+    read: false,
     id: "id",
   },
 ];
@@ -39,7 +39,7 @@ export const mockMessagesEmpty: IMessage[] = [
     subject: "",
     content: "",
     data: "",
-    read: "false",
+    read: false,
     id: "",
   },
 ];

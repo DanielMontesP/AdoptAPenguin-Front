@@ -7,6 +7,7 @@ import {
 } from "../../types/userInterfaces/userInterfaces";
 import {
   editUserActionCreator,
+  getUserMessagesActionCreator,
   loadUserDataActionCreator,
   logInActionCreator,
 } from "../../features/userSlice/userSlice";
@@ -35,16 +36,23 @@ export const loginThunk =
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
 
       if (status === 200) {
-        const { id, username, isAdmin, image }: LoginResponse = jwt_decode(
-          data.token
-        );
+        const { id, username, isAdmin, image, allMessages }: LoginResponse =
+          jwt_decode(data.token);
         const logged = false;
 
         localStorage.setItem("token", data.token);
 
-        dispatch(logInActionCreator({ id, username, logged, isAdmin, image }));
+        dispatch(
+          logInActionCreator({
+            id,
+            username,
+            logged,
+            isAdmin,
+            image,
+            allMessages,
+          })
+        );
         dispatch(headerTitleActionCreator("Home"));
-
         dispatch(finishedLoadingActionCreator());
 
         message =
@@ -111,6 +119,7 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
         `${process.env.REACT_APP_API_URL}users/${id}`
       );
 
+      dispatch(getUserMessagesThunk(id));
       dispatch(loadUserDataActionCreator(user));
       dispatch(finishedLoadingActionCreator());
     }
@@ -144,3 +153,26 @@ export const editUserThunk = (idUser: any) => async (dispatch: AppDispatch) => {
     setLoadingOffWithMessage(`EDIT user: Finished successfully.`, false);
   }
 };
+
+export const getUserMessagesThunk =
+  (idUser: string) => async (dispatch: AppDispatch) => {
+    dispatch(loadingActionCreator());
+
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const {
+        data: { messages },
+      } = await axios.get(
+        `${process.env.REACT_APP_API_URL}users/messages/${idUser}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      dispatch(getUserMessagesActionCreator(messages));
+      dispatch(finishedLoadingActionCreator());
+    }
+  };

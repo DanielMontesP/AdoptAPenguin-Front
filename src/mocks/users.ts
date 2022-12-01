@@ -10,3 +10,23 @@ export const mockUser = {
   username: "user1xxx",
   password: "user1",
 };
+
+export const mockloggedUser = {
+  name: "test1",
+  username: "test1",
+  isAdmin: false,
+  logged: true,
+  id: "test",
+  image: "",
+  allMessages: [],
+};
+
+export const mocklogOutUser = {
+  name: "test1",
+  username: "test1",
+  isAdmin: false,
+  logged: false,
+  id: "test",
+  image: "",
+  allMessages: [],
+};
