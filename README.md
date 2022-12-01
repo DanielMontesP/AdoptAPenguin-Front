@@ -250,6 +250,14 @@
       <li>Selected message data</li>
       </ul>
       </li>
+      <li>
+      Images
+      <ul>
+      <li>Preview loaded image</li>
+      <li>Resize image</li>
+      <li>Backup image to firebase storage</li>
+      </ul>
+      </li>
       </ul>
       </div>
     </div>
