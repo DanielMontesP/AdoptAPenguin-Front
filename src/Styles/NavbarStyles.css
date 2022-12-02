@@ -12,17 +12,66 @@ h3 {
   color: white;
 }
 
+.top-to-btm {
+  position: relative;
+}
+.icon-position {
+  position: fixed;
+  bottom: 40px;
+  right: 25px;
+  z-index: 20;
+}
+.icon-style {
+  background-color: #fbfbfb;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  animation: movebtn 3s ease-in-out infinite;
+  transition: all 0.5s ease-in-out;
+}
+.icon-style:hover {
+  animation: none;
+  background: #fff;
+  color: #000000;
+  border: 2px solid #000000;
+}
+@keyframes movebtn {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 .notifyer-container {
+  position: relative;
+  background: white;
   width: 250px;
   font-size: 14px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  border-radius: 15px;
+  padding: 5px;
 }
 .notifyer-header {
   width: 95%;
   display: flex;
   font-weight: bold;
+  font-size: 14px;
   justify-content: space-between;
 }
 
@@ -31,9 +80,8 @@ h3 {
   display: flex;
 }
 .notifyer-bt-close {
-  font-size: 14px;
-  font-weight: bold;
-  color: black;
+  font-size: 12px;
+  color: rgb(71, 70, 70);
   background-color: transparent;
   width: auto;
   height: auto;
@@ -52,6 +100,7 @@ h3 {
   border: 1px solid black;
   border-radius: 15px;
   padding: 5px;
+  z-index: 1;
 }
 .message-read-img {
   background: url("../images/view-16.png");

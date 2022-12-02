@@ -27,21 +27,18 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
   const handleClick = (event: FormEvent<HTMLDivElement>): void => {
     const idMessage = event.currentTarget.id;
     setHidder(true);
+    setHidderContainer(true);
     dispatch(getMessageThunk(idMessage));
     navigate(`/message/edit/id=${idMessage}`);
   };
 
-  const handleShowContainer = (event: FormEvent<HTMLSpanElement>): void => {
-    setHidderContainer((prevState) => !prevState);
-    setHidder((prevState) => !prevState);
-  };
-  const hidder = isHide || messages?.length === 0 ? " display-none" : "";
+  const hidder = isHide || messages?.length === 0 ? "" : " display-none";
   const hidderContainer = isContainerHide ? " display-none" : "";
 
   return (
     <PagesStyles className={`new-messages-container`} title="notifyer-header">
       <div className="notifyer-header">
-        <span onClick={handleShowContainer}>
+        <span onClick={handleClose}>
           {messages?.length === 0 ? "No new messages" : "You have new messages"}
         </span>
         <button
@@ -49,7 +46,7 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
           onClick={handleClose}
           placeholder="notifyer-bt-close"
         >
-          X
+          {isHide ? "Hide" : "Show"}
         </button>
       </div>
       <div className={`notifyer-container${hidderContainer}`}>
