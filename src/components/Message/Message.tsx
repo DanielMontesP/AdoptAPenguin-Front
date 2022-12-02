@@ -52,6 +52,7 @@ const Message = ({ message }: Props): JSX.Element => {
   };
 
   const classIconIsRead = message.read ? "message-unread" : "message-read";
+
   return (
     <div className="message-container">
       <span className={classIconIsRead} />

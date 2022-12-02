@@ -57,13 +57,21 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
           ? messages.map((message, index) => {
               return (
                 <div
-                  className={`messages-notifyer${hidder}`}
+                  className={`message${hidder}`}
                   key={index}
                   onClick={handleClick}
                   id={message.id}
                   placeholder="messages-notifyer"
                 >
-                  {message.data} - {message.subject}
+                  <div
+                    className={`message-read-img`}
+                    key={index}
+                    onClick={handleClick}
+                    id={message.id}
+                    placeholder="message-read-notifyer"
+                  />
+                  {message.data.substring(0, message.data.indexOf(","))} -{" "}
+                  {message.subject}
                 </div>
               );
             })
