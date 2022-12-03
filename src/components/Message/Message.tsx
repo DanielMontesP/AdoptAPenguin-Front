@@ -58,8 +58,6 @@ const Message = ({ message }: Props): JSX.Element => {
       <span className={classIconIsRead} />
       <span className="message-data">{message.data}</span>
       <span className="message-subject">{message.subject}</span>
-
-      <span className="message-content">{message.content}</span>
       <button
         className={"message-read-img"}
         onClick={handleClick}
