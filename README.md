@@ -235,14 +235,15 @@
       <li>Count unread messages</li>
       </ul>
       </li>
-      </ul>
+     <li>
       Features
+      </li>
       <ul>
-      <li>Responsive</li>
-      <li>Preview loaded image</li>
+      <li>Responsive site</li>
+      <li>Preview uploaded image</li>
       <li>Scroll to top button</li>
       <li>Search engine</li>
-      <li>Resize image</li>
+      <li>Resize uploaded images</li>
       <li>Backup image to firebase storage</li>
       <li>
       States
@@ -259,5 +260,6 @@
       </ul>
       </li>
       </ul>
+       </ul>
       </div>
     </div>
