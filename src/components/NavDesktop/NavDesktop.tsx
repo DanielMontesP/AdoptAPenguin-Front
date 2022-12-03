@@ -30,6 +30,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   const navigate = useNavigate();
 
   const { penguin } = useAppSelector((state) => state.penguins);
+  const { user } = useAppSelector((state) => state);
 
   const [isMenuOpened, setMenuOpen] = useState(false);
   const [, setModal] = useState(false);
@@ -43,6 +44,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   let classButtonFavs = `${classButton}favs`;
   let classButtonNew = `${classButton}new`;
   let classInputSearch = `search-input`;
+  let classButtonViewMessages = "bt-view-messages";
 
   const searchPlaceHolderText = "Search by name/category/description...";
   let HidderDesktopButtons = "";
@@ -79,6 +81,10 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   const handleMenu = () => {
     setMenuOpen((prevState) => !prevState);
     dispatch(isMenuOpenActionCreator(true));
+  };
+
+  const viewMessages = () => {
+    navigate(`/users/messages/${user.id}`);
   };
 
   const handleLogoutCall = () => {
@@ -187,6 +193,13 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
         </button>
         <button className={classButtonNew} onClick={addFav} title="btn-addFav">
           New
+        </button>
+        <button
+          className={classButtonViewMessages}
+          onClick={viewMessages}
+          title="btn-view-messages"
+        >
+          Inbox
         </button>
         <input
           className={`${HidderSearch}`}
