@@ -11,7 +11,7 @@ interface Props {
 
 const MessageNotifyer = ({ messages }: Props): JSX.Element => {
   const [isHide, setHidder] = useState(false);
-  const [isContainerHide, setHidderContainer] = useState(false);
+  const [, setHidderContainer] = useState(false);
 
   const navigate = useNavigate();
 
@@ -33,7 +33,6 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
   };
 
   const hidder = isHide || messages?.length === 0 ? "" : " display-none";
-  const hidderContainer = isContainerHide ? " display-none" : "";
 
   return (
     <PagesStyles className={`new-messages-container`} title="notifyer-header">
@@ -49,12 +48,12 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
           {isHide ? "Hide" : "Show"}
         </button>
       </div>
-      <div className={`notifyer-container${hidderContainer}`}>
+      <div className={`notifyer-container${hidder}`}>
         {messages?.length > 0
           ? messages.map((message, index) => {
               return (
                 <div
-                  className={`message${hidder}`}
+                  className={`message`}
                   key={index}
                   onClick={handleClick}
                   id={message.id}

@@ -527,13 +527,12 @@ const PagesStyles = styled.div`
   }
 
   .animatedDelete {
+    width: 40px;
     border: none;
-    height: 17px;
-    width: 17px;
     background: url(${iconDeleteBlack});
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: 15px;
     margin-left: 30px;
   }
 

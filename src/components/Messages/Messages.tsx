@@ -40,10 +40,8 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
           + New Message
         </button>
         <h3 className={"inbox-view-list-counter"}>
-          Total {allMessages.length} message
-          {allMessages.length === 1 ? ". " : "s. "}
-          {counterNewMessages} unread message
-          {counterNewMessages === 1 ? "." : "s."}
+          Total {allMessages.length} messages.
+          {counterNewMessages} unread messages.
         </h3>
       </div>
       {allMessages.map((message, index) => {
