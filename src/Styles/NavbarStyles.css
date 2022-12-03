@@ -95,6 +95,7 @@ h3 {
   align-items: flex-start;
   position: fixed;
   right: 5px;
+  top: 78px;
   background-color: white;
   opacity: 0.9;
   border: 1px solid black;
@@ -1264,6 +1265,24 @@ ul {
   background: url("../images/icon-menu-home45.png");
   background-repeat: no-repeat;
   text-align: left;
+  border: 0;
+}
+
+.bt-view-messages {
+  height: 30px;
+  width: 10%;
+  font-size: 1rem;
+  background: none;
+  background-color: transparent;
+  text-align: center;
+  border: 0;
+}
+.bt-menu-view-messages {
+  background: url("../images/mail-full.png");
+  background-size: 40px;
+
+  background-position: center;
+  background-repeat: no-repeat;
   border: 0;
 }
 

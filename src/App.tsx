@@ -17,6 +17,7 @@ import { getUserThunk } from "./app/redux/thunks/userThunk/userThunk";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { isDesktopActionCreator } from "./app/redux/features/uiSlice/uiSlice";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import UserMessagesPage from "./pages/UserMessagesPage/UserMessagesPage";
 
 function App() {
   const { logged, id } = useAppSelector((state) => state.user);
@@ -111,6 +112,14 @@ function App() {
           element={
             <CheckInSecurity>
               <CreatePage type="Edit" form="User" />
+            </CheckInSecurity>
+          }
+        />
+        <Route
+          path="/users/messages/:id"
+          element={
+            <CheckInSecurity>
+              <UserMessagesPage />
             </CheckInSecurity>
           }
         />
