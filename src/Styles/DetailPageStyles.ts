@@ -481,6 +481,8 @@ const DetailPageStyles = styled.div`
   }
 
   .message-buttons {
+    display: flex;
+    justify-content: left;
     text-align: left;
     margin-bottom: 10px;
   }
