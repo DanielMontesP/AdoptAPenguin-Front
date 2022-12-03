@@ -23,7 +23,7 @@ const FormsStyles = styled.div`
 
   .form-create {
     display: flex;
-    align-items: end;
+    align-items: center;
     flex-direction: column;
     margin: auto;
     margin-top: 110px;
@@ -44,7 +44,8 @@ const FormsStyles = styled.div`
   }
 
   .message-unread {
-    width: auto;
+    width: 80%;
+    max-width: 110px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
