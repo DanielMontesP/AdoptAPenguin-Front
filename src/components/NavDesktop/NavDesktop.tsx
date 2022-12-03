@@ -44,7 +44,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   let classButtonFavs = `${classButton}favs`;
   let classButtonNew = `${classButton}new`;
   let classInputSearch = `search-input`;
-  let classButtonViewMessages = "bt-view-messages";
+  let classButtonViewMessages = `${classButton}view-messages`;
 
   const searchPlaceHolderText = "Search by name/category/description...";
   let HidderDesktopButtons = "";
@@ -66,6 +66,9 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
       break;
     case "Favorites":
       classButtonFavs = `${classButtonFavs} selected`;
+      break;
+    case "Inbox":
+      classButtonViewMessages = `${classButtonViewMessages} selected`;
       break;
     default:
   }

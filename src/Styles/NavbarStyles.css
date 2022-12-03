@@ -1277,6 +1277,14 @@ ul {
   text-align: center;
   border: 0;
 }
+.bt-menu-view-messages {
+  background: url("../images/mail-full.png");
+  background-size: 40px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+}
 
 .bt-about {
   background: url("../images/about-45.png");

@@ -140,6 +140,12 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
     handleFocus(field);
   };
 
+  const viewMessages = () => {
+    setMenu(false);
+    dispatch(isMenuOpenActionCreator(false));
+    navigate(`/users/messages/${user.id}`);
+  };
+
   const HidderSearch = isSearchClicked
     ? ` opacity-full ${classButtonSearch}`
     : ` ${classButtonSearch}`;
@@ -161,6 +167,13 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
         </button>
         <button onClick={loadLikes} className="bt-likes" title="bt-likes">
           <h3 className="menu-icon-label-vertical">Likes</h3>
+        </button>
+        <button
+          onClick={viewMessages}
+          className="bt-menu-view-messages"
+          title="bt-view-messages"
+        >
+          <h3 className="menu-icon-label-vertical">Inbox</h3>
         </button>
         <button onClick={addFav} className="bt-addfav" title="bt-fav">
           <h3 className="menu-icon-label-vertical">New...</h3>
