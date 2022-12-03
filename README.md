@@ -230,6 +230,7 @@
       <li>Delete penguin</li>
       <li>Send new message</li>
       <li>View messages</li>
+      <li>User inbox</li>
       <li>Delete message</li>
       <li>Count unread messages</li>
       </ul>
@@ -239,6 +240,10 @@
       <ul>
       <li>Responsive</li>
       <li>Preview loaded image</li>
+      <li>Scroll to top button</li>
+      <li>Search engine</li>
+      <li>Resize image</li>
+      <li>Backup image to firebase storage</li>
       <li>
       States
       <ul>
@@ -251,14 +256,6 @@
       <li>Selected Penguin data</li>
       <li>Messages list of current user/selected penguin</li>
       <li>Selected message data</li>
-      </ul>
-      </li>
-      <li>
-      Images
-      <ul>
-      <li>Preview loaded image</li>
-      <li>Resize image</li>
-      <li>Backup image to firebase storage</li>
       </ul>
       </li>
       </ul>

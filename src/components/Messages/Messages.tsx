@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../app/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { resetMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
@@ -16,6 +16,8 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  const { headerTitle } = useAppSelector((state) => state.ui);
+
   const handleClick = () => {
     dispatch(resetMessageThunk());
 
@@ -25,7 +27,10 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
   const counterNewMessages = hasNewMessages(allMessages, penguin.id);
 
   return (
-    <PagesStyles className={`messages-container`} title="messages-container">
+    <PagesStyles
+      className={`${headerTitle === "Inbox" ? "inbox-" : ""}messages-container`}
+      title="messages-container"
+    >
       <div className="message-buttons">
         <button
           className={"message-new"}

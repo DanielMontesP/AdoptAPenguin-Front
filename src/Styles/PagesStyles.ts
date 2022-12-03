@@ -14,7 +14,6 @@ import iconLike from "../images/like-full.png";
 import iconLikeInit from "../images/like-add.png";
 import iconMesssagesGot from "../images/mail-empty.png";
 import iconMesssagesNew from "../images/mail-full.png";
-
 const PagesStyles = styled.div`
   text-align: center;
 
@@ -22,6 +21,27 @@ const PagesStyles = styled.div`
     color: lightgrey;
     position: fixed;
     bottom: 20px;
+  }
+
+  .message-buttons {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .message-new {
+    font-size: 1rem;
+    font-weight: bold;
+    width: 220px;
+    border-radius: 15px;
+    border: 2px solid black;
+    background-color: transparent;
+    color: black;
+    padding: 10px;
+    text-align: left;
+    flex: 2;
   }
 
   @media only screen and (min-width: 421px) {
