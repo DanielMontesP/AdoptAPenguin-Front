@@ -17,7 +17,7 @@ const Penguins = ({ allPenguins }: Props): JSX.Element => {
       title="penguins-container"
     >
       <h3 className={"view-list-counter"}>
-        {allPenguins.length} result/s found.
+        {allPenguins.length} results found.
       </h3>
       {allPenguins.map((penguin, index) => {
         return <Penguin key={index} penguin={penguin} />;
