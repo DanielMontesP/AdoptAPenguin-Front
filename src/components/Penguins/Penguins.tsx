@@ -2,7 +2,8 @@ import Penguin from "../Penguin/Penguin";
 import { finishedLoadingActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import PagesStyles from "../../Styles/PagesStyles";
-import { penguins } from "../../utils/data.js";
+import { penguins } from "../../penguins-export.js";
+
 const loadedState = finishedLoadingActionCreator();
 const hidderDelete = loadedState ? "" : " display-none";
 
@@ -11,7 +12,8 @@ interface Props {
 }
 
 const Penguins = ({ allPenguins }: Props): JSX.Element => {
-  const listPenguins = allPenguins.length === 0 ? penguins : allPenguins;
+  const listPenguins = allPenguins.length >= 1 ? penguins : allPenguins;
+
   return (
     <PagesStyles
       className={`penguins-container${hidderDelete}`}
