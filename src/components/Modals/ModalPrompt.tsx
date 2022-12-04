@@ -15,6 +15,7 @@ import {
   deletePenguinThunk,
   resetPenguinsThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import { writeFile } from "../../utils/actionsFiles";
 import EditButtons from "../EditButtons/EditButtons";
 import Help from "../Help/Help";
 import WellcomeComments from "../WellcomeComments/WellcomeComments";
@@ -80,6 +81,9 @@ export const Modal = ({
     case "Edit":
       windowTitle = "Options";
       break;
+    case "Setup":
+      windowTitle = "Setup";
+      break;
     default:
       windowTitle = "Please confirm";
   }
@@ -105,6 +109,8 @@ export const Modal = ({
       return <Help />;
     } else if (type === "FFeature") {
       content = "This feature will be available soon.";
+    } else if (type === "Settings") {
+      content = "Export list?";
     }
 
     return type !== "Edit" ? <h3 className="modal-message">{content}</h3> : "";
@@ -144,6 +150,9 @@ export const Modal = ({
       case "Search":
         break;
       case "Error":
+        break;
+      case "Settings":
+        writeFile();
         break;
       default:
         correctAction("Sorry, this feature is not available yet.");

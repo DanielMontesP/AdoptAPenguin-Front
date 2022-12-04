@@ -100,6 +100,12 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     dispatch(isModalOpenActionCreator(true));
   };
 
+  const handleSettings = () => {
+    dispatch(modalTypeActionCreator("Settings"));
+
+    dispatch(isModalOpenActionCreator(true));
+  };
+
   const handleHelp = () => {
     dispatch(modalTypeActionCreator("Help"));
 
@@ -247,6 +253,11 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
           onClick={handleMenu}
           className={`desktop-bt-menu${HidderDesktopButtons}`}
           title="desktop-btn-menu"
+        />
+        <button
+          onClick={handleSettings}
+          className={`desktop-bt-settings${HidderDesktopButtons}`}
+          title="desktop-btn-settings"
         />
       </div>{" "}
       <div className={`menu-nav`}>

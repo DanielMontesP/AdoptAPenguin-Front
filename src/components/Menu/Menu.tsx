@@ -119,6 +119,12 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
     dispatch(stringToSearchActionCreator(event.target.value));
   };
 
+  const handleSettings = () => {
+    dispatch(modalTypeActionCreator("Settings"));
+    dispatch(isMenuOpenActionCreator(false));
+    dispatch(isModalOpenActionCreator(true));
+  };
+
   const handleSearchEnter = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       dispatch(stringToSearchActionCreator(stringToSearch));
@@ -205,6 +211,11 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
           />
           <button onClick={handleHelp} className="bt-help" title="bt-help" />
           <button onClick={handleAbout} className="bt-about" title="bt-about" />
+          <button
+            onClick={handleSettings}
+            className="bt-settings"
+            title="bt-settings"
+          />
           <button
             onClick={handleSearch}
             className="bt-search"
