@@ -4,6 +4,10 @@ import store from "../../app/redux/store/store";
 import PenguinsPage from "./PenguinsPage";
 import PenguinsPageStyles from "../../Styles/PagesStyles";
 
+jest.mock("react-router-dom", () => ({
+  useNavigate: () => jest.fn(),
+}));
+
 describe("Given a PenguinsPage Component", () => {
   describe("When it's rendered", () => {
     test("Then it should show the role 'penguins-page'", () => {
