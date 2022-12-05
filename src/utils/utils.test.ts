@@ -1,6 +1,11 @@
-import { mockMessages } from "../mocks/messages";
+import { mockMessage, mockMessages } from "../mocks/messages";
 import { mockPenguin } from "../mocks/penguins";
-import { resizeFile, getCurrentDate, hasNewMessages } from "./utils";
+import {
+  resizeFile,
+  getCurrentDate,
+  hasNewMessages,
+  setMessageRead,
+} from "./utils";
 
 jest.mock("react-image-file-resizer", () => ({
   ...jest.requireActual("react-image-file-resizer"),
@@ -38,6 +43,17 @@ describe("Given a hasNewMessages function", () => {
     test("Then it return number of messages with unread flag", () => {
       const dispatch = jest.fn();
       dispatch(hasNewMessages(mockMessages, mockPenguin.id));
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a setMessageRead function", () => {
+  describe("When called", () => {
+    test("Then it return number of messages with unread flag", () => {
+      const dispatch = jest.fn();
+      dispatch(setMessageRead(mockMessage, dispatch));
 
       expect(dispatch).toHaveBeenCalled();
     });
