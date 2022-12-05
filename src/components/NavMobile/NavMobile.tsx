@@ -10,6 +10,8 @@ import {
 } from "../../app/redux/features/uiSlice/uiSlice";
 import Menu from "../Menu/Menu";
 import { blankMessageDataInterface } from "../../app/redux/types/message/messageInterfaces";
+import { ReactDimmer } from "react-dimmer";
+import { Modal } from "../Modals/ModalPrompt";
 
 interface Props {
   headerTitle: string;
@@ -24,23 +26,27 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
     data: "",
     read: false,
   };
-
+  const { modalMessage, modalType, isModalOpen, isMenuOpen, headerLastTitle } =
+    useAppSelector((state) => state.ui);
   const [, setFormData] = useState(blankData);
 
   const { penguin } = useAppSelector((state) => state.penguins);
-
-  const { headerLastTitle, isMenuOpen } = useAppSelector((state) => state.ui);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const [isMenuOpened, setMenuOpen] = useState(false);
-
+  const [, setModal] = useState(false);
   let isHomePage = headerTitle === "Home";
 
   let classHeaderTitle = "header-desktop-title";
 
   let HidderDesktopButtons = "";
+
+  const getModalType = () => {
+    const newModalType = modalType;
+    return newModalType;
+  };
 
   const handleMenu = () => {
     setMenuOpen((prevState) => !prevState);
@@ -103,6 +109,21 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
       <div className={`menu-nav`}>
         <Menu isMenuOpened={isMenuOpened && isMenuOpen} />
       </div>
+      {isModalOpen && (
+        <Modal
+          idToProcess={penguin.id}
+          content={modalMessage}
+          closeModal={setModal}
+          type={getModalType()}
+          form="Penguin"
+        />
+      )}
+      <ReactDimmer
+        isOpen={(isMenuOpened && isMenuOpen) || isModalOpen}
+        exitDimmer={setMenuOpen}
+        zIndex={90}
+        blur={1.5}
+      />
     </div>
   );
 };
