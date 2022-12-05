@@ -29,9 +29,6 @@ let message = "";
 export const loginThunk =
   (userData: UserRegister) => async (dispatch: AppDispatch) => {
     try {
-      setLoadingOn(
-        `LOGIN: ${userData.username}...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`
-      );
       const url: string = `${process.env.REACT_APP_API_URL}users/login`;
 
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
@@ -61,14 +58,9 @@ export const loginThunk =
           })
         );
         dispatch(headerTitleActionCreator("Home"));
+
+        dispatch(getUserMessagesThunk(id));
         dispatch(finishedLoadingActionCreator());
-
-        message =
-          message === ""
-            ? `${userData.username} logged successfully.`
-            : message;
-
-        setLoadingOffWithMessage(message, false);
       }
     } catch (error: any) {
       setLoadingOffWithMessage(

@@ -18,6 +18,38 @@ const DetailPageStyles = styled.div`
   font-family: Montserrat, sans-serif;
   text-align: justify;
 
+  .new-messages-counter {
+    height: 30px;
+    width: 30px;
+    padding: 2px;
+    color: white;
+    font-size: 16px;
+    background-color: rgb(241, 14, 14);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: -5px;
+    top: -15px;
+    display: inline-flex;
+  }
+
+  .likes {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -15px;
+    left: -5px;
+    color: white;
+    padding: 2px;
+    display: inline-flex;
+    background-color: rgb(241, 14, 14);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+  }
+
   .detail-name {
     height: 15px;
     width: 90%;
