@@ -33,21 +33,20 @@ h3 {
 }
 
 .inbox-view-list-counter {
-  width: 65%;
+  width: 50%;
   margin: auto;
   text-align: right;
   font-size: 12px;
   font-weight: normal;
   margin-right: 20px;
   color: black;
-  flex: 3;
 }
 
 .message-data {
   margin-left: 10px;
   text-align: left;
   font-size: 14px;
-  width: 300px;
+  width: 130px;
 }
 
 .top-to-btm {
@@ -276,6 +275,7 @@ h3 {
     font-size: 16px;
     background: white;
     text-align: justify;
+    margin-top: 15px;
   }
 
   .message-new {
@@ -655,7 +655,7 @@ h1 {
   background-repeat: no-repeat;
   background-size: contain;
   margin-bottom: 5px;
-  margin-left: 30px;
+  margin-left: 35px;
 }
 
 .animatedDeleteBlack {
@@ -772,7 +772,6 @@ h1 {
 
   .prompt-container {
     display: flex;
-    height: 300px;
     text-align: center;
     font-size: 14px;
     margin: auto;

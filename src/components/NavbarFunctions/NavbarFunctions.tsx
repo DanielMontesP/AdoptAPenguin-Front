@@ -4,18 +4,23 @@ import {
   headerTitleActionCreator,
   isMenuOpenActionCreator,
   isModalOpenActionCreator,
+  loadingActionCreator,
   modalMessageActionCreator,
   modalTypeActionCreator,
   stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
-import { searchPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import {
+  resetPenguinThunk,
+  searchPenguinThunk,
+} from "../../app/redux/thunks/penguinThunk/penguinThunk";
 
 export const loadHome = (
   dispatch: any,
   headerTitle: string,
-
   navigate: any
 ): any => {
+  dispatch(loadingActionCreator());
+
   dispatch(modalTypeActionCreator(""));
   dispatch(modalMessageActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
@@ -42,9 +47,9 @@ export const loadFavs = (
   setMenu: any,
   navigate: any
 ): any => {
-  dispatch(isMenuOpenActionCreator(false));
   setMenu(false);
 
+  dispatch(loadingActionCreator());
   dispatch(modalTypeActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
   dispatch(headerTitleActionCreator("Favorites"));
@@ -60,6 +65,7 @@ export const loadLikes = (
 ): void => {
   setMenu(false);
 
+  dispatch(loadingActionCreator());
   dispatch(modalTypeActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
   dispatch(headerTitleActionCreator("Likes"));
@@ -108,4 +114,26 @@ export const handleSearchEnter = (
       stringToSearch
     );
   }
+};
+
+export const loadHelp = (dispatch: any) => {
+  dispatch(isMenuOpenActionCreator(false));
+
+  dispatch(modalTypeActionCreator("Help"));
+
+  dispatch(isModalOpenActionCreator(true));
+};
+
+export const loadAbout = (dispatch: any) => {
+  dispatch(isMenuOpenActionCreator(false));
+
+  dispatch(modalTypeActionCreator("About"));
+
+  dispatch(isModalOpenActionCreator(true));
+};
+
+export const addNewFav = (dispatch: any, navigate: any) => {
+  dispatch(resetPenguinThunk());
+
+  navigate("/create");
 };

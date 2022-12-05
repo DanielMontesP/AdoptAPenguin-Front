@@ -498,9 +498,11 @@ const DetailPageStyles = styled.div`
   }
 
   .message-subject {
+    margin-right: 5px;
     text-align: left;
     margin-left: 10px;
     flex: 2;
+    overflow: hidden;
   }
 
   .message-read-img {
@@ -527,7 +529,7 @@ const DetailPageStyles = styled.div`
     font-weight: bold;
     height: 40px;
     border-radius: 15px;
-    width: 100%;
+    width: 235px;
   }
 
   .message-noread-img {

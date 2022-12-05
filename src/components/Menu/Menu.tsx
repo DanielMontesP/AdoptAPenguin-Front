@@ -1,20 +1,24 @@
 import { ChangeEvent, KeyboardEvent, MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  headerLastTitleActionCreator,
-  headerTitleActionCreator,
   isMenuOpenActionCreator,
   isModalOpenActionCreator,
+  loadingActionCreator,
   modalTypeActionCreator,
   stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
-import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import noPhoto from "../../images/userPhoto.png";
 import { handleFocus, toPascalCase } from "../../utils/utils";
 import {
+  addNewFav,
   handleLogout,
   handleSearchSubmit,
+  loadAbout,
+  loadFavs,
+  loadHelp,
+  loadHome,
+  loadLikes,
 } from "../NavbarFunctions/NavbarFunctions";
 
 interface Props {
@@ -39,43 +43,24 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
 
   const searchPlaceHolderText = "Search by name/category/description...";
 
-  const loadFavs = () => {
+  const handleFavs = () => {
+    loadFavs(dispatch, headerTitle, setMenu, navigate);
     dispatch(isMenuOpenActionCreator(false));
-
-    dispatch(modalTypeActionCreator(""));
-    dispatch(headerLastTitleActionCreator(headerTitle));
-    dispatch(headerTitleActionCreator("Favorites"));
-
-    navigate("/penguins/favs");
   };
 
-  const loadLikes = () => {
+  const handleLikes = () => {
+    loadLikes(dispatch, headerTitle, setMenu, navigate);
     dispatch(isMenuOpenActionCreator(false));
-
-    dispatch(modalTypeActionCreator(""));
-    dispatch(headerLastTitleActionCreator(headerTitle));
-    dispatch(headerTitleActionCreator("Likes"));
-
-    navigate("/penguins/likes");
   };
 
-  const loadHome = () => {
+  const handleHome = () => {
+    loadHome(dispatch, headerTitle, setMenu);
     dispatch(isMenuOpenActionCreator(false));
-
-    dispatch(modalTypeActionCreator(""));
-    dispatch(headerLastTitleActionCreator(headerTitle));
-    dispatch(headerTitleActionCreator("Home"));
-
-    navigate("/penguins");
   };
 
   const addFav = () => {
+    addNewFav(dispatch, navigate);
     dispatch(isMenuOpenActionCreator(false));
-    setMenu((prevState) => !prevState);
-
-    dispatch(resetPenguinThunk());
-
-    navigate("/create");
   };
 
   const handleLogoutCall = () => {
@@ -83,19 +68,11 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   };
 
   const handleAbout = () => {
-    dispatch(isMenuOpenActionCreator(false));
-
-    dispatch(modalTypeActionCreator("About"));
-
-    dispatch(isModalOpenActionCreator(true));
+    loadAbout(dispatch);
   };
 
   const handleHelp = () => {
-    dispatch(isMenuOpenActionCreator(false));
-
-    dispatch(modalTypeActionCreator("Help"));
-
-    dispatch(isModalOpenActionCreator(true));
+    loadHelp(dispatch);
   };
 
   const handleSearch = (event: MouseEvent<HTMLButtonElement>) => {
@@ -116,6 +93,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   };
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    dispatch(loadingActionCreator());
     dispatch(stringToSearchActionCreator(event.target.value));
   };
 
@@ -165,13 +143,13 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
       <div className="menu-vertical">
         <hr className="menu-hr-photo" />
 
-        <button onClick={loadHome} className="bt-home" title="bt-home">
+        <button onClick={handleHome} className="bt-home" title="bt-home">
           <h3 className="menu-icon-label-vertical">Home</h3>
         </button>
-        <button onClick={loadFavs} className="bt-favs" title="bt-favs">
+        <button onClick={handleFavs} className="bt-favs" title="bt-favs">
           <h3 className="menu-icon-label-vertical">Favorites</h3>
         </button>
-        <button onClick={loadLikes} className="bt-likes" title="bt-likes">
+        <button onClick={handleLikes} className="bt-likes" title="bt-likes">
           <h3 className="menu-icon-label-vertical">Likes</h3>
         </button>
         <button
