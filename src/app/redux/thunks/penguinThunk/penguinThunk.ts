@@ -25,25 +25,23 @@ let message = "";
 
 export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
   dispatch(loadingActionCreator());
+  try {
+    const token = localStorage.getItem("token");
 
-  setLoadingOn(
-    `GET Penguins: ...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`
-  );
+    if (token) {
+      const {
+        data: { penguins },
+      } = await axios.get(`${process.env.REACT_APP_API_URL}penguins`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-  const token = localStorage.getItem("token");
-
-  if (token) {
-    const {
-      data: { penguins },
-    } = await axios.get(`${process.env.REACT_APP_API_URL}penguins`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    dispatch(loadPenguinsActionCreator(penguins));
-    dispatch(finishedLoadingActionCreator());
-    setLoadingOffWithMessage("GET Penguins: Finished successfully", false);
+      dispatch(loadPenguinsActionCreator(penguins));
+      dispatch(finishedLoadingActionCreator());
+    }
+  } catch (error) {
+    setLoadingOffWithMessage(`GET Favorites: ${error}`, true);
   }
 };
 

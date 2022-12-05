@@ -10,7 +10,7 @@ interface Props {
 }
 
 const MessageNotifyer = ({ messages }: Props): JSX.Element => {
-  const [isHide, setHidder] = useState(false);
+  const [isHide, setHidder] = useState(true);
   const [, setHidderContainer] = useState(false);
 
   const navigate = useNavigate();
@@ -32,10 +32,10 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
     navigate(`/message/edit/id=${idMessage}`);
   };
 
-  const hidder = isHide || messages?.length === 0 ? "" : " display-none";
+  const hidder = isHide || !messages?.length ? " display-none" : "";
 
   return (
-    <PagesStyles className={`new-messages-container`} title="notifyer-header">
+    <PagesStyles className={`notifyer-container`} title="notifyer-header">
       <div className="notifyer-header">
         <span onClick={handleClose}>
           {messages?.length === 0 ? "No new messages" : "You have new messages"}
@@ -45,29 +45,32 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
           onClick={handleClose}
           placeholder="notifyer-bt-close"
         >
-          {isHide ? "Hide" : "Show"}
+          {!isHide ? "Hide" : "Show"}
         </button>
       </div>
-      <div className={`notifyer-container${hidder}`}>
+      <div className={`notify-list${hidder}`}>
         {messages?.length > 0
           ? messages.map((message, index) => {
               return (
                 <div
-                  className={`message`}
+                  className={`notify`}
                   key={index}
                   onClick={handleClick}
                   id={message.id}
-                  placeholder="messages-notifyer"
+                  placeholder="notify"
                 >
                   <div
-                    className={`message-read-img`}
+                    className={`notify-read-img`}
                     key={index}
                     onClick={handleClick}
                     id={message.id}
-                    placeholder="message-read-notifyer"
+                    placeholder="notify-read"
                   />
-                  {message.data.substring(0, message.data.indexOf(","))} -{" "}
-                  {message.subject}
+
+                  <span className="notify-data">
+                    {message.data.substring(0, message.data.indexOf(","))}
+                  </span>
+                  <span className="notify-subject">{message.subject}</span>
                 </div>
               );
             })
