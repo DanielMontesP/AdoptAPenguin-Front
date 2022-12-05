@@ -17,6 +17,22 @@ import iconMesssagesNew from "../images/mail-full.png";
 const PagesStyles = styled.div`
   text-align: center;
 
+  .new-messages-counter {
+    height: 30px;
+    width: 30px;
+    padding: 2px;
+    color: white;
+    font-size: 16px;
+    background-color: rgb(241, 14, 14);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: -5px;
+    top: -15px;
+    display: inline-flex;
+  }
+
   .footer {
     color: lightgrey;
     position: fixed;
@@ -199,8 +215,6 @@ const PagesStyles = styled.div`
     color: white;
     padding: 2px;
     display: inline-flex;
-    border: 2px solid white;
-    box-shadow: 0 1px 1px black;
     background-color: rgb(241, 14, 14);
     border-radius: 50%;
     align-items: center;
