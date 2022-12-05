@@ -41,7 +41,6 @@ const PenguinsPage = ({ type }: Props) => {
         dispatch(loadPenguinsThunk());
       }
     }
-
     dispatch(resetMessageThunk());
   }, [
     dispatch,
