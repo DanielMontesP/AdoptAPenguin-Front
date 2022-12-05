@@ -34,7 +34,7 @@ describe("Given the loadPenguinsThunk function", () => {
       const thunk = loadPenguinsThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });
@@ -53,7 +53,7 @@ describe("Given the loadFavsThunk function", () => {
       const thunk = loadFavsThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -70,7 +70,7 @@ describe("Given the loadFavsThunk function", () => {
       const thunk = loadFavsThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 
