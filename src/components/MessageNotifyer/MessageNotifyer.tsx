@@ -35,7 +35,7 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
   const hidder = isHide || !messages?.length ? " display-none" : "";
 
   return (
-    <PagesStyles className={`notifyer-container`} title="notifyer-header">
+    <PagesStyles className={`notifyer-container`} title="notifyer-container">
       <div className="notifyer-header">
         <span onClick={handleClose}>
           {messages?.length === 0 ? "No new messages" : "You have new messages"}

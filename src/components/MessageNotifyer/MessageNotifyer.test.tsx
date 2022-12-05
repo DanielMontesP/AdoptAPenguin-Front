@@ -21,7 +21,7 @@ describe("Given a Message componen", () => {
       );
 
       const text = screen.getByPlaceholderText("notifyer-bt-close");
-      const text2 = screen.getAllByPlaceholderText("messages-notifyer");
+      const text2 = screen.getByTitle("notifyer-container");
 
       userEvent.click(text);
       handleHidder();
@@ -29,7 +29,7 @@ describe("Given a Message componen", () => {
       expect(text).toBeInTheDocument();
       expect(handleHidder).toHaveBeenCalled();
 
-      userEvent.click(text2[0]);
+      userEvent.click(text2);
       handleClick();
 
       expect(text).toBeInTheDocument();
