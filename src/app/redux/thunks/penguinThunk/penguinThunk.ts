@@ -24,7 +24,6 @@ import { blankFormData } from "../../initializers/iniPenguins";
 let message = "";
 
 export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
-  dispatch(loadingActionCreator());
   try {
     const token = localStorage.getItem("token");
 
@@ -46,7 +45,6 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
 };
 
 export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
-  dispatch(loadingActionCreator());
   setLoadingOn(`GET Favorites: Loading data...`);
 
   const token = localStorage.getItem("token");
