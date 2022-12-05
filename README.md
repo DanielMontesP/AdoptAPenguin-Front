@@ -233,6 +233,7 @@
       <li>User inbox</li>
       <li>Delete message</li>
       <li>Count unread messages</li>
+      <li>Export data lists</li>
       </ul>
       </li>
      <li>
