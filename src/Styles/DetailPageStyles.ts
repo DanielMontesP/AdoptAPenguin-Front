@@ -540,10 +540,6 @@ const DetailPageStyles = styled.div`
     height: 24px;
   }
 
-  .message-data {
-    color: grey;
-  }
-
   .detail-title {
     display: flex;
     margin-bottom: 20px;

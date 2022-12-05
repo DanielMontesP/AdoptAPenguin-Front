@@ -158,6 +158,7 @@ const FormsStyles = styled.div`
       flex-direction: column;
       margin: auto;
       align-items: center;
+      width: -webkit-fill-available;
     }
 
     .preview-image {

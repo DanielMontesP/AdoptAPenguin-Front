@@ -1,4 +1,4 @@
-import { handleLogout, loadFavs, loadHome, loadLikes } from "./NavbarFunctions";
+import { handleLogout, loadFavs, loadHome, loadLikes } from "./uiHandlers";
 import userEvent from "@testing-library/user-event";
 
 describe("Given a loadFavs function", () => {
@@ -20,8 +20,9 @@ describe("Given a loadHome function", () => {
     test("Then dispatch have to been called", () => {
       const dispatch = jest.fn();
       const navigate = jest.fn();
+      const setMenu = jest.fn();
 
-      loadHome(dispatch, "Test", navigate);
+      loadHome(dispatch, "Test", navigate, setMenu);
 
       expect(dispatch).toHaveBeenCalled();
     });
@@ -32,8 +33,9 @@ describe("Given a handleLogout function", () => {
   describe("When called", () => {
     test("Then dispatch have to been called", () => {
       const dispatch = jest.fn();
+      const navigate = jest.fn();
 
-      handleLogout(dispatch);
+      handleLogout(dispatch, navigate);
 
       expect(dispatch).toHaveBeenCalled();
     });

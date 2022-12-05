@@ -1,23 +1,13 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  finishedLoadingActionCreator,
-  isModalOpenActionCreator,
-} from "../../app/redux/features/uiSlice/uiSlice";
-import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
+import { isModalOpenActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
-import {
-  deleteMessageThunk,
-  resetMessagesThunk,
-  resetMessageThunk,
-} from "../../app/redux/thunks/messageThunk/messageThunk";
-import {
-  deletePenguinThunk,
-  resetPenguinsThunk,
-} from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import { deleteMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
+import { deletePenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { writeFile } from "../../utils/actionsFiles";
 import EditButtons from "../EditButtons/EditButtons";
 import Help from "../Help/Help";
+import { handleLogout } from "../uiHandlers/uiHandlers";
 import WellcomeComments from "../WellcomeComments/WellcomeComments";
 import { correctAction } from "./Modals";
 
@@ -89,17 +79,7 @@ export const Modal = ({
   }
 
   const logOutUser = () => {
-    dispatch(finishedLoadingActionCreator());
-    dispatch(logOutActionCreator());
-
-    dispatch(resetMessagesThunk);
-    dispatch(resetMessageThunk);
-
-    dispatch(resetPenguinsThunk);
-
-    localStorage.removeItem("token");
-
-    navigate("/");
+    handleLogout(dispatch, navigate);
   };
 
   const getMessage = (): React.ReactNode => {

@@ -257,6 +257,7 @@ const PagesStyles = styled.div`
     border: 0;
   }
   .penguin-description {
+    width: 95%;
     min-height: 40px;
     margin: auto;
     margin-top: 20px;
@@ -435,8 +436,9 @@ const PagesStyles = styled.div`
   }
 
   .penguin-datalist {
-    width: 100%;
+    width: 95%;
     text-align: left;
+    margin: auto;
     margin-top: 15px;
   }
 
@@ -486,7 +488,6 @@ const PagesStyles = styled.div`
   }
 
   .link {
-    width: 100%;
     color: black;
     font-size: 18px;
     cursor: pointer;

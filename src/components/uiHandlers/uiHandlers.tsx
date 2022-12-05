@@ -1,5 +1,6 @@
 import { KeyboardEvent } from "react";
 import {
+  finishedLoadingActionCreator,
   headerLastTitleActionCreator,
   headerTitleActionCreator,
   isMenuOpenActionCreator,
@@ -10,26 +11,33 @@ import {
   stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import {
+  resetPenguinsThunk,
   resetPenguinThunk,
   searchPenguinThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import {
+  resetMessagesThunk,
+  resetMessageThunk,
+} from "../../app/redux/thunks/messageThunk/messageThunk";
+import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
 
 export const loadHome = (
   dispatch: any,
   headerTitle: string,
-  navigate: any
+  navigate: any,
+  setMenu: any
 ): any => {
+  setMenu(false);
   dispatch(loadingActionCreator());
-
+  dispatch(loadingActionCreator());
   dispatch(modalTypeActionCreator(""));
-  dispatch(modalMessageActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
   dispatch(headerTitleActionCreator("Home"));
 
   navigate("/penguins");
 };
 
-export const handleLogout = (dispatch: any): void => {
+export const handleLogoutPrompt = (dispatch: any, navigate: any): void => {
   const message = "Log out?";
   const newModalType = "logOutUser";
 
@@ -37,8 +45,21 @@ export const handleLogout = (dispatch: any): void => {
   dispatch(modalMessageActionCreator(message));
 
   dispatch(isMenuOpenActionCreator(false));
-
   dispatch(isModalOpenActionCreator(true));
+};
+
+export const handleLogout = (dispatch: any, navigate: any): void => {
+  dispatch(finishedLoadingActionCreator());
+  dispatch(logOutActionCreator());
+
+  dispatch(resetMessagesThunk);
+  dispatch(resetMessageThunk);
+
+  dispatch(resetPenguinsThunk);
+
+  localStorage.removeItem("token");
+
+  navigate("/");
 };
 
 export const loadFavs = (
