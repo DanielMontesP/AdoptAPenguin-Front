@@ -12,7 +12,7 @@ interface Props {
 }
 
 const Penguins = ({ allPenguins }: Props): JSX.Element => {
-  const listPenguins = allPenguins.length >= 1 ? penguins : allPenguins;
+  const listPenguins = allPenguins.length >= 1 ? allPenguins : penguins;
 
   return (
     <PagesStyles

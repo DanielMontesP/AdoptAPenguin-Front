@@ -10,7 +10,7 @@ import Navbar from "../Navbar/Navbar";
 describe("Given a Penguins component", () => {
   describe("When the word 'penguin1' is written to the username input field", () => {
     test("Then the value of the username input field should be 'user1'", () => {
-      const labelToFind = "Anthonysss";
+      const labelToFind = "Home";
 
       render(
         <Provider store={store}>
@@ -21,7 +21,7 @@ describe("Given a Penguins component", () => {
         </Provider>
       );
 
-      const label = screen.getByAltText(labelToFind);
+      const label = screen.getByText(labelToFind);
 
       expect(label).toBeInTheDocument();
     });
