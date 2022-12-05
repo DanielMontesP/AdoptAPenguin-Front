@@ -23,7 +23,7 @@ export const mockMessageEmpty: IMessage = {
 export const mockMessages: IMessage[] = [
   {
     idUser: "idUser",
-    idPenguin: "idPenguin",
+    idPenguin: "idUser",
     subject: "subject",
     content: "content",
     data: "data",

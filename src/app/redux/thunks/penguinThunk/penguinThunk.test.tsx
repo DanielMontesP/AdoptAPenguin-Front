@@ -19,6 +19,7 @@ import { BrowserRouter } from "react-router-dom";
 import store from "../../store/store";
 import { mockPenguin } from "../../../../mocks/penguins";
 import Home from "../../../../components/Home/Home";
+import { newPenguinFormData } from "../../initializers/iniPenguins";
 
 describe("Given the loadPenguinsThunk function", () => {
   describe("When it's called", () => {
@@ -132,7 +133,7 @@ describe("Given createFavThunk", () => {
 
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
       axios.post = jest.fn().mockResolvedValue({
-        data: { penguin: mockPenguin },
+        data: { penguin: newPenguinFormData(mockPenguin.id) },
         status: 200,
       });
       const thunk = createFavThunk({ mockPenguin });
