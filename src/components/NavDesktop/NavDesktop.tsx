@@ -11,13 +11,13 @@ import {
 } from "../../app/redux/features/uiSlice/uiSlice";
 import Menu from "../Menu/Menu";
 import {
-  handleLogout,
   handleSearchSubmit,
   loadFavs,
   loadHome,
   loadLikes,
   handleSearchEnter,
-} from "../NavbarFunctions/NavbarFunctions";
+  handleLogoutPrompt,
+} from "../uiHandlers/uiHandlers";
 import { handleFocus } from "../../utils/utils";
 import { ReactDimmer } from "react-dimmer";
 import { Modal } from "../Modals/ModalPrompt";
@@ -91,7 +91,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const handleLogoutCall = () => {
-    handleLogout(dispatch);
+    handleLogoutPrompt(dispatch, navigate);
   };
 
   const handleAbout = () => {
@@ -156,7 +156,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const loadHomeCall = () => {
-    loadHome(dispatch, headerTitle, navigate);
+    loadHome(dispatch, headerTitle, navigate, setMenuOpen);
   };
 
   const loadLikesCall = () => {

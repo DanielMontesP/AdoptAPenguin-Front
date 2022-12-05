@@ -12,14 +12,14 @@ import noPhoto from "../../images/userPhoto.png";
 import { handleFocus, toPascalCase } from "../../utils/utils";
 import {
   addNewFav,
-  handleLogout,
+  handleLogoutPrompt,
   handleSearchSubmit,
   loadAbout,
   loadFavs,
   loadHelp,
   loadHome,
   loadLikes,
-} from "../NavbarFunctions/NavbarFunctions";
+} from "../uiHandlers/uiHandlers";
 
 interface Props {
   isMenuOpened: boolean;
@@ -54,7 +54,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   };
 
   const handleHome = () => {
-    loadHome(dispatch, headerTitle, setMenu);
+    loadHome(dispatch, headerTitle, navigate, setMenu);
     dispatch(isMenuOpenActionCreator(false));
   };
 
@@ -64,7 +64,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   };
 
   const handleLogoutCall = () => {
-    handleLogout(dispatch);
+    handleLogoutPrompt(dispatch, navigate);
   };
 
   const handleAbout = () => {
