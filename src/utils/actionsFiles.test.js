@@ -1,5 +1,5 @@
 import { writeFile } from "./actionsFiles";
-import data from "./data.js";
+import data from "../penguins-export.js";
 
 describe("Given createFavThunk", () => {
   describe("when it's called", () => {
