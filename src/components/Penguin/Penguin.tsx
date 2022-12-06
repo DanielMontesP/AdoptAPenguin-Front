@@ -28,13 +28,11 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
   };
 
   const isURL = penguin.imageBackup?.includes("/");
+  const noImage = penguin.image === "" && !isURL;
+  const pathImage =
+    penguin.imageBackup !== "" ? penguin.imageBackup : penguin.image.toString();
 
-  const penguinImage =
-    penguin.image === "" && !isURL
-      ? iconPhotoEmpty
-      : penguin.imageBackup !== ""
-      ? penguin.imageBackup
-      : penguin.image.toString();
+  const penguinImage = noImage ? iconPhotoEmpty : pathImage;
 
   const contactImageClass =
     penguin.image === "" && !isURL ? " iconPhotoEmpty" : "";
