@@ -1,11 +1,9 @@
 import { KeyboardEvent } from "react";
 import {
-  finishedLoadingActionCreator,
   headerLastTitleActionCreator,
   headerTitleActionCreator,
   isMenuOpenActionCreator,
   isModalOpenActionCreator,
-  loadingActionCreator,
   modalMessageActionCreator,
   modalTypeActionCreator,
   stringToSearchActionCreator,
@@ -20,6 +18,10 @@ import {
   resetMessageThunk,
 } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
+import { AppDispatch } from "../../app/redux/store/store";
+import { handleServerInfo } from "../../utils/utils";
+
+let firstLoad = true;
 
 export const loadHome = (
   dispatch: any,
@@ -28,8 +30,7 @@ export const loadHome = (
   setMenu: any
 ): any => {
   setMenu(false);
-  dispatch(loadingActionCreator());
-  dispatch(loadingActionCreator());
+
   dispatch(modalTypeActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
   dispatch(headerTitleActionCreator("Home"));
@@ -49,7 +50,6 @@ export const handleLogoutPrompt = (dispatch: any, navigate: any): void => {
 };
 
 export const handleLogout = (dispatch: any, navigate: any): void => {
-  dispatch(finishedLoadingActionCreator());
   dispatch(logOutActionCreator());
 
   dispatch(resetMessagesThunk);
@@ -70,7 +70,6 @@ export const loadFavs = (
 ): any => {
   setMenu(false);
 
-  dispatch(loadingActionCreator());
   dispatch(modalTypeActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
   dispatch(headerTitleActionCreator("Favorites"));
@@ -86,7 +85,6 @@ export const loadLikes = (
 ): void => {
   setMenu(false);
 
-  dispatch(loadingActionCreator());
   dispatch(modalTypeActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
   dispatch(headerTitleActionCreator("Likes"));
@@ -157,4 +155,50 @@ export const addNewFav = (dispatch: any, navigate: any) => {
   dispatch(resetPenguinThunk());
 
   navigate("/create");
+};
+
+export const handleNoConexion = (dispatch: any, idUser: string) => {
+  let textNoConnection = "";
+  const textFirstLoad =
+    "Sorry, server is still starting. Data will be not editable";
+  const textNextLoadsNoConnection =
+    "Please try again in few seconds. Service render.com is still initializing";
+
+  if (firstLoad) {
+    textNoConnection = textFirstLoad;
+    firstLoad = false;
+  } else {
+    textNoConnection = textNextLoadsNoConnection;
+  }
+  dispatch(modalTypeActionCreator("Server"));
+  dispatch(modalMessageActionCreator(textNoConnection));
+  dispatch(isModalOpenActionCreator(true));
+
+  handleServerInfo(false, "local", "Unavailable", dispatch);
+};
+
+export const connectedToServer = () => async (dispatch: AppDispatch) => {
+  let result = false;
+
+  return await fetch(`${process.env.REACT_APP_API_URL}penguins`)
+    .then((resp) => {
+      if (resp.status === 200) {
+        handleServerInfo(
+          true,
+          `${process.env.REACT_APP_API_URL}`,
+          "Connected to server",
+          dispatch
+        );
+        result = true;
+      } else {
+        Promise.reject(new Error("Server unavailable"));
+        result = false;
+      }
+    })
+    .then(() => {
+      return result;
+    })
+    .catch((error) => {
+      return false;
+    });
 };

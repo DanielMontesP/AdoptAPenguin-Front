@@ -1,4 +1,5 @@
 import Resizer from "react-image-file-resizer";
+import { serverInfoActionCreator } from "../app/redux/features/systemSlice/systemSlice";
 import { getUserNewMessagesActionCreator } from "../app/redux/features/userSlice/userSlice";
 import { editMessageThunk } from "../app/redux/thunks/messageThunk/messageThunk";
 import {
@@ -10,6 +11,20 @@ export function getCurrentDate(separator = "/") {
   let newDate = new Date();
 
   return `${newDate.toLocaleString()}`;
+}
+export function handleServerInfo(
+  connected: boolean,
+  server: string,
+  status: any,
+  dispatch: any
+) {
+  dispatch(
+    serverInfoActionCreator({
+      connected,
+      path: `${server}`,
+      status: `${status}`,
+    })
+  );
 }
 
 export function hasNewMessages(allMessages: IMessage[], idPenguin: string) {
@@ -87,4 +102,22 @@ export const handleFocus = (field: string): void => {
   if (input != null) {
     input.focus();
   }
+};
+
+export const writeFile = (type: string, data: any) => {
+  const element = document.createElement("a");
+
+  const textFile =
+    type === "penguins"
+      ? new Blob([JSON.stringify({ penguins: data })], {
+          type: "text/plain",
+        })
+      : new Blob([JSON.stringify({ messages: data })], {
+          type: "text/plain",
+        });
+
+  element.href = URL.createObjectURL(textFile);
+  element.download = `${type}-export.json`;
+  document.body.appendChild(element);
+  element.click();
 };

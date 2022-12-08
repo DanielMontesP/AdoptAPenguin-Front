@@ -11,16 +11,8 @@ export const penguins = [
     description:
       "Toasts Push notifications to your visitors with a toast, a lightweight and easily customizable alert message. Toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They're built with flexbox, so they're easy to align and position. Overview",
     imageBackup: "",
-    likers: [
-      {
-        $oid: "629d4b2e2145d66cc942e839",
-      },
-    ],
-    favs: [
-      {
-        $oid: "629d4b2e2145d66cc942e839",
-      },
-    ],
+    likers: ["630a58cb2e612881230d1fd5"],
+    favs: ["630a58cb2e612881230d1fd5"],
   },
   {
     id: "62d6a1e894fdf064d93215a4",
@@ -30,16 +22,8 @@ export const penguins = [
     imageBackup: "",
     category: "Millenial",
     likes: 134,
-    likers: [
-      {
-        $oid: "629d4b2e2145d66cc942e839",
-      },
-    ],
-    favs: [
-      {
-        $oid: "629d4b2e2145d66cc942e839",
-      },
-    ],
+    likers: ["630a58cb2e612881230d1fd5"],
+    favs: ["630a58cb2e612881230d1fd5"],
     image: "https://www.conicet.gov.ar/wp-content/uploads/Pinguino.jpg",
     description:
       "Toasts Push notifications to your visitors with a toast, a lightweight and easily customizable alert message. Toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They're built with flexbox, so they're easy to align and position. Overview",
@@ -52,16 +36,8 @@ export const penguins = [
     imageBackup: "",
     category: "Madurito",
     likes: 314,
-    likers: [
-      {
-        $oid: "629d4b2e2145d66cc942e839",
-      },
-    ],
-    favs: [
-      {
-        $oid: "629d4b2e2145d66cc942e839",
-      },
-    ],
+    likers: ["630a58cb2e612881230d1fd5"],
+    favs: ["630a58cb2e612881230d1fd5"],
     image:
       "https://penguinlovers.de/wp-content/uploads/2018/02/Felsenpinguin12-800x500.jpg",
     description:
@@ -75,16 +51,8 @@ export const penguins = [
     imageBackup: "",
     category: "Follonero",
     likes: 3445,
-    likers: [
-      {
-        $oid: "629d4b2e2145d66cc942e839",
-      },
-    ],
-    favs: [
-      {
-        $oid: "629d4b2e2145d66cc942e839",
-      },
-    ],
+    likers: ["630a58cb2e612881230d1fd5"],
+    favs: ["630a58cb2e612881230d1fd5"],
     image:
       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.uozDFsiEKpx2Sq4ndLdPTQHaEK%26pid%3DApi&f=1",
     description:
@@ -98,16 +66,8 @@ export const penguins = [
     imageResized: "",
     category: "Asustadizo",
     likes: 3,
-    likers: [
-      {
-        $oid: "629d4b2e2145d66cc942e839",
-      },
-    ],
-    favs: [
-      {
-        $oid: "629d4b2e2145d66cc942e839",
-      },
-    ],
+    likers: ["630a58cb2e612881230d1fd5"],
+    favs: ["630a58cb2e612881230d1fd5"],
     image:
       "},https://quirin-bernhard.de/content/index/2008-01-26-11-20-28_Web1.jpg",
     description:
@@ -121,16 +81,8 @@ export const penguins = [
     name: "Jack",
     category: "Chisposo",
     likes: 234,
-    likers: [
-      {
-        $oid: "629d4b2e2145d66cc942e839",
-      },
-    ],
-    favs: [
-      {
-        $oid: "629d4b2e2145d66cc942e839",
-      },
-    ],
+    likers: ["630a58cb2e612881230d1fd5"],
+    favs: ["630a58cb2e612881230d1fd5"],
     image:
       "https://elcanillitadigital.com/wp-content/uploads/2020/04/image1-7.jpg",
     description:

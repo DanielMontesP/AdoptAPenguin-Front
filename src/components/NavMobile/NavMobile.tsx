@@ -86,8 +86,19 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
   const headerClass = `header`;
   const classBack = "bt-back";
 
+  const { connected } = useAppSelector((state) => state.system.server);
+
+  const handleStatus = () => {
+    return connected ? " Connected" : " local";
+  };
+  const classServerStatus = connected ? "server" : "local";
   return (
     <div className={`app`}>
+      <h3 className="server-status-container">
+        <span className={`server-status-${classServerStatus}`}>
+          {handleStatus()}
+        </span>
+      </h3>
       <div className={headerClass}>
         <div className="header-title-container">
           {!isHomePage && (

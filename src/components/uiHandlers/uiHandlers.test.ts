@@ -59,7 +59,6 @@ describe("Given a loadLikes function", () => {
 describe("Given a handleSearchEnter function", () => {
   describe("When called", () => {
     test("Then dispatch have to been called", () => {
-      // const event = jest.fn().mockReturnValue({ key: "Enter" });
       const stringToSearch = jest.fn();
       const dispatch = jest.fn();
 

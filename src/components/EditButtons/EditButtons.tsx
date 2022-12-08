@@ -5,41 +5,55 @@ import {
   modalMessageActionCreator,
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
-import { useAppDispatch } from "../../app/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
+import { handleNoConexion } from "../uiHandlers/uiHandlers";
 
 interface Props {
   penguin: IPenguin;
 }
 
 const EditButtons = ({ penguin }: Props): JSX.Element => {
-  const [, setModal] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const [, setModal] = useState(false);
+
+  const { loading } = useAppSelector((state) => state.ui);
+  const { user } = useAppSelector((state) => state);
+
   let message = "";
 
   const handleDelete = (): void => {
-    message = "Delete permanently from database? ";
-    const newModalType = "delete";
+    if (!loading) {
+      message = "Delete permanently from database? ";
+      const newModalType = "delete";
 
-    dispatch(modalTypeActionCreator(newModalType));
-    dispatch(modalMessageActionCreator(message));
+      dispatch(modalTypeActionCreator(newModalType));
+      dispatch(modalMessageActionCreator(message));
 
-    setModal((prevState) => !prevState);
-    dispatch(isModalOpenActionCreator(true));
+      setModal((prevState) => !prevState);
+      dispatch(isModalOpenActionCreator(true));
+    } else {
+      handleNoConexion(dispatch, user.id);
+    }
   };
 
   const handleEdit = () => {
-    dispatch(getPenguinThunk(penguin.id));
-    if (penguin.id !== "") {
-      dispatch(getMessagesThunk(penguin.id));
-    }
-    setModal((prevState) => !prevState);
-    dispatch(isModalOpenActionCreator(false));
+    if (!loading) {
+      dispatch(getPenguinThunk(penguin.id));
+      if (penguin.id !== "") {
+        dispatch(getMessagesThunk(penguin.id));
+      }
+      setModal((prevState) => !prevState);
+      dispatch(isModalOpenActionCreator(false));
 
-    navigate(`/penguins/id=${penguin.id}`);
+      navigate(`/penguins/id=${penguin.id}`);
+    } else {
+      handleNoConexion(dispatch, user.id);
+    }
   };
 
   return (

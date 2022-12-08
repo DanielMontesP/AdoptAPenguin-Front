@@ -21,7 +21,7 @@ import UserMessagesPage from "./pages/UserMessagesPage/UserMessagesPage";
 
 function App() {
   const { logged, id } = useAppSelector((state) => state.user);
-  const { headerTitle, loading } = useAppSelector((state) => state.ui);
+  const { headerTitle } = useAppSelector((state) => state.ui);
 
   const dispatch = useAppDispatch();
 
@@ -75,7 +75,7 @@ function App() {
       window.removeEventListener("resize", updateMedia);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [dispatch, logged, loading, id, isDesktop, notScrolled, headerTitle]);
+  }, [dispatch, logged, id, isDesktop, notScrolled, headerTitle]);
 
   return (
     <>

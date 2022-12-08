@@ -3,6 +3,7 @@ import usersReducer from "../features/userSlice/userSlice";
 import penguinsReducer from "../features/penguinSlice/penguinSlice";
 import messagesReducer from "../features/messageSlice/messageSlice";
 import uiReducer from "../features/uiSlice/uiSlice";
+import systemReducer from "../features/systemSlice/systemSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     penguins: penguinsReducer,
     messages: messagesReducer,
     ui: uiReducer,
+    system: systemReducer,
   },
 });
 

@@ -22,6 +22,13 @@ h3 {
   border: 0;
 }
 
+.server-status-local {
+  color: white;
+}
+.server-status-server {
+  color: rgb(129, 224, 129);
+}
+
 .bt-settings {
   top: 10px;
   background: url("../images/settings-white-45.png");
@@ -204,6 +211,18 @@ h3 {
 }
 
 @media only screen and (max-width: 420px) {
+  .server-status-container {
+    position: fixed;
+    top: 15px;
+    right: 70px;
+    border: 1px solid white;
+    border-radius: 15px;
+    color: grey;
+    padding: 5px;
+    font-size: 0.8rem;
+    font-weight: normal;
+    text-align: center;
+  }
   .app .header {
     height: 5rem;
     width: 100%;
@@ -680,6 +699,17 @@ h1 {
 }
 
 @media only screen and (min-width: 421px) {
+  .server-status-container {
+    position: fixed;
+    top: -10px;
+    right: 1%;
+    border: 1px solid white;
+    border-radius: 15px;
+    color: grey;
+    padding: 5px;
+    font-size: 0.9rem;
+    font-weight: normal;
+  }
   .app {
     height: 5rem;
     background-color: #292929;
@@ -829,11 +859,9 @@ h1 {
     margin: auto;
     top: 5px;
     right: 10px;
-
     height: 30px;
     outline: none;
     border: none;
-    /* // border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
     background: rgb(255, 255, 255);
     color: rgb(87, 85, 85);
     padding: 0 40px 0 10px;

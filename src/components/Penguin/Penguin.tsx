@@ -7,8 +7,9 @@ import { Modal } from "../Modals/ModalPrompt";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
-import { useAppDispatch } from "../../app/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import EditActions from "../EditActions/EditActions";
+import { handleNoConexion } from "../uiHandlers/uiHandlers";
 interface Props {
   penguin: IPenguin;
 }
@@ -16,15 +17,22 @@ interface Props {
 const Penguin = ({ penguin }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
 
+  const { loading } = useAppSelector((state) => state.ui);
+  const { user } = useAppSelector((state) => state);
+
   const [isModalOpen, setModal] = useState(false);
   const message = "Delete penguin: " + penguin?.name + "?";
   const navigate = useNavigate();
 
   const handleMoreDetail = () => {
-    dispatch(getPenguinThunk(penguin.id));
-    dispatch(getMessagesThunk(penguin.id));
+    if (!loading) {
+      dispatch(getPenguinThunk(penguin.id));
+      dispatch(getMessagesThunk(penguin.id));
 
-    navigate(`/detail/${penguin.id}`);
+      navigate(`/detail/${penguin.id}`);
+    } else {
+      handleNoConexion(dispatch, user.id);
+    }
   };
 
   const isURL = penguin.imageBackup?.includes("/");

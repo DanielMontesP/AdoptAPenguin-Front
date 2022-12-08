@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import {
   isMenuOpenActionCreator,
   isModalOpenActionCreator,
-  loadingActionCreator,
   modalTypeActionCreator,
   stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
@@ -93,7 +92,6 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   };
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    dispatch(loadingActionCreator());
     dispatch(stringToSearchActionCreator(event.target.value));
   };
 

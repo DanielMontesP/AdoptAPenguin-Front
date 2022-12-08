@@ -1,3 +1,4 @@
+import { IProcess } from "../../types/system/systemInterfaces";
 import uiReducer, {
   loadingActionCreator,
   finishedLoadingActionCreator,
@@ -10,7 +11,6 @@ import uiReducer, {
 
 const initialState = {
   loading: false,
-  finishedLoading: true,
   modalMessage: "",
   modalType: "",
   feedback: false,
@@ -25,7 +25,6 @@ const initialState = {
 
 const expectedState = {
   loading: false,
-  finishedLoading: true,
   modalMessage: "",
   modalType: "",
   feedback: true,
@@ -40,7 +39,6 @@ const expectedState = {
 
 const expectedLoadingState = {
   loading: true,
-  finishedLoading: false,
   modalMessage: "",
   modalType: "",
   feedback: true,
@@ -53,10 +51,14 @@ const expectedLoadingState = {
   isModalOpen: false,
 };
 
+const process = {
+  loadedProcess: { process: "Loading LoadHome", loading: true },
+};
+
 describe("Given the loadingActionCreator", () => {
   describe("When invoked", () => {
     test("Then the loading ui state should change to true", () => {
-      const action = loadingActionCreator();
+      const action = loadingActionCreator(process);
       const loadedState = uiReducer(expectedLoadingState, action);
 
       expect(loadedState).toEqual(expectedLoadingState);
@@ -67,7 +69,7 @@ describe("Given the loadingActionCreator", () => {
 describe("Given the finiushedLoadingActionCreator", () => {
   describe("When invoked", () => {
     test("Then the loading ui state should change to false", () => {
-      const action = finishedLoadingActionCreator();
+      const action = finishedLoadingActionCreator("loadingActionCreator");
       const loadedState = uiReducer(expectedState, action);
 
       expect(loadedState).toEqual(expectedState);

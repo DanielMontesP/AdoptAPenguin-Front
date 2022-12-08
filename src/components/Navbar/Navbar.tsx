@@ -11,6 +11,7 @@ interface Props {
 const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const { isDesktop } = useAppSelector((state) => state.ui);
   const { newMessages } = useAppSelector((state) => state.user);
+
   const showNotifiyer = () => {
     return headerTitle === "Inbox" ||
       headerTitle === "Edit..." ||
@@ -18,8 +19,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       ? false
       : true;
   };
+
   return (
-    <>
+    <div>
       {isDesktop ? (
         <NavDektop headerTitle={headerTitle} />
       ) : (
@@ -29,7 +31,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       {showNotifiyer() ? <MessageNotifyer messages={newMessages} /> : ""}
 
       <ToastContainer limit={4} />
-    </>
+    </div>
   );
 };
 

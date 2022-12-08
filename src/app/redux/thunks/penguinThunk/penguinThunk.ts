@@ -14,143 +14,268 @@ import {
   resetPenguinsActionCreator,
   searchPenguinsActionCreator,
 } from "../../features/penguinSlice/penguinSlice";
-
-import {
-  finishedLoadingActionCreator,
-  loadingActionCreator,
-} from "../../features/uiSlice/uiSlice";
+import { penguins } from "../../../../utils/data.js";
 import { blankFormData } from "../../initializers/iniPenguins";
+import { finishedLoadingActionCreator } from "../../features/uiSlice/uiSlice";
+import {
+  connectedToServer,
+  handleNoConexion,
+} from "../../../../components/uiHandlers/uiHandlers";
+import { handleServerInfo } from "../../../../utils/utils";
+import { getUserMessagesThunk } from "../userThunk/userThunk";
+import { UserInfo } from "../../types/userInterfaces/userInterfaces";
+import jwtDecode from "jwt-decode";
 
-let message = "";
+let firstLoad = true;
+let textNoConnection = "";
+const textFirstLoad = "Server is still loading, functionality will be disabled";
+const textNextLoadsNoConnection =
+  "Please try again in few seconds. Service render.com is still initializing";
+
+if (firstLoad) {
+  textNoConnection = textFirstLoad;
+} else {
+  textNoConnection = textNextLoadsNoConnection;
+}
 
 export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
   try {
+    firstLoad = false;
     const token = localStorage.getItem("token");
 
-    if (token) {
-      const {
-        data: { penguins },
-      } = await axios.get(`${process.env.REACT_APP_API_URL}penguins`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+    const userData: UserInfo = jwtDecode(token as string);
+    const connected = connectedToServer() ? true : false;
 
-      dispatch(loadPenguinsActionCreator(penguins));
-      dispatch(finishedLoadingActionCreator());
+    if (connected) {
+      if (token) {
+        const {
+          data: { penguins },
+        } = await axios.get(`${process.env.REACT_APP_API_URL}penguins`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        handleServerInfo(
+          true,
+          `${process.env.REACT_APP_API_URL}`,
+          "Connected to server",
+          dispatch
+        );
+
+        dispatch(getUserMessagesThunk(userData.id));
+
+        dispatch(finishedLoadingActionCreator("loadingActionCreator"));
+        dispatch(loadPenguinsActionCreator(penguins));
+      } else {
+        handleNoConexion(dispatch, "user.id");
+        setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
+      }
     }
   } catch (error) {
-    setLoadingOffWithMessage(`GET Favorites: ${error}`, true);
+    handleNoConexion(dispatch, "user.id");
+    dispatch(loadPenguinsActionCreator(penguins));
+    setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
   }
 };
 
 export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
-  setLoadingOn(`GET Favorites: Loading data...`);
+  try {
+    setLoadingOn(`GET Favorites: Loading data...`);
 
-  const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
+    const userData: UserInfo = jwtDecode(token as string);
 
-  if (token) {
-    const {
-      data: { penguins },
-    } = await axios.get(`${process.env.REACT_APP_API_URL}penguins/favs`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const connected = connectedToServer() ? true : false;
+    if (connected) {
+      if (token) {
+        const {
+          data: { penguins },
+        } = await axios.get(`${process.env.REACT_APP_API_URL}penguins/favs`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-    if (penguins.length === 0) {
-      setLoadingOffWithMessage("GET Favorites: No Favorites added yet", false);
+        if (penguins.length === 0) {
+          setLoadingOffWithMessage(
+            "GET Favorites: No Favorites added yet",
+            false
+          );
+        }
+        handleServerInfo(
+          true,
+          `${process.env.REACT_APP_API_URL}`,
+          "Connected to server",
+          dispatch
+        );
+        dispatch(finishedLoadingActionCreator("loadingActionCreator"));
+        dispatch(loadPenguinsActionCreator(penguins));
+
+        dispatch(getUserMessagesThunk(userData.id));
+
+        setLoadingOffWithMessage(
+          "GET Favorites: Finished successfully.",
+          false
+        );
+      }
+    } else {
+      handleNoConexion(dispatch, "user.id");
+      setLoadingOffWithMessage(`GET Favs: ${textNoConnection}`, false);
     }
-
+  } catch (error) {
     dispatch(loadPenguinsActionCreator(penguins));
-    dispatch(finishedLoadingActionCreator());
-    setLoadingOffWithMessage("GET Favorites: Finished successfully.", false);
+
+    handleNoConexion(dispatch, "user.id");
+    handleServerInfo(false, "local", error, dispatch);
+
+    setLoadingOffWithMessage(`GET Favs: ${textNoConnection}`, false);
   }
 };
 
 export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
-  dispatch(loadingActionCreator());
-  setLoadingOn(`GET Likes: Loading data...`);
+  try {
+    setLoadingOn(`GET Likes: Loading data...`);
 
-  const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-  if (token) {
-    const {
-      data: { penguins },
-    } = await axios.get(`${process.env.REACT_APP_API_URL}penguins/likes`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const userData: UserInfo = jwtDecode(token as string);
 
-    if (penguins.length === 0) {
-      setLoadingOffWithMessage("GET Likes: No likes added yet", false);
+    const connected = connectedToServer() ? true : false;
+    if (connected) {
+      if (token) {
+        const {
+          data: { penguins },
+        } = await axios.get(`${process.env.REACT_APP_API_URL}penguins/likes`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (penguins.length === 0) {
+          setLoadingOffWithMessage("GET Likes: No likes added yet", false);
+        }
+        handleServerInfo(
+          true,
+          `${process.env.REACT_APP_API_URL}`,
+          "Connected to server",
+          dispatch
+        );
+
+        dispatch(getUserMessagesThunk(userData.id));
+
+        dispatch(finishedLoadingActionCreator("loadingActionCreator"));
+        dispatch(loadPenguinsActionCreator(penguins));
+
+        setLoadingOffWithMessage(
+          "GET Favorites: Finished successfully.",
+          false
+        );
+      }
+    } else {
+      handleNoConexion(dispatch, "user.id");
+
+      setLoadingOffWithMessage(`GET Likes: ${textNoConnection}`, false);
     }
-
+  } catch (error) {
+    handleNoConexion(dispatch, "user.id");
     dispatch(loadPenguinsActionCreator(penguins));
-    dispatch(finishedLoadingActionCreator());
-    setLoadingOffWithMessage("GET Likes: Finished successfully.", false);
+    handleServerInfo(false, "local", error, dispatch);
+
+    setLoadingOffWithMessage(`GET Likes: ${textNoConnection}`, false);
   }
 };
 
 export const createFavThunk =
   (formPenguin: any) => async (dispatch: AppDispatch) => {
-    dispatch(loadingActionCreator());
-    setLoadingOn(`CREATE Favorites: Creating fav...`);
+    try {
+      setLoadingOn(`CREATE Favorites: Creating fav...`);
 
-    const token = localStorage.getItem("token");
-    if (token) {
-      const { data: penguin } = await axios.post(
-        `${process.env.REACT_APP_API_URL}penguins/create`,
-        formPenguin,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "mutipart/form-data",
-          },
+      const token = localStorage.getItem("token");
+
+      const connected = connectedToServer() ? true : false;
+      if (connected) {
+        if (token) {
+          const { data: penguin } = await axios.post(
+            `${process.env.REACT_APP_API_URL}penguins/create`,
+            formPenguin,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "mutipart/form-data",
+              },
+            }
+          );
+
+          handleServerInfo(
+            true,
+            `${process.env.REACT_APP_API_URL}`,
+            "Connected to server",
+            dispatch
+          );
+          dispatch(createPenguinActionCreator(penguin));
+
+          dispatch(loadFavsThunk());
+
+          setLoadingOffWithMessage(
+            `CREATE Fav: ${penguin.name} created successfully.`,
+            false
+          );
         }
-      );
-
-      dispatch(createPenguinActionCreator(penguin));
-
-      dispatch(loadFavsThunk());
-      dispatch(finishedLoadingActionCreator());
-      setLoadingOffWithMessage(
-        `CREATE Fav: ${penguin.name} created successfully.`,
-        false
-      );
-    } else {
-      setLoadingOffWithMessage(
-        "CREATE Favourite: Sorry, no token no cookies...",
-        true
-      );
+      } else {
+        handleNoConexion(dispatch, "user.id");
+        setLoadingOffWithMessage(
+          `CREATE Favourite: ${textNoConnection}`,
+          false
+        );
+      }
+    } catch (error) {
+      handleNoConexion(dispatch, "user.id");
+      dispatch(loadPenguinsActionCreator(penguins));
+      setLoadingOffWithMessage(`CREATE Favourite: ${textNoConnection}`, false);
     }
   };
 
 export const getPenguinThunk =
   (id: string) => async (dispatch: AppDispatch) => {
-    dispatch(loadingActionCreator());
+    try {
+      if (id !== "") {
+        const token = localStorage.getItem("token");
 
-    if (id !== "") {
-      const token = localStorage.getItem("token");
+        const connected = connectedToServer() ? true : false;
+        if (connected) {
+          if (token) {
+            const { data: penguin } = await axios.get(
+              `${process.env.REACT_APP_API_URL}penguins/${id}`,
+              {
+                headers: {
+                  authorization: `Bearer ${token}`,
+                },
+              }
+            );
+            handleServerInfo(
+              true,
+              `${process.env.REACT_APP_API_URL}`,
+              "Connected to server",
+              dispatch
+            );
 
-      if (token) {
-        const { data: penguin } = await axios.get(
-          `${process.env.REACT_APP_API_URL}penguins/${id}`,
-          {
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
+            dispatch(loadPenguinActionCreator(penguin));
+
+            setLoadingOffWithMessage(
+              `GET Penguin: ${penguin.name} successfully.`,
+              false
+            );
+          } else {
+            handleNoConexion(dispatch, "user.id");
+            setLoadingOffWithMessage(`GET Penguin: ${textNoConnection}`, false);
           }
-        );
-
-        dispatch(loadPenguinActionCreator(penguin));
-        dispatch(finishedLoadingActionCreator());
-        setLoadingOffWithMessage(
-          `GET Penguin: ${penguin.name} successfully.`,
-          false
-        );
+        }
       }
+    } catch (error) {
+      handleNoConexion(dispatch, "user.id");
+      dispatch(loadPenguinsActionCreator(penguins));
+      setLoadingOffWithMessage(`GET Penguin: ${textNoConnection}`, false);
     }
   };
 
@@ -159,86 +284,131 @@ export const searchPenguinThunk =
     try {
       const token = localStorage.getItem("token");
 
-      if (search !== "" && token) {
-        dispatch(loadingActionCreator());
-        setLoadingOn(`SEARCH: => ${search}`);
+      const connected = connectedToServer() ? true : false;
+      if (connected) {
+        if (search !== "" && token) {
+          setLoadingOn(`SEARCH: => ${search}`);
 
-        const { data: penguins } = await axios.get(
-          `${process.env.REACT_APP_API_URL}penguins/search/${search}`,
-          {
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        dispatch(searchPenguinsActionCreator(penguins));
-        dispatch(finishedLoadingActionCreator());
-        setLoadingOffWithMessage(`SEARCH: ${search} finished.`, false);
+          const { data: penguins } = await axios.get(
+            `${process.env.REACT_APP_API_URL}penguins/search/${search}`,
+            {
+              headers: {
+                authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          handleServerInfo(
+            true,
+            `${process.env.REACT_APP_API_URL}`,
+            "Connected to server",
+            dispatch
+          );
+          dispatch(searchPenguinsActionCreator(penguins));
+
+          setLoadingOffWithMessage(`SEARCH: ${search} finished.`, false);
+        }
+      } else {
+        handleNoConexion(dispatch, "user.id");
+        setLoadingOffWithMessage(`SEARCH Penguin: ${textNoConnection}`, false);
       }
-    } catch (err: any) {
-      message = `ERROR ${err.message}`;
-      dispatch(finishedLoadingActionCreator());
-      setLoadingOffWithMessage(`SEARCH: ERROR: ${message}.`, false);
+    } catch (error: any) {
+      handleNoConexion(dispatch, "user.id");
+      dispatch(loadPenguinsActionCreator(penguins));
+      setLoadingOffWithMessage(`GET Penguin: ${textNoConnection}`, false);
     }
   };
 
 export const deletePenguinThunk =
   (id: string) => async (dispatch: AppDispatch) => {
-    dispatch(loadingActionCreator());
+    try {
+      setLoadingOn("DELETE FAV: Deleting...");
 
-    setLoadingOn("DELETE FAV: Deleting...");
+      const token = localStorage.getItem("token");
 
-    const token = localStorage.getItem("token");
+      const connected = connectedToServer() ? true : false;
+      if (connected) {
+        if (token) {
+          const { status } = await axios.delete(
+            `${process.env.REACT_APP_API_URL}penguins/${id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
 
-    const { status } = await axios.delete(
-      `${process.env.REACT_APP_API_URL}penguins/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+          if (status === 200) {
+            dispatch(deletePenguinActionCreator(id));
+            handleServerInfo(
+              true,
+              `${process.env.REACT_APP_API_URL}`,
+              "Connected to server",
+              dispatch
+            );
+
+            setLoadingOffWithMessage(
+              "DELETE Penguin: Finished successfully!",
+              false
+            );
+          }
+        } else {
+          handleNoConexion(dispatch, "user.id");
+          setLoadingOffWithMessage(`GET Penguin: ${textNoConnection}`, false);
+        }
       }
-    );
-
-    if (status === 200) {
-      dispatch(deletePenguinActionCreator(id));
-
-      dispatch(finishedLoadingActionCreator());
-      setLoadingOffWithMessage("DELETE Penguin: Finished successfully!", false);
+    } catch (error) {
+      handleNoConexion(dispatch, "user.id");
+      dispatch(loadPenguinsActionCreator(penguins));
+      setLoadingOffWithMessage(`DELETE Penguin: ${textNoConnection}`, false);
     }
   };
 
 export const editPenguinThunk =
   (formPenguin: any, type: string) => async (dispatch: AppDispatch) => {
-    dispatch(loadingActionCreator());
-    setLoadingOn("EDIT Penguin...");
+    try {
+      setLoadingOn("EDIT Penguin...");
 
-    const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token");
 
-    if (token && formPenguin.id) {
-      const { data: penguin } = await axios.put(
-        `${process.env.REACT_APP_API_URL}penguins/${formPenguin.id}?task=${type}`,
-        formPenguin,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const connected = connectedToServer() ? true : false;
+      if (connected) {
+        if (token) {
+          const { data: penguin } = await axios.put(
+            `${process.env.REACT_APP_API_URL}penguins/${formPenguin.id}?task=${type}`,
+            formPenguin,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          handleServerInfo(
+            true,
+            `${process.env.REACT_APP_API_URL}`,
+            "Connected to server",
+            dispatch
+          );
+          dispatch(getPenguinThunk(formPenguin.id));
+          dispatch(editPenguinActionCreator(penguin));
+
+          setLoadingOffWithMessage(`${type}`, false);
         }
-      );
+      } else {
+        handleNoConexion(dispatch, "user.id");
+        setLoadingOffWithMessage(`EDIT Penguin: ${textNoConnection}`, false);
+      }
+    } catch (error) {
+      dispatch(loadPenguinsActionCreator(penguins));
+      handleNoConexion(dispatch, "user.id");
 
-      dispatch(getPenguinThunk(formPenguin.id));
-      dispatch(editPenguinActionCreator(penguin));
-
-      dispatch(finishedLoadingActionCreator());
-      setLoadingOffWithMessage(`${type}`, false);
+      setLoadingOffWithMessage(`EDIT Penguin:: ${textNoConnection}`, false);
     }
   };
 
 export const resetPenguinThunk = () => async (dispatch: AppDispatch) => {
   dispatch(resetPenguinActionCreator(blankFormData));
-  dispatch(finishedLoadingActionCreator());
 };
 
 export const resetPenguinsThunk = () => async (dispatch: AppDispatch) => {
   dispatch(resetPenguinsActionCreator(blankFormData));
-  dispatch(finishedLoadingActionCreator());
 };

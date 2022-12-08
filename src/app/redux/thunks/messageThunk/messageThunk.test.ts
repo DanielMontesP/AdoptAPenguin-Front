@@ -44,7 +44,7 @@ describe("Given the getMessageThunk function", () => {
       const thunk = getMessageThunk(mockMessage.id);
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });
@@ -63,7 +63,7 @@ describe("Given the resetMessageThunk function", () => {
       const thunk = resetMessageThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(2);
+      expect(dispatch).toHaveBeenCalledTimes(1);
     });
   });
 });
@@ -82,7 +82,7 @@ describe("Given the resetMessagesThunk function", () => {
       const thunk = resetMessagesThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(1);
     });
   });
 });
@@ -101,7 +101,7 @@ describe("Given the createMessageThunk function", () => {
       const thunk = createMessageThunk(mockMessage);
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });
@@ -120,7 +120,7 @@ describe("Given the editMessageThunk function", () => {
       const thunk = editMessageThunk(mockMessage.id, "Message");
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(1);
     });
   });
 });
@@ -139,7 +139,7 @@ describe("Given the editMessageThunk with no token function", () => {
       const thunk = editMessageThunk(mockMessage.id, "Message");
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(1);
     });
   });
 });
@@ -158,7 +158,7 @@ describe("Given the deleteMessageThunk", () => {
       const thunk = deleteMessageThunk(mockMessage.id);
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(1);
     });
   });
 });
