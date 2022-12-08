@@ -33,11 +33,11 @@ const PenguinsPage = ({ type }: Props) => {
       if (!isDesktop) {
         SetTitleHeader(type, headerLastTitle);
       }
-      if (type === "Likes") {
+      if (headerTitle === "Likes") {
         dispatch(loadLikesThunk());
-      } else if (type === "Favorites") {
+      } else if (headerTitle === "Favorites") {
         dispatch(loadFavsThunk());
-      } else if (type === "Home") {
+      } else {
         dispatch(loadPenguinsThunk());
       }
     }

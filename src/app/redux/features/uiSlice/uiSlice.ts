@@ -1,10 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../store/store";
 import { UISliceState } from "../../types/ui/uiInterfaces";
 
 const initialState: UISliceState = {
   loading: false,
-  finishedLoading: true,
   modalMessage: "",
   modalType: "",
   headerTitle: "AdoptAPenguin.com",
@@ -20,16 +18,14 @@ const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    loading: (ui: UISliceState, action: PayloadAction<void>) => ({
+    loading: (ui: UISliceState, action: PayloadAction<any>) => ({
       ...ui,
       loading: true,
-      finishedLoading: false,
     }),
 
-    finishedLoading: (ui: UISliceState, action: PayloadAction<void>) => ({
+    finishedLoading: (ui: UISliceState, action: PayloadAction<any>) => ({
       ...ui,
       loading: false,
-      finishedLoading: true,
     }),
 
     modalMessage: (ui: UISliceState, action: PayloadAction<string>) => ({
@@ -100,7 +96,5 @@ export const {
   isMenuOpen: isMenuOpenActionCreator,
   isModalOpen: isModalOpenActionCreator,
 } = uiSlice.actions;
-
-export const uiLoadSpinnerSelector = (state: RootState) => state.ui.loading;
 
 export default uiSlice.reducer;

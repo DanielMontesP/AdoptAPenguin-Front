@@ -7,6 +7,9 @@ import {
   setMessageRead,
 } from "./utils";
 
+import { writeFile } from "./utils";
+import { penguins } from "./data";
+
 jest.mock("react-image-file-resizer", () => ({
   ...jest.requireActual("react-image-file-resizer"),
   Resizer: () => jest.fn().mockResolvedValue(true),
@@ -54,6 +57,21 @@ describe("Given a setMessageRead function", () => {
     test("Then it return number of messages with unread flag", () => {
       const dispatch = jest.fn();
       dispatch(setMessageRead(mockMessage, dispatch));
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given writeFile", () => {
+  describe("when it's called", () => {
+    test("Then it should call the dispatch function", async () => {
+      const file = penguins;
+      const dispatch = jest.fn();
+
+      URL.createObjectURL = jest.fn();
+
+      dispatch(writeFile("penguins", file));
 
       expect(dispatch).toHaveBeenCalled();
     });

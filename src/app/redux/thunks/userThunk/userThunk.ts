@@ -16,19 +16,27 @@ import {
   setLoadingOffWithMessage,
   setLoadingOn,
 } from "../../../../components/Modals/Modals";
-import {
-  finishedLoadingActionCreator,
-  headerTitleActionCreator,
-  loadingActionCreator,
-} from "../../features/uiSlice/uiSlice";
+import { headerTitleActionCreator } from "../../features/uiSlice/uiSlice";
 import { AppDispatch } from "../../store/store";
-import { getUserNewMessages } from "../../../../utils/utils";
+import { getUserNewMessages, handleServerInfo } from "../../../../utils/utils";
+import {
+  connectedToServer,
+  handleNoConexion,
+} from "../../../../components/uiHandlers/uiHandlers";
 
 let message = "";
+
+const textNoConnection =
+  "Please try again in few seconds. Service render.com is still initializing";
 
 export const loginThunk =
   (userData: UserRegister) => async (dispatch: AppDispatch) => {
     try {
+      // dispatch(
+      //   serverLoadingActionCreator({
+      //     loadedProcess: [{ process: "loginThunk", loading: true }],
+      //   })
+      // );
       const url: string = `${process.env.REACT_APP_API_URL}users/login`;
 
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
@@ -46,26 +54,41 @@ export const loginThunk =
 
         localStorage.setItem("token", data.token);
 
-        dispatch(
-          logInActionCreator({
-            id,
-            username,
-            logged,
-            isAdmin,
-            image,
-            allMessages,
-            newMessages,
-          })
-        );
-        dispatch(headerTitleActionCreator("Home"));
+        const connected = connectedToServer() ? true : false;
 
-        dispatch(getUserMessagesThunk(id));
-        dispatch(finishedLoadingActionCreator());
+        if (connected) {
+          dispatch(
+            logInActionCreator({
+              id,
+              username,
+              logged,
+              isAdmin,
+              image,
+              allMessages,
+              newMessages,
+            })
+          );
+          dispatch(headerTitleActionCreator("Home"));
+
+          dispatch(getUserMessagesThunk(id));
+          // dispatch(
+          //   serverFinishedLoadActionCreator({
+          //     loadedProcess: [{ process: "loginThunk", loading: false }],
+          //   })
+          // );
+        } else {
+          handleNoConexion(dispatch, "user.id");
+          setLoadingOffWithMessage(
+            `GET Users: Using cache, connection with server lost. ${connected}`,
+            false
+          );
+        }
       }
     } catch (error: any) {
+      handleNoConexion(dispatch, "user.id");
       setLoadingOffWithMessage(
         "Login failed!\nCheck credentials for username: " + userData.username,
-        true
+        false
       );
 
       return error.message;
@@ -110,18 +133,40 @@ export const registerThunk =
 
 export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
   try {
-    dispatch(loadingActionCreator());
-
+    // dispatch(
+    //   serverLoadingActionCreator({
+    //     process: "getUserThunk",
+    //     loading: true,
+    //   })
+    // );
     const token = localStorage.getItem("token");
 
-    if (token && id) {
-      const { data: user } = await axios.get(
-        `${process.env.REACT_APP_API_URL}users/${id}`
-      );
+    const connected = connectedToServer() ? true : false;
+    if (connected) {
+      if (token && id) {
+        const { data: user } = await axios.get(
+          `${process.env.REACT_APP_API_URL}users/${id}`
+        );
 
-      dispatch(getUserMessagesThunk(id));
-      dispatch(loadUserDataActionCreator(user));
-      dispatch(finishedLoadingActionCreator());
+        handleServerInfo(
+          true,
+          `${process.env.REACT_APP_API_URL}`,
+          "Connected to server",
+          dispatch
+        );
+
+        dispatch(getUserMessagesThunk(id));
+        dispatch(loadUserDataActionCreator(user));
+        // dispatch(
+        //   serverFinishedLoadActionCreator({
+        //     process: "getUserThunk",
+        //     loading: false,
+        //   })
+        // );
+      }
+    } else {
+      handleNoConexion(dispatch, "user.id");
+      setLoadingOffWithMessage(`GET User: ${textNoConnection}`, false);
     }
   } catch (error) {
     setLoadingOffWithMessage(`GET User: ERROR: ${error}`, false);
@@ -129,8 +174,11 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
 };
 
 export const editUserThunk = (idUser: any) => async (dispatch: AppDispatch) => {
-  dispatch(loadingActionCreator());
-
+  // dispatch(
+  //   serverLoadingActionCreator({
+  //     loadedProcess: [{ process: "editUserThunk", loading: true }],
+  //   })
+  // );
   setLoadingOn("EDIT User...");
 
   const token = localStorage.getItem("token");
@@ -148,7 +196,11 @@ export const editUserThunk = (idUser: any) => async (dispatch: AppDispatch) => {
 
     dispatch(editUserActionCreator(user));
 
-    dispatch(finishedLoadingActionCreator());
+    // dispatch(
+    //   serverFinishedLoadActionCreator({
+    //     loadedProcess: [{ process: "editUserThunk", loading: false }],
+    //   })
+    // );
 
     setLoadingOffWithMessage(`EDIT user: Finished successfully.`, false);
   }
@@ -156,8 +208,11 @@ export const editUserThunk = (idUser: any) => async (dispatch: AppDispatch) => {
 
 export const getUserMessagesThunk =
   (idUser: string) => async (dispatch: AppDispatch) => {
-    dispatch(loadingActionCreator());
-
+    // dispatch(
+    //   serverLoadingActionCreator({
+    //     loadedProcess: [{ process: "getUserMessagesThunk", loading: true }],
+    //   })
+    // );
     const token = localStorage.getItem("token");
 
     if (token) {
@@ -173,6 +228,10 @@ export const getUserMessagesThunk =
       );
       getUserNewMessages(messages, dispatch);
       dispatch(getUserMessagesActionCreator(messages));
-      dispatch(finishedLoadingActionCreator());
+      // dispatch(
+      //   serverFinishedLoadActionCreator({
+      //     loadedProcess: [{ process: "getUserMessagesThunk", loading: false }],
+      //   })
+      // );
     }
   };

@@ -175,9 +175,21 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     ? `${classInputSearch} opacity-full`
     : `${classInputSearch}`;
 
+  const { connected } = useAppSelector((state) => state.system.server);
+
+  const handleStatus = () => {
+    return connected ? " Connected" : " local";
+  };
+  const classServerStatus = connected ? "server" : "local";
   return (
     <div className="nav">
       <h1 className={`header-desktop-title`}>AdoptApenguin.com</h1>
+      <h3 className="server-status-container">
+        Server:
+        <span className={`server-status-${classServerStatus}`}>
+          {handleStatus()}
+        </span>
+      </h3>
       <div className={`header-desktop-buttons${HidderDesktopButtons}`}>
         <button
           className={classButtonHome}

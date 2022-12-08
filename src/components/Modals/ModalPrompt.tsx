@@ -4,7 +4,7 @@ import { isModalOpenActionCreator } from "../../app/redux/features/uiSlice/uiSli
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { deleteMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { deletePenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
-import { writeFile } from "../../utils/actionsFiles";
+import { writeFile } from "../../utils/utils";
 import EditButtons from "../EditButtons/EditButtons";
 import Help from "../Help/Help";
 import { handleLogout } from "../uiHandlers/uiHandlers";
@@ -30,8 +30,9 @@ export const Modal = ({
   const navigate = useNavigate();
 
   const { penguin } = useAppSelector((state) => state.penguins);
-
-  const { headerTitle } = useAppSelector((state) => state.ui);
+  const listMessages = useAppSelector((state) => state.user.allMessages);
+  const listPenguins = useAppSelector((state) => state.penguins.allPenguins);
+  const { headerTitle, modalType } = useAppSelector((state) => state.ui);
 
   let isWellcome = false;
 
@@ -90,7 +91,7 @@ export const Modal = ({
     } else if (type === "FFeature") {
       content = "This feature will be available soon.";
     } else if (type === "Settings") {
-      content = "Export list?";
+      content = "Export Penguins and Personal Messages list?";
     }
 
     return type !== "Edit" ? <h3 className="modal-message">{content}</h3> : "";
@@ -112,7 +113,7 @@ export const Modal = ({
   };
 
   const handleAcceptClick = () => {
-    switch (type) {
+    switch (modalType) {
       case "delete":
         isMessage ? deleteMessage() : deletePenguin();
         break;
@@ -132,7 +133,12 @@ export const Modal = ({
       case "Error":
         break;
       case "Settings":
-        writeFile();
+        writeFile("penguins", listPenguins);
+        writeFile("messages", listMessages);
+        break;
+      case "Server":
+        navigate("./");
+
         break;
       default:
         correctAction("Sorry, this feature is not available yet.");

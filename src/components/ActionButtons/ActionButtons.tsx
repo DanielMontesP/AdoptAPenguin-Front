@@ -9,6 +9,7 @@ import {
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { cleanArray, hasNewMessages } from "../../utils/utils";
+import { handleNoConexion } from "../uiHandlers/uiHandlers";
 
 interface Props {
   penguin: IPenguin;
@@ -16,12 +17,12 @@ interface Props {
 
 const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const idUser = useAppSelector((state) => state.user.id);
+  const { allMessages } = useAppSelector((state) => state.user);
+  const { connected } = useAppSelector((state) => state.system.server);
 
   const [, setFormData] = useState<IPenguin>(blankFormData);
 
   const iconType = " bt-message-got";
-
-  const { allMessages } = useAppSelector((state) => state.user);
 
   const countNewMessages = (penguin: IPenguin) => {
     return hasNewMessages(allMessages, penguin.id);
@@ -37,10 +38,14 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const selectIconLike = isLiker ? " animatedLike" : ` animatedLikeInit`;
 
   const handleMessage = () => {
-    dispatch(getPenguinThunk(penguin.id));
-    dispatch(getMessagesThunk(penguin.id));
+    if (connected) {
+      dispatch(getPenguinThunk(penguin.id));
+      dispatch(getMessagesThunk(penguin.id));
 
-    navigate(`/detail/${penguin.id}#messages`);
+      navigate(`/detail/${penguin.id}#messages`);
+    } else {
+      handleNoConexion(dispatch, idUser);
+    }
   };
 
   const deleteFromLikers = () => {
@@ -66,7 +71,11 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     if (Array(penguin.likers)) {
       cleanArray(penguin.likers);
 
-      isLiker ? deleteFromLikers() : addToLikers();
+      if (connected) {
+        isLiker ? deleteFromLikers() : addToLikers();
+      } else {
+        handleNoConexion(dispatch, idUser);
+      }
     }
   };
 
@@ -90,7 +99,11 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     if (Array(penguin.favs)) {
       cleanArray(penguin.favs);
 
-      isFav ? deleteFromFavs() : addToFavs();
+      if (connected) {
+        isFav ? deleteFromFavs() : addToFavs();
+      } else {
+        handleNoConexion(dispatch, idUser);
+      }
     }
   };
 
