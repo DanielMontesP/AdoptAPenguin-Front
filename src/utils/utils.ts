@@ -106,17 +106,16 @@ export const handleFocus = (field: string): void => {
 
 export const writeFile = (type: string, data: any) => {
   const element = document.createElement("a");
-  let textFile = new Blob();
 
-  if (type === "penguins") {
-    textFile = new Blob([JSON.stringify({ penguins: data })], {
-      type: "text/plain",
-    });
-  } else {
-    textFile = new Blob([JSON.stringify({ messages: data })], {
-      type: "text/plain",
-    });
-  }
+  const textFile =
+    type === "penguins"
+      ? new Blob([JSON.stringify({ penguins: data })], {
+          type: "text/plain",
+        })
+      : new Blob([JSON.stringify({ messages: data })], {
+          type: "text/plain",
+        });
+
   element.href = URL.createObjectURL(textFile);
   element.download = `${type}-export.json`;
   document.body.appendChild(element);

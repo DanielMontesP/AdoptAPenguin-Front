@@ -13,7 +13,7 @@ const Penguins = ({ allPenguins }: Props): JSX.Element => {
         {allPenguins.length} results found.
       </h3>
       {allPenguins.map((penguin, index) => {
-        return <Penguin key={index} penguin={penguin} />;
+        return <Penguin key={penguin.id} penguin={penguin} />;
       })}
     </PagesStyles>
   );
