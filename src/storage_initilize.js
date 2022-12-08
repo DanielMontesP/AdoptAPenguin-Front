@@ -13,5 +13,3 @@ export const initializeFirebase = () => {
   const firebaseApp = initializeApp(firebaseConfig);
   getStorage(firebaseApp); //eslint-disable-line no-unused-vars
 };
-
-// Get a reference to the storage service, which is used to create references in your storage bucket

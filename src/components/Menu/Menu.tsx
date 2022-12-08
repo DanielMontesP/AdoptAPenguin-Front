@@ -92,11 +92,6 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   };
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    // dispatch(
-    //   serverLoadingActionCreator({
-    //     loadedProcess: [{ process: "handleSearchChange", loading: true }],
-    //   })
-    // );
     dispatch(stringToSearchActionCreator(event.target.value));
   };
 

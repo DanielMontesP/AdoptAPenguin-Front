@@ -40,16 +40,6 @@ if (firstLoad) {
 
 export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
   try {
-    // dispatch(
-    //   serverLoadingActionCreator({
-    //     loadedProcess: [
-    //       {
-    //         process: "loadPenguinsThunk",
-    //         loading: true,
-    //       },
-    //     ],
-    //   })
-    // // );
     firstLoad = false;
     const token = localStorage.getItem("token");
 
@@ -77,17 +67,6 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
 
         dispatch(finishedLoadingActionCreator("loadingActionCreator"));
         dispatch(loadPenguinsActionCreator(penguins));
-
-        // dispatch(
-        //   serverFinishedLoadActionCreator({
-        //     loadedProcess: [
-        //       {
-        //         process: "loadPenguinsThunk",
-        //         loading: false,
-        //       },
-        //     ],
-        //   })
-        // );
       } else {
         handleNoConexion(dispatch, "user.id");
         setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
@@ -103,16 +82,7 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
 export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
   try {
     setLoadingOn(`GET Favorites: Loading data...`);
-    // dispatch(
-    //   serverLoadingActionCreator({
-    //     loadedProcess: [
-    //       {
-    //         process: "loadPenguinsThunk",
-    //         loading: true,
-    //       },
-    //     ],
-    //   })
-    // );
+
     const token = localStorage.getItem("token");
     const userData: UserInfo = jwtDecode(token as string);
 
@@ -143,16 +113,7 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
         dispatch(loadPenguinsActionCreator(penguins));
 
         dispatch(getUserMessagesThunk(userData.id));
-        // dispatch(
-        //   serverFinishedLoadActionCreator({
-        //     loadedProcess: [
-        //       {
-        //         process: "loadPenguinsThunk",
-        //         loading: false,
-        //       },
-        //     ],
-        //   })
-        // );
+
         setLoadingOffWithMessage(
           "GET Favorites: Finished successfully.",
           false
@@ -175,16 +136,6 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
 export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
   try {
     setLoadingOn(`GET Likes: Loading data...`);
-    // dispatch(
-    //   serverLoadingActionCreator({
-    //     loadedProcess: [
-    //       {
-    //         process: "loadLikesThunk",
-    //         loading: true,
-    //       },
-    //     ],
-    //   })
-    // );
 
     const token = localStorage.getItem("token");
 
@@ -215,16 +166,7 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
 
         dispatch(finishedLoadingActionCreator("loadingActionCreator"));
         dispatch(loadPenguinsActionCreator(penguins));
-        // dispatch(
-        //   serverFinishedLoadActionCreator({
-        //     loadedProcess: [
-        //       {
-        //         process: "loadLikesThunk",
-        //         loading: true,
-        //       },
-        //     ],
-        //   })
-        // );
+
         setLoadingOffWithMessage(
           "GET Favorites: Finished successfully.",
           false
@@ -247,16 +189,6 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
 export const createFavThunk =
   (formPenguin: any) => async (dispatch: AppDispatch) => {
     try {
-      // dispatch(
-      //   serverLoadingActionCreator({
-      //     loadedProcess: [
-      //       {
-      //         process: "createFavThunk",
-      //         loading: true,
-      //       },
-      //     ],
-      //   })
-      // );
       setLoadingOn(`CREATE Favorites: Creating fav...`);
 
       const token = localStorage.getItem("token");
@@ -284,16 +216,7 @@ export const createFavThunk =
           dispatch(createPenguinActionCreator(penguin));
 
           dispatch(loadFavsThunk());
-          // dispatch(
-          //   serverFinishedLoadActionCreator({
-          //     loadedProcess: [
-          //       {
-          //         process: "createFavThunk",
-          //         loading: false,
-          //       },
-          //     ],
-          //   })
-          // );
+
           setLoadingOffWithMessage(
             `CREATE Fav: ${penguin.name} created successfully.`,
             false
@@ -316,16 +239,6 @@ export const createFavThunk =
 export const getPenguinThunk =
   (id: string) => async (dispatch: AppDispatch) => {
     try {
-      // dispatch(
-      //   serverLoadingActionCreator({
-      //     loadedProcess: [
-      //       {
-      //         process: "getPenguinThunk",
-      //         loading: true,
-      //       },
-      //     ],
-      //   })
-      // );
       if (id !== "") {
         const token = localStorage.getItem("token");
 
@@ -348,16 +261,7 @@ export const getPenguinThunk =
             );
 
             dispatch(loadPenguinActionCreator(penguin));
-            // dispatch(
-            //   serverFinishedLoadActionCreator({
-            //     loadedProcess: [
-            //       {
-            //         process: "getPenguinThunk",
-            //         loading: false,
-            //       },
-            //     ],
-            //   })
-            // );
+
             setLoadingOffWithMessage(
               `GET Penguin: ${penguin.name} successfully.`,
               false
@@ -383,16 +287,6 @@ export const searchPenguinThunk =
       const connected = connectedToServer() ? true : false;
       if (connected) {
         if (search !== "" && token) {
-          // dispatch(
-          //   serverLoadingActionCreator({
-          //     loadedProcess: [
-          //       {
-          //         process: "searchPenguinThunk",
-          //         loading: true,
-          //       },
-          //     ],
-          //   })
-          // );
           setLoadingOn(`SEARCH: => ${search}`);
 
           const { data: penguins } = await axios.get(
@@ -410,16 +304,7 @@ export const searchPenguinThunk =
             dispatch
           );
           dispatch(searchPenguinsActionCreator(penguins));
-          // dispatch(
-          //   serverFinishedLoadActionCreator({
-          //     loadedProcess: [
-          //       {
-          //         process: "searchPenguinThunk",
-          //         loading: false,
-          //       },
-          //     ],
-          //   })
-          // );
+
           setLoadingOffWithMessage(`SEARCH: ${search} finished.`, false);
         }
       } else {
@@ -436,16 +321,6 @@ export const searchPenguinThunk =
 export const deletePenguinThunk =
   (id: string) => async (dispatch: AppDispatch) => {
     try {
-      // dispatch(
-      //   serverLoadingActionCreator({
-      //     loadedProcess: [
-      //       {
-      //         process: "searchPenguinThunk",
-      //         loading: false,
-      //       },
-      //     ],
-      //   })
-      // );
       setLoadingOn("DELETE FAV: Deleting...");
 
       const token = localStorage.getItem("token");
@@ -470,16 +345,7 @@ export const deletePenguinThunk =
               "Connected to server",
               dispatch
             );
-            // dispatch(
-            //   serverFinishedLoadActionCreator({
-            //     loadedProcess: [
-            //       {
-            //         process: "deletePenguinThunk",
-            //         loading: false,
-            //       },
-            //     ],
-            //   })
-            // );
+
             setLoadingOffWithMessage(
               "DELETE Penguin: Finished successfully!",
               false
@@ -500,11 +366,6 @@ export const deletePenguinThunk =
 export const editPenguinThunk =
   (formPenguin: any, type: string) => async (dispatch: AppDispatch) => {
     try {
-      // dispatch(
-      //   serverLoadingActionCreator({
-      //     loadedProcess: [{ process: "editPenguinThunk", loading: true }],
-      //   })
-      // );
       setLoadingOn("EDIT Penguin...");
 
       const token = localStorage.getItem("token");
@@ -530,16 +391,6 @@ export const editPenguinThunk =
           dispatch(getPenguinThunk(formPenguin.id));
           dispatch(editPenguinActionCreator(penguin));
 
-          // dispatch(
-          //   serverFinishedLoadActionCreator({
-          //     loadedProcess: [
-          //       {
-          //         process: "editPenguinThunk",
-          //         loading: false,
-          //       },
-          //     ],
-          //   })
-          // );
           setLoadingOffWithMessage(`${type}`, false);
         }
       } else {
@@ -556,28 +407,8 @@ export const editPenguinThunk =
 
 export const resetPenguinThunk = () => async (dispatch: AppDispatch) => {
   dispatch(resetPenguinActionCreator(blankFormData));
-  // dispatch(
-  //   serverFinishedLoadActionCreator({
-  //     loadedProcess: [
-  //       {
-  //         process: "resetPenguinThunk",
-  //         loading: false,
-  //       },
-  //     ],
-  //   })
-  // );
 };
 
 export const resetPenguinsThunk = () => async (dispatch: AppDispatch) => {
   dispatch(resetPenguinsActionCreator(blankFormData));
-  // dispatch(
-  //   serverFinishedLoadActionCreator({
-  //     loadedProcess: [
-  //       {
-  //         process: "resetPenguinsThunk",
-  //         loading: false,
-  //       },
-  //     ],
-  //   })
-  // );
 };

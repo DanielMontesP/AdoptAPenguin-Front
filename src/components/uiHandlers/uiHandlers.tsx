@@ -70,7 +70,6 @@ export const loadFavs = (
 ): any => {
   setMenu(false);
 
-  // dispatch(serverLoadingActionCreator({ process: "loadFavs", loading: true }));
   dispatch(modalTypeActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
   dispatch(headerTitleActionCreator("Favorites"));
@@ -86,11 +85,6 @@ export const loadLikes = (
 ): void => {
   setMenu(false);
 
-  // dispatch(
-  //   loadingActionCreator({
-  //     loadedProcess: [{ process: "loadLikes", loading: true }],
-  //   })
-  // );
   dispatch(modalTypeActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
   dispatch(headerTitleActionCreator("Likes"));
