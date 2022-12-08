@@ -38,7 +38,7 @@ const expectedState = {
 };
 
 const expectedLoadingState = {
-  loading: false,
+  loading: true,
   modalMessage: "",
   modalType: "",
   feedback: true,
