@@ -66,7 +66,7 @@ const PagesStyles = styled.div`
     }
 
     .bt-container {
-      width: 50%;
+      width: 100%;
       max-width: 450px;
       margin: auto;
       position: fixed;
@@ -357,10 +357,10 @@ const PagesStyles = styled.div`
   }
 
   .bt-favs {
+    background: url(${iconMenuFavs});
     width: 45px;
     height: 45px;
     background: none;
-    background: url(${iconMenuFavs});
     position: relative;
     margin-top: 7px;
     border: 0;
@@ -488,6 +488,7 @@ const PagesStyles = styled.div`
   }
 
   .link {
+    width: 100%;
     color: black;
     font-size: 18px;
     cursor: pointer;
