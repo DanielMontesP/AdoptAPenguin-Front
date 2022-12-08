@@ -37,7 +37,6 @@ if (firstLoad) {
 
 export const getMessagesThunk =
   (idPenguin: string) => async (dispatch: AppDispatch) => {
-    // dispatch(serverLoadingActionCreator("getMessagesThunk"));
     try {
       const token = localStorage.getItem("token");
       const connected = connectedToServer() ? true : false;
@@ -56,12 +55,6 @@ export const getMessagesThunk =
           );
 
           dispatch(getMessagesActionCreator(messages));
-          // dispatch(
-          //   serverFinishedLoadActionCreator({
-          //     process: "getMessagesThunk",
-          //     loading: true,
-          //   })
-          // );
         } else {
           handleNoConexion(dispatch, "user.id");
           setLoadingOffWithMessage(`GET Messages: ${textNoConnection}`, false);
@@ -76,13 +69,6 @@ export const getMessagesThunk =
 
 export const getMessageThunk =
   (idMessage: string) => async (dispatch: AppDispatch) => {
-    // dispatch(
-    //   serverLoadingActionCreator({
-    //     process: "getMessagesThunk",
-    //     loading: true,
-    //   })
-    // );
-
     setLoadingOn(`GET Message: Loading data...`);
 
     if (idMessage !== "undefined") {
@@ -100,12 +86,6 @@ export const getMessageThunk =
 
         dispatch(getPenguinThunk(message.idPenguin));
         dispatch(getMessageActionCreator(message));
-        // dispatch(
-        //   serverFinishedLoadActionCreator({
-        //     process: "getMessageThunk",
-        //     loading: false,
-        //   })
-        // );
         setLoadingOffWithMessage(
           `GET Message: ${message.subject} successfully.`,
           false
@@ -121,13 +101,6 @@ export const getMessageThunk =
 
 export const createMessageThunk =
   (formMessage: any) => async (dispatch: AppDispatch) => {
-    // dispatch(
-    //   serverLoadingActionCreator({
-    //     process: "createMessageThunk",
-    //     loading: true,
-    //   })
-    // );
-
     setLoadingOn(`CREATE Message: Creating Message...`);
 
     const token = localStorage.getItem("token");
@@ -145,12 +118,6 @@ export const createMessageThunk =
       dispatch(createMessageActionCreator(message));
 
       dispatch(getMessagesThunk(formMessage.idPenguin));
-      // dispatch(
-      //   serverFinishedLoadActionCreator({
-      //     process: "createMessageThunk",
-      //     loading: false,
-      //   })
-      // );
       setLoadingOffWithMessage(
         `CREATE Message: ${message.subject} created successfully.`,
         false
@@ -165,13 +132,6 @@ export const createMessageThunk =
 
 export const editMessageThunk =
   (formMessage: any, type: string) => async (dispatch: AppDispatch) => {
-    // dispatch(
-    //   serverLoadingActionCreator({
-    //     process: "editMessageThunk",
-    //     loading: true,
-    //   })
-    // );
-
     setLoadingOn("EDIT Message...");
 
     const token = localStorage.getItem("token");
@@ -189,25 +149,12 @@ export const editMessageThunk =
 
       dispatch(editMessageActionCreator(message));
 
-      // dispatch(
-      //   serverFinishedLoadActionCreator({
-      //     process: "editMessageThunk",
-      //     loading: false,
-      //   })
-      // );
       setLoadingOffWithMessage(`${type}`, false);
     }
   };
 
 export const deleteMessageThunk =
   (id: string) => async (dispatch: AppDispatch) => {
-    // dispatch(
-    //   serverLoadingActionCreator({
-    //     process: "deleteMessageThunk",
-    //     loading: true,
-    //   })
-    // );
-
     setLoadingOn("DELETE Message: Deleting...");
 
     const token = localStorage.getItem("token");
@@ -224,48 +171,16 @@ export const deleteMessageThunk =
     if (status === 200) {
       dispatch(deleteMessageActionCreator(id));
 
-      // dispatch(
-      //   serverFinishedLoadActionCreator({
-      //     process: "deleteMessageThunk",
-      //     loading: false,
-      //   })
-      // );
       setLoadingOffWithMessage("DELETE Message: Finished successfully!", false);
     }
   };
 
 export const resetMessageThunk = () => async (dispatch: AppDispatch) => {
-  // dispatch(
-  //   serverLoadingActionCreator({
-  //     process: "resetMessageThunk",
-  //     loading: true,
-  //   })
-  // );
-
   dispatch(resetMessageActionCreator(blankMessageData));
-  // dispatch(
-  //   serverFinishedLoadActionCreator({
-  //     process: "resetMessageThunk",
-  //     loading: false,
-  //   })
-  // );
 };
 
 export const resetMessagesThunk = () => async (dispatch: AppDispatch) => {
-  // dispatch(
-  //   serverLoadingActionCreator({
-  //     process: "resetMessagesThunk",
-  //     loading: true,
-  //   })
-  // );
-
   dispatch(resetMessagesActionCreator(blankMessageData));
-  // dispatch(
-  //   serverFinishedLoadActionCreator({
-  //     process: "resetMessagesThunk",
-  //     loading: false,
-  //   })
-  // );
 
   setLoadingOffWithMessage("RESET Messages: Finished successfully.", false);
 };

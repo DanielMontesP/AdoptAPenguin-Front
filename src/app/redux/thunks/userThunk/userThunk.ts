@@ -32,11 +32,6 @@ const textNoConnection =
 export const loginThunk =
   (userData: UserRegister) => async (dispatch: AppDispatch) => {
     try {
-      // dispatch(
-      //   serverLoadingActionCreator({
-      //     loadedProcess: [{ process: "loginThunk", loading: true }],
-      //   })
-      // );
       const url: string = `${process.env.REACT_APP_API_URL}users/login`;
 
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
@@ -71,11 +66,6 @@ export const loginThunk =
           dispatch(headerTitleActionCreator("Home"));
 
           dispatch(getUserMessagesThunk(id));
-          // dispatch(
-          //   serverFinishedLoadActionCreator({
-          //     loadedProcess: [{ process: "loginThunk", loading: false }],
-          //   })
-          // );
         } else {
           handleNoConexion(dispatch, "user.id");
           setLoadingOffWithMessage(
@@ -133,12 +123,6 @@ export const registerThunk =
 
 export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
   try {
-    // dispatch(
-    //   serverLoadingActionCreator({
-    //     process: "getUserThunk",
-    //     loading: true,
-    //   })
-    // );
     const token = localStorage.getItem("token");
 
     const connected = connectedToServer() ? true : false;
@@ -157,12 +141,6 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
 
         dispatch(getUserMessagesThunk(id));
         dispatch(loadUserDataActionCreator(user));
-        // dispatch(
-        //   serverFinishedLoadActionCreator({
-        //     process: "getUserThunk",
-        //     loading: false,
-        //   })
-        // );
       }
     } else {
       handleNoConexion(dispatch, "user.id");
@@ -174,11 +152,6 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
 };
 
 export const editUserThunk = (idUser: any) => async (dispatch: AppDispatch) => {
-  // dispatch(
-  //   serverLoadingActionCreator({
-  //     loadedProcess: [{ process: "editUserThunk", loading: true }],
-  //   })
-  // );
   setLoadingOn("EDIT User...");
 
   const token = localStorage.getItem("token");
@@ -196,23 +169,12 @@ export const editUserThunk = (idUser: any) => async (dispatch: AppDispatch) => {
 
     dispatch(editUserActionCreator(user));
 
-    // dispatch(
-    //   serverFinishedLoadActionCreator({
-    //     loadedProcess: [{ process: "editUserThunk", loading: false }],
-    //   })
-    // );
-
     setLoadingOffWithMessage(`EDIT user: Finished successfully.`, false);
   }
 };
 
 export const getUserMessagesThunk =
   (idUser: string) => async (dispatch: AppDispatch) => {
-    // dispatch(
-    //   serverLoadingActionCreator({
-    //     loadedProcess: [{ process: "getUserMessagesThunk", loading: true }],
-    //   })
-    // );
     const token = localStorage.getItem("token");
 
     if (token) {
@@ -228,10 +190,5 @@ export const getUserMessagesThunk =
       );
       getUserNewMessages(messages, dispatch);
       dispatch(getUserMessagesActionCreator(messages));
-      // dispatch(
-      //   serverFinishedLoadActionCreator({
-      //     loadedProcess: [{ process: "getUserMessagesThunk", loading: false }],
-      //   })
-      // );
     }
   };
