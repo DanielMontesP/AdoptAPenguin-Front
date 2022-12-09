@@ -1403,10 +1403,11 @@ ul {
   border: 0;
 }
 .bt-menu-view-messages {
+  height: 45px;
+  width: 190px;
   background: url("../images/mail-full.png");
-  background-size: 40px;
-
-  background-position: center;
+  background-size: 45px;
+  text-align: left;
   background-repeat: no-repeat;
   border: 0;
 }
@@ -1430,17 +1431,21 @@ ul {
 }
 
 .bt-favs {
+  height: 45px;
+  width: 145px;
   background: url("../images/fav-white.png");
-  background-size: cover;
-  background-position: center;
+  background-size: 45px;
   background-repeat: no-repeat;
+  text-align: left;
   border: 0;
 }
 
 .bt-likes {
+  height: 45px;
+  width: 145px;
   background: url("../images/like-white.png");
-  background-size: 44px;
-  background-position: center;
+  background-size: 45px;
+  text-align: left;
   background-repeat: no-repeat;
   border: 0;
 }

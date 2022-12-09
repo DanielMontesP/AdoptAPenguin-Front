@@ -68,10 +68,7 @@ export const loginThunk =
           dispatch(getUserMessagesThunk(id));
         } else {
           handleNoConexion(dispatch, "user.id");
-          setLoadingOffWithMessage(
-            `GET Users: Using cache, connection with server lost. ${connected}`,
-            false
-          );
+          setLoadingOffWithMessage(`GET Users: ${textNoConnection}`, false);
         }
       }
     } catch (error: any) {
