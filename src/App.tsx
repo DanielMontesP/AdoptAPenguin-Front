@@ -27,13 +27,13 @@ function App() {
 
   const [isDesktop, setDesktop] = useState(window.innerWidth > 421);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [lastPosition] = useState(0.1);
+  const [lastPosition] = useState(scrollPosition + 0.1);
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 420);
   };
 
-  let notScrolled = false;
+  let isScrolled = false;
 
   const handleScroll = () => {
     const position = window.scrollY;
@@ -41,14 +41,18 @@ function App() {
     setScrollPosition(position);
   };
 
-  if (scrollPosition > lastPosition) {
-    notScrolled = isDesktop ? false : true;
+  if (!isDesktop) {
+    if (scrollPosition < lastPosition) {
+      isScrolled = false;
+    } else {
+      isScrolled = true;
+    }
   }
 
   let result = <></>;
 
   const handleNav = () => {
-    if (logged && !notScrolled) {
+    if (logged && !isScrolled) {
       result = <Navbar headerTitle={headerTitle} />;
     }
   };
@@ -75,7 +79,7 @@ function App() {
       window.removeEventListener("resize", updateMedia);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [dispatch, logged, id, isDesktop, notScrolled, headerTitle]);
+  }, [dispatch, logged, id, isDesktop, headerTitle]);
 
   return (
     <>
