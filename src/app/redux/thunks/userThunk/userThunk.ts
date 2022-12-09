@@ -18,11 +18,12 @@ import {
 } from "../../../../components/Modals/Modals";
 import { headerTitleActionCreator } from "../../features/uiSlice/uiSlice";
 import { AppDispatch } from "../../store/store";
-import { getUserNewMessages, handleServerInfo } from "../../../../utils/utils";
 import {
-  connectedToServer,
-  handleNoConexion,
-} from "../../../../components/uiHandlers/uiHandlers";
+  getUserNewMessages,
+  handleServerInfo,
+  isAvailable,
+} from "../../../../utils/utils";
+import { handleNoConexion } from "../../../../components/uiHandlers/uiHandlers";
 
 let message = "";
 
@@ -49,7 +50,7 @@ export const loginThunk =
 
         localStorage.setItem("token", data.token);
 
-        const connected = connectedToServer() ? true : false;
+        const connected = isAvailable(dispatch);
 
         if (connected) {
           dispatch(
@@ -122,7 +123,8 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
   try {
     const token = localStorage.getItem("token");
 
-    const connected = connectedToServer() ? true : false;
+    const connected = isAvailable(dispatch);
+
     if (connected) {
       if (token && id) {
         const { data: user } = await axios.get(

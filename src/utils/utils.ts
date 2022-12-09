@@ -126,3 +126,30 @@ export const writeFile = (type: string, data: any) => {
   document.body.appendChild(element);
   element.click();
 };
+
+export const isAvailable = (dispatch: any): boolean => {
+  const url = `${process.env.REACT_APP_API_URL}penguins`;
+  let result = false;
+
+  const timeout = new Promise((resolve, reject) => {
+    setTimeout(reject, 300, "Request timed out");
+  });
+
+  const request = fetch(url);
+
+  Promise.race([timeout, request])
+    .then((response) => {
+      handleServerInfo(
+        true,
+        `${process.env.REACT_APP_API_URL}`,
+        "Connected to server",
+        dispatch
+      );
+      result = true;
+    })
+    .catch((error) => {
+      handleServerInfo(false, `local`, `Timeout error: ${error}`, dispatch);
+      result = false;
+    });
+  return result;
+};

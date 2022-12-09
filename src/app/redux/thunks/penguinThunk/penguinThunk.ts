@@ -17,11 +17,8 @@ import {
 import { penguins } from "../../../../utils/penguins-export.js";
 import { blankFormData } from "../../initializers/iniPenguins";
 import { finishedLoadingActionCreator } from "../../features/uiSlice/uiSlice";
-import {
-  connectedToServer,
-  handleNoConexion,
-} from "../../../../components/uiHandlers/uiHandlers";
-import { handleServerInfo } from "../../../../utils/utils";
+import { handleNoConexion } from "../../../../components/uiHandlers/uiHandlers";
+import { handleServerInfo, isAvailable } from "../../../../utils/utils";
 import { getUserMessagesThunk } from "../userThunk/userThunk";
 import { UserInfo } from "../../types/userInterfaces/userInterfaces";
 import jwtDecode from "jwt-decode";
@@ -44,7 +41,7 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token");
 
     const userData: UserInfo = jwtDecode(token as string);
-    const connected = connectedToServer() ? true : false;
+    const connected = isAvailable(dispatch);
 
     if (connected) {
       if (token) {
@@ -86,7 +83,8 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token");
     const userData: UserInfo = jwtDecode(token as string);
 
-    const connected = connectedToServer() ? true : false;
+    const connected = isAvailable(dispatch);
+
     if (connected) {
       if (token) {
         const {
@@ -141,7 +139,8 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
 
     const userData: UserInfo = jwtDecode(token as string);
 
-    const connected = connectedToServer() ? true : false;
+    const connected = isAvailable(dispatch);
+
     if (connected) {
       if (token) {
         const {
@@ -193,7 +192,8 @@ export const createFavThunk =
 
       const token = localStorage.getItem("token");
 
-      const connected = connectedToServer() ? true : false;
+      const connected = isAvailable(dispatch);
+
       if (connected) {
         if (token) {
           const { data: penguin } = await axios.post(
@@ -242,7 +242,8 @@ export const getPenguinThunk =
       if (id !== "") {
         const token = localStorage.getItem("token");
 
-        const connected = connectedToServer() ? true : false;
+        const connected = isAvailable(dispatch);
+
         if (connected) {
           if (token) {
             const { data: penguin } = await axios.get(
@@ -284,7 +285,8 @@ export const searchPenguinThunk =
     try {
       const token = localStorage.getItem("token");
 
-      const connected = connectedToServer() ? true : false;
+      const connected = isAvailable(dispatch);
+
       if (connected) {
         if (search !== "" && token) {
           setLoadingOn(`SEARCH: => ${search}`);
@@ -324,8 +326,8 @@ export const deletePenguinThunk =
       setLoadingOn("DELETE FAV: Deleting...");
 
       const token = localStorage.getItem("token");
+      const connected = isAvailable(dispatch);
 
-      const connected = connectedToServer() ? true : false;
       if (connected) {
         if (token) {
           const { status } = await axios.delete(
@@ -370,7 +372,8 @@ export const editPenguinThunk =
 
       const token = localStorage.getItem("token");
 
-      const connected = connectedToServer() ? true : false;
+      const connected = isAvailable(dispatch);
+
       if (connected) {
         if (token) {
           const { data: penguin } = await axios.put(
