@@ -8,7 +8,7 @@ import {
 } from "./utils";
 
 import { writeFile } from "./utils";
-import { penguins } from "./data";
+import { penguins } from "./penguins-export.js";
 
 jest.mock("react-image-file-resizer", () => ({
   ...jest.requireActual("react-image-file-resizer"),
