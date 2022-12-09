@@ -196,108 +196,111 @@
       </br>
       <div className="features-container">     
       Web app - CRUD API for mobile and desktop browsers
-       <ul>
-      <li>
-      Description
-        <ul>
-          <li>User authentication method: token encrypted</li>
-          <li>UI Layer managed with React Redux</li>
-          <li>Frontend language: Typescript, Javascript, CSS</li>
-          <li>Backend language: Javascript</li>
-          <li>Backend managed with Axios</li>
-          <li>Data storage: MongoDB</li>
-          <li>Backup storage: Firebase</li>
-        </ul>
-      </li>
-      <li>
-      <br/>
-      What this app does..
-        <ul>
-          <li>Login/Register user</li>
-          <li>User profiles: Admin or User</li>
-          <li>Add to user favorites list</li>
-          <li>Add to user likes list</li>
-          <li>Count global likes individually</li>
-          <li>Create new penguin (Will be added automatically to personal likes and favorites lists</li>
-          <li>Edit penguin data</li>
-          <li>Delete penguin</li>
-          <li>Send new message</li>
-          <li>View messages</li>
-          <li>Notify unread messages</li>
-          <li>User inbox</li>
-          <li>Delete message</li>
-          <li>Count unread messages</li>
-          <li>Export data lists</li>
-        </ul>
-      </li>
-     <li>
-     <br/>
-      Features     
+      </br>
       <ul>
-      <li>Responsive site</li>
-      <li>Preview uploaded image</li>
-      <li>Scroll to top button</li>
-      <li>Search engine</li>
-      <li>Resize uploaded images</li>
-      <li>Backup image to firebase storage</li>
-      </ul>
-     </li>
-     <li>
-     <br/>
-     UI states
-      <ul>
-        <li>Loading: True is request is still loading</li>
-        <li>ModalMessage: Text message if modal prompt is called</li>
-        <li>ModalType: Type for modal prompt</li>
-        <li>HeaderTitle: Actual Header title</li>
-        <li>HeaderLastTItle: Save last title used for back navigation operations</li>
-        <li>isDesktop: True if width < 421px </li>
-        <li>stringToSearch: used for search method</li>
-        <li>isModalOpen: Show modal satus</li>
-        <li>isMenuOpen: Show menu status</li>
-      </ul>
-    </li>
-    <li>
-    User states
-      <ul>
-        <li>id: Show logged user id</li>
-        <li>name: User name</li>
-        <li>username: User username</li>
-        <li>isAdmin: True if user logged has Admin rol</li>
-        <li>logged: User login stattus</li>
-        <li>image: User image path</li>
-        <li>allMessages: User messages list</li>
-      </ul>
-    </li >
-    <li>
-    <br/>
-    Penguins states
-      <ul>
-        <li>allPenguins: Show all penguins. Will change if view is filtered</li>
-        <li>penguin: Show selected penguin info</li>    
-      </ul>
-    </li>
-    <li>
-    <br/>
-    Messages states
-      <ul>
-        <li>allMessages: Show user messages filtered by selected penguin</li>
-        <li>message: Show selected message info</li>    
-      </ul>
-      </li>
-      <li>
-      <br/>
-      System states
-      <ul>
-        <li>
-        server
+        <li>Description
           <ul>
-            <li>connected: True if server available</li>
-            <li>path: Server if available, local if server is not reachable</li>
-            <li>status: info about connection</li>
+            <li>User authentication method: token encrypted</li>
+            <li>UI Layer managed with React Redux</li>
+            <li>Frontend language: Typescript, Javascript, CSS</li>
+            <li>Backend language: Javascript</li>
+            <li>Backend managed with Axios</li>
+            <li>Data storage: MongoDB</li>
+            <li>Backup storage: Firebase</li>
           </ul>
-        </li>                
+        </li>
       </ul>
+      <br/>
+      <ul>
+        <li>What this app does..
+          <ul>
+            <li>Login/Register user</li>
+            <li>User profiles: Admin or User</li>
+            <li>Add to user favorites list</li>
+            <li>Add to user likes list</li>
+            <li>Count global likes individually</li>
+            <li>Create new penguin (Will be added automatically to personal likes and favorites lists</li>
+            <li>Edit penguin data</li>
+            <li>Delete penguin</li>
+            <li>Send new message</li>
+            <li>View messages</li>
+            <li>Notify unread messages</li>
+            <li>User inbox</li>
+            <li>Delete message</li>
+            <li>Count unread messages</li>
+            <li>Export data lists</li>
+          </ul>
+        </li>
+      </ul>
+     <br/>
+      <ul>
+        <li>Features     
+          <ul>
+            <li>Responsive site</li>
+            <li>Preview uploaded image</li>
+            <li>Scroll to top button</li>
+            <li>Search engine</li>
+            <li>Resize uploaded images</li>
+            <li>Backup image to firebase storage</li>
+          </ul>
+        </li>
+      </ul>
+     <br/>
+      <ul>
+        <li>UI states
+          <ul>
+            <li>Loading: True is request is still loading</li>
+            <li>ModalMessage: Text message if modal prompt is called</li>
+            <li>ModalType: Type for modal prompt</li>
+            <li>HeaderTitle: Actual Header title</li>
+            <li>HeaderLastTItle: Save last title used for back navigation operations</li>
+            <li>isDesktop: True if width < 421px </li>
+            <li>stringToSearch: used for search method</li>
+            <li>isModalOpen: Show modal satus</li>
+            <li>isMenuOpen: Show menu status</li>
+          </ul>
+        </li>
+      </ul>
+      <ul>
+        <li>User states
+          <ul>
+            <li>id: Show logged user id</li>
+            <li>name: User name</li>
+            <li>username: User username</li>
+            <li>isAdmin: True if user logged has Admin rol</li>
+            <li>logged: User login stattus</li>
+            <li>image: User image path</li>
+            <li>allMessages: User messages list</li>
+          </ul>
+        </li >
+      </ul>
+    <br/>
+    <ul>
+      <li>Penguins states
+        <ul>
+          <li>allPenguins: Show all penguins. Will change if view is filtered</li>
+          <li>penguin: Show selected penguin info</li>    
+        </ul>
       </li>
+    </ul>
+    <br/>
+    <ul>
+      <li>Messages states
+        <ul>
+          <li>allMessages: Show user messages filtered by selected penguin</li>
+          <li>message: Show selected message info</li>    
+        </ul>
+      </li>
+    </ul>
+    <br/>
+    <ul>System states      
+      <li>server
+        <ul>
+          <li>connected: True if server available</li>
+          <li>path: Server if available, local if server is not reachable</li>
+          <li>status: info about connection</li>
+        </ul>
+      </li>                
+    </ul>
   </ul>
 </div>
