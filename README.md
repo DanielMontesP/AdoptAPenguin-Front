@@ -195,9 +195,10 @@
       </br>
       </br>
       <div className="features-container">     
+      Web app - CRUD API for mobile and desktop browsers
        <ul>
       <li>
-      Web app - CRUD API for mobile and desktop browsers
+      Description
         <ul>
           <li>User authentication method: token encrypted</li>
           <li>UI Layer managed with React Redux</li>
@@ -209,6 +210,7 @@
         </ul>
       </li>
       <li>
+      <br/>
       What this app does..
         <ul>
           <li>Login/Register user</li>
@@ -229,6 +231,7 @@
         </ul>
       </li>
      <li>
+     <br/>
       Features     
       <ul>
       <li>Responsive site</li>
@@ -240,6 +243,7 @@
       </ul>
      </li>
      <li>
+     <br/>
      UI states
       <ul>
         <li>Loading: True is request is still loading</li>
@@ -266,6 +270,7 @@
       </ul>
     </li >
     <li>
+    <br/>
     Penguins states
       <ul>
         <li>allPenguins: Show all penguins. Will change if view is filtered</li>
@@ -273,6 +278,7 @@
       </ul>
     </li>
     <li>
+    <br/>
     Messages states
       <ul>
         <li>allMessages: Show user messages filtered by selected penguin</li>
@@ -280,6 +286,7 @@
       </ul>
       </li>
       <li>
+      <br/>
       System states
       <ul>
         <li>
