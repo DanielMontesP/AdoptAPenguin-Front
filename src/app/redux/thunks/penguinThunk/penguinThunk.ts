@@ -14,7 +14,7 @@ import {
   resetPenguinsActionCreator,
   searchPenguinsActionCreator,
 } from "../../features/penguinSlice/penguinSlice";
-import { penguins } from "../../../../utils/data.js";
+import { penguins } from "../../../../utils/penguins-export.js";
 import { blankFormData } from "../../initializers/iniPenguins";
 import { finishedLoadingActionCreator } from "../../features/uiSlice/uiSlice";
 import {
