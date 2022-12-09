@@ -7,7 +7,6 @@ const initialState: UISliceState = {
   modalType: "",
   headerTitle: "AdoptAPenguin.com",
   headerLastTitle: "",
-  apiResponse: "",
   isDesktop: false,
   stringToSearch: "",
   isMenuOpen: false,
@@ -48,18 +47,6 @@ const uiSlice = createSlice({
       headerLastTitle: action.payload,
     }),
 
-    apiResponse: (ui: UISliceState, action: PayloadAction<any>) => ({
-      ...ui,
-      feedback: true,
-      apiResponse: action.payload,
-    }),
-
-    cleanApiResponse: (ui: UISliceState, action: PayloadAction<void>) => ({
-      ...ui,
-      feedback: false,
-      apiResponse: "",
-    }),
-
     isDesktop: (ui: UISliceState, action: PayloadAction<any>) => ({
       ...ui,
       isDesktop: action.payload,
@@ -90,8 +77,6 @@ export const {
   stringToSearch: stringToSearchActionCreator,
   modalMessage: modalMessageActionCreator,
   modalType: modalTypeActionCreator,
-  apiResponse: apiResponseActionCreator,
-  cleanApiResponse: cleanApiResponseActionCreator,
   isDesktop: isDesktopActionCreator,
   isMenuOpen: isMenuOpenActionCreator,
   isModalOpen: isModalOpenActionCreator,

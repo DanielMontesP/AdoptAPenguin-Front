@@ -4,7 +4,6 @@ export interface UISliceState {
   modalType: string;
   headerTitle: string;
   headerLastTitle: string;
-  apiResponse: string;
   isDesktop: boolean;
   stringToSearch: string;
   isMenuOpen: boolean;
