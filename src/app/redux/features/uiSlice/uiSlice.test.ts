@@ -1,9 +1,6 @@
-import { IProcess } from "../../types/system/systemInterfaces";
 import uiReducer, {
   loadingActionCreator,
   finishedLoadingActionCreator,
-  apiResponseActionCreator,
-  cleanApiResponseActionCreator,
   modalMessageActionCreator,
   isDesktopActionCreator,
   stringToSearchActionCreator,
@@ -16,7 +13,6 @@ const initialState = {
   feedback: false,
   headerTitle: "",
   headerLastTitle: "",
-  apiResponse: "",
   isDesktop: false,
   stringToSearch: "search",
   isMenuOpen: false,
@@ -30,7 +26,6 @@ const expectedState = {
   feedback: true,
   headerTitle: "",
   headerLastTitle: "",
-  apiResponse: "Message",
   isDesktop: false,
   stringToSearch: "search",
   isMenuOpen: false,
@@ -44,7 +39,6 @@ const expectedLoadingState = {
   feedback: true,
   headerTitle: "",
   headerLastTitle: "",
-  apiResponse: "Message",
   isDesktop: false,
   stringToSearch: "",
   isMenuOpen: false,
@@ -77,27 +71,6 @@ describe("Given the finiushedLoadingActionCreator", () => {
   });
 });
 
-describe("Given the apiResponse", () => {
-  describe("When invoked", () => {
-    test("Then the feedback ui state should change to true and the given message should be added", () => {
-      const action = apiResponseActionCreator("Message");
-      const loadedState = uiReducer(initialState, action);
-
-      expect(loadedState).toEqual(expectedState);
-    });
-  });
-});
-
-describe("Given the cleanApiResponse", () => {
-  describe("When invoked", () => {
-    test("Then the feedback ui state should change to true", () => {
-      const action = cleanApiResponseActionCreator();
-      const loadedState = uiReducer(initialState, action);
-
-      expect(loadedState).toEqual(initialState);
-    });
-  });
-});
 describe("Given the modalMessage", () => {
   describe("When invoked", () => {
     test("Then the feedback ui state should change to true", () => {
