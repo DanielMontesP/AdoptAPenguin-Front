@@ -32,6 +32,8 @@ export const Modal = ({
   const { penguin } = useAppSelector((state) => state.penguins);
   const listMessages = useAppSelector((state) => state.user.allMessages);
   const listPenguins = useAppSelector((state) => state.penguins.allPenguins);
+  const listNotifys = useAppSelector((state) => state.user.allMessages);
+
   const { headerTitle, modalType } = useAppSelector((state) => state.ui);
 
   let isWellcome = false;
@@ -135,6 +137,7 @@ export const Modal = ({
       case "Settings":
         writeFile("penguins", listPenguins);
         writeFile("messages", listMessages);
+        writeFile("notifys", listNotifys);
         break;
       case "Server":
         navigate("./");
