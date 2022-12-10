@@ -93,7 +93,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
       dispatch(resetMessageThunk());
 
       navigate(`/detail/${penguin.id}#messages`);
-    } else if (event.currentTarget.outerText.includes("Reply")) {
+    } else if (event.currentTarget.outerText?.includes("Reply")) {
       handleCreateReply();
     } else {
       processEdit();
