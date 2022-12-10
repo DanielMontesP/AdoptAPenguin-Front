@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
-import { handleNoConexion } from "../uiHandlers/uiHandlers";
+import { handleNoConexion } from "../../functions/uiHandlers/uiHandlers";
 
 interface Props {
   penguin: IPenguin;

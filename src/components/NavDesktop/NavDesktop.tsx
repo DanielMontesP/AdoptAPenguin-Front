@@ -17,8 +17,8 @@ import {
   loadLikes,
   handleSearchEnter,
   handleLogoutPrompt,
-} from "../uiHandlers/uiHandlers";
-import { handleFocus } from "../../utils/utils";
+  handleFocus,
+} from "../../functions/uiHandlers/uiHandlers";
 import { ReactDimmer } from "react-dimmer";
 import { Modal } from "../Modals/ModalPrompt";
 interface Props {

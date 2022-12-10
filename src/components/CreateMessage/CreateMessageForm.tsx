@@ -1,10 +1,12 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { useNavigate } from "react-router-dom";
-import { cleanArray, getCurrentDate, setMessageRead } from "../../utils/utils";
+import {
+  getCurrentDate,
+  setMessageRead,
+} from "../../functions/sysHandlers/sysHandlers";
 import {
   createMessageThunk,
-  editMessageThunk,
   getMessagesThunk,
   resetMessageThunk,
 } from "../../app/redux/thunks/messageThunk/messageThunk";
@@ -12,7 +14,9 @@ import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 import {
   blankMessageData,
   newMessageData,
+  newReply,
 } from "../../app/redux/initializers/iniMessages";
+import { headerTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 
 let modFields = [""];
 
@@ -29,16 +33,22 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const { headerTitle } = useAppSelector((state) => state.ui);
 
   const isCreate = headerTitle === "New...";
+  // const isReply = headerTitle === "Reply";
 
   const [formData, setFormData] = useState(
-    isCreate ? newMessageData(idUser, penguin.id) : blankMessageData
+    isCreate
+      ? newMessageData(idUser, penguin.id)
+      : newReply(idUser, penguin.id, message.subject)
   );
 
   const processCreate = (type: string) => {
-    formData.idPenguin = penguin.id;
-    formData.idUser = idUser;
-    formData.data = getCurrentDate();
-
+    if (type === "create") {
+      formData.idPenguin = penguin.id;
+      formData.idUser = idUser;
+      formData.data = getCurrentDate();
+    } else {
+      formData.subject = message.subject;
+    }
     dispatch(createMessageThunk(formData));
   };
 
@@ -60,22 +70,23 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
     modFields.push(event.target.id);
   };
 
-  const processEdit = () => {
-    modFields = cleanArray(modFields);
+  // const processEdit = () => {
+  //   modFields = cleanArray(modFields);
 
-    dispatch(
-      editMessageThunk(formData, "Update fields: " + modFields.join(", "))
-    );
-    dispatch(getMessagesThunk(penguin.id));
-  };
+  //   dispatch(
+  //     editMessageThunk(formData, "Update fields: " + modFields.join(", "))
+  //   );
+  //   dispatch(getMessagesThunk(penguin.id));
+  // };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
     if (isCreate) {
       processCreate("New");
-    } else {
-      processEdit();
+    } else if (event.currentTarget.n) {
+      dispatch(headerTitleActionCreator("Reply"));
+      navigate(`/messages/create`);
     }
 
     dispatch(getMessagesThunk(penguin.id));
@@ -104,9 +115,14 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           {textRead}
         </div>
         <label htmlFor="description">Send To</label>
-        <span id="sendto" placeholder="Send To" className="form-input-disabled">
-          {penguin.name}
-        </span>
+        <input
+          id="sendto"
+          type="text"
+          placeholder="Send To"
+          className="form-input-disabled"
+          value={penguin.name}
+          readOnly
+        />
         <label htmlFor="subject">Subject</label>
         <input
           id="subject"
@@ -114,7 +130,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           placeholder="Subject"
           value={formData.subject || message.subject}
           autoComplete="off"
-          className="form-input"
+          className={isCreate ? "form-input" : "form-input-disabled"}
           onChange={handleInputChange}
         />
 
@@ -125,12 +141,16 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           placeholder="Message"
           value={formData.content || message.content}
           autoComplete="off"
-          className="input-description"
+          className={
+            isCreate
+              ? "input-description"
+              : "input-description form-input-disabled"
+          }
           onChange={handleInputChange}
         />
 
         <button type="submit" className="bt-message-save" placeholder="bt-save">
-          {isCreate ? "Send" : "Save"}
+          {isCreate ? "Send" : "Reply"}
         </button>
       </form>
     </div>

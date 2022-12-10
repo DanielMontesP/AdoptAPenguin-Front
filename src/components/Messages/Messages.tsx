@@ -4,7 +4,7 @@ import { resetMessageThunk } from "../../app/redux/thunks/messageThunk/messageTh
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import PagesStyles from "../../Styles/PagesStyles";
-import { hasNewMessages } from "../../utils/utils";
+import { hasNewMessages } from "../../functions/sysHandlers/sysHandlers";
 import Message from "../Message/Message";
 
 interface Props {

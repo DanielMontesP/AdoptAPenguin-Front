@@ -13,12 +13,12 @@ import {
   resetMessageActionCreator,
   resetMessagesActionCreator,
 } from "../../features/messageSlice/messageSlice";
-import { messages } from "../../../../utils/messages-export.js";
+import { messages } from "../../../../functions/messages-export.js";
 import { blankMessageData } from "../../initializers/iniMessages";
 import { getPenguinThunk } from "../penguinThunk/penguinThunk";
-import { handleNoConexion } from "../../../../components/uiHandlers/uiHandlers";
+import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
 import { getUserNewMessagesActionCreator } from "../../features/userSlice/userSlice";
-import { connectedToServer } from "../../../../utils/utils";
+import { connectedToServer } from "../../../../functions/sysHandlers/sysHandlers";
 
 let firstLoad = true;
 let textNoConnection = "";

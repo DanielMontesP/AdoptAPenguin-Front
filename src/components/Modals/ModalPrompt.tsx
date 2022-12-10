@@ -4,10 +4,10 @@ import { isModalOpenActionCreator } from "../../app/redux/features/uiSlice/uiSli
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { deleteMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { deletePenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
-import { writeFile } from "../../utils/utils";
+import { writeFile } from "../../functions/sysHandlers/sysHandlers";
 import EditButtons from "../EditButtons/EditButtons";
 import Help from "../Help/Help";
-import { handleLogout } from "../uiHandlers/uiHandlers";
+import { handleLogout } from "../../functions/uiHandlers/uiHandlers";
 import WellcomeComments from "../WellcomeComments/WellcomeComments";
 import { correctAction } from "./Modals";
 

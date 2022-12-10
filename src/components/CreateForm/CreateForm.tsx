@@ -6,7 +6,10 @@ import {
   editPenguinThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { useNavigate } from "react-router-dom";
-import { cleanArray, resizeFile } from "../../utils/utils";
+import {
+  cleanArray,
+  resizeFile,
+} from "../../functions/sysHandlers/sysHandlers";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import {
   blankFormData,

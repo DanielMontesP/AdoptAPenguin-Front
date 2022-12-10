@@ -22,8 +22,8 @@ import {
   connectedToServer,
   getUserNewMessages,
   handleServerInfo,
-} from "../../../../utils/utils";
-import { handleNoConexion } from "../../../../components/uiHandlers/uiHandlers";
+} from "../../../../functions/sysHandlers/sysHandlers";
+import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
 
 let message = "";
 

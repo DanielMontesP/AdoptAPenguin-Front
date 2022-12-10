@@ -38,7 +38,7 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
     <PagesStyles className={`notifyer-container`} title="notifyer-container">
       <div className="notifyer-header">
         <span className="notify-counter" onClick={handleClose}>
-          {messages?.length}
+          {messages?.length || 0}
         </span>
         <button
           className="notifyer-bt-close"
