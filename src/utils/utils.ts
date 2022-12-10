@@ -1,6 +1,7 @@
 import Resizer from "react-image-file-resizer";
 import { serverInfoActionCreator } from "../app/redux/features/systemSlice/systemSlice";
 import { getUserNewMessagesActionCreator } from "../app/redux/features/userSlice/userSlice";
+import { AppDispatch } from "../app/redux/store/store";
 import { editMessageThunk } from "../app/redux/thunks/messageThunk/messageThunk";
 import {
   IMessage,
@@ -125,4 +126,64 @@ export const writeFile = (type: string, data: any) => {
   element.download = `${type}-export.json`;
   document.body.appendChild(element);
   element.click();
+};
+
+export const isAvailable = (dispatch: any): boolean => {
+  const url = `${process.env.REACT_APP_API_URL}penguins`;
+  let result = false;
+
+  const timeout = new Promise((resolve, reject) => {
+    setTimeout(reject, 5900, "Request timed out");
+  });
+
+  const request = fetch(url);
+
+  Promise.race([timeout, request])
+    .then((response) => {
+      handleServerInfo(
+        true,
+        `${process.env.REACT_APP_API_URL}`,
+        "Connected to server",
+        dispatch
+      );
+      result = true;
+    })
+    .finally(() => {
+      return result;
+    })
+    .catch((error) => {
+      handleServerInfo(false, `local`, `Timeout error: ${error}`, dispatch);
+      result = false;
+    });
+  return result;
+};
+
+export const connectedToServer = () => async (dispatch: AppDispatch) => {
+  let result = false;
+
+  return await fetch(`${process.env.REACT_APP_API_URL}penguins`)
+    .then((resp) => {
+      if (resp.status === 200) {
+        handleServerInfo(
+          true,
+          `${process.env.REACT_APP_API_URL}`,
+          "Connected to server",
+          dispatch
+        );
+        result = true;
+        return true;
+      } else {
+        handleServerInfo(false, `local`, "Unavailable", dispatch);
+        Promise.reject(new Error("Server unavailable"));
+        result = false;
+      }
+    })
+    .then(() => {
+      handleServerInfo(false, `local`, "Unavailable", dispatch);
+      return result;
+    })
+    .catch((error) => {
+      handleServerInfo(false, `local`, "Unavailable", dispatch);
+      return false;
+    });
 };

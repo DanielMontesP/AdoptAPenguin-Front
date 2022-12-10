@@ -197,6 +197,7 @@
       <div className="features-container">     
       Web app - CRUD API for mobile and desktop browsers
       </br>
+      </br>
       <ul>
         <li>Description
           <ul>
@@ -261,6 +262,7 @@
           </ul>
         </li>
       </ul>
+      <br/>
       <ul>
         <li>User states
           <ul>
@@ -294,8 +296,8 @@
     </ul>
     <br/>
     <ul>System states      
-      <li>server
-        <ul>
+      <li>
+        <ul>server
           <li>connected: True if server available</li>
           <li>path: Server if available, local if server is not reachable</li>
           <li>status: info about connection</li>

@@ -80,7 +80,7 @@ const RegisterForm = (): JSX.Element => {
         className="form-input"
       />
       <div className="link">
-        Already registered? Please
+        Registered? Please
         <Link to="/login"> Log in</Link>
       </div>
       <div className="submitContainer">

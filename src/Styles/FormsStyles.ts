@@ -61,6 +61,18 @@ const FormsStyles = styled.div`
     color: white;
     font-size: 12px;
   }
+
+  .form {
+    width: 100%;
+    max-width: 350px;
+    row-gap: 15px;
+    position: fixed;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
   @media only screen and (max-width: 420px) {
     button {
       padding: 14px 20px;
@@ -75,8 +87,19 @@ const FormsStyles = styled.div`
       margin: auto;
     }
 
-    .form-input {
+    .login-form {
       width: 100%;
+      max-width: 350px;
+      row-gap: 15px;
+      position: fixed;
+      top: 30%;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .form-input {
+      width: 80%;
       height: 45px;
       border: 2px solid black;
       align-items: center;
@@ -121,7 +144,6 @@ const FormsStyles = styled.div`
     label {
       display: flex;
       flex-direction: column;
-      width: 100%;
       text-align: left;
       color: white;
       font-size: 20px;
@@ -417,17 +439,17 @@ const FormsStyles = styled.div`
       border-radius: 15px;
       opacity: 1;
     }
-  }
 
-  .form {
-    width: 100%;
-    max-width: 500px;
-    row-gap: 15px;
-    position: fixed;
-    top: 30%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+    .login-form {
+      width: 100%;
+      max-width: 350px;
+      row-gap: 15px;
+      position: fixed;
+      top: 30%;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
   }
 
   .form-register {
@@ -524,7 +546,17 @@ const FormsStyles = styled.div`
     display: none;
   }
 
-  .bt-login,
+  .bt-login {
+    width: 80%;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    border-radius: 15px;
+    border: 1px solid white;
+  }
+
   .bt-register {
     width: 80%;
     height: 50px;

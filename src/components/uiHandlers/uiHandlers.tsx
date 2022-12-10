@@ -18,7 +18,6 @@ import {
   resetMessageThunk,
 } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
-import { AppDispatch } from "../../app/redux/store/store";
 import { handleServerInfo } from "../../utils/utils";
 
 let firstLoad = true;
@@ -175,30 +174,4 @@ export const handleNoConexion = (dispatch: any, idUser: string) => {
   dispatch(isModalOpenActionCreator(true));
 
   handleServerInfo(false, "local", "Unavailable", dispatch);
-};
-
-export const connectedToServer = () => async (dispatch: AppDispatch) => {
-  let result = false;
-
-  return await fetch(`${process.env.REACT_APP_API_URL}penguins`)
-    .then((resp) => {
-      if (resp.status === 200) {
-        handleServerInfo(
-          true,
-          `${process.env.REACT_APP_API_URL}`,
-          "Connected to server",
-          dispatch
-        );
-        result = true;
-      } else {
-        Promise.reject(new Error("Server unavailable"));
-        result = false;
-      }
-    })
-    .then(() => {
-      return result;
-    })
-    .catch((error) => {
-      return false;
-    });
 };

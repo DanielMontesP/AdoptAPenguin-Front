@@ -16,11 +16,9 @@ import {
 import { messages } from "../../../../utils/messages-export.js";
 import { blankMessageData } from "../../initializers/iniMessages";
 import { getPenguinThunk } from "../penguinThunk/penguinThunk";
-import {
-  connectedToServer,
-  handleNoConexion,
-} from "../../../../components/uiHandlers/uiHandlers";
+import { handleNoConexion } from "../../../../components/uiHandlers/uiHandlers";
 import { getUserNewMessagesActionCreator } from "../../features/userSlice/userSlice";
+import { connectedToServer } from "../../../../utils/utils";
 
 let firstLoad = true;
 let textNoConnection = "";
@@ -38,8 +36,8 @@ export const getMessagesThunk =
   (idPenguin: string) => async (dispatch: AppDispatch) => {
     try {
       const token = localStorage.getItem("token");
-      const connected = connectedToServer() ? true : false;
 
+      const connected = connectedToServer() ? true : false;
       if (connected) {
         if (token) {
           const {

@@ -18,11 +18,12 @@ import {
 } from "../../../../components/Modals/Modals";
 import { headerTitleActionCreator } from "../../features/uiSlice/uiSlice";
 import { AppDispatch } from "../../store/store";
-import { getUserNewMessages, handleServerInfo } from "../../../../utils/utils";
 import {
   connectedToServer,
-  handleNoConexion,
-} from "../../../../components/uiHandlers/uiHandlers";
+  getUserNewMessages,
+  handleServerInfo,
+} from "../../../../utils/utils";
+import { handleNoConexion } from "../../../../components/uiHandlers/uiHandlers";
 
 let message = "";
 
@@ -123,6 +124,7 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token");
 
     const connected = connectedToServer() ? true : false;
+
     if (connected) {
       if (token && id) {
         const { data: user } = await axios.get(
@@ -174,18 +176,31 @@ export const getUserMessagesThunk =
   (idUser: string) => async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token");
 
-    if (token) {
-      const {
-        data: { messages },
-      } = await axios.get(
-        `${process.env.REACT_APP_API_URL}users/messages/${idUser}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      getUserNewMessages(messages, dispatch);
-      dispatch(getUserMessagesActionCreator(messages));
+    const connected = connectedToServer() ? true : false;
+
+    if (connected) {
+      if (token) {
+        const {
+          data: { messages },
+        } = await axios.get(
+          `${process.env.REACT_APP_API_URL}users/messages/${idUser}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        handleServerInfo(
+          true,
+          `${process.env.REACT_APP_API_URL}`,
+          "Connected to server",
+          dispatch
+        );
+        getUserNewMessages(messages, dispatch);
+        dispatch(getUserMessagesActionCreator(messages));
+      }
+    } else {
+      handleNoConexion(dispatch, "user.id");
+      setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
     }
   };

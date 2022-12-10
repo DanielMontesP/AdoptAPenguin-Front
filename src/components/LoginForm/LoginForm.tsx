@@ -30,7 +30,12 @@ const LoginForm = () => {
   };
 
   return (
-    <form className="form" autoComplete="off" noValidate onSubmit={submitLogin}>
+    <form
+      className="login-form"
+      autoComplete="off"
+      noValidate
+      onSubmit={submitLogin}
+    >
       <label htmlFor="username">Username</label>
       <input
         id="username"

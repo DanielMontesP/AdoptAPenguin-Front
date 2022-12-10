@@ -37,16 +37,14 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
   return (
     <PagesStyles className={`notifyer-container`} title="notifyer-container">
       <div className="notifyer-header">
-        <span onClick={handleClose}>
-          {messages?.length === 0 ? "No new messages" : "You have new messages"}
+        <span className="notify-counter" onClick={handleClose}>
+          {messages?.length}
         </span>
         <button
           className="notifyer-bt-close"
           onClick={handleClose}
           placeholder="notifyer-bt-close"
-        >
-          {!isHide ? "Hide" : "Show"}
-        </button>
+        />
       </div>
       <div className={`notify-list${hidder}`}>
         {messages?.length > 0
