@@ -28,6 +28,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   const { stringToSearch, headerTitle } = useAppSelector((state) => state.ui);
 
   const { user } = useAppSelector((state) => state);
+  const { connected } = useAppSelector((state) => state.system.server);
 
   const [, setModal] = useState(false);
   const [isSearchClicked, setSearch] = useState(false);
@@ -128,6 +129,11 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
     navigate(`/users/messages/${user.id}`);
   };
 
+  const handleStatus = () => {
+    return connected ? " Connected" : " local";
+  };
+  const classServerStatus = connected ? "server" : "local";
+
   const HidderSearch = isSearchClicked
     ? ` opacity-full ${classButtonSearch}`
     : ` ${classButtonSearch}`;
@@ -138,6 +144,11 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
         <img src={userImage} className="user-photo" alt="user" />
         <h3 className="user-username">{toPascalCase(`${user.username}`)}</h3>
       </div>
+      <h3 className="server-status-container">
+        <span className={`server-status-${classServerStatus}`}>
+          {handleStatus()}
+        </span>
+      </h3>
       <div className="menu-vertical">
         <hr className="menu-hr-photo" />
 

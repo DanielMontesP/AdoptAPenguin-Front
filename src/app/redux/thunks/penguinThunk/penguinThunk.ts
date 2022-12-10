@@ -18,7 +18,7 @@ import { penguins } from "../../../../utils/penguins-export.js";
 import { blankFormData } from "../../initializers/iniPenguins";
 import { finishedLoadingActionCreator } from "../../features/uiSlice/uiSlice";
 import { handleNoConexion } from "../../../../components/uiHandlers/uiHandlers";
-import { handleServerInfo, isAvailable } from "../../../../utils/utils";
+import { connectedToServer, handleServerInfo } from "../../../../utils/utils";
 import { getUserMessagesThunk } from "../userThunk/userThunk";
 import { UserInfo } from "../../types/userInterfaces/userInterfaces";
 import jwtDecode from "jwt-decode";
@@ -41,7 +41,8 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token");
 
     const userData: UserInfo = jwtDecode(token as string);
-    const connected = isAvailable(dispatch);
+    let connected = false;
+    connected = connectedToServer() ? true : false;
 
     if (connected) {
       if (token) {
@@ -83,7 +84,7 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token");
     const userData: UserInfo = jwtDecode(token as string);
 
-    const connected = isAvailable(dispatch);
+    const connected = connectedToServer() ? true : false;
 
     if (connected) {
       if (token) {
@@ -101,12 +102,14 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
             false
           );
         }
+
         handleServerInfo(
           true,
           `${process.env.REACT_APP_API_URL}`,
           "Connected to server",
           dispatch
         );
+
         dispatch(finishedLoadingActionCreator("loadingActionCreator"));
         dispatch(loadPenguinsActionCreator(penguins));
 
@@ -139,7 +142,7 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
 
     const userData: UserInfo = jwtDecode(token as string);
 
-    const connected = isAvailable(dispatch);
+    const connected = connectedToServer() ? true : false;
 
     if (connected) {
       if (token) {
@@ -154,6 +157,7 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
         if (penguins.length === 0) {
           setLoadingOffWithMessage("GET Likes: No likes added yet", false);
         }
+
         handleServerInfo(
           true,
           `${process.env.REACT_APP_API_URL}`,
@@ -192,7 +196,7 @@ export const createFavThunk =
 
       const token = localStorage.getItem("token");
 
-      const connected = isAvailable(dispatch);
+      const connected = connectedToServer() ? true : false;
 
       if (connected) {
         if (token) {
@@ -213,6 +217,7 @@ export const createFavThunk =
             "Connected to server",
             dispatch
           );
+
           dispatch(createPenguinActionCreator(penguin));
 
           dispatch(loadFavsThunk());
@@ -242,7 +247,7 @@ export const getPenguinThunk =
       if (id !== "") {
         const token = localStorage.getItem("token");
 
-        const connected = isAvailable(dispatch);
+        const connected = connectedToServer() ? true : false;
 
         if (connected) {
           if (token) {
@@ -254,6 +259,7 @@ export const getPenguinThunk =
                 },
               }
             );
+
             handleServerInfo(
               true,
               `${process.env.REACT_APP_API_URL}`,
@@ -285,7 +291,7 @@ export const searchPenguinThunk =
     try {
       const token = localStorage.getItem("token");
 
-      const connected = isAvailable(dispatch);
+      const connected = connectedToServer() ? true : false;
 
       if (connected) {
         if (search !== "" && token) {
@@ -299,12 +305,14 @@ export const searchPenguinThunk =
               },
             }
           );
+
           handleServerInfo(
             true,
             `${process.env.REACT_APP_API_URL}`,
             "Connected to server",
             dispatch
           );
+
           dispatch(searchPenguinsActionCreator(penguins));
 
           setLoadingOffWithMessage(`SEARCH: ${search} finished.`, false);
@@ -326,7 +334,8 @@ export const deletePenguinThunk =
       setLoadingOn("DELETE FAV: Deleting...");
 
       const token = localStorage.getItem("token");
-      const connected = isAvailable(dispatch);
+
+      const connected = connectedToServer() ? true : false;
 
       if (connected) {
         if (token) {
@@ -339,14 +348,15 @@ export const deletePenguinThunk =
             }
           );
 
+          handleServerInfo(
+            true,
+            `${process.env.REACT_APP_API_URL}`,
+            "Connected to server",
+            dispatch
+          );
+
           if (status === 200) {
             dispatch(deletePenguinActionCreator(id));
-            handleServerInfo(
-              true,
-              `${process.env.REACT_APP_API_URL}`,
-              "Connected to server",
-              dispatch
-            );
 
             setLoadingOffWithMessage(
               "DELETE Penguin: Finished successfully!",
@@ -372,7 +382,7 @@ export const editPenguinThunk =
 
       const token = localStorage.getItem("token");
 
-      const connected = isAvailable(dispatch);
+      const connected = connectedToServer() ? true : false;
 
       if (connected) {
         if (token) {
@@ -385,12 +395,14 @@ export const editPenguinThunk =
               },
             }
           );
+
           handleServerInfo(
             true,
             `${process.env.REACT_APP_API_URL}`,
             "Connected to server",
             dispatch
           );
+
           dispatch(getPenguinThunk(formPenguin.id));
           dispatch(editPenguinActionCreator(penguin));
 

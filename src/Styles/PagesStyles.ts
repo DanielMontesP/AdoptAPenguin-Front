@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import iconHamburguer from "../images/menu_hamburguer.png";
+import iconHamburguer from "../images/hamburguer-white-45.png";
 import iconBack from "../images/detailPrev.png";
 import iconFavs from "../images/icon-stars.png";
 import iconMenuFavs from "../images/fav-empty.png";
@@ -29,6 +29,22 @@ const PagesStyles = styled.div`
     justify-content: center;
     position: relative;
     left: -5px;
+    top: -15px;
+    display: inline-flex;
+  }
+
+  .notify-counter {
+    height: 30px;
+    width: 30px;
+    padding: 2px;
+    color: white;
+    font-size: 16px;
+    background-color: rgb(241, 14, 14);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 10px;
     top: -15px;
     display: inline-flex;
   }

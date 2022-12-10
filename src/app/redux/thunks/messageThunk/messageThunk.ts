@@ -18,7 +18,7 @@ import { blankMessageData } from "../../initializers/iniMessages";
 import { getPenguinThunk } from "../penguinThunk/penguinThunk";
 import { handleNoConexion } from "../../../../components/uiHandlers/uiHandlers";
 import { getUserNewMessagesActionCreator } from "../../features/userSlice/userSlice";
-import { isAvailable } from "../../../../utils/utils";
+import { connectedToServer } from "../../../../utils/utils";
 
 let firstLoad = true;
 let textNoConnection = "";
@@ -37,8 +37,7 @@ export const getMessagesThunk =
     try {
       const token = localStorage.getItem("token");
 
-      const connected = isAvailable(dispatch);
-
+      const connected = connectedToServer() ? true : false;
       if (connected) {
         if (token) {
           const {
