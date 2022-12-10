@@ -74,8 +74,8 @@ export const Modal = ({
     case "Edit":
       windowTitle = "Options";
       break;
-    case "Setup":
-      windowTitle = "Setup";
+    case "Settings":
+      windowTitle = "Settings";
       break;
     default:
       windowTitle = "Please confirm";
@@ -93,7 +93,7 @@ export const Modal = ({
     } else if (type === "FFeature") {
       content = "This feature will be available soon.";
     } else if (type === "Settings") {
-      content = "Export Penguins and Personal Messages list?";
+      content = "Export penguins and personal messages list?";
     }
 
     return type !== "Edit" ? <h3 className="modal-message">{content}</h3> : "";
@@ -185,7 +185,7 @@ export const Modal = ({
           >
             Ok
           </button>
-          {type === "delete" || type === "logOutUser" ? (
+          {type === "delete" || type === "logOutUser" || type === "Settings" ? (
             <button
               onClick={handleCancelClick}
               className={cancelClass}
