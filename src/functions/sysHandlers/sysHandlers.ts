@@ -51,9 +51,11 @@ export const getUserNewMessages = (messages: IMessage[], dispatch: any) => {
     if (!message.read) {
       newMessages.push({
         id: message.id,
+        idUser: message.idUser,
         idPenguin: message.idPenguin,
         subject: message.subject,
         data: message.data,
+        content: message.content,
       });
     }
   });

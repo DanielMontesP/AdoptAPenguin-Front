@@ -10,9 +10,11 @@ export interface IMessage {
 
 export interface INewMessage {
   id: string;
+  idUser: string;
   idPenguin: string;
   data: string;
   subject: string;
+  content: string;
 }
 
 export interface blankMessageDataInterface {
