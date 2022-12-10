@@ -26,7 +26,7 @@ describe("Given the loadPenguinsThunk function", () => {
       const thunk = getMessagesThunk(mockPenguin.id);
       await thunk(dispatch);
 
-      expect(dispatch).not.toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });

@@ -58,7 +58,7 @@ describe("Given the getuserThunk function", () => {
       const thunk = getUserThunk(mockUser.id);
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalled();
+      expect(dispatch).not.toHaveBeenCalled();
     });
   });
 

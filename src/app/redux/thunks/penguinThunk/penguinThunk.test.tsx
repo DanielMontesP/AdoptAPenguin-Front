@@ -172,7 +172,7 @@ describe("Given the getPenguinThunk function", () => {
       const thunk = getPenguinThunk(mockPenguin.id);
       await thunk(dispatch);
 
-      expect(dispatch).not.toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });
@@ -278,7 +278,7 @@ describe("Given the editPenguinThunk function", () => {
       const thunk = editPenguinThunk(mockPenguin, "favs");
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(3);
     });
   });
 
@@ -296,7 +296,7 @@ describe("Given the editPenguinThunk function", () => {
       const thunk = deletePenguinThunk(mockPenguin.id);
       await thunk(dispatch);
 
-      expect(dispatch).not.toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalled();
     });
   });
   describe("When search is called", () => {
