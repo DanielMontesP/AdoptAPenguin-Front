@@ -37,13 +37,13 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const isCreate = headerTitle === "New..." && headerLastTitle !== "Reply";
   const isReply = headerLastTitle === "Reply";
 
-  const [formData, setFormData] = useState(
-    isCreate
-      ? newMessageData(idUser, penguin.id)
-      : isReply
-      ? newReply(idUser, penguin.id, message.subject)
-      : blankMessageData
-  );
+  const thisFormData = isCreate
+    ? newMessageData(idUser, penguin.id)
+    : isReply
+    ? newReply(idUser, penguin.id, message.subject)
+    : blankMessageData;
+
+  const [formData, setFormData] = useState(thisFormData);
 
   const processCreate = (type: string) => {
     if (type === "create") {
