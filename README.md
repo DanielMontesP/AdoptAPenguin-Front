@@ -295,14 +295,9 @@
       </li>
     </ul>
     <br/>
-    <ul>System states      
-      <li>
-        <ul>server
-          <li>connected: True if server available</li>
-          <li>path: Server if available, local if server is not reachable</li>
-          <li>status: info about connection</li>
-        </ul>
-      </li>                
-    </ul>
-  </ul>
+    <ul>System states    
+        <li>connected: True if server available</li>
+         <li>path: Server if available, local if server is not reachable</li>
+         <li>status: info about connection</li>
+    </ul>      
 </div>
