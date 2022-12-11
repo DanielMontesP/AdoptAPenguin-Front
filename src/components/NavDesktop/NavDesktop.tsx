@@ -21,6 +21,7 @@ import {
 } from "../../functions/uiHandlers/uiHandlers";
 import { ReactDimmer } from "react-dimmer";
 import { Modal } from "../Modals/ModalPrompt";
+import { getUserMessagesThunk } from "../../app/redux/thunks/userThunk/userThunk";
 interface Props {
   headerTitle: string;
 }
@@ -87,6 +88,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const viewMessages = () => {
+    dispatch(getUserMessagesThunk(user.id));
     navigate(`/users/messages/${user.id}`);
   };
 
