@@ -8,8 +8,11 @@ import {
   getPenguinThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
-import { cleanArray, hasNewMessages } from "../../utils/utils";
-import { handleNoConexion } from "../uiHandlers/uiHandlers";
+import {
+  cleanArray,
+  hasNewMessages,
+} from "../../functions/sysHandlers/sysHandlers";
+import { handleNoConexion } from "../../functions/uiHandlers/uiHandlers";
 
 interface Props {
   penguin: IPenguin;

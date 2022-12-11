@@ -1,14 +1,14 @@
-import { mockMessage, mockMessages } from "../mocks/messages";
-import { mockPenguin } from "../mocks/penguins";
+import { mockMessage, mockMessages } from "../../mocks/messages";
+import { mockPenguin } from "../../mocks/penguins";
 import {
   resizeFile,
   getCurrentDate,
   hasNewMessages,
   setMessageRead,
-} from "./utils";
+} from "./sysHandlers";
 
-import { writeFile } from "./utils";
-import { penguins } from "./penguins-export.js";
+import { writeFile } from "./sysHandlers";
+import { penguins } from "../penguins-export.js";
 
 jest.mock("react-image-file-resizer", () => ({
   ...jest.requireActual("react-image-file-resizer"),

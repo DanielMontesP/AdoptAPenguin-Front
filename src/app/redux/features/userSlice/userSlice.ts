@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IMessage, INewMessage } from "../../types/message/messageInterfaces";
+import { IMessage } from "../../types/message/messageInterfaces";
 import { UserInfo, UserState } from "../../types/userInterfaces/userInterfaces";
 
 interface SliceIniState {
@@ -9,7 +9,7 @@ interface SliceIniState {
   isAdmin: boolean;
   image: string;
   allMessages: IMessage[];
-  newMessages: INewMessage[];
+  newMessages: IMessage[];
 }
 
 const initialState: SliceIniState = {
@@ -67,7 +67,7 @@ const userSlice = createSlice({
       ...messages,
       allMessages: [...action.payload],
     }),
-    getUserNewMessages: (messages, action: PayloadAction<INewMessage[]>) => ({
+    getUserNewMessages: (messages, action: PayloadAction<IMessage[]>) => ({
       ...messages,
       newMessages: [...action.payload],
     }),

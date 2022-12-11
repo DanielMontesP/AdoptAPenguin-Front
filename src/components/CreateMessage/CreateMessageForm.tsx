@@ -1,7 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { useNavigate } from "react-router-dom";
-import { cleanArray, getCurrentDate, setMessageRead } from "../../utils/utils";
+import {
+  cleanArray,
+  getCurrentDate,
+  setMessageRead,
+} from "../../functions/sysHandlers/sysHandlers";
 import {
   createMessageThunk,
   editMessageThunk,
@@ -12,7 +16,9 @@ import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 import {
   blankMessageData,
   newMessageData,
+  newReply,
 } from "../../app/redux/initializers/iniMessages";
+import { headerTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 
 let modFields = [""];
 
@@ -26,19 +32,32 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
 
   const idUser = useAppSelector((state) => state.user.id);
   const { penguin } = useAppSelector((state) => state.penguins);
-  const { headerTitle } = useAppSelector((state) => state.ui);
+  const { headerTitle, headerLastTitle } = useAppSelector((state) => state.ui);
 
-  const isCreate = headerTitle === "New...";
+  let isCreate = false;
+  let isReply = false;
+  let thisFormData: IMessage = blankMessageData;
 
-  const [formData, setFormData] = useState(
-    isCreate ? newMessageData(idUser, penguin.id) : blankMessageData
-  );
+  if (headerTitle === "New..." && headerLastTitle !== "Reply") {
+    isCreate = true;
+
+    thisFormData = newMessageData(idUser, penguin.id);
+  } else if (headerLastTitle === "Reply") {
+    isReply = true;
+
+    thisFormData = newReply(idUser, penguin.id, `RE: ${message.subject}`);
+  }
+
+  const [formData, setFormData] = useState(thisFormData);
 
   const processCreate = (type: string) => {
-    formData.idPenguin = penguin.id;
-    formData.idUser = idUser;
-    formData.data = getCurrentDate();
-
+    if (type === "create") {
+      formData.idPenguin = penguin.id;
+      formData.idUser = idUser;
+      formData.data = getCurrentDate();
+    } else {
+      formData.subject = message.subject;
+    }
     dispatch(createMessageThunk(formData));
   };
 
@@ -74,15 +93,26 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
 
     if (isCreate) {
       processCreate("New");
+      dispatch(getMessagesThunk(penguin.id));
+      setFormData(blankMessageData);
+      dispatch(resetMessageThunk());
+
+      navigate(`/detail/${penguin.id}#messages`);
+    } else if (event.currentTarget.outerText?.includes("Reply")) {
+      handleCreateReply();
     } else {
       processEdit();
+      dispatch(getMessagesThunk(penguin.id));
+      setFormData(blankMessageData);
+      dispatch(resetMessageThunk());
+
+      navigate(`/detail/${penguin.id}#messages`);
     }
+  };
 
-    dispatch(getMessagesThunk(penguin.id));
-    setFormData(blankMessageData);
-    dispatch(resetMessageThunk());
-
-    navigate(`/detail/${penguin.id}#messages`);
+  const handleCreateReply = (): void => {
+    dispatch(headerTitleActionCreator("Reply"));
+    navigate(`/message/create`);
   };
 
   const handleMessageRead = () => {
@@ -104,9 +134,14 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           {textRead}
         </div>
         <label htmlFor="description">Send To</label>
-        <span id="sendto" placeholder="Send To" className="form-input-disabled">
-          {penguin.name}
-        </span>
+        <input
+          id="sendto"
+          type="text"
+          placeholder="Send To"
+          className="form-input-disabled"
+          value={penguin.name}
+          readOnly
+        />
         <label htmlFor="subject">Subject</label>
         <input
           id="subject"
@@ -114,8 +149,11 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           placeholder="Subject"
           value={formData.subject || message.subject}
           autoComplete="off"
-          className="form-input"
+          className={
+            isCreate || isReply ? "message-input" : "form-input-disabled"
+          }
           onChange={handleInputChange}
+          readOnly={!isCreate && !isReply ? true : false}
         />
 
         <label htmlFor="content">Message</label>
@@ -125,13 +163,33 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           placeholder="Message"
           value={formData.content || message.content}
           autoComplete="off"
-          className="input-description"
+          className={
+            isCreate || isReply
+              ? "input-description"
+              : "input-description form-input-disabled"
+          }
           onChange={handleInputChange}
+          readOnly={!isCreate && !isReply ? true : false}
         />
 
-        <button type="submit" className="bt-message-save" placeholder="bt-save">
-          {isCreate ? "Send" : "Save"}
-        </button>
+        {isCreate ? (
+          <button
+            type="submit"
+            className="bt-message-save"
+            placeholder="bt-save"
+          >
+            Send
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="bt-message-save"
+            placeholder="bt-reply"
+            id="bt-reply"
+          >
+            Reply
+          </button>
+        )}
       </form>
     </div>
   );

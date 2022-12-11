@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
-import { toPascalCase } from "../../utils/utils";
+import { toPascalCase } from "../../functions/sysHandlers/sysHandlers";
 import iconPhotoEmpty from "../../images/contact-photo-add.png";
 import { Modal } from "../Modals/ModalPrompt";
 import ActionButtons from "../ActionButtons/ActionButtons";
@@ -9,7 +9,7 @@ import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThun
 import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import EditActions from "../EditActions/EditActions";
-import { handleNoConexion } from "../uiHandlers/uiHandlers";
+import { handleNoConexion } from "../../functions/uiHandlers/uiHandlers";
 interface Props {
   penguin: IPenguin;
 }

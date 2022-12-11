@@ -14,18 +14,22 @@ import {
   resetPenguinsActionCreator,
   searchPenguinsActionCreator,
 } from "../../features/penguinSlice/penguinSlice";
-import { penguins } from "../../../../utils/penguins-export.js";
+import { penguins } from "../../../../functions/penguins-export.js";
 import { blankFormData } from "../../initializers/iniPenguins";
 import { finishedLoadingActionCreator } from "../../features/uiSlice/uiSlice";
-import { handleNoConexion } from "../../../../components/uiHandlers/uiHandlers";
-import { connectedToServer, handleServerInfo } from "../../../../utils/utils";
+import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
+import {
+  connectedToServer,
+  handleServerInfo,
+} from "../../../../functions/sysHandlers/sysHandlers";
 import { getUserMessagesThunk } from "../userThunk/userThunk";
 import { UserInfo } from "../../types/userInterfaces/userInterfaces";
 import jwtDecode from "jwt-decode";
 
 let firstLoad = true;
 let textNoConnection = "";
-const textFirstLoad = "Server is still loading, functionality will be disabled";
+const textFirstLoad =
+  "Sorry, server is still starting. Navigation enable but data will be not editable until server is restarted";
 const textNextLoadsNoConnection =
   "Please try again in few seconds. Service render.com is still initializing";
 
@@ -37,6 +41,9 @@ if (firstLoad) {
 
 export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
   try {
+    setLoadingOn(
+      `GET Penguins:...Service render.com is starting...Be watter penguin...Load will finish as soon as possible.`
+    );
     firstLoad = false;
     const token = localStorage.getItem("token");
 
@@ -63,6 +70,7 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
 
         dispatch(getUserMessagesThunk(userData.id));
 
+        setLoadingOffWithMessage(`GET Penguins: Finished successfully`, false);
         dispatch(finishedLoadingActionCreator("loadingActionCreator"));
         dispatch(loadPenguinsActionCreator(penguins));
       } else {

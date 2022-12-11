@@ -8,9 +8,10 @@ import {
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import noPhoto from "../../images/userPhoto.png";
-import { handleFocus, toPascalCase } from "../../utils/utils";
+import { toPascalCase } from "../../functions/sysHandlers/sysHandlers";
 import {
   addNewFav,
+  handleFocus,
   handleLogoutPrompt,
   handleSearchSubmit,
   loadAbout,
@@ -18,7 +19,7 @@ import {
   loadHelp,
   loadHome,
   loadLikes,
-} from "../uiHandlers/uiHandlers";
+} from "../../functions/uiHandlers/uiHandlers";
 
 interface Props {
   isMenuOpened: boolean;

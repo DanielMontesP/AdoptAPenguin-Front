@@ -18,7 +18,7 @@ import {
   resetMessageThunk,
 } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
-import { handleServerInfo } from "../../utils/utils";
+import { handleServerInfo } from "../sysHandlers/sysHandlers";
 
 let firstLoad = true;
 
@@ -59,6 +59,13 @@ export const handleLogout = (dispatch: any, navigate: any): void => {
   localStorage.removeItem("token");
 
   navigate("/");
+};
+
+export const handleFocus = (field: string): void => {
+  const input = document.querySelector(field) as HTMLElement;
+  if (input != null) {
+    input.focus();
+  }
 };
 
 export const loadFavs = (
@@ -159,7 +166,7 @@ export const addNewFav = (dispatch: any, navigate: any) => {
 export const handleNoConexion = (dispatch: any, idUser: string) => {
   let textNoConnection = "";
   const textFirstLoad =
-    "Sorry, server is still starting. Data will be not editable";
+    "Sorry, server is still starting. Navigation enable but data will be not editable until server is restarted";
   const textNextLoadsNoConnection =
     "Please try again in few seconds. Service render.com is still initializing";
 

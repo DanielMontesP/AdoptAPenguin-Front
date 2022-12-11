@@ -1,12 +1,9 @@
 import Resizer from "react-image-file-resizer";
-import { serverInfoActionCreator } from "../app/redux/features/systemSlice/systemSlice";
-import { getUserNewMessagesActionCreator } from "../app/redux/features/userSlice/userSlice";
-import { AppDispatch } from "../app/redux/store/store";
-import { editMessageThunk } from "../app/redux/thunks/messageThunk/messageThunk";
-import {
-  IMessage,
-  INewMessage,
-} from "../app/redux/types/message/messageInterfaces";
+import { serverInfoActionCreator } from "../../app/redux/features/systemSlice/systemSlice";
+import { getUserNewMessagesActionCreator } from "../../app/redux/features/userSlice/userSlice";
+import { AppDispatch } from "../../app/redux/store/store";
+import { editMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
+import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 
 export function getCurrentDate(separator = "/") {
   let newDate = new Date();
@@ -46,14 +43,17 @@ export function hasNewMessages(allMessages: IMessage[], idPenguin: string) {
 }
 
 export const getUserNewMessages = (messages: IMessage[], dispatch: any) => {
-  const newMessages: INewMessage[] = [];
+  const newMessages: IMessage[] = [];
   messages.forEach((message) => {
     if (!message.read) {
       newMessages.push({
         id: message.id,
+        idUser: message.idUser,
         idPenguin: message.idPenguin,
         subject: message.subject,
         data: message.data,
+        content: message.content,
+        read: message.read,
       });
     }
   });
@@ -98,13 +98,6 @@ export const resizeFile = (file: File) =>
     );
   });
 
-export const handleFocus = (field: string): void => {
-  const input = document.querySelector(field) as HTMLElement;
-  if (input != null) {
-    input.focus();
-  }
-};
-
 export const writeFile = (type: string, data: any) => {
   const element = document.createElement("a");
   let searchParam = {};
@@ -133,7 +126,7 @@ export const isAvailable = (dispatch: any): boolean => {
   let result = false;
 
   const timeout = new Promise((resolve, reject) => {
-    setTimeout(reject, 5900, "Request timed out");
+    setTimeout(reject, 15900, "Request timed out");
   });
 
   const request = fetch(url);

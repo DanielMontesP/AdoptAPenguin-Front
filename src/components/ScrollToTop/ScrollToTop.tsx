@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { MouseEvent, useEffect, useState } from "react";
 import { FaAngleUp } from "react-icons/fa";
 
 const ScrollToTop = () => {
@@ -12,18 +12,21 @@ const ScrollToTop = () => {
       }
     });
   }, []);
-  const goToTop = () => {
+  const goToTop = (event: MouseEvent<SVGElement>) => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
   return (
-    <div className="top-to-btm">
-      {" "}
+    <div className="top-to-btm" title="scroll-top-container">
       {showTopBtn && (
-        <FaAngleUp className="icon-position icon-style" onClick={goToTop} />
-      )}{" "}
+        <FaAngleUp
+          className="icon-position icon-style"
+          onClick={goToTop}
+          title="bt-totop"
+        />
+      )}
     </div>
   );
 };

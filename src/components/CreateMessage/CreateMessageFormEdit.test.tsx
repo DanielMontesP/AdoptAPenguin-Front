@@ -26,7 +26,7 @@ describe("Given a CreateMessageForm component", () => {
   describe("When edit Message is submited", () => {
     test("Then processEdit is called", () => {
       const textToFind = "Subject";
-      const placeHolderSubmit = "bt-save";
+      const placeHolderSubmit = "bt-reply";
 
       const handleSubmit = jest.fn();
       const processEdit = jest.fn();
