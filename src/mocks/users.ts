@@ -6,7 +6,7 @@ export const mockUserLogin: UserRegister = {
 };
 
 export const mockUser = {
-  id: "idUser",
+  id: "idUser1",
   username: "user1xxx",
   password: "user1",
 };

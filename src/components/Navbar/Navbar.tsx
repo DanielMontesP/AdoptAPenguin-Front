@@ -14,8 +14,9 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
 
   const showNotifiyer = () => {
     return headerTitle === "Inbox" ||
-      headerTitle === "Edit..." ||
-      headerTitle === "New..."
+      headerTitle.includes("Edit") ||
+      headerTitle.includes("New") ||
+      headerTitle.includes("Message")
       ? false
       : true;
   };

@@ -22,14 +22,7 @@ const CreatePage = ({ type, form }: Props): JSX.Element => {
 
   const isCreate = type === "Create";
 
-  let thisTitle = "";
-  const isMessage = headerTitle.includes("message");
-
-  if (isMessage) {
-    thisTitle = isCreate ? "New message..." : "Edit message...";
-  } else {
-    thisTitle = isCreate ? "New..." : "Edit...";
-  }
+  const thisTitle = isCreate ? `New ${form}` : `${form}`;
 
   useEffect(() => {
     const SetTitleHeader = (title: string, lastTitle: string) => {
@@ -42,7 +35,7 @@ const CreatePage = ({ type, form }: Props): JSX.Element => {
 
   return (
     <FormsStyles>
-      {form === "Message" ? (
+      {form === "Message" || form === "Reply" ? (
         <CreateMessageForm message={message} />
       ) : (
         <CreateForm penguin={penguin} />

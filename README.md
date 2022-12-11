@@ -247,30 +247,31 @@
         </li>
       </ul>
      <br/>
+     Redux states
       <ul>
-        <li>UI states
+        <li>UI
           <ul>
-            <li>Loading: True is request is still loading</li>
+            <li>Loading: True if request is still loading</li>
             <li>ModalMessage: Text message if modal prompt is called</li>
             <li>ModalType: Type for modal prompt</li>
             <li>HeaderTitle: Actual Header title</li>
             <li>HeaderLastTItle: Save last title used for back navigation operations</li>
-            <li>isDesktop: True if width < 421px </li>
+            <li>isDesktop: True if width > 420px </li>
             <li>stringToSearch: used for search method</li>
-            <li>isModalOpen: Show modal satus</li>
-            <li>isMenuOpen: Show menu status</li>
+            <li>isModalOpen: Modal status</li>
+            <li>isMenuOpen: Menu status</li>
           </ul>
         </li>
       </ul>
       <br/>
       <ul>
-        <li>User states
+        <li>User 
           <ul>
-            <li>id: Show logged user id</li>
+            <li>id: User id</li>
             <li>name: User name</li>
             <li>username: User username</li>
-            <li>isAdmin: True if user logged has Admin rol</li>
-            <li>logged: User login stattus</li>
+            <li>isAdmin: True if user has Admin role</li>
+            <li>logged: User login status</li>
             <li>image: User image path</li>
             <li>allMessages: User messages list</li>
           </ul>
@@ -278,26 +279,30 @@
       </ul>
     <br/>
     <ul>
-      <li>Penguins states
+      <li>Penguins 
         <ul>
-          <li>allPenguins: Show all penguins. Will change if view is filtered</li>
-          <li>penguin: Show selected penguin info</li>    
+          <li>allPenguins: List of selected penguins</li>
+          <li>penguin: Selected penguin info</li>    
         </ul>
       </li>
     </ul>
     <br/>
     <ul>
-      <li>Messages states
+      <li>Messages 
         <ul>
-          <li>allMessages: Show user messages filtered by selected penguin</li>
-          <li>message: Show selected message info</li>    
+          <li>allMessages: User messages filtered by selected penguin</li>
+          <li>message: Selected message info</li>    
         </ul>
       </li>
     </ul>
     <br/>
-    <ul>System states    
-        <li>connected: True if server available</li>
-         <li>path: Server if available, local if server is not reachable</li>
-         <li>status: info about connection</li>
-    </ul>      
+    <ul>
+      <li>System 
+        <ul>
+            <li>connected: True if server available</li>
+            <li>path: Server if available, local if server is not reachable</li>
+            <li>status: info about connection</li>
+        </ul>      
+      </li>
+    </ul>
 </div>

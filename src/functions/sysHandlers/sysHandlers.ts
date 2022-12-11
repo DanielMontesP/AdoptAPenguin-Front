@@ -48,6 +48,7 @@ export const getUserNewMessages = (messages: IMessage[], dispatch: any) => {
     if (!message.read) {
       newMessages.push({
         id: message.id,
+        idParent: message.idParent,
         idUser: message.idUser,
         idPenguin: message.idPenguin,
         subject: message.subject,

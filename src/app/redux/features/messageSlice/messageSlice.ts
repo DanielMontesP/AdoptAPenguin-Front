@@ -10,6 +10,7 @@ const initialState: SliceIniState = {
   allMessages: [],
   message: {
     id: "",
+    idParent: "",
     idUser: "",
     idPenguin: "",
     subject: "",
