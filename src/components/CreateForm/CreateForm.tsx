@@ -58,14 +58,9 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     const newFormData = new FormData();
 
     newFormData.append("_id", formData.id);
-    newFormData.append(
-      "name",
-      formData.name === "" ? penguin.name : formData.name
-    );
-    newFormData.append(
-      "category",
-      formData.category === "" ? penguin.category : formData.category
-    );
+    newFormData.append("id", formData.id);
+    newFormData.append("name", formData?.name || penguin.name);
+    newFormData.append("category", formData?.category || penguin.category);
     newFormData.append("likes", JSON.stringify(penguin.likes));
     newFormData.append("likers", JSON.stringify(penguin.likers));
     newFormData.append("favs", JSON.stringify(penguin.favs));
@@ -74,7 +69,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     newFormData.append("imageResized", formData.imageResized);
     newFormData.append(
       "description",
-      formData.description === "" ? penguin.description : formData.description
+      formData?.description || penguin.description
     );
 
     dispatch(
@@ -106,7 +101,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       const imageResized = await resizeFile(file);
 
       setFormData({
-        ...(isCreate ? formData : penguin),
+        ...(isCreate || isEdit ? formData : penguin),
         image: file,
         imageResized: imageResized,
       });
