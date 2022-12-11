@@ -30,9 +30,8 @@ const PenguinsPage = ({ type }: Props) => {
       dispatch(headerLastTitleActionCreator(lastTitle));
     };
     if (modalType === "") {
-      if (!isDesktop) {
-        SetTitleHeader(type, headerLastTitle);
-      }
+      SetTitleHeader(type, headerLastTitle);
+
       if (headerTitle === "Likes") {
         dispatch(loadLikesThunk());
       } else if (headerTitle === "Favorites") {
