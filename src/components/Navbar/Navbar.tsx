@@ -13,12 +13,11 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   const { newMessages } = useAppSelector((state) => state.user);
 
   const showNotifiyer = () => {
-    return headerTitle === "Inbox" ||
-      headerTitle.includes("Edit") ||
-      headerTitle.includes("New") ||
-      headerTitle.includes("Message")
-      ? false
-      : true;
+    return headerTitle === "Favorites" ||
+      headerTitle.includes("Home") ||
+      headerTitle.includes("Likes")
+      ? true
+      : false;
   };
 
   return (
