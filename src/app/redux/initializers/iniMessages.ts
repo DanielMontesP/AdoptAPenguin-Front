@@ -1,5 +1,5 @@
 import { getCurrentDate } from "../../../functions/sysHandlers/sysHandlers";
-import { IMessage, INewMessage } from "../types/message/messageInterfaces";
+import { IMessage } from "../types/message/messageInterfaces";
 
 export const blankMessageData: IMessage = {
   id: "",
@@ -28,13 +28,13 @@ export const newReply = (
   idUser: string,
   idPenguin: string,
   subject: string
-): INewMessage => {
+): IMessage => {
   const formData = {
     id: "",
     idPenguin,
     idUser,
     content: "",
-    subject: "RE: " + { subject },
+    subject: subject,
     data: getCurrentDate(),
     read: false,
   };

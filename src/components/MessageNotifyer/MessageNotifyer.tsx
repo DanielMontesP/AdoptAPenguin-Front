@@ -1,12 +1,12 @@
 import PagesStyles from "../../Styles/PagesStyles";
-import { INewMessage } from "../../app/redux/types/message/messageInterfaces";
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../app/redux/hooks/hooks";
 import { getMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
+import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 
 interface Props {
-  messages: INewMessage[];
+  messages: IMessage[];
 }
 
 const MessageNotifyer = ({ messages }: Props): JSX.Element => {

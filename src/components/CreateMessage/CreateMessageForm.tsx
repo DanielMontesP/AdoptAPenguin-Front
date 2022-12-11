@@ -34,14 +34,19 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const { penguin } = useAppSelector((state) => state.penguins);
   const { headerTitle, headerLastTitle } = useAppSelector((state) => state.ui);
 
-  const isCreate = headerTitle === "New..." && headerLastTitle !== "Reply";
-  const isReply = headerLastTitle === "Reply";
+  let isCreate = false;
+  let isReply = false;
+  let thisFormData: IMessage = blankMessageData;
 
-  const thisFormData = isCreate
-    ? newMessageData(idUser, penguin.id)
-    : isReply
-    ? newReply(idUser, penguin.id, message.subject)
-    : blankMessageData;
+  if (headerTitle === "New..." && headerLastTitle !== "Reply") {
+    isCreate = true;
+
+    thisFormData = newMessageData(idUser, penguin.id);
+  } else if (headerLastTitle === "Reply") {
+    isReply = true;
+
+    thisFormData = newReply(idUser, penguin.id, `RE: ${message.subject}`);
+  }
 
   const [formData, setFormData] = useState(thisFormData);
 
@@ -144,8 +149,11 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           placeholder="Subject"
           value={formData.subject || message.subject}
           autoComplete="off"
-          className={isCreate || isReply ? "form-input" : "form-input-disabled"}
+          className={
+            isCreate || isReply ? "message-input" : "form-input-disabled"
+          }
           onChange={handleInputChange}
+          readOnly={!isCreate && !isReply ? true : false}
         />
 
         <label htmlFor="content">Message</label>
@@ -161,6 +169,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
               : "input-description form-input-disabled"
           }
           onChange={handleInputChange}
+          readOnly={!isCreate && !isReply ? true : false}
         />
 
         {isCreate ? (

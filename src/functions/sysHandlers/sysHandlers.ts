@@ -3,10 +3,7 @@ import { serverInfoActionCreator } from "../../app/redux/features/systemSlice/sy
 import { getUserNewMessagesActionCreator } from "../../app/redux/features/userSlice/userSlice";
 import { AppDispatch } from "../../app/redux/store/store";
 import { editMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
-import {
-  IMessage,
-  INewMessage,
-} from "../../app/redux/types/message/messageInterfaces";
+import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 
 export function getCurrentDate(separator = "/") {
   let newDate = new Date();
@@ -46,7 +43,7 @@ export function hasNewMessages(allMessages: IMessage[], idPenguin: string) {
 }
 
 export const getUserNewMessages = (messages: IMessage[], dispatch: any) => {
-  const newMessages: INewMessage[] = [];
+  const newMessages: IMessage[] = [];
   messages.forEach((message) => {
     if (!message.read) {
       newMessages.push({
@@ -56,6 +53,7 @@ export const getUserNewMessages = (messages: IMessage[], dispatch: any) => {
         subject: message.subject,
         data: message.data,
         content: message.content,
+        read: message.read,
       });
     }
   });
