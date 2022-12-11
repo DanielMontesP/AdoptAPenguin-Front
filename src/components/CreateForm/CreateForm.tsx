@@ -30,6 +30,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const { headerTitle } = useAppSelector((state) => state.ui);
 
   const isCreate = headerTitle.includes("New");
+  const isEdit = headerTitle.includes("Penguin");
 
   const [formData, setFormData] = useState(
     isCreate ? newPenguinFormData(user.id) : blankFormData
@@ -91,12 +92,10 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   ): void => {
     event.preventDefault();
 
-    if (isCreate) {
-      setFormData({
-        ...(isCreate ? formData : penguin),
-        [event.target.id]: event.target.value,
-      });
-    }
+    setFormData({
+      ...(isCreate || isEdit ? formData : penguin),
+      [event.target.id]: event.target.value,
+    });
 
     modFields.push(event.target.id);
   };

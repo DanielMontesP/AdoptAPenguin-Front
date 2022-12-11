@@ -107,6 +107,7 @@ const DetailPageStyles = styled.div`
     .detail-container {
       margin: auto;
       margin-bottom: 10px;
+      margin-top: 140px;
       border-radius: 5px 5px 5px 5px;
       height: 87.4vh;
     }
@@ -233,7 +234,7 @@ const DetailPageStyles = styled.div`
       margin: auto;
       margin-bottom: 10px;
       border-radius: 5px 5px 5px 5px;
-      margin-top: 5.2rem;
+      margin-top: 140px;
       height: 87.4vh;
     }
 
