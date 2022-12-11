@@ -29,7 +29,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const { user } = useAppSelector((state) => state);
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  const isCreate = headerTitle === "New...";
+  const isCreate = headerTitle.includes("New");
 
   const [formData, setFormData] = useState(
     isCreate ? newPenguinFormData(user.id) : blankFormData
@@ -93,12 +93,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
     if (isCreate) {
       setFormData({
-        ...formData,
-        [event.target.id]: event.target.value,
-      });
-    } else {
-      setFormData({
-        ...(formData.id ? formData : penguin),
+        ...(isCreate ? formData : penguin),
         [event.target.id]: event.target.value,
       });
     }
@@ -112,7 +107,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       const imageResized = await resizeFile(file);
 
       setFormData({
-        ...(formData.image ? formData : penguin),
+        ...(isCreate ? formData : penguin),
         image: file,
         imageResized: imageResized,
       });

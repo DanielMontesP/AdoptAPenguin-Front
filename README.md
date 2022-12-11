@@ -205,9 +205,9 @@
             <li>UI Layer managed with React Redux</li>
             <li>Frontend language: Typescript, Javascript, CSS</li>
             <li>Backend language: Javascript</li>
-            <li>Backend managed with Axios</li>
+            <li>Backend API managed with Axios</li>
             <li>Data storage: MongoDB</li>
-            <li>Backup storage: Firebase</li>
+            <li>Backup storage for images: Firebase</li>
           </ul>
         </li>
       </ul>

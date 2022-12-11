@@ -15,8 +15,8 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
       logged: mockLogged,
       id: mockUser.id,
     },
-    ui: { headerLastTitle: "Favorites" },
     headerLastTitle: "Favorites",
+    headerTitle: "Favorites",
   }),
   useAppDispatch: () => jest.fn(),
 }));
@@ -33,7 +33,17 @@ describe("Given a CreateForm component", () => {
 
       const handleSubmit = jest.fn();
       const handleImg = jest.fn();
-
+      jest.mock("../../app/redux/hooks/hooks", () => ({
+        useAppSelector: () => ({
+          user: {
+            logged: mockLogged,
+            id: mockUser.id,
+          },
+          headerLastTitle: "Favorites",
+          headerTitle: "New",
+        }),
+        useAppDispatch: () => jest.fn(),
+      }));
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -50,6 +60,7 @@ describe("Given a CreateForm component", () => {
       userEvent.click(buttonSave);
       const fakeFile = new File(["test"], "test.png", { type: "image/png" });
 
+      userEvent.click(image);
       userEvent.upload(image, fakeFile);
       handleImg();
       handleSubmit();
@@ -116,7 +127,7 @@ describe("Given a CreateForm component", () => {
     });
   });
 
-  describe("When rendered and lastTile Home", () => {
+  describe("When rendered and lastTitle Home", () => {
     test("Then navigate to Favorites'", async () => {
       const textToFind = "Name";
       const placeHolderSubmit = "bt-save";
@@ -131,6 +142,7 @@ describe("Given a CreateForm component", () => {
           logged: mockLogged,
           id: "id",
           headerLastTitle: "Home",
+          headerTitle: "Favorites",
         }),
         useAppDispatch: () => jest.fn(),
       }));
