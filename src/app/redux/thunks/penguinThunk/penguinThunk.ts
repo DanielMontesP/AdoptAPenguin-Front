@@ -237,15 +237,12 @@ export const createFavThunk =
         }
       } else {
         handleNoConexion(dispatch, "user.id");
-        setLoadingOffWithMessage(
-          `CREATE Favourite: ${textNoConnection}`,
-          false
-        );
+        setLoadingOffWithMessage(`CREATE Favorite: ${textNoConnection}`, false);
       }
     } catch (error) {
       handleNoConexion(dispatch, "user.id");
       dispatch(loadPenguinsActionCreator(penguins));
-      setLoadingOffWithMessage(`CREATE Favourite: ${textNoConnection}`, false);
+      setLoadingOffWithMessage(`CREATE Favorite: ${textNoConnection}`, false);
     }
   };
 
