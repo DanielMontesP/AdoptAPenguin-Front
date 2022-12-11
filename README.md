@@ -247,8 +247,9 @@
         </li>
       </ul>
      <br/>
+     Redux states
       <ul>
-        <li>UI states
+        <li>UI
           <ul>
             <li>Loading: True if request is still loading</li>
             <li>ModalMessage: Text message if modal prompt is called</li>
@@ -257,14 +258,14 @@
             <li>HeaderLastTItle: Save last title used for back navigation operations</li>
             <li>isDesktop: True if width > 420px </li>
             <li>stringToSearch: used for search method</li>
-            <li>isModalOpen: Modal satus</li>
+            <li>isModalOpen: Modal status</li>
             <li>isMenuOpen: Menu status</li>
           </ul>
         </li>
       </ul>
       <br/>
       <ul>
-        <li>User states
+        <li>User 
           <ul>
             <li>id: User id</li>
             <li>name: User name</li>
@@ -278,7 +279,7 @@
       </ul>
     <br/>
     <ul>
-      <li>Penguins states
+      <li>Penguins 
         <ul>
           <li>allPenguins: List of selected penguins</li>
           <li>penguin: Selected penguin info</li>    
@@ -287,7 +288,7 @@
     </ul>
     <br/>
     <ul>
-      <li>Messages states
+      <li>Messages 
         <ul>
           <li>allMessages: User messages filtered by selected penguin</li>
           <li>message: Selected message info</li>    
@@ -295,9 +296,13 @@
       </li>
     </ul>
     <br/>
-    <ul>System states    
-        <li>connected: True if server available</li>
-         <li>path: Server if available, local if server is not reachable</li>
-         <li>status: info about connection</li>
-    </ul>      
+    <ul>
+      <li>System 
+        <ul>
+            <li>connected: True if server available</li>
+            <li>path: Server if available, local if server is not reachable</li>
+            <li>status: info about connection</li>
+        </ul>      
+      </li>
+    </ul>
 </div>
