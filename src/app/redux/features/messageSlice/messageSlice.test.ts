@@ -1,8 +1,4 @@
 import { mockMessage, mockMessages } from "../../../../mocks/messages";
-import {
-  mockEmptyDataPenguin,
-  mockPenguinsEmpty,
-} from "../../../../mocks/penguins";
 import { IMessage } from "../../types/message/messageInterfaces";
 
 import penguinReducer, {
@@ -22,15 +18,7 @@ interface SliceIniState {
 
 const initialState: SliceIniState = {
   allMessages: mockMessages,
-  message: {
-    idUser: "idUser",
-    idPenguin: "idPenguin",
-    subject: "subject",
-    content: "content",
-    data: "data",
-    read: false,
-    id: "id",
-  },
+  message: mockMessage,
 };
 
 describe("Given the getMessagesActionCreator", () => {

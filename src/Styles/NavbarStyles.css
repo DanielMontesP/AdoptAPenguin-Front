@@ -150,17 +150,7 @@ h3 {
 .notify-data {
   width: 65px;
 }
-.notifyer-bt-close {
-  background: url("../images/mail-empty.png");
-  background-color: transparent;
-  background-position: left;
-  background-size: contain;
-  font-size: 12px;
-  color: rgb(71, 70, 70);
-  width: 45px;
-  height: 45px;
-  border: 0;
-}
+
 .notify-read-img {
   background: url("../images/view-16.png");
   background-repeat: no-repeat;
@@ -234,6 +224,23 @@ h3 {
     align-items: center;
   }
 
+  .notifyer-bt-close {
+    background: url("../images/mail-empty.png");
+    background-color: transparent;
+    background-position: left;
+    background-size: cover;
+    font-size: 12px;
+    color: rgb(71, 70, 70);
+    width: 20px;
+    height: 45px;
+    border: 0;
+  }
+
+  .notifyer-bt-close-selected {
+    background-size: contain;
+    width: 45px;
+  }
+
   .view-list-counter {
     width: 90%;
     margin: auto;
@@ -276,7 +283,7 @@ h3 {
   .penguins-container {
     border-radius: 8px;
     padding: 0 10px 15px;
-    margin-top: 95px;
+    margin-top: 120px;
     text-align: center;
     width: 95%;
   }
@@ -673,7 +680,6 @@ h1 {
   border: 0;
   margin: auto;
   margin-right: 10px;
-  z-index: -1;
 }
 
 .animatedDelete {
@@ -706,6 +712,18 @@ h1 {
     color: white;
     text-align: center;
     margin: auto;
+  }
+
+  .notifyer-bt-close {
+    background: url("../images/mail-empty.png");
+    background-color: transparent;
+    background-position: left;
+    background-size: contain;
+    font-size: 12px;
+    color: rgb(71, 70, 70);
+    width: 45px;
+    height: 45px;
+    border: 0;
   }
 
   .title-big {

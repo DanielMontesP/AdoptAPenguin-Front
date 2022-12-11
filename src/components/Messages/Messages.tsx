@@ -6,6 +6,10 @@ import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import PagesStyles from "../../Styles/PagesStyles";
 import { hasNewMessages } from "../../functions/sysHandlers/sysHandlers";
 import Message from "../Message/Message";
+import {
+  headerLastTitleActionCreator,
+  headerTitleActionCreator,
+} from "../../app/redux/features/uiSlice/uiSlice";
 
 interface Props {
   allMessages: IMessage[];
@@ -20,6 +24,9 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
 
   const handleClick = () => {
     dispatch(resetMessageThunk());
+
+    dispatch(headerTitleActionCreator("New message"));
+    dispatch(headerLastTitleActionCreator("Message"));
 
     navigate(`../message/create/`);
   };

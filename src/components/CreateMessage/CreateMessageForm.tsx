@@ -18,7 +18,6 @@ import {
   newMessageData,
   newReply,
 } from "../../app/redux/initializers/iniMessages";
-import { headerTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 
 let modFields = [""];
 
@@ -32,31 +31,37 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
 
   const idUser = useAppSelector((state) => state.user.id);
   const { penguin } = useAppSelector((state) => state.penguins);
-  const { headerTitle, headerLastTitle } = useAppSelector((state) => state.ui);
+  const { headerTitle } = useAppSelector((state) => state.ui);
 
   let isCreate = false;
   let isReply = false;
   let thisFormData: IMessage = blankMessageData;
 
-  if (headerTitle === "New..." && headerLastTitle !== "Reply") {
+  if (headerTitle.includes("New")) {
     isCreate = true;
+  }
 
-    thisFormData = newMessageData(idUser, penguin.id);
-  } else if (headerLastTitle === "Reply") {
+  if (headerTitle.includes("Reply")) {
     isReply = true;
 
-    thisFormData = newReply(idUser, penguin.id, `RE: ${message.subject}`);
+    thisFormData = newReply(
+      message.id,
+      idUser,
+      penguin.id,
+      `RE: ${message.subject}`
+    );
+  } else {
+    thisFormData = newMessageData(idUser, penguin.id);
   }
 
   const [formData, setFormData] = useState(thisFormData);
 
   const processCreate = (type: string) => {
-    if (type === "create") {
-      formData.idPenguin = penguin.id;
-      formData.idUser = idUser;
-      formData.data = getCurrentDate();
-    } else {
-      formData.subject = message.subject;
+    formData.idPenguin = penguin.id;
+    formData.idUser = idUser;
+    formData.data = getCurrentDate();
+    if (isReply) {
+      formData.subject = thisFormData.subject;
     }
     dispatch(createMessageThunk(formData));
   };
@@ -66,15 +71,10 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   ): void => {
     event.preventDefault();
 
-    isCreate
-      ? setFormData({
-          ...formData,
-          [event.target.id]: event.target.value,
-        })
-      : setFormData({
-          ...(formData.id ? formData : message),
-          [event.target.id]: event.target.value,
-        });
+    setFormData({
+      ...thisFormData,
+      [event.target.id]: event.target.value,
+    });
 
     modFields.push(event.target.id);
   };
@@ -111,8 +111,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   };
 
   const handleCreateReply = (): void => {
-    dispatch(headerTitleActionCreator("Reply"));
-    navigate(`/message/create`);
+    navigate(`/reply/create`);
   };
 
   const handleMessageRead = () => {
@@ -147,7 +146,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           id="subject"
           type="text"
           placeholder="Subject"
-          value={formData.subject || message.subject}
+          value={formData.subject || thisFormData.subject}
           autoComplete="off"
           className={
             isCreate || isReply ? "message-input" : "form-input-disabled"

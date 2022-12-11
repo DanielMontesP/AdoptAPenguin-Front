@@ -1,5 +1,6 @@
 export interface IMessage {
   id: string;
+  idParent: string;
   idUser: string;
   idPenguin: string;
   subject: string;

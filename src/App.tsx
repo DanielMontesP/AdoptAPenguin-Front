@@ -144,6 +144,14 @@ function App() {
           }
         />
         <Route
+          path="/reply/create"
+          element={
+            <CheckInSecurity>
+              <CreatePage type="Create" form="Reply" />
+            </CheckInSecurity>
+          }
+        />
+        <Route
           path="/penguins"
           element={
             <CheckInSecurity>

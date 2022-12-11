@@ -32,6 +32,7 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
     navigate(`/message/edit/id=${idMessage}`);
   };
 
+  const openNotifys = !isHide ? " notifyer-bt-close-selected" : "";
   const hidder = isHide || !messages?.length ? " display-none" : "";
 
   return (
@@ -41,7 +42,7 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
           {messages?.length || 0}
         </span>
         <button
-          className="notifyer-bt-close"
+          className={`notifyer-bt-close ${openNotifys}`}
           onClick={handleClose}
           placeholder="notifyer-bt-close"
         />

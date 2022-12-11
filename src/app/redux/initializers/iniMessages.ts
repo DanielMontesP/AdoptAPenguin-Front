@@ -3,6 +3,7 @@ import { IMessage } from "../types/message/messageInterfaces";
 
 export const blankMessageData: IMessage = {
   id: "",
+  idParent: "",
   idPenguin: "",
   idUser: "",
   subject: "",
@@ -14,6 +15,7 @@ export const blankMessageData: IMessage = {
 export const newMessageData = (idUser: string, idPenguin: string): IMessage => {
   const formData = {
     id: "",
+    idParent: "",
     idPenguin,
     idUser,
     subject: "",
@@ -25,16 +27,18 @@ export const newMessageData = (idUser: string, idPenguin: string): IMessage => {
 };
 
 export const newReply = (
+  idParent: string,
   idUser: string,
   idPenguin: string,
   subject: string
 ): IMessage => {
   const formData = {
     id: "",
+    idParent: idParent,
     idPenguin,
     idUser,
     content: "",
-    subject: subject,
+    subject: "RE: " && subject,
     data: getCurrentDate(),
     read: false,
   };
