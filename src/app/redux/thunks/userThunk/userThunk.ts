@@ -33,6 +33,9 @@ const textNoConnection =
 export const loginThunk =
   (userData: UserRegister) => async (dispatch: AppDispatch) => {
     try {
+      setLoadingOn(
+        `LOGIN:...Service render.com is starting...Be watter penguin...Load will finish as soon as possible.`
+      );
       const url: string = `${process.env.REACT_APP_API_URL}users/login`;
 
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
@@ -64,12 +67,14 @@ export const loginThunk =
               newMessages,
             })
           );
+
+          setLoadingOffWithMessage(`LOGIN: logged successfully `, false);
           dispatch(headerTitleActionCreator("Home"));
 
           dispatch(getUserMessagesThunk(id));
         } else {
           handleNoConexion(dispatch, "user.id");
-          setLoadingOffWithMessage(`GET Users: ${textNoConnection}`, false);
+          setLoadingOffWithMessage(`LOGIN: ${textNoConnection}`, false);
         }
       }
     } catch (error: any) {
