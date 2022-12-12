@@ -392,7 +392,9 @@ export const editPenguinThunk =
       if (connected) {
         if (token) {
           const { data: penguin } = await axios.put(
-            `${process.env.REACT_APP_API_URL}penguins/${formPenguin.id}?task=${type}`,
+            `${process.env.REACT_APP_API_URL}penguins/${
+              formPenguin.id || formPenguin._id
+            }?task=${type}`,
             formPenguin,
             {
               headers: {
