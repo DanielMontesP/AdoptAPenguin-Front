@@ -22,8 +22,6 @@ interface Props {
 
 let modFields = [""];
 
-let imageAdded = false;
-
 const CreateForm = ({ penguin }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -45,6 +43,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   };
 
   const [formData, setFormData] = useState(initialFormData);
+  const [imageAdded, setImageAdded] = useState(false);
 
   const processCreate = (type: string) => {
     const newFormData = new FormData();
@@ -116,6 +115,8 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const handleImg = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
+
+    setImageAdded(true);
 
     if (file) {
       const imageResized = await resizeFile(file);
