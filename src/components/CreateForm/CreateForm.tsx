@@ -22,6 +22,8 @@ interface Props {
 
 let modFields = [""];
 
+let imageAdded = false;
+
 const CreateForm = ({ penguin }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -66,6 +68,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     setFormData({ ...penguin, id: penguin.id });
     const newFormData = new FormData();
 
+    newFormData.append("id", penguin.id);
     newFormData.append("name", formData.name || penguin.name);
     newFormData.append("category", formData.category || penguin.category);
     newFormData.append("likes", JSON.stringify(penguin.likes));
@@ -80,7 +83,10 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     );
 
     dispatch(
-      editPenguinThunk(formData, "Update fields: " + modFields.join(", "))
+      editPenguinThunk(
+        imageAdded ? newFormData : formData,
+        "Update fields: " + modFields.join(", ")
+      )
     );
   };
 
@@ -136,7 +142,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
         navigate(`/penguins/favs`);
       } else {
-        processEdit(formData.image !== "");
+        processEdit(imageAdded);
 
         navigate(`/detail/${formData.id || penguin.id}`);
       }
