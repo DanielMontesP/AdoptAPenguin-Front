@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  headerLastTitleActionCreator,
+  headerTitleActionCreator,
   isModalOpenActionCreator,
   modalMessageActionCreator,
   modalTypeActionCreator,
@@ -50,6 +52,8 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
       setModal((prevState) => !prevState);
       dispatch(isModalOpenActionCreator(false));
 
+      dispatch(headerTitleActionCreator("Edit..."));
+      dispatch(headerLastTitleActionCreator("Home"));
       navigate(`/penguins/id=${penguin.id}`);
     } else {
       handleNoConexion(dispatch, user.id);
