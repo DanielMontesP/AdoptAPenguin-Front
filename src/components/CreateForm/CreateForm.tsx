@@ -86,7 +86,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   };
 
   const [{ alt, src }, setImg] = useState({
-    src: formData.image || penguin.imageBackup,
+    src: formData.imageBackup || penguin.imageBackup,
     alt: "Add photo",
   });
 
