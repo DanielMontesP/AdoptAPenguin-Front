@@ -15,6 +15,7 @@ import {
   blankFormData,
   newPenguinFormData,
 } from "../../app/redux/initializers/iniPenguins";
+import iconPhotoEmpty from "../../images/contact-photo-add.png";
 
 interface Props {
   penguin: IPenguin;
@@ -144,6 +145,14 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     }
   };
 
+  const isURL = penguin.imageBackup?.includes("/");
+  const noImage = penguin.image === "" && !isURL;
+
+  const pathImage =
+    src !== "" ? src.toString() : penguin.imageBackup.toString();
+
+  const penguinImage = noImage ? iconPhotoEmpty : pathImage;
+
   const HidderBackground = formData.image !== "" ? " opacity-mid" : "";
 
   const classImage =
@@ -173,15 +182,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
             htmlFor="photo"
             className={`form-img__file-label${HidderBackground}`}
           >
-            <img
-              src={
-                src.toString() ||
-                penguin.imageBackup.toString() ||
-                penguin.image.toString()
-              }
-              alt={alt}
-              className={`${classImage}`}
-            />
+            <img src={penguinImage} alt={alt} className={`${classImage}`} />
           </label>
         </div>
         <label htmlFor="name">Name</label>
