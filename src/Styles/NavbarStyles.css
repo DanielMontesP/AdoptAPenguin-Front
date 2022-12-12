@@ -147,12 +147,18 @@ h3 {
   overflow: hidden;
   width: 90px;
 }
+
 .notify-data {
   width: 65px;
 }
 
+.notify-subject:hover,
+.notify-data:hover {
+  background-color: lightgrey;
+}
+
 .notify-read-img {
-  background: url("../images/view-16.png");
+  background: url("../images/icon-view-black-45.png");
   background-repeat: no-repeat;
   background-size: 20px;
   border: 0;
