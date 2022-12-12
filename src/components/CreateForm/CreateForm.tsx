@@ -30,11 +30,19 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const { headerTitle } = useAppSelector((state) => state.ui);
 
   const isCreate = headerTitle.includes("New");
-  const isEdit = headerTitle.includes("Penguin");
+  const isEdit = headerTitle.includes("Edit");
 
-  const [formData, setFormData] = useState(
-    isCreate ? newPenguinFormData(user.id) : blankFormData
-  );
+  const initialFormData = () => {
+    if (isCreate) {
+      return newPenguinFormData(user.id);
+    } else if (isEdit) {
+      return penguin;
+    } else {
+      return blankFormData;
+    }
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   const processCreate = (type: string) => {
     const newFormData = new FormData();
@@ -55,12 +63,11 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const processEdit = (imageAdded: boolean) => {
     modFields = cleanArray(modFields);
 
+    setFormData({ ...penguin, id: penguin.id });
     const newFormData = new FormData();
 
-    newFormData.append("_id", formData.id);
-    newFormData.append("id", formData.id);
-    newFormData.append("name", formData?.name || penguin.name);
-    newFormData.append("category", formData?.category || penguin.category);
+    newFormData.append("name", formData.name || penguin.name);
+    newFormData.append("category", formData.category || penguin.category);
     newFormData.append("likes", JSON.stringify(penguin.likes));
     newFormData.append("likers", JSON.stringify(penguin.likers));
     newFormData.append("favs", JSON.stringify(penguin.favs));
@@ -87,10 +94,16 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   ): void => {
     event.preventDefault();
 
-    setFormData({
-      ...(isCreate || isEdit ? formData : penguin),
-      [event.target.id]: event.target.value,
-    });
+    isEdit
+      ? setFormData({
+          ...penguin,
+          [event.target.id]: event.target.value,
+          id: penguin.id,
+        })
+      : setFormData({
+          ...(isEdit ? penguin : formData),
+          [event.target.id]: event.target.value,
+        });
 
     modFields.push(event.target.id);
   };
@@ -101,7 +114,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       const imageResized = await resizeFile(file);
 
       setFormData({
-        ...(isCreate || isEdit ? formData : penguin),
+        ...(isCreate ? formData : penguin),
         image: file,
         imageResized: imageResized,
       });
