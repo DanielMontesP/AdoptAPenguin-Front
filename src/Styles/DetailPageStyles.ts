@@ -10,7 +10,7 @@ import iconSoundOff from "../images/icon-sound-off.png";
 import iconEdit from "../images/edit.png";
 import iconMesssagesGot from "../images/mail-empty.png";
 import iconMesssagesNew from "../images/mail-full.png";
-import iconMesssagesView from "../images/view-16.png";
+import iconMesssagesView from "../images/icon-view-black-45.png";
 import detailPrev from "../images/detailPrev.png";
 import detailNext from "../images/detailNext.png";
 

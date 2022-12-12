@@ -86,7 +86,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   };
 
   const [{ alt, src }, setImg] = useState({
-    src: formData.image,
+    src: formData.image || penguin.imageBackup,
     alt: "Add photo",
   });
 
@@ -111,6 +111,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
   const handleImg = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
+
     if (file) {
       const imageResized = await resizeFile(file);
 
@@ -145,11 +146,10 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     }
   };
 
-  const isURL = penguin.imageBackup?.includes("/");
-  const noImage = penguin.image === "" && !isURL;
+  const isURL = penguin.imageBackup?.toString().includes("/");
+  const noImage = penguin.imageBackup === "" && !isURL;
 
-  const pathImage =
-    src !== "" ? src.toString() : penguin.imageBackup.toString();
+  const pathImage = src.toString() || penguin.imageBackup.toString();
 
   const penguinImage = noImage ? iconPhotoEmpty : pathImage;
 
