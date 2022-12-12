@@ -164,6 +164,7 @@ const FormsStyles = styled.div`
     }
 
     .create-container {
+      height: 100%;
       display: flex;
       background-image: url(${PageBackground});
       background-size: cover;
@@ -344,7 +345,7 @@ const FormsStyles = styled.div`
     }
 
     .create-container {
-      height: 100vh;
+      height: 100%;
       display: flex;
       background-image: url(${PageBackground});
       background-size: cover;
