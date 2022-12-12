@@ -145,7 +145,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     }
   };
 
-  const isURL = penguin.imageBackup?.includes("/");
+  const isURL = penguin.image?.toString().includes("/");
   const noImage = penguin.image === "" && !isURL;
 
   const pathImage =
