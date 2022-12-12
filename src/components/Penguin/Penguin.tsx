@@ -38,7 +38,7 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
   const isURL = penguin.imageBackup?.includes("/");
   const noImage = penguin.image === "" && !isURL;
   const pathImage =
-    penguin.imageBackup !== "" ? penguin.imageBackup : penguin.imageResized;
+    penguin.imageBackup !== "" ? penguin.imageBackup : penguin.image.toString();
 
   const penguinImage = noImage ? iconPhotoEmpty : pathImage;
 
