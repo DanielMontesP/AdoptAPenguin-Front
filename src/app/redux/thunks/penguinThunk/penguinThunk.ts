@@ -388,36 +388,42 @@ export const editPenguinThunk =
       const token = localStorage.getItem("token");
 
       const connected = connectedToServer() ? true : false;
+      if (formPenguin.id || formPenguin._id) {
+        if (connected) {
+          if (token) {
+            const { data: penguin } = await axios.put(
+              `${process.env.REACT_APP_API_URL}penguins/${
+                formPenguin.id || formPenguin._id
+              }?task=${type}`,
+              formPenguin,
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            );
 
-      if (connected) {
-        if (token) {
-          const { data: penguin } = await axios.put(
-            `${process.env.REACT_APP_API_URL}penguins/${
-              formPenguin.id || formPenguin._id
-            }?task=${type}`,
-            formPenguin,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+            handleServerInfo(
+              true,
+              `${process.env.REACT_APP_API_URL}`,
+              "Connected to server",
+              dispatch
+            );
 
-          handleServerInfo(
-            true,
-            `${process.env.REACT_APP_API_URL}`,
-            "Connected to server",
-            dispatch
-          );
+            dispatch(getPenguinThunk(formPenguin.id));
+            dispatch(editPenguinActionCreator(penguin));
 
-          dispatch(getPenguinThunk(formPenguin.id));
-          dispatch(editPenguinActionCreator(penguin));
-
-          setLoadingOffWithMessage(`${type}`, false);
+            setLoadingOffWithMessage(`${type}`, false);
+          }
+        } else {
+          handleNoConexion(dispatch, "user.id");
+          setLoadingOffWithMessage(`EDIT Penguin: ${textNoConnection}`, false);
         }
       } else {
-        handleNoConexion(dispatch, "user.id");
-        setLoadingOffWithMessage(`EDIT Penguin: ${textNoConnection}`, false);
+        setLoadingOffWithMessage(
+          `EDIT Penguin: idPenguin is undefined. Process cancelled`,
+          false
+        );
       }
     } catch (error) {
       dispatch(loadPenguinsActionCreator(penguins));
