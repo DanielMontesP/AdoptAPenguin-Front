@@ -67,7 +67,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     setFormData({ ...penguin, id: penguin.id });
     const newFormData = new FormData();
 
-    newFormData.append("_id", penguin.id);
+    newFormData.append("id", penguin.id);
     newFormData.append("name", formData.name || penguin.name);
     newFormData.append("category", formData.category || penguin.category);
     newFormData.append("likes", JSON.stringify(penguin.likes));
@@ -106,7 +106,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
           id: penguin.id,
         })
       : setFormData({
-          ...(isEdit ? penguin : formData),
+          ...formData,
           [event.target.id]: event.target.value,
         });
 
