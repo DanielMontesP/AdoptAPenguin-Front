@@ -80,7 +80,10 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     );
 
     dispatch(
-      editPenguinThunk(newFormData, "Update fields: " + modFields.join(", "))
+      editPenguinThunk(
+        imageAdded ? newFormData : formData,
+        "Update fields: " + modFields.join(", ")
+      )
     );
   };
 
@@ -95,7 +98,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     event.preventDefault();
 
     setFormData({
-      ...(isCreate ? formData : penguin),
+      ...(isCreate || isEdit ? formData : penguin),
       [event.target.id]: event.target.value,
     });
 
@@ -111,7 +114,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       const imageResized = await resizeFile(file);
 
       setFormData({
-        ...(isCreate ? formData : penguin),
+        ...(isCreate || isEdit ? formData : penguin),
         image: file,
         imageResized: imageResized,
       });

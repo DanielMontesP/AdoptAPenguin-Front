@@ -42,7 +42,7 @@ if (firstLoad) {
 export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
   try {
     setLoadingOn(
-      `GET Penguins:...Service render.com is starting...Be watter penguin...Load will finish as soon as possible.`
+      `Service render.com is starting...Be watter penguin...Home page will be loaded as soon as possible.`
     );
     firstLoad = false;
     const token = localStorage.getItem("token");
