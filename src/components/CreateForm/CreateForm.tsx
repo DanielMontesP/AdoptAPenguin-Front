@@ -111,7 +111,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       const imageResized = await resizeFile(file);
 
       setFormData({
-        ...(isCreate || isEdit ? formData : penguin),
+        ...(isCreate ? formData : penguin),
         image: file,
         imageResized: imageResized,
       });
