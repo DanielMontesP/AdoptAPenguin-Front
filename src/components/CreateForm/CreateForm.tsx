@@ -66,6 +66,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
     const newFormData = new FormData();
 
+    newFormData.append("_id", formData.id);
     newFormData.append("name", formData.name || penguin.name);
     newFormData.append("category", formData.category || penguin.category);
     newFormData.append("likes", JSON.stringify(penguin.likes));
