@@ -64,7 +64,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const processEdit = (imageAdded: boolean) => {
     modFields = cleanArray(modFields);
 
-    setFormData({ ...penguin, id: penguin.id });
     const newFormData = new FormData();
 
     newFormData.append("id", penguin.id);
@@ -98,7 +97,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
     isEdit
       ? setFormData({
-          ...penguin,
+          ...formData,
           [event.target.id]: event.target.value,
           id: penguin.id,
         })
