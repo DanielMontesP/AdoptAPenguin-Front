@@ -52,116 +52,145 @@ const WellcomeComments = (): JSX.Element => {
           <br />
           Designed for mobile and desktop rendering.
           <div className="wellcome-techs">
-            <b>Front end:</b>
-            <br />
-            <img
-              src={imgReact}
-              title="React"
-              alt="React"
-              width="20"
-              height="20"
-            />
-            &nbsp;
-            <img
-              src={imgRedux}
-              title="Redux"
-              alt="Redux "
-              width="20"
-              height="20"
-            />
-            &nbsp;
-            <img
-              src={imgJS}
-              title="JavaScript"
-              alt="JavaScript"
-              width="20"
-              height="20"
-            />
-            &nbsp;
-            <img
-              src={imgTypeScript}
-              title="typescript"
-              alt="typescript"
-              width="20"
-              height="20"
-            />
-            &nbsp;
-            <img
-              src={imgFirebase}
-              title="Firebase"
-              alt="Firebase"
-              width="20"
-              height="20"
-            />
-            &nbsp;
-            <img src={imgCSS} title="CSS3" alt="CSS" width="20" height="20" />
-            &nbsp;
-            <img
-              src={imgHTML5}
-              title="HTML5"
-              alt="HTML"
-              width="20"
-              height="20"
-            />
-            &nbsp;
-            <img src={imgJest} title="jest" alt="jest" width="20" height="20" />
-            &nbsp;
-            <img src={imgGitHub} title="Git" alt="Git" width="20" height="20" />
-            &nbsp;
-            <img
-              src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
-              title="sonarcloud"
-              alt="sonarcloud"
-              width="20"
-              height="20"
-            />
-            <br />
-            <b>Back end:</b>
-            <br />
-            <img
-              src={imgReact}
-              title="React"
-              alt="React"
-              width="20"
-              height="20"
-            />
-            &nbsp;
-            <img
-              src={imgJS}
-              title="JavaScript"
-              alt="JavaScript"
-              width="20"
-              height="20"
-            />
-            &nbsp;
-            <img
-              src={imgNode}
-              title="NodeJS"
-              alt="NodeJS"
-              width="20"
-              height="20"
-            />
-            &nbsp;
-            <img src={imgJest} title="jest" alt="jest" width="20" height="20" />
-            &nbsp;
-            <img
-              src={imgFirebase}
-              title="Firebase"
-              alt="Firebase"
-              width="20"
-              height="20"
-            />
-            &nbsp;
-            <img src={imgGitHub} title="Git" alt="Git" width="20" height="20" />
-            &nbsp;
-            <img
-              src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
-              title="sonarcloud"
-              alt="sonarcloud"
-              width="20"
-              height="20"
-            />
-            <br />
+            <div className="frontend-container">
+              <b>Front end:</b>
+              <br />
+              <img
+                src={imgReact}
+                title="React"
+                alt="React"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src={imgRedux}
+                title="Redux"
+                alt="Redux "
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src={imgJS}
+                title="JavaScript"
+                alt="JavaScript"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src={imgTypeScript}
+                title="typescript"
+                alt="typescript"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src={imgFirebase}
+                title="Firebase"
+                alt="Firebase"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img src={imgCSS} title="CSS3" alt="CSS" width="20" height="20" />
+              &nbsp;
+              <img
+                src={imgHTML5}
+                title="HTML5"
+                alt="HTML"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src={imgJest}
+                title="jest"
+                alt="jest"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src={imgGitHub}
+                title="Git"
+                alt="Git"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
+                title="sonarcloud"
+                alt="sonarcloud"
+                width="20"
+                height="20"
+              />
+              <br />
+              <br />
+            </div>
+            <div className="backend-container">
+              <b>Back end:</b>
+              <br />
+              <img
+                src={imgReact}
+                title="React"
+                alt="React"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src={imgJS}
+                title="JavaScript"
+                alt="JavaScript"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src={imgNode}
+                title="NodeJS"
+                alt="NodeJS"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src={imgJest}
+                title="jest"
+                alt="jest"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src={imgFirebase}
+                title="Firebase"
+                alt="Firebase"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src={imgGitHub}
+                title="Git"
+                alt="Git"
+                width="20"
+                height="20"
+              />
+              &nbsp;
+              <img
+                src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
+                title="sonarcloud"
+                alt="sonarcloud"
+                width="20"
+                height="20"
+              />
+              <br />
+            </div>
           </div>
         </div>
         <div className="footer">
