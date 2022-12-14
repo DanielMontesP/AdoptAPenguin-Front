@@ -57,17 +57,14 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     newFormData.append("id", formData.id);
     newFormData.append("name", formData.name);
     newFormData.append("category", formData.category);
-    newFormData.append("likes", JSON.stringify(formData.likes));
-    newFormData.append("likers", JSON.stringify(formData.likers));
-    newFormData.append("favs", JSON.stringify(formData.favs));
+    newFormData.append("description", formData?.description);
     newFormData.append("image", formData.image);
     newFormData.append("imageBackup", formData.imageBackup);
     newFormData.append("imageResized", formData.imageResized);
-    newFormData.append("description", formData?.description);
 
     dispatch(
       editPenguinThunk(
-        formData,
+        imageAdded ? newFormData : formData,
         formData.id || penguin.id,
         "Update fields: " + modFields.join(", ")
       )
