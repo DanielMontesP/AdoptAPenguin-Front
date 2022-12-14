@@ -213,12 +213,10 @@ const PagesStyles = styled.div`
 
   .category {
     height: fit-content;
-
+    border-radius: 15px;
     font-size: 15px;
     background-color: lightgrey;
-    padding-left: 5px;
-    padding-right: 5px;
-    box-shadow: 0 3px 6px #666;
+    padding: 5px 10px 5px 10px;
   }
 
   .likes {
