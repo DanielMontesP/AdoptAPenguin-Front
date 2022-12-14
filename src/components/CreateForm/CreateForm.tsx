@@ -68,7 +68,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     dispatch(
       editPenguinThunk(
         imageAdded ? newFormData : formData,
-        penguin.id,
+        formData.id || penguin.id,
         "Update fields: " + modFields.join(", ")
       )
     );
