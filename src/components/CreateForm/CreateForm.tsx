@@ -11,10 +11,7 @@ import {
   resizeFile,
 } from "../../functions/sysHandlers/sysHandlers";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
-import {
-  blankFormData,
-  newPenguinFormData,
-} from "../../app/redux/initializers/iniPenguins";
+import { newPenguinFormData } from "../../app/redux/initializers/iniPenguins";
 
 interface Props {
   penguin: IPenguin;
@@ -30,17 +27,8 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const { headerTitle } = useAppSelector((state) => state.ui);
 
   const isCreate = headerTitle.includes("New");
-  const isEdit = headerTitle.includes("Edit");
 
-  const initialFormData = () => {
-    if (isCreate) {
-      return newPenguinFormData(user.id);
-    } else if (isEdit) {
-      return penguin;
-    } else {
-      return blankFormData;
-    }
-  };
+  const initialFormData = isCreate ? newPenguinFormData(user.id) : penguin;
 
   const [formData, setFormData] = useState(initialFormData);
   const [imageAdded, setImageAdded] = useState(false);
@@ -64,10 +52,8 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   const processEdit = (imageAdded: boolean) => {
     modFields = cleanArray(modFields);
 
-    const newFormData = new FormData();
+    let newFormData = new FormData();
 
-    newFormData.append("id", penguin.id);
-    newFormData.append("_id", penguin.id);
     newFormData.append("name", formData.name || penguin.name);
     newFormData.append("category", formData.category || penguin.category);
     newFormData.append("likes", JSON.stringify(penguin.likes));
@@ -84,6 +70,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     dispatch(
       editPenguinThunk(
         imageAdded ? newFormData : formData,
+        penguin.id,
         "Update fields: " + modFields.join(", ")
       )
     );
@@ -100,7 +87,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     event.preventDefault();
 
     setFormData({
-      ...(isCreate || isEdit ? formData : penguin),
+      ...formData,
       [event.target.id]: event.target.value,
     });
 
@@ -116,7 +103,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       const imageResized = await resizeFile(file);
 
       setFormData({
-        ...(isCreate || isEdit ? formData : penguin),
+        ...formData,
         image: file,
         imageResized: imageResized,
       });

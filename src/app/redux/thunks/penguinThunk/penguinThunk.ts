@@ -201,7 +201,6 @@ export const createFavThunk =
   (formPenguin: any) => async (dispatch: AppDispatch) => {
     try {
       setLoadingOn(`CREATE Favorites: Creating fav...`);
-
       const token = localStorage.getItem("token");
 
       const connected = connectedToServer() ? true : false;
@@ -214,7 +213,7 @@ export const createFavThunk =
             {
               headers: {
                 Authorization: `Bearer ${token}`,
-                "Content-Type": "mutipart/form-data",
+                "Content-Type": "multipart/form-data",
               },
             }
           );
@@ -381,21 +380,25 @@ export const deletePenguinThunk =
   };
 
 export const editPenguinThunk =
-  (formPenguin: any, type: string) => async (dispatch: AppDispatch) => {
+  (formPenguin: any, idPenguin: string, type: string) =>
+  async (dispatch: AppDispatch) => {
     try {
       setLoadingOn("EDIT Penguin...");
 
       const token = localStorage.getItem("token");
+      const ifIsForm =
+        formPenguin.id === "" ? `"Content-Type": "multipart/form-data"` : "";
 
       const connected = connectedToServer() ? true : false;
       if (connected) {
         if (token) {
           const { data: penguin } = await axios.put(
-            `${process.env.REACT_APP_API_URL}penguins/${formPenguin.id}?task=${type}`,
+            `${process.env.REACT_APP_API_URL}penguins/${idPenguin}?task=${type}`,
             formPenguin,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
+                ifIsForm,
               },
             }
           );

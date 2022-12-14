@@ -2,7 +2,6 @@ import { IPenguin } from "../types/penguin/penguinInterfaces";
 
 export const newPenguinFormData = (idUser: string): IPenguin => {
   const formData = {
-    _id: "",
     id: "",
     name: "",
     category: "",
@@ -18,7 +17,6 @@ export const newPenguinFormData = (idUser: string): IPenguin => {
 };
 
 export const blankFormData: IPenguin = {
-  _id: "",
   id: "",
   name: "",
   category: "",

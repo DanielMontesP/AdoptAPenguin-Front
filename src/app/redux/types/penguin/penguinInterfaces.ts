@@ -1,6 +1,5 @@
 export interface IPenguin {
   id: string;
-  _id: string;
   name: string;
   category: string;
   likes: number;

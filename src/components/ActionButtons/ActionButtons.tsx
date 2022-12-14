@@ -57,7 +57,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     newData.likes = penguin.likes >= 1 ? penguin.likes - 1 : penguin.likes;
 
     setFormData(newData);
-    dispatch(editPenguinThunk(newData, "Delete Like."));
+    dispatch(editPenguinThunk(newData, penguin.id, "Delete Like."));
   };
 
   const addToLikers = () => {
@@ -67,7 +67,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
     setFormData(newData);
 
-    dispatch(editPenguinThunk(newData, "Add Like."));
+    dispatch(editPenguinThunk(newData, penguin.id, "Add Like."));
   };
 
   const handleLikes = () => {
@@ -87,7 +87,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     newData.favs = penguin.favs.filter((fav) => fav !== idUser);
 
     setFormData(newData);
-    dispatch(editPenguinThunk(newData, "Delete from favorites."));
+    dispatch(editPenguinThunk(newData, penguin.id, "Delete from favorites."));
   };
 
   const addToFavs = () => {
@@ -95,7 +95,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     newData.favs = penguin.favs.concat(idUser);
 
     setFormData(newData);
-    dispatch(editPenguinThunk(newData, "Add to favorites."));
+    dispatch(editPenguinThunk(newData, penguin.id, "Add to favorites."));
   };
 
   const handleFavs = () => {
