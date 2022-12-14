@@ -593,11 +593,9 @@ const DetailPageStyles = styled.div`
     color: black;
     font-size: 1rem;
     text-align: left;
-    padding-left: 5px;
-    padding-right: 5px;
     background-color: lightgrey;
-    border-radius: 4px;
-    box-shadow: 0 3px 6px #666;
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 10px;
