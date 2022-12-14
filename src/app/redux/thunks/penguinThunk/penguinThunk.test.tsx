@@ -231,7 +231,7 @@ describe("Given the editPenguinThunk function", () => {
         .mockReturnValue({ href: "likes" })
         .toString();
 
-      const thunk = editPenguinThunk(mockPenguin, "update");
+      const thunk = editPenguinThunk(mockPenguin, mockPenguin.id, "update");
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
@@ -253,7 +253,7 @@ describe("Given the editPenguinThunk function", () => {
         .mockReturnValue({ href: "likes" })
         .toString();
 
-      const thunk = editPenguinThunk(mockPenguin, "likes");
+      const thunk = editPenguinThunk(mockPenguin, mockPenguin.id, "likes");
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
@@ -275,7 +275,7 @@ describe("Given the editPenguinThunk function", () => {
         .mockReturnValue({ href: "favs" })
         .toString();
 
-      const thunk = editPenguinThunk(mockPenguin, "favs");
+      const thunk = editPenguinThunk(mockPenguin, mockPenguin.id, "favs");
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledTimes(3);
