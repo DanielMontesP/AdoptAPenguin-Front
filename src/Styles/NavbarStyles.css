@@ -114,7 +114,7 @@ h3 {
 }
 
 .notifyer-header {
-  width: 95%;
+  width: 100%;
   height: 42px;
   cursor: pointer;
   display: flex;
@@ -1569,7 +1569,7 @@ ul {
 
 .modal-title {
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   margin: 15px;
 }
 
@@ -1600,10 +1600,10 @@ ul {
 }
 
 .modal-message {
-  width: 100%;
   font-size: 18px;
   color: white;
   text-align: center;
+  padding: 10px;
   margin: auto;
   margin-top: 30px;
 }

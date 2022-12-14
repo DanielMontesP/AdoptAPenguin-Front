@@ -589,7 +589,6 @@ const PagesStyles = styled.div`
     border: 0;
     margin: auto;
     margin-right: 10px;
-    z-index: 1;
   }
 
   .no-visible {
