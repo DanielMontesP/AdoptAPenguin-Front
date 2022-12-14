@@ -410,7 +410,7 @@ export const editPenguinThunk =
             dispatch
           );
 
-          dispatch(getPenguinThunk(formPenguin.id));
+          dispatch(getPenguinThunk(idPenguin));
           dispatch(editPenguinActionCreator(penguin));
 
           setLoadingOffWithMessage(`${type}`, false);
