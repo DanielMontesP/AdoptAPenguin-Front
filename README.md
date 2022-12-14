@@ -207,7 +207,7 @@
             <li>Backend language: Javascript</li>
             <li>Backend API managed with Axios</li>
             <li>Data storage: MongoDB</li>
-            <li>Backup storage for images: Firebase</li>
+            <li>Image Backup storage: Firebase</li>
           </ul>
         </li>
       </ul>
@@ -220,7 +220,7 @@
             <li>Add to user favorites list</li>
             <li>Add to user likes list</li>
             <li>Count global likes individually</li>
-            <li>Create new penguin (Will be added automatically to personal likes and favorites lists</li>
+            <li>Create new penguin</li>
             <li>Edit penguin data</li>
             <li>Delete penguin</li>
             <li>Send new message</li>
@@ -238,11 +238,11 @@
         <li>Features     
           <ul>
             <li>Responsive site</li>
+            <li>Search engine</li>
+            <li>Backup image to firebase storage</li>
+            <li>Resize uploaded images</li>
             <li>Preview uploaded image</li>
             <li>Scroll to top button</li>
-            <li>Search engine</li>
-            <li>Resize uploaded images</li>
-            <li>Backup image to firebase storage</li>
           </ul>
         </li>
       </ul>

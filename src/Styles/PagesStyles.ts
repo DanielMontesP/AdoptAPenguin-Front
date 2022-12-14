@@ -81,6 +81,28 @@ const PagesStyles = styled.div`
       font-size: 14px;
     }
 
+    .bt-register {
+      width: 200px;
+      height: 50px;
+      color: black;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: white;
+      border-radius: 15px;
+      border: 0;
+    }
+
+    .bt-login {
+      width: 200px;
+      height: 50px;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: transparent;
+      border-radius: 15px;
+      border: 1px solid white;
+    }
+
     .bt-container {
       width: 100%;
       max-width: 450px;
@@ -114,6 +136,28 @@ const PagesStyles = styled.div`
       -ms-flex-pack: space-evenly;
       justify-content: space-evenly;
       column-gap: 30px;
+    }
+
+    .bt-register {
+      width: 120px;
+      height: 50px;
+      color: black;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: white;
+      border-radius: 15px;
+      border: 0;
+    }
+
+    .bt-login {
+      width: 120px;
+      height: 50px;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: transparent;
+      border-radius: 15px;
+      border: 1px solid white;
     }
   }
 
@@ -476,32 +520,11 @@ const PagesStyles = styled.div`
     border: 0;
   }
 
-  .bt-register {
-    width: 100%;
-    height: 50px;
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: white;
-    border-radius: 15px;
-    border: 0;
-  }
   .header-wellcome {
     display: none;
   }
-  .bt-login {
-    width: 100%;
-    height: 50px;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: transparent;
-    border-radius: 15px;
-    border: 1px solid white;
-  }
 
   .link {
-    width: 100%;
     color: black;
     font-size: 18px;
     cursor: pointer;

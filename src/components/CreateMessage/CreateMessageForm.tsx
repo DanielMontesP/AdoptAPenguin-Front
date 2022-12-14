@@ -129,9 +129,11 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
         className="form-create"
         title="form-create"
       >
-        <div className={classRead} onClick={handleMessageRead}>
-          {textRead}
-        </div>
+        {!isCreate ?? (
+          <div className={classRead} onClick={handleMessageRead}>
+            {textRead}
+          </div>
+        )}
         <label htmlFor="description">Send To</label>
         <input
           id="sendto"
