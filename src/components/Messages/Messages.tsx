@@ -3,13 +3,14 @@ import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { resetMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
-import PagesStyles from "../../styles/PagesStyles";
+
 import { hasNewMessages } from "../../functions/sysHandlers/sysHandlers";
 import Message from "../Message/Message";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
+import PagesStyles from "../../styles/PagesStyles";
 
 interface Props {
   allMessages: IMessage[];

@@ -1,12 +1,12 @@
 import LoginForm from "../../components/LoginForm/LoginForm";
 import "react-toastify/dist/ReactToastify.css";
-import FormsStyles from "../../styles/FormsStyles";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useEffect } from "react";
+import FormsStyles from "../../styles/FormsStyles";
 
 const LoginPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
