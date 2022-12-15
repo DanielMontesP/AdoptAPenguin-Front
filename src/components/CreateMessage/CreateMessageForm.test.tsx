@@ -17,7 +17,7 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
       id: mockUser.id,
     },
     penguin: mockPenguin,
-    headerTitle: "New...",
+    headerTitle: "Reply",
   }),
   useAppDispatch: () => jest.fn(),
 }));
@@ -26,7 +26,7 @@ describe("Given a CreateMessageForm component", () => {
   describe("When submit create Message", () => {
     test("Then createProcess is called", () => {
       const textToFind = "Subject";
-      const placeHolderSubmit = "bt-save";
+      const placeHolderSubmit = "bt-reply";
 
       const handleSubmit = jest.fn();
       const processCreate = jest.fn();

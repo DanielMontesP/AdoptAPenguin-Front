@@ -6,11 +6,10 @@ import { mockMessages } from "../../mocks/messages";
 import userEvent from "@testing-library/user-event";
 import MessageNotifyer from "./MessageNotifyer";
 
-describe("Given a Message componen", () => {
-  describe("When click submit with data", () => {
+describe("Given a NewMessagesNotify component", () => {
+  describe("When click close button", () => {
     test("Then handleClick have to been called and show error prompt", () => {
-      const handleHidder = jest.fn();
-      const handleClick = jest.fn();
+      const handleClose = jest.fn();
 
       render(
         <Provider store={store}>
@@ -21,18 +20,33 @@ describe("Given a Message componen", () => {
       );
 
       const text = screen.getByPlaceholderText("notifyer-bt-close");
-      const text2 = screen.getByTitle("notifyer-container");
+      expect(text).toBeInTheDocument();
 
       userEvent.click(text);
-      handleHidder();
+      handleClose();
 
-      expect(text).toBeInTheDocument();
-      expect(handleHidder).toHaveBeenCalled();
+      expect(handleClose).toHaveBeenCalled();
+    });
+  });
 
-      userEvent.click(text2);
+  describe("When click submit with data", () => {
+    test("Then handleClick have to been called and show error prompt", () => {
+      const handleClick = jest.fn();
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <MessageNotifyer messages={mockMessages} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const text = screen.getAllByPlaceholderText("notify-read");
+      expect(text.length).toBeGreaterThan(0);
+
+      userEvent.click(text[0]);
       handleClick();
 
-      expect(text).toBeInTheDocument();
       expect(handleClick).toHaveBeenCalled();
     });
   });

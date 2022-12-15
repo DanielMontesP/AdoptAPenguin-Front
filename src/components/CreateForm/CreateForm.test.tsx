@@ -147,6 +147,10 @@ describe("Given a CreateForm component", () => {
         useAppDispatch: () => jest.fn(),
       }));
 
+      jest.mock("../../functions/sysHandlers/sysHandlers", () => ({
+        resizeFile: () => jest.fn(),
+      }));
+
       render(
         <Provider store={store}>
           <BrowserRouter>
