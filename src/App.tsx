@@ -16,7 +16,6 @@ import PenguinsPage from "./pages/PenguinsPage/PenguinsPage";
 import { getUserThunk } from "./app/redux/thunks/userThunk/userThunk";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { isDesktopActionCreator } from "./app/redux/features/uiSlice/uiSlice";
-import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import UserMessagesPage from "./pages/UserMessagesPage/UserMessagesPage";
 
 function App() {
@@ -84,7 +83,6 @@ function App() {
   return (
     <>
       {result}
-      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Navigate to="/homepage" />} />
         <Route
