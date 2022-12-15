@@ -1,5 +1,4 @@
-import "../../Styles/NavbarStyles.css";
-
+import "../../styles/NavbarStyles.css";
 interface Props {
   headerTitle: string;
 }

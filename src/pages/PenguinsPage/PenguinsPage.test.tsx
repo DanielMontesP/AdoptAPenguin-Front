@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../../app/redux/store/store";
 import PenguinsPage from "./PenguinsPage";
-import PenguinsPageStyles from "../../Styles/PagesStyles";
+import PenguinsPageStyles from "../../styles/PagesStyles";
 import { mockPenguins } from "../../mocks/penguins";
 import { mockloggedUser } from "../../mocks/users";
 import axios from "axios";
@@ -33,18 +33,9 @@ describe("Given a PenguinsPage Component", () => {
   describe("When Likes it's rendered", () => {
     test("Then it should show the role 'penguins-page'", () => {
       const expectedResult = "penguins-page";
-      jest.mock("../../app/redux/hooks/hooks", () => ({
-        useAppSelector: () => ({
-          logged: mockloggedUser,
-          headerTitle: "Likes",
-          penguins: { allPenguins: { mockPenguins } },
-          allPenguins: { mockPenguins },
 
-          id: "idUser1",
-        }),
+      const dispatch = jest.fn();
 
-        useAppDispatch: () => jest.fn(),
-      }));
       render(
         <Provider store={store}>
           <PenguinsPageStyles role={"penguins-page"}>
@@ -52,11 +43,6 @@ describe("Given a PenguinsPage Component", () => {
           </PenguinsPageStyles>
         </Provider>
       );
-
-      axios.get = jest
-        .fn()
-        .mockResolvedValue({ data: { penguins: mockPenguins }, status: 200 });
-      const dispatch = jest.fn();
 
       const receivedResult = screen.getByRole(expectedResult);
       dispatch(loadLikesThunk());
@@ -67,19 +53,6 @@ describe("Given a PenguinsPage Component", () => {
   describe("When Favs it's rendered", () => {
     test("Then it should show the role 'penguins-page'", () => {
       const expectedResult = "penguins-page";
-
-      jest.mock("../../app/redux/hooks/hooks", () => ({
-        useAppSelector: () => ({
-          logged: mockloggedUser,
-          headerTitle: "Favorites",
-          penguins: { allPenguins: { mockPenguins } },
-          allPenguins: { mockPenguins },
-
-          id: "idUser1",
-        }),
-
-        useAppDispatch: () => jest.fn(),
-      }));
 
       render(
         <Provider store={store}>

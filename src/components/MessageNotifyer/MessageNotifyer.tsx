@@ -1,4 +1,4 @@
-import PagesStyles from "../../Styles/PagesStyles";
+import PagesStyles from "../../styles/PagesStyles";
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../app/redux/hooks/hooks";
@@ -53,14 +53,13 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
               return (
                 <div
                   className={`notify`}
-                  key={index}
+                  key={message.id}
                   onClick={handleClick}
                   id={message.id}
                   placeholder="notify"
                 >
                   <div
                     className={`notify-read-img`}
-                    key={index}
                     onClick={handleClick}
                     id={message.id}
                     placeholder="notify-read"

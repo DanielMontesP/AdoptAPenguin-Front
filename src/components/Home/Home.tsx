@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import HomePageStyles from "../../Styles/PagesStyles";
+import HomePageStyles from "../../styles/PagesStyles";
 
 const Home = (): JSX.Element => {
   return (

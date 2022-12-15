@@ -21,6 +21,11 @@ import { mockPenguin } from "../../../../mocks/penguins";
 import Home from "../../../../components/Home/Home";
 import { newPenguinFormData } from "../../initializers/iniPenguins";
 
+jest.mock("../../../../functions/sysHandlers/sysHandlers", () => ({
+  connectedToServer: () => jest.fn().mockReturnValue(true),
+  handleServerInfo: () => jest.fn(),
+}));
+
 describe("Given the loadPenguinsThunk function", () => {
   describe("When it's called", () => {
     test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
@@ -35,7 +40,7 @@ describe("Given the loadPenguinsThunk function", () => {
       const thunk = loadPenguinsThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(5);
+      expect(dispatch).toHaveBeenCalledTimes(4);
     });
   });
 });
@@ -54,7 +59,7 @@ describe("Given the loadFavsThunk function", () => {
       const thunk = loadFavsThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(6);
+      expect(dispatch).toHaveBeenCalledTimes(4);
     });
   });
 
@@ -71,7 +76,7 @@ describe("Given the loadFavsThunk function", () => {
       const thunk = loadFavsThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(6);
+      expect(dispatch).toHaveBeenCalledTimes(4);
     });
   });
 
@@ -88,7 +93,7 @@ describe("Given the loadFavsThunk function", () => {
       const thunk = loadLikesThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(6);
+      expect(dispatch).toHaveBeenCalledTimes(4);
     });
   });
 
@@ -105,7 +110,7 @@ describe("Given the loadFavsThunk function", () => {
       const thunk = loadLikesThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(6);
+      expect(dispatch).toHaveBeenCalledTimes(4);
     });
   });
   describe("When loadLikesThunk with 0 is called", () => {
@@ -121,7 +126,7 @@ describe("Given the loadFavsThunk function", () => {
       const thunk = loadLikesThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(6);
+      expect(dispatch).toHaveBeenCalledTimes(4);
     });
   });
 });
@@ -278,7 +283,7 @@ describe("Given the editPenguinThunk function", () => {
       const thunk = editPenguinThunk(mockPenguin, mockPenguin.id, "favs");
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 

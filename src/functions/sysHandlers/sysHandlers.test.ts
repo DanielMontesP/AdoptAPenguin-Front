@@ -5,15 +5,22 @@ import {
   getCurrentDate,
   hasNewMessages,
   setMessageRead,
+  isAvailable,
+  connectedToServer,
 } from "./sysHandlers";
 
 import { writeFile } from "./sysHandlers";
-import { penguins } from "../penguins-export.js";
+import { penguins } from "../../export/penguins-export.js";
 
 jest.mock("react-image-file-resizer", () => ({
   ...jest.requireActual("react-image-file-resizer"),
   Resizer: () => jest.fn().mockResolvedValue(true),
   imageFileResizer: () => jest.fn().mockResolvedValue(true),
+}));
+
+jest.mock("./sysHandlers", () => ({
+  ...jest.requireActual("./sysHandlers"),
+  handleServerInfo: () => jest.fn().mockResolvedValue(true),
 }));
 
 describe("Given a Resizer component", () => {
@@ -63,7 +70,7 @@ describe("Given a setMessageRead function", () => {
   });
 });
 
-describe("Given writeFile", () => {
+describe("Given writeFile with default type", () => {
   describe("when it's called", () => {
     test("Then it should call the dispatch function", async () => {
       const file = penguins;
@@ -72,6 +79,59 @@ describe("Given writeFile", () => {
       URL.createObjectURL = jest.fn();
 
       dispatch(writeFile("penguins", file));
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("when it's called with notifys type", () => {
+    test("Then it should call the dispatch function", async () => {
+      const file = penguins;
+      const dispatch = jest.fn();
+
+      URL.createObjectURL = jest.fn();
+
+      dispatch(writeFile("notifys", file));
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("when it's called with messages type", () => {
+    test("Then it should call the dispatch function", async () => {
+      const file = penguins;
+      const dispatch = jest.fn();
+
+      URL.createObjectURL = jest.fn();
+
+      dispatch(writeFile("messages", file));
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given isAvailable", () => {
+  describe("when it's called", () => {
+    test("Then it should call the dispatch function", async () => {
+      const dispatch = jest.fn();
+
+      URL.createObjectURL = jest.fn();
+
+      dispatch(isAvailable(dispatch));
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given connectedToServer", () => {
+  describe("when it's called", () => {
+    test("Then it should call the dispatch function", async () => {
+      const dispatch = jest.fn();
+      URL.createObjectURL = jest.fn();
+
+      dispatch(connectedToServer());
 
       expect(dispatch).toHaveBeenCalled();
     });

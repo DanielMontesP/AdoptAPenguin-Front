@@ -13,7 +13,7 @@ import {
   resetMessageActionCreator,
   resetMessagesActionCreator,
 } from "../../features/messageSlice/messageSlice";
-import { messages } from "../../../../functions/messages-export.js";
+import { messages } from "../../../../export/messages-export.js";
 import { blankMessageData } from "../../initializers/iniMessages";
 import { getPenguinThunk } from "../penguinThunk/penguinThunk";
 import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";

@@ -1,9 +1,10 @@
 import { ToastContainer } from "react-toastify";
 import { useAppSelector } from "../../app/redux/hooks/hooks";
-import "../../Styles/NavbarStyles.css";
+import "../../styles/NavbarStyles.css";
 import MessageNotifyer from "../MessageNotifyer/MessageNotifyer";
 import NavDektop from "../NavDesktop/NavDesktop";
 import NavMobile from "../NavMobile/NavMobile";
+
 interface Props {
   headerTitle: string;
 }
