@@ -1,9 +1,8 @@
 import { NavLink } from "react-router-dom";
-import HomePageStyles from "../../styles/PagesStyles";
 
 const Home = (): JSX.Element => {
   return (
-    <HomePageStyles className="container">
+    <div className="container">
       <div className="bt-container">
         <textarea
           className={`title-big`}
@@ -19,7 +18,7 @@ const Home = (): JSX.Element => {
       </div>
 
       <div className="footer">2022 Penguins Inc.</div>
-    </HomePageStyles>
+    </div>
   );
 };
 

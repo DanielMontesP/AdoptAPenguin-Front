@@ -10,7 +10,7 @@ import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
-import PagesStyles from "../../styles/PagesStyles";
+import "../../styles/PagesStyles.css";
 
 interface Props {
   allMessages: IMessage[];
@@ -35,7 +35,7 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
   const counterNewMessages = hasNewMessages(allMessages, penguin.id);
 
   return (
-    <PagesStyles
+    <div
       className={`${headerTitle === "Inbox" ? "inbox-" : ""}messages-container`}
       title="messages-container"
     >
@@ -55,7 +55,7 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
       {allMessages.map((message, index) => {
         return <Message key={message.id} message={message} />;
       })}
-    </PagesStyles>
+    </div>
   );
 };
 

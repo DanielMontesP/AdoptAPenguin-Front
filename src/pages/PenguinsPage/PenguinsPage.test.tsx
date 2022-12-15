@@ -2,10 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../../app/redux/store/store";
 import PenguinsPage from "./PenguinsPage";
-import PenguinsPageStyles from "../../styles/PagesStyles";
-import { mockPenguins } from "../../mocks/penguins";
-import { mockloggedUser } from "../../mocks/users";
-import axios from "axios";
+import "../../styles/PagesStyles.css";
 import { loadLikesThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 
 jest.mock("react-router-dom", () => ({
@@ -15,36 +12,32 @@ jest.mock("react-router-dom", () => ({
 describe("Given a PenguinsPage Component", () => {
   describe("When it's rendered", () => {
     test("Then it should show the role 'penguins-page'", () => {
-      const expectedResult = "penguins-page";
+      const expectedResult = "penguins-container";
 
       render(
         <Provider store={store}>
-          <PenguinsPageStyles role={"penguins-page"}>
-            <PenguinsPage type="Home" />
-          </PenguinsPageStyles>
+          <PenguinsPage type="Home" />
         </Provider>
       );
 
-      const receivedResult = screen.getByRole(expectedResult);
+      const receivedResult = screen.getByTitle(expectedResult);
 
       expect(receivedResult).toBeInTheDocument();
     });
   });
   describe("When Likes it's rendered", () => {
     test("Then it should show the role 'penguins-page'", () => {
-      const expectedResult = "penguins-page";
+      const expectedResult = "penguins-container";
 
       const dispatch = jest.fn();
 
       render(
         <Provider store={store}>
-          <PenguinsPageStyles role={"penguins-page"}>
-            <PenguinsPage type="Likes" />
-          </PenguinsPageStyles>
+          <PenguinsPage type="Likes" />
         </Provider>
       );
 
-      const receivedResult = screen.getByRole(expectedResult);
+      const receivedResult = screen.getByTitle(expectedResult);
       dispatch(loadLikesThunk());
       expect(receivedResult).toBeInTheDocument();
       expect(dispatch).toHaveBeenCalled();
@@ -52,17 +45,15 @@ describe("Given a PenguinsPage Component", () => {
   });
   describe("When Favs it's rendered", () => {
     test("Then it should show the role 'penguins-page'", () => {
-      const expectedResult = "penguins-page";
+      const expectedResult = "penguins-container";
 
       render(
         <Provider store={store}>
-          <PenguinsPageStyles role={"penguins-page"}>
-            <PenguinsPage type="Favorites" />
-          </PenguinsPageStyles>
+          <PenguinsPage type="Favorites" />
         </Provider>
       );
 
-      const receivedResult = screen.getByRole(expectedResult);
+      const receivedResult = screen.getByTitle(expectedResult);
 
       expect(receivedResult).toBeInTheDocument();
     });

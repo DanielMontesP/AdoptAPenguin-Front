@@ -1,4 +1,4 @@
-import PagesStyles from "../../styles/PagesStyles";
+import "../../styles/PagesStyles.css";
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../app/redux/hooks/hooks";
@@ -33,10 +33,9 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
   };
 
   const openNotifys = !isHide ? " notifyer-bt-close-selected" : "";
-  const hidder = isHide || !messages?.length ? " display-none" : "";
 
   return (
-    <PagesStyles className={`notifyer-container`} title="notifyer-container">
+    <div className={`notifyer-container`} title="notifyer-container">
       <div className="notifyer-header">
         <span className="notify-counter" onClick={handleClose}>
           {messages?.length || 0}
@@ -47,34 +46,38 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
           placeholder="notifyer-bt-close"
         />
       </div>
-      <div className={`notify-list${hidder}`}>
-        {messages?.length > 0
-          ? messages.map((message, index) => {
-              return (
-                <div
-                  className={`notify`}
-                  key={message.id}
-                  onClick={handleClick}
-                  id={message.id}
-                  placeholder="notify"
-                >
+      {!isHide ? (
+        <div className={`notify-list`}>
+          {messages?.length > 0
+            ? messages.map((message, index) => {
+                return (
                   <div
-                    className={`notify-read-img`}
+                    className={`notify`}
+                    key={message.id}
                     onClick={handleClick}
                     id={message.id}
-                    placeholder="notify-read"
-                  />
+                    placeholder="notify"
+                  >
+                    <div
+                      className={`notify-read-img`}
+                      onClick={handleClick}
+                      id={message.id}
+                      placeholder="notify-read"
+                    />
 
-                  <span className="notify-data">
-                    {message.data.substring(0, message.data.indexOf(","))}
-                  </span>
-                  <span className="notify-subject">{message.subject}</span>
-                </div>
-              );
-            })
-          : ""}
-      </div>
-    </PagesStyles>
+                    <span className="notify-data">
+                      {message.data.substring(0, message.data.indexOf(","))}
+                    </span>
+                    <span className="notify-subject">{message.subject}</span>
+                  </div>
+                );
+              })
+            : ""}
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
   );
 };
 

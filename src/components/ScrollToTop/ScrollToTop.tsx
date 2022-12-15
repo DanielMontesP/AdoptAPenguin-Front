@@ -19,7 +19,7 @@ const ScrollToTop = (): JSX.Element => {
     });
   };
   return (
-    <div className="top-to-btm" title="scroll-top-container">
+    <div className="scroll-top-container" title="scroll-top-container">
       {showTopBtn && (
         <FaAngleUp
           className="icon-position icon-style"
