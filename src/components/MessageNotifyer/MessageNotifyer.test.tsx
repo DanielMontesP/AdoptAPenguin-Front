@@ -41,7 +41,7 @@ describe("Given a NewMessagesNotify component", () => {
         </Provider>
       );
 
-      const text = screen.getAllByPlaceholderText("notify-read");
+      const text = screen.getAllByTitle("notifyer-container");
       expect(text.length).toBeGreaterThan(0);
 
       userEvent.click(text[0]);
