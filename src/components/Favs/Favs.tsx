@@ -1,6 +1,6 @@
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import Penguin from "../Penguin/Penguin";
-import PenguinsPageStyles from "../../Styles/PagesStyles";
+import PenguinsPageStyles from "../../styles/PagesStyles";
 interface Props {
   allPenguins: IPenguin[];
 }
@@ -10,7 +10,7 @@ const Favs = ({ allPenguins }: Props): JSX.Element => {
     <PenguinsPageStyles className={`penguins-container`}>
       <h1 className="display-none">AdoptAPenguin.com</h1>
       {allPenguins.map((penguin, index) => {
-        return <Penguin key={index} penguin={penguin} />;
+        return <Penguin key={penguin.id} penguin={penguin} />;
       })}
     </PenguinsPageStyles>
   );

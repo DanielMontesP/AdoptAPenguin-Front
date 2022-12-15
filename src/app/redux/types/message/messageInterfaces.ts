@@ -9,7 +9,7 @@ export interface IMessage {
   read: boolean;
 }
 
-export interface blankMessageDataInterface {
+export interface BlankMessageDataInterface {
   idPenguin: string;
   idUser: string;
   subject: string;

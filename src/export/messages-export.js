@@ -1,0 +1,32 @@
+export const messages = [
+  {
+    id: "636765907a19ee62356d43b3",
+    idParent: "",
+    idUser: "630a58cb2e612881230d1fd5",
+    idPenguin: "62a80601b912ac301b85eeac",
+    subject: "asa1",
+    content: "sasas",
+    data: "6/11/2022, 8:43:11",
+    read: true,
+  },
+  {
+    id: "636782a1b7c56221cda01596",
+    idParent: "",
+    idUser: "630a58cb2e612881230d1fd5",
+    idPenguin: "62a80601b912ac301b85eeac",
+    subject: "sasssssssxxx",
+    content: "rrrerer",
+    data: "6/11/2022, 10:47:12",
+    read: false,
+  },
+  {
+    id: "63741422eae1bc047e924c9e",
+    idParent: "636782a1b7c56221cda01596",
+    idUser: "630a58cb2e612881230d1fd5",
+    idPenguin: "62a80601b912ac301b85eeac",
+    subject: "subi",
+    content: "messi",
+    data: "15/11/2022, 23:34:58",
+    read: false,
+  },
+];

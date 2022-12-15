@@ -1,6 +1,6 @@
 import LoginForm from "../../components/LoginForm/LoginForm";
 import "react-toastify/dist/ReactToastify.css";
-import FormsStyles from "../../Styles/FormsStyles";
+import FormsStyles from "../../styles/FormsStyles";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
   headerLastTitleActionCreator,

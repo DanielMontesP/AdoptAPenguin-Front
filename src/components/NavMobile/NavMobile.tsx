@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
-import "../../Styles/NavbarStyles.css";
+import "../../styles/NavbarStyles.css";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
@@ -9,7 +9,7 @@ import {
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import Menu from "../Menu/Menu";
-import { blankMessageDataInterface } from "../../app/redux/types/message/messageInterfaces";
+import { BlankMessageDataInterface } from "../../app/redux/types/message/messageInterfaces";
 import { ReactDimmer } from "react-dimmer";
 import { Modal } from "../Modals/ModalPrompt";
 
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const NavMobile = ({ headerTitle }: Props): JSX.Element => {
-  const blankData: blankMessageDataInterface = {
+  const blankData: BlankMessageDataInterface = {
     idPenguin: "",
     idUser: "",
     subject: "",

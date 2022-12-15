@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { resetMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
-import PagesStyles from "../../Styles/PagesStyles";
+import PagesStyles from "../../styles/PagesStyles";
 import { hasNewMessages } from "../../functions/sysHandlers/sysHandlers";
 import Message from "../Message/Message";
 import {
@@ -52,7 +52,7 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
         </h3>
       </div>
       {allMessages.map((message, index) => {
-        return <Message key={index} message={message} />;
+        return <Message key={message.id} message={message} />;
       })}
     </PagesStyles>
   );
