@@ -10,7 +10,7 @@ import Navbar from "../Navbar/Navbar";
 describe("Given a Penguins component", () => {
   describe("When the word 'Home' is written to the username input field", () => {
     test("Then the value of the username input field should be 'user1'", () => {
-      const labelToFind = "Home";
+      const labelToFind = "Test";
 
       render(
         <Provider store={store}>

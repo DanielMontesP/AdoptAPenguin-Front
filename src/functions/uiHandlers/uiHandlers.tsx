@@ -25,10 +25,9 @@ let firstLoad = true;
 export const loadHome = (
   dispatch: any,
   headerTitle: string,
-  navigate: any,
-  setMenu: any
+  navigate: any
 ): any => {
-  setMenu(false);
+  dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
@@ -71,10 +70,9 @@ export const handleFocus = (field: string): void => {
 export const loadFavs = (
   dispatch: any,
   headerTitle: string,
-  setMenu: any,
   navigate: any
 ): any => {
-  setMenu(false);
+  dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
@@ -86,10 +84,9 @@ export const loadFavs = (
 export const loadLikes = (
   dispatch: any,
   headerTitle: string,
-  setMenu: any,
   navigate: any
 ): void => {
-  setMenu(false);
+  dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator(""));
   dispatch(headerLastTitleActionCreator(headerTitle));
@@ -101,11 +98,9 @@ export const loadLikes = (
 export const handleSearchSubmit = (
   dispatch: any,
   headerTitle: string,
-  setMenu: any,
-  setModal: any,
   stringToSearch: string
 ) => {
-  setMenu(false);
+  dispatch(isMenuOpenActionCreator(false));
 
   if (stringToSearch !== "") {
     dispatch(modalTypeActionCreator("FFeature"));
@@ -117,7 +112,7 @@ export const handleSearchSubmit = (
   } else {
     dispatch(modalTypeActionCreator("Search"));
     dispatch(modalMessageActionCreator("Please enter a search term"));
-    setModal(false);
+    dispatch(isModalOpenActionCreator(false));
   }
 };
 
@@ -125,19 +120,11 @@ export const handleSearchEnter = (
   event: KeyboardEvent<HTMLInputElement>,
   stringToSearch: string,
   dispatch: any,
-  setModal: any,
-  setMenu: any,
   headerTitle: string
 ) => {
   if (event.key === "Enter") {
     dispatch(stringToSearchActionCreator(stringToSearch));
-    handleSearchSubmit(
-      dispatch,
-      headerTitle,
-      setMenu,
-      setModal,
-      stringToSearch
-    );
+    handleSearchSubmit(dispatch, headerTitle, stringToSearch);
   }
 };
 
@@ -153,7 +140,6 @@ export const loadAbout = (dispatch: any) => {
   dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator("About"));
-
   dispatch(isModalOpenActionCreator(true));
 };
 

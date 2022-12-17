@@ -22,10 +22,10 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const idUser = useAppSelector((state) => state.user.id);
   const { allMessages } = useAppSelector((state) => state.user);
   const { connected } = useAppSelector((state) => state.system.server);
-
+  const { headerTitle } = useAppSelector((state) => state.ui);
   const [, setFormData] = useState<IPenguin>(blankFormData);
 
-  const iconType = " bt-message-got";
+  const iconType = "bt-message-got";
 
   const countNewMessages = (penguin: IPenguin) => {
     return hasNewMessages(allMessages, penguin.id);
@@ -37,8 +37,8 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const isFav = penguin.favs?.includes(idUser);
   const isLiker = penguin.likers?.includes(idUser);
 
-  const selectIconFav = isFav ? " animatedFavDelete" : " animatedFav";
-  const selectIconLike = isLiker ? " animatedLike" : ` animatedLikeInit`;
+  const selectIconFav = isFav ? "bt-delfav" : "bt-addfav";
+  const selectIconLike = isLiker ? "bt-addlike" : `bt-dellike`;
 
   const handleMessage = () => {
     if (connected) {
@@ -110,16 +110,18 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     }
   };
 
+  const classContainer = headerTitle === "Detail" ? "detail-" : "";
+
   return (
-    <div className={"buttons-container"}>
+    <div className={`${classContainer}buttons-container`}>
       <button
-        className={`animated${selectIconLike}`}
+        className={`${classContainer}${selectIconLike}`}
         onClick={handleLikes}
         title="btn-likes"
       />
-      <span className={`likes`}>{penguin.likes}</span>
+      <span className={`${classContainer}likes`}>{penguin.likes}</span>
       <button
-        className={`animated${iconType}`}
+        className={`${iconType}`}
         onClick={handleMessage}
         title="bt-message"
       />
@@ -127,7 +129,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
       <button
         placeholder="btn-favs"
         onClick={handleFavs}
-        className={`animated${selectIconFav}`}
+        className={`${classContainer}${selectIconFav}`}
       />
     </div>
   );

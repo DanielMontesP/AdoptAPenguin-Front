@@ -1,11 +1,11 @@
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
-import FormsStyles from "../../styles/FormsStyles";
+import "../../styles/FormsStyles.css";
 
 const RegisterPage = (): JSX.Element => {
   return (
-    <FormsStyles className="container">
-      <RegisterForm />;
-    </FormsStyles>
+    <div className="register-container">
+      <RegisterForm />
+    </div>
   );
 };
 

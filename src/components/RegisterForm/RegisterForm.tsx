@@ -79,9 +79,12 @@ const RegisterForm = (): JSX.Element => {
         name="Password"
         className="form-input"
       />
-      <div className="link">
+      <div className="form-footer">
         Registered? Please
-        <Link to="/login"> Log in</Link>
+        <Link to="/login" className="form-link">
+          {" "}
+          Log in
+        </Link>
       </div>
       <div className="submitContainer">
         <button type="submit" className="bt-register" placeholder="bt-submit">

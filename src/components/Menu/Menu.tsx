@@ -26,14 +26,14 @@ interface Props {
 }
 
 const Menu = ({ isMenuOpened }: Props): JSX.Element => {
-  const { stringToSearch, headerTitle } = useAppSelector((state) => state.ui);
+  const { stringToSearch, headerTitle, isDesktop } = useAppSelector(
+    (state) => state.ui
+  );
 
   const { user } = useAppSelector((state) => state);
   const { connected } = useAppSelector((state) => state.system.server);
 
-  const [, setModal] = useState(false);
   const [isSearchClicked, setSearch] = useState(false);
-  const [, setMenu] = useState(false);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -45,17 +45,17 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   const searchPlaceHolderText = "Search by name/category/description...";
 
   const handleFavs = () => {
-    loadFavs(dispatch, headerTitle, setMenu, navigate);
+    loadFavs(dispatch, headerTitle, navigate);
     dispatch(isMenuOpenActionCreator(false));
   };
 
   const handleLikes = () => {
-    loadLikes(dispatch, headerTitle, setMenu, navigate);
+    loadLikes(dispatch, headerTitle, navigate);
     dispatch(isMenuOpenActionCreator(false));
   };
 
   const handleHome = () => {
-    loadHome(dispatch, headerTitle, navigate, setMenu);
+    loadHome(dispatch, headerTitle, navigate);
     dispatch(isMenuOpenActionCreator(false));
   };
 
@@ -82,7 +82,6 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
     switch (type) {
       case "desktop-bt-search":
         handleFocusCall(".menu-search-input");
-        setMenu(false);
         dispatch(isMenuOpenActionCreator(false));
         break;
       case "bt-search":
@@ -111,13 +110,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   };
 
   const handleSearchSubmitCall = () => {
-    handleSearchSubmit(
-      dispatch,
-      headerTitle,
-      setMenu,
-      setModal,
-      stringToSearch
-    );
+    handleSearchSubmit(dispatch, headerTitle, stringToSearch);
   };
 
   const handleFocusCall = (field: string): void => {
@@ -125,7 +118,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   };
 
   const viewMessages = () => {
-    setMenu(false);
+    dispatch(isMenuOpenActionCreator(false));
     dispatch(isMenuOpenActionCreator(false));
     navigate(`/users/messages/${user.id}`);
   };
@@ -153,15 +146,23 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
       <div className="menu-vertical">
         <hr className="menu-hr-photo" />
 
-        <button onClick={handleHome} className="bt-home" title="bt-home">
-          <h3 className="menu-icon-label-vertical">Home</h3>
-        </button>
-        <button onClick={handleFavs} className="bt-favs" title="bt-favs">
-          <h3 className="menu-icon-label-vertical">Favorites</h3>
-        </button>
-        <button onClick={handleLikes} className="bt-likes" title="bt-likes">
-          <h3 className="menu-icon-label-vertical">Likes</h3>
-        </button>
+        {!isDesktop ?? (
+          <div>
+            <button onClick={handleHome} className="bt-home" title="bt-home">
+              <h3 className="menu-icon-label-vertical">Home</h3>
+            </button>
+            <button onClick={handleFavs} className="bt-favs" title="bt-favs">
+              <h3 className="menu-icon-label-vertical">Favorites</h3>
+            </button>
+            <button onClick={handleLikes} className="bt-likes" title="bt-likes">
+              <h3 className="menu-icon-label-vertical">Likes</h3>
+            </button>
+
+            <button onClick={addFav} className="bt-addfav" title="bt-fav">
+              <h3 className="menu-icon-label-vertical">New...</h3>
+            </button>
+          </div>
+        )}
         <button
           onClick={viewMessages}
           className="bt-menu-view-messages"
@@ -169,8 +170,12 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
         >
           <h3 className="menu-icon-label-vertical">Inbox</h3>
         </button>
-        <button onClick={addFav} className="bt-addfav" title="bt-fav">
-          <h3 className="menu-icon-label-vertical">New...</h3>
+        <button
+          onClick={handleSearch}
+          className="menu-bt-search"
+          title="bt-search"
+        >
+          <h3 className="menu-icon-label-vertical">Search</h3>
         </button>
       </div>
       <div className="menu-horizontal">
@@ -204,11 +209,6 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
             className="bt-settings"
             title="bt-settings"
           />
-          <button
-            onClick={handleSearch}
-            className="bt-search"
-            title="bt-search"
-          ></button>
         </div>
       </div>
     </div>

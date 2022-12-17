@@ -1,0 +1,26 @@
+.footer-sonar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-repos {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wellcome-techs {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.message-content {
+  margin-top: 20px;
+}
+.iconsNames {
+  font-size: 12px;
+}
+
+.wellcome-title {
+  margin-top: 10px;
+  font-size: 14px;
+}

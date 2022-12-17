@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   headerLastTitleActionCreator,
@@ -21,9 +20,7 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const [, setModal] = useState(false);
-
-  const { loading } = useAppSelector((state) => state.ui);
+  const { loading, isModalOpen } = useAppSelector((state) => state.ui);
   const { user } = useAppSelector((state) => state);
 
   let message = "";
@@ -36,8 +33,7 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
       dispatch(modalTypeActionCreator(newModalType));
       dispatch(modalMessageActionCreator(message));
 
-      setModal((prevState) => !prevState);
-      dispatch(isModalOpenActionCreator(true));
+      dispatch(isModalOpenActionCreator(!isModalOpen));
     } else {
       handleNoConexion(dispatch, user.id);
     }
@@ -49,8 +45,8 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
       if (penguin.id !== "") {
         dispatch(getMessagesThunk(penguin.id));
       }
-      setModal((prevState) => !prevState);
-      dispatch(isModalOpenActionCreator(false));
+
+      dispatch(isModalOpenActionCreator(!isModalOpen));
 
       dispatch(headerTitleActionCreator("Edit..."));
       dispatch(headerLastTitleActionCreator("Home"));

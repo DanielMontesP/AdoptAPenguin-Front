@@ -8,7 +8,7 @@ import {
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import iconPhotoEmpty from "../../images/contact-photo-add.png";
-import DetailPageStyles from "../../styles/DetailPageStyles";
+import "../../styles/DetailPageStyles.css";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import EditActions from "../EditActions/EditActions";
 import Messages from "../Messages/Messages";
@@ -96,12 +96,12 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
   }
 
   return (
-    <DetailPageStyles className="detail-container">
+    <div className="detail-container">
       <div className="detail-header">
         <h1 className="detail-name">{penguin.name}</h1>
         <EditActions penguin={penguin} />
       </div>
-      <div className="img-container">
+      <div className="detail-image">
         <button
           onClick={getDetailPrev}
           className="imgDetailPrev detailPrev"
@@ -120,10 +120,10 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
           title="btn-next"
         />
       </div>
-      <div className={`penguin-description`}>
+      <div className={`detail-content`}>
         <ActionButtons penguin={penguin} />
         <div className="detail-tabs">
-          <span className="category">{penguin.category}</span>
+          <span className="detail-category">{penguin.category}</span>
           <button
             className={`tab-description${classTabDescription}`}
             title="description"
@@ -147,7 +147,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
           )}
         </div>
       </div>
-    </DetailPageStyles>
+    </div>
   );
 };
 
