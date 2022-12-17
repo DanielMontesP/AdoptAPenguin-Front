@@ -31,9 +31,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   const { user } = useAppSelector((state) => state);
   const { connected } = useAppSelector((state) => state.system.server);
 
-  const [, setModal] = useState(false);
   const [isSearchClicked, setSearch] = useState(false);
-  const [, setMenu] = useState(false);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -45,17 +43,17 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   const searchPlaceHolderText = "Search by name/category/description...";
 
   const handleFavs = () => {
-    loadFavs(dispatch, headerTitle, setMenu, navigate);
+    loadFavs(dispatch, headerTitle, navigate);
     dispatch(isMenuOpenActionCreator(false));
   };
 
   const handleLikes = () => {
-    loadLikes(dispatch, headerTitle, setMenu, navigate);
+    loadLikes(dispatch, headerTitle, navigate);
     dispatch(isMenuOpenActionCreator(false));
   };
 
   const handleHome = () => {
-    loadHome(dispatch, headerTitle, navigate, setMenu);
+    loadHome(dispatch, headerTitle, navigate);
     dispatch(isMenuOpenActionCreator(false));
   };
 
@@ -82,7 +80,6 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
     switch (type) {
       case "desktop-bt-search":
         handleFocusCall(".menu-search-input");
-        setMenu(false);
         dispatch(isMenuOpenActionCreator(false));
         break;
       case "bt-search":
@@ -111,13 +108,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   };
 
   const handleSearchSubmitCall = () => {
-    handleSearchSubmit(
-      dispatch,
-      headerTitle,
-      setMenu,
-      setModal,
-      stringToSearch
-    );
+    handleSearchSubmit(dispatch, headerTitle, stringToSearch);
   };
 
   const handleFocusCall = (field: string): void => {
@@ -125,7 +116,7 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
   };
 
   const viewMessages = () => {
-    setMenu(false);
+    dispatch(isMenuOpenActionCreator(false));
     dispatch(isMenuOpenActionCreator(false));
     navigate(`/users/messages/${user.id}`);
   };

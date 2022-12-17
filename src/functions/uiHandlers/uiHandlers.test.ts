@@ -6,9 +6,8 @@ describe("Given a loadFavs function", () => {
     test("Then dispatch have to been called", () => {
       const dispatch = jest.fn();
       const setMenu = jest.fn();
-      const setModal = jest.fn();
 
-      loadFavs(dispatch, "Test", setMenu, setModal);
+      loadFavs(dispatch, "Test", setMenu);
 
       expect(dispatch).toHaveBeenCalled();
     });
@@ -20,9 +19,8 @@ describe("Given a loadHome function", () => {
     test("Then dispatch have to been called", () => {
       const dispatch = jest.fn();
       const navigate = jest.fn();
-      const setMenu = jest.fn();
 
-      loadHome(dispatch, "Test", navigate, setMenu);
+      loadHome(dispatch, "Test", navigate);
 
       expect(dispatch).toHaveBeenCalled();
     });
@@ -46,10 +44,9 @@ describe("Given a loadLikes function", () => {
   describe("When called", () => {
     test("Then dispatch have to been called", () => {
       const dispatch = jest.fn();
-      const setMenu = jest.fn();
       const navigate = jest.fn();
 
-      loadLikes(dispatch, "Test", setMenu, navigate);
+      loadLikes(dispatch, "Test", navigate);
 
       expect(dispatch).toHaveBeenCalled();
     });

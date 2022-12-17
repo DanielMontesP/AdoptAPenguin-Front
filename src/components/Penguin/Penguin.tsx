@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { toPascalCase } from "../../functions/sysHandlers/sysHandlers";
 import iconPhotoEmpty from "../../images/contact-photo-add.png";
-import { Modal } from "../Modals/ModalPrompt";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
@@ -20,8 +18,6 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
   const { loading } = useAppSelector((state) => state.ui);
   const { user } = useAppSelector((state) => state);
 
-  const [isModalOpen, setModal] = useState(false);
-  const message = "Delete penguin: " + penguin?.name + "?";
   const navigate = useNavigate();
 
   const handleMoreDetail = () => {
@@ -67,16 +63,6 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
       >
         {penguin.description?.substring(0, 100)}
       </div>
-
-      {isModalOpen && (
-        <Modal
-          closeModal={setModal}
-          type="delete"
-          idToProcess={penguin.id}
-          content={message}
-          form="Message"
-        />
-      )}
     </div>
   );
 };

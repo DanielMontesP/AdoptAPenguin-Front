@@ -10,13 +10,13 @@ import { useEffect, useState } from "react";
 import { UserInfo } from "./app/redux/types/userInterfaces/userInterfaces";
 import jwtDecode from "jwt-decode";
 import { logInActionCreator } from "./app/redux/features/userSlice/userSlice";
-import Navbar from "./components/Navbar/Navbar";
 import { Error404Page } from "./pages/Error404/Error404";
 import PenguinsPage from "./pages/PenguinsPage/PenguinsPage";
 import { getUserThunk } from "./app/redux/thunks/userThunk/userThunk";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { isDesktopActionCreator } from "./app/redux/features/uiSlice/uiSlice";
 import UserMessagesPage from "./pages/UserMessagesPage/UserMessagesPage";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   const { logged, id } = useAppSelector((state) => state.user);
@@ -25,33 +25,15 @@ function App() {
   const dispatch = useAppDispatch();
 
   const [isDesktop, setDesktop] = useState(window.innerWidth > 421);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [lastPosition] = useState(scrollPosition + 0.1);
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 420);
   };
 
-  let isScrolled = false;
-
-  const handleScroll = () => {
-    const position = window.scrollY;
-
-    setScrollPosition(position);
-  };
-
-  if (!isDesktop) {
-    if (scrollPosition < lastPosition) {
-      isScrolled = false;
-    } else {
-      isScrolled = true;
-    }
-  }
-
   let result = <></>;
 
   const handleNav = () => {
-    if (logged && !isScrolled) {
+    if (logged) {
       result = <Navbar headerTitle={headerTitle} />;
     }
   };
@@ -60,7 +42,6 @@ function App() {
 
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
-    window.addEventListener("scroll", handleScroll);
 
     const token = localStorage.getItem("token");
 
@@ -76,7 +57,6 @@ function App() {
 
     return () => {
       window.removeEventListener("resize", updateMedia);
-      window.removeEventListener("scroll", handleScroll);
     };
   }, [dispatch, logged, id, isDesktop, headerTitle]);
 
