@@ -1,17 +1,15 @@
-import Styles from "../../styles/WellcomeStyles";
+import "../../styles/WellcomeStyles.css";
 
 const Help = (): JSX.Element => {
   return (
-    <Styles>
-      <div className="message-container">
-        <div className="options">
-          <button className="animatedEdit"> Edit penguin data.</button>
-          <button className="animatedFavs">Add/Delete to Favorites</button>
-          <button className="animatedLikes">Add/Delete Like.</button>
-          <button className="animatedDelete"> Delete penguin.</button>
-        </div>
+    <div className="message-container">
+      <div className="options">
+        <button className="modal-edit"> Edit penguin data.</button>
+        <button className="modal-fav">Add/Delete to Favorites</button>
+        <button className="modal-like">Add/Delete Like.</button>
+        <button className="modal-delete"> Delete penguin.</button>
       </div>
-    </Styles>
+    </div>
   );
 };
 export default Help;

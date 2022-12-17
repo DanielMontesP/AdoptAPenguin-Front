@@ -6,7 +6,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import CreateForm from "../../components/CreateForm/CreateForm";
 import CreateMessageForm from "../../components/CreateMessage/CreateMessageForm";
-import FormsStyles from "../../styles/FormsStyles";
+import "../../styles/FormsStyles.css";
 
 interface Props {
   type: string;
@@ -34,13 +34,13 @@ const CreatePage = ({ type, form }: Props): JSX.Element => {
   }, [dispatch, penguin, headerTitle, thisTitle, isCreate, message]);
 
   return (
-    <FormsStyles>
+    <div>
       {form === "Message" || form === "Reply" ? (
         <CreateMessageForm message={message} />
       ) : (
         <CreateForm penguin={penguin} />
       )}
-    </FormsStyles>
+    </div>
   );
 };
 

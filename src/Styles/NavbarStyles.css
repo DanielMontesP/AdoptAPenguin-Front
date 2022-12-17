@@ -1,27 +1,3 @@
-body {
-  height: 100vh;
-  width: 100%;
-  margin: auto;
-  font-family: Montserrat, sans-serif;
-}
-textarea,
-input,
-button,
-h3 {
-  font-family: Montserrat, sans-serif;
-  color: white;
-}
-
-.desktop-bt-settings {
-  top: 10;
-  background: url("../images/settings-white-45.png");
-  background-size: 20px;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 25px;
-  border: 0;
-}
-
 .server-status-local {
   color: white;
 }
@@ -30,12 +6,12 @@ h3 {
 }
 
 .bt-settings {
-  top: 10px;
+  height: 45px;
+  width: 45px;
   background: url("../images/settings-white-45.png");
-  background-size: 35px;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-
   border: 0;
 }
 
@@ -103,12 +79,13 @@ h3 {
 }
 
 .notifyer-container {
+  color: black;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   position: fixed;
   right: 5px;
-  top: 97px;
+  top: 105px;
   opacity: 0.9;
   border-radius: 15px;
   padding: 5px;
@@ -220,7 +197,15 @@ h3 {
 }
 
 @media only screen and (max-width: 420px) {
-  .app .header {
+  .app {
+    height: 5rem;
+    background-color: #292929;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+    margin: auto;
+  }
+  .header {
     height: 5rem;
     width: 100%;
     background-color: #292929;
@@ -232,6 +217,7 @@ h3 {
   }
 
   .notifyer-bt-close {
+    cursor: pointer;
     background: url("../images/mail-empty.png");
     background-color: transparent;
     background-position: left;
@@ -258,21 +244,6 @@ h3 {
     flex: 2;
   }
 
-  .title-big {
-    font-family: Montserrat, sans-serif;
-    height: 300px;
-    width: 315px;
-    margin: auto;
-    position: fixed;
-    top: 20%;
-    font-weight: bolder;
-    background-color: transparent;
-    font-size: 3.8em;
-    text-align: justify;
-    animation: titleOpacity 10s infinite;
-    border: 0;
-  }
-
   .header-desktop-title {
     text-align: left;
     flex: 4;
@@ -280,19 +251,12 @@ h3 {
   }
 
   .options {
+    color: white;
     width: 320px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-  }
-
-  .penguins-container {
-    border-radius: 8px;
-    padding: 0 10px 15px;
-    margin-top: 120px;
-    text-align: center;
-    width: 95%;
   }
 
   .detail-container {
@@ -392,9 +356,6 @@ h3 {
     color: white;
   }
 
-  button {
-    width: initial;
-  }
   .header-title-container {
     display: flex;
     justify-content: center;
@@ -631,7 +592,8 @@ h1 {
   background-size: contain;
 }
 
-.animatedEdit {
+.modal-edit {
+  color: white;
   width: auto;
   height: 32px;
   border: none;
@@ -656,7 +618,8 @@ h1 {
   gap: 15px;
 }
 
-.animatedFavs {
+.modal-fav {
+  color: white;
   width: auto;
   height: 32px;
   border: none;
@@ -667,7 +630,8 @@ h1 {
   margin-left: 30px;
 }
 
-.animatedLikes {
+.modal-like {
+  color: white;
   width: auto;
   height: 32px;
   border: none;
@@ -677,19 +641,9 @@ h1 {
   margin-bottom: 5px;
   margin-left: 30px;
 }
-.bt-Edit {
-  width: 30px;
-  height: 30px;
-  background: url("../images/edit.png");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: contain;
-  border: 0;
-  margin: auto;
-  margin-right: 10px;
-}
 
-.animatedDelete {
+.modal-delete {
+  color: white;
   width: auto;
   border: none;
   height: 32px;
@@ -722,6 +676,7 @@ h1 {
   }
 
   .notifyer-bt-close {
+    cursor: pointer;
     background: url("../images/mail-empty.png");
     background-color: transparent;
     background-position: left;
@@ -731,21 +686,6 @@ h1 {
     color: rgb(71, 70, 70);
     width: 45px;
     height: 45px;
-    border: 0;
-  }
-
-  .title-big {
-    height: 300px;
-    max-width: 430px;
-    margin: auto;
-    position: fixed;
-    top: 20%;
-    font-weight: bolder;
-    background-color: transparent;
-    font-size: 5em;
-    text-align: justify;
-    animation: titleOpacity 10s infinite;
-    font-family: Montserrat, sans-serif;
     border: 0;
   }
 
@@ -761,6 +701,7 @@ h1 {
   }
 
   .options {
+    color: white;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -782,14 +723,6 @@ h1 {
     height: 87.4vh;
   }
 
-  .penguins-container {
-    border-radius: 8px;
-    padding: 0 10px 15px;
-    margin-top: 90px;
-    text-align: center;
-    width: 95%;
-  }
-
   .modal-help {
     width: 80%;
     height: 200px;
@@ -797,7 +730,6 @@ h1 {
     max-width: 500px;
   }
   .search-container {
-    width: 30px;
     height: 30px;
     background: none;
     border-radius: 50%;
@@ -926,37 +858,7 @@ h1 {
     margin-left: -40px;
   }
 
-  .desktop-bt-help {
-    top: 10;
-    background: url("../images/help-45.png");
-    background-size: 20px;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 25px;
-    border: 0;
-  }
-
-  .desktop-bt-settings {
-    top: 10;
-    background: url("../images/settings-white-45.png");
-    background-size: 20px;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 25px;
-    border: 0;
-  }
-
-  .desktop-bt-search {
-    background: url("../images/icon-search-white-45.png");
-    background-size: 20px;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 30px;
-    border: 0;
-    margin-top: -2px;
-  }
-
-  .desktop-bt-search-submit {
+  .bt-search-submit {
     background: url("../images/icon-search-black-45.png");
     background-size: 20px;
     background-position: center;
@@ -970,22 +872,14 @@ h1 {
     right: 6px;
   }
 
-  .desktop-bt-menu {
-    top: 10px;
+  .bt-menu {
+    height: 30px;
+    width: 30px;
+    margin-right: 15px;
     background: url("../images/hamburguer-white-45.png");
-    background-size: 20px;
+    background-size: 30px;
     background-position: center;
     background-repeat: no-repeat;
-    height: 25px;
-    border: 0;
-  }
-
-  .desktop-bt-logout {
-    height: 25px;
-    background: url("../images/icon-menu-logout45.png");
-    background-repeat: no-repeat;
-    background-size: 25px;
-    background-position: center;
     border: 0;
   }
 
@@ -1047,11 +941,12 @@ h1 {
 }
 
 .bt-help {
+  height: 45px;
+  width: 45px;
   background: url("../images/help-45.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 35px;
-
+  background-size: cover;
   border: 0;
 }
 
@@ -1127,14 +1022,6 @@ h1 {
   flex: 3;
 }
 
-.app {
-  width: -webkit-fill-available;
-
-  position: fixed;
-  top: 0;
-  z-index: 100;
-}
-
 .header .menu-btn {
   font-size: 1.75rem;
   cursor: pointer;
@@ -1145,40 +1032,10 @@ h1 {
 
 /* ------------------------------------------  */
 
-button {
-  width: 40px;
-  height: 40px;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 0;
-  cursor: pointer;
-}
-
 ul {
   list-style: none;
   margin: 10px;
   align-items: baseline;
-}
-
-.login-container {
-  width: 100%;
-  display: flow-root;
-}
-
-.register-container {
-  width: 100%;
-  display: flow-root;
-}
-
-.container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-
-  background-image: url("../images/HomePage.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .menu-hr-horizontal {
@@ -1224,6 +1081,16 @@ ul {
   opacity: 0;
 }
 
+.menu-bt-search {
+  height: 45px;
+  width: 100%;
+  background: url("../images/icon-search-white-45.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+  text-align: left;
+  border: 0;
+}
 .menu-bt-search-submit {
   background: url("../images/icon-search-black-45.png");
   background-size: 20px;
@@ -1328,10 +1195,12 @@ ul {
 }
 
 .bt-logout {
+  height: 45px;
+  width: 45px;
   background: url("../images/icon-menu-logout45.png");
-  background-position: center;
   background-repeat: no-repeat;
-  background-size: 42px;
+  background-size: contain;
+  background-position: center;
   border: 0;
 }
 
@@ -1394,15 +1263,6 @@ ul {
   display: none;
 }
 
-.bt-addfav {
-  background: url("../images/add.png");
-  height: 45px;
-  width: 190px;
-  background-repeat: no-repeat;
-  text-align: left;
-  border: 0;
-}
-
 .bt-home {
   height: 45px;
   width: 190px;
@@ -1432,21 +1292,13 @@ ul {
 }
 
 .bt-about {
+  height: 45px;
+  width: 45px;
   background: url("../images/about-45.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 35px;
+  background-size: contain;
   border: 0;
-}
-
-.desktop-bt-about {
-  height: 25px;
-  background: url("../images/about-45.png");
-  background-size: 21px;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: 0;
-  margin-left: 10px;
 }
 
 .bt-favs {
@@ -1470,11 +1322,13 @@ ul {
 }
 
 .bt-search {
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
   background: url("../images/icon-search-white-45.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 40px;
-  text-align: left;
+  background-size: cover;
   border: 0;
 }
 
@@ -1496,14 +1350,11 @@ ul {
 }
 /* ------------------------------------------------------------  */
 
-.app .body {
+.body {
   height: calc(100% - 5rem);
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.app .body button {
   padding: 0.5rem;
   font-size: 1.5rem;
   border-radius: 10px;
@@ -1636,7 +1487,6 @@ ul {
   font-size: 1rem;
   background: none;
   height: 30px;
-  margin-bottom: 5px;
   text-align: center;
 }
 
@@ -1673,5 +1523,6 @@ ul {
   position: fixed;
   top: 0;
   width: 100%;
+  height: 50px;
   z-index: 1;
 }

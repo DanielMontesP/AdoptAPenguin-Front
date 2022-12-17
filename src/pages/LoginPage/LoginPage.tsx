@@ -6,7 +6,7 @@ import {
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useEffect } from "react";
-import FormsStyles from "../../styles/FormsStyles";
+import "../../styles/FormsStyles.css";
 
 const LoginPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -23,10 +23,9 @@ const LoginPage = (): JSX.Element => {
   }, [dispatch, headerTitle, thisTitle]);
 
   return (
-    <FormsStyles className="container">
-      <h1 className="display-none">AdoptaUnPingüino.com</h1>
+    <div className="login-container">
       <LoginForm />
-    </FormsStyles>
+    </div>
   );
 };
 

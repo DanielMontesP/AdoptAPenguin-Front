@@ -94,7 +94,7 @@ describe("Given a handleMenu button NavDesktop component", () => {
   describe("When click handleMenu", () => {
     test("Then AddFav have to been called", () => {
       const stringToFind = "AdoptApenguin.com";
-      const labelAddFav = "desktop-btn-menu";
+      const labelAddFav = "btn-addFav";
 
       const handleMenu = jest.fn();
 
@@ -123,8 +123,6 @@ describe("Given a handleLogoutCall button NavDesktop component", () => {
     test("Then AddFav have to been called", () => {
       const stringToFind = "AdoptApenguin.com";
 
-      const labelAbout = "bt-about";
-      const labelLogout = "desktop-btn-logout";
       const labelSearch = "bt-search-submit";
       const labelHelp = "desktop-btn-help";
       const labelSearch2 = "bt-search";
@@ -134,8 +132,6 @@ describe("Given a handleLogoutCall button NavDesktop component", () => {
       const labelFavs = "btn-favs";
       const labelLikes = "btn-likes";
 
-      const handleAbout = jest.fn();
-      const handleLogoutCall = jest.fn();
       const handleSearch = jest.fn();
       const handleHelp = jest.fn();
       const handleSearchSubmitCall = jest.fn();
@@ -156,24 +152,6 @@ describe("Given a handleLogoutCall button NavDesktop component", () => {
 
       const label = screen.getByText(stringToFind);
       expect(label).toBeInTheDocument();
-
-      const button1 = screen.getByTitle(labelLogout);
-      userEvent.click(button1);
-
-      handleLogoutCall();
-      expect(handleLogoutCall).toHaveBeenCalled();
-
-      const button2 = screen.getAllByTitle(labelAbout);
-      userEvent.click(button2[0]);
-
-      handleAbout();
-      expect(handleAbout).toHaveBeenCalled();
-
-      const button3 = screen.getByTitle(labelHelp);
-      userEvent.click(button3);
-
-      handleHelp();
-      expect(handleHelp).toHaveBeenCalled();
 
       const button4 = screen.getAllByTitle(labelSearch);
       userEvent.click(button4[0]);

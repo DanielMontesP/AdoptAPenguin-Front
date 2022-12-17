@@ -30,12 +30,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form
-      className="login-form"
-      autoComplete="off"
-      noValidate
-      onSubmit={submitLogin}
-    >
+    <form className="form" autoComplete="off" noValidate onSubmit={submitLogin}>
       <label htmlFor="username">Username</label>
       <input
         id="username"
@@ -60,9 +55,12 @@ const LoginForm = () => {
         alt="Password"
         className="form-input"
       />
-      <div className="link">
+      <div className="form-footer">
         New user? please
-        <Link to="/users/register"> Register</Link>
+        <Link to="/users/register" className="form-link">
+          {" "}
+          Register
+        </Link>
       </div>
 
       <div className="submitContainer">

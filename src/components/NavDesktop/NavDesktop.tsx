@@ -5,8 +5,6 @@ import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinTh
 import "../../styles/NavbarStyles.css";
 import {
   isMenuOpenActionCreator,
-  isModalOpenActionCreator,
-  modalTypeActionCreator,
   stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import {
@@ -15,7 +13,6 @@ import {
   loadHome,
   loadLikes,
   handleSearchEnter,
-  handleLogoutPrompt,
   handleFocus,
 } from "../../functions/uiHandlers/uiHandlers";
 import { getUserMessagesThunk } from "../../app/redux/thunks/userThunk/userThunk";
@@ -29,7 +26,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
 
   const { user } = useAppSelector((state) => state);
 
-  const [, setModal] = useState(false);
   const [isSearchClicked, setSearch] = useState(false);
   const { stringToSearch, isMenuOpen } = useAppSelector((state) => state.ui);
   const classButton = `desktop-btn bt-`;
@@ -78,29 +74,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   const viewMessages = () => {
     dispatch(getUserMessagesThunk(user.id));
     navigate(`/users/messages/${user.id}`);
-  };
-
-  const handleLogoutCall = () => {
-    handleLogoutPrompt(dispatch, navigate);
-  };
-
-  const handleAbout = () => {
-    dispatch(modalTypeActionCreator("About"));
-
-    dispatch(isModalOpenActionCreator(true));
-  };
-
-  const handleSettings = () => {
-    dispatch(modalTypeActionCreator("Settings"));
-
-    dispatch(isModalOpenActionCreator(true));
-  };
-
-  const handleHelp = () => {
-    dispatch(modalTypeActionCreator("Help"));
-
-    setModal((prevState) => !prevState);
-    dispatch(isModalOpenActionCreator(true));
   };
 
   const handleSearch = (event: MouseEvent<HTMLButtonElement>) => {
@@ -199,42 +172,23 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
         <div className="search-container">
           <button
             onClick={handleSearch}
-            className={`desktop-bt-search`}
+            className={`bt-search`}
             title="bt-search"
           />
           <button
             onClick={handleSearchSubmitCall}
-            className={`desktop-bt-search-submit ${HidderSearch.replace(
+            className={`bt-search-submit ${HidderSearch.replace(
               "search-input",
               ""
             )}`}
             title="bt-search-submit"
           />
         </div>
-        <button
-          onClick={handleAbout}
-          className={`desktop-bt-about${HidderDesktopButtons}`}
-          title="bt-about"
-        />
-        <button
-          onClick={handleHelp}
-          className={`desktop-bt-help${HidderDesktopButtons}`}
-          title="desktop-btn-help"
-        />
-        <button
-          onClick={handleLogoutCall}
-          className={`desktop-bt-logout${HidderDesktopButtons}`}
-          title="desktop-btn-logout"
-        />
+
         <button
           onClick={handleMenu}
-          className={`desktop-bt-menu${HidderDesktopButtons}`}
-          title="desktop-btn-menu"
-        />
-        <button
-          onClick={handleSettings}
-          className={`desktop-bt-settings${HidderDesktopButtons}`}
-          title="desktop-btn-settings"
+          className={`bt-menu${HidderDesktopButtons}`}
+          title="btn-menu"
         />
       </div>{" "}
     </div>

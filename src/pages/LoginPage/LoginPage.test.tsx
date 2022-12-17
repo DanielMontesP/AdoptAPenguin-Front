@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import store from "../../app/redux/store/store";
 import LoginPage from "./LoginPage";
 import { BrowserRouter } from "react-router-dom";
-import FormsStyles from "../../styles/FormsStyles";
+import "../../styles/FormsStyles.css";
 
 describe("Given a LoginPage Component", () => {
   describe("When it's rendered", () => {
@@ -13,9 +13,7 @@ describe("Given a LoginPage Component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <FormsStyles>
-              <LoginPage />
-            </FormsStyles>
+            <LoginPage />
           </Provider>
         </BrowserRouter>
       );

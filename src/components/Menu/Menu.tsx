@@ -26,7 +26,9 @@ interface Props {
 }
 
 const Menu = ({ isMenuOpened }: Props): JSX.Element => {
-  const { stringToSearch, headerTitle } = useAppSelector((state) => state.ui);
+  const { stringToSearch, headerTitle, isDesktop } = useAppSelector(
+    (state) => state.ui
+  );
 
   const { user } = useAppSelector((state) => state);
   const { connected } = useAppSelector((state) => state.system.server);
@@ -144,15 +146,23 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
       <div className="menu-vertical">
         <hr className="menu-hr-photo" />
 
-        <button onClick={handleHome} className="bt-home" title="bt-home">
-          <h3 className="menu-icon-label-vertical">Home</h3>
-        </button>
-        <button onClick={handleFavs} className="bt-favs" title="bt-favs">
-          <h3 className="menu-icon-label-vertical">Favorites</h3>
-        </button>
-        <button onClick={handleLikes} className="bt-likes" title="bt-likes">
-          <h3 className="menu-icon-label-vertical">Likes</h3>
-        </button>
+        {!isDesktop ?? (
+          <div>
+            <button onClick={handleHome} className="bt-home" title="bt-home">
+              <h3 className="menu-icon-label-vertical">Home</h3>
+            </button>
+            <button onClick={handleFavs} className="bt-favs" title="bt-favs">
+              <h3 className="menu-icon-label-vertical">Favorites</h3>
+            </button>
+            <button onClick={handleLikes} className="bt-likes" title="bt-likes">
+              <h3 className="menu-icon-label-vertical">Likes</h3>
+            </button>
+
+            <button onClick={addFav} className="bt-addfav" title="bt-fav">
+              <h3 className="menu-icon-label-vertical">New...</h3>
+            </button>
+          </div>
+        )}
         <button
           onClick={viewMessages}
           className="bt-menu-view-messages"
@@ -160,8 +170,12 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
         >
           <h3 className="menu-icon-label-vertical">Inbox</h3>
         </button>
-        <button onClick={addFav} className="bt-addfav" title="bt-fav">
-          <h3 className="menu-icon-label-vertical">New...</h3>
+        <button
+          onClick={handleSearch}
+          className="menu-bt-search"
+          title="bt-search"
+        >
+          <h3 className="menu-icon-label-vertical">Search</h3>
         </button>
       </div>
       <div className="menu-horizontal">
@@ -195,11 +209,6 @@ const Menu = ({ isMenuOpened }: Props): JSX.Element => {
             className="bt-settings"
             title="bt-settings"
           />
-          <button
-            onClick={handleSearch}
-            className="bt-search"
-            title="bt-search"
-          ></button>
         </div>
       </div>
     </div>

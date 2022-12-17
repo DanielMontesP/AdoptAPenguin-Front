@@ -43,8 +43,10 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
 
   return (
     <div className="penguin-container">
-      <h1 className="penguin-name">{toPascalCase(`${penguin.name}`)}</h1>
-      <EditActions penguin={penguin} />
+      <div className="penguin-header">
+        <h1 className="penguin-name">{toPascalCase(`${penguin.name}`)}</h1>
+        <EditActions penguin={penguin} />
+      </div>
       <div className="penguin-image-container link" onClick={handleMoreDetail}>
         <img
           src={penguinImage}
@@ -55,13 +57,14 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
       <ActionButtons penguin={penguin} />
       <div className="penguin-datalist">
         <span className="category">{toPascalCase(`${penguin.category}`)}</span>
-      </div>
-      <div
-        className="penguin-description link"
-        onClick={handleMoreDetail}
-        placeholder="bt-more-detail"
-      >
-        {penguin.description?.substring(0, 100)}
+
+        <div
+          className="penguin-description link"
+          onClick={handleMoreDetail}
+          placeholder="bt-more-detail"
+        >
+          {penguin.description?.substring(0, 100)}
+        </div>
       </div>
     </div>
   );

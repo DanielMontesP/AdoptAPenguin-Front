@@ -11,6 +11,7 @@ import {
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { resetMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
+import "../../styles/PagesStyles.css";
 
 interface Props {
   type: string;

@@ -140,7 +140,6 @@ export const loadAbout = (dispatch: any) => {
   dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator("About"));
-
   dispatch(isModalOpenActionCreator(true));
 };
 
