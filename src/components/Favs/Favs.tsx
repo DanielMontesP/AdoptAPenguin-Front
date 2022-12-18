@@ -1,6 +1,6 @@
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import Penguin from "../Penguin/Penguin";
-import "../../rstyles/PagesStyles.css";
+import "../../styles/PagesStyles.css";
 interface Props {
   allPenguins: IPenguin[];
 }

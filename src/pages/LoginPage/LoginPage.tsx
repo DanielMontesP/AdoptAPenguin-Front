@@ -6,7 +6,7 @@ import {
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useEffect } from "react";
-import "../../rstyles/FormsStyles.css";
+import "../../styles/FormsStyles.css";
 
 const LoginPage = (): JSX.Element => {
   const dispatch = useAppDispatch();

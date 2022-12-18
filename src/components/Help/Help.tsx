@@ -1,4 +1,4 @@
-import "../../rstyles/WellcomeStyles.css";
+import "../../styles/WellcomeStyles.css";
 
 const Help = (): JSX.Element => {
   return (
