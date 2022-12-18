@@ -8,7 +8,6 @@ import {
   registerThunk,
 } from "./userThunk";
 import axios from "axios";
-import { mockPenguins } from "../../../../mocks/penguins";
 import { mockMessages } from "../../../../mocks/messages";
 
 beforeAll(() => {
@@ -194,7 +193,7 @@ describe("Given the getuserThunk function", () => {
       const thunk = getUserMessagesThunk(mockUser.id);
       await thunk(dispatch);
 
-      expect(axios.get).toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });
