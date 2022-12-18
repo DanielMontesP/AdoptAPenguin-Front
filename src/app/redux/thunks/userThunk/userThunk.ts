@@ -201,8 +201,10 @@ export const getUserMessagesThunk =
           "Connected to server",
           dispatch
         );
-        getUserNewMessages(messages, dispatch);
-        dispatch(getUserMessagesActionCreator(messages));
+        if (messages?.length > 0) {
+          getUserNewMessages(messages, dispatch);
+          dispatch(getUserMessagesActionCreator(messages));
+        }
       }
     } else {
       handleNoConexion(dispatch, "user.id");
