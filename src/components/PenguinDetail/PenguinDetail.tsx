@@ -8,7 +8,7 @@ import {
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import iconPhotoEmpty from "../../images/contact-photo-add.png";
-import "../../styles/DetailPageStyles.css";
+import "../../rstyles/DetailPageStyles.css";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import EditActions from "../EditActions/EditActions";
 import Messages from "../Messages/Messages";

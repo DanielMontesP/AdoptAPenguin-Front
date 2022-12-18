@@ -182,10 +182,6 @@ body {
   background-position: center;
 }
 
-element.style {
-  text-align: center;
-}
-
 hr {
   width: 40%;
   margin: 35px;
@@ -401,9 +397,9 @@ nav {
   min-width: 200px;
   box-shadow: 0 3px 6px #666;
   padding: 10px 10px 100px 10px;
+  margin: auto;
   margin-bottom: 10px;
   border-radius: 5px 5px 5px 5px;
-  margin: auto;
   text-align: center;
 }
 
@@ -477,13 +473,8 @@ nav {
   justify-content: center;
   align-items: center;
   -moz-column-count: 4;
-  -webkit-column-gap: 1.5em;
-  -moz-column-gap: 1.5em;
-  column-gap: 1.5em;
   margin: 1em;
   padding: 1;
-  -moz-column-gap: 1em;
-  -webkit-column-gap: 1em;
   column-gap: 1em;
   font-size: 0.85em;
   transform: translate(40px, 50px);

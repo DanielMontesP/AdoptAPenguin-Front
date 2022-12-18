@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
-import "../../styles/NavbarStyles.css";
+import "../../rstyles/NavbarStyles.css";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
@@ -80,11 +80,13 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
     }
   };
 
-  if (scrollPosition <= lastPosition) {
-    isScrolled = false;
-  } else {
-    isScrolled = true;
+  const handleSetLastPosition = () => {
     setLastPosition(scrollPosition);
+  };
+
+  if (scrollPosition > lastPosition) {
+    isScrolled = true;
+    handleSetLastPosition();
   }
 
   const headerClass = `header`;

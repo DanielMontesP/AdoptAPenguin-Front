@@ -1,4 +1,4 @@
-import "../../styles/PagesStyles.css";
+import "../../rstyles/PagesStyles.css";
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../app/redux/hooks/hooks";
