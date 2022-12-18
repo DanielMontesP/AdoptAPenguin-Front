@@ -10,7 +10,7 @@ import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
-import "../../rstyles/PagesStyles.css";
+import "../../styles/PagesStyles.css";
 
 interface Props {
   allMessages: IMessage[];

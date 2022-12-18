@@ -1,4 +1,3 @@
-import "../../rstyles/NavbarStyles.css";
 interface Props {
   headerTitle: string;
 }
