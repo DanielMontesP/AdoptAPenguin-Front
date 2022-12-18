@@ -184,27 +184,30 @@ export const getUserMessagesThunk =
     const connected = connectedToServer() ? true : false;
 
     if (connected) {
-      if (token) {
-        const {
-          data: { messages },
-        } = await axios.get(
-          `${process.env.REACT_APP_API_URL}users/messages/${idUser}`,
-          {
+      const urlPath = `${process.env.REACT_APP_API_URL}`;
+
+      if (urlPath !== undefined && urlPath !== "undefined") {
+        if (token) {
+          const {
+            data: { messages },
+          } = await axios.get(`${urlPath}users/messages/${idUser}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
+          });
+          handleServerInfo(
+            true,
+            `${process.env.REACT_APP_API_URL}`,
+            "Connected to server",
+            dispatch
+          );
+          if (messages?.length > 0) {
+            getUserNewMessages(messages, dispatch);
+            dispatch(getUserMessagesActionCreator(messages));
           }
-        );
-        handleServerInfo(
-          true,
-          `${process.env.REACT_APP_API_URL}`,
-          "Connected to server",
-          dispatch
-        );
-        if (messages?.length > 0) {
-          getUserNewMessages(messages, dispatch);
-          dispatch(getUserMessagesActionCreator(messages));
         }
+      } else {
+        setLoadingOffWithMessage(`GET Penguins: urlPath undefined`, false);
       }
     } else {
       handleNoConexion(dispatch, "user.id");
