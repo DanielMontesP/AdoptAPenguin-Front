@@ -2,7 +2,7 @@ import { ChangeEvent, KeyboardEvent, MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
-import "../../styles/NavbarStyles.css";
+import "../../rstyles/NavbarStyles.css";
 import {
   isMenuOpenActionCreator,
   stringToSearchActionCreator,

@@ -6,7 +6,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import CreateForm from "../../components/CreateForm/CreateForm";
 import CreateMessageForm from "../../components/CreateMessage/CreateMessageForm";
-import "../../styles/FormsStyles.css";
+import "../../rstyles/FormsStyles.css";
 
 interface Props {
   type: string;

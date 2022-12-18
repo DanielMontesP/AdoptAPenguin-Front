@@ -9,7 +9,7 @@ import imgNode from "../../images/nodejs-40.png";
 import imgHTML5 from "../../images/html5-40.png";
 import imgJest from "../../images/jest-40.png";
 import imgApp from "../../images/userPhoto.png";
-import "../../styles/WellcomeStyles.css";
+import "../../rstyles/WellcomeStyles.css";
 
 const WellcomeComments = (): JSX.Element => {
   return (

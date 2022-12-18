@@ -1,4 +1,4 @@
-import "../../styles/NavbarStyles.css";
+import "../../rstyles/NavbarStyles.css";
 interface Props {
   headerTitle: string;
 }

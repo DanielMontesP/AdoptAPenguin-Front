@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../../app/redux/store/store";
 import PenguinsPage from "./PenguinsPage";
-import "../../styles/PagesStyles.css";
+import "../../rstyles/PagesStyles.css";
 import { loadLikesThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 
 jest.mock("react-router-dom", () => ({

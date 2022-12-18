@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
-import "../../styles/NavbarStyles.css";
+import "../../rstyles/NavbarStyles.css";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
