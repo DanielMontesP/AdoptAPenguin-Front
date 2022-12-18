@@ -179,21 +179,4 @@ describe("Given the getuserThunk function", () => {
       expect(axios.post).toHaveBeenCalled();
     });
   });
-
-  describe("When getUserMessagesThunk invoked", () => {
-    test("Then it should not call the dispatch", async () => {
-      const dispatch = jest.fn();
-
-      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      axios.get = jest
-        .fn()
-        .mockReturnValue({ data: { messages: mockMessages } });
-
-      const thunk = getUserMessagesThunk(mockUser.id);
-      await thunk(dispatch);
-
-      expect(dispatch).toHaveBeenCalled();
-    });
-  });
 });
