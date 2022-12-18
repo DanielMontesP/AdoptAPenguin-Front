@@ -212,7 +212,6 @@
   }
 
   .form-img__img-preview {
-    display: block;
     width: 40.5vh;
     height: 220px;
     margin-top: 5px;
@@ -504,7 +503,6 @@ input ::placeholder {
   column-gap: 40px;
   align-items: center;
   margin: auto;
-  margin-top: 400px;
   background-image: none;
   margin-top: 50px;
 }
@@ -656,9 +654,9 @@ input ::placeholder {
 .form-image-container {
   box-shadow: 0 3px 6px #666;
   padding: 10px 10px 150px 10px;
+  margin: auto;
   margin-bottom: 10px;
   border-radius: 5px 5px 5px 5px;
-  margin: auto;
   text-align: center;
   width: 100%;
 }
@@ -709,13 +707,9 @@ form-link:visited {
   justify-content: center;
   align-items: center;
   -moz-column-count: 4;
-  -webkit-column-gap: 1.5em;
-  -moz-column-gap: 1.5em;
   column-gap: 1.5em;
   margin: 1em;
   padding: 1;
-  -moz-column-gap: 1em;
-  -webkit-column-gap: 1em;
   column-gap: 1em;
   font-size: 0.85em;
   transform: translate(40px, 50px);
