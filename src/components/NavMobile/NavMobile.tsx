@@ -80,9 +80,13 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
     }
   };
 
+  const handleSetLastPosition = () => {
+    setLastPosition(scrollPosition);
+  };
+
   if (scrollPosition > lastPosition) {
     isScrolled = true;
-    setLastPosition(scrollPosition);
+    handleSetLastPosition();
   }
 
   const headerClass = `header`;
