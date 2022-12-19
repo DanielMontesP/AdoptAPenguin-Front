@@ -91,7 +91,6 @@ body {
   .penguins-container {
     border-radius: 8px;
     padding: 0 10px 15px;
-    margin-top: 20px;
     text-align: center;
     width: 95%;
     height: auto;
@@ -135,7 +134,7 @@ body {
     width: 95%;
     border-radius: 8px;
     padding: 0 10px 15px;
-    margin-top: 90px;
+    margin-top: 40px;
     text-align: center;
   }
   .title-big {
@@ -210,21 +209,6 @@ label {
   margin: auto;
 }
 
-input {
-  border: 2px solid black;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  box-sizing: border-box;
-  color: black;
-  font-size: 18px;
-  height: 100%;
-}
-
-input :placeholder {
-  text-align: center;
-}
-
 nav {
   margin-right: 9px;
 }
@@ -237,18 +221,14 @@ nav {
   height: 220px;
   width: 100%;
   min-width: 320px;
+  background: url("../images/contact-photo-add.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
   border-radius: 5px;
   margin: auto;
   object-fit: cover;
-}
-
-.header {
-  position: fixed;
-  right: 20px;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  width: 95%;
 }
 
 .category {
@@ -352,15 +332,6 @@ nav {
   display: flex;
   flex-direction: row;
   bottom: 20px;
-}
-
-.bt-home {
-  background: url("../images/icon-home.png");
-  height: 65px;
-  width: 65px;
-  background-size: 60%;
-  background-repeat: no-repeat;
-  border: 0;
 }
 
 .bt-message-new {
@@ -505,12 +476,13 @@ nav {
 }
 
 .animatedDelete {
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border: none;
-  background: url("../images/delete-black.png");
+  background: url("../images/delete.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 15px;
+  background-size: contain;
   margin-left: 30px;
 }
 

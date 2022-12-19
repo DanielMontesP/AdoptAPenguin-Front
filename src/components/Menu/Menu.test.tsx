@@ -21,12 +21,14 @@ describe("Given a Menu component", () => {
         </Provider>
       );
 
-      const label1 = screen.getByTitle("bt-search");
-      const label2 = screen.getByPlaceholderText(searchPlaceHolderText);
-
-      userEvent.type(label2, "Enter");
+      const label1 = screen.getByTitle("bt-search-submit");
+      expect(label1).toBeInTheDocument();
 
       userEvent.click(label1);
+
+      const label2 = screen.getByPlaceholderText(searchPlaceHolderText);
+      expect(label2).toBeInTheDocument();
+      userEvent.type(label2, "Enter");
 
       handleSearch({
         event: { key: "Enter", currentTarget: { title: "desktop-bt-search" } },
@@ -35,8 +37,6 @@ describe("Given a Menu component", () => {
         event: { key: "Enter", currentTarget: { title: "desktop-bt-search" } },
       });
 
-      expect(label1).toBeInTheDocument();
-      expect(label2).toBeInTheDocument();
       expect(handleSearchEnter).toHaveBeenCalled();
       expect(handleSearch).toHaveBeenCalled();
     });

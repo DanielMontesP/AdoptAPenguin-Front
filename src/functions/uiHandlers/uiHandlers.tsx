@@ -132,7 +132,6 @@ export const loadHelp = (dispatch: any) => {
   dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator("Help"));
-
   dispatch(isModalOpenActionCreator(true));
 };
 

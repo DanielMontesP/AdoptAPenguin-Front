@@ -388,14 +388,6 @@ h2 {
   display: none;
 }
 
-.bt-home {
-  background: url("../images/icon-home.png");
-  height: 65px;
-  width: 65px;
-  background-size: 60%;
-  background-repeat: no-repeat;
-}
-
 .bt-edit {
   top: 50px;
   flex: 2;
@@ -407,14 +399,6 @@ h2 {
   background: url("../images/fav-empty.png");
   background-size: 60%;
   background-repeat: no-repeat;
-}
-
-.bt-likes {
-  width: 32px;
-  height: 32px;
-  background: url("../images/like-full.png");
-  background-repeat: no-repeat;
-  padding: 0 0 0 0;
 }
 
 .detail-info {
@@ -745,17 +729,4 @@ h2 {
   -webkit-animation-name: bounce2;
   animation-name: bounce2;
   margin: auto;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: url("../images/icon-star_full.png");
-  height: 5rem;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #292929;
-  margin: auto;
-  color: white;
 }

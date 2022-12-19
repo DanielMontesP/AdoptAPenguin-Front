@@ -121,7 +121,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const textRead = message.read ? "Mark as unread" : "Mark as read";
 
   return (
-    <div className="container">
+    <div className="create-container">
       <form
         noValidate
         autoComplete="off"
@@ -150,9 +150,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           placeholder="Subject"
           value={formData.subject || thisFormData.subject}
           autoComplete="off"
-          className={
-            isCreate || isReply ? "message-input" : "form-input-disabled"
-          }
+          className={isCreate || isReply ? "form-input" : "form-input-disabled"}
           onChange={handleInputChange}
           readOnly={!isCreate && !isReply ? true : false}
         />
