@@ -83,8 +83,6 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
   if (scrollPosition > lastPosition) {
     isScrolled = true;
     setLastPosition(scrollPosition);
-  } else {
-    isScrolled = false;
   }
 
   const headerClass = `header`;
