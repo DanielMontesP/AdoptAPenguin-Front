@@ -36,7 +36,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
   let isHomePage = headerTitle === "Home";
 
   let isScrolled = false;
-  let classHeaderTitle = "header-desktop-title";
+  let classHeaderTitle = "nav-title";
 
   let HidderDesktopButtons = "";
 
@@ -80,17 +80,16 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
     }
   };
 
-  const handleSetLastPosition = () => {
-    setLastPosition(scrollPosition);
-  };
-
   if (scrollPosition > lastPosition) {
     isScrolled = true;
-    handleSetLastPosition();
+    setLastPosition(scrollPosition);
+  } else {
+    isScrolled = false;
   }
 
   const headerClass = `header`;
   const classBack = "bt-back";
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
@@ -101,7 +100,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
 
   return (
     <>
-      {!isScrolled ? (
+      {isScrolled === false ? (
         <div className={headerClass}>
           <div className="header-title-container">
             {!isHomePage && (

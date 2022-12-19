@@ -5,6 +5,7 @@ import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinTh
 import "../../styles/NavbarStyles.css";
 import {
   isMenuOpenActionCreator,
+  isModalOpenActionCreator,
   stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import {
@@ -16,6 +17,9 @@ import {
   handleFocus,
 } from "../../functions/uiHandlers/uiHandlers";
 import { getUserMessagesThunk } from "../../app/redux/thunks/userThunk/userThunk";
+import { ReactDimmer } from "react-dimmer";
+import { Modal } from "../Modals/ModalPrompt";
+import Menu from "../Menu/Menu";
 interface Props {
   headerTitle: string;
 }
@@ -27,8 +31,14 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   const { user } = useAppSelector((state) => state);
 
   const [isSearchClicked, setSearch] = useState(false);
-  const { stringToSearch, isMenuOpen } = useAppSelector((state) => state.ui);
+  const { stringToSearch, modalMessage, modalType, isModalOpen, isMenuOpen } =
+    useAppSelector((state) => state.ui);
   const classButton = `desktop-btn bt-`;
+
+  const { penguin } = useAppSelector((state) => state.penguins);
+
+  const [isModalOpened, setModal] = useState(false);
+  const [isMenuOpened, setMenu] = useState(false);
 
   let classButtonHome = `${classButton}home`;
   let classButtonLikes = `${classButton}likes`;
@@ -39,6 +49,8 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
 
   const searchPlaceHolderText = "Search by name/category/description...";
   let HidderDesktopButtons = "";
+
+  const isOpen = isMenuOpen || isModalOpen;
 
   switch (headerTitle) {
     case "Home":
@@ -60,15 +72,17 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   }
 
   const addFav = () => {
-    dispatch(isMenuOpenActionCreator(false));
+    setMenu((prevState) => !prevState);
 
     dispatch(resetPenguinThunk());
 
     navigate("/create");
   };
 
-  const handleMenu = () => {
-    dispatch(isMenuOpenActionCreator(!isMenuOpen));
+  const handleUserMenu = () => {
+    setMenu((prevState) => !prevState);
+
+    dispatch(isMenuOpenActionCreator(true));
   };
 
   const viewMessages = () => {
@@ -121,14 +135,51 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     handleFocus(field);
   };
 
+  const getModalType = () => {
+    const newModalType = modalType;
+    return newModalType;
+  };
+
+  const handleDimmer = () => {
+    setMenu(false);
+    dispatch(isMenuOpenActionCreator(false));
+    dispatch(isModalOpenActionCreator(false));
+  };
+
   const HidderSearch = isSearchClicked
     ? `${classInputSearch} opacity-full`
     : `${classInputSearch}`;
 
   return (
     <div className="nav">
-      <h1 className={`header-desktop-title`}>AdoptApenguin.com</h1>
-      <div className={`header-desktop-buttons${HidderDesktopButtons}`}>
+      <div className="nav-header">
+        <h1 className={`nav-title`}>AdoptApenguin.com</h1>
+        <button
+          onClick={handleSearch}
+          className={`bt-search`}
+          title="bt-search"
+        />
+        {isSearchClicked ? (
+          <div className="search-container">
+            <button
+              onClick={handleSearchSubmitCall}
+              className={`bt-search-submit ${HidderSearch.replace(
+                "search-input",
+                ""
+              )}`}
+              title="bt-search-submit"
+            />
+          </div>
+        ) : (
+          ""
+        )}
+        <button
+          onClick={handleUserMenu}
+          className={`bt-user${HidderDesktopButtons}`}
+          title="btn-user"
+        />
+      </div>
+      <div className={`nav-buttons${HidderDesktopButtons}`}>
         <button
           className={classButtonHome}
           onClick={loadHomeCall}
@@ -159,38 +210,45 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
           title="btn-view-messages"
         >
           Inbox
-        </button>
-        <input
-          className={`${HidderSearch}`}
-          type="text"
-          placeholder={searchPlaceHolderText}
-          onChange={handleSearchChange}
-          onKeyDown={handleSearchEnterCall}
-          autoFocus
-          value={stringToSearch}
-        />
-        <div className="search-container">
-          <button
-            onClick={handleSearch}
-            className={`bt-search`}
-            title="bt-search"
+        </button>{" "}
+        {isSearchClicked ? (
+          <input
+            className={`${HidderSearch}`}
+            type="text"
+            placeholder={searchPlaceHolderText}
+            onChange={handleSearchChange}
+            onKeyDown={handleSearchEnterCall}
+            autoFocus
+            value={stringToSearch}
           />
-          <button
-            onClick={handleSearchSubmitCall}
-            className={`bt-search-submit ${HidderSearch.replace(
-              "search-input",
-              ""
-            )}`}
-            title="bt-search-submit"
+        ) : (
+          ""
+        )}
+      </div>{" "}
+      {(isModalOpen || isModalOpened) && (
+        <Modal
+          idToProcess={penguin.id}
+          content={modalMessage}
+          closeModal={setModal}
+          type={getModalType()}
+          form="Penguin"
+        />
+      )}
+      {isMenuOpen && isMenuOpened && (
+        <div className={`menu-nav`}>
+          <Menu isMenuOpened={isMenuOpen || isMenuOpened} />
+        </div>
+      )}
+      {(isMenuOpened || isModalOpened) && (
+        <div onClick={handleDimmer}>
+          <ReactDimmer
+            isOpen={isOpen}
+            exitDimmer={setMenu || setModal}
+            zIndex={90}
+            blur={1.5}
           />
         </div>
-
-        <button
-          onClick={handleMenu}
-          className={`bt-menu${HidderDesktopButtons}`}
-          title="btn-menu"
-        />
-      </div>{" "}
+      )}
     </div>
   );
 };

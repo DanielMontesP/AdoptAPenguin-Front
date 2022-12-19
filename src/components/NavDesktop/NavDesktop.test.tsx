@@ -123,21 +123,9 @@ describe("Given a handleLogoutCall button NavDesktop component", () => {
     test("Then AddFav have to been called", () => {
       const stringToFind = "AdoptApenguin.com";
 
-      const labelSearch = "bt-search-submit";
-      const labelHelp = "desktop-btn-help";
-      const labelSearch2 = "bt-search";
-      const searchPlaceHolderText = "Search by name/category/description...";
-
       const labelHome = "btn-home";
       const labelFavs = "btn-favs";
       const labelLikes = "btn-likes";
-
-      const handleSearch = jest.fn();
-      const handleHelp = jest.fn();
-      const handleSearchSubmitCall = jest.fn();
-      const handleSearchChange = jest.fn();
-      const handleSearchEnter = jest.fn();
-
       const loadHomeCall = jest.fn();
       const loadLikesCall = jest.fn();
       const loadFavsCall = jest.fn();
@@ -152,29 +140,6 @@ describe("Given a handleLogoutCall button NavDesktop component", () => {
 
       const label = screen.getByText(stringToFind);
       expect(label).toBeInTheDocument();
-
-      const button4 = screen.getAllByTitle(labelSearch);
-      userEvent.click(button4[0]);
-
-      handleSearchSubmitCall();
-      expect(handleSearchSubmitCall).toHaveBeenCalled();
-
-      const button5 = screen.getAllByTitle(labelSearch2);
-      userEvent.click(button5[0]);
-
-      handleSearch();
-      expect(handleSearch).toHaveBeenCalled();
-
-      const inputSearch = screen.getAllByPlaceholderText(searchPlaceHolderText);
-      userEvent.type(inputSearch[0], "test");
-
-      handleSearchChange();
-      expect(handleSearchChange).toHaveBeenCalled();
-
-      userEvent.type(inputSearch[0], "{Enter}");
-
-      handleSearchEnter({ event: { key: "Enter" } });
-      expect(handleSearchEnter).toHaveBeenCalled();
 
       const button6 = screen.getByTitle(labelHome);
       userEvent.click(button6);

@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: auto;
-  margin-top: 110px;
-  width: 80%;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 30px;
 }
 
 .form-footer {
@@ -100,7 +100,7 @@
 
   .bt-save {
     height: 60px;
-    width: 100%;
+    width: 80%;
     max-width: 500px;
     font-size: 20px;
     margin-top: 20px;
@@ -169,7 +169,8 @@
   }
 
   .input-description {
-    width: 100%;
+    font-family: Montserrat, sans-serif;
+    width: 80%;
     max-width: 500px;
     height: 150px;
     margin: auto;
@@ -184,7 +185,7 @@
 
   .form-img__file-label {
     display: block;
-    width: 100%;
+    width: 80%;
     height: 225px;
     cursor: pointer;
     background-image: url("../images/contact-photo.png");
@@ -194,21 +195,6 @@
     border-radius: 15px;
     border: 2px black solid;
     opacity: 0.8;
-  }
-
-  input {
-    height: 50px;
-    width: 100%;
-    max-width: 500px;
-    border: 2px solid black;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    box-sizing: border-box;
-    color: black;
-    font-size: 18px;
-    margin: auto;
-    background: white;
   }
 
   .form-img__img-preview {
@@ -344,9 +330,10 @@
 
   .image-container {
     width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    margin: auto;
     align-items: center;
   }
 
@@ -364,6 +351,7 @@
   }
 
   .input-description {
+    font-family: Montserrat, sans-serif;
     height: 150px;
     width: 80%;
     max-width: 500px;
@@ -389,21 +377,6 @@
     border-radius: 15px;
     border: 2px black solid;
     opacity: 0.8;
-  }
-
-  input {
-    width: 80%;
-    max-width: 500px;
-    height: 50px;
-    border: 2px solid black;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    box-sizing: border-box;
-    color: black;
-    font-size: 18px;
-    margin: auto;
-    background: white;
   }
 
   .form-img__img-preview {
@@ -635,14 +608,6 @@ input ::placeholder {
   bottom: 20px;
 }
 
-.bt-home {
-  background: url("../images/icon-home.png");
-  height: 65px;
-  width: 65px;
-  background-size: 60%;
-  background-repeat: no-repeat;
-}
-
 .bt-addfav {
   width: 65px;
   height: 65px;
@@ -669,17 +634,6 @@ input ::placeholder {
 .for-penguin-title {
   display: flex;
   height: 40px;
-}
-
-.bt-likes {
-  width: 32px;
-  height: 32px;
-  background: url("../images/heartLike.png");
-  background-repeat: no-repeat;
-  padding: 0 0 0 0;
-  position: relative;
-  top: -140px;
-  left: -10px;
 }
 
 .form-link,

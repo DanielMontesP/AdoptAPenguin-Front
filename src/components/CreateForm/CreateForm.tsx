@@ -172,6 +172,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
           value={formData.name || penguin.name}
           autoComplete="off"
           onChange={handleInputChange}
+          className="form-input"
         />
 
         <label htmlFor="category">Category</label>
@@ -182,6 +183,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
           value={formData.category || penguin.category}
           autoComplete="off"
           onChange={handleInputChange}
+          className="form-input"
         />
 
         <label htmlFor="description">Description</label>
