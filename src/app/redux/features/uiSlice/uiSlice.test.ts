@@ -17,6 +17,7 @@ const initialState = {
   stringToSearch: "search",
   isMenuOpen: false,
   isModalOpen: false,
+  isSearchOpen: false,
 };
 
 const expectedState = {
@@ -30,6 +31,7 @@ const expectedState = {
   stringToSearch: "search",
   isMenuOpen: false,
   isModalOpen: false,
+  isSearchOpen: false,
 };
 
 const expectedLoadingState = {
@@ -43,6 +45,7 @@ const expectedLoadingState = {
   stringToSearch: "",
   isMenuOpen: false,
   isModalOpen: false,
+  isSearchOpen: false,
 };
 
 const process = {

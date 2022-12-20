@@ -145,7 +145,7 @@ export const editMessageThunk =
       );
 
       dispatch(editMessageActionCreator(message));
-
+      dispatch(getMessageThunk(formMessage.id));
       setLoadingOffWithMessage(`${type}`, false);
     }
   };

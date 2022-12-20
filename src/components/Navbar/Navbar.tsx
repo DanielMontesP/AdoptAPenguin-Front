@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
+import { ReactDimmer } from "react-dimmer";
 import { ToastContainer } from "react-toastify";
-import { useAppSelector } from "../../app/redux/hooks/hooks";
+import {
+  isMenuOpenActionCreator,
+  isModalOpenActionCreator,
+  isSearchOpenActionCreator,
+} from "../../app/redux/features/uiSlice/uiSlice";
+import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import "../../styles/NavbarStyles.css";
-import MessageNotifyer from "../MessageNotifyer/MessageNotifyer";
+import Menu from "../Menu/Menu";
+import { Modal } from "../Modals/ModalPrompt";
 import NavDektop from "../NavDesktop/NavDesktop";
 import NavMobile from "../NavMobile/NavMobile";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
@@ -12,10 +19,36 @@ interface Props {
 }
 
 const Navbar = ({ headerTitle }: Props): JSX.Element => {
-  const { isDesktop } = useAppSelector((state) => state.ui);
-  const { newMessages } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+
+  const {
+    isDesktop,
+    modalMessage,
+    modalType,
+    isModalOpen,
+    isMenuOpen,
+    isSearchOpen,
+  } = useAppSelector((state) => state.ui);
+  const { penguin } = useAppSelector((state) => state.penguins);
 
   const [showTopBtn, setShowTopBtn] = useState(false);
+  const [, setModal] = useState(false);
+  const [, setMenu] = useState(false);
+  const [, setSearch] = useState(false);
+
+  const isOpen = isMenuOpen || isModalOpen || isSearchOpen;
+
+  const getModalType = () => {
+    const newModalType = modalType;
+    return newModalType;
+  };
+
+  const handleDimmer = () => {
+    dispatch(isMenuOpenActionCreator(false));
+    dispatch(isModalOpenActionCreator(false));
+    dispatch(isSearchOpenActionCreator(false));
+    setSearch(false);
+  };
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -27,13 +60,6 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
     });
   }, []);
 
-  const showNotifiyer =
-    headerTitle === "Favorites" ||
-    headerTitle.includes("Home") ||
-    headerTitle.includes("Likes")
-      ? true
-      : false;
-
   return (
     <div className={`app`}>
       {isDesktop ? (
@@ -43,8 +69,31 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
       )}
 
       {showTopBtn && <ScrollToTop />}
-      {showNotifiyer ? <MessageNotifyer messages={newMessages} /> : ""}
-
+      {isModalOpen && (
+        <Modal
+          idToProcess={penguin.id}
+          content={modalMessage}
+          closeModal={setModal}
+          type={getModalType()}
+          form="Penguin"
+        />
+      )}
+      {isMenuOpen && (
+        <div className={`menu-nav`}>
+          <Menu isMenuOpened={isMenuOpen} />
+        </div>
+      )}
+      {isMenuOpen ||
+        (isSearchOpen && (
+          <div onClick={handleDimmer}>
+            <ReactDimmer
+              isOpen={isOpen}
+              exitDimmer={setMenu || setModal || setSearch}
+              zIndex={90}
+              blur={1.5}
+            />
+          </div>
+        ))}
       <ToastContainer limit={4} />
     </div>
   );

@@ -1,15 +1,18 @@
 import "../../styles/PagesStyles.css";
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../app/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { getMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
+import { getUserMessagesThunk } from "../../app/redux/thunks/userThunk/userThunk";
 
 interface Props {
   messages: IMessage[];
 }
 
 const MessageNotifyer = ({ messages }: Props): JSX.Element => {
+  const { user } = useAppSelector((state) => state);
+
   const [isHide, setHidder] = useState(true);
   const [, setHidderContainer] = useState(false);
 
@@ -22,6 +25,12 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
     setHidder((prevState) => !prevState);
 
     return newHidder;
+  };
+
+  const handleInbox = () => {
+    setHidder(true);
+    dispatch(getUserMessagesThunk(user.id));
+    navigate(`/users/messages/${user.id}`);
   };
 
   const handleClick = (event: FormEvent<HTMLDivElement>): void => {
@@ -48,6 +57,9 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
       </div>
       {!isHide ? (
         <div className={`notify-list`}>
+          <span className={`bt-inbox`} onClick={handleInbox}>
+            Inbox
+          </span>
           {messages?.length > 0
             ? messages.map((message, index) => {
                 return (

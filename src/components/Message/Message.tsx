@@ -1,14 +1,12 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   isModalOpenActionCreator,
   modalMessageActionCreator,
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
-import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
+import { useAppDispatch } from "../../app/redux/hooks/hooks";
 import { getMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
-import { Modal } from "../Modals/ModalPrompt";
 
 interface Props {
   message: IMessage;
@@ -17,12 +15,6 @@ interface Props {
 const Message = ({ message }: Props): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-
-  const [isModalOpen, setModal] = useState(false);
-
-  const { modalMessage } = useAppSelector((state) => state.ui);
-  const { modalType } = useAppSelector((state) => state.ui);
-  const { penguin } = useAppSelector((state) => state.penguins);
 
   const handleClick = () => {
     const idMessage = message.id;
@@ -47,11 +39,9 @@ const Message = ({ message }: Props): JSX.Element => {
 
     dispatch(modalTypeActionCreator(newModalType));
     dispatch(modalMessageActionCreator(message));
-
-    setModal((prevState) => !prevState);
   };
 
-  const classIconIsRead = message.read ? "message-unread" : "message-read";
+  const classIconIsRead = message.read ? "icon-unread" : "icon-read";
 
   return (
     <div className="message-container">
@@ -64,19 +54,10 @@ const Message = ({ message }: Props): JSX.Element => {
         placeholder="bt-view"
       />
       <button
-        className={"animatedDelete"}
+        className={"message-delete"}
         onClick={handleDelete}
         placeholder="bt-delete"
       />
-      {isModalOpen && (
-        <Modal
-          type={modalType}
-          idToProcess={message.id || penguin.id}
-          content={modalMessage}
-          closeModal={setModal}
-          form="Message"
-        />
-      )}
     </div>
   );
 };

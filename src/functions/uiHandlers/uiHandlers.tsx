@@ -4,6 +4,7 @@ import {
   headerTitleActionCreator,
   isMenuOpenActionCreator,
   isModalOpenActionCreator,
+  isSearchOpenActionCreator,
   modalMessageActionCreator,
   modalTypeActionCreator,
   stringToSearchActionCreator,
@@ -123,6 +124,7 @@ export const handleSearchEnter = (
   headerTitle: string
 ) => {
   if (event.key === "Enter") {
+    dispatch(isSearchOpenActionCreator(false));
     dispatch(stringToSearchActionCreator(stringToSearch));
     handleSearchSubmit(dispatch, headerTitle, stringToSearch);
   }

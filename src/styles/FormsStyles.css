@@ -4,7 +4,6 @@
   flex-direction: column;
   width: 100%;
   max-width: 500px;
-  margin-top: 30px;
 }
 
 .form-footer {
@@ -126,9 +125,9 @@
     width: 100%;
     max-width: 500px;
     margin-top: 20px;
-    color: white;
+    color: black;
     background-color: transparent;
-    border: 2px solid white;
+    border: 2px solid black;
     font-size: 20px;
     font-weight: bold;
     border-radius: 15px;
@@ -147,7 +146,7 @@
     align-items: flex-start;
   }
 
-  .image-container {
+  .form-image-container {
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -168,21 +167,6 @@
     aspect-ratio: auto;
   }
 
-  .input-description {
-    font-family: Montserrat, sans-serif;
-    width: 80%;
-    max-width: 500px;
-    height: 150px;
-    margin: auto;
-    border: 2px solid black;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    box-sizing: border-box;
-    color: black;
-    font-size: 18px;
-  }
-
   .form-img__file-label {
     display: block;
     width: 80%;
@@ -192,7 +176,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 17px;
     border: 2px black solid;
     opacity: 0.8;
   }
@@ -236,6 +220,34 @@
     background: white;
   }
 
+  .form-text-description {
+    width: 80%;
+    max-width: 500px;
+    height: 150px;
+    margin: auto;
+    border: 2px solid black;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: black;
+    font-size: 20px;
+  }
+
+  .form-text-disabled {
+    width: 80%;
+    height: 150px;
+    max-width: 500px;
+    background: lightgrey;
+    margin: auto;
+    border: 2px solid black;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+
   .form-input-disabled {
     width: 80%;
     max-width: 500px;
@@ -272,9 +284,10 @@
     width: 80%;
     max-width: 500px;
     margin-top: 20px;
-    color: white;
+    cursor: pointer;
+    color: black;
     background-color: transparent;
-    border: 2px solid white;
+    border: 2px solid black;
     font-size: 20px;
     font-weight: bold;
     border-radius: 15px;
@@ -299,18 +312,18 @@
     margin-top: 20px;
     margin-bottom: 20px;
     font-weight: bold;
-    color: white;
+    color: black;
     background-color: transparent;
-    border: 2px solid white;
+    border: 2px solid black;
     border-radius: 15px;
   }
 
-  label {
+  .form-label {
     width: 80%;
     max-width: 500px;
     display: flex;
     flex-direction: column;
-    color: white;
+    color: black;
     font-size: 20px;
     margin: auto;
   }
@@ -318,22 +331,34 @@
   .create-container {
     height: 100%;
     display: flex;
-    background-image: url("../images/HomePage.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     justify-content: center;
     flex-direction: row;
     align-content: space-around;
     align-items: flex-start;
   }
 
-  .image-container {
+  .form-header {
     width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .form-header-fields {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-image-container {
+    width: 80%;
+    height: 210px;
     margin: auto;
     margin-bottom: 20px;
     display: flex;
-    flex-direction: column;
     align-items: center;
   }
 
@@ -350,31 +375,16 @@
     aspect-ratio: auto;
   }
 
-  .input-description {
-    font-family: Montserrat, sans-serif;
-    height: 150px;
-    width: 80%;
-    max-width: 500px;
-    margin: auto;
-    border: 2px solid black;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    box-sizing: border-box;
-    color: black;
-    font-size: 18px;
-  }
-
   .form-img__file-label {
     display: block;
     width: 100%;
-    height: 225px;
+    height: 100%;
     cursor: pointer;
     background-image: url("../images/contact-photo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 17px;
     border: 2px black solid;
     opacity: 0.8;
   }
@@ -616,16 +626,6 @@ input ::placeholder {
   background-repeat: no-repeat;
 }
 
-.form-image-container {
-  box-shadow: 0 3px 6px #666;
-  padding: 10px 10px 150px 10px;
-  margin: auto;
-  margin-bottom: 10px;
-  border-radius: 5px 5px 5px 5px;
-  text-align: center;
-  width: 100%;
-}
-
 .form-penguin-datalist {
   display: flex;
   height: 40px;
@@ -827,17 +827,16 @@ we're going to use its associated label to trigger it */
 
 .form-img__file-label > img {
   position: relative;
-  top: 48%;
-  height: 100%;
+  top: 50%;
   width: 100%;
   left: 50%;
-  opacity: 0.9;
+  opacity: 0.8;
   object-fit: cover;
   transform: translate(-50%, -50%);
 }
 
 .form-img__file-label:hover > img {
-  opacity: 1;
+  opacity: 0.7;
 }
 
 .login-container {

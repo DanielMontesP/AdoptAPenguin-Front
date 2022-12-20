@@ -11,6 +11,7 @@ const initialState: UISliceState = {
   stringToSearch: "",
   isMenuOpen: false,
   isModalOpen: false,
+  isSearchOpen: false,
 };
 
 const uiSlice = createSlice({
@@ -66,6 +67,11 @@ const uiSlice = createSlice({
       ...ui,
       isModalOpen: action.payload,
     }),
+
+    isSearchOpen: (ui: UISliceState, action: PayloadAction<any>) => ({
+      ...ui,
+      isSearchOpen: action.payload,
+    }),
   },
 });
 
@@ -80,6 +86,7 @@ export const {
   isDesktop: isDesktopActionCreator,
   isMenuOpen: isMenuOpenActionCreator,
   isModalOpen: isModalOpenActionCreator,
+  isSearchOpen: isSearchOpenActionCreator,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

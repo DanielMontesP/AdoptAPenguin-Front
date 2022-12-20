@@ -38,7 +38,7 @@ export const newReply = (
     idPenguin,
     idUser,
     content: "",
-    subject: "RE: " && subject,
+    subject: `RE: ${subject}`,
     data: getCurrentDate(),
     read: false,
   };

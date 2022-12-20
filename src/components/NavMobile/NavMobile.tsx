@@ -102,7 +102,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
 
   return (
     <>
-      {isScrolled === false ? (
+      {!isScrolled ? (
         <div className={headerClass}>
           <div className="header-title-container">
             {!isHomePage && (

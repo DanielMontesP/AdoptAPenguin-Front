@@ -15,7 +15,6 @@ import {
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 import {
   blankMessageData,
-  newMessageData,
   newReply,
 } from "../../app/redux/initializers/iniMessages";
 
@@ -33,26 +32,12 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const { penguin } = useAppSelector((state) => state.penguins);
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  let isCreate = false;
-  let isReply = false;
-  let thisFormData: IMessage = blankMessageData;
+  const isCreate = headerTitle.includes("New");
+  const isReply = headerTitle.includes("Reply");
 
-  if (headerTitle.includes("New")) {
-    isCreate = true;
-  }
-
-  if (headerTitle.includes("Reply")) {
-    isReply = true;
-
-    thisFormData = newReply(
-      message.id,
-      idUser,
-      penguin.id,
-      `RE: ${message.subject}`
-    );
-  } else {
-    thisFormData = newMessageData(idUser, penguin.id);
-  }
+  const thisFormData: any = isReply
+    ? newReply(message.id, idUser, penguin.id, message.subject)
+    : blankMessageData;
 
   const [formData, setFormData] = useState(thisFormData);
 
@@ -72,7 +57,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
     event.preventDefault();
 
     setFormData({
-      ...thisFormData,
+      ...formData,
       [event.target.id]: event.target.value,
     });
 
@@ -117,8 +102,27 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const handleMessageRead = () => {
     setMessageRead(message, dispatch);
   };
+
+  const subjectValue = () => {
+    if (formData.subject) {
+      return formData.subject;
+    } else if (isCreate && isReply) {
+      return `RE: ${message.subject}`;
+    } else {
+      return message.subject;
+    }
+  };
+
   const classRead = message.read ? "message-read" : "message-unread";
   const textRead = message.read ? "Mark as unread" : "Mark as read";
+
+  const classInput =
+    !isCreate || !isReply ? "form-input-disabled" : "form-input";
+
+  const classInputDescription =
+    !isCreate || !isReply ? "form-text-disabled" : "form-text-description";
+
+  const isReadOnly = !isCreate;
 
   return (
     <div className="create-container">
@@ -129,46 +133,50 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
         className="form-create"
         title="form-create"
       >
-        {!isCreate ?? (
+        {!isCreate ? (
           <div className={classRead} onClick={handleMessageRead}>
             {textRead}
           </div>
+        ) : (
+          ""
         )}
-        <label htmlFor="description">Send To</label>
+        <label htmlFor="description" className="form-label">
+          Send To
+        </label>
         <input
           id="sendto"
           type="text"
           placeholder="Send To"
-          className="form-input-disabled"
+          className={`form-input-disabled`}
           value={penguin.name}
           readOnly
         />
-        <label htmlFor="subject">Subject</label>
+        <label htmlFor="subject" className="form-label">
+          Subject
+        </label>
         <input
           id="subject"
           type="text"
           placeholder="Subject"
-          value={formData.subject || thisFormData.subject}
+          value={subjectValue()}
           autoComplete="off"
-          className={isCreate || isReply ? "form-input" : "form-input-disabled"}
+          className={`${classInput}`}
           onChange={handleInputChange}
-          readOnly={!isCreate && !isReply ? true : false}
+          readOnly={isReadOnly}
         />
 
-        <label htmlFor="content">Message</label>
+        <label htmlFor="content" className="form-label">
+          Message
+        </label>
         <input
           id="content"
           type="text"
           placeholder="Message"
           value={formData.content || message.content}
           autoComplete="off"
-          className={
-            isCreate || isReply
-              ? "input-description"
-              : "input-description form-input-disabled"
-          }
+          className={`${classInputDescription}`}
           onChange={handleInputChange}
-          readOnly={!isCreate && !isReply ? true : false}
+          readOnly={isReadOnly}
         />
 
         {isCreate ? (

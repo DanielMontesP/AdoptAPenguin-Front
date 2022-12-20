@@ -65,7 +65,7 @@ export const setMessageRead = (message: IMessage, dispatch: any) => {
   const newData = { ...message };
   newData.read = !message.read ? true : false;
 
-  dispatch(editMessageThunk(newData, "Delete Like."));
+  dispatch(editMessageThunk(newData, "Finished successfully ."));
 };
 
 export const toPascalCase = (strValue: string) => {
