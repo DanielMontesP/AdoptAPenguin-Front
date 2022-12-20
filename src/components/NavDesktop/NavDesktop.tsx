@@ -115,7 +115,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     handleFocus(field);
   };
 
-  const setOpacityFull = "opacity-full";
+  const setOpacityFull = " opacity-full";
 
   const HidderSearch = isSearchOpen
     ? `${classInputSearch} ${setOpacityFull}`
