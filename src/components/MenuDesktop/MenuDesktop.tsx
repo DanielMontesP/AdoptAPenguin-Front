@@ -61,7 +61,7 @@ const MenuDesktop = ({ isMenuOpened }: Props): JSX.Element => {
         <h3 className="user-username">{toPascalCase(`${user.username}`)}</h3>
       </div>
 
-      <div className="menu-vertical">
+      <div className="menu-user-vertical">
         <button
           onClick={handleInbox}
           className="bt-menu-view-messages"

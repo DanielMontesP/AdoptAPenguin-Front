@@ -120,7 +120,6 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
           {handleStatus()}
         </span>
       </h3>
-      <hr className="menu-hr-photo" />
 
       <div className="menu-vertical">
         <button onClick={handleHome} className="bt-home" title="bt-home">
@@ -133,13 +132,13 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
           <h3 className="menu-icon-label-vertical">Likes</h3>
         </button>
 
-        <button onClick={addFav} className="bt-favs" title="bt-fav">
+        <button onClick={addFav} className="bt-addfav" title="bt-fav">
           <h3 className="menu-icon-label-vertical">New...</h3>
         </button>
 
         <button
           onClick={handleInbox}
-          className="bt-menu-view-messages"
+          className="bt-inbox"
           title="bt-view-messages"
         >
           <h3 className="menu-icon-label-vertical">Inbox</h3>
@@ -164,7 +163,6 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
           />
         </div>
       </div>
-      <hr className="menu-hr-horizontal" />
       <div className="menu-horizontal">
         <div className="menu-icons-horizontal">
           <button

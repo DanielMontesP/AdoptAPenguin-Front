@@ -996,7 +996,7 @@
 
 .menu-search-container {
   height: 30px;
-  width: 140px;
+  width: 145px;
   background: none;
   border-radius: 50%;
   transition: all 1s;
@@ -1169,6 +1169,18 @@ ul {
   height: 1vw;
   width: 100%;
   position: relative;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin-left: 35px;
+  gap: 40px;
+}
+
+.menu-user-vertical {
+  height: 1vw;
+  width: 100%;
+  position: relative;
   top: 80px;
   display: flex;
   flex-direction: column;
@@ -1310,12 +1322,13 @@ ul {
 
 .bt-home {
   height: 45px;
-  width: 190px;
+  width: 145px;
   background: url("../images/icon-menu-home45.png");
   background-repeat: no-repeat;
-  text-align: left;
+  background-size: 45px;
+  background-position: left;
+  text-align: center;
   border: 0;
-  margin-left: 20px;
 }
 
 .bt-view-messages {
@@ -1352,12 +1365,24 @@ ul {
 
 .bt-favs {
   height: 45px;
-  width: 145px;
+  width: 180px;
   cursor: pointer;
   background: url("../images/fav-white.png");
   background-size: 45px;
   background-repeat: no-repeat;
-  text-align: left;
+  text-align: center;
+  border: 0;
+}
+
+.bt-addfav {
+  width: 145px;
+  height: 45px;
+  cursor: pointer;
+  background: none;
+  background-image: url("../images/fav-white.png");
+  background-repeat: no-repeat;
+  background-size: 45px;
+  text-align: center;
   border: 0;
 }
 
@@ -1367,7 +1392,7 @@ ul {
   cursor: pointer;
   background: url("../images/like-white.png");
   background-size: 45px;
-  text-align: left;
+  text-align: center;
   background-repeat: no-repeat;
   border: 0;
 }
@@ -1533,7 +1558,7 @@ ul {
   transition: 1s;
   position: fixed;
   right: 0;
-  top: 50px;
+  top: 56px;
   display: flex;
   flex-flow: wrap;
   align-content: flex-start;
@@ -1586,9 +1611,14 @@ ul {
 }
 
 .bt-inbox {
-  width: 100%;
-  text-align: right;
+  height: 45px;
+  width: 145px;
   cursor: pointer;
+  background: url("../images/mail-full.png");
+  background-size: 45px;
+  background-repeat: no-repeat;
+  text-align: center;
+  border: 0;
 }
 
 .selected {
