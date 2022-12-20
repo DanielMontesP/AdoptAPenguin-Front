@@ -6,7 +6,7 @@ describe("Given the getuserThunk function", () => {
     test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
       render(<Help />);
 
-      const search = "Edit penguin data.";
+      const search = "View inbox.";
 
       const label = screen.getByText(search);
 

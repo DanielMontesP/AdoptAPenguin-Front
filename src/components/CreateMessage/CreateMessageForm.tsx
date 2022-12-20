@@ -125,80 +125,74 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const isReadOnly = !isCreate;
 
   return (
-    <div className="create-container">
-      <form
-        noValidate
+    <form
+      noValidate
+      autoComplete="off"
+      onSubmit={handleSubmit}
+      className="form-create"
+      title="form-create"
+    >
+      {!isCreate ? (
+        <div className={classRead} onClick={handleMessageRead}>
+          {textRead}
+        </div>
+      ) : (
+        ""
+      )}
+      <label htmlFor="description" className="form-label">
+        Send To
+      </label>
+      <input
+        id="sendto"
+        type="text"
+        placeholder="Send To"
+        className={`form-input-disabled`}
+        value={penguin.name}
+        readOnly
+      />
+      <label htmlFor="subject" className="form-label">
+        Subject
+      </label>
+      <input
+        id="subject"
+        type="text"
+        placeholder="Subject"
+        value={subjectValue()}
         autoComplete="off"
-        onSubmit={handleSubmit}
-        className="form-create"
-        title="form-create"
-      >
-        {!isCreate ? (
-          <div className={classRead} onClick={handleMessageRead}>
-            {textRead}
-          </div>
-        ) : (
-          ""
-        )}
-        <label htmlFor="description" className="form-label">
-          Send To
-        </label>
-        <input
-          id="sendto"
-          type="text"
-          placeholder="Send To"
-          className={`form-input-disabled`}
-          value={penguin.name}
-          readOnly
-        />
-        <label htmlFor="subject" className="form-label">
-          Subject
-        </label>
-        <input
-          id="subject"
-          type="text"
-          placeholder="Subject"
-          value={subjectValue()}
-          autoComplete="off"
-          className={`${classInput}`}
-          onChange={handleInputChange}
-          readOnly={isReadOnly}
-        />
+        className={`${classInput}`}
+        onChange={handleInputChange}
+        readOnly={isReadOnly}
+      />
 
-        <label htmlFor="content" className="form-label">
-          Message
-        </label>
-        <input
-          id="content"
-          type="text"
-          placeholder="Message"
-          value={formData.content || message.content}
-          autoComplete="off"
-          className={`${classInputDescription}`}
-          onChange={handleInputChange}
-          readOnly={isReadOnly}
-        />
+      <label htmlFor="content" className="form-label">
+        Message
+      </label>
+      <input
+        id="content"
+        type="text"
+        placeholder="Message"
+        value={formData.content || message.content}
+        autoComplete="off"
+        className={`${classInputDescription}`}
+        onChange={handleInputChange}
+        readOnly={isReadOnly}
+      />
 
-        {isCreate ? (
-          <button
-            type="submit"
-            className="bt-message-save"
-            placeholder="bt-save"
-          >
-            Send
-          </button>
-        ) : (
-          <button
-            type="submit"
-            className="bt-message-save"
-            placeholder="bt-reply"
-            id="bt-reply"
-          >
-            Reply
-          </button>
-        )}
-      </form>
-    </div>
+      {isCreate ? (
+        <button type="submit" className="bt-message-save" placeholder="bt-save">
+          Send
+        </button>
+      ) : (
+        <button
+          type="submit"
+          className="bt-message-save"
+          placeholder="bt-reply"
+          id="bt-reply"
+        >
+          Reply
+        </button>
+      )}
+    </form>
   );
 };
 

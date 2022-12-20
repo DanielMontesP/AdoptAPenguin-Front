@@ -17,7 +17,7 @@ const Home = (): JSX.Element => {
         </NavLink>
       </div>
 
-      <div className="footer">2022 Penguins Inc.</div>
+      <div className="footer-home">2022 Penguins Inc.</div>
     </div>
   );
 };
