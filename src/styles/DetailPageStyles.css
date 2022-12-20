@@ -247,18 +247,46 @@
 
 .message-read {
   width: auto;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  background-color: black;
-  border: 1px solid white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 5px;
+  text-align: right;
+}
+
+.icon-read {
+  width: auto;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: rgb(50, 189, 50);
+  border: 1px solid black;
   border-radius: 20px;
   padding: 5px;
   text-align: right;
   color: white;
 }
 
+.icon-unread {
+  max-width: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 5px;
+  text-align: right;
+  color: black;
+}
+
 .message-unread {
+  cursor: pointer;
   max-width: 110px;
   display: flex;
   justify-content: center;
@@ -325,15 +353,6 @@ li {
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 10px;
-}
-
-h1 {
-  font-size: 1.3em;
-}
-
-h2 {
-  font-size: 16px;
-  text-align: center;
 }
 
 .bt-delete {
@@ -428,11 +447,23 @@ h2 {
 }
 
 .message-read-img {
+  cursor: pointer;
   background: url("../images/icon-view-black-45.png");
   background-repeat: no-repeat;
   background-size: 20px;
   width: 24px;
   height: 24px;
+  border: 0;
+}
+
+.message-delete {
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+  background: url("../images/delete-black.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: 25px;
   border: 0;
 }
 

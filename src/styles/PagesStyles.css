@@ -1,5 +1,5 @@
 body {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   margin: auto;
   font-family: Montserrat, sans-serif;
@@ -256,6 +256,7 @@ nav {
 }
 
 .penguin-name {
+  font-size: 1.2rem;
   width: 80%;
   height: 30px;
   text-align: left;

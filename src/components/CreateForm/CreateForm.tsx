@@ -148,44 +148,47 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
         className="form-create"
         title="form-create"
       >
-        <div className="image-container">
-          <input
-            type="file"
-            accept=".png, .jpg, .jpeg, .gif"
-            id="photo"
-            className="visually-hidden"
-            onChange={handleImg}
-            placeholder="image-input"
-          />
-          <label
-            htmlFor="photo"
-            className={`form-img__file-label${HidderBackground}`}
-          >
-            <img src={penguinImage} alt={alt} className={`${classImage}`} />
-          </label>
+        <div className="form-header">
+          <div className="form-image-container">
+            <input
+              type="file"
+              accept=".png, .jpg, .jpeg, .gif"
+              id="photo"
+              className="visually-hidden"
+              onChange={handleImg}
+              placeholder="image-input"
+            />
+            <label
+              htmlFor="photo"
+              className={`form-img__file-label${HidderBackground}`}
+            >
+              <img src={penguinImage} alt={alt} className={`${classImage}`} />
+            </label>
+          </div>
+          <div className="form-header-fields">
+            <label htmlFor="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Name"
+              value={formData.name || penguin.name}
+              autoComplete="off"
+              onChange={handleInputChange}
+              className="form-input"
+            />
+
+            <label htmlFor="category">Category</label>
+            <input
+              id="category"
+              type="text"
+              placeholder="Category"
+              value={formData.category || penguin.category}
+              autoComplete="off"
+              onChange={handleInputChange}
+              className="form-input"
+            />
+          </div>
         </div>
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          placeholder="Name"
-          value={formData.name || penguin.name}
-          autoComplete="off"
-          onChange={handleInputChange}
-          className="form-input"
-        />
-
-        <label htmlFor="category">Category</label>
-        <input
-          id="category"
-          type="text"
-          placeholder="Category"
-          value={formData.category || penguin.category}
-          autoComplete="off"
-          onChange={handleInputChange}
-          className="form-input"
-        />
-
         <label htmlFor="description">Description</label>
         <textarea
           id="description"

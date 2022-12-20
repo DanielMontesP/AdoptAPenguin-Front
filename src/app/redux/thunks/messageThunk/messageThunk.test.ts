@@ -120,7 +120,7 @@ describe("Given the editMessageThunk function", () => {
       const thunk = editMessageThunk(mockMessage.id, "Message");
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });
@@ -139,7 +139,7 @@ describe("Given the editMessageThunk with no token function", () => {
       const thunk = editMessageThunk(mockMessage.id, "Message");
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });

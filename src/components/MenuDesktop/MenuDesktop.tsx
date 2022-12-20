@@ -19,8 +19,7 @@ interface Props {
 
 const MenuDesktop = ({ isMenuOpened }: Props): JSX.Element => {
   const { user } = useAppSelector((state) => state);
-  const { connected } = useAppSelector((state) => state.system.server);
-
+  const { isMenuOpen } = useAppSelector((state) => state.ui);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -50,25 +49,19 @@ const MenuDesktop = ({ isMenuOpened }: Props): JSX.Element => {
     navigate(`/users/messages/${user.id}`);
   };
 
-  const handleStatus = () => {
-    return connected ? " Connected" : " local";
+  const handleUserMenu = () => {
+    dispatch(isMenuOpenActionCreator(!isMenuOpen));
   };
-  const classServerStatus = connected ? "server" : "local";
 
   return (
-    <div className={`menu-app menu-open`}>
+    <div className={`menu-user menu-open`} onClick={handleUserMenu}>
+      <image className={`menu-bt-user`} />
       <div className="user-data-container">
         <img src={userImage} className="user-photo" alt="user" />
         <h3 className="user-username">{toPascalCase(`${user.username}`)}</h3>
       </div>
-      <h3 className="server-status-container">
-        <span className={`server-status-${classServerStatus}`}>
-          {handleStatus()}
-        </span>
-      </h3>
-      <div className="menu-vertical">
-        <hr className="menu-hr-photo" />
 
+      <div className="menu-vertical">
         <button
           onClick={handleInbox}
           className="bt-menu-view-messages"
@@ -78,7 +71,6 @@ const MenuDesktop = ({ isMenuOpened }: Props): JSX.Element => {
         </button>
       </div>
       <div className="menu-horizontal">
-        <hr className="menu-hr-horizontal" />
         <div className="menu-icons-horizontal">
           <button
             onClick={handleLogoutCall}

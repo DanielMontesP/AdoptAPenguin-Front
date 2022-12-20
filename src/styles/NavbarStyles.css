@@ -6,8 +6,8 @@
 }
 
 .bt-settings {
-  height: 45px;
-  width: 45px;
+  height: 30px;
+  width: 30px;
   cursor: pointer;
   background: url("../images/settings-white-45.png");
   background-size: contain;
@@ -80,8 +80,6 @@
 }
 
 .notifyer-header {
-  width: 100%;
-  height: 42px;
   cursor: pointer;
   display: flex;
   font-weight: bold;
@@ -90,9 +88,11 @@
 }
 
 .notify-list {
-  width: 100%;
-  position: relative;
-  background: white;
+  width: fit-content;
+  position: fixed;
+  top: 57px;
+  right: 0;
+  background-color: lightgrey;
   font-size: 14px;
   display: flex;
   flex-direction: column;
@@ -111,7 +111,6 @@
   text-align: left;
   margin-left: 10px;
   overflow: hidden;
-  width: 90px;
 }
 
 .notify-data {
@@ -153,15 +152,6 @@
   font-weight: bold;
 }
 
-.message-read-img {
-  background: url("../images/view-16.png");
-  background-repeat: no-repeat;
-  background-size: 20px;
-  width: 33px;
-  height: 24px;
-  border: 0;
-}
-
 .inbox-messages-container {
   max-width: 500px;
   margin: auto;
@@ -174,8 +164,8 @@
 
 .server-status-container {
   position: fixed;
-  top: 20px;
-  right: 40px;
+  top: 80px;
+  right: 30px;
   border: 1px solid white;
   border-radius: 15px;
   color: grey;
@@ -225,7 +215,7 @@
     align-items: flex-start;
     position: fixed;
     right: 15px;
-    top: 102px;
+    top: 90px;
     opacity: 0.9;
     border-radius: 15px;
     padding: 5px;
@@ -555,10 +545,10 @@
   color: blue;
 }
 
-h1 {
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-align: center;
+.user-panel {
+  width: -webkit-fill-available;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .menu-animatedEdit {
@@ -669,28 +659,27 @@ h1 {
   }
 
   .notifyer-container {
+    height: 25px;
     color: black;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    position: fixed;
-    right: 15px;
-    top: 70px;
+    align-items: flex-end;
     opacity: 0.9;
     border-radius: 15px;
-    padding: 5px;
+    margin-right: 20px;
   }
+
   .notifyer-bt-close {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    color: rgb(71, 70, 70);
     cursor: pointer;
-    background: url("../images/mail-empty.png");
+    background: url("../images/mail-full.png");
     background-color: transparent;
     background-position: left;
     background-size: contain;
     background-repeat: no-repeat;
-    font-size: 12px;
-    color: rgb(71, 70, 70);
-    width: 45px;
-    height: 45px;
     border: 0;
   }
 
@@ -717,6 +706,7 @@ h1 {
   }
 
   .nav-title {
+    font-size: 1.2rem;
     background: #292929;
     margin: 0;
     padding: 2px;
@@ -743,7 +733,6 @@ h1 {
     transition: all 1s;
     display: flex;
     align-items: center;
-    z-index: 4;
   }
 
   .messages-container {
@@ -814,8 +803,7 @@ h1 {
     width: 70%;
     position: absolute;
     margin: auto;
-    top: 30px;
-    right: 10px;
+    top: 10%;
     height: 30px;
     outline: none;
     border: none;
@@ -888,8 +876,8 @@ h1 {
     border: 0;
     opacity: 0;
     position: absolute;
-    top: 32px;
-    right: 20px;
+    top: 65px;
+    right: 55px;
   }
 
   .bt-user {
@@ -902,6 +890,32 @@ h1 {
     background-position: center;
     background-repeat: no-repeat;
     border: 0;
+  }
+  .menu-bt-user {
+    height: 20px;
+    width: 100%;
+    cursor: pointer;
+    background: url("../images/user-white-45.png");
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    border: 0;
+    position: relative;
+    top: -23px;
+    right: 15px;
+  }
+
+  .bt-user-selected {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    margin-right: 15px;
+    background: url("../images/user-white-45.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 0;
+    z-index: 300;
   }
 
   .bt-menu {
@@ -952,9 +966,12 @@ h1 {
 
   .nav-buttons {
     width: 100%;
+    height: 25px;
+    background-color: #292929;
     display: flex;
     justify-content: space-around;
-    color: black;
+    color: white;
+    align-items: center;
   }
 
   .devicons-container {
@@ -984,8 +1001,8 @@ h1 {
 }
 
 .bt-help {
-  height: 45px;
-  width: 45px;
+  height: 30px;
+  width: 30px;
   cursor: pointer;
   background: url("../images/help-45.png");
   background-position: center;
@@ -1096,7 +1113,6 @@ ul {
 
 .user-username {
   margin: auto;
-  margin-top: 60px;
   margin-left: 10px;
 }
 
@@ -1122,8 +1138,8 @@ ul {
 
 .user-photo {
   margin-left: 20px;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   border: 2px solid white;
   background-image: url("../images/contact-photo.png");
@@ -1140,12 +1156,15 @@ ul {
 }
 
 .menu-vertical {
+  height: 1vw;
+  width: 100%;
+  position: relative;
+  top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: left;
   margin-left: 35px;
   gap: 40px;
-  height: 1vw;
 }
 
 .menu-header {
@@ -1153,11 +1172,12 @@ ul {
 }
 
 .menu-icons-horizontal {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  margin: auto;
   margin-bottom: 10px;
   padding: 0;
 }
@@ -1207,8 +1227,8 @@ ul {
 }
 
 .bt-logout {
-  height: 45px;
-  width: 45px;
+  height: 30px;
+  width: 30px;
   cursor: pointer;
   background: url("../images/icon-menu-logout45.png");
   background-repeat: no-repeat;
@@ -1283,6 +1303,7 @@ ul {
   background-repeat: no-repeat;
   text-align: left;
   border: 0;
+  margin-left: 20px;
 }
 
 .bt-view-messages {
@@ -1298,18 +1319,17 @@ ul {
 
 .bt-menu-view-messages {
   height: 45px;
-  width: 145px;
   text-align: left;
   cursor: pointer;
   background: url("../images/mail-full.png");
-  background-size: 40px;
+  background-size: 30px;
   background-repeat: no-repeat;
   border: 0;
 }
 
 .bt-about {
-  height: 45px;
-  width: 45px;
+  height: 30px;
+  width: 30px;
   cursor: pointer;
   background: url("../images/about-45.png");
   background-repeat: no-repeat;
@@ -1372,7 +1392,7 @@ ul {
 .menu-icon-label-vertical {
   font-size: 1.2rem;
   color: white;
-  margin-left: 65px;
+  margin-left: 45px;
   margin-top: 5px;
 }
 
@@ -1492,6 +1512,21 @@ ul {
   margin-top: 30px;
 }
 
+.menu-user {
+  color: white;
+  height: 80%;
+  background-color: #292929;
+  transform: translateX(-100%);
+  transition: 1s;
+  position: fixed;
+  right: 0;
+  top: 50px;
+  display: flex;
+  flex-flow: wrap;
+  align-content: flex-start;
+  border-radius: 0 0 15px 15px;
+}
+
 .menu-app {
   color: white;
   height: 100%;
@@ -1513,9 +1548,9 @@ ul {
 }
 
 .desktop-btn {
-  width: fit-content;
+  width: -webkit-fill-available;
   border: 0;
-  color: black;
+  color: white;
   font-size: 1rem;
   background: none;
   height: 30px;
@@ -1523,9 +1558,10 @@ ul {
 }
 
 .desktop-btn:hover {
-  width: fit-content;
-  border: 2px solid grey;
+  font-size: 1.1rem;
   color: grey;
+  border: 2px solid white;
+  border-bottom: 50%;
   border-top: 0;
   border-left: 0;
   border-right: 0;
@@ -1536,18 +1572,24 @@ ul {
   margin-left: 75%;
 }
 
+.bt-inbox {
+  width: 100%;
+  text-align: right;
+  cursor: pointer;
+}
+
 .selected {
   font-size: 1.1rem;
-  border: 2px solid black;
+  border: 2px solid white;
   border-bottom: 50%;
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  width: fit-content;
 }
 
 .opacity-full {
   opacity: 1;
+  z-index: 400;
 }
 
 .opacity-none {

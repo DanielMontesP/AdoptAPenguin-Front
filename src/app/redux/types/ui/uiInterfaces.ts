@@ -8,4 +8,5 @@ export interface UISliceState {
   stringToSearch: string;
   isMenuOpen: boolean;
   isModalOpen: boolean;
+  isSearchOpen: boolean;
 }
