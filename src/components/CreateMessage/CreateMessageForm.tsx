@@ -32,8 +32,8 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const { penguin } = useAppSelector((state) => state.penguins);
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  const isCreate = headerTitle.includes("New") ? true : false;
-  const isReply = headerTitle.includes("Reply") ? true : false;
+  const isCreate = headerTitle.includes("New");
+  const isReply = headerTitle.includes("Reply");
 
   const thisFormData: any = isReply
     ? newReply(message.id, idUser, penguin.id, message.subject)
@@ -118,6 +118,8 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const classInputDescription =
     !isCreate || !isReply ? "form-text-disabled" : "form-text-description";
 
+  const isReadOnly = !isCreate;
+
   return (
     <div className="create-container">
       <form
@@ -156,7 +158,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           autoComplete="off"
           className={`${classInput}`}
           onChange={handleInputChange}
-          readOnly={!isCreate && !isReply ? true : false}
+          readOnly={isReadOnly}
         />
 
         <label htmlFor="content" className="form-label">
@@ -170,7 +172,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           autoComplete="off"
           className={`${classInputDescription}`}
           onChange={handleInputChange}
-          readOnly={!isCreate && !isReply ? true : false}
+          readOnly={isReadOnly}
         />
 
         {isCreate ? (
