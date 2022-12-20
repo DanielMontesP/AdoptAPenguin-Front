@@ -13,8 +13,8 @@ import "../../styles/WellcomeStyles.css";
 
 const WellcomeComments = (): JSX.Element => {
   return (
-    <div className="prompt-container">
-      <div className="message-header">
+    <div className="modal-container">
+      <div className="modal-title">
         <img
           src={imgApp}
           title="App icon"
@@ -27,7 +27,7 @@ const WellcomeComments = (): JSX.Element => {
           AdoptAPenguin.com
         </a>
       </div>
-      <div className="message-content">
+      <div className="modal-content">
         AdoptAPenguin.com was my final{" "}
         <a
           href="https://daniel-montes-final-project-202204-bcn.netlify.app/"
