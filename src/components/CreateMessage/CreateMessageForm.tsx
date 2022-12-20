@@ -103,11 +103,15 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
     setMessageRead(message, dispatch);
   };
 
-  const subjectValue = formData.subject
-    ? formData.subject
-    : isCreate && isReply
-    ? `RE: ${message.subject}`
-    : message.subject;
+  const subjectValue = () => {
+    if (formData.subject) {
+      return formData.subject;
+    } else if (isCreate && isReply) {
+      return `RE: ${message.subject}`;
+    } else {
+      return message.subject;
+    }
+  };
 
   const classRead = message.read ? "message-read" : "message-unread";
   const textRead = message.read ? "Mark as unread" : "Mark as read";
@@ -154,7 +158,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
           id="subject"
           type="text"
           placeholder="Subject"
-          value={subjectValue}
+          value={subjectValue()}
           autoComplete="off"
           className={`${classInput}`}
           onChange={handleInputChange}
