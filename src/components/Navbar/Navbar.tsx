@@ -83,17 +83,16 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
           <Menu isMenuOpened={isMenuOpen} />
         </div>
       )}
-      {isMenuOpen ||
-        (isSearchOpen && (
-          <div onClick={handleDimmer}>
-            <ReactDimmer
-              isOpen={isOpen}
-              exitDimmer={setMenu || setModal || setSearch}
-              zIndex={90}
-              blur={1.5}
-            />
-          </div>
-        ))}
+      {(isMenuOpen || isSearchOpen) && (
+        <div onClick={handleDimmer}>
+          <ReactDimmer
+            isOpen={isOpen}
+            exitDimmer={setMenu || setModal || setSearch}
+            zIndex={90}
+            blur={1.5}
+          />
+        </div>
+      )}
       <ToastContainer limit={4} />
     </div>
   );
