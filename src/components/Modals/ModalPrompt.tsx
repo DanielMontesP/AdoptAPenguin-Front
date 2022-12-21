@@ -44,7 +44,7 @@ export const Modal = ({
 
   let overflowY = " overflow-auto";
 
-  let modalClass = isEditPage ? "modal-black" : "modal";
+  let modalClass = isEditPage ? "modal-options" : "modal";
   let windowTitle = "";
 
   switch (type) {
