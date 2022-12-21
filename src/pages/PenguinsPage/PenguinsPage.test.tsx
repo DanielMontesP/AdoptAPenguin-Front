@@ -25,6 +25,9 @@ describe("Given a PenguinsPage Component", () => {
       expect(receivedResult).toBeInTheDocument();
     });
   });
+});
+
+describe("Given Likes it's rendered", () => {
   describe("When Likes it's rendered", () => {
     test("Then it should show the role 'penguins-page'", () => {
       const expectedResult = "penguins-container";
@@ -33,7 +36,7 @@ describe("Given a PenguinsPage Component", () => {
 
       render(
         <Provider store={store}>
-          <PenguinsPage type="Likes" />
+          <PenguinsPage type="Favorites" />
         </Provider>
       );
 
@@ -41,21 +44,6 @@ describe("Given a PenguinsPage Component", () => {
       dispatch(loadLikesThunk());
       expect(receivedResult).toBeInTheDocument();
       expect(dispatch).toHaveBeenCalled();
-    });
-  });
-  describe("When Favs it's rendered", () => {
-    test("Then it should show the role 'penguins-page'", () => {
-      const expectedResult = "penguins-container";
-
-      render(
-        <Provider store={store}>
-          <PenguinsPage type="Favorites" />
-        </Provider>
-      );
-
-      const receivedResult = screen.getByTitle(expectedResult);
-
-      expect(receivedResult).toBeInTheDocument();
     });
   });
 });
