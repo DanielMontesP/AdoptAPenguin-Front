@@ -57,7 +57,7 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
       </div>
       {!isHide ? (
         <div className={`notify-list`}>
-          <span className={`bt-inbox`} onClick={handleInbox}>
+          <span className={`notifiyer-bt-inbox`} onClick={handleInbox}>
             Inbox
           </span>
           {messages?.length > 0

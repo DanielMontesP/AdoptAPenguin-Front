@@ -121,6 +121,8 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
           closeModal={setModal}
           type={getModalType()}
           form="Penguin"
+          posX={50}
+          posY={50}
         />
       )}
       {isMenuOpen && (

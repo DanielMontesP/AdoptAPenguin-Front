@@ -9,6 +9,7 @@ import {
   modalTypeActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { BlankMessageDataInterface } from "../../app/redux/types/message/messageInterfaces";
+import MessageNotifyer from "../MessageNotifyer/MessageNotifyer";
 interface Props {
   headerTitle: string;
 }
@@ -23,26 +24,22 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
     read: false,
   };
   const { headerLastTitle } = useAppSelector((state) => state.ui);
+  const { penguin } = useAppSelector((state) => state.penguins);
+  const { newMessages } = useAppSelector((state) => state.user);
+
   const [, setFormData] = useState(blankData);
 
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [lastPosition, setLastPosition] = useState(scrollPosition + 0.1);
-  const { penguin } = useAppSelector((state) => state.penguins);
+  const [lastPosition, setLastPosition] = useState(scrollPosition);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   let isHomePage = headerTitle === "Home";
 
-  let isScrolled = false;
   let classHeaderTitle = "nav-title";
   let HidderDesktopButtons = "";
-
-  const handleScroll = () => {
-    const position = window.scrollY;
-
-    setScrollPosition(position);
-  };
 
   const handleMenu = () => {
     dispatch(isMenuOpenActionCreator(true));
@@ -78,30 +75,37 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
     }
   };
 
-  const handleSetLastPosition = () => {
-    setLastPosition(scrollPosition);
-  };
-
-  if (scrollPosition > lastPosition) {
-    isScrolled = true;
-    handleSetLastPosition();
-  }
-
-  const headerClass = `nav`;
   const classBack = "bt-back";
 
+  const isNotifiyerVisible =
+    headerTitle !== "New Message" &&
+    headerTitle !== "New Penguin" &&
+    headerTitle !== "Inbox" &&
+    headerTitle !== "Detail";
+
   useEffect(() => {
+    const handleScroll = () => {
+      const position = window.scrollY;
+      setScrollPosition(position);
+
+      if (position > lastPosition) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+      setLastPosition(scrollPosition);
+    };
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [dispatch]);
+  }, [lastPosition, scrollPosition]);
 
   return (
     <>
       {!isScrolled ? (
-        <div className={headerClass}>
+        <div className={`nav`}>
           <div className="header-title-container">
             {!isHomePage && (
               <button
@@ -118,6 +122,8 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
               title="btn-menu"
             />
           </div>
+
+          {isNotifiyerVisible ? <MessageNotifyer messages={newMessages} /> : ""}
         </div>
       ) : (
         ""
