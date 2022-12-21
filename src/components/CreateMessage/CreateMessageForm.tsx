@@ -117,10 +117,10 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const textRead = message.read ? "Mark as unread" : "Mark as read";
 
   const classInput =
-    !isCreate || !isReply ? "form-input-disabled" : "form-input";
+    !isCreate && !isReply ? "form-input-disabled" : "form-input";
 
   const classInputDescription =
-    !isCreate || !isReply ? "form-text-disabled" : "form-text-description";
+    !isCreate && !isReply ? "form-text-disabled" : "form-text-description";
 
   const isReadOnly = !isCreate;
 

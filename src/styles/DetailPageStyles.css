@@ -30,6 +30,7 @@
   }
 
   .detailPrev {
+    cursor: pointer;
     background: none;
     background-image: url("../images/detailPrev.png");
     background-repeat: no-repeat;
@@ -42,6 +43,7 @@
   }
 
   .detailNext {
+    cursor: pointer;
     background: none;
     background-image: url("../images/detailNext.png");
     background-repeat: no-repeat;
@@ -284,6 +286,7 @@
 }
 
 .tab-description {
+  cursor: pointer;
   width: 100px;
   background: none;
   font-size: 0.9rem;
@@ -292,6 +295,7 @@
 }
 
 .tab-messages {
+  cursor: pointer;
   font-size: 0.9rem;
   width: 100px;
   color: black;
@@ -600,6 +604,7 @@ li {
 .detail-bt-dellike {
   width: 45px;
   height: 45px;
+  cursor: pointer;
   background: none;
   background-image: url("../images/like-full.png");
   background-repeat: no-repeat;
@@ -611,6 +616,8 @@ li {
 .detail-bt-addlike {
   height: 45px;
   width: 45px;
+
+  cursor: pointer;
   background: none;
   background-image: url("../images/like-add.png");
   background-repeat: no-repeat;
@@ -621,6 +628,7 @@ li {
 }
 
 .detail-bt-favs {
+  cursor: pointer;
   background: none;
   background-image: url("../images/fav-empty.png");
   background-repeat: no-repeat;
@@ -631,6 +639,7 @@ li {
 }
 
 .detail-bt-delfav {
+  cursor: pointer;
   background: none;
   background-image: url("../images/fav-full.png");
   background-repeat: no-repeat;
