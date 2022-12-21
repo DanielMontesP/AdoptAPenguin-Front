@@ -1,4 +1,4 @@
-import { ChangeEvent, KeyboardEvent, MouseEvent, useState } from "react";
+import { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
@@ -6,14 +6,11 @@ import "../../styles/NavbarStyles.css";
 import {
   isMenuOpenActionCreator,
   isSearchOpenActionCreator,
-  stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import {
-  handleSearchSubmit,
   loadFavs,
   loadHome,
   loadLikes,
-  handleSearchEnter,
   handleFocus,
 } from "../../functions/uiHandlers/uiHandlers";
 import MessageNotifyer from "../MessageNotifyer/MessageNotifyer";
@@ -26,9 +23,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   const navigate = useNavigate();
 
   const [, setSearch] = useState(false);
-  const { stringToSearch, isMenuOpen, isSearchOpen } = useAppSelector(
-    (state) => state.ui
-  );
+  const { isMenuOpen } = useAppSelector((state) => state.ui);
   const classButton = `desktop-btn bt-`;
 
   const { newMessages } = useAppSelector((state) => state.user);
@@ -37,9 +32,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   let classButtonLikes = `${classButton}likes`;
   let classButtonFavs = `${classButton}favs`;
   let classButtonNew = `${classButton}new`;
-  let classInputSearch = `search-input`;
-
-  const searchPlaceHolderText = "Search by name/category/description...";
   let userMenuSelected = isMenuOpen ? "-selected" : "";
 
   switch (headerTitle) {
@@ -85,20 +77,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     dispatch(isSearchOpenActionCreator(true));
   };
 
-  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    dispatch(stringToSearchActionCreator(event.target.value));
-  };
-
-  const handleSearchSubmitCall = () => {
-    handleSearchSubmit(dispatch, headerTitle, stringToSearch);
-  };
-
-  const handleSearchEnterCall = (
-    event: KeyboardEvent<HTMLInputElement>
-  ): void => {
-    handleSearchEnter(event, stringToSearch, dispatch, headerTitle);
-  };
-
   const loadHomeCall = () => {
     loadHome(dispatch, headerTitle, navigate);
   };
@@ -116,10 +94,6 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const setOpacityFull = " opacity-full";
-
-  const HidderSearch = isSearchOpen
-    ? `${classInputSearch} ${setOpacityFull}`
-    : `${classInputSearch}`;
 
   return (
     <div className={`nav${setOpacityFull}`}>
@@ -159,39 +133,13 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
             className={`bt-search`}
             title="bt-search"
           />
-          {isSearchOpen ? (
-            <div className="search-container">
-              <button
-                onClick={handleSearchSubmitCall}
-                className={`bt-search-submit ${HidderSearch.replace(
-                  "search-input",
-                  ""
-                )}`}
-                title="bt-search-submit"
-              />
-            </div>
-          ) : (
-            ""
-          )}
+
           <button
             onClick={handleUserMenu}
             className={`bt-user${userMenuSelected}`}
             title="btn-user"
           />
         </div>
-        {isSearchOpen ? (
-          <input
-            className={`${HidderSearch}`}
-            type="text"
-            placeholder={searchPlaceHolderText}
-            onChange={handleSearchChange}
-            onKeyDown={handleSearchEnterCall}
-            autoFocus
-            value={stringToSearch}
-          />
-        ) : (
-          ""
-        )}
       </div>{" "}
     </div>
   );

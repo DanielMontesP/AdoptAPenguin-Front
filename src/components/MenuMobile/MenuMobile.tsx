@@ -1,11 +1,10 @@
-import { ChangeEvent, KeyboardEvent, MouseEvent, useState } from "react";
+import { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   isMenuOpenActionCreator,
   isModalOpenActionCreator,
   isSearchOpenActionCreator,
   modalTypeActionCreator,
-  stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import noPhoto from "../../images/userPhoto.png";
@@ -13,7 +12,6 @@ import { toPascalCase } from "../../functions/sysHandlers/sysHandlers";
 import {
   addNewFav,
   handleLogoutPrompt,
-  handleSearchSubmit,
   loadAbout,
   loadFavs,
   loadHelp,
@@ -26,7 +24,7 @@ interface Props {
 }
 
 const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
-  const { stringToSearch, headerTitle } = useAppSelector((state) => state.ui);
+  const { headerTitle } = useAppSelector((state) => state.ui);
 
   const { user } = useAppSelector((state) => state);
   const { connected } = useAppSelector((state) => state.system.server);
@@ -36,11 +34,7 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  let classButtonSearch = ``;
-
   const userImage = user.image || noPhoto;
-
-  const searchPlaceHolderText = "Search by name/category/description...";
 
   const handleFavs = () => {
     loadFavs(dispatch, headerTitle, navigate);
@@ -75,28 +69,14 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
   };
 
   const handleSearch = (event: MouseEvent<HTMLButtonElement>) => {
+    dispatch(isMenuOpenActionCreator(false));
     dispatch(isSearchOpenActionCreator(true));
-  };
-
-  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    dispatch(stringToSearchActionCreator(event.target.value));
   };
 
   const handleSettings = () => {
     dispatch(modalTypeActionCreator("Settings"));
     dispatch(isMenuOpenActionCreator(false));
     dispatch(isModalOpenActionCreator(true));
-  };
-
-  const handleSearchEnter = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      dispatch(stringToSearchActionCreator(stringToSearch));
-      handleSearchSubmitCall();
-    }
-  };
-
-  const handleSearchSubmitCall = () => {
-    handleSearchSubmit(dispatch, headerTitle, stringToSearch);
   };
 
   const handleInbox = () => {
@@ -110,9 +90,7 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
   };
   const classServerStatus = connected ? "server" : "local";
 
-  const HidderSearch = isSearchClicked
-    ? ` opacity-full ${classButtonSearch}`
-    : ` ${classButtonSearch}`;
+  const HidderSearch = isSearchClicked ? ` opacity-full` : ``;
 
   return (
     <div className={`menu-app menu-open`}>
@@ -130,7 +108,7 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
         <button onClick={handleHome} className="bt-home" title="bt-home">
           <h3 className="menu-icon-label-vertical">Home</h3>
         </button>
-        <button onClick={handleFavs} className="bt-favs" title="bt-favs">
+        <button onClick={handleFavs} className="menu-bt-favs" title="bt-favs">
           <h3 className="menu-icon-label-vertical">Favorites</h3>
         </button>
         <button onClick={handleLikes} className="bt-likes" title="bt-likes">
@@ -148,25 +126,15 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
         >
           <h3 className="menu-icon-label-vertical">Inbox</h3>
         </button>
-        <div className="menu-search-container">
-          <button
-            onClick={handleSearch}
-            className={`menu-bt-search${HidderSearch}`}
-            title="bt-search-submit"
-          >
-            {" "}
-            <h3 className="menu-icon-label-vertical">Search</h3>
-          </button>
-          <input
-            className={`menu-search-input${HidderSearch}`}
-            type="text"
-            placeholder={searchPlaceHolderText}
-            onChange={handleSearchChange}
-            autoFocus
-            value={stringToSearch}
-            onKeyDown={handleSearchEnter}
-          />
-        </div>
+
+        <button
+          onClick={handleSearch}
+          className={`menu-bt-search${HidderSearch}`}
+          title="bt-search-submit"
+        >
+          {" "}
+          <h3 className="menu-icon-label-vertical">Search</h3>
+        </button>
       </div>
       <div className="menu-horizontal">
         <div className="menu-icons-horizontal">

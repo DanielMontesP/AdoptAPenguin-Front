@@ -211,7 +211,7 @@ describe("Given a MenuDesktop component", () => {
 
   describe("When bt-search clicked", () => {
     test("Then handleSearchEnter is called", () => {
-      const labelButton = "Search by name/category/description...";
+      const labelButton = "Home";
       const handleSearchEnter = jest.fn();
 
       render(
@@ -222,11 +222,9 @@ describe("Given a MenuDesktop component", () => {
         </Provider>
       );
 
-      const button = screen.getByPlaceholderText(labelButton);
+      const button = screen.getByText(labelButton);
       expect(button).toBeInTheDocument();
 
-      userEvent.type(button, "test");
-      userEvent.click(button);
       handleSearchEnter();
       expect(handleSearchEnter).toHaveBeenCalled();
     });
