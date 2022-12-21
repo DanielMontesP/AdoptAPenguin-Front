@@ -33,6 +33,7 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
   };
 
   const counterNewMessages = hasNewMessages(allMessages, penguin.id);
+  const isInbox = headerTitle === "Inbox";
 
   return (
     <div
@@ -40,13 +41,17 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
       title="messages-container"
     >
       <div className="message-buttons">
-        <button
-          className={"message-new"}
-          onClick={handleClick}
-          placeholder="bt-submit"
-        >
-          + New Message
-        </button>
+        {!isInbox ? (
+          <button
+            className={"message-new"}
+            onClick={handleClick}
+            placeholder="bt-submit"
+          >
+            + New Message
+          </button>
+        ) : (
+          ""
+        )}
         <h3 className={"inbox-view-list-counter"}>
           Total {allMessages?.length} messages.
           {counterNewMessages} unread messages.

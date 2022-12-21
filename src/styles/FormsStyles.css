@@ -2,8 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  max-width: 500px;
+  width: 80%;
 }
 
 .form-footer {
@@ -14,7 +13,7 @@
 
 .form-bt-save {
   height: 60px;
-  width: 80%;
+  width: 100%;
   max-width: 500px;
   font-size: 20px;
   margin-top: 20px;
@@ -37,7 +36,7 @@
 }
 
 .form-fields {
-  width: 100%;
+  width: 80%;
   height: 100%;
   margin: auto;
   display: flex;
@@ -143,7 +142,7 @@
   }
 
   .form-input-disabled {
-    width: 100%;
+    width: 80%;
     max-width: 500px;
     border: 2px solid black;
     align-items: center;
@@ -186,6 +185,7 @@
 
   .create-container {
     height: 100%;
+
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -217,15 +217,13 @@
 
   .form-img__file-label {
     display: block;
-    width: 80%;
+    width: 100%;
     height: 225px;
     cursor: pointer;
     background-image: url("../images/contact-photo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-color: white;
-    border-radius: 17px;
-    border: 2px black solid;
     opacity: 0.8;
   }
 
@@ -261,7 +259,7 @@
     justify-content: center;
     border-radius: 15px;
     box-sizing: border-box;
-    color: grey;
+    color: black;
     font-size: 20px;
     margin: auto;
     margin-bottom: 25px;
@@ -354,6 +352,7 @@
 
   .create-container {
     height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -398,8 +397,6 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: white;
-    border-radius: 17px;
-    border: 2px black solid;
     opacity: 0.8;
   }
 
@@ -832,10 +829,12 @@ we're going to use its associated label to trigger it */
 }
 
 .form-img__file-label > img {
-  position: relative;
-  top: 50%;
   width: 100%;
+  height: 100%;
+  position: relative;
+  top: 150px;
   left: 50%;
+  border: 2px solid;
   opacity: 0.8;
   object-fit: cover;
   transform: translate(-50%, -50%);

@@ -78,6 +78,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
   const classBack = "bt-back";
 
   const isNotifiyerVisible =
+    headerTitle !== "Penguin" &&
     headerTitle !== "New Message" &&
     headerTitle !== "New Penguin" &&
     headerTitle !== "Inbox" &&
