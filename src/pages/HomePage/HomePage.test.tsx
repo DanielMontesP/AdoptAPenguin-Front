@@ -16,7 +16,6 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
     },
     penguin: mockPenguin,
     headerTitle: "New message...",
-    ui: { headerTitle: "New message..." },
   }),
   useAppDispatch: () => jest.fn(),
 }));
@@ -24,9 +23,7 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
 describe("Given a HomePage Component", () => {
   describe("When it's rendered", () => {
     test("Then it should show the text 'Login'", () => {
-      const expectedResult = "Login";
-
-      const SetTitleHeader = jest.fn();
+      const expectedResult = "Adopt Apenguin .com";
 
       render(
         <Provider store={store}>
@@ -36,10 +33,9 @@ describe("Given a HomePage Component", () => {
         </Provider>
       );
 
-      const receivedResult = screen.getAllByText(expectedResult);
-      SetTitleHeader();
-      expect(receivedResult.length).toBe(1);
-      expect(SetTitleHeader).toHaveBeenCalled();
+      const receivedResult = screen.getByText(expectedResult);
+
+      expect(receivedResult).toBeInTheDocument();
     });
   });
 });
