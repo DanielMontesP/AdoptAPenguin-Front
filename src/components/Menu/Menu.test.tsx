@@ -11,7 +11,7 @@ describe("Given a Menu component", () => {
       const handleSearchEnter = jest.fn();
       const handleSearch = jest.fn();
 
-      const searchPlaceHolderText = "Search by name/category/description...";
+      const searchPlaceHolderText = "Home";
 
       render(
         <Provider store={store}>
@@ -21,12 +21,7 @@ describe("Given a Menu component", () => {
         </Provider>
       );
 
-      const label1 = screen.getByTitle("bt-search-submit");
-      expect(label1).toBeInTheDocument();
-
-      userEvent.click(label1);
-
-      const label2 = screen.getByPlaceholderText(searchPlaceHolderText);
+      const label2 = screen.getByText(searchPlaceHolderText);
       expect(label2).toBeInTheDocument();
       userEvent.type(label2, "Enter");
 
