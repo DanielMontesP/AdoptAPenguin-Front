@@ -17,6 +17,8 @@ interface IModalProps {
   content: string;
   type: string;
   form: string;
+  posX: number;
+  posY: number;
 }
 
 export const Modal = ({
@@ -25,6 +27,8 @@ export const Modal = ({
   content,
   type,
   form,
+  posX,
+  posY,
 }: IModalProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -162,16 +166,19 @@ export const Modal = ({
 
   return (
     <div className={modalClass}>
-      <div className="modal-header">
-        <h3 className="modal-title">{windowTitle}</h3>
-        <button
-          onClick={handleCancelClick}
-          className="modal-btn-close"
-          title="btn-close"
-          placeholder="btn-close"
-        />
-      </div>
-
+      {!isEditPage ? (
+        <div className="modal-header">
+          <h3 className="modal-title">{windowTitle}</h3>
+        </div>
+      ) : (
+        ""
+      )}
+      <button
+        onClick={handleCancelClick}
+        className="modal-btn-close"
+        title="btn-close"
+        placeholder="btn-close"
+      />
       {getMessage()}
       {isEditPage ? (
         <EditButtons penguin={penguin} />

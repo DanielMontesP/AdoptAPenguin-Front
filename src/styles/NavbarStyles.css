@@ -3,7 +3,7 @@
   --btHome: url("../images/icon-home.png");
   --btMail: url("../images/mail-full.png");
   --btMailBlack: url("../images/mail-empty.png");
-  --btEditBlack: url("../images/mail-empty.png");
+  --btEditBlack: url("../images/edit-black-48.png");
   --btDeleteBlack: url("../images/delete-black-45.png");
   --btFavAdd: url("../images/fav-white.png");
   --btFavAddBlack: url("../images/fav-empty-black-45.png");
@@ -228,21 +228,6 @@
   justify-content: flex-end;
 }
 
-.notify-list {
-  width: fit-content;
-  position: fixed;
-  top: 57px;
-  right: 0;
-  background-color: lightgrey;
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: flex-start;
-  border-radius: 15px;
-  padding: 5px;
-}
-
 .notify {
   width: 100%;
   display: flex;
@@ -324,6 +309,17 @@
     text-align: center;
     margin: auto;
   }
+
+  .nav {
+    height: 5rem;
+    width: 100%;
+    background-color: #292929;
+    color: white;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+  }
+
   .header {
     height: 5rem;
     width: 100%;
@@ -333,6 +329,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .notify-list {
+    width: fit-content;
+    position: fixed;
+    top: 80px;
+    right: 0;
+    background-color: lightgrey;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+    border-radius: 15px;
+    padding: 15px;
   }
 
   .notifyer-bt-close {
@@ -718,18 +729,20 @@
 
 .modal-edit {
   height: 45px;
-  width: 100%;
+  width: 140px;
   font-size: 1.2rem;
+  font-weight: bold;
   color: black;
   border: none;
   background: var(--btEditBlack);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-position: left;
+  background-size: 35px;
 }
 
 .edit-buttons-container {
   height: 145px;
-  width: 100%;
+  width: 150px;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -766,13 +779,14 @@
 
 .modal-delete {
   height: 45px;
-  width: 100%;
+  width: 150px;
   font-size: 1.2rem;
+  font-weight: bold;
   color: black;
   border: none;
   background: var(--btDeleteBlack);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 40px;
 }
 
 .animatedDeleteBlack {
@@ -793,6 +807,31 @@
     color: white;
     text-align: center;
     margin: auto;
+  }
+
+  .nav {
+    height: 4rem;
+    width: 100%;
+    background-color: #292929;
+    color: white;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+  }
+
+  .notify-list {
+    width: fit-content;
+    position: fixed;
+    top: 64px;
+    right: 0;
+    background-color: lightgrey;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+    border-radius: 15px;
+    padding: 15px;
   }
 
   .notifyer-container {
@@ -1690,6 +1729,12 @@ ul {
   text-align: center;
   border: 0;
 }
+.notifiyer-bt-inbox {
+  width: 100%;
+  cursor: pointer;
+  text-align: right;
+  border: 0;
+}
 
 .selected {
   font-size: 1.1rem;
@@ -1707,13 +1752,4 @@ ul {
 
 .opacity-none {
   opacity: 0;
-}
-
-.nav {
-  color: white;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 30px;
-  z-index: 1;
 }

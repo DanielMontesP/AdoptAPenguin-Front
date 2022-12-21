@@ -42,6 +42,8 @@ describe("Given a Modal component", () => {
               content="message"
               form="Penguin"
               type="delete"
+              posX={50}
+              posY={50}
             />
           </BrowserRouter>
         </Provider>
@@ -78,6 +80,8 @@ describe("Given a Modal component", () => {
               content="message"
               form="Message"
               type="delete"
+              posX={50}
+              posY={50}
             />
           </BrowserRouter>
         </Provider>
@@ -112,6 +116,8 @@ describe("Given a Modal component", () => {
               content="message"
               form="Penguin"
               type="logOutUser"
+              posX={50}
+              posY={50}
             />
           </BrowserRouter>
         </Provider>
@@ -138,6 +144,8 @@ describe("Given a Modal component", () => {
               content="message"
               form="Penguin"
               type="Wellcome"
+              posX={50}
+              posY={50}
             />
           </BrowserRouter>
         </Provider>
@@ -164,6 +172,8 @@ describe("Given a Modal component", () => {
               content="message"
               form="Penguin"
               type="About"
+              posX={50}
+              posY={50}
             />
           </BrowserRouter>
         </Provider>
@@ -190,6 +200,8 @@ describe("Given a Modal component", () => {
               content="message"
               form="Penguin"
               type="Help"
+              posX={50}
+              posY={50}
             />
           </BrowserRouter>
         </Provider>
@@ -216,6 +228,8 @@ describe("Given a Modal component", () => {
               content="message"
               form="Penguin"
               type="Validation"
+              posX={50}
+              posY={50}
             />
           </BrowserRouter>
         </Provider>
@@ -242,6 +256,8 @@ describe("Given a Modal component", () => {
               content="message"
               type=""
               form="Penguin"
+              posX={50}
+              posY={50}
             />
           </BrowserRouter>
         </Provider>
@@ -273,6 +289,8 @@ describe("Given a Modal component", () => {
               content="message"
               type="delete"
               form="Penguin"
+              posX={50}
+              posY={50}
             />
           </BrowserRouter>
         </Provider>
@@ -302,6 +320,8 @@ describe("Given a Modal component", () => {
               content="message"
               type="delete"
               form="Penguin"
+              posX={50}
+              posY={50}
             />
           </BrowserRouter>
         </Provider>
@@ -335,6 +355,8 @@ describe("Given a Modal component", () => {
               content="message"
               type="Error"
               form="=Penguin"
+              posX={50}
+              posY={50}
             />
           </BrowserRouter>
         </Provider>
@@ -366,6 +388,8 @@ describe("Given a Modal component", () => {
               content="message"
               type="Search"
               form="Penguin"
+              posX={50}
+              posY={50}
             />
           </BrowserRouter>
         </Provider>
