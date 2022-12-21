@@ -31,7 +31,9 @@ const LoginForm = () => {
 
   return (
     <form className="form" autoComplete="off" noValidate onSubmit={submitLogin}>
-      <label htmlFor="username">Username</label>
+      <label className="label-username" htmlFor="username">
+        Username
+      </label>
       <input
         id="username"
         value={formData.username}
@@ -67,7 +69,7 @@ const LoginForm = () => {
         <button disabled={buttonDisabled} className="bt-login">
           Login
         </button>
-        <div className="footer">2022 Penguins Inc.</div>
+        <div className="footer-home">2022 Penguins Inc.</div>
       </div>
     </form>
   );

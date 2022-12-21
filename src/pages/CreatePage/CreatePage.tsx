@@ -34,7 +34,7 @@ const CreatePage = ({ type, form }: Props): JSX.Element => {
   }, [dispatch, penguin, headerTitle, thisTitle, isCreate, message]);
 
   return (
-    <div>
+    <div className="create-container">
       {form === "Message" || form === "Reply" ? (
         <CreateMessageForm message={message} />
       ) : (

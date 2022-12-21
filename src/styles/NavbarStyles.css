@@ -1,3 +1,31 @@
+:root {
+  --btSettings: url("../images/settings-white-45.png");
+  --btHome: url("../images/icon-home.png");
+  --btMail: url("../images/mail-full.png");
+  --btMailBlack: url("../images/mail-empty.png");
+  --btEditBlack: url("../images/mail-empty.png");
+  --btDeleteBlack: url("../images/delete-black.png");
+  --btFavAdd: url("../images/fav-white.png");
+  --btFavAddBlack: url("../images/fav-empty.png");
+  --btFavDeleteBlack: url("../images/fav-full.png");
+  --btLikeAdd: url("../images/like-white.png");
+  --btLikeBlack: url("../images/like-full.png");
+  --btLikeAddBlack: url("../images/like-add.png");
+  --btSearchBlack: url("../images/icon-search-black-45.png");
+  --btSearch: url("../images/icon-search-white-45.png");
+  --btUser: url("../images/user-white-45.png");
+  --btHamburguer: url("../images/hamburguer-white-45.png");
+  --btHelp: url("../images/help-45.png");
+  --btEditPointsBlack: url("../images/edit.png");
+  --iconAddPhoto: url("../images/contact-photo.png");
+  --btPrev: url("../images/detailPrev-white.png");
+  --btLogout: url("../images/icon-menu-logout45.png");
+  --btClose: url("../images/modal-cancel-32.png");
+  --btHome: url("../images/icon-menu-home45.png");
+  --btAbout: url("../images/about-45.png");
+  --btViewMessage: url("../images/icon-view-black-45.png");
+}
+
 .server-status-local {
   color: white;
 }
@@ -5,11 +33,26 @@
   color: rgb(129, 224, 129);
 }
 
+.modal-content {
+  padding: 10px;
+  height: fit-content;
+}
+
+.modal-container {
+  display: flex;
+  text-align: center;
+  font-size: 15px;
+  margin: auto;
+  margin-top: 10px;
+  overflow-y: auto;
+  flex-direction: column;
+}
+
 .bt-settings {
   height: 30px;
   width: 30px;
   cursor: pointer;
-  background: url("../images/settings-white-45.png");
+  background: var(--btSettings);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -123,7 +166,7 @@
 }
 
 .notify-read-img {
-  background: url("../images/icon-view-black-45.png");
+  background: var(--btViewMessage);
   background-repeat: no-repeat;
   background-size: 20px;
   border: 0;
@@ -196,7 +239,7 @@
 
   .notifyer-bt-close {
     cursor: pointer;
-    background: url("../images/mail-empty.png");
+    background: var(--btMailBlack);
     background-color: transparent;
     background-position: left;
     background-size: contain;
@@ -237,19 +280,23 @@
   }
 
   .nav-title {
-    text-align: left;
+    text-align: center;
     flex: 4;
     margin-left: 10px;
   }
 
   .options {
-    color: black;
-    height: -webkit-fill-available;
     width: 320px;
+    height: -webkit-fill-available;
+    margin: auto;
+    margin-top: 40px;
+    color: black;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 20px;
-    padding: 20px;
   }
 
   .detail-container {
@@ -344,9 +391,10 @@
   .header-title-container {
     display: flex;
     justify-content: center;
+
+    align-items: center;
     height: 78px;
     margin: auto;
-    margin-top: 15px;
   }
 }
 
@@ -556,7 +604,7 @@
   width: 32px;
   height: 32px;
   margin-bottom: 10px;
-  background: url("../images/edit.png");
+  background: var(--btEditPointsBlack);
   background-repeat: no-repeat;
   margin-top: 45px;
   margin-right: 45px;
@@ -565,7 +613,7 @@
 }
 
 .menu-Edit {
-  width: auto;
+  width: 80%;
   height: 35px;
   color: white;
   font-size: 1.1em;
@@ -578,12 +626,12 @@
 }
 
 .modal-edit {
-  color: black;
-  width: auto;
-  font-size: 1.3rem;
   height: 32px;
+  width: -webkit-fill-available;
+  font-size: 1.2rem;
+  color: black;
   border: none;
-  background: url("../images/edit-empty.png");
+  background: var(--btEditBlack);
   background-repeat: no-repeat;
   background-size: contain;
   margin-bottom: 5px;
@@ -605,25 +653,25 @@
 }
 
 .modal-fav {
-  width: auto;
+  width: -webkit-fill-available;
   height: 32px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: black;
   border: none;
-  background: url("../images/fav-white.png");
+  background: var(--btFavAddBlack);
   background-repeat: no-repeat;
   background-size: contain;
   margin-bottom: 5px;
-  margin-left: 30px;
+  margin-left: 35px;
 }
 
 .modal-like {
   height: 32px;
-  width: auto;
-  font-size: 1.3rem;
+  width: -webkit-fill-available;
+  font-size: 1.2rem;
   color: black;
   border: none;
-  background: url("../images/like-white.png");
+  background: var(--btLikeAddBlack);
   background-repeat: no-repeat;
   background-size: contain;
   margin-bottom: 5px;
@@ -631,12 +679,12 @@
 }
 
 .modal-delete {
-  color: black;
-  width: auto;
-  font-size: 1.3rem;
-  border: none;
   height: 32px;
-  background: url("../images/delete.png");
+  width: -webkit-fill-available;
+  font-size: 1.2rem;
+  color: black;
+  border: none;
+  background: var(--btDeleteBlack);
   background-repeat: no-repeat;
   background-size: contain;
   margin-bottom: 5px;
@@ -647,7 +695,7 @@
   border: none;
   height: 39px;
   width: 32px;
-  background: url("../images/delete-black.png");
+  background: var(--btEditBlack);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -680,7 +728,7 @@
     font-size: 12px;
     color: rgb(71, 70, 70);
     cursor: pointer;
-    background: url("../images/mail-full.png");
+    background: var(--btMail);
     background-color: transparent;
     background-position: left;
     background-size: contain;
@@ -700,15 +748,17 @@
   }
 
   .options {
+    width: 320px;
     height: -webkit-fill-available;
+    margin: auto;
+    margin-top: 40px;
     color: black;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    width: 100%;
-    gap: 25px;
-    margin-top: 25px;
-    padding: 20px;
+    gap: 20px;
   }
 
   .nav-title {
@@ -759,16 +809,6 @@
     margin: auto;
     overflow-y: auto;
     align-items: center;
-  }
-
-  .modal-container {
-    display: flex;
-    text-align: center;
-    font-size: 15px;
-    margin: auto;
-    margin-top: 10px;
-    overflow-y: auto;
-    flex-direction: column;
   }
 
   .search-input :hover {
@@ -875,7 +915,7 @@
     height: 25px;
     width: 25px;
     cursor: pointer;
-    background: url("../images/icon-search-black-45.png");
+    background: var(--btSearchBlack);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -891,7 +931,7 @@
     width: 20px;
     cursor: pointer;
     margin-right: 15px;
-    background: url("../images/user-white-45.png");
+    background: var(--btUser);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -901,7 +941,7 @@
     height: 20px;
     width: 100%;
     cursor: pointer;
-    background: url("../images/user-white-45.png");
+    background: var(--btUser);
     background-size: contain;
     background-position: right;
     background-repeat: no-repeat;
@@ -916,7 +956,7 @@
     width: 20px;
     cursor: pointer;
     margin-right: 15px;
-    background: url("../images/user-white-45.png");
+    background: var(--btUser);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -929,7 +969,7 @@
     width: 20px;
     cursor: pointer;
     margin-right: 15px;
-    background: url("../images/hamburguer-white-45.png");
+    background: var(--btHamburguer);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -1010,7 +1050,7 @@
   height: 30px;
   width: 30px;
   cursor: pointer;
-  background: url("../images/help-45.png");
+  background: var(--btHelp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1018,7 +1058,7 @@
 }
 
 .header-favs-icon {
-  background: url("../images/icon-star_full.png");
+  background: var(--btFavAdd);
   background-repeat: no-repeat;
   background-position: right;
   background-size: 35px;
@@ -1028,7 +1068,7 @@
 }
 
 .header-likes-icon {
-  background: url("../images/like-full.png");
+  background: var(--btLikeBlack);
   background-repeat: no-repeat;
   background-position: right;
   background-size: 35px;
@@ -1038,7 +1078,7 @@
 }
 
 .header-home-icon {
-  background: url("../images/icon-home.png");
+  background: var(--btHome);
   background-repeat: no-repeat;
   background-position: right;
   background-size: 35px;
@@ -1063,7 +1103,7 @@
 }
 
 .header-edit-icon {
-  background: url("../images/edit.png");
+  background: var(--btEditPointsBlack);
   background-repeat: no-repeat;
   background-position: right;
   background-size: 35px;
@@ -1075,7 +1115,6 @@
 .header-new-icon {
   background: url("../images/icon-add_plus.png");
   background-repeat: no-repeat;
-
   background-position: right;
   background-size: 35px;
   width: 45px;
@@ -1084,7 +1123,7 @@
 }
 
 .header-detail-icon {
-  background: url("../images/edit.png");
+  background: var(--btEditPointsBlack);
   background-repeat: no-repeat;
   background-position: right;
   background-size: 35px;
@@ -1152,7 +1191,7 @@ ul {
   height: 70px;
   border-radius: 50%;
   border: 2px solid white;
-  background-image: url("../images/contact-photo.png");
+  background-image: var(--iconAddPhoto);
   background-color: white;
   background-repeat: no-repeat;
   background-position: center;
@@ -1229,7 +1268,9 @@ ul {
 .menu-btn {
   height: 45px;
   width: 45px;
-  background: url("../images/hamburguer-white-45.png");
+  position: fixed;
+  right: 5px;
+  background: var(--btHamburguer);
   background-position: center;
   background-repeat: no-repeat;
   margin-right: 20px;
@@ -1237,7 +1278,7 @@ ul {
 }
 
 .bt-back {
-  background: url("../images/detailPrev-white.png");
+  background: var(--btPrev);
   background-repeat: no-repeat;
   background-position: center;
   background-color: #000000;
@@ -1252,7 +1293,7 @@ ul {
   height: 30px;
   width: 30px;
   cursor: pointer;
-  background: url("../images/icon-menu-logout45.png");
+  background: var(--btLogout);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -1275,7 +1316,6 @@ ul {
   font-size: 20px;
   margin: auto;
   margin-top: 20px;
-  margin-bottom: 60px;
   font-weight: bold;
   color: black;
   background-color: transparent;
@@ -1306,7 +1346,7 @@ ul {
   top: 10px;
   border: 0;
   right: 5px;
-  background: url("../images/modal-cancel-32.png");
+  background: var(--btClose);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 25px;
@@ -1323,7 +1363,7 @@ ul {
 .bt-home {
   height: 45px;
   width: 145px;
-  background: url("../images/icon-menu-home45.png");
+  background: var(--btHome);
   background-repeat: no-repeat;
   background-size: 45px;
   background-position: left;
@@ -1346,7 +1386,7 @@ ul {
   height: 45px;
   text-align: left;
   cursor: pointer;
-  background: url("../images/mail-full.png");
+  background: var(--btMail);
   background-size: 30px;
   background-repeat: no-repeat;
   border: 0;
@@ -1356,7 +1396,7 @@ ul {
   height: 30px;
   width: 30px;
   cursor: pointer;
-  background: url("../images/about-45.png");
+  background: var(--btAbout);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -1367,8 +1407,20 @@ ul {
   height: 45px;
   width: 180px;
   cursor: pointer;
-  background: url("../images/fav-white.png");
-  background-size: 45px;
+  background: var(--btFavAddBlack);
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  text-align: center;
+  border: 0;
+}
+.bt-favs-delete {
+  height: 45px;
+  width: 180px;
+  cursor: pointer;
+  background: var(--btFavDeleteBlack);
+  background-size: contain;
+  background-position: right;
   background-repeat: no-repeat;
   text-align: center;
   border: 0;
@@ -1379,7 +1431,7 @@ ul {
   height: 45px;
   cursor: pointer;
   background: none;
-  background-image: url("../images/fav-white.png");
+  background-image: var(--btFavAdd);
   background-repeat: no-repeat;
   background-size: 45px;
   text-align: center;
@@ -1390,7 +1442,7 @@ ul {
   height: 45px;
   width: 145px;
   cursor: pointer;
-  background: url("../images/like-white.png");
+  background: var(--btLikeAdd);
   background-size: 45px;
   text-align: center;
   background-repeat: no-repeat;
@@ -1402,7 +1454,7 @@ ul {
   width: 20px;
   cursor: pointer;
   margin-right: 20px;
-  background: url("../images/icon-search-white-45.png");
+  background: var(--btSearch);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -1413,7 +1465,7 @@ ul {
   height: 40px;
   width: 140px;
   cursor: pointer;
-  background: url("../images/icon-search-white-45.png");
+  background: var(--btSearch);
   background-repeat: no-repeat;
   background-position: left;
   background-size: contain;
@@ -1461,7 +1513,7 @@ ul {
 
 .modal {
   width: 60%;
-  height: 80%;
+  height: auto;
   max-width: 450px;
   min-width: 20rem;
   min-height: 10rem;
@@ -1614,7 +1666,7 @@ ul {
   height: 45px;
   width: 145px;
   cursor: pointer;
-  background: url("../images/mail-full.png");
+  background: var(--btMail);
   background-size: 45px;
   background-repeat: no-repeat;
   text-align: center;

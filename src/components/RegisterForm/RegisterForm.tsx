@@ -57,7 +57,10 @@ const RegisterForm = (): JSX.Element => {
       autoComplete="off"
       onSubmit={handleSubmit}
     >
-      <label htmlFor="username"> Username </label>
+      <label className="label-username" htmlFor="username">
+        {" "}
+        Username{" "}
+      </label>
       <input
         type="text"
         id="username"
@@ -68,7 +71,10 @@ const RegisterForm = (): JSX.Element => {
         name="Username"
         className="form-input"
       />
-      <label htmlFor="password"> Password </label>
+      <label className="label-password" htmlFor="password">
+        {" "}
+        Password{" "}
+      </label>
       <input
         type="password"
         id="password"
@@ -90,7 +96,7 @@ const RegisterForm = (): JSX.Element => {
         <button type="submit" className="bt-register" placeholder="bt-submit">
           Register
         </button>
-        <div className="footer">2022 Penguins Inc.</div>
+        <div className="footer-home">2022 Penguins Inc.</div>
       </div>
     </form>
   );

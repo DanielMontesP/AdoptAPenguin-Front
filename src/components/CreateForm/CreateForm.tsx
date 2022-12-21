@@ -140,74 +140,78 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       : "form-img__img-preview";
 
   return (
-    <div className="create-container">
-      <form
-        noValidate
-        autoComplete="off"
-        onSubmit={handleSubmit}
-        className="form-create"
-        title="form-create"
-      >
-        <div className="form-header">
-          <div className="form-image-container">
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg, .gif"
-              id="photo"
-              className="visually-hidden"
-              onChange={handleImg}
-              placeholder="image-input"
-            />
-            <label
-              htmlFor="photo"
-              className={`form-img__file-label${HidderBackground}`}
-            >
-              <img src={penguinImage} alt={alt} className={`${classImage}`} />
-            </label>
-          </div>
-          <div className="form-header-fields">
-            <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              placeholder="Name"
-              value={formData.name || penguin.name}
-              autoComplete="off"
-              onChange={handleInputChange}
-              className="form-input"
-            />
+    <form
+      noValidate
+      autoComplete="off"
+      onSubmit={handleSubmit}
+      className="form-create"
+      title="form-create"
+    >
+      <div className="form-image">
+        <input
+          type="file"
+          accept=".png, .jpg, .jpeg, .gif"
+          id="photo"
+          className="visually-hidden"
+          onChange={handleImg}
+          placeholder="image-input"
+        />
+        <label
+          htmlFor="photo"
+          className={`form-img__file-label${HidderBackground}`}
+        >
+          <img src={penguinImage} alt={alt} className={`${classImage}`} />
+        </label>
+      </div>
+      <div className="form-fields">
+        <label className="form-label" htmlFor="name">
+          Name
+        </label>
+        <input
+          id="name"
+          type="text"
+          placeholder="Name"
+          value={formData.name || penguin.name}
+          autoComplete="off"
+          onChange={handleInputChange}
+          className="form-input"
+        />
 
-            <label htmlFor="category">Category</label>
-            <input
-              id="category"
-              type="text"
-              placeholder="Category"
-              value={formData.category || penguin.category}
-              autoComplete="off"
-              onChange={handleInputChange}
-              className="form-input"
-            />
-          </div>
-        </div>
-        <label htmlFor="description">Description</label>
+        <label className="form-label" htmlFor="category">
+          Category
+        </label>
+        <input
+          id="category"
+          type="text"
+          placeholder="Category"
+          value={formData.category || penguin.category}
+          autoComplete="off"
+          onChange={handleInputChange}
+          className="form-input"
+        />
+
+        <label className="form-label" htmlFor="description">
+          Description
+        </label>
         <textarea
           id="description"
           placeholder="Description"
           value={formData.description || penguin.description}
           autoComplete="off"
-          className="input-description"
+          className="form-text-description"
           onChange={handleInputChange}
         />
+
         <button
           type="submit"
-          className="bt-save"
+          className="form-bt-save"
           placeholder="bt-save"
           value="Save"
         >
           Save
         </button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 

@@ -1,8 +1,9 @@
-import { ChangeEvent, KeyboardEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   isMenuOpenActionCreator,
   isModalOpenActionCreator,
+  isSearchOpenActionCreator,
   modalTypeActionCreator,
   stringToSearchActionCreator,
 } from "../../app/redux/features/uiSlice/uiSlice";
@@ -71,6 +72,10 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
 
   const handleHelp = () => {
     loadHelp(dispatch);
+  };
+
+  const handleSearch = (event: MouseEvent<HTMLButtonElement>) => {
+    dispatch(isSearchOpenActionCreator(true));
   };
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -145,7 +150,7 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
         </button>
         <div className="menu-search-container">
           <button
-            onClick={handleSearchSubmitCall}
+            onClick={handleSearch}
             className={`menu-bt-search${HidderSearch}`}
             title="bt-search-submit"
           >

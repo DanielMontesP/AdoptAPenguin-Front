@@ -5,6 +5,12 @@ body {
   font-family: Montserrat, sans-serif;
 }
 
+.footer-home {
+  color: lightgrey;
+  position: fixed;
+  bottom: 20px;
+}
+
 .penguin-header {
   width: 100%;
   display: flex;
@@ -58,9 +64,7 @@ body {
 }
 
 .footer {
-  color: lightgrey;
-  position: fixed;
-  bottom: 20px;
+  margin-top: 20px;
 }
 
 .message-buttons {
@@ -137,10 +141,11 @@ body {
     margin-top: 40px;
     text-align: center;
   }
+
   .title-big {
     font-family: Montserrat, sans-serif;
     height: 240px;
-    width: 339px;
+    width: 331px;
     margin: auto;
     position: fixed;
     top: 20%;
@@ -198,15 +203,6 @@ li {
 h2 {
   font-size: 16px;
   text-align: center;
-}
-
-label {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  padding-bottom: 10px;
-  font-size: 20px;
-  margin: auto;
 }
 
 nav {
@@ -431,8 +427,9 @@ nav {
 
 .link {
   width: 100%;
-  color: black;
-  font-size: 18px;
+  color: grey;
+  font-size: 16px;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -450,19 +447,6 @@ nav {
   column-gap: 1em;
   font-size: 0.85em;
   transform: translate(40px, 50px);
-}
-
-.bt-addfav {
-  width: 45px;
-  height: 45px;
-  cursor: pointer;
-  background: none;
-  background-image: url("../images/fav-empty.png");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: contain;
-  border: 0;
-  flex: 2;
 }
 
 .bt-delfav {

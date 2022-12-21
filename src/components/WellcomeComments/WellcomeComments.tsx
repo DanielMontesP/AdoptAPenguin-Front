@@ -23,7 +23,7 @@ const WellcomeComments = (): JSX.Element => {
           height="30"
         />
 
-        <a href="https://adoptapenguin.netlify.app" className="wellcome-title">
+        <a href="https://adoptapenguin.netlify.app" className="link">
           AdoptAPenguin.com
         </a>
       </div>
@@ -31,12 +31,12 @@ const WellcomeComments = (): JSX.Element => {
         AdoptAPenguin.com was my final{" "}
         <a
           href="https://daniel-montes-final-project-202204-bcn.netlify.app/"
-          className="wellcome-title"
+          className="link"
         >
           project
         </a>{" "}
         at{" "}
-        <a href="https://isdicoders.com/" className="wellcome-title">
+        <a href="https://isdicoders.com/" className="link">
           ISDI Coders
         </a>{" "}
         full-stack developer bootcamp (2022).
@@ -47,10 +47,55 @@ const WellcomeComments = (): JSX.Element => {
         <br />
         <br />
         Designed for mobile and desktop rendering.
+        <div className="footer">
+          <div className="footer-repos">
+            <img src={imgGitHub} title="Git" alt="Git" width="20" height="20" />
+            &nbsp;
+            <b>REPOS:</b>&nbsp;
+            <a
+              className="link"
+              href="https://github.com/DanielMontesP/AdoptAPenguin-Front#adoptapenguincom"
+            >
+              FRONT
+            </a>
+            &nbsp;|&nbsp;
+            <a
+              className="link"
+              href="https://github.com/DanielMontesP/AdoptAPenguin-Back"
+            >
+              BACK
+            </a>
+          </div>
+
+          <div className="footer-sonar">
+            <img
+              src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
+              title="sonarcloud"
+              alt="sonarcloud"
+              width="20"
+              height="20"
+            />
+            &nbsp;
+            <b>SONARCLOUD:</b>&nbsp;
+            <br />
+            <a
+              className="link"
+              href="https://sonarcloud.io/summary/overall?id=DanielMontesP_AdoptAPenguin-Front"
+            >
+              FRONT
+            </a>
+            &nbsp;|&nbsp;
+            <a
+              className="link"
+              href="https://sonarcloud.io/summary/overall?id=DanielMontesP_AdoptAPenguin-Back"
+            >
+              BACK
+            </a>
+          </div>
+        </div>
         <div className="wellcome-techs">
           <div className="frontend-container">
-            <b>Front end:</b>
-            <br />
+            <b>FRONT </b>
             <img
               src={imgReact}
               title="React"
@@ -116,7 +161,7 @@ const WellcomeComments = (): JSX.Element => {
             <br />
           </div>
           <div className="backend-container">
-            <b>Back end:</b>
+            <b>BACK:</b>
             <br />
             <img
               src={imgReact}
@@ -163,38 +208,6 @@ const WellcomeComments = (): JSX.Element => {
             />
             <br />
           </div>
-        </div>
-      </div>
-      <div className="footer">
-        <div className="footer-repos">
-          <img src={imgGitHub} title="Git" alt="Git" width="20" height="20" />
-          &nbsp;
-          <b>REPOS:</b>&nbsp;
-          <a href="https://github.com/DanielMontesP/AdoptAPenguin-Front#adoptapenguincom">
-            FRONT
-          </a>
-          &nbsp;|&nbsp;
-          <a href="https://github.com/DanielMontesP/AdoptAPenguin-Back">BACK</a>
-        </div>
-
-        <div className="footer-sonar">
-          <img
-            src="https://avatars2.githubusercontent.com/u/39168408?s=460&v=4"
-            title="sonarcloud"
-            alt="sonarcloud"
-            width="20"
-            height="20"
-          />
-          &nbsp;
-          <b>SONARCLOUD:</b>&nbsp;
-          <br />
-          <a href="https://sonarcloud.io/summary/overall?id=DanielMontesP_AdoptAPenguin-Front">
-            FRONT
-          </a>
-          &nbsp;|&nbsp;
-          <a href="https://sonarcloud.io/summary/overall?id=DanielMontesP_AdoptAPenguin-Back">
-            BACK
-          </a>
         </div>
       </div>
     </div>
