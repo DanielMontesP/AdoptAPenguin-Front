@@ -370,12 +370,22 @@ describe("Given a Modal component", () => {
       expect(handleAcceptClick).toHaveBeenCalled();
     });
   });
+});
 
-  describe("When Search modal", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+jest.mock("../../app/redux/hooks/hooks", () => ({
+  useAppSelector: () => ({
+    logged: mockLogged,
+    modalType: "logOutUser",
+  }),
+  useAppDispatch: () => jest.fn(),
+}));
+
+describe("Given btn-accept is clicked", () => {
+  describe("When modal type is logOutUser", () => {
+    test("Then the logOutUser function is called", () => {
       const labelToFind = "btn-accept";
-      const inputText = "user1";
 
+      const handleAcceptClick = jest.fn();
       const closeModal = jest.fn();
 
       render(
@@ -387,7 +397,7 @@ describe("Given a Modal component", () => {
               idToProcess="modal"
               content="message"
               type="Search"
-              form="Penguin"
+              form="Message"
               posX={50}
               posY={50}
             />
@@ -396,8 +406,48 @@ describe("Given a Modal component", () => {
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
-      userEvent.type(label, inputText);
+      userEvent.click(label);
+
+      handleAcceptClick();
+      expect(handleAcceptClick).toHaveBeenCalled();
+    });
+  });
+});
+jest.mock("../../app/redux/hooks/hooks", () => ({
+  useAppSelector: () => ({
+    logged: mockLogged,
+    modalType: "delete",
+  }),
+  useAppDispatch: () => jest.fn(),
+}));
+
+describe("Given btn-accept is clicked with delete", () => {
+  describe("When modal type is logOutUser", () => {
+    test("Then the logOutUser function is called", () => {
+      const labelToFind = "btn-accept";
+
       const handleAcceptClick = jest.fn();
+      const closeModal = jest.fn();
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Navbar headerTitle="Detail" />
+            <Modal
+              closeModal={closeModal}
+              idToProcess="modal"
+              content="message"
+              type="delete"
+              form="Message"
+              posX={50}
+              posY={50}
+            />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByPlaceholderText(labelToFind);
+      userEvent.click(label);
 
       handleAcceptClick();
       expect(handleAcceptClick).toHaveBeenCalled();
