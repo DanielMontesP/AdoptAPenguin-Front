@@ -93,10 +93,8 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     handleFocus(field);
   };
 
-  const setOpacityFull = " opacity-full";
-
   return (
-    <div className={`nav${setOpacityFull}`}>
+    <div className={`nav`}>
       <div className="nav-header">
         <h1 className={`nav-title`}>AdoptApenguin.com</h1>
       </div>

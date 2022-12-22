@@ -82,8 +82,8 @@
 
 .bt-search-submit {
   position: absolute;
-  top: 10%;
-  right: 15%;
+  top: 35%;
+  right: 16%;
   height: 25px;
   width: 25px;
   cursor: pointer;
@@ -96,8 +96,9 @@
 }
 
 .search-input {
-  height: 30px;
+  height: 45px;
   width: 70%;
+  font-size: 1rem;
   margin: auto;
   outline: none;
   border: none;
@@ -729,11 +730,12 @@
 
 .modal-edit {
   height: 45px;
-  width: 140px;
+  width: 80%;
   font-size: 1.2rem;
   font-weight: bold;
   color: black;
   border: none;
+  margin-left: 10px;
   background: var(--btEditBlack);
   background-repeat: no-repeat;
   background-position: left;
@@ -742,7 +744,7 @@
 
 .edit-buttons-container {
   height: 145px;
-  width: 150px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -779,11 +781,12 @@
 
 .modal-delete {
   height: 45px;
-  width: 150px;
+  width: 100%;
   font-size: 1.2rem;
   font-weight: bold;
   color: black;
   border: none;
+  margin-left: 25px;
   background: var(--btDeleteBlack);
   background-repeat: no-repeat;
   background-size: 40px;
@@ -810,7 +813,7 @@
   }
 
   .nav {
-    height: 4rem;
+    height: 3rem;
     width: 100%;
     background-color: #292929;
     color: white;
@@ -1571,7 +1574,7 @@ ul {
 }
 
 .modal-options {
-  width: 190px;
+  width: 150px;
   height: auto;
   min-height: 10rem;
   text-align: center;
