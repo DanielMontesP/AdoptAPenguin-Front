@@ -7,9 +7,9 @@ import {
   setMessageRead,
   isAvailable,
   connectedToServer,
+  getUserNewMessages,
+  writeFile,
 } from "./sysHandlers";
-
-import { writeFile } from "./sysHandlers";
 import { penguins } from "../../export/penguins-export.js";
 
 jest.mock("react-image-file-resizer", () => ({
@@ -129,9 +129,20 @@ describe("Given connectedToServer", () => {
   describe("when it's called", () => {
     test("Then it should call the dispatch function", async () => {
       const dispatch = jest.fn();
-      URL.createObjectURL = jest.fn();
 
       dispatch(connectedToServer());
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given getUserNewMessages function", () => {
+  describe("when it's called", () => {
+    test("Then it should call the dispatch function", async () => {
+      const dispatch = jest.fn();
+
+      dispatch(getUserNewMessages(mockMessages, dispatch));
 
       expect(dispatch).toHaveBeenCalled();
     });
