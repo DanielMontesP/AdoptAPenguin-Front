@@ -36,7 +36,8 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  let isHomePage = headerTitle === "Home";
+  const isHomePage = headerTitle === "Home";
+  const isDetailPage = headerTitle === "Detail";
 
   let classHeaderTitle = "nav-title";
   let HidderDesktopButtons = "";
@@ -82,6 +83,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
     headerTitle !== "New Message" &&
     headerTitle !== "New Penguin" &&
     headerTitle !== "Inbox" &&
+    headerTitle !== "Message" &&
     headerTitle !== "Detail";
 
   useEffect(() => {
@@ -105,7 +107,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
 
   return (
     <>
-      {!isScrolled ? (
+      {!isScrolled || isDetailPage ? (
         <div className={`nav`}>
           <div className="header-title-container">
             {!isHomePage && (
