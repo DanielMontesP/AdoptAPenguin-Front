@@ -6,6 +6,7 @@ import store from "../../app/redux/store/store";
 import { mockloggedUser } from "../../mocks/users";
 import ScrollToTop from "./ScrollToTop";
 import { mockPenguins } from "../../mocks/penguins";
+import userEvent from "@testing-library/user-event";
 
 describe("Given a ScrollToTop Component", () => {
   describe("When it's rendered", () => {
@@ -37,6 +38,12 @@ describe("Given a ScrollToTop Component", () => {
           </BrowserRouter>
         </Provider>
       );
+      const btScrollToTop = screen.getByTitle("bt-totop");
+      expect(btScrollToTop).toBeInTheDocument();
+
+      userEvent.click(btScrollToTop);
+      ScrollToTop();
+
       const scrollContainer = screen.getByTitle(expectedResult);
       expect(scrollContainer).toBeInTheDocument();
     });

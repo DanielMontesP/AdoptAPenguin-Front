@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-
+import userEvent from "@testing-library/user-event";
 import {
   handleFocus,
   handleLogout,
@@ -10,11 +10,11 @@ import {
   loadHome,
   loadLikes,
 } from "./uiHandlers";
-import userEvent from "@testing-library/user-event";
-import { BrowserRouter } from "react-router-dom";
+
+import HomePage from "../../pages/HomePage/HomePage";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
-import CreatePage from "../../pages/CreatePage/CreatePage";
 
 describe("Given a loadFavs function", () => {
   describe("When called", () => {
@@ -109,6 +109,7 @@ describe("Given a handleSearchSubmit function", () => {
       expect(dispatch).toHaveBeenCalled();
     });
   });
+
   describe("When handleSearchSubmit with stringToSearch called", () => {
     test("Then dispatch have to been called", () => {
       const dispatch = jest.fn();
