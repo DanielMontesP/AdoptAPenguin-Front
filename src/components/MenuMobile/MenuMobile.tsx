@@ -121,7 +121,7 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
 
         <button
           onClick={handleInbox}
-          className="bt-inbox"
+          className="menu-bt-inbox"
           title="bt-view-messages"
         >
           <h3 className="menu-icon-label-vertical">Inbox</h3>

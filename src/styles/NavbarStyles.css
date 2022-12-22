@@ -132,6 +132,22 @@
   font-weight: bolder;
 }
 
+.options {
+  width: 100%;
+  max-width: 320px;
+  height: -webkit-fill-available;
+  margin: auto;
+  margin-top: 40px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  padding: 15px;
+}
+
 .modal-content {
   padding: 10px;
   height: fit-content;
@@ -166,6 +182,18 @@
   font-weight: normal;
   margin-right: 20px;
   color: black;
+}
+
+.menu-bt-inbox {
+  height: 45px;
+  width: 140px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: var(--btMail);
+  background-size: 40px;
+  background-repeat: no-repeat;
+  text-align: center;
+  border: 0;
 }
 
 .message-data {
@@ -396,20 +424,6 @@
     margin-left: 10px;
   }
 
-  .options {
-    width: 320px;
-    height: -webkit-fill-available;
-    margin: auto;
-    margin-top: 40px;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 20px;
-  }
-
   .modal-wellcome {
     width: 80%;
     height: -webkit-fill-available;
@@ -434,6 +448,7 @@
   }
 
   .message-container {
+    width: 100%;
     display: flex;
     text-align: center;
     font-size: 0.9rem;
@@ -730,9 +745,8 @@
 
 .modal-edit {
   height: 45px;
-  width: 80%;
+  width: 100%;
   font-size: 1.2rem;
-  font-weight: bold;
   color: black;
   border: none;
   margin-left: 10px;
@@ -753,6 +767,7 @@
   align-content: center;
   border-radius: 0 0 15px 15px;
   gap: 15px;
+  padding: 15px;
 }
 
 .modal-fav {
@@ -783,10 +798,8 @@
   height: 45px;
   width: 100%;
   font-size: 1.2rem;
-  font-weight: bold;
   color: black;
   border: none;
-  margin-left: 25px;
   background: var(--btDeleteBlack);
   background-repeat: no-repeat;
   background-size: 40px;
@@ -871,20 +884,6 @@
     font-weight: normal;
     color: black;
     flex: 3;
-  }
-
-  .options {
-    width: 320px;
-    height: -webkit-fill-available;
-    margin: auto;
-    margin-top: 40px;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 20px;
   }
 
   .nav-title {
@@ -1299,11 +1298,10 @@ ul {
   height: 45px;
   width: 45px;
   position: fixed;
-  right: 5px;
+  right: 20px;
   background: var(--btHamburguer);
   background-position: center;
   background-repeat: no-repeat;
-  margin-right: 20px;
   border: 0;
 }
 
@@ -1493,13 +1491,13 @@ ul {
 }
 
 .menu-bt-search {
-  height: 40px;
+  height: 45px;
   width: 140px;
   cursor: pointer;
   background: var(--btSearch);
   background-repeat: no-repeat;
   background-position: left;
-  background-size: contain;
+  background-size: 40px;
   border: 0;
 }
 
@@ -1726,9 +1724,10 @@ ul {
 
 .bt-inbox {
   height: 45px;
-  width: 145px;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: pointer;
-  background: var(--btMail);
+  background: var(--btMailBlack);
   background-size: 45px;
   background-repeat: no-repeat;
   text-align: center;
