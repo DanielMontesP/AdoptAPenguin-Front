@@ -1,7 +1,7 @@
 import React, { MouseEvent } from "react";
 import { FaAngleUp } from "react-icons/fa";
 
-const ScrollToTop = () => {
+const ScrollToTop = (): JSX.Element => {
   const goToTop = (event: MouseEvent<SVGElement>) => {
     window.scrollTo({
       top: 0,

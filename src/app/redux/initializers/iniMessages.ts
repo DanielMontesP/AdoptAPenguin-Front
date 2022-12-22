@@ -12,20 +12,6 @@ export const blankMessageData: IMessage = {
   read: false,
 };
 
-export const newMessageData = (idUser: string, idPenguin: string): IMessage => {
-  const formData = {
-    id: "",
-    idParent: "",
-    idPenguin,
-    idUser,
-    subject: "",
-    content: "",
-    data: getCurrentDate(),
-    read: false,
-  };
-  return formData;
-};
-
 export const newReply = (
   idParent: string,
   idUser: string,

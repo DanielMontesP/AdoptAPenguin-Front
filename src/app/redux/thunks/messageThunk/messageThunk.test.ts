@@ -12,7 +12,7 @@ import {
   resetMessageThunk,
 } from "./messageThunk";
 
-describe("Given the loadPenguinsThunk function", () => {
+describe("Given the getMessagesThunk function", () => {
   describe("When it's called", () => {
     test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
       const dispatch = jest.fn();
@@ -21,6 +21,25 @@ describe("Given the loadPenguinsThunk function", () => {
       axios.get = jest.fn().mockResolvedValue({
         data: { mockMessage },
         status: 200,
+      });
+
+      const thunk = getMessagesThunk(mockPenguin.id);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given the getMessagesThunk with error function", () => {
+  describe("When it's called", () => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.get = jest.fn().mockRejectedValue({
+        data: { mockMessage },
+        status: 400,
       });
 
       const thunk = getMessagesThunk(mockPenguin.id);
@@ -45,6 +64,20 @@ describe("Given the getMessageThunk function", () => {
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe("When it's called with id message undefined", () => {
+    test("Then it should call dispatch the axios request", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.get = jest.fn().mockReturnValue(mockMessage);
+
+      const thunk = getMessageThunk("undefined");
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
     });
   });
 });

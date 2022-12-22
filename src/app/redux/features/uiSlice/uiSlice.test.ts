@@ -4,6 +4,7 @@ import uiReducer, {
   modalMessageActionCreator,
   isDesktopActionCreator,
   stringToSearchActionCreator,
+  isSearchOpenActionCreator,
 } from "./uiSlice";
 
 const initialState = {
@@ -99,6 +100,17 @@ describe("Given the stringToSearchActionCreator", () => {
   describe("When invoked", () => {
     test("Then the feedback ui state should change", () => {
       const action = stringToSearchActionCreator("search");
+      const loadedState = uiReducer(expectedState, action);
+
+      expect(loadedState).toEqual(expectedState);
+    });
+  });
+});
+
+describe("Given the isSearchOpenActionCreator", () => {
+  describe("When invoked", () => {
+    test("Then the feedback ui state should change", () => {
+      const action = isSearchOpenActionCreator(false);
       const loadedState = uiReducer(expectedState, action);
 
       expect(loadedState).toEqual(expectedState);
