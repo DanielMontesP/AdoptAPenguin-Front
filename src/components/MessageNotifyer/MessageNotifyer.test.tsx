@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
-import { mockMessages } from "../../mocks/messages";
+import { mockMessage, mockMessages } from "../../mocks/messages";
 import userEvent from "@testing-library/user-event";
 import MessageNotifyer from "./MessageNotifyer";
 
@@ -32,7 +32,6 @@ describe("Given a NewMessagesNotify component", () => {
   describe("When click submit with data", () => {
     test("Then handleClick have to been called and show error prompt", () => {
       const handleClick = jest.fn();
-
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -45,7 +44,7 @@ describe("Given a NewMessagesNotify component", () => {
       expect(text.length).toBeGreaterThan(0);
 
       userEvent.click(text[0]);
-      handleClick();
+      handleClick({ currentTarget: { id: mockMessage.id } });
 
       expect(handleClick).toHaveBeenCalled();
     });

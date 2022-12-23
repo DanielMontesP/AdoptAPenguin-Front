@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import NavDesktop from "./NavDesktop";
 import store from "../../app/redux/store/store";
 import userEvent from "@testing-library/user-event";
+import { handleSearchEnter } from "../../functions/uiHandlers/uiHandlers";
 
 describe("Given a NavDesktop component", () => {
   describe("When click AddFav", () => {
@@ -129,6 +130,7 @@ describe("Given a handleLogoutCall button NavDesktop component", () => {
       const loadHomeCall = jest.fn();
       const loadLikesCall = jest.fn();
       const loadFavsCall = jest.fn();
+      const handleSearchEnter = jest.fn();
 
       render(
         <Provider store={store}>
@@ -158,6 +160,12 @@ describe("Given a handleLogoutCall button NavDesktop component", () => {
 
       loadLikesCall();
       expect(loadLikesCall).toHaveBeenCalled();
+
+      const button9 = screen.getByTitle("bt-search");
+      userEvent.click(button9);
+
+      handleSearchEnter();
+      expect(handleSearchEnter).toHaveBeenCalled();
     });
   });
 });

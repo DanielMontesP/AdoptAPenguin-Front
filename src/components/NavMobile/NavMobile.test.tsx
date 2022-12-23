@@ -88,7 +88,6 @@ describe("Given a handleBack button NavDesktop component", () => {
       const labelBack = "btn-back";
 
       const handleBack = jest.fn();
-
       render(
         <Provider store={store}>
           <BrowserRouter>

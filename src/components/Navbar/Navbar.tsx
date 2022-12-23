@@ -131,7 +131,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
         </div>
       )}
       {(isMenuOpen || isSearchOpen || isModalOpen) && (
-        <div onClick={handleDimmer}>
+        <div onClick={handleDimmer} placeholder="dimmer">
           <ReactDimmer
             isOpen={isOpen}
             exitDimmer={setMenu || setModal || setSearch}
