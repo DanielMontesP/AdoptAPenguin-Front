@@ -8,7 +8,7 @@ interface Props {
 const Penguins = ({ allPenguins }: Props): JSX.Element => {
   return (
     <div className={`penguins-container`} title="penguins-container">
-      <h3 className={"view-list-counter"}>
+      <h3 className={"penguins-counter"}>
         {allPenguins.length} results found.
       </h3>
       {allPenguins.map((penguin, index) => {

@@ -174,7 +174,7 @@
   border: 0;
 }
 
-.inbox-view-list-counter {
+.inbox-counter {
   width: 45%;
   margin: auto;
   text-align: right;
@@ -378,15 +378,13 @@
   .notifyer-bt-close {
     cursor: pointer;
     background: var(--btMailBlack);
-    background-color: transparent;
-    background-position: left;
-    background-size: contain;
+    background-color: white;
+    background-position: center;
+    background-size: 45px;
     background-repeat: no-repeat;
-    font-size: 12px;
-    color: rgb(71, 70, 70);
-    height: 45px;
-    width: 45px;
-    border: 0;
+    height: 42px;
+    width: 47px;
+    border-radius: 10px;
   }
 
   .notifyer-container {
@@ -407,11 +405,11 @@
     width: 45px;
   }
 
-  .view-list-counter {
-    width: 90%;
+  .penguins-counter {
+    width: 95%;
     margin: auto;
     text-align: left;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: normal;
     color: black;
     flex: 2;
@@ -757,7 +755,7 @@
   background-size: 35px;
 }
 
-.edit-buttons-container {
+.penguin-actions-edit {
   height: 145px;
   width: 100%;
   display: flex;
@@ -877,12 +875,12 @@
     border: 0;
   }
 
-  .view-list-counter {
+  .penguins-counter {
     width: fit-content;
     max-width: 360px;
     margin: auto;
     text-align: left;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: normal;
     color: black;
     flex: 3;
@@ -1446,6 +1444,7 @@ ul {
   text-align: center;
   border: 0;
 }
+
 .bt-favs-delete {
   height: 45px;
   width: 180px;
