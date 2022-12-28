@@ -56,7 +56,7 @@ const MenuDesktop = ({ isMenuOpened }: Props): JSX.Element => {
   return (
     <div className={`menu-user menu-open`} onClick={handleUserMenu}>
       <image className={`menu-bt-user`} />
-      <div className="user-data-container">
+      <div className="menu-user-data">
         <img src={userImage} className="user-photo" alt="user" />
         <h3 className="user-username">{toPascalCase(`${user.username}`)}</h3>
       </div>
