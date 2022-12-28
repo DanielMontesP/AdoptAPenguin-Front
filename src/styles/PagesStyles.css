@@ -510,7 +510,7 @@ h2 {
   visibility: hidden;
 }
 
-.buttons-container {
+.penguin-actions {
   width: 95%;
   height: auto;
   display: flex;
@@ -518,7 +518,7 @@ h2 {
   margin-top: 30px;
 }
 
-.edit-buttons-container {
+.penguin-actions-edit {
   height: 30px;
 }
 

@@ -55,7 +55,7 @@
     border: 0;
   }
 
-  .detail-buttons-container {
+  .detail-penguin-actions {
     margin: auto;
     width: 90%;
     max-width: 550px;
@@ -174,7 +174,7 @@
     margin: auto;
   }
 
-  .detail-buttons-container {
+  .detail-penguin-actions {
     margin: auto;
     width: 95%;
     max-width: 690px;

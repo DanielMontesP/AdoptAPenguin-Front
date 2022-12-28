@@ -174,7 +174,7 @@
   border: 0;
 }
 
-.inbox-view-list-counter {
+.inbox-counter {
   width: 45%;
   margin: auto;
   text-align: right;
@@ -405,11 +405,11 @@
     width: 45px;
   }
 
-  .view-list-counter {
-    width: 90%;
+  .penguins-counter {
+    width: 95%;
     margin: auto;
     text-align: left;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: normal;
     color: black;
     flex: 2;
@@ -755,7 +755,7 @@
   background-size: 35px;
 }
 
-.edit-buttons-container {
+.penguin-actions-edit {
   height: 145px;
   width: 100%;
   display: flex;
@@ -875,12 +875,12 @@
     border: 0;
   }
 
-  .view-list-counter {
+  .penguins-counter {
     width: fit-content;
     max-width: 360px;
     margin: auto;
     text-align: left;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: normal;
     color: black;
     flex: 3;

@@ -113,7 +113,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const classContainer = headerTitle === "Detail" ? "detail-" : "";
 
   return (
-    <div className={`${classContainer}buttons-container`}>
+    <div className={`${classContainer}penguin-actions`}>
       <button
         className={`${classContainer}${selectIconLike}`}
         onClick={handleLikes}

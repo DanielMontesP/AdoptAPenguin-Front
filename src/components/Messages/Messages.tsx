@@ -52,7 +52,7 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
         ) : (
           ""
         )}
-        <h3 className={"inbox-view-list-counter"}>
+        <h3 className={"inbox-counter"}>
           Total {allMessages?.length} messages.
           {counterNewMessages} unread messages.
         </h3>

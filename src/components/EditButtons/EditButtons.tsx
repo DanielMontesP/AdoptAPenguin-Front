@@ -57,7 +57,7 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
   };
 
   return (
-    <div className="edit-buttons-container">
+    <div className="penguin-actions-edit">
       <button className={`modal-edit`} onClick={handleEdit} title="btn-edit">
         Edit
       </button>
