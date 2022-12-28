@@ -1,3 +1,8 @@
+:root {
+  --btFavAddBlack: url("../images/fav-empty-black-45.png");
+  --btFavDeleteBlack: url("../images/fav-full.png");
+}
+
 body {
   height: 100%;
   width: 100%;
@@ -445,10 +450,21 @@ h2 {
   transform: translate(40px, 50px);
 }
 
+.btn-addfav {
+  cursor: pointer;
+  background: none;
+  background-image: var(--btFavAddBlack);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  border: 0;
+  flex: 2;
+}
+
 .bt-delfav {
   cursor: pointer;
   background: none;
-  background-image: url("../images/fav-full.png");
+  background-image: var(--btFavDeleteBlack);
   background-repeat: no-repeat;
   background-position: right;
   background-size: contain;
