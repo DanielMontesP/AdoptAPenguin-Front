@@ -26,10 +26,11 @@
   --btViewMessage: url("../images/icon-view-black-45.png");
 }
 
-.server-status-local {
+.local-status {
   color: white;
 }
-.server-status-server {
+
+.server-status {
   color: rgb(129, 224, 129);
 }
 
@@ -317,7 +318,7 @@
   text-align: justify;
 }
 
-.server-status-container {
+.menu-server-status {
   position: fixed;
   top: 80px;
   right: 30px;
@@ -1226,7 +1227,7 @@ ul {
   background-position: center;
 }
 
-.user-data-container {
+.menu-user-data {
   display: flex;
   justify-content: left;
   margin-top: 15px;
