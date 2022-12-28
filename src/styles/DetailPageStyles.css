@@ -126,8 +126,8 @@
     text-align: center;
     border-radius: 15px;
     background: #fff;
-    -webkit-transition: 0.5s;
-    -moz-box-sizing: border-box;
+    transition: 0.5s;
+    box-sizing: border-box;
     display: flow-root;
     margin-top: 80px;
   }
@@ -139,8 +139,8 @@
     text-align: center;
     border-radius: 15px;
     background: #fff;
-    -webkit-transition: 0.5s;
-    -moz-box-sizing: border-box;
+    transition: 0.5s;
+    box-sizing: border-box;
     display: flow-root;
     margin-top: 80px;
   }
@@ -324,23 +324,6 @@
   padding: 15px;
   border-radius: 15px;
   box-shadow: 0 15px 6px #666;
-}
-
-ul {
-  width: 100%;
-  margin: 0 0 0 0;
-  padding: 0;
-  border-radius: 35px;
-  height: fit-content;
-  background: #fff;
-}
-
-li {
-  list-style-type: none;
-  text-align: justify;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 10px;
 }
 
 .bt-delete {
@@ -532,7 +515,7 @@ li {
   max-width: 90%;
   justify-content: center;
   align-items: center;
-  -moz-column-count: 4;
+  column-count: 4;
   column-gap: 1em;
   margin: 1em;
   padding: 1;
@@ -545,10 +528,8 @@ li {
   background: #fff;
   padding: 0.5em;
   max-height: 650px;
-  -webkit-transition: 0.5s;
+  transition: 0.5s;
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-shadow: 2px 2px 10px rgb(140, 134, 134);
   border-radius: 2px 2px 2px 2px;
   flex-wrap: wrap;
@@ -557,26 +538,32 @@ li {
 .item img {
   max-width: 100%;
 }
+
 .item:nth-of-type(4n + 1) {
   transform: rotate(5deg);
   transition: all 0.35s;
 }
+
 .item:nth-of-type(4n + 2) {
   transform: rotate(-5deg);
   transition: all 0.35s;
 }
+
 .item:nth-of-type(4n + 3) {
   transform: rotate(3deg);
   transition: all 0.35s;
 }
+
 .item:nth-of-type(4n + 4) {
   transform: rotate(-3deg);
   transition: all 0.35s;
 }
+
 .item:nth-of-type(4n + 5) {
   transform: rotate(3deg);
   transition: all 0.35s;
 }
+
 .item:hover {
   transform: rotate(15deg);
 }
@@ -616,14 +603,12 @@ li {
 .detail-bt-addlike {
   height: 45px;
   width: 45px;
-
   cursor: pointer;
   background: none;
   background-image: url("../images/like-add.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-
   border: 0;
 }
 

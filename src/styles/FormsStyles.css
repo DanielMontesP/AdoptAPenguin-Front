@@ -463,29 +463,6 @@
   margin-top: 290px;
 }
 
-hr {
-  width: 40%;
-  margin: 35px;
-  margin-top: 50%;
-}
-
-li {
-  height: 48px;
-  list-style-type: none;
-  text-align: left;
-  padding-top: 43px;
-  width: 200px;
-}
-
-h2 {
-  font-size: 20px;
-  margin-left: 12px;
-}
-
-nav {
-  margin-right: 9px;
-}
-
 .submitContainer {
   display: flex;
   width: 80%;
@@ -662,7 +639,7 @@ input ::placeholder {
 }
 
 .form-link,
-form-link:visited {
+.form-link:visited {
   text-decoration: none;
   width: 100%;
   color: rgb(200, 198, 198);
@@ -686,7 +663,7 @@ form-link:visited {
   max-width: 90%;
   justify-content: center;
   align-items: center;
-  -moz-column-count: 4;
+  column-count: 4;
   margin: 1em;
   padding: 1;
   column-gap: 1em;
@@ -700,10 +677,8 @@ form-link:visited {
   padding: 0.5em;
   margin: 0 0 1.5em;
   max-height: 55vh;
-  -webkit-transition: 0.5s;
+  transition: 0.5s;
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-shadow: 2px 2px 10px rgb(140, 134, 134);
   border-radius: 2px 2px 2px 2px;
   flex-wrap: wrap;

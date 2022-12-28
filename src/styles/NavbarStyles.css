@@ -215,6 +215,7 @@
   right: 25px;
   z-index: 20;
 }
+
 .icon-style {
   background-color: #fbfbfb;
   border: 2px solid rgb(0, 0, 0);
@@ -226,12 +227,14 @@
   animation: movebtn 3s ease-in-out infinite;
   transition: all 0.5s ease-in-out;
 }
+
 .icon-style:hover {
   animation: none;
   background: #fff;
   color: #000000;
   border: 2px solid #000000;
 }
+
 @keyframes movebtn {
   0% {
     transform: translateY(0px);
@@ -573,6 +576,7 @@
     opacity: 0.8;
   }
 }
+
 @keyframes move {
   0% {
     -webkit-transform: translateX(-80%);

@@ -111,13 +111,7 @@ body {
     margin: auto;
     position: fixed;
     bottom: 25%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: space-evenly;
-    -webkit-justify-content: space-evenly;
-    -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
     column-gap: 30px;
   }
@@ -151,13 +145,7 @@ body {
     margin: auto;
     position: fixed;
     bottom: 25%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: space-evenly;
-    -webkit-justify-content: space-evenly;
-    -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
     column-gap: 30px;
   }
@@ -392,7 +380,7 @@ h2 {
   display: inline-flex;
   flex-wrap: wrap;
   background: #fff;
-  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .penguin-datalist {
@@ -442,7 +430,7 @@ h2 {
   max-width: 90%;
   justify-content: center;
   align-items: center;
-  -moz-column-count: 4;
+  column-count: 4;
   margin: 1em;
   padding: 1;
   column-gap: 1em;
@@ -572,11 +560,6 @@ h2 {
   -webkit-animation-name: bounce;
   animation-name: bounce;
   margin: auto;
-}
-
-.disapear {
-  -webkit-animation-name: disapear;
-  animation-name: disapear;
 }
 
 .bounce2 {
