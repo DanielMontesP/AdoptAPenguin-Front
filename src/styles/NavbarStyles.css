@@ -833,10 +833,10 @@
   .nav {
     height: 3rem;
     width: 100%;
-    background-color: #292929;
-    color: white;
     position: fixed;
     top: 0;
+    background-color: #292929;
+    color: white;
     z-index: 1;
   }
 
@@ -971,18 +971,17 @@
     background-repeat: no-repeat;
     border: 0;
   }
+
   .menu-bt-user {
     height: 20px;
     width: 100%;
+    color: transparent;
     cursor: pointer;
     background: var(--btUser);
     background-size: contain;
     background-position: right;
     background-repeat: no-repeat;
     border: 0;
-    position: relative;
-    top: -23px;
-    right: 15px;
   }
 
   .bt-user-selected {
@@ -1195,8 +1194,12 @@ ul {
 }
 
 .user-username {
+  width: 100%;
+  color: grey;
+  text-align: right;
   margin: auto;
   margin-left: 10px;
+  margin-top: 0;
 }
 
 .about-icon {
@@ -1232,10 +1235,13 @@ ul {
 }
 
 .menu-user-data {
+  height: fit-content;
+  width: 100%;
+  padding: 10px;
+  background-color: #292929;
   display: flex;
   justify-content: left;
-  margin-top: 15px;
-  height: fit-content;
+  border-radius: 15px 0 0 0;
 }
 
 .menu-vertical {
@@ -1251,15 +1257,13 @@ ul {
 }
 
 .menu-user-vertical {
-  height: 1vw;
   width: 100%;
-  position: relative;
-  top: 80px;
+  background-color: #292929;
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  margin-left: 35px;
-  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
 }
 
 .menu-header {
@@ -1293,10 +1297,20 @@ ul {
 
 .menu-horizontal {
   width: 100%;
+  position: fixed;
+  bottom: 10px;
+  background-color: #292929;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  bottom: 0;
+  border-radius: 0 0 15px 15px;
+}
+
+.menu-footer {
+  width: 100%;
+  background-color: #292929;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 15px 15px;
 }
 
 .menu-btn {
@@ -1669,36 +1683,41 @@ ul {
 }
 
 .menu-user {
-  color: white;
-  height: 50%;
-  background-color: #292929;
-  transform: translateX(-100%);
-  transition: 1s;
+  width: 300px;
   position: fixed;
   right: 0;
-  top: 56px;
+  top: 30px;
+  color: white;
   display: flex;
   flex-flow: wrap;
   align-content: flex-start;
   border-radius: 0 0 15px 15px;
+  transform: translateX(0%);
+  transition: 1s;
+  z-index: 91;
+}
+
+.menu-user-header {
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+  margin-bottom: 5px;
 }
 
 .menu-app {
-  color: white;
   height: 100%;
   width: 20rem;
-  background-color: #292929;
-  transform: translateX(-100%);
-  transition: 0.3s;
   position: fixed;
   left: 0;
   top: 0;
+  color: white;
+  transition: 0.3s;
   display: flex;
   flex-flow: wrap;
   align-content: flex-start;
-}
-
-.menu-open {
+  background-color: #292929;
   transform: translateX(0%);
   z-index: 200;
 }

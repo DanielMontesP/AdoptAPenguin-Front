@@ -283,7 +283,7 @@ h2 {
   text-align: justify;
 }
 
-.menu-container {
+.menu {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;

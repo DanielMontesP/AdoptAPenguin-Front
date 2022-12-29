@@ -138,7 +138,7 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
             title="btn-user"
           />
         </div>
-      </div>{" "}
+      </div>
     </div>
   );
 };

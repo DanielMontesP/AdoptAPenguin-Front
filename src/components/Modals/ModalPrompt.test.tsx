@@ -35,7 +35,7 @@ describe("Given a Modal component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <Navbar headerTitle="Detail" />
+            <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
             <Modal
               closeModal={closeModal}
               idToProcess="modal"
@@ -73,7 +73,7 @@ describe("Given a Modal component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <Navbar headerTitle="Detail" />
+            <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
             <Modal
               closeModal={closeModal}
               idToProcess="modal"
@@ -282,7 +282,7 @@ describe("Given a Modal component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <Navbar headerTitle="Detail" />
+            <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
             <Modal
               closeModal={closeModal}
               idToProcess="modal"
@@ -313,7 +313,7 @@ describe("Given a Modal component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <Navbar headerTitle="Detail" />
+            <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
             <Modal
               closeModal={closeModal}
               idToProcess="modal"
@@ -348,7 +348,7 @@ describe("Given a Modal component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <Navbar headerTitle="Detail" />
+            <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
             <Modal
               closeModal={closeModal}
               idToProcess="modal"
@@ -391,7 +391,7 @@ describe("Given btn-accept is clicked", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <Navbar headerTitle="Detail" />
+            <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
             <Modal
               closeModal={closeModal}
               idToProcess="modal"
@@ -432,7 +432,7 @@ describe("Given btn-accept is clicked with delete", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <Navbar headerTitle="Detail" />
+            <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
             <Modal
               closeModal={closeModal}
               idToProcess="modal"
