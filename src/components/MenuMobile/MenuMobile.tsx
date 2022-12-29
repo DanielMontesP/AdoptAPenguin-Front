@@ -93,7 +93,7 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
   const HidderSearch = isSearchClicked ? ` opacity-full` : ``;
 
   return (
-    <div className={`menu-app menu-open`}>
+    <div className={`menu-app`}>
       <div className="menu-user-data">
         <img src={userImage} className="user-photo" alt="user" />
         <h3 className="user-username">{toPascalCase(`${user.username}`)}</h3>

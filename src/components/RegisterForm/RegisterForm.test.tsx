@@ -51,7 +51,7 @@ describe("Given a RegisterForm component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <Navbar headerTitle="Test" />
+            <Navbar headerTitle="Test" isMenuOpen={false} isDesktop={false} />
             <RegisterForm />
           </BrowserRouter>
         </Provider>

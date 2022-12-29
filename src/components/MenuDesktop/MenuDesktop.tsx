@@ -54,8 +54,10 @@ const MenuDesktop = ({ isMenuOpened }: Props): JSX.Element => {
   };
 
   return (
-    <div className={`menu-user menu-open`} onClick={handleUserMenu}>
-      <image className={`menu-bt-user`} />
+    <div className={`menu-user`} onClick={handleUserMenu}>
+      <div className={`menu-user-header`}>
+        <div className={`menu-bt-user`} />
+      </div>
       <div className="menu-user-data">
         <img src={userImage} className="user-photo" alt="user" />
         <h3 className="user-username">{toPascalCase(`${user.username}`)}</h3>
@@ -70,7 +72,7 @@ const MenuDesktop = ({ isMenuOpened }: Props): JSX.Element => {
           <h3 className="menu-icon-label-vertical">Inbox</h3>
         </button>
       </div>
-      <div className="menu-horizontal">
+      <div className="menu-footer">
         <div className="menu-icons-horizontal">
           <button
             onClick={handleLogoutCall}

@@ -8,12 +8,10 @@ import Navbar from "./Navbar";
 describe("Given a Navbar component", () => {
   describe("When it's invoked", () => {
     test("Then it should render a list of 2 separators", () => {
-      const handleDimmer = jest.fn();
-
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Navbar headerTitle="Detail" />
+            <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
           </Provider>
         </BrowserRouter>
       );
@@ -25,14 +23,6 @@ describe("Given a Navbar component", () => {
       expect(btMenu).toBeInTheDocument();
 
       userEvent.click(btMenu);
-
-      const dimmer = screen.getByPlaceholderText("dimmer");
-      expect(dimmer).toBeInTheDocument();
-
-      userEvent.click(dimmer);
-      handleDimmer();
-
-      expect(handleDimmer).toHaveBeenCalled();
     });
   });
 });

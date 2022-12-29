@@ -14,7 +14,7 @@ describe("Given a Favs component", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
-            <Navbar headerTitle="test" />
+            <Navbar headerTitle="test" isMenuOpen={false} isDesktop={false} />
             <Favs allPenguins={mockPenguins} />
           </BrowserRouter>
         </Provider>

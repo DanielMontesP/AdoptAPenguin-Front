@@ -13,27 +13,26 @@ import {
   handleSearchSubmit,
 } from "../../functions/uiHandlers/uiHandlers";
 import "../../styles/NavbarStyles.css";
-import Menu from "../Menu/Menu";
+import MenuDesktop from "../MenuDesktop/MenuDesktop";
+import MenuMobile from "../MenuMobile/MenuMobile";
 import { Modal } from "../Modals/ModalPrompt";
-import NavDektop from "../NavDesktop/NavDesktop";
+import NavDesktop from "../NavDesktop/NavDesktop";
 import NavMobile from "../NavMobile/NavMobile";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 interface Props {
   headerTitle: string;
+  isMenuOpen: boolean;
+  isDesktop: boolean;
 }
 
-const Navbar = ({ headerTitle }: Props): JSX.Element => {
+const Navbar = ({ headerTitle, isMenuOpen, isDesktop }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
 
-  const {
-    isDesktop,
-    modalMessage,
-    modalType,
-    isModalOpen,
-    isMenuOpen,
-    isSearchOpen,
-  } = useAppSelector((state) => state.ui);
+  const { modalMessage, modalType, isModalOpen, isSearchOpen } = useAppSelector(
+    (state) => state.ui
+  );
+
   const { penguin } = useAppSelector((state) => state.penguins);
   const { stringToSearch } = useAppSelector((state) => state.ui);
   const [showTopBtn, setShowTopBtn] = useState(false);
@@ -86,7 +85,7 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
   return (
     <div className={`app`}>
       {isDesktop ? (
-        <NavDektop headerTitle={headerTitle} />
+        <NavDesktop headerTitle={headerTitle} />
       ) : (
         <NavMobile headerTitle={headerTitle} />
       )}
@@ -125,13 +124,16 @@ const Navbar = ({ headerTitle }: Props): JSX.Element => {
           posY={50}
         />
       )}
-      {isMenuOpen && (
-        <div className={`menu-nav`}>
-          <Menu isMenuOpened={isMenuOpen} />
-        </div>
-      )}
+
+      {isMenuOpen &&
+        (isDesktop ? (
+          <MenuDesktop isMenuOpened={isMenuOpen} />
+        ) : (
+          <MenuMobile isMenuOpened={isMenuOpen} />
+        ))}
+
       {(isMenuOpen || isSearchOpen || isModalOpen) && (
-        <div onClick={handleDimmer} placeholder="dimmer">
+        <div onClick={handleDimmer} role="tabpanel">
           <ReactDimmer
             isOpen={isOpen}
             exitDimmer={setMenu || setModal || setSearch}

@@ -20,7 +20,7 @@ import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   const { logged, id } = useAppSelector((state) => state.user);
-  const { headerTitle } = useAppSelector((state) => state.ui);
+  const { headerTitle, isMenuOpen } = useAppSelector((state) => state.ui);
 
   const dispatch = useAppDispatch();
 
@@ -34,7 +34,13 @@ function App() {
 
   const handleNav = () => {
     if (logged) {
-      result = <Navbar headerTitle={headerTitle} />;
+      result = (
+        <Navbar
+          isDesktop={isDesktop}
+          headerTitle={headerTitle}
+          isMenuOpen={isMenuOpen}
+        />
+      );
     }
   };
 
