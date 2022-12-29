@@ -323,8 +323,20 @@
 
 .menu-server-status {
   position: fixed;
-  top: 80px;
-  right: 30px;
+  top: 30px;
+  right: 10px;
+  border: 1px solid white;
+  border-radius: 15px;
+  color: grey;
+  padding: 5px;
+  font-size: 0.8rem;
+  font-weight: normal;
+}
+
+.server-status-container {
+  position: fixed;
+  top: 60px;
+  right: 10px;
   border: 1px solid white;
   border-radius: 15px;
   color: grey;
@@ -1228,10 +1240,6 @@ ul {
   height: 70px;
   border-radius: 50%;
   border: 2px solid white;
-  background-image: var(--iconAddPhoto);
-  background-color: white;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .menu-user-data {
@@ -1410,7 +1418,7 @@ ul {
 
 .bt-home {
   height: 45px;
-  width: 145px;
+  width: 135px;
   cursor: pointer;
   background: var(--btHome);
   background-repeat: no-repeat;
@@ -1477,7 +1485,7 @@ ul {
 }
 
 .bt-addfav {
-  width: 145px;
+  width: 140px;
   height: 45px;
   cursor: pointer;
   background: none;
@@ -1490,7 +1498,7 @@ ul {
 
 .bt-likes {
   height: 45px;
-  width: 145px;
+  width: 135px;
   cursor: pointer;
   background: var(--btLikeAdd);
   background-size: 45px;
@@ -1513,7 +1521,7 @@ ul {
 
 .menu-bt-search {
   height: 45px;
-  width: 140px;
+  width: 150px;
   cursor: pointer;
   background: var(--btSearch);
   background-repeat: no-repeat;
@@ -1524,7 +1532,7 @@ ul {
 
 .menu-bt-favs {
   height: 40px;
-  width: 173px;
+  width: 160px;
   cursor: pointer;
   background: var(--btFavAdd);
   background-size: contain;
@@ -1708,7 +1716,7 @@ ul {
 
 .menu-app {
   height: 100%;
-  width: 20rem;
+  width: 18rem;
   position: fixed;
   left: 0;
   top: 0;
