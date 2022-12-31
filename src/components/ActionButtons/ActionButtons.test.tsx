@@ -6,6 +6,14 @@ import store from "../../app/redux/store/store";
 import { mockEmptyDataPenguin, mockPenguin } from "../../mocks/penguins";
 import ActionButtons from "./ActionButtons";
 
+jest.mock("../../app/redux/hooks/hooks", () => ({
+  useAppSelector: () => ({
+    connected: true,
+    headerTitle: "Favorites",
+  }),
+  useAppDispatch: () => jest.fn(),
+}));
+
 describe("Given a btn-delete action", () => {
   describe("When clicked action is called", () => {
     test("Then deleteFromLikers have to been called", () => {
@@ -145,6 +153,7 @@ describe("Given btn-favs button", () => {
       expect(deleteFromLikers).toHaveBeenCalled();
     });
   });
+
   describe("When message action is called", () => {
     test("Then the value of the username input field should be 'user1'", () => {
       const labelToFind = "bt-message";

@@ -2,7 +2,6 @@ import { mockUser } from "../../../../mocks/users";
 import { server } from "../../../../mocks/server";
 import {
   editUserThunk,
-  getUserMessagesThunk,
   getUserThunk,
   loginThunk,
   registerThunk,
@@ -28,6 +27,20 @@ jest.mock("jwt-decode", () => () => ({
 
 jest.mock("axios");
 
+jest.mock("../../hooks/hooks", () => ({
+  useAppSelector: () => ({
+    connected: false,
+    headerTitle: "Favorites",
+  }),
+  useAppDispatch: () => jest.fn(),
+}));
+
+jest.mock("../../../../functions/sysHandlers/sysHandlers", () => ({
+  handleNoConexion: jest.fn().mockResolvedValue(true),
+  handleServerInfo: jest.fn(),
+  getUserNewMessages: jest.fn(),
+}));
+
 HTMLAnchorElement.prototype.click = jest.fn();
 global.window.URL.createObjectURL = jest.fn();
 
@@ -42,19 +55,7 @@ describe("Given the getuserThunk function", () => {
       const thunk = getUserThunk(mockUser.id);
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalled();
-    });
-  });
-
-  describe("When getUserMessagesThunk is called with an user", () => {
-    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      axios.get = jest.fn().mockResolvedValue({ data: { user: mockUser } });
-      const dispatch = jest.fn();
-
-      dispatch(getUserMessagesThunk(mockUser.id));
-
-      expect(dispatch).toHaveBeenCalled();
+      expect(dispatch).not.toHaveBeenCalled();
     });
   });
 
@@ -85,7 +86,7 @@ describe("Given the getuserThunk function", () => {
       });
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(3);
     });
   });
 

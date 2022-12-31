@@ -62,17 +62,8 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
   };
 
   const handleSearch = (event: MouseEvent<HTMLButtonElement>) => {
-    const type = event.currentTarget.title;
+    handleFocusCall(".search-input");
 
-    switch (type) {
-      case "desktop-bt-search":
-        handleFocusCall(".menu-search-input");
-        break;
-      case "bt-search":
-        handleFocusCall(".search-input");
-        break;
-      default:
-    }
     setSearch((prevState) => !prevState);
     dispatch(isSearchOpenActionCreator(true));
   };

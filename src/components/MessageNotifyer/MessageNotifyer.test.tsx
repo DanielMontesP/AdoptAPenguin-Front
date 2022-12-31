@@ -6,10 +6,19 @@ import { mockMessage, mockMessages } from "../../mocks/messages";
 import userEvent from "@testing-library/user-event";
 import MessageNotifyer from "./MessageNotifyer";
 
+jest.mock("../../app/redux/hooks/hooks", () => ({
+  useAppSelector: () => ({
+    headerTitle: "test",
+    isMenuOpen: true,
+  }),
+  useAppDispatch: () => jest.fn(),
+}));
+
 describe("Given a NewMessagesNotify component", () => {
   describe("When click close button", () => {
     test("Then handleClick have to been called and show error prompt", () => {
       const handleClose = jest.fn();
+      const dispatch = jest.fn();
 
       render(
         <Provider store={store}>
@@ -19,13 +28,13 @@ describe("Given a NewMessagesNotify component", () => {
         </Provider>
       );
 
-      const text = screen.getByPlaceholderText("notifyer-bt-close");
-      expect(text).toBeInTheDocument();
+      const text = screen.getAllByPlaceholderText("notifyer-bt-close");
+      expect(text.length).toBeGreaterThan(0);
 
-      userEvent.click(text);
-      handleClose();
+      userEvent.click(text[0]);
+      dispatch(handleClose());
 
-      expect(handleClose).toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 
