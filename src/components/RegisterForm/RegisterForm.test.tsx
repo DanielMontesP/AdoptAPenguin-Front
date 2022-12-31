@@ -6,6 +6,18 @@ import store from "../../app/redux/store/store";
 import Navbar from "../Navbar/Navbar";
 import RegisterForm from "./RegisterForm";
 
+const mockUAppDispatch = jest.fn();
+
+jest.mock("../../app/redux/hooks/hooks", () => ({
+  useAppSelector: () => ({
+    logged: true,
+    id: "id",
+    headerLastTitle: "lastTitle",
+    headerTitle: "Test",
+  }),
+  useAppDispatch: () => mockUAppDispatch,
+}));
+
 describe("Given a RegisterForm component", () => {
   describe("When the word 'user1' is written to the username input field", () => {
     test("Then the value of the username input field should be 'user1'", () => {
@@ -33,20 +45,9 @@ describe("Given a RegisterForm component", () => {
       const inputText = "user1";
       const handleSubmit = jest.fn();
       const SetTitleHeader = jest.fn();
-      const mockUAppDispatch = jest.fn();
       const dispatch = jest.fn();
       const headerTitleActionCreator = jest.fn();
       const headerLastTitleActionCreator = jest.fn();
-
-      jest.mock("../../app/redux/hooks/hooks", () => ({
-        useAppSelector: () => ({
-          logged: true,
-          id: "id",
-          headerLastTitle: "lastTitle",
-          headerTitle: "Test",
-        }),
-        useAppDispatch: () => mockUAppDispatch,
-      }));
 
       render(
         <Provider store={store}>

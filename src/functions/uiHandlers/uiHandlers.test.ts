@@ -1,7 +1,5 @@
-import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
-  handleFocus,
   handleLogout,
   handleNoConexion,
   handleSearchEnter,
@@ -10,11 +8,6 @@ import {
   loadHome,
   loadLikes,
 } from "./uiHandlers";
-
-import HomePage from "../../pages/HomePage/HomePage";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import store from "../../app/redux/store/store";
 
 describe("Given a loadFavs function", () => {
   describe("When called", () => {
@@ -113,7 +106,9 @@ describe("Given a handleSearchSubmit function", () => {
   describe("When handleSearchSubmit with stringToSearch called", () => {
     test("Then dispatch have to been called", () => {
       const dispatch = jest.fn();
-      const event: any = jest.fn();
+      const event: any = jest
+        .fn()
+        .mockResolvedValue({ event: { key: "Enter" } });
 
       dispatch(handleSearchEnter(event, "", dispatch, "Test"));
 
