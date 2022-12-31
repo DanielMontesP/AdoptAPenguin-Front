@@ -229,4 +229,27 @@ describe("Given a MenuDesktop component", () => {
       expect(handleSearchEnter).toHaveBeenCalled();
     });
   });
+
+  describe("When bt-search-submit clicked", () => {
+    test("Then handleSearch is called", () => {
+      const labelButton = "bt-search-submit";
+      const handleSearch = jest.fn();
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Menu isMenuOpened={true} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const button = screen.getByTitle(labelButton);
+      expect(button).toBeInTheDocument();
+
+      userEvent.click(button);
+
+      handleSearch();
+      expect(handleSearch).toHaveBeenCalled();
+    });
+  });
 });

@@ -4,7 +4,16 @@ import { BrowserRouter } from "react-router-dom";
 import NavDesktop from "./NavDesktop";
 import store from "../../app/redux/store/store";
 import userEvent from "@testing-library/user-event";
-import { handleSearchEnter } from "../../functions/uiHandlers/uiHandlers";
+
+jest.mock("../../app/redux/hooks/hooks", () => ({
+  useAppSelector: () => ({
+    connected: false,
+    headerTitle: "Favorites",
+    isDesktop: true,
+    ui: { isMenuOpen: true },
+  }),
+  useAppDispatch: () => jest.fn(),
+}));
 
 describe("Given a NavDesktop component", () => {
   describe("When click AddFav", () => {
@@ -96,8 +105,10 @@ describe("Given a handleMenu button NavDesktop component", () => {
     test("Then AddFav have to been called", () => {
       const stringToFind = "AdoptApenguin.com";
       const labelAddFav = "btn-addFav";
+      const labelUserMenu = "btn-user";
 
       const handleMenu = jest.fn();
+      const handleUserMenu = jest.fn();
 
       render(
         <Provider store={store}>
@@ -113,8 +124,14 @@ describe("Given a handleMenu button NavDesktop component", () => {
       const buttonAddFav = screen.getByTitle(labelAddFav);
       userEvent.click(buttonAddFav);
 
+      const buttonUserMenu = screen.getByTitle(labelUserMenu);
+      userEvent.click(buttonUserMenu);
+
       handleMenu();
       expect(handleMenu).toHaveBeenCalled();
+
+      handleUserMenu();
+      expect(handleUserMenu).toHaveBeenCalled();
     });
   });
 });
