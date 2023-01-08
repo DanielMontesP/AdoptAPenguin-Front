@@ -119,7 +119,7 @@ export const Modal = ({
   };
 
   const handleAcceptClick = () => {
-    switch (modalType) {
+    switch (type) {
       case "delete":
         isMessage ? deleteMessage() : deletePenguin();
         break;
@@ -145,7 +145,6 @@ export const Modal = ({
         break;
       case "Server":
         navigate("./");
-
         break;
       default:
         correctAction("Sorry, this feature is not available yet.");

@@ -4,22 +4,12 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { headerTitleActionCreator } from "../../app/redux/features/uiSlice/uiSlice";
 import store from "../../app/redux/store/store";
-import { mockPenguin } from "../../mocks/penguins";
-import { mockUser } from "../../mocks/users";
 import Navbar from "../Navbar/Navbar";
 import { Modal } from "./ModalPrompt";
 
-let mockLogged = true;
-
 jest.mock("../../app/redux/hooks/hooks", () => ({
-  useAppSelector: () => ({
-    user: {
-      logged: mockLogged,
-      id: mockUser.id,
-    },
-    penguin: mockPenguin,
-    headerTitle: "Detail",
-  }),
+  ...jest.requireActual("../../app/redux/hooks/hooks"),
+  useAppSelector: () => ({ modalType: "logOutUser", headerTitle: "Detail" }),
   useAppDispatch: () => jest.fn(),
 }));
 
@@ -32,6 +22,7 @@ describe("Given a Modal component", () => {
       const closeModal = jest.fn();
       const deletePenguin = jest.fn();
       const handleAcceptClick = jest.fn();
+
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -70,6 +61,7 @@ describe("Given a Modal component", () => {
       const closeModal = jest.fn();
       const deleteMessage = jest.fn();
       const handleAcceptClick = jest.fn();
+
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -106,6 +98,7 @@ describe("Given a Modal component", () => {
       const inputText = "user1";
 
       const closeModal = jest.fn();
+      const logOutUser = jest.fn();
 
       render(
         <Provider store={store}>
@@ -125,6 +118,7 @@ describe("Given a Modal component", () => {
 
       const label = screen.getByPlaceholderText(labelToFind);
       userEvent.type(label, inputText);
+      logOutUser();
 
       expect(label).toBeInTheDocument();
     });
@@ -372,14 +366,6 @@ describe("Given a Modal component", () => {
   });
 });
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
-  useAppSelector: () => ({
-    logged: mockLogged,
-    modalType: "logOutUser",
-  }),
-  useAppDispatch: () => jest.fn(),
-}));
-
 describe("Given btn-accept is clicked", () => {
   describe("When modal type is logOutUser", () => {
     test("Then the logOutUser function is called", () => {
@@ -413,13 +399,6 @@ describe("Given btn-accept is clicked", () => {
     });
   });
 });
-jest.mock("../../app/redux/hooks/hooks", () => ({
-  useAppSelector: () => ({
-    logged: mockLogged,
-    modalType: "delete",
-  }),
-  useAppDispatch: () => jest.fn(),
-}));
 
 describe("Given btn-accept is clicked with delete", () => {
   describe("When modal type is logOutUser", () => {
@@ -438,6 +417,78 @@ describe("Given btn-accept is clicked with delete", () => {
               idToProcess="modal"
               content="message"
               type="delete"
+              form="Message"
+              posX={50}
+              posY={50}
+            />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByPlaceholderText(labelToFind);
+      userEvent.click(label);
+
+      handleAcceptClick();
+      expect(handleAcceptClick).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given btn-accept is clicked with Settings", () => {
+  describe("When modal type is logOutUser", () => {
+    test("Then the handleAcceptClick function is called", () => {
+      const labelToFind = "btn-accept";
+
+      const handleAcceptClick = jest.fn();
+      const closeModal = jest.fn();
+
+      global.window.URL.createObjectURL = jest.fn();
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
+            <Modal
+              closeModal={closeModal}
+              idToProcess="modal"
+              content="message"
+              type="Settings"
+              form="Message"
+              posX={50}
+              posY={50}
+            />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const label = screen.getByPlaceholderText(labelToFind);
+      userEvent.click(label);
+
+      handleAcceptClick();
+      expect(handleAcceptClick).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given btn-accept is clicked with Server", () => {
+  describe("When modal type is logOutUser", () => {
+    test("Then the handleAcceptClick function is called", () => {
+      const labelToFind = "btn-accept";
+
+      const handleAcceptClick = jest.fn();
+      const closeModal = jest.fn();
+
+      global.window.URL.createObjectURL = jest.fn();
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
+            <Modal
+              closeModal={closeModal}
+              idToProcess="modal"
+              content="message"
+              type="Server"
               form="Message"
               posX={50}
               posY={50}

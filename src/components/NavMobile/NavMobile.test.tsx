@@ -132,12 +132,20 @@ describe("Given a handleBack button NavDesktop component", () => {
       expect(handleBack).toHaveBeenCalled();
     });
   });
-  describe("When click btn-back and title DeEdit..ail", () => {
+  describe("When click btn-back and title Edit..", () => {
     test("Then handleBack have to been called", () => {
       const stringToFind = "Edit...";
       const labelAddFav = "btn-back";
 
       const handleBack = jest.fn();
+      const handleScroll = jest.fn();
+
+      jest.mock("../../app/redux/hooks/hooks", () => ({
+        useAppSelector: () => ({
+          headerLastTitle: "Favorites",
+        }),
+        useAppDispatch: () => jest.fn(),
+      }));
 
       render(
         <Provider store={store}>
@@ -154,6 +162,7 @@ describe("Given a handleBack button NavDesktop component", () => {
       userEvent.click(buttonAddFav);
 
       handleBack();
+      handleScroll();
       expect(handleBack).toHaveBeenCalled();
     });
   });

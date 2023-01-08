@@ -21,15 +21,21 @@ import { mockPenguin } from "../../../../mocks/penguins";
 import Home from "../../../../components/Home/Home";
 import { newPenguinFormData } from "../../initializers/iniPenguins";
 
-jest.mock("../../../../functions/sysHandlers/sysHandlers", () => ({
-  connectedToServer: () => jest.fn().mockReturnValue(true),
-  handleServerInfo: () => jest.fn(),
+jest.mock("jwt-decode", () => () => ({
+  username: "user1",
+  id: "idUser",
+  image: "image.jpg",
 }));
 
 describe("Given the loadPenguinsThunk function", () => {
   describe("When it's called", () => {
     test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
       const dispatch = jest.fn();
+
+      jest.mock("../../../../functions/sysHandlers/sysHandlers", () => ({
+        connectedToServer: () => jest.fn().mockReturnValue(true),
+        handleServerInfo: () => jest.fn(),
+      }));
 
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
       axios.get = jest.fn().mockResolvedValue({
@@ -283,7 +289,7 @@ describe("Given the editPenguinThunk function", () => {
       const thunk = editPenguinThunk(mockPenguin, mockPenguin.id, "favs");
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(2);
+      expect(dispatch).toHaveBeenCalledTimes(3);
     });
   });
 
