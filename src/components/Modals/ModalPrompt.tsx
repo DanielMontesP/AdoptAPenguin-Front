@@ -38,7 +38,7 @@ export const Modal = ({
   const listPenguins = useAppSelector((state) => state.penguins.allPenguins);
   const listNotifys = useAppSelector((state) => state.user.allMessages);
 
-  const { headerTitle, modalType } = useAppSelector((state) => state.ui);
+  const { headerTitle } = useAppSelector((state) => state.ui);
 
   let isWellcome = false;
 
