@@ -10,6 +10,7 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     connected: true,
     headerTitle: "Favorites",
+    penguin: mockPenguin,
   }),
   useAppDispatch: () => jest.fn(),
 }));
