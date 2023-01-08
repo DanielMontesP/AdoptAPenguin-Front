@@ -18,25 +18,24 @@ jest.mock("../../../../functions/sysHandlers/sysHandlers", () => ({
   connectedToServer: jest.fn().mockRejectedValue(false),
 }));
 
-describe("Given the ediPenguin function", () => {
+describe("Given the editPenguin function", () => {
   describe("When it's called and not connected", () => {
     test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
       const dispatch = jest.fn();
 
-      axios.get = jest.fn().mockResolvedValue({
-        data: { mockPenguin },
-        status: 200,
-      });
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      axios.put = jest.fn().mockRejectedValue(true);
       const thunk = editPenguinThunk(mockPenguin, mockPenguin.id, "update");
 
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(0);
     });
   });
 
-  describe("When it's called and wth error", () => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
+  describe("When it's called with error", () => {
+    test("Then it should not call editPenguinThunk", async () => {
       const dispatch = jest.fn();
 
       jest.mock("../../../../components/Modals/Modals", () => ({
@@ -46,7 +45,7 @@ describe("Given the ediPenguin function", () => {
 
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(0);
     });
   });
 });

@@ -27,15 +27,18 @@ jest.mock("jwt-decode", () => () => ({
   image: "image.jpg",
 }));
 
+jest.mock("../../hooks/hooks", () => ({
+  useAppSelector: () => ({
+    connected: true,
+    headerTitle: "Favorites",
+  }),
+  useAppDispatch: () => jest.fn(),
+}));
+
 describe("Given the loadPenguinsThunk function", () => {
   describe("When it's called", () => {
     test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
       const dispatch = jest.fn();
-
-      jest.mock("../../../../functions/sysHandlers/sysHandlers", () => ({
-        connectedToServer: () => jest.fn().mockReturnValue(true),
-        handleServerInfo: () => jest.fn(),
-      }));
 
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
       axios.get = jest.fn().mockResolvedValue({
@@ -232,6 +235,7 @@ describe("Given the editPenguinThunk function", () => {
       const dispatch = jest.fn();
 
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
       axios.put = jest.fn().mockResolvedValue({
         data: { penguin: mockPenguin },
         status: 200,
