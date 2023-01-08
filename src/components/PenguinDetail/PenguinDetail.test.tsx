@@ -3,11 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
-import {
-  mockMessage,
-  mockMessages,
-  mockMessagesEmpty,
-} from "../../mocks/messages";
+import { mockMessage, mockMessages } from "../../mocks/messages";
 import {
   mockPenguin,
   mockPenguins,
