@@ -8,6 +8,7 @@ import {
   registerThunk,
 } from "./userThunk";
 import axios from "axios";
+import { mockMessages } from "../../../../mocks/messages";
 
 beforeAll(() => {
   server.listen({ onUnhandledRequest: "bypass" });
@@ -31,12 +32,21 @@ jest.mock("axios");
 HTMLAnchorElement.prototype.click = jest.fn();
 global.window.URL.createObjectURL = jest.fn();
 
+jest.mock("../../hooks/hooks", () => ({
+  useAppSelector: () => ({
+    connected: true,
+    headerTitle: "Favorites",
+  }),
+  useAppDispatch: () => jest.fn(),
+}));
+
 describe("Given the getuserThunk function", () => {
   describe("When it's called with an user", () => {
     test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
       const dispatch = jest.fn();
 
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
       axios.get = jest.fn().mockResolvedValue({ data: { user: mockUser } });
 
       const thunk = getUserThunk(mockUser.id);
@@ -48,10 +58,17 @@ describe("Given the getuserThunk function", () => {
 
   describe("When getUserMessagesThunk is called with an user", () => {
     test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
-      axios.get = jest.fn();
       const dispatch = jest.fn();
 
-      dispatch(getUserMessagesThunk(mockUser.id));
+      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      axios.get = jest
+        .fn()
+        .mockResolvedValue({ data: { messages: mockMessages } });
+
+      const thunk = getUserMessagesThunk(mockUser.id);
+      await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
     });
@@ -62,12 +79,15 @@ describe("Given the getuserThunk function", () => {
       const dispatch = jest.fn();
 
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      axios.get = jest.fn().mockRejectedValue(false);
+
+      axios.get = jest
+        .fn()
+        .mockResolvedValue({ data: { messages: mockMessages } });
 
       const thunk = getUserThunk(mockUser.id);
       await thunk(dispatch);
 
-      expect(dispatch).not.toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 
@@ -75,7 +95,8 @@ describe("Given the getuserThunk function", () => {
     test("Then it should not call the dispatch", async () => {
       const dispatch = jest.fn();
 
-      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
       axios.post = jest.fn().mockRejectedValue({});
 
       const thunk = loginThunk({
@@ -91,12 +112,14 @@ describe("Given the getuserThunk function", () => {
   describe("When invoked with a valid user and axios", () => {
     test("Then it should call the dispatch", async () => {
       const dispatch = jest.fn();
+
       jest.mock("../../features/uiSlice/uiSlice", () => ({
         loginActionCreator: jest.fn().mockReturnThis(),
         finishedLoadingActionCreator: jest.fn().mockReturnValue(true),
       }));
 
-      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
       axios.post = jest.fn().mockReturnValue({ data: "", status: 200 });
 
       const thunk = loginThunk({
@@ -118,7 +141,8 @@ describe("Given the getuserThunk function", () => {
     test("Then it should not call the dispatch", async () => {
       const dispatch = jest.fn();
 
-      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
       axios.post = jest.fn().mockReturnValue({ status: 200 });
 
       const thunk = loginThunk({
