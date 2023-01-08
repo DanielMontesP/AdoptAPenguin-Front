@@ -48,8 +48,7 @@ describe("Given the getuserThunk function", () => {
 
   describe("When getUserMessagesThunk is called with an user", () => {
     test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      axios.get = jest.fn().mockResolvedValue({ data: { user: mockUser } });
+      axios.get = jest.fn();
       const dispatch = jest.fn();
 
       dispatch(getUserMessagesThunk(mockUser.id));

@@ -73,10 +73,10 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
         setLoadingOffWithMessage(`GET Penguins: Finished successfully`, false);
         dispatch(finishedLoadingActionCreator("loadingActionCreator"));
         dispatch(loadPenguinsActionCreator(penguins));
-      } else {
-        handleNoConexion(dispatch, "user.id");
-        setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
       }
+    } else {
+      handleNoConexion(dispatch, "user.id");
+      setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
     }
   } catch (error) {
     handleNoConexion(dispatch, "user.id");
