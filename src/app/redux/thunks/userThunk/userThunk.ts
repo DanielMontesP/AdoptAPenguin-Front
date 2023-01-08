@@ -19,16 +19,13 @@ import {
 import { headerTitleActionCreator } from "../../features/uiSlice/uiSlice";
 import { AppDispatch } from "../../store/store";
 import {
-  connectedToServer,
   getUserNewMessages,
   handleServerInfo,
 } from "../../../../functions/sysHandlers/sysHandlers";
 import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
+import { useAppSelector } from "../../hooks/hooks";
 
 let message = "";
-
-const textNoConnection =
-  "Please try again in few seconds. Service render.com is still initializing";
 
 export const loginThunk =
   (userData: UserRegister) => async (dispatch: AppDispatch) => {
@@ -53,7 +50,7 @@ export const loginThunk =
 
         localStorage.setItem("token", data.token);
 
-        const connected = connectedToServer() ? true : false;
+        const { connected } = useAppSelector((state) => state.system.server);
 
         if (connected) {
           dispatch(
@@ -72,9 +69,6 @@ export const loginThunk =
           dispatch(headerTitleActionCreator("Home"));
 
           dispatch(getUserMessagesThunk(id));
-        } else {
-          handleNoConexion(dispatch, "user.id");
-          setLoadingOffWithMessage(`LOGIN: ${textNoConnection}`, false);
         }
       }
     } catch (error: any) {
@@ -128,7 +122,7 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
   try {
     const token = localStorage.getItem("token");
 
-    const connected = connectedToServer() ? true : false;
+    const { connected } = useAppSelector((state) => state.system.server);
 
     if (connected) {
       if (token && id) {
@@ -146,9 +140,6 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
         dispatch(getUserMessagesThunk(id));
         dispatch(loadUserDataActionCreator(user));
       }
-    } else {
-      handleNoConexion(dispatch, "user.id");
-      setLoadingOffWithMessage(`GET User: ${textNoConnection}`, false);
     }
   } catch (error) {
     setLoadingOffWithMessage(`GET User: ERROR: ${error}`, false);
@@ -181,36 +172,30 @@ export const getUserMessagesThunk =
   (idUser: string) => async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token");
 
-    const connected = connectedToServer() ? true : false;
+    const { connected } = useAppSelector((state) => state.system.server);
 
     if (connected) {
-      const urlPath = `${process.env.REACT_APP_API_URL}`;
-
-      if (urlPath !== undefined && urlPath !== "undefined") {
-        if (token) {
-          const {
-            data: { messages },
-          } = await axios.get(`${urlPath}users/messages/${idUser}`, {
+      if (token) {
+        const {
+          data: { messages },
+        } = await axios.get(
+          `${process.env.REACT_APP_API_URL}users/messages/${idUser}`,
+          {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          });
-          handleServerInfo(
-            true,
-            `${process.env.REACT_APP_API_URL}`,
-            "Connected to server",
-            dispatch
-          );
-          if (messages?.length > 0) {
-            getUserNewMessages(messages, dispatch);
-            dispatch(getUserMessagesActionCreator(messages));
           }
+        );
+        handleServerInfo(
+          true,
+          `${process.env.REACT_APP_API_URL}`,
+          "Connected to server",
+          dispatch
+        );
+        if (messages?.length > 0) {
+          getUserNewMessages(messages, dispatch);
+          dispatch(getUserMessagesActionCreator(messages));
         }
-      } else {
-        setLoadingOffWithMessage(`GET Penguins: urlPath undefined`, false);
       }
-    } else {
-      handleNoConexion(dispatch, "user.id");
-      setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
     }
   };

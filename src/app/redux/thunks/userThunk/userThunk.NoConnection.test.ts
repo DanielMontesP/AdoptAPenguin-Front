@@ -2,11 +2,13 @@ import { mockUser } from "../../../../mocks/users";
 import { server } from "../../../../mocks/server";
 import {
   editUserThunk,
+  getUserMessagesThunk,
   getUserThunk,
   loginThunk,
   registerThunk,
 } from "./userThunk";
 import axios from "axios";
+import { mockMessages } from "../../../../mocks/messages";
 
 beforeAll(() => {
   server.listen({ onUnhandledRequest: "bypass" });
@@ -35,12 +37,6 @@ jest.mock("../../hooks/hooks", () => ({
   useAppDispatch: () => jest.fn(),
 }));
 
-jest.mock("../../../../functions/sysHandlers/sysHandlers", () => ({
-  handleNoConexion: jest.fn().mockResolvedValue(true),
-  handleServerInfo: jest.fn(),
-  getUserNewMessages: jest.fn(),
-}));
-
 HTMLAnchorElement.prototype.click = jest.fn();
 global.window.URL.createObjectURL = jest.fn();
 
@@ -50,7 +46,7 @@ describe("Given the getuserThunk function", () => {
       const dispatch = jest.fn();
 
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      axios.get = jest.fn().mockResolvedValue({ data: { user: mockUser } });
+      axios.get = jest.fn().mockRejectedValue(true);
 
       const thunk = getUserThunk(mockUser.id);
       await thunk(dispatch);
@@ -86,7 +82,7 @@ describe("Given the getuserThunk function", () => {
       });
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(4);
     });
   });
 
@@ -189,6 +185,24 @@ describe("Given the getuserThunk function", () => {
       await thunk(dispatch);
 
       expect(axios.post).toHaveBeenCalled();
+    });
+  });
+
+  describe("When getUserMessagesThunk is called with no connection", () => {
+    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+
+      axios.get = jest
+        .fn()
+        .mockResolvedValue({ data: { messages: mockMessages } });
+
+      const thunk = getUserMessagesThunk(mockUser.id);
+      await thunk(dispatch);
+
+      expect(axios.get).not.toHaveBeenCalled();
     });
   });
 });
