@@ -12,7 +12,6 @@ import {
   cleanArray,
   hasNewMessages,
 } from "../../functions/sysHandlers/sysHandlers";
-import { handleNoConexion } from "../../functions/uiHandlers/uiHandlers";
 
 interface Props {
   penguin: IPenguin;
@@ -46,8 +45,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
       dispatch(getMessagesThunk(penguin.id));
 
       navigate(`/detail/${penguin.id}#messages`);
-    } else {
-      handleNoConexion(dispatch, idUser);
     }
   };
 
@@ -76,8 +73,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
       if (connected) {
         isLiker ? deleteFromLikers() : addToLikers();
-      } else {
-        handleNoConexion(dispatch, idUser);
       }
     }
   };
@@ -104,8 +99,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
       if (connected) {
         isFav ? deleteFromFavs() : addToFavs();
-      } else {
-        handleNoConexion(dispatch, idUser);
       }
     }
   };

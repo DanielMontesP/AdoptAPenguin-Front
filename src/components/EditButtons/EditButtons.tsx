@@ -10,7 +10,6 @@ import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
-import { handleNoConexion } from "../../functions/uiHandlers/uiHandlers";
 
 interface Props {
   penguin: IPenguin;
@@ -21,7 +20,6 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
   const navigate = useNavigate();
 
   const { loading, isModalOpen } = useAppSelector((state) => state.ui);
-  const { user } = useAppSelector((state) => state);
 
   let message = "";
 
@@ -34,8 +32,6 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
       dispatch(modalMessageActionCreator(message));
 
       dispatch(isModalOpenActionCreator(!isModalOpen));
-    } else {
-      handleNoConexion(dispatch, user.id);
     }
   };
 
@@ -51,8 +47,6 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
       dispatch(headerTitleActionCreator("Edit..."));
       dispatch(headerLastTitleActionCreator("Home"));
       navigate(`/penguins/id=${penguin.id}`);
-    } else {
-      handleNoConexion(dispatch, user.id);
     }
   };
 
