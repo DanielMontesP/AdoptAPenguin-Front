@@ -5,9 +5,8 @@ import iconPhotoEmpty from "../../images/contact-photo-add.png";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import { getPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
-import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
+import { useAppDispatch } from "../../app/redux/hooks/hooks";
 import EditActions from "../EditActions/EditActions";
-import { handleNoConexion } from "../../functions/uiHandlers/uiHandlers";
 interface Props {
   penguin: IPenguin;
 }
@@ -15,20 +14,13 @@ interface Props {
 const Penguin = ({ penguin }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
 
-  const { loading } = useAppSelector((state) => state.ui);
-  const { user } = useAppSelector((state) => state);
-
   const navigate = useNavigate();
 
   const handleMoreDetail = () => {
-    if (!loading) {
-      dispatch(getPenguinThunk(penguin.id));
-      dispatch(getMessagesThunk(penguin.id));
+    dispatch(getPenguinThunk(penguin.id));
+    dispatch(getMessagesThunk(penguin.id));
 
-      navigate(`/detail/${penguin.id}`);
-    } else {
-      handleNoConexion(dispatch, user.id);
-    }
+    navigate(`/detail/${penguin.id}`);
   };
 
   const isURL = penguin.imageBackup?.includes("/");

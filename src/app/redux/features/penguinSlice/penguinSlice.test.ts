@@ -58,7 +58,7 @@ describe("Given the deletePenguinActionCreator", () => {
         action
       );
 
-      expect(loadedState.allPenguins.length).toEqual(2);
+      expect(loadedState.allPenguins.length).toEqual(1);
     });
   });
 });
