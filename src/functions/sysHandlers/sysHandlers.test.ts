@@ -119,7 +119,6 @@ describe("Given isAvailable", () => {
       URL.createObjectURL = jest.fn();
 
       dispatch(isAvailable(dispatch));
-
       expect(dispatch).toHaveBeenCalled();
     });
   });

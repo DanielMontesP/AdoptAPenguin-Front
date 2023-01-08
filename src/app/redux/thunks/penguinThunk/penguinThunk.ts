@@ -18,13 +18,11 @@ import { penguins } from "../../../../export/penguins-export.js";
 import { blankFormData } from "../../initializers/iniPenguins";
 import { finishedLoadingActionCreator } from "../../features/uiSlice/uiSlice";
 import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
-import {
-  connectedToServer,
-  handleServerInfo,
-} from "../../../../functions/sysHandlers/sysHandlers";
+import { handleServerInfo } from "../../../../functions/sysHandlers/sysHandlers";
 import { getUserMessagesThunk } from "../userThunk/userThunk";
 import { UserInfo } from "../../types/userInterfaces/userInterfaces";
 import jwtDecode from "jwt-decode";
+import { useAppSelector } from "../../hooks/hooks";
 
 let firstLoad = true;
 let textNoConnection = "";
@@ -47,9 +45,9 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
     firstLoad = false;
     const token = localStorage.getItem("token");
 
+    const { connected } = useAppSelector((state) => state.system.server);
+
     const userData: UserInfo = jwtDecode(token as string);
-    let connected = false;
-    connected = connectedToServer() ? true : false;
 
     if (connected) {
       if (token) {
@@ -74,9 +72,6 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
         dispatch(finishedLoadingActionCreator("loadingActionCreator"));
         dispatch(loadPenguinsActionCreator(penguins));
       }
-    } else {
-      handleNoConexion(dispatch, "user.id");
-      setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
     }
   } catch (error) {
     handleNoConexion(dispatch, "user.id");
@@ -92,7 +87,7 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token");
     const userData: UserInfo = jwtDecode(token as string);
 
-    const connected = connectedToServer() ? true : false;
+    const { connected } = useAppSelector((state) => state.system.server);
 
     if (connected) {
       if (token) {
@@ -128,9 +123,6 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
           false
         );
       }
-    } else {
-      handleNoConexion(dispatch, "user.id");
-      setLoadingOffWithMessage(`GET Favs: ${textNoConnection}`, false);
     }
   } catch (error) {
     dispatch(loadPenguinsActionCreator(penguins));
@@ -150,7 +142,7 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
 
     const userData: UserInfo = jwtDecode(token as string);
 
-    const connected = connectedToServer() ? true : false;
+    const { connected } = useAppSelector((state) => state.system.server);
 
     if (connected) {
       if (token) {
@@ -183,10 +175,6 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
           false
         );
       }
-    } else {
-      handleNoConexion(dispatch, "user.id");
-
-      setLoadingOffWithMessage(`GET Likes: ${textNoConnection}`, false);
     }
   } catch (error) {
     handleNoConexion(dispatch, "user.id");
@@ -203,7 +191,7 @@ export const createFavThunk =
       setLoadingOn(`CREATE Favorites: Creating fav...`);
       const token = localStorage.getItem("token");
 
-      const connected = connectedToServer() ? true : false;
+      const { connected } = useAppSelector((state) => state.system.server);
 
       if (connected) {
         if (token) {
@@ -234,9 +222,6 @@ export const createFavThunk =
             false
           );
         }
-      } else {
-        handleNoConexion(dispatch, "user.id");
-        setLoadingOffWithMessage(`CREATE Favorite: ${textNoConnection}`, false);
       }
     } catch (error) {
       handleNoConexion(dispatch, "user.id");
@@ -251,7 +236,7 @@ export const getPenguinThunk =
       if (id !== "") {
         const token = localStorage.getItem("token");
 
-        const connected = connectedToServer() ? true : false;
+        const { connected } = useAppSelector((state) => state.system.server);
 
         if (connected) {
           if (token) {
@@ -277,9 +262,6 @@ export const getPenguinThunk =
               `GET Penguin: ${penguin.name} successfully.`,
               false
             );
-          } else {
-            handleNoConexion(dispatch, "user.id");
-            setLoadingOffWithMessage(`GET Penguin: ${textNoConnection}`, false);
           }
         }
       }
@@ -295,7 +277,7 @@ export const searchPenguinThunk =
     try {
       const token = localStorage.getItem("token");
 
-      const connected = connectedToServer() ? true : false;
+      const { connected } = useAppSelector((state) => state.system.server);
 
       if (connected) {
         if (search !== "" && token) {
@@ -321,9 +303,6 @@ export const searchPenguinThunk =
 
           setLoadingOffWithMessage(`SEARCH: ${search} finished.`, false);
         }
-      } else {
-        handleNoConexion(dispatch, "user.id");
-        setLoadingOffWithMessage(`SEARCH Penguin: ${textNoConnection}`, false);
       }
     } catch (error: any) {
       handleNoConexion(dispatch, "user.id");
@@ -339,7 +318,7 @@ export const deletePenguinThunk =
 
       const token = localStorage.getItem("token");
 
-      const connected = connectedToServer() ? true : false;
+      const { connected } = useAppSelector((state) => state.system.server);
 
       if (connected) {
         if (token) {
@@ -367,9 +346,6 @@ export const deletePenguinThunk =
               false
             );
           }
-        } else {
-          handleNoConexion(dispatch, "user.id");
-          setLoadingOffWithMessage(`GET Penguin: ${textNoConnection}`, false);
         }
       }
     } catch (error) {
@@ -389,7 +365,8 @@ export const editPenguinThunk =
       const ifIsForm =
         formPenguin.id === "" ? `"Content-Type": "multipart/form-data"` : "";
 
-      const connected = connectedToServer() ? true : false;
+      const { connected } = useAppSelector((state) => state.system.server);
+
       if (connected) {
         if (token) {
           const { data: penguin } = await axios.put(
@@ -415,9 +392,6 @@ export const editPenguinThunk =
 
           setLoadingOffWithMessage(`${type}`, false);
         }
-      } else {
-        handleNoConexion(dispatch, "user.id");
-        setLoadingOffWithMessage(`EDIT Penguin: ${textNoConnection}`, false);
       }
     } catch (error) {
       dispatch(loadPenguinsActionCreator(penguins));
