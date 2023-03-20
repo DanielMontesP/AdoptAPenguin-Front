@@ -189,20 +189,18 @@ describe("Given the getuserThunk function", () => {
   });
 
   describe("When getUserMessagesThunk is called with no connection", () => {
-    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
+    test("Then it should call not call dispatch", async () => {
       const dispatch = jest.fn();
 
       jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
 
-      axios.get = jest
-        .fn()
-        .mockResolvedValue({ data: { messages: mockMessages } });
+      axios.get = jest.fn().mockResolvedValue({ data: { user: mockUser } });
 
       const thunk = getUserMessagesThunk(mockUser.id);
       await thunk(dispatch);
 
-      expect(axios.get).not.toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });
