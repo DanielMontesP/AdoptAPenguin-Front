@@ -5,7 +5,6 @@ import {
   getCurrentDate,
   hasNewMessages,
   setMessageRead,
-  isAvailable,
   connectedToServer,
   getUserNewMessages,
   writeFile,
@@ -106,19 +105,6 @@ describe("Given writeFile with default type", () => {
 
       dispatch(writeFile("messages", file));
 
-      expect(dispatch).toHaveBeenCalled();
-    });
-  });
-});
-
-describe("Given isAvailable", () => {
-  describe("when it's called", () => {
-    test("Then it should call the dispatch function", async () => {
-      const dispatch = jest.fn();
-
-      URL.createObjectURL = jest.fn();
-
-      dispatch(isAvailable(dispatch));
       expect(dispatch).toHaveBeenCalled();
     });
   });

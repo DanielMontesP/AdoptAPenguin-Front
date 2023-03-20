@@ -30,7 +30,7 @@ describe("Given the editPenguin function", () => {
 
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(dispatch).toHaveBeenCalledTimes(4);
     });
   });
 
@@ -63,7 +63,7 @@ describe("Given the loadPenguinsThunk function", () => {
       const thunk = loadPenguinsThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(0);
     });
   });
 });

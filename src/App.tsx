@@ -17,10 +17,12 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { isDesktopActionCreator } from "./app/redux/features/uiSlice/uiSlice";
 import UserMessagesPage from "./pages/UserMessagesPage/UserMessagesPage";
 import Navbar from "./components/Navbar/Navbar";
+import { connectedToServer } from "./functions/sysHandlers/sysHandlers";
 
 function App() {
   const { logged, id } = useAppSelector((state) => state.user);
   const { headerTitle, isMenuOpen } = useAppSelector((state) => state.ui);
+  const { connected } = useAppSelector((state) => state.system.server);
 
   const dispatch = useAppDispatch();
 
@@ -45,26 +47,27 @@ function App() {
   };
 
   handleNav();
-
+  connectedToServer();
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
 
     const token = localStorage.getItem("token");
-
-    if (token || logged) {
-      const userData: UserInfo = jwtDecode(token as string);
-      dispatch(logInActionCreator(userData));
-      if (userData.id !== id) {
-        dispatch(getUserThunk(userData.id));
+    if (connected) {
+      if (token || logged) {
+        const userData: UserInfo = jwtDecode(token as string);
+        dispatch(logInActionCreator(userData));
+        if (userData.id !== id) {
+          dispatch(getUserThunk(userData.id));
+        }
       }
+
+      dispatch(isDesktopActionCreator(isDesktop));
+
+      return () => {
+        window.removeEventListener("resize", updateMedia);
+      };
     }
-
-    dispatch(isDesktopActionCreator(isDesktop));
-
-    return () => {
-      window.removeEventListener("resize", updateMedia);
-    };
-  }, [dispatch, logged, id, isDesktop, headerTitle]);
+  }, [connected, dispatch, logged, id, isDesktop, headerTitle]);
 
   return (
     <>

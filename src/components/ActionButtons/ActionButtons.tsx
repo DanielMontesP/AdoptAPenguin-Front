@@ -119,6 +119,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
         title="bt-message"
       />
       <span className="new-messages-counter">{countNewMessages(penguin)}</span>
+
       <button
         placeholder="btn-favs"
         onClick={handleFavs}

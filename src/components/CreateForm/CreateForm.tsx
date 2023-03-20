@@ -12,7 +12,7 @@ import {
 } from "../../functions/sysHandlers/sysHandlers";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { newPenguinFormData } from "../../app/redux/initializers/iniPenguins";
-
+// import { openaiEdit } from "../../app/redux/thunks/openai/openaiEdit";
 interface Props {
   penguin: IPenguin;
 }
@@ -97,10 +97,13 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     if (file) {
       const imageResized = await resizeFile(file);
 
+      // const imageOpenai = await openaiEdit(imageResized);
+
       setFormData({
         ...formData,
         image: file,
         imageResized: imageResized,
+        // imageOpenai,
       });
 
       setImg({

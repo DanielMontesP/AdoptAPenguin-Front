@@ -5,6 +5,7 @@ import {
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import Home from "../../components/Home/Home";
+import { connectedToServer } from "../../functions/sysHandlers/sysHandlers";
 
 const HomePage = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -14,6 +15,7 @@ const HomePage = (): JSX.Element => {
   const { headerTitle } = useAppSelector((state) => state.ui);
 
   useEffect(() => {
+    connectedToServer();
     const SetTitleHeader = (title: string, lastTitle: string) => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));
