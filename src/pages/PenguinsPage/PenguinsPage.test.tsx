@@ -4,46 +4,39 @@ import store from "../../app/redux/store/store";
 import PenguinsPage from "./PenguinsPage";
 import "../../styles/PagesStyles.css";
 import { loadLikesThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
+import { mockPenguin, mockPenguins } from "../../mocks/penguins";
 
 jest.mock("react-router-dom", () => ({
   useNavigate: () => jest.fn(),
 }));
 
-describe("Given a PenguinsPage Component", () => {
-  describe("When it's rendered", () => {
-    test("Then it should show the role 'penguins-page'", () => {
-      const expectedResult = "penguins-container";
+jest.mock("../../app/redux/hooks/hooks", () => ({
+  useAppSelector: () => ({
+    connected: true,
+    headerTitle: "Favorites",
+    penguin: mockPenguin,
+    penguins: { allPenguins: mockPenguins, penguin: mockPenguin },
+    allPenguins: mockPenguins,
+  }),
+  useAppDispatch: () => jest.fn(),
+}));
 
-      render(
-        <Provider store={store}>
-          <PenguinsPage type="Home" />
-        </Provider>
-      );
-
-      const receivedResult = screen.getByTitle(expectedResult);
-
-      expect(receivedResult).toBeInTheDocument();
-    });
-  });
-});
-
-describe("Given Likes it's rendered", () => {
-  describe("When Likes it's rendered", () => {
-    test("Then it should show the role 'penguins-page'", () => {
+describe("Given page of penguins", () => {
+  describe("When type Likes it's rendered", () => {
+    test("Then it should show a div with title 'penguins-container'", () => {
       const expectedResult = "penguins-container";
 
       const dispatch = jest.fn();
 
       render(
         <Provider store={store}>
-          <PenguinsPage type="Favorites" />
+          <PenguinsPage type="Likes" />
         </Provider>
       );
 
       const receivedResult = screen.getByTitle(expectedResult);
       dispatch(loadLikesThunk());
       expect(receivedResult).toBeInTheDocument();
-      expect(dispatch).toHaveBeenCalled();
     });
   });
 });

@@ -10,6 +10,7 @@ export const mockPenguin: IPenguin = {
   image: "image1",
   imageBackup: "sadsadasd.jpg",
   imageResized: "ImageBackup.jpg",
+  // imageOpenai: "",
   description: "description1",
 };
 
@@ -23,6 +24,7 @@ export const mockEmptyDataPenguin: IPenguin = {
   image: "",
   imageBackup: "",
   imageResized: "",
+  // imageOpenai: "",
   description: "",
 };
 
@@ -37,6 +39,7 @@ export const mockPenguinsEmpty: IPenguin[] = [
     image: "",
     imageBackup: "",
     imageResized: "",
+    // imageOpenai: "",
     description: "",
   },
 ];
@@ -51,6 +54,7 @@ export const mockPenguins: IPenguin[] = [
     image: "image1",
     imageBackup: "sadsadasd.jpg",
     imageResized: "ImageBackup.jpg",
+    // imageOpenai: "",
     description: "description1",
   },
   {
@@ -63,6 +67,7 @@ export const mockPenguins: IPenguin[] = [
     image: "image.jpg",
     imageBackup: "ImageBackup.jpg",
     imageResized: "ImageBackup.jpg",
+    // imageOpenai: "",
     description: "Cal is a penguin",
   },
 ];

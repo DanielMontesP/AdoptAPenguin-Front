@@ -83,7 +83,7 @@ export const cleanArray = (array: any): any => {
   return array;
 };
 
-export const resizeFile = (file: File) =>
+export const resizeFile = (file: File): any =>
   new Promise((resolve): any => {
     Resizer.imageFileResizer(
       file,
@@ -122,39 +122,7 @@ export const writeFile = (type: string, data: any) => {
   element.click();
 };
 
-export const isAvailable = (dispatch: any): boolean => {
-  const url = `${process.env.REACT_APP_API_URL}penguins`;
-  let result = false;
-
-  const timeout = new Promise((resolve, reject) => {
-    setTimeout(reject, 15900, "Request timed out");
-  });
-
-  const request = fetch(url);
-
-  Promise.race([timeout, request])
-    .then((response) => {
-      handleServerInfo(
-        true,
-        `${process.env.REACT_APP_API_URL}`,
-        "Connected to server",
-        dispatch
-      );
-      result = true;
-    })
-    .finally(() => {
-      return result;
-    })
-    .catch((error) => {
-      handleServerInfo(false, `local`, `Timeout error: ${error}`, dispatch);
-      result = false;
-    });
-  return result;
-};
-
 export const connectedToServer = () => async (dispatch: AppDispatch) => {
-  let result = false;
-
   return await fetch(`${process.env.REACT_APP_API_URL}penguins`)
     .then((resp) => {
       if (resp.status === 200) {
@@ -164,17 +132,16 @@ export const connectedToServer = () => async (dispatch: AppDispatch) => {
           "Connected to server",
           dispatch
         );
-        result = true;
         return true;
       } else {
         handleServerInfo(false, `local`, "Unavailable", dispatch);
         Promise.reject(new Error("Server unavailable"));
-        result = false;
+        return false;
       }
     })
     .then(() => {
       handleServerInfo(false, `local`, "Unavailable", dispatch);
-      return result;
+      return false;
     })
     .catch((error) => {
       handleServerInfo(false, `local`, "Unavailable", dispatch);

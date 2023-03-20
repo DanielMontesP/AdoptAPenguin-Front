@@ -8,6 +8,7 @@ export interface IPenguin {
   image: string | File;
   imageBackup: string;
   imageResized: Blob | MediaSource | any;
+  // imageOpenai: Blob | MediaSource | any;
   description: string;
 }
 

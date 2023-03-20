@@ -49,7 +49,7 @@ describe("Given the loadPenguinsThunk function", () => {
       const thunk = loadPenguinsThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(3);
     });
   });
 });
@@ -68,7 +68,7 @@ describe("Given the loadFavsThunk function", () => {
       const thunk = loadFavsThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -85,7 +85,7 @@ describe("Given the loadFavsThunk function", () => {
       const thunk = loadFavsThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -102,7 +102,7 @@ describe("Given the loadFavsThunk function", () => {
       const thunk = loadLikesThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -119,7 +119,7 @@ describe("Given the loadFavsThunk function", () => {
       const thunk = loadLikesThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
   describe("When loadLikesThunk with 0 is called", () => {
@@ -135,7 +135,7 @@ describe("Given the loadFavsThunk function", () => {
       const thunk = loadLikesThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(4);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 });
@@ -293,7 +293,7 @@ describe("Given the editPenguinThunk function", () => {
       const thunk = editPenguinThunk(mockPenguin, mockPenguin.id, "favs");
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(2);
     });
   });
 

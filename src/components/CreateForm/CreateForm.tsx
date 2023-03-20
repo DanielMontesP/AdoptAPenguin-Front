@@ -12,7 +12,6 @@ import {
 } from "../../functions/sysHandlers/sysHandlers";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { newPenguinFormData } from "../../app/redux/initializers/iniPenguins";
-
 interface Props {
   penguin: IPenguin;
 }
@@ -96,7 +95,6 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
 
     if (file) {
       const imageResized = await resizeFile(file);
-
       setFormData({
         ...formData,
         image: file,

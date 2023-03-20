@@ -1,4 +1,4 @@
-import Penguins from "../../components/Penguins/Penguins";
+import Penguins from "../../components/ScrollToTop/Penguins";
 import { useEffect } from "react";
 import {
   loadFavsThunk,
@@ -12,6 +12,7 @@ import {
 } from "../../app/redux/features/uiSlice/uiSlice";
 import { resetMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import "../../styles/PagesStyles.css";
+import { getUserMessagesThunk } from "../../app/redux/thunks/userThunk/userThunk";
 
 interface Props {
   type: string;
@@ -19,6 +20,7 @@ interface Props {
 
 const PenguinsPage = ({ type }: Props) => {
   const dispatch = useAppDispatch();
+  const idUser = useAppSelector((state) => state.user.id);
 
   const { allPenguins, penguin } = useAppSelector((state) => state.penguins);
   const { headerTitle, modalType, headerLastTitle, isDesktop } = useAppSelector(
@@ -41,7 +43,10 @@ const PenguinsPage = ({ type }: Props) => {
         dispatch(loadPenguinsThunk());
       }
     }
+
     dispatch(resetMessageThunk());
+
+    dispatch(getUserMessagesThunk(idUser));
   }, [
     dispatch,
     headerTitle,
@@ -50,6 +55,7 @@ const PenguinsPage = ({ type }: Props) => {
     headerLastTitle,
     penguin,
     type,
+    idUser,
   ]);
 
   return <Penguins allPenguins={allPenguins} />;
