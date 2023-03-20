@@ -37,7 +37,6 @@ describe("Given page of penguins", () => {
       const receivedResult = screen.getByTitle(expectedResult);
       dispatch(loadLikesThunk());
       expect(receivedResult).toBeInTheDocument();
-      // expect(dispatch).toHaveBeenCalled();
     });
   });
 });
