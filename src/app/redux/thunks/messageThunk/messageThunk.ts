@@ -18,7 +18,6 @@ import { blankMessageData } from "../../initializers/iniMessages";
 import { getPenguinThunk } from "../penguinThunk/penguinThunk";
 import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
 import { getUserNewMessagesActionCreator } from "../../features/userSlice/userSlice";
-import { connectedToServer } from "../../../../functions/sysHandlers/sysHandlers";
 
 let firstLoad = true;
 let textNoConnection = "";
@@ -37,25 +36,22 @@ export const getMessagesThunk =
     try {
       const token = localStorage.getItem("token");
 
-      const connected = connectedToServer() ? true : false;
-      if (connected) {
-        if (token) {
-          const {
-            data: { messages },
-          } = await axios.get(
-            `${process.env.REACT_APP_API_URL}messages/${idPenguin}`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+      if (token && idPenguin !== "") {
+        const {
+          data: { messages },
+        } = await axios.get(
+          `${process.env.REACT_APP_API_URL}messages/${idPenguin}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-          dispatch(getMessagesActionCreator(messages));
-        } else {
-          handleNoConexion(dispatch, "user.id");
-          setLoadingOffWithMessage(`GET Messages: ${textNoConnection}`, false);
-        }
+        dispatch(getMessagesActionCreator(messages));
+      } else {
+        handleNoConexion(dispatch, "user.id");
+        setLoadingOffWithMessage(`GET Messages: ${textNoConnection}`, false);
       }
     } catch (error) {
       handleNoConexion(dispatch, "user.id");
