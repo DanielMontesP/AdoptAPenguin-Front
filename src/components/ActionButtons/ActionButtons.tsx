@@ -36,7 +36,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const isFav = penguin.favs?.includes(idUser);
   const isLiker = penguin.likers?.includes(idUser);
 
-  const selectIconFav = isFav ? "bt-delfav" : "btn-addfav";
+  const selectIconFav = isFav ? "bt-delfav" : "bt-addfav";
   const selectIconLike = isLiker ? "bt-addlike" : `bt-dellike`;
 
   const handleMessage = () => {

@@ -636,6 +636,17 @@
   flex: 2;
 }
 
+.detail-bt-addfav {
+  cursor: pointer;
+  background: none;
+  background-image: url("../images/fav-empty.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  border: 0;
+  flex: 2;
+}
+
 .animatedEdit {
   height: 30px;
   background: none;

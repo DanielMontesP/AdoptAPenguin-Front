@@ -6,10 +6,7 @@ import {
   editPenguinThunk,
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { useNavigate } from "react-router-dom";
-import {
-  cleanArray,
-  resizeFile,
-} from "../../functions/sysHandlers/sysHandlers";
+import { cleanArray } from "../../functions/sysHandlers/sysHandlers";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { newPenguinFormData } from "../../app/redux/initializers/iniPenguins";
 interface Props {
@@ -94,11 +91,9 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
     setImageAdded(true);
 
     if (file) {
-      const imageResized = await resizeFile(file);
       setFormData({
         ...formData,
         image: file,
-        imageResized: imageResized,
       });
 
       setImg({
