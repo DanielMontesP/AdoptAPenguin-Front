@@ -46,7 +46,9 @@ const PenguinsPage = ({ type }: Props) => {
 
     dispatch(resetMessageThunk());
 
-    dispatch(getUserMessagesThunk(idUser));
+    if (idUser !== "") {
+      dispatch(getUserMessagesThunk(idUser));
+    }
   }, [
     dispatch,
     headerTitle,
