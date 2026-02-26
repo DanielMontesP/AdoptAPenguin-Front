@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, ReactElement } from "react";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
@@ -6,7 +6,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import Messages from "../../components/Messages/Messages";
 
-const UserMessagesPage = (): JSX.Element => {
+const UserMessagesPage = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { allMessages } = useAppSelector((state) => state.user);
   const { penguin } = useAppSelector((state) => state.penguins);

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, ReactElement } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import {
@@ -24,7 +24,7 @@ interface Props {
   message: IMessage;
 }
 
-const CreateMessageForm = ({ message }: Props): JSX.Element => {
+const CreateMessageForm = ({ message }: Props): ReactElement => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -52,7 +52,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   };
 
   const handleInputChange = (
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
   ): void => {
     event.preventDefault();
 
@@ -68,7 +68,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
     modFields = cleanArray(modFields);
 
     dispatch(
-      editMessageThunk(formData, "Update fields: " + modFields.join(", "))
+      editMessageThunk(formData, "Update fields: " + modFields.join(", ")),
     );
     dispatch(getMessagesThunk(penguin.id));
   };
@@ -179,16 +179,11 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
       />
 
       {isCreate ? (
-        <button type="submit" className="bt-message-save" placeholder="bt-save">
+        <button type="submit" className="bt-message-save">
           Send
         </button>
       ) : (
-        <button
-          type="submit"
-          className="bt-message-save"
-          placeholder="bt-reply"
-          id="bt-reply"
-        >
+        <button type="submit" className="bt-message-save" id="bt-reply">
           Reply
         </button>
       )}

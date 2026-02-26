@@ -38,12 +38,12 @@
   width: 100%;
   position: absolute;
   top: 15%;
-  height: 30px;
   background: none;
   border-radius: 50%;
   transition: all 1s;
   display: flex;
   align-items: center;
+  justify-content: center;
   z-index: 100;
 }
 
@@ -109,6 +109,7 @@
   transition: all 1s;
   opacity: 1;
   z-index: 400;
+  padding: 10px;
 }
 
 .search-input:hover {
@@ -1473,8 +1474,8 @@ ul {
 }
 
 .bt-favs-delete {
-  height: 45px;
-  width: 180px;
+  height: 30px;
+  width: 30px;
   cursor: pointer;
   background: var(--btFavDeleteBlack);
   background-size: contain;
@@ -1482,18 +1483,20 @@ ul {
   background-repeat: no-repeat;
   text-align: center;
   border: 0;
+  flex: 2 1;
 }
 
 .bt-addfav {
-  width: 140px;
-  height: 45px;
+  height: 30px;
+  width: 30px;
   cursor: pointer;
   background: none;
-  background-image: var(--btFavAdd);
+  background-image: var(--btFavAddBlack);
   background-repeat: no-repeat;
-  background-size: 45px;
+  background-size: contain;
   text-align: center;
   border: 0;
+  flex: 2 1;
 }
 
 .bt-likes {

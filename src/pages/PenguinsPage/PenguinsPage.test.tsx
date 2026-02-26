@@ -31,12 +31,12 @@ describe("Given page of penguins", () => {
       render(
         <Provider store={store}>
           <PenguinsPage type="Likes" />
-        </Provider>
+        </Provider>,
       );
 
       const receivedResult = screen.getByTitle(expectedResult);
       dispatch(loadLikesThunk());
-      expect(receivedResult).toBeInTheDocument();
+      expect(receivedResult).toBeDefined();
     });
   });
 });

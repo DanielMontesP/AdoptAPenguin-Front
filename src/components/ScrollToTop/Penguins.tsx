@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import Penguin from "../Penguin/Penguin";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import "../../styles/PagesStyles.css";
@@ -5,7 +6,7 @@ interface Props {
   allPenguins: IPenguin[];
 }
 
-const Penguins = ({ allPenguins }: Props): JSX.Element => {
+const Penguins = ({ allPenguins }: Props): ReactElement => {
   return (
     <div className={`penguins-container`} title="penguins-container">
       <h3 className={"penguins-counter"}>

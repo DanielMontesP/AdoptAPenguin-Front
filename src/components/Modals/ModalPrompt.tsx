@@ -176,7 +176,7 @@ export const Modal = ({
         onClick={handleCancelClick}
         className="modal-btn-close"
         title="btn-close"
-        placeholder="btn-close"
+        // placeholder="btn-close"
       />
       {getMessage()}
       {isEditPage ? (
@@ -187,7 +187,7 @@ export const Modal = ({
             onClick={handleAcceptClick}
             className="modal-btn-accept"
             title="btn-accept"
-            placeholder="btn-accept"
+            // placeholder="btn-accept"
           >
             Ok
           </button>
@@ -196,7 +196,7 @@ export const Modal = ({
               onClick={handleCancelClick}
               className={cancelClass}
               title="btn-cancel"
-              placeholder="btn-cancel"
+              // placeholder="btn-cancel"
             >
               Cancel
             </button>

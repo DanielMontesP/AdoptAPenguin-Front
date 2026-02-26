@@ -1,5 +1,5 @@
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import {
   DataAxiosLogin,
   LoginResponse,
@@ -30,9 +30,9 @@ export const loginThunk =
   (userData: UserRegister) => async (dispatch: AppDispatch) => {
     try {
       setLoadingOn(
-        `LOGIN:...Service render.com is starting...Be watter penguin...Load will finish as soon as possible.`
+        `LOGIN:...Service render.com is starting...Be watter penguin...Load will finish as soon as possible.`,
       );
-      const url: string = `${process.env.REACT_APP_API_URL}users/login`;
+      const url: string = `${import.meta.env.VITE_APP_API_URL}users/login`;
 
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
 
@@ -44,7 +44,7 @@ export const loginThunk =
           image,
           allMessages,
           newMessages,
-        }: LoginResponse = jwt_decode(data.token);
+        }: LoginResponse = jwtDecode(data.token);
         const logged = false;
 
         localStorage.setItem("token", data.token);
@@ -58,7 +58,7 @@ export const loginThunk =
             image,
             allMessages,
             newMessages,
-          })
+          }),
         );
 
         setLoadingOffWithMessage(`LOGIN: logged successfully `, false);
@@ -70,7 +70,7 @@ export const loginThunk =
       handleNoConexion(dispatch, "user.id");
       setLoadingOffWithMessage(
         "Login failed!\nCheck credentials for username: " + userData.username,
-        false
+        false,
       );
 
       return error.message;
@@ -81,11 +81,11 @@ export const registerThunk =
   (userData: any, password: string) => async (dispatch: AppDispatch) => {
     try {
       setLoadingOn(
-        `REGISTER:...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`
+        `REGISTER:...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`,
       );
       const { data } = await axios.post(
-        `${process.env.REACT_APP_API_URL}users/register`,
-        userData
+        `${import.meta.env.VITE_APP_API_URL}users/register`,
+        userData,
       );
 
       if (data) {
@@ -106,7 +106,7 @@ export const registerThunk =
           userData.username +
           ", this username all ready exist. " +
           userData.password,
-        true
+        true,
       );
 
       return error.message;
@@ -119,14 +119,14 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
 
     if (token && id) {
       const { data: user } = await axios.get(
-        `${process.env.REACT_APP_API_URL}users/${id}`
+        `${import.meta.env.VITE_APP_API_URL}users/${id}`,
       );
 
       handleServerInfo(
         true,
-        `${process.env.REACT_APP_API_URL}`,
+        `${import.meta.env.VITE_APP_API_URL}`,
         "Connected to server",
-        dispatch
+        dispatch,
       );
 
       dispatch(getUserMessagesThunk(id));
@@ -144,13 +144,13 @@ export const editUserThunk = (idUser: any) => async (dispatch: AppDispatch) => {
 
   if (token) {
     const { data: user } = await axios.put(
-      `${process.env.REACT_APP_API_URL}users/edit/${idUser}`,
+      `${import.meta.env.VITE_APP_API_URL}users/edit/${idUser}`,
       idUser,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
 
     dispatch(editUserActionCreator(user));
@@ -167,18 +167,18 @@ export const getUserMessagesThunk =
       const {
         data: { messages },
       } = await axios.get(
-        `${process.env.REACT_APP_API_URL}users/messages/${idUser}`,
+        `${import.meta.env.VITE_APP_API_URL}users/messages/${idUser}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       handleServerInfo(
         true,
-        `${process.env.REACT_APP_API_URL}`,
+        `${import.meta.env.VITE_APP_API_URL}`,
         "Connected to server",
-        dispatch
+        dispatch,
       );
       if (messages?.length > 0) {
         getUserNewMessages(messages, dispatch);

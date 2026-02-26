@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import "../../styles/NavbarStyles.css";
@@ -14,7 +14,7 @@ interface Props {
   headerTitle: string;
 }
 
-const NavMobile = ({ headerTitle }: Props): JSX.Element => {
+const NavMobile = ({ headerTitle }: Props): ReactElement => {
   const blankData: BlankMessageDataInterface = {
     idPenguin: "",
     idUser: "",

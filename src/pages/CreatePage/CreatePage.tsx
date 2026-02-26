@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, ReactElement } from "react";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
@@ -13,7 +13,7 @@ interface Props {
   form: string;
 }
 
-const CreatePage = ({ type, form }: Props): JSX.Element => {
+const CreatePage = ({ type, form }: Props): ReactElement => {
   const dispatch = useAppDispatch();
 
   const { headerTitle } = useAppSelector((state) => state.ui);

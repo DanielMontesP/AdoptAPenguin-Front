@@ -13,14 +13,15 @@ import {
   resetMessageActionCreator,
   resetMessagesActionCreator,
 } from "../../features/messageSlice/messageSlice";
-import { messages } from "../../../../export/messages-export.js";
+import { messages } from "../../../../export/messages-export";
 import { blankMessageData } from "../../initializers/iniMessages";
 import { getPenguinThunk } from "../penguinThunk/penguinThunk";
 import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
 import { getUserNewMessagesActionCreator } from "../../features/userSlice/userSlice";
 
-let firstLoad = true;
+let firstLoad = false;
 let textNoConnection = "";
+
 const textFirstLoad = "Server is still loading, functionality will be disabled";
 const textNextLoadsNoConnection =
   "Please try again in few seconds. Service render.com is still initializing";
@@ -40,12 +41,12 @@ export const getMessagesThunk =
         const {
           data: { messages },
         } = await axios.get(
-          `${process.env.REACT_APP_API_URL}messages/${idPenguin}`,
+          `${import.meta.env.VITE_APP_API_URL}messages/${idPenguin}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         dispatch(getMessagesActionCreator(messages));
@@ -69,25 +70,25 @@ export const getMessageThunk =
 
       if (token) {
         const { data: message } = await axios.get(
-          `${process.env.REACT_APP_API_URL}messages/message/${idMessage}`,
+          `${import.meta.env.VITE_APP_API_URL}messages/message/${idMessage}`,
           {
             headers: {
               authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         dispatch(getPenguinThunk(message.idPenguin));
         dispatch(getMessageActionCreator(message));
         setLoadingOffWithMessage(
           `GET Message: ${message.subject} successfully.`,
-          false
+          false,
         );
       }
     } else {
       setLoadingOffWithMessage(
         `GET Message: id undefined, process canceled.`,
-        false
+        false,
       );
     }
   };
@@ -99,13 +100,13 @@ export const createMessageThunk =
     const token = localStorage.getItem("token");
     if (token) {
       const { data: message } = await axios.post(
-        `${process.env.REACT_APP_API_URL}messages/create`,
+        `${import.meta.env.VITE_APP_API_URL}messages/create`,
         formMessage,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       dispatch(createMessageActionCreator(message));
@@ -113,12 +114,12 @@ export const createMessageThunk =
       dispatch(getMessagesThunk(formMessage.idPenguin));
       setLoadingOffWithMessage(
         `CREATE Message: ${message.subject} created successfully.`,
-        false
+        false,
       );
     } else {
       setLoadingOffWithMessage(
         "CREATE Message: Sorry, no token no cookies...",
-        true
+        true,
       );
     }
   };
@@ -131,13 +132,13 @@ export const editMessageThunk =
 
     if (token) {
       const { data: message } = await axios.put(
-        `${process.env.REACT_APP_API_URL}messages/${formMessage.id}?task=${type}`,
+        `${import.meta.env.VITE_APP_API_URL}messages/${formMessage.id}?task=${type}`,
         formMessage,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       dispatch(editMessageActionCreator(message));
@@ -153,12 +154,12 @@ export const deleteMessageThunk =
     const token = localStorage.getItem("token");
 
     const { status } = await axios.delete(
-      `${process.env.REACT_APP_API_URL}messages/${id}`,
+      `${import.meta.env.VITE_APP_API_URL}messages/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
 
     if (status === 200) {

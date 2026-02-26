@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, ReactElement } from "react";
 import { wrongAction } from "../Modals/Modals";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
@@ -14,8 +14,7 @@ interface Props {
 }
 
 let modFields = [""];
-
-const CreateForm = ({ penguin }: Props): JSX.Element => {
+const CreateForm = ({ penguin }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -62,8 +61,8 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
       editPenguinThunk(
         imageAdded ? newFormData : formData,
         formData.id || penguin.id,
-        "Update fields: " + modFields.join(", ")
-      )
+        "Update fields: " + modFields.join(", "),
+      ),
     );
   };
 
@@ -73,7 +72,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
   });
 
   const handleInputChange = (
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
   ): void => {
     event.preventDefault();
 
@@ -195,12 +194,7 @@ const CreateForm = ({ penguin }: Props): JSX.Element => {
           onChange={handleInputChange}
         />
 
-        <button
-          type="submit"
-          className="form-bt-save"
-          placeholder="bt-save"
-          value="Save"
-        >
+        <button type="submit" className="form-bt-save" value="Save">
           Save
         </button>
       </div>

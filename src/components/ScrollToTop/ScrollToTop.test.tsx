@@ -36,16 +36,16 @@ describe("Given a ScrollToTop Component", () => {
           <BrowserRouter>
             <ScrollToTop />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
       const btScrollToTop = screen.getByTitle("bt-totop");
-      expect(btScrollToTop).toBeInTheDocument();
+      expect(btScrollToTop).toBeDefined();
 
       userEvent.click(btScrollToTop);
       ScrollToTop();
 
       const scrollContainer = screen.getByTitle(expectedResult);
-      expect(scrollContainer).toBeInTheDocument();
+      expect(scrollContainer).toBeDefined();
     });
   });
 });

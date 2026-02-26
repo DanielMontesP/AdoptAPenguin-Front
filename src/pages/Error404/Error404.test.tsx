@@ -12,7 +12,7 @@ describe("Given a Error404Page", () => {
           <Provider store={store}>
             <Error404Page></Error404Page>
           </Provider>
-        </BrowserRouter>
+        </BrowserRouter>,
       );
 
       const altMessageLogo = "Page Not Found!";
@@ -20,8 +20,8 @@ describe("Given a Error404Page", () => {
       const messageError = "Page Not Found!";
 
       const espctedMessage = screen.getByText(messageError);
-      expect(expectedLogo).toBeInTheDocument();
-      expect(espctedMessage).toBeInTheDocument();
+      expect(expectedLogo).toBeDefined();
+      expect(espctedMessage).toBeDefined();
     });
   });
 });

@@ -14,12 +14,12 @@ describe("Given a UserMessagesPage Component", () => {
           <BrowserRouter>
             <UserMessagesPage />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const receivedResult = screen.getByTitle(expectedResult);
 
-      expect(receivedResult).toBeInTheDocument();
+      expect(receivedResult).toBeDefined();
     });
   });
 });

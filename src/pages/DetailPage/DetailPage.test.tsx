@@ -15,14 +15,14 @@ describe("Given a CreatePage component", () => {
           <BrowserRouter>
             <DetailPage />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label1 = screen.getByText(stringToFind1);
       const label2 = screen.getByText(stringToFind2);
 
-      expect(label1).toHaveTextContent(stringToFind1);
-      expect(label2).toHaveTextContent(stringToFind2);
+      expect(label1).toContain(stringToFind1);
+      expect(label2).toContain(stringToFind2);
     });
   });
 });

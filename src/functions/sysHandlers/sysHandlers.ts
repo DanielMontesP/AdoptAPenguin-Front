@@ -14,14 +14,14 @@ export function handleServerInfo(
   connected: boolean,
   server: string,
   status: any,
-  dispatch: any
+  dispatch: any,
 ) {
   dispatch(
     serverInfoActionCreator({
       connected,
       path: `${server}`,
       status: `${status}`,
-    })
+    }),
   );
 }
 
@@ -95,7 +95,7 @@ export const resizeFile = (file: File): any =>
       (uri) => {
         resolve(uri);
       },
-      "base64"
+      "base64",
     );
   });
 
@@ -123,14 +123,14 @@ export const writeFile = (type: string, data: any) => {
 };
 
 export const connectedToServer = () => async (dispatch: AppDispatch) => {
-  return await fetch(`${process.env.REACT_APP_API_URL}penguins`)
+  return await fetch(`${import.meta.env.VITE_APP_API_URL}penguins`)
     .then((resp) => {
       if (resp.status === 200) {
         handleServerInfo(
           true,
-          `${process.env.REACT_APP_API_URL}`,
+          `${import.meta.env.VITE_APP_API_URL}`,
           "Connected to server",
-          dispatch
+          dispatch,
         );
         return true;
       } else {

@@ -21,12 +21,12 @@ import {
 import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
 import { handleServerInfo } from "../sysHandlers/sysHandlers";
 
-let firstLoad = true;
+let firstLoad = false;
 
 export const loadHome = (
   dispatch: any,
   headerTitle: string,
-  navigate: any
+  navigate: any,
 ): any => {
   dispatch(isMenuOpenActionCreator(false));
 
@@ -71,7 +71,7 @@ export const handleFocus = (field: string): void => {
 export const loadFavs = (
   dispatch: any,
   headerTitle: string,
-  navigate: any
+  navigate: any,
 ): any => {
   dispatch(isMenuOpenActionCreator(false));
 
@@ -85,7 +85,7 @@ export const loadFavs = (
 export const loadLikes = (
   dispatch: any,
   headerTitle: string,
-  navigate: any
+  navigate: any,
 ): void => {
   dispatch(isMenuOpenActionCreator(false));
 
@@ -99,7 +99,7 @@ export const loadLikes = (
 export const handleSearchSubmit = (
   dispatch: any,
   headerTitle: string,
-  stringToSearch: string
+  stringToSearch: string,
 ) => {
   dispatch(isMenuOpenActionCreator(false));
 
@@ -121,7 +121,7 @@ export const handleSearchEnter = (
   event: KeyboardEvent<HTMLInputElement>,
   stringToSearch: string,
   dispatch: any,
-  headerTitle: string
+  headerTitle: string,
 ) => {
   if (event.key === "Enter") {
     dispatch(isSearchOpenActionCreator(false));

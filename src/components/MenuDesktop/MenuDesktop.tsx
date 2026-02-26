@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   isMenuOpenActionCreator,
@@ -17,7 +18,7 @@ interface Props {
   isMenuOpened: boolean;
 }
 
-const MenuDesktop = ({ isMenuOpened }: Props): JSX.Element => {
+const MenuDesktop = ({ isMenuOpened }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

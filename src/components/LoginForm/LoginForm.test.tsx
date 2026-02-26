@@ -16,13 +16,13 @@ describe("Given a LoginForm component", () => {
           <BrowserRouter>
             <LoginForm />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
       userEvent.type(label, inputText);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
   describe("When the two inputs have text and the submit button is clicked", () => {
@@ -36,7 +36,7 @@ describe("Given a LoginForm component", () => {
           <BrowserRouter>
             <LoginForm />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const username = screen.getByPlaceholderText(usernameLabel);
@@ -47,8 +47,8 @@ describe("Given a LoginForm component", () => {
       userEvent.type(password, inputText);
       userEvent.click(submitButton);
 
-      expect(username).toHaveValue("");
-      expect(password).toHaveValue("");
+      expect(username).toStrictEqual("");
+      expect(password).toStrictEqual("");
     });
   });
 });

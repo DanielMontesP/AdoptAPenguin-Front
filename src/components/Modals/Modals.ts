@@ -3,7 +3,7 @@ import { Id, toast, Bounce } from "react-toastify";
 let customID: Id = "custom-id";
 
 const toastOptions = {
-  position: toast.POSITION.BOTTOM_CENTER,
+  position: "bottom-center" as const,
   autoClose: 1500,
   hideProgressBar: false,
   newstOnTop: false,
@@ -64,7 +64,7 @@ export const stopLoadingAction = () => {
 
 export const setLoadingOn = (message: string) => {
   toast?.loading(message, {
-    position: toast.POSITION.BOTTOM_CENTER,
+    position: "bottom-center" as const,
     closeOnClick: true,
     toastId: `${customID}`,
   });

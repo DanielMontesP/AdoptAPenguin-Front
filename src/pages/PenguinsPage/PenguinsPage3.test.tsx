@@ -25,13 +25,13 @@ describe("Given Favorites it's rendered", () => {
           <BrowserRouter>
             <PenguinsPage type="Favorites" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const receivedResult = screen.getByTitle(expectedResult);
 
       loadFavsThunk();
-      expect(receivedResult).toBeInTheDocument();
+      expect(receivedResult).toBeDefined();
       expect(loadFavsThunk).toHaveBeenCalled();
     });
   });

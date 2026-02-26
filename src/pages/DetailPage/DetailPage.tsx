@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, ReactElement } from "react";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
@@ -11,7 +11,7 @@ import {
 } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import PenguinDetail from "../../components/PenguinDetail/PenguinDetail";
 
-const DetailPage = (): JSX.Element => {
+const DetailPage = (): ReactElement => {
   const dispatch = useAppDispatch();
 
   const { penguin } = useAppSelector((state) => state.penguins);

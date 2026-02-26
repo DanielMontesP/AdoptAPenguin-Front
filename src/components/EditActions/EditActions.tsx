@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ReactElement } from "react";
 import {
   isModalOpenActionCreator,
   modalMessageActionCreator,
@@ -12,7 +12,7 @@ interface Props {
   penguin: IPenguin;
 }
 
-const EditActions = ({ penguin }: Props): JSX.Element => {
+const EditActions = ({ penguin }: Props): ReactElement => {
   const [, setModal] = useState(false);
 
   const dispatch = useAppDispatch();
@@ -30,12 +30,7 @@ const EditActions = ({ penguin }: Props): JSX.Element => {
   };
 
   return (
-    <button
-      title="btn-click"
-      placeholder="btn-click"
-      className={`bt-Edit`}
-      onClick={handleClick}
-    />
+    <button title="btn-click" className={`bt-Edit`} onClick={handleClick} />
   );
 };
 

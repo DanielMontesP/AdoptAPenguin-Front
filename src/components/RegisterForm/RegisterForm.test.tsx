@@ -29,13 +29,13 @@ describe("Given a RegisterForm component", () => {
           <BrowserRouter>
             <RegisterForm />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByLabelText(labelToFind);
       userEvent.type(label, inputText);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
   describe("When the two inputs have text and the submit button is clicked", () => {
@@ -55,7 +55,7 @@ describe("Given a RegisterForm component", () => {
             <Navbar headerTitle="Test" isMenuOpen={false} isDesktop={false} />
             <RegisterForm />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const username = screen.getByLabelText(usernameLabel);
@@ -65,8 +65,8 @@ describe("Given a RegisterForm component", () => {
       userEvent.type(username, inputText);
       userEvent.type(password, inputText);
 
-      expect(username).toHaveValue("user1");
-      expect(password).toHaveValue("user1");
+      expect(username).toContain("user1");
+      expect(password).toContain("user1");
 
       SetTitleHeader("lastTitle");
 

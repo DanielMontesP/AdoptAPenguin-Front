@@ -1,6 +1,7 @@
+import { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
 
-const Home = (): JSX.Element => {
+const Home = (): ReactElement => {
   return (
     <div className="container">
       <div className="bt-container">

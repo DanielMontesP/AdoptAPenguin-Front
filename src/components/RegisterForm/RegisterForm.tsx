@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState, ReactElement } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { registerThunk } from "../../app/redux/thunks/userThunk/userThunk";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ import { UserRegister } from "../../app/redux/types/userInterfaces/userInterface
 
 const thisTitle = "AdoptAPenguin.com";
 
-const RegisterForm = (): JSX.Element => {
+const RegisterForm = (): ReactElement => {
   const initialFormData: UserRegister = {
     username: "",
     password: "",
@@ -93,7 +93,11 @@ const RegisterForm = (): JSX.Element => {
         </Link>
       </div>
       <div className="submitContainer">
-        <button type="submit" className="bt-register" placeholder="bt-submit">
+        <button
+          type="submit"
+          className="bt-register"
+          // placeholder="bt-submit"
+        >
           Register
         </button>
         <div className="footer-home">2022 Penguins Inc.</div>

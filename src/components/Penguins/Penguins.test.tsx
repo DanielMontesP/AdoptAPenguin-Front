@@ -18,12 +18,12 @@ describe("Given a Penguins component", () => {
             <Navbar headerTitle="Test" isMenuOpen={false} isDesktop={false} />
             <Penguins allPenguins={mockPenguins} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(labelToFind);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });

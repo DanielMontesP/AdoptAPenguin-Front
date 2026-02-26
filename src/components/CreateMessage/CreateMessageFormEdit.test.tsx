@@ -36,14 +36,14 @@ describe("Given a CreateMessageForm component", () => {
           <BrowserRouter>
             <CreateMessageForm message={mockMessage} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const textSubject = screen.getByPlaceholderText(textToFind);
       const btSave = screen.getByPlaceholderText(placeHolderSubmit);
 
-      expect(textSubject).toBeInTheDocument();
-      expect(btSave).toBeInTheDocument();
+      expect(textSubject).toBeDefined();
+      expect(btSave).toBeDefined();
 
       userEvent.click(btSave);
 

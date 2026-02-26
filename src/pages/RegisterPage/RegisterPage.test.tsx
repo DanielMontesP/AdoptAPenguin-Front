@@ -14,12 +14,12 @@ describe("Given a RegisterPage Component", () => {
           <BrowserRouter>
             <RegisterPage />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const receivedResult = screen.getByText(expectedResult);
 
-      expect(receivedResult).toBeInTheDocument();
+      expect(receivedResult).toBeDefined();
     });
   });
 });

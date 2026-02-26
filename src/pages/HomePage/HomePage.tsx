@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, ReactElement } from "react";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import Home from "../../components/Home/Home";
 import { connectedToServer } from "../../functions/sysHandlers/sysHandlers";
 
-const HomePage = (): JSX.Element => {
+const HomePage = (): ReactElement => {
   const dispatch = useAppDispatch();
 
   const thisTitle = "HomePage";

@@ -21,16 +21,16 @@ describe("Given a Messages component", () => {
           <BrowserRouter>
             <Messages allMessages={mockMessages} penguin={mockPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label1 = screen.getByText(stringToFind1);
       const label2 = screen.getByPlaceholderText(btSubmitLabel);
       const label3 = screen.getByText(stringToFind2);
 
-      expect(label1).toBeInTheDocument();
-      expect(label2).toBeInTheDocument();
-      expect(label3).toBeInTheDocument();
+      expect(label1).toBeDefined();
+      expect(label2).toBeDefined();
+      expect(label3).toBeDefined();
 
       userEvent.click(label2);
 

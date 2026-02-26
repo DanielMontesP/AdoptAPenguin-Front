@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import imgGitHub from "../../images/github-icon-white-256.png";
 import imgReact from "../../images/react-40.gif";
 import imgRedux from "../../images/redux-40.png";
@@ -11,7 +12,7 @@ import imgJest from "../../images/jest-40.png";
 import imgApp from "../../images/userPhoto.png";
 import "../../styles/WellcomeStyles.css";
 
-const WellcomeComments = (): JSX.Element => {
+const WellcomeComments = (): ReactElement => {
   return (
     <div className="modal-container">
       <div className="modal-title">

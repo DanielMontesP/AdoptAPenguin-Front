@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -23,7 +24,7 @@ interface Props {
   isMenuOpened: boolean;
 }
 
-const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
+const MenuMobile = ({ isMenuOpened }: Props): ReactElement => {
   const { headerTitle } = useAppSelector((state) => state.ui);
 
   const { user } = useAppSelector((state) => state);

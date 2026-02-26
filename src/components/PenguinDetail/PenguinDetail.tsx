@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useState, ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { getMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
@@ -19,7 +19,7 @@ interface Props {
   penguin: IPenguin;
 }
 
-const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
+const PenguinDetail = ({ penguin, allPenguins }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): JSX.Element => {
   const { allMessages } = useAppSelector((state) => state.messages);
 
   const [isMessagesSelected, setMessageSelected] = useState(
-    document.location.href.includes("#messages")
+    document.location.href.includes("#messages"),
   );
 
   let classDescription = "";

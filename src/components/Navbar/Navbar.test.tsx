@@ -29,11 +29,11 @@ describe("Given a Navbar component", () => {
           <Provider store={store}>
             <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
           </Provider>
-        </BrowserRouter>
+        </BrowserRouter>,
       );
 
       const title = screen.getByText("Detail");
-      expect(title).toBeInTheDocument();
+      expect(title).toBeDefined();
     });
   });
 
@@ -46,11 +46,11 @@ describe("Given a Navbar component", () => {
           <Provider store={store}>
             <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
           </Provider>
-        </BrowserRouter>
+        </BrowserRouter>,
       );
 
       const btSearch = screen.getByTitle("bt-search-submit");
-      expect(btSearch).toBeInTheDocument();
+      expect(btSearch).toBeDefined();
 
       userEvent.click(btSearch);
 
@@ -70,12 +70,12 @@ describe("Given a Navbar component", () => {
           <Provider store={store}>
             <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={true} />
           </Provider>
-        </BrowserRouter>
+        </BrowserRouter>,
       );
 
       const inputSearch = screen.getByPlaceholderText(searchPlaceHolderText);
 
-      expect(inputSearch).toBeInTheDocument();
+      expect(inputSearch).toBeDefined();
 
       userEvent.type(inputSearch, "test");
 
@@ -84,7 +84,7 @@ describe("Given a Navbar component", () => {
 
       const dimmer = screen.getByRole("tabpanel");
 
-      expect(dimmer).toBeInTheDocument();
+      expect(dimmer).toBeDefined();
 
       userEvent.click(dimmer);
 

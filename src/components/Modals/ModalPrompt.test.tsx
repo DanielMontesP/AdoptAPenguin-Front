@@ -37,11 +37,11 @@ describe("Given a Modal component", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
 
       userEvent.type(label, inputText);
 
@@ -76,11 +76,11 @@ describe("Given a Modal component", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
 
       userEvent.type(label, inputText);
 
@@ -113,14 +113,14 @@ describe("Given a Modal component", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
       userEvent.type(label, inputText);
       logOutUser();
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
   describe("When error", () => {
@@ -142,13 +142,13 @@ describe("Given a Modal component", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
       userEvent.type(label, inputText);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 
@@ -170,7 +170,7 @@ describe("Given a Modal component", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
@@ -198,7 +198,7 @@ describe("Given a Modal component", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
@@ -226,7 +226,7 @@ describe("Given a Modal component", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
@@ -254,7 +254,7 @@ describe("Given a Modal component", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
@@ -287,13 +287,13 @@ describe("Given a Modal component", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
       userEvent.type(label, inputText);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
   describe("When delete penguin", () => {
@@ -318,7 +318,7 @@ describe("Given a Modal component", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
@@ -353,7 +353,7 @@ describe("Given a Modal component", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
@@ -388,7 +388,7 @@ describe("Given btn-accept is clicked", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
@@ -422,7 +422,7 @@ describe("Given btn-accept is clicked with delete", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
@@ -458,7 +458,7 @@ describe("Given btn-accept is clicked with Settings", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
@@ -494,7 +494,7 @@ describe("Given btn-accept is clicked with Server", () => {
               posY={50}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);

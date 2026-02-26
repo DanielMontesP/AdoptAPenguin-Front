@@ -14,13 +14,13 @@ import {
   resetPenguinsActionCreator,
   searchPenguinsActionCreator,
 } from "../../features/penguinSlice/penguinSlice";
-import { penguins } from "../../../../export/penguins-export.js";
+import { penguins } from "../../../../export/penguins-export";
 import { blankFormData } from "../../initializers/iniPenguins";
 import { finishedLoadingActionCreator } from "../../features/uiSlice/uiSlice";
 import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
 import { handleServerInfo } from "../../../../functions/sysHandlers/sysHandlers";
 
-let firstLoad = true;
+let firstLoad = false;
 let textNoConnection = "";
 const textFirstLoad =
   "Sorry, server is still starting. Navigation enable but data will be not editable until server is restarted";
@@ -36,7 +36,7 @@ if (firstLoad) {
 export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
   try {
     setLoadingOn(
-      `Service render.com is starting...Be watter penguin...Home page will be loaded as soon as possible.`
+      `Service render.com is starting...Be watter penguin...Home page will be loaded as soon as possible.`,
     );
     firstLoad = false;
     const token = localStorage.getItem("token");
@@ -44,21 +44,21 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
     if (token) {
       const {
         data: { penguins },
-      } = await axios.get(`${process.env.REACT_APP_API_URL}penguins`, {
+      } = await axios.get(`${import.meta.env.VITE_APP_API_URL}penguins`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       handleServerInfo(
         true,
-        `${process.env.REACT_APP_API_URL}penguins`,
+        `${import.meta.env.VITE_APP_API_URL}penguins`,
         "Connected",
-        dispatch
+        dispatch,
       );
 
       setLoadingOffWithMessage(`GET Penguins: Finished successfully`, false);
       dispatch(finishedLoadingActionCreator("loadingActionCreator"));
-      dispatch(loadPenguinsActionCreator(penguins));
+      penguins && dispatch(loadPenguinsActionCreator(penguins));
     }
   } catch (error) {
     handleNoConexion(dispatch, "user.id");
@@ -76,21 +76,21 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
     if (token) {
       const {
         data: { penguins },
-      } = await axios.get(`${process.env.REACT_APP_API_URL}penguins/favs`, {
+      } = await axios.get(`${import.meta.env.VITE_APP_API_URL}penguins/favs`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      if (penguins.length === 0) {
+      if (penguins && penguins.length && penguins.length === 0) {
         setLoadingOffWithMessage(
           "GET Favorites: No Favorites added yet",
-          false
+          false,
         );
       }
 
       dispatch(finishedLoadingActionCreator("loadingActionCreator"));
-      dispatch(loadPenguinsActionCreator(penguins));
+      penguins && dispatch(loadPenguinsActionCreator(penguins));
 
       setLoadingOffWithMessage("GET Favorites: Finished successfully.", false);
     }
@@ -111,13 +111,13 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
     if (token) {
       const {
         data: { penguins },
-      } = await axios.get(`${process.env.REACT_APP_API_URL}penguins/likes`, {
+      } = await axios.get(`${import.meta.env.VITE_APP_API_URL}penguins/likes`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      if (penguins.length === 0) {
+      if (penguins && penguins.length && penguins.length === 0) {
         setLoadingOffWithMessage("GET Likes: No likes added yet", false);
       }
 
@@ -143,14 +143,14 @@ export const createFavThunk =
 
       if (token) {
         const { data: penguin } = await axios.post(
-          `${process.env.REACT_APP_API_URL}penguins/create`,
+          `${import.meta.env.VITE_APP_API_URL}penguins/create`,
           formPenguin,
           {
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "multipart/form-data",
             },
-          }
+          },
         );
 
         dispatch(createPenguinActionCreator(penguin));
@@ -159,7 +159,7 @@ export const createFavThunk =
 
         setLoadingOffWithMessage(
           `CREATE Fav: ${penguin.name} created successfully.`,
-          false
+          false,
         );
       }
     } catch (error) {
@@ -177,19 +177,19 @@ export const getPenguinThunk =
 
         if (token) {
           const { data: penguin } = await axios.get(
-            `${process.env.REACT_APP_API_URL}penguins/${id}`,
+            `${import.meta.env.VITE_APP_API_URL}penguins/${id}`,
             {
               headers: {
                 authorization: `Bearer ${token}`,
               },
-            }
+            },
           );
 
           dispatch(loadPenguinActionCreator(penguin));
 
           setLoadingOffWithMessage(
             `GET Penguin: ${penguin.name} successfully.`,
-            false
+            false,
           );
         }
       }
@@ -209,12 +209,12 @@ export const searchPenguinThunk =
         setLoadingOn(`SEARCH: => ${search}`);
 
         const { data: penguins } = await axios.get(
-          `${process.env.REACT_APP_API_URL}penguins/search/${search}`,
+          `${import.meta.env.VITE_APP_API_URL}penguins/search/${search}`,
           {
             headers: {
               authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         dispatch(searchPenguinsActionCreator(penguins));
@@ -237,12 +237,12 @@ export const deletePenguinThunk =
 
       if (token) {
         const { status } = await axios.delete(
-          `${process.env.REACT_APP_API_URL}penguins/${id}`,
+          `${import.meta.env.VITE_APP_API_URL}penguins/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         if (status === 200) {
@@ -250,7 +250,7 @@ export const deletePenguinThunk =
 
           setLoadingOffWithMessage(
             "DELETE Penguin: Finished successfully!",
-            false
+            false,
           );
         }
       }
@@ -273,14 +273,14 @@ export const editPenguinThunk =
 
       if (token) {
         const { data: penguin } = await axios.put(
-          `${process.env.REACT_APP_API_URL}penguins/${idPenguin}?task=${type}`,
+          `${import.meta.env.VITE_APP_API_URL}penguins/${idPenguin}?task=${type}`,
           formPenguin,
           {
             headers: {
               Authorization: `Bearer ${token}`,
               ifIsForm,
             },
-          }
+          },
         );
 
         dispatch(getPenguinThunk(idPenguin));

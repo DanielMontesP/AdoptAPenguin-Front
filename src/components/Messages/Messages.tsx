@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { resetMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
@@ -17,7 +18,7 @@ interface Props {
   penguin: IPenguin;
 }
 
-const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
+const Messages = ({ allMessages, penguin }: Props): ReactElement => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -45,7 +46,7 @@ const Messages = ({ allMessages, penguin }: Props): JSX.Element => {
           <button
             className={"message-new"}
             onClick={handleClick}
-            placeholder="bt-submit"
+            // placeholder="bt-submit"
           >
             + New Message
           </button>

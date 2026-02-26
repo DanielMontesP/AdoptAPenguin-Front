@@ -24,7 +24,7 @@ const PenguinsPage = ({ type }: Props) => {
 
   const { allPenguins, penguin } = useAppSelector((state) => state.penguins);
   const { headerTitle, modalType, headerLastTitle, isDesktop } = useAppSelector(
-    (state) => state.ui
+    (state) => state.ui,
   );
 
   useEffect(() => {

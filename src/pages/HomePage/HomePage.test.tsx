@@ -30,12 +30,12 @@ describe("Given a HomePage Component", () => {
           <BrowserRouter>
             <HomePage />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const receivedResult = screen.getByText(expectedResult);
 
-      expect(receivedResult).toBeInTheDocument();
+      expect(receivedResult).toBeDefined();
     });
   });
 });

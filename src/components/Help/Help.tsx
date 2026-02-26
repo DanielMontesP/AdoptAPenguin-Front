@@ -1,6 +1,7 @@
+import { ReactElement } from "react";
 import "../../styles/WellcomeStyles.css";
 
-const Help = (): JSX.Element => {
+const Help = (): ReactElement => {
   return (
     <div className="message-container">
       <div className="options">

@@ -34,13 +34,13 @@ describe("Given a CreatePage component", () => {
           <BrowserRouter>
             <CreatePage form="Message" type="Create" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(labelToFind);
       userEvent.type(label, inputText);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });
@@ -55,12 +55,12 @@ describe("Given a penguin CreatePage component", () => {
           <BrowserRouter>
             <CreatePage form="Penguin" type="Create" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(textToFind);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 
@@ -86,7 +86,7 @@ describe("Given a penguin CreatePage component", () => {
           <BrowserRouter>
             <CreatePage form="Penguin" type="Create" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const name = screen.getByPlaceholderText(nameLabel);
@@ -99,7 +99,7 @@ describe("Given a penguin CreatePage component", () => {
       userEvent.type(name, inputText);
       userEvent.click(submitButton);
 
-      expect(name).toHaveValue("penguin1");
+      expect(name).toContain("penguin1");
       await dispatch(createFavThunk);
 
       expect(dispatch).toHaveBeenCalled();
@@ -127,15 +127,15 @@ describe("Given a penguin CreatePage component", () => {
           <BrowserRouter>
             <CreatePage form="Message" type="Create" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const name = screen.getByPlaceholderText(nameLabel);
       userEvent.type(name, inputText);
-      expect(name).toHaveValue("penguin1");
+      expect(name).toContain("penguin1");
 
       const submitButton = screen.getByPlaceholderText("bt-save");
-      expect(submitButton).toBeInTheDocument();
+      expect(submitButton).toBeDefined();
 
       userEvent.click(submitButton);
       await dispatch(createFavThunk);

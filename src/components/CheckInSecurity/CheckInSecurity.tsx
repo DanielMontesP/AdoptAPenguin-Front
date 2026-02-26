@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { ReactElement, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { resetMessagesThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 
 type Props = {
-  children: JSX.Element;
+  children: ReactElement;
 };
 
 const CheckInSecurity = ({ children }: Props) => {

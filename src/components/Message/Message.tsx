@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   isModalOpenActionCreator,
@@ -12,7 +13,7 @@ interface Props {
   message: IMessage;
 }
 
-const Message = ({ message }: Props): JSX.Element => {
+const Message = ({ message }: Props): ReactElement => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -51,12 +52,12 @@ const Message = ({ message }: Props): JSX.Element => {
       <button
         className={"message-read-img"}
         onClick={handleClick}
-        placeholder="bt-view"
+        // placeholder="bt-view"
       />
       <button
         className={"message-delete"}
         onClick={handleDelete}
-        placeholder="bt-delete"
+        // placeholder="bt-delete"
       />
     </div>
   );

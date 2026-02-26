@@ -1,12 +1,16 @@
+import { ReactElement } from "react";
 interface Props {
   headerTitle: string;
 }
-export const NavWellcome = ({ headerTitle }: Props): JSX.Element => {
+export const NavWellcome = ({ headerTitle }: Props): ReactElement => {
   const isWellcome = headerTitle === "HomePage";
 
   const content = () => {
     return (
-      <div className={`header-wellcome`} placeholder="header-wellcome"></div>
+      <div
+        className={`header-wellcome`}
+        // placeholder="header-wellcome"
+      ></div>
     );
   };
 

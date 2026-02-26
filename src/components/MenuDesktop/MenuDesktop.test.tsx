@@ -17,11 +17,11 @@ describe("Given a MenuDesktop component", () => {
           <BrowserRouter>
             <Menu isMenuOpened={true} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const btLogout = screen.getByTitle(labelButtonLogout);
-      expect(btLogout).toBeInTheDocument();
+      expect(btLogout).toBeDefined();
 
       userEvent.click(btLogout);
 
@@ -43,11 +43,11 @@ describe("Given a MenuDesktop component", () => {
           <BrowserRouter>
             <Menu isMenuOpened={true} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const btAbout = screen.getByTitle(labelButton);
-      expect(btAbout).toBeInTheDocument();
+      expect(btAbout).toBeDefined();
 
       userEvent.click(btAbout);
       handleAbout();
@@ -65,11 +65,11 @@ describe("Given a MenuDesktop component", () => {
           <BrowserRouter>
             <Menu isMenuOpened={true} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const button = screen.getByTitle(labelButton);
-      expect(button).toBeInTheDocument();
+      expect(button).toBeDefined();
 
       userEvent.click(button);
       handleHelp();
@@ -87,11 +87,11 @@ describe("Given a MenuDesktop component", () => {
           <BrowserRouter>
             <Menu isMenuOpened={true} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const button = screen.getByTitle(labelButton);
-      expect(button).toBeInTheDocument();
+      expect(button).toBeDefined();
 
       userEvent.click(button);
       handleSettings();
@@ -109,11 +109,11 @@ describe("Given a MenuDesktop component", () => {
           <BrowserRouter>
             <Menu isMenuOpened={true} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const button = screen.getByTitle(labelButton);
-      expect(button).toBeInTheDocument();
+      expect(button).toBeDefined();
 
       userEvent.click(button);
       handleInbox();

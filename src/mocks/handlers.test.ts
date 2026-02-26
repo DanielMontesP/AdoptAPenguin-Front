@@ -1,4 +1,4 @@
-import { rest } from "msw";
+import { http } from "msw";
 import { mockTokenKey } from "./handlers";
 
 describe("Given usersHandlers function", () => {
@@ -7,7 +7,7 @@ describe("Given usersHandlers function", () => {
       const usersHandlers = jest.fn();
 
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      rest.post = jest
+      http.post = jest
         .fn()
         .mockReturnValue({ status: 200, data: { token: mockTokenKey } });
 

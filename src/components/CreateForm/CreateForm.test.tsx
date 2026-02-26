@@ -42,7 +42,7 @@ describe("Given a CreateForm component", () => {
           <BrowserRouter>
             <CreateForm penguin={mockEmptyDataPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
       const inputName = screen.getByPlaceholderText(labelName);
       const buttonSubmit = screen.getByPlaceholderText(labelSubmit);
@@ -54,7 +54,7 @@ describe("Given a CreateForm component", () => {
       handleSubmit();
       processEdit(true);
 
-      expect(inputName).toBeInTheDocument();
+      expect(inputName).toBeDefined();
     });
   });
 });

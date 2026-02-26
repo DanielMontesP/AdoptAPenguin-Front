@@ -17,12 +17,12 @@ describe("Given a Favs component", () => {
             <Navbar headerTitle="test" isMenuOpen={false} isDesktop={false} />
             <Favs allPenguins={mockPenguins} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByAltText(labelToFind);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });

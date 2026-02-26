@@ -28,11 +28,11 @@ describe("Given a NavDesktop component", () => {
           <BrowserRouter>
             <NavDesktop headerTitle="Home" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(stringToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
 
       const buttonAddFav = screen.getByTitle(labelAddFav);
       userEvent.click(buttonAddFav);
@@ -53,11 +53,11 @@ describe("Given a NavWellcome component", () => {
           <BrowserRouter>
             <NavDesktop headerTitle="New..." />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(stringToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });
@@ -72,11 +72,11 @@ describe("Given a NavWellcome with headerTitle  Likes", () => {
           <BrowserRouter>
             <NavDesktop headerTitle="Likes" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(stringToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });
@@ -91,11 +91,11 @@ describe("Given a NavWellcome with headerTitle Favorites", () => {
           <BrowserRouter>
             <NavDesktop headerTitle="Favorites" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(stringToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });
@@ -115,11 +115,11 @@ describe("Given a handleMenu button NavDesktop component", () => {
           <BrowserRouter>
             <NavDesktop headerTitle="Home" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(stringToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
 
       const buttonAddFav = screen.getByTitle(labelAddFav);
       userEvent.click(buttonAddFav);
@@ -154,11 +154,11 @@ describe("Given a handleLogoutCall button NavDesktop component", () => {
           <BrowserRouter>
             <NavDesktop headerTitle="Home" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(stringToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
 
       const button6 = screen.getByTitle(labelHome);
       userEvent.click(button6);

@@ -17,7 +17,7 @@ interface Props {
   penguin: IPenguin;
 }
 
-const ActionButtons = ({ penguin }: Props): JSX.Element => {
+const ActionButtons = ({ penguin }: Props) => {
   const idUser = useAppSelector((state) => state.user.id);
   const { allMessages } = useAppSelector((state) => state.user);
   const { connected } = useAppSelector((state) => state.system.server);
@@ -121,7 +121,6 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
       <span className="new-messages-counter">{countNewMessages(penguin)}</span>
 
       <button
-        placeholder="btn-favs"
         onClick={handleFavs}
         className={`${classContainer}${selectIconFav}`}
       />

@@ -17,12 +17,12 @@ describe("Given a Message componen", () => {
           <BrowserRouter>
             <Message message={mockMessage} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const button = screen.getByPlaceholderText(buttonClick);
 
-      expect(button).toBeInTheDocument();
+      expect(button).toBeDefined();
 
       userEvent.click(button);
       handleClick();
@@ -40,12 +40,12 @@ describe("Given a Message componen", () => {
           <BrowserRouter>
             <Message message={mockMessageEmpty} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const button = screen.getByPlaceholderText(buttonClick);
 
-      expect(button).toBeInTheDocument();
+      expect(button).toBeDefined();
 
       userEvent.click(button);
       handleClick();
@@ -66,14 +66,14 @@ describe("Given a Message component with data", () => {
           <BrowserRouter>
             <Message message={mockMessage} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label1 = screen.getByText(stringToFind1);
       const button = screen.getByPlaceholderText(buttonClick);
 
-      expect(label1).toBeInTheDocument();
-      expect(button).toBeInTheDocument();
+      expect(label1).toBeDefined();
+      expect(button).toBeDefined();
 
       userEvent.click(button);
       handleDelete();

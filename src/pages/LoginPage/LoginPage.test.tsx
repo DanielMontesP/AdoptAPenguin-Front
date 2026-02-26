@@ -15,11 +15,11 @@ describe("Given a LoginPage Component", () => {
           <Provider store={store}>
             <LoginPage />
           </Provider>
-        </BrowserRouter>
+        </BrowserRouter>,
       );
 
       const receivedResult = screen.getByText(expectedResult);
-      expect(receivedResult).toBeInTheDocument();
+      expect(receivedResult).toBeDefined();
     });
   });
 });

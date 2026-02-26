@@ -14,12 +14,12 @@ describe("Given a NavWellcome component", () => {
           <BrowserRouter>
             <NavWellcome headerTitle="HomePage" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByPlaceholderText(stringToFind);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });

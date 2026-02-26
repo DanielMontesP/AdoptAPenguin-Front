@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../app/redux/hooks/hooks";
 
 type Props = {
-  children: JSX.Element;
+  children: ReactElement;
 };
 
 const CheckOutSecurity = ({ children }: Props) => {

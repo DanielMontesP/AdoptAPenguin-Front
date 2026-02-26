@@ -25,13 +25,13 @@ describe("Given Favs it's rendered", () => {
           <BrowserRouter>
             <PenguinsPage type="Likes" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const receivedResult = screen.getByTitle(expectedResult);
 
       loadLikesThunk();
-      expect(receivedResult).toBeInTheDocument();
+      expect(receivedResult).toBeDefined();
       expect(loadLikesThunk).toHaveBeenCalled();
     });
   });

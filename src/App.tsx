@@ -8,7 +8,7 @@ import DetailPage from "./pages/DetailPage/DetailPage";
 import { useAppDispatch, useAppSelector } from "./app/redux/hooks/hooks";
 import { useEffect, useState } from "react";
 import { UserInfo } from "./app/redux/types/userInterfaces/userInterfaces";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { logInActionCreator } from "./app/redux/features/userSlice/userSlice";
 import { Error404Page } from "./pages/Error404/Error404";
 import PenguinsPage from "./pages/PenguinsPage/PenguinsPage";

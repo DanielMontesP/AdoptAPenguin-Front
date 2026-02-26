@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useState, ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
@@ -18,7 +18,7 @@ interface Props {
   headerTitle: string;
 }
 
-const NavDektop = ({ headerTitle }: Props): JSX.Element => {
+const NavDektop = ({ headerTitle }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

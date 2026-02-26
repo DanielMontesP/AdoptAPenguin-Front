@@ -1,4 +1,10 @@
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
+import {
+  ReactElement,
+  ChangeEvent,
+  KeyboardEvent,
+  useEffect,
+  useState,
+} from "react";
 import { ReactDimmer } from "react-dimmer";
 import { ToastContainer } from "react-toastify";
 import {
@@ -26,11 +32,15 @@ interface Props {
   isDesktop: boolean;
 }
 
-const Navbar = ({ headerTitle, isMenuOpen, isDesktop }: Props): JSX.Element => {
+const Navbar = ({
+  headerTitle,
+  isMenuOpen,
+  isDesktop,
+}: Props): ReactElement => {
   const dispatch = useAppDispatch();
 
   const { modalMessage, modalType, isModalOpen, isSearchOpen } = useAppSelector(
-    (state) => state.ui
+    (state) => state.ui,
   );
 
   const { penguin } = useAppSelector((state) => state.penguins);
@@ -60,7 +70,7 @@ const Navbar = ({ headerTitle, isMenuOpen, isDesktop }: Props): JSX.Element => {
   };
 
   const handleSearchEnterCall = (
-    event: KeyboardEvent<HTMLInputElement>
+    event: KeyboardEvent<HTMLInputElement>,
   ): void => {
     handleSearchEnter(event, stringToSearch, dispatch, headerTitle);
   };

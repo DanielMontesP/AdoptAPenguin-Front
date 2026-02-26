@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 import { toPascalCase } from "../../functions/sysHandlers/sysHandlers";
@@ -11,7 +12,7 @@ interface Props {
   penguin: IPenguin;
 }
 
-const Penguin = ({ penguin }: Props): JSX.Element => {
+const Penguin = ({ penguin }: Props): ReactElement => {
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ const Penguin = ({ penguin }: Props): JSX.Element => {
         <div
           className="penguin-description link"
           onClick={handleMoreDetail}
-          placeholder="bt-more-detail"
+          // placeholder="bt-more-detail"
         >
           {penguin.description?.substring(0, 100)}
         </div>

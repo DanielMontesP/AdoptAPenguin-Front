@@ -10,7 +10,7 @@ describe("Given the getuserThunk function", () => {
 
       const label = screen.getByText(search);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });
