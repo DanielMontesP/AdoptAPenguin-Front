@@ -9,10 +9,10 @@ jobs:
 
     steps:
       - name: Git checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Check if .editorconfig exists
-        uses: andstor/file-existence-action@v1
+        uses: andstor/file-existence-action@v3
         with:
           files: ".editorconfig"
           allow_failure: true
@@ -34,7 +34,7 @@ jobs:
         run: npx eslint --ignore-pattern .gitignore
 
       - name: Check commit message length
-        uses: gsactions/commit-message-checker@v1
+        uses: gsactions/commit-message-checker@v2
         with:
           pattern: "^[^#].{10,74}"
           error: "The commit message length must be between 10 and 72"
