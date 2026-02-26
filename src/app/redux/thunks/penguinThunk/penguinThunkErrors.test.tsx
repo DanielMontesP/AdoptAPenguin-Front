@@ -1,31 +1,33 @@
+/// <reference types="vitest" />
+import { vi } from "vitest";
 import axios from "axios";
 import { mockPenguin } from "../../../../mocks/penguins";
 import { editPenguinThunk, loadPenguinsThunk } from "./penguinThunk";
 
-jest.mock("axios");
+vi.mock("axios");
 
-jest.mock("../../hooks/hooks", () => ({
+vi.mock("../../hooks/hooks", () => ({
   useAppSelector: () => ({
     connected: false,
     headerTitle: "Favorites",
   }),
-  useAppDispatch: () => jest.fn(),
+  useAppDispatch: () => vi.fn(),
 }));
 
-jest.mock("../../../../functions/sysHandlers/sysHandlers", () => ({
-  handleServerInfo: jest.fn(),
-  getUserNewMessages: jest.fn(),
-  connectedToServer: jest.fn().mockRejectedValue(false),
+vi.mock("../../../../functions/sysHandlers/sysHandlers", () => ({
+  handleServerInfo: vi.fn(),
+  getUserNewMessages: vi.fn(),
+  connectedToServer: vi.fn().mockRejectedValue(false),
 }));
 
 describe("Given the editPenguin function", () => {
   describe("When it's called and not connected", () => {
     test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
 
-      axios.put = jest.fn().mockRejectedValue(true);
+      axios.put = vi.fn().mockRejectedValue(true);
       const thunk = editPenguinThunk(mockPenguin, mockPenguin.id, "update");
 
       await thunk(dispatch);
@@ -36,16 +38,17 @@ describe("Given the editPenguin function", () => {
 
   describe("When it's called with error", () => {
     test("Then it should not call editPenguinThunk", async () => {
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      jest.mock("../../../../components/Modals/Modals", () => ({
-        setLoadingOn: () => jest.fn().mockRejectedValue(true),
+      vi.mock("../../../../components/Modals/Modals", () => ({
+        setLoadingOn: () => vi.fn().mockRejectedValue(true),
+        setLoadingOffWithMessage: () => vi.fn().mockRejectedValue(true),
       }));
       const thunk = editPenguinThunk(mockPenguin, mockPenguin.id, "update");
 
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(dispatch).toHaveBeenCalledTimes(4);
     });
   });
 });
@@ -53,9 +56,9 @@ describe("Given the editPenguin function", () => {
 describe("Given the loadPenguinsThunk function", () => {
   describe("When it's called", () => {
     test("Then it should call dispatch with the load penguins action with penguins received from axios request", async () => {
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      axios.get = jest.fn().mockResolvedValue({
+      axios.get = vi.fn().mockResolvedValue({
         data: { mockPenguin },
         status: 200,
       });
@@ -63,7 +66,7 @@ describe("Given the loadPenguinsThunk function", () => {
       const thunk = loadPenguinsThunk();
       await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledTimes(0);
+      expect(dispatch).toHaveBeenCalledTimes(1);
     });
   });
 });

@@ -54,7 +54,7 @@ const Penguin = ({ penguin }: Props): ReactElement => {
         <div
           className="penguin-description link"
           onClick={handleMoreDetail}
-          // placeholder="bt-more-detail"
+          title="bt-more-detail"
         >
           {penguin.description?.substring(0, 100)}
         </div>

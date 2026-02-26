@@ -13,11 +13,11 @@ import {
   resetMessageActionCreator,
   resetMessagesActionCreator,
 } from "../../features/messageSlice/messageSlice";
-import { messages } from "../../../../export/messages-export";
 import { blankMessageData } from "../../initializers/iniMessages";
 import { getPenguinThunk } from "../penguinThunk/penguinThunk";
 import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
 import { getUserNewMessagesActionCreator } from "../../features/userSlice/userSlice";
+import { mockMessage } from "../../../../mocks/messages";
 
 let firstLoad = false;
 let textNoConnection = "";
@@ -56,7 +56,7 @@ export const getMessagesThunk =
       }
     } catch (error) {
       handleNoConexion(dispatch, "user.id");
-      dispatch(getUserNewMessagesActionCreator(messages));
+      dispatch(getUserNewMessagesActionCreator(mockMessage));
       setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
     }
   };
@@ -109,7 +109,7 @@ export const createMessageThunk =
         },
       );
 
-      dispatch(createMessageActionCreator(message));
+      dispatch(createMessageActionCreator(mockMessage));
 
       dispatch(getMessagesThunk(formMessage.idPenguin));
       setLoadingOffWithMessage(

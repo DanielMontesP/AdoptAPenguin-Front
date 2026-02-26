@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
@@ -6,9 +7,9 @@ import store from "../../app/redux/store/store";
 import { mockPenguin } from "../../mocks/penguins";
 import Navbar from "./Navbar";
 
-const mockUAppDispatch = jest.fn();
+const mockUAppDispatch = vi.fn();
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     logged: true,
     id: "id",
@@ -39,7 +40,7 @@ describe("Given a Navbar component", () => {
 
   describe("When search button is clicked", () => {
     test("Then handleSearchSubmitCall is called", () => {
-      const handleSearchSubmitCall = jest.fn();
+      const handleSearchSubmitCall = vi.fn();
 
       render(
         <BrowserRouter>
@@ -61,9 +62,9 @@ describe("Given a Navbar component", () => {
 
   describe("When search input change", () => {
     test("Then handleSearchChange is called", () => {
-      const handleSearchChange = jest.fn();
+      const handleSearchChange = vi.fn();
       const searchPlaceHolderText = "Search by name/category/description...";
-      const handleDimmer = jest.fn();
+      const handleDimmer = vi.fn();
 
       render(
         <BrowserRouter>

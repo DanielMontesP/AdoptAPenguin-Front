@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { mockUser } from "../../../../mocks/users";
 import { server } from "../../../../mocks/server";
 import {
@@ -21,32 +22,33 @@ beforeEach(() => {
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-jest.mock("jwt-decode", () => () => ({
+vi.mock("jwt-decode", () => ({
+  ...vi.importActual("jwt-decode"),
   username: "user1",
   id: "idUser",
   image: "image.jpg",
 }));
 
-jest.mock("axios");
+vi.mock("axios");
 
-jest.mock("../../hooks/hooks", () => ({
+vi.mock("../../hooks/hooks", () => ({
   useAppSelector: () => ({
     connected: false,
     headerTitle: "Favorites",
   }),
-  useAppDispatch: () => jest.fn(),
+  useAppDispatch: () => vi.fn(),
 }));
 
-HTMLAnchorElement.prototype.click = jest.fn();
-global.window.URL.createObjectURL = jest.fn();
+HTMLAnchorElement.prototype.click = vi.fn();
+window.URL.createObjectURL = vi.fn();
 
 describe("Given the getuserThunk function", () => {
   describe("When it's called with an user", () => {
     test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      axios.get = jest.fn().mockRejectedValue(true);
+      vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.get = vi.fn().mockRejectedValue(true);
 
       const thunk = getUserThunk(mockUser.id);
       await thunk(dispatch);
@@ -57,10 +59,10 @@ describe("Given the getuserThunk function", () => {
 
   describe("When getUserThunk is called badly", () => {
     test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      axios.get = jest.fn().mockRejectedValue(false);
+      vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.get = vi.fn().mockRejectedValue(false);
 
       const thunk = getUserThunk(mockUser.id);
       await thunk(dispatch);
@@ -71,10 +73,10 @@ describe("Given the getuserThunk function", () => {
 
   describe("When invoked with a valid user and axios throws an error", () => {
     test("Then it should not call the dispatch", async () => {
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
-      axios.post = jest.fn().mockRejectedValue({});
+      vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      axios.post = vi.fn().mockRejectedValue({});
 
       const thunk = loginThunk({
         username: mockUser.username,
@@ -88,23 +90,26 @@ describe("Given the getuserThunk function", () => {
 
   describe("When invoked with a valid user and axios", () => {
     test("Then it should call the dispatch", async () => {
-      const dispatch = jest.fn();
-      jest.mock("../../features/uiSlice/uiSlice", () => ({
-        loginActionCreator: jest.fn().mockReturnThis(),
-        finishedLoadingActionCreator: jest.fn().mockReturnValue(true),
+      const dispatch = vi.fn();
+      vi.mock("../../features/uiSlice/uiSlice", () => ({
+        loginActionCreator: vi.fn().mockReturnThis(),
+        finishedLoadingActionCreator: vi.fn().mockReturnValue(true),
+        modalTypeActionCreator: vi.fn().mockReturnValue(true),
+        modalMessageActionCreator: vi.fn().mockReturnValue(true),
+        isModalOpenActionCreator: vi.fn().mockReturnValue(true),
       }));
 
-      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
-      axios.post = jest.fn().mockReturnValue({ data: "", status: 200 });
+      vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      axios.post = vi.fn().mockReturnValue({ data: "", status: 200 });
 
       const thunk = loginThunk({
         username: mockUser.username,
         password: mockUser.password,
       });
       await thunk(dispatch);
-      const finishedLoadingActionCreator = jest.fn().mockReturnValue(true);
+      const finishedLoadingActionCreator = vi.fn().mockReturnValue(true);
       finishedLoadingActionCreator();
-      const loginActionCreator = jest.fn().mockReturnValue(true);
+      const loginActionCreator = vi.fn().mockReturnValue(true);
       loginActionCreator();
 
       expect(loginActionCreator).toHaveBeenCalled();
@@ -114,10 +119,10 @@ describe("Given the getuserThunk function", () => {
 
   describe("When invoked with a invalid user and axios throws an error", () => {
     test("Then it should not call the dispatch", async () => {
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
-      axios.post = jest.fn().mockReturnValue({ status: 200 });
+      vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      axios.post = vi.fn().mockReturnValue({ status: 200 });
 
       const thunk = loginThunk({
         username: mockUser.username,
@@ -131,11 +136,11 @@ describe("Given the getuserThunk function", () => {
 
   describe("When invoked editUser", () => {
     test("Then it should not call the dispatch", async () => {
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      axios.put = jest.fn().mockReturnValue({});
+      vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.put = vi.fn().mockReturnValue({});
 
       const thunk = editUserThunk({
         username: mockUser.username,
@@ -149,12 +154,12 @@ describe("Given the getuserThunk function", () => {
 
   describe("When registerThunk invoked editUser", () => {
     test("Then it should not call the dispatch", async () => {
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
 
-      axios.post = jest.fn().mockResolvedValue({ data: { user: mockUser } });
+      axios.post = vi.fn().mockResolvedValue({ data: { user: mockUser } });
 
       const mockData = {
         username: mockUser.username,
@@ -169,11 +174,11 @@ describe("Given the getuserThunk function", () => {
 
   describe("When registerThunk invoked editUser badly", () => {
     test("Then it should not call the dispatch", async () => {
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      axios.post = jest.fn().mockRejectedValue(false);
+      vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.post = vi.fn().mockRejectedValue(false);
 
       const mockData = {
         userData: {
@@ -190,12 +195,12 @@ describe("Given the getuserThunk function", () => {
 
   describe("When getUserMessagesThunk is called with no connection", () => {
     test("Then it should call not call dispatch", async () => {
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      jest.spyOn(Storage.prototype, "setItem").mockReturnValue();
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
+      vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
 
-      axios.get = jest.fn().mockResolvedValue({ data: { user: mockUser } });
+      axios.get = vi.fn().mockResolvedValue({ data: { user: mockUser } });
 
       const thunk = getUserMessagesThunk(mockUser.id);
       await thunk(dispatch);

@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import {
   correctAction,
   infoAction,
@@ -9,7 +10,7 @@ import {
 } from "./Modals";
 import { toast } from "react-toastify";
 
-jest.mock("react-toastify");
+vi.mock("react-toastify");
 
 describe("Given a correct Modal component", () => {
   describe("When the word 'penguin' is written", () => {

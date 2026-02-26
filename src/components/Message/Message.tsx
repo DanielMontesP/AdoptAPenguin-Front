@@ -52,12 +52,12 @@ const Message = ({ message }: Props): ReactElement => {
       <button
         className={"message-read-img"}
         onClick={handleClick}
-        // placeholder="bt-view"
+        title="bt-view"
       />
       <button
         className={"message-delete"}
         onClick={handleDelete}
-        // placeholder="bt-delete"
+        title="bt-delete"
       />
     </div>
   );

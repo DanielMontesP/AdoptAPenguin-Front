@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
@@ -6,27 +7,27 @@ import store from "../../app/redux/store/store";
 import { mockEmptyDataPenguin, mockPenguin } from "../../mocks/penguins";
 import ActionButtons from "./ActionButtons";
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     connected: true,
     headerTitle: "Favorites",
     penguin: mockPenguin,
   }),
-  useAppDispatch: () => jest.fn(),
+  useAppDispatch: () => vi.fn(),
 }));
 
 describe("Given a btn-delete action", () => {
   describe("When clicked action is called", () => {
     test("Then deleteFromLikers have to been called", () => {
       const labelToFind = "btn-likes";
-      const handleLikes = jest.fn().mockReturnValue(true);
+      const handleLikes = vi.fn().mockReturnValue(true);
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <ActionButtons penguin={mockEmptyDataPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByTitle(labelToFind);
@@ -43,14 +44,14 @@ describe("Given a ActionButtons component", () => {
   describe("When btn-likes is clicked", () => {
     test("Then handleLikes have to been called", () => {
       const labelToFind = "btn-likes";
-      const handleLikes = jest.fn().mockReturnValue(true);
+      const handleLikes = vi.fn().mockReturnValue(true);
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <ActionButtons penguin={mockPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByTitle(labelToFind);
@@ -73,11 +74,11 @@ describe("Given btn-favs button", () => {
           <BrowserRouter>
             <ActionButtons penguin={mockPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
-      const handleFavs = jest.fn().mockReturnValue(true);
-      const label = screen.getByPlaceholderText(labelToFind);
+      const handleFavs = vi.fn().mockReturnValue(true);
+      const label = screen.getByTitle(labelToFind);
 
       userEvent.click(label);
       handleFavs();
@@ -95,11 +96,11 @@ describe("Given btn-favs button", () => {
           <BrowserRouter>
             <ActionButtons penguin={mockEmptyDataPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
-      const handleFavs = jest.fn().mockReturnValue(true);
-      const label = screen.getByPlaceholderText(labelToFind);
+      const handleFavs = vi.fn().mockReturnValue(true);
+      const label = screen.getByTitle(labelToFind);
 
       userEvent.click(label);
       handleFavs();
@@ -117,10 +118,10 @@ describe("Given btn-favs button", () => {
           <BrowserRouter>
             <ActionButtons penguin={mockPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
-      const handleEdit = jest.fn().mockReturnValue(true);
+      const handleEdit = vi.fn().mockReturnValue(true);
       const label = screen.getByTitle(labelToFind);
 
       userEvent.click(label);
@@ -138,11 +139,11 @@ describe("Given btn-favs button", () => {
           <BrowserRouter>
             <ActionButtons penguin={mockPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
-      const handleLikes = jest.fn().mockReturnValue(true);
-      const deleteFromLikers = jest.fn().mockReturnValue(true);
+      const handleLikes = vi.fn().mockReturnValue(true);
+      const deleteFromLikers = vi.fn().mockReturnValue(true);
 
       const label = screen.getByTitle(labelToFind);
 
@@ -158,14 +159,14 @@ describe("Given btn-favs button", () => {
   describe("When message action is called", () => {
     test("Then the value of the username input field should be 'user1'", () => {
       const labelToFind = "bt-message";
-      const handleMessage = jest.fn();
+      const handleMessage = vi.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <ActionButtons penguin={mockPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByTitle(labelToFind);

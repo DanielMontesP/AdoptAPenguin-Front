@@ -1,17 +1,18 @@
+import { vi } from "vitest";
 import { render } from "@testing-library/react";
 
 import CheckInSecurity from "./CheckInSecurity";
 
-const mockUseNavigate = jest.fn();
-const mockUAppDispatch = jest.fn();
+const mockUseNavigate = vi.fn();
+const mockUAppDispatch = vi.fn();
 
-jest.mock("react-router-dom", () => ({
+vi.mock("react-router-dom", () => ({
   useNavigate: () => mockUseNavigate,
 }));
 
 let mockLogged = true;
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({ logged: mockLogged, id: "id" }),
   useAppDispatch: () => mockUAppDispatch,
 }));
@@ -34,9 +35,9 @@ describe("Given an CheckOutSecurity and not logged function", () => {
   describe("When it's invoked", () => {
     test("Then it should navigate to the home when the user is not logged", () => {
       mockLogged = false;
-      const navigate = jest.fn();
+      const navigate = vi.fn();
 
-      jest.mock("../../app/redux/hooks/hooks", () => ({
+      vi.mock("../../app/redux/hooks/hooks", () => ({
         useAppSelector: () => ({ logged: mockLogged, id: "id" }),
         useAppDispatch: () => mockUAppDispatch,
       }));

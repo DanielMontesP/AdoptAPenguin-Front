@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
@@ -13,7 +14,7 @@ import PenguinDetail from "./PenguinDetail";
 
 let mockLogged = true;
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     logged: mockLogged,
     id: "id",
@@ -22,7 +23,7 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
     allMessages: mockMessages,
     penguin: mockPenguin,
   }),
-  useAppDispatch: () => jest.fn(),
+  useAppDispatch: () => vi.fn(),
 }));
 
 describe("When bt-prev is clicked", () => {
@@ -31,7 +32,7 @@ describe("When bt-prev is clicked", () => {
       const ToFind = "button";
       const expectedButtons = 8;
 
-      const getDetailPrev = jest.fn();
+      const getDetailPrev = vi.fn();
 
       render(
         <Provider store={store}>
@@ -55,7 +56,7 @@ describe("When bt-prev is clicked", () => {
 
   describe("When bt-next is clicked", () => {
     test("getDetailNext is called", () => {
-      const getDetailNext = jest.fn();
+      const getDetailNext = vi.fn();
 
       render(
         <Provider store={store}>
@@ -76,7 +77,7 @@ describe("When bt-prev is clicked", () => {
 
   describe("When bt-next is clicked and array is empty", () => {
     test("getDetailNext is called", () => {
-      const getDetailNext = jest.fn();
+      const getDetailNext = vi.fn();
 
       render(
         <Provider store={store}>
@@ -99,9 +100,9 @@ describe("When bt-prev is clicked", () => {
   });
   describe("When handleTab is clicked and array is empty", () => {
     test("handleTab is called", () => {
-      const handleTab = jest.fn();
+      const handleTab = vi.fn();
 
-      const mockResponse = jest.fn();
+      const mockResponse = vi.fn();
       Object.defineProperty(window, "location", {
         value: {
           hash: {

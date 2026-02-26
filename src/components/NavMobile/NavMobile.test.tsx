@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -87,7 +88,7 @@ describe("Given a handleBack button NavDesktop component", () => {
       const stringToFind = "Likes";
       const labelBack = "btn-back";
 
-      const handleBack = jest.fn();
+      const handleBack = vi.fn();
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -112,7 +113,7 @@ describe("Given a handleBack button NavDesktop component", () => {
       const stringToFind = "Detail";
       const labelAddFav = "btn-back";
 
-      const handleBack = jest.fn();
+      const handleBack = vi.fn();
 
       render(
         <Provider store={store}>
@@ -137,14 +138,14 @@ describe("Given a handleBack button NavDesktop component", () => {
       const stringToFind = "Edit...";
       const labelAddFav = "btn-back";
 
-      const handleBack = jest.fn();
-      const handleScroll = jest.fn();
+      const handleBack = vi.fn();
+      const handleScroll = vi.fn();
 
-      jest.mock("../../app/redux/hooks/hooks", () => ({
+      vi.mock("../../app/redux/hooks/hooks", () => ({
         useAppSelector: () => ({
           headerLastTitle: "Favorites",
         }),
-        useAppDispatch: () => jest.fn(),
+        useAppDispatch: () => vi.fn(),
       }));
 
       render(

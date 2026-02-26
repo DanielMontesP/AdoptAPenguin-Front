@@ -187,7 +187,6 @@ export const Modal = ({
             onClick={handleAcceptClick}
             className="modal-btn-accept"
             title="btn-accept"
-            // placeholder="btn-accept"
           >
             Ok
           </button>

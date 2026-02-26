@@ -38,7 +38,7 @@ const LoginForm = () => {
         id="username"
         value={formData.username}
         onChange={changeData}
-        placeholder="Username"
+        title="Username"
         autoComplete="off"
         alt="Username"
         className="form-input"
@@ -52,7 +52,7 @@ const LoginForm = () => {
         type="password"
         value={formData.password}
         onChange={changeData}
-        placeholder="Password"
+        title="Password"
         autoComplete="off"
         alt="Password"
         className="form-input"

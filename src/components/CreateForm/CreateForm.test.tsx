@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
@@ -13,7 +14,7 @@ import CreateForm from "./CreateForm";
 
 let mockLogged = true;
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     user: {
       logged: mockLogged,
@@ -23,10 +24,10 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
     headerTitle: "Favorites",
     penguins: { allPenguins: mockPenguins, penguin: mockPenguin },
   }),
-  useAppDispatch: () => jest.fn(),
+  useAppDispatch: () => vi.fn(),
 }));
 
-const processEdit = jest.fn();
+const processEdit = vi.fn();
 
 describe("Given a CreateForm component", () => {
   describe("When the word 'user1' is written to the username input field", () => {
@@ -35,7 +36,7 @@ describe("Given a CreateForm component", () => {
       const labelSubmit = "bt-save";
       const PlaceHolderInputImage = "image-input";
 
-      const handleSubmit = jest.fn();
+      const handleSubmit = vi.fn();
 
       render(
         <Provider store={store}>
@@ -44,9 +45,9 @@ describe("Given a CreateForm component", () => {
           </BrowserRouter>
         </Provider>,
       );
-      const inputName = screen.getByPlaceholderText(labelName);
-      const buttonSubmit = screen.getByPlaceholderText(labelSubmit);
-      const inputImage = screen.getByPlaceholderText(PlaceHolderInputImage);
+      const inputName = screen.getByTitle(labelName);
+      const buttonSubmit = screen.getByTitle(labelSubmit);
+      const inputImage = screen.getByTitle(PlaceHolderInputImage);
 
       userEvent.click(inputImage);
 

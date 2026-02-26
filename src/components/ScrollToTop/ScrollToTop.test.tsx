@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 import { Provider } from "react-redux";
@@ -13,7 +14,7 @@ describe("Given a ScrollToTop Component", () => {
     test("Then it should render messages-container div'", () => {
       const expectedResult = "scroll-top-container";
 
-      jest.mock("../../app/redux/hooks/hooks", () => ({
+      vi.mock("../../app/redux/hooks/hooks", () => ({
         useAppSelector: () => ({
           logged: mockloggedUser,
           headerTitle: "Favorites",
@@ -23,11 +24,11 @@ describe("Given a ScrollToTop Component", () => {
           id: "idUser1",
         }),
 
-        useAppDispatch: () => jest.fn(),
+        useAppDispatch: () => vi.fn(),
       }));
 
-      jest.mock("react", () => ({
-        ...jest.requireActual("react"),
+      vi.mock("react", () => ({
+        ...vi.importActual("react"),
         useState: () => ({ showTopBtn: 500 }),
       }));
 

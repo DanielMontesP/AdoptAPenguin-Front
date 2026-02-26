@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -10,7 +11,7 @@ describe("Given a Message componen", () => {
   describe("When click submit with data", () => {
     test("Then handleClick have to been called and show error prompt", () => {
       const buttonClick = "bt-view";
-      const handleClick = jest.fn();
+      const handleClick = vi.fn();
 
       render(
         <Provider store={store}>
@@ -20,7 +21,7 @@ describe("Given a Message componen", () => {
         </Provider>,
       );
 
-      const button = screen.getByPlaceholderText(buttonClick);
+      const button = screen.getByTitle(buttonClick);
 
       expect(button).toBeDefined();
 
@@ -33,7 +34,7 @@ describe("Given a Message componen", () => {
   describe("When click submit with no data", () => {
     test("Then handleClick have to been called", () => {
       const buttonClick = "bt-view";
-      const handleClick = jest.fn();
+      const handleClick = vi.fn();
 
       render(
         <Provider store={store}>
@@ -43,7 +44,7 @@ describe("Given a Message componen", () => {
         </Provider>,
       );
 
-      const button = screen.getByPlaceholderText(buttonClick);
+      const button = screen.getByTitle(buttonClick);
 
       expect(button).toBeDefined();
 
@@ -59,7 +60,7 @@ describe("Given a Message component with data", () => {
     test("Then handleDelete have to been called", () => {
       const stringToFind1 = "subject";
       const buttonClick = "bt-delete";
-      const handleDelete = jest.fn();
+      const handleDelete = vi.fn();
 
       render(
         <Provider store={store}>
@@ -70,7 +71,7 @@ describe("Given a Message component with data", () => {
       );
 
       const label1 = screen.getByText(stringToFind1);
-      const button = screen.getByPlaceholderText(buttonClick);
+      const button = screen.getByTitle(buttonClick);
 
       expect(label1).toBeDefined();
       expect(button).toBeDefined();

@@ -21,8 +21,8 @@ describe("Given a CreatePage component", () => {
       const label1 = screen.getByText(stringToFind1);
       const label2 = screen.getByText(stringToFind2);
 
-      expect(label1).toContain(stringToFind1);
-      expect(label2).toContain(stringToFind2);
+      expect(label1).toBeInTheDocument();
+      expect(label2).toBeInTheDocument();
     });
   });
 });

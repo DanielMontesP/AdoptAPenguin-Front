@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import {
   handleLogout,
@@ -12,8 +13,8 @@ import {
 describe("Given a loadFavs function", () => {
   describe("When called", () => {
     test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const setMenu = jest.fn();
+      const dispatch = vi.fn();
+      const setMenu = vi.fn();
 
       loadFavs(dispatch, "Test", setMenu);
 
@@ -25,8 +26,8 @@ describe("Given a loadFavs function", () => {
 describe("Given a loadHome function", () => {
   describe("When called", () => {
     test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const navigate = jest.fn();
+      const dispatch = vi.fn();
+      const navigate = vi.fn();
 
       loadHome(dispatch, "Test", navigate);
 
@@ -38,8 +39,8 @@ describe("Given a loadHome function", () => {
 describe("Given a handleLogout function", () => {
   describe("When called", () => {
     test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const navigate = jest.fn();
+      const dispatch = vi.fn();
+      const navigate = vi.fn();
 
       handleLogout(dispatch, navigate);
 
@@ -51,8 +52,8 @@ describe("Given a handleLogout function", () => {
 describe("Given a loadLikes function", () => {
   describe("When called", () => {
     test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const navigate = jest.fn();
+      const dispatch = vi.fn();
+      const navigate = vi.fn();
 
       loadLikes(dispatch, "Test", navigate);
 
@@ -64,8 +65,8 @@ describe("Given a loadLikes function", () => {
 describe("Given a handleSearchEnter function", () => {
   describe("When called", () => {
     test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const event: any = jest.fn();
+      const dispatch = vi.fn();
+      const event: any = vi.fn();
 
       dispatch(handleSearchEnter(event, "", dispatch, "Test"));
 
@@ -78,7 +79,7 @@ describe("Given a handleSearchEnter function", () => {
 describe("Given a handleNoConexion function", () => {
   describe("When called", () => {
     test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
       userEvent.keyboard("[Enter]");
 
@@ -92,8 +93,8 @@ describe("Given a handleNoConexion function", () => {
 describe("Given a handleSearchSubmit function", () => {
   describe("When called", () => {
     test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const event: any = jest.fn();
+      const dispatch = vi.fn();
+      const event: any = vi.fn();
 
       dispatch(handleSearchEnter(event, "", dispatch, "Test"));
 
@@ -105,10 +106,8 @@ describe("Given a handleSearchSubmit function", () => {
 
   describe("When handleSearchSubmit with stringToSearch called", () => {
     test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const event: any = jest
-        .fn()
-        .mockResolvedValue({ event: { key: "Enter" } });
+      const dispatch = vi.fn();
+      const event: any = vi.fn().mockResolvedValue({ event: { key: "Enter" } });
 
       dispatch(handleSearchEnter(event, "", dispatch, "Test"));
 

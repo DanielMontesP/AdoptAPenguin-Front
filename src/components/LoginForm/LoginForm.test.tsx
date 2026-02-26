@@ -19,7 +19,7 @@ describe("Given a LoginForm component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.type(label, inputText);
 
       expect(label).toBeDefined();
@@ -39,16 +39,16 @@ describe("Given a LoginForm component", () => {
         </Provider>,
       );
 
-      const username = screen.getByPlaceholderText(usernameLabel);
-      const password = screen.getByPlaceholderText(passwordLabel);
+      const username = screen.getByTitle(usernameLabel);
+      const password = screen.getByTitle(passwordLabel);
       const submitButton = screen.getByRole("button");
 
       userEvent.type(username, inputText);
       userEvent.type(password, inputText);
       userEvent.click(submitButton);
 
-      expect(username).toStrictEqual("");
-      expect(password).toStrictEqual("");
+      expect(username).toHaveValue("");
+      expect(password).toHaveValue("");
     });
   });
 });

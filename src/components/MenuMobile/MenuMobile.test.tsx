@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -9,8 +10,8 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-logout clicked", () => {
     test("Then handleLogoutCall is called", () => {
       const labelButtonLogout = "btn-logout";
-      const handleLogoutCall = jest.fn();
-      const handleLogoutPrompt = jest.fn();
+      const handleLogoutCall = vi.fn();
+      const handleLogoutPrompt = vi.fn();
 
       render(
         <Provider store={store}>
@@ -36,7 +37,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-about clicked", () => {
     test("Then handleAbout is called", () => {
       const labelButton = "bt-about";
-      const handleAbout = jest.fn();
+      const handleAbout = vi.fn();
 
       render(
         <Provider store={store}>
@@ -58,7 +59,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-help clicked", () => {
     test("Then handleAbout is called", () => {
       const labelButton = "bt-help";
-      const handleHelp = jest.fn();
+      const handleHelp = vi.fn();
 
       render(
         <Provider store={store}>
@@ -80,7 +81,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-settings clicked", () => {
     test("Then handleSettings is called", () => {
       const labelButton = "bt-settings";
-      const handleSettings = jest.fn();
+      const handleSettings = vi.fn();
 
       render(
         <Provider store={store}>
@@ -102,7 +103,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-inbox clicked", () => {
     test("Then handleInbox is called", () => {
       const labelButton = "bt-view-messages";
-      const handleInbox = jest.fn();
+      const handleInbox = vi.fn();
 
       render(
         <Provider store={store}>
@@ -124,7 +125,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-favs clicked", () => {
     test("Then handleFavs is called", () => {
       const labelButton = "bt-favs";
-      const handleFavs = jest.fn();
+      const handleFavs = vi.fn();
 
       render(
         <Provider store={store}>
@@ -146,7 +147,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-likes clicked", () => {
     test("Then hanhandleLikesdleFavs is called", () => {
       const labelButton = "bt-likes";
-      const handleLikes = jest.fn();
+      const handleLikes = vi.fn();
 
       render(
         <Provider store={store}>
@@ -168,7 +169,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-home clicked", () => {
     test("Then handleHome is called", () => {
       const labelButton = "bt-home";
-      const handleHome = jest.fn();
+      const handleHome = vi.fn();
 
       render(
         <Provider store={store}>
@@ -190,7 +191,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-fav clicked", () => {
     test("Then addFav is called", () => {
       const labelButton = "bt-fav";
-      const addFav = jest.fn();
+      const addFav = vi.fn();
 
       render(
         <Provider store={store}>
@@ -212,7 +213,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-search clicked", () => {
     test("Then handleSearchEnter is called", () => {
       const labelButton = "Home";
-      const handleSearchEnter = jest.fn();
+      const handleSearchEnter = vi.fn();
 
       render(
         <Provider store={store}>
@@ -233,7 +234,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-search-submit clicked", () => {
     test("Then handleSearch is called", () => {
       const labelButton = "bt-search-submit";
-      const handleSearch = jest.fn();
+      const handleSearch = vi.fn();
 
       render(
         <Provider store={store}>

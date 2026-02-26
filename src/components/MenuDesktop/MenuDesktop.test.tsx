@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -9,8 +10,8 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-logout clicked", () => {
     test("Then handleLogoutCall is called", () => {
       const labelButtonLogout = "btn-logout";
-      const handleLogoutCall = jest.fn();
-      const handleLogoutPrompt = jest.fn();
+      const handleLogoutCall = vi.fn();
+      const handleLogoutPrompt = vi.fn();
 
       render(
         <Provider store={store}>
@@ -36,7 +37,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-about clicked", () => {
     test("Then handleAbout is called", () => {
       const labelButton = "bt-about";
-      const handleAbout = jest.fn();
+      const handleAbout = vi.fn();
 
       render(
         <Provider store={store}>
@@ -58,7 +59,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-help clicked", () => {
     test("Then handleAbout is called", () => {
       const labelButton = "bt-help";
-      const handleHelp = jest.fn();
+      const handleHelp = vi.fn();
 
       render(
         <Provider store={store}>
@@ -80,7 +81,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-settings clicked", () => {
     test("Then handleSettings is called", () => {
       const labelButton = "bt-settings";
-      const handleSettings = jest.fn();
+      const handleSettings = vi.fn();
 
       render(
         <Provider store={store}>
@@ -102,7 +103,7 @@ describe("Given a MenuDesktop component", () => {
   describe("When bt-inbox clicked", () => {
     test("Then handleInbox is called", () => {
       const labelButton = "bt-view-messages";
-      const handleInbox = jest.fn();
+      const handleInbox = vi.fn();
 
       render(
         <Provider store={store}>

@@ -17,7 +17,7 @@ describe("Given a NavWellcome component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(stringToFind);
+      const label = screen.getByTitle(stringToFind);
 
       expect(label).toBeDefined();
     });

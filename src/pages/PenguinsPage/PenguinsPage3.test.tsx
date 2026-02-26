@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import store from "../../app/redux/store/store";
 import { Provider } from "react-redux";
@@ -5,20 +6,20 @@ import PenguinsPage from "./PenguinsPage";
 import { mockPenguins } from "../../mocks/penguins";
 import { BrowserRouter } from "react-router-dom";
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     allPenguins: mockPenguins,
     headerTitle: "Favorites",
     modalType: "",
   }),
-  useAppDispatch: () => jest.fn(),
+  useAppDispatch: () => vi.fn(),
 }));
 
 describe("Given Favorites it's rendered", () => {
   describe("When Favorites it's rendered", () => {
     test("Then it should show the role 'penguins-page'", () => {
       const expectedResult = "penguins-container";
-      const loadFavsThunk = jest.fn();
+      const loadFavsThunk = vi.fn();
 
       render(
         <Provider store={store}>

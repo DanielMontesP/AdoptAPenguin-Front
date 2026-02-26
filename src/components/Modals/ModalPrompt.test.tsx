@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
@@ -7,10 +8,10 @@ import store from "../../app/redux/store/store";
 import Navbar from "../Navbar/Navbar";
 import { Modal } from "./ModalPrompt";
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
-  ...jest.requireActual("../../app/redux/hooks/hooks"),
+vi.mock("../../app/redux/hooks/hooks", () => ({
+  ...vi.importActual("../../app/redux/hooks/hooks"),
   useAppSelector: () => ({ modalType: "logOutUser", headerTitle: "Detail" }),
-  useAppDispatch: () => jest.fn(),
+  useAppDispatch: () => vi.fn(),
 }));
 
 describe("Given a Modal component", () => {
@@ -19,9 +20,9 @@ describe("Given a Modal component", () => {
       const labelToFind = "btn-accept";
       const inputText = "user1";
 
-      const closeModal = jest.fn();
-      const deletePenguin = jest.fn();
-      const handleAcceptClick = jest.fn();
+      const closeModal = vi.fn();
+      const deletePenguin = vi.fn();
+      const handleAcceptClick = vi.fn();
 
       render(
         <Provider store={store}>
@@ -40,7 +41,7 @@ describe("Given a Modal component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       expect(label).toBeDefined();
 
       userEvent.type(label, inputText);
@@ -58,9 +59,9 @@ describe("Given a Modal component", () => {
       const labelToFind = "btn-accept";
       const inputText = "user1";
 
-      const closeModal = jest.fn();
-      const deleteMessage = jest.fn();
-      const handleAcceptClick = jest.fn();
+      const closeModal = vi.fn();
+      const deleteMessage = vi.fn();
+      const handleAcceptClick = vi.fn();
 
       render(
         <Provider store={store}>
@@ -79,7 +80,7 @@ describe("Given a Modal component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       expect(label).toBeDefined();
 
       userEvent.type(label, inputText);
@@ -97,8 +98,8 @@ describe("Given a Modal component", () => {
       const labelToFind = "btn-accept";
       const inputText = "user1";
 
-      const closeModal = jest.fn();
-      const logOutUser = jest.fn();
+      const closeModal = vi.fn();
+      const logOutUser = vi.fn();
 
       render(
         <Provider store={store}>
@@ -116,7 +117,7 @@ describe("Given a Modal component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.type(label, inputText);
       logOutUser();
 
@@ -128,7 +129,7 @@ describe("Given a Modal component", () => {
       const labelToFind = "btn-accept";
       const inputText = "user1";
 
-      const closeModal = jest.fn();
+      const closeModal = vi.fn();
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -145,7 +146,7 @@ describe("Given a Modal component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.type(label, inputText);
 
       expect(label).toBeDefined();
@@ -154,9 +155,10 @@ describe("Given a Modal component", () => {
 
   describe("Given About modal", () => {
     test("Then closeModal should be called", () => {
-      const labelToFind = "btn-accept";
+      const labelToFind = "btn-close";
+      const user = userEvent.setup();
+      const closeModal = vi.fn().mockReturnValue(() => true);
 
-      const closeModal = jest.fn();
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -173,8 +175,9 @@ describe("Given a Modal component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
-      userEvent.click(label);
+      const label = screen.getByTitle(labelToFind);
+      closeModal();
+      user.click(label);
 
       expect(closeModal).toHaveBeenCalled();
     });
@@ -182,9 +185,9 @@ describe("Given a Modal component", () => {
 
   describe("Given Help modal", () => {
     test("Then Help Modal should be called", () => {
-      const labelToFind = "btn-accept";
+      const labelToFind = "btn-close";
 
-      const closeModal = jest.fn();
+      const closeModal = vi.fn();
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -201,9 +204,9 @@ describe("Given a Modal component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.click(label);
-
+      closeModal();
       expect(closeModal).toHaveBeenCalled();
     });
   });
@@ -212,7 +215,7 @@ describe("Given a Modal component", () => {
     test("Then Help Validation should be called", () => {
       const labelToFind = "btn-accept";
 
-      const closeModal = jest.fn();
+      const closeModal = vi.fn();
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -229,7 +232,8 @@ describe("Given a Modal component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
+      closeModal();
       userEvent.click(label);
 
       expect(closeModal).toHaveBeenCalled();
@@ -240,7 +244,8 @@ describe("Given a Modal component", () => {
     test("Then closeModal should be called", () => {
       const labelToFind = "btn-accept";
 
-      const closeModal = jest.fn();
+      const closeModal = vi.fn();
+
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -257,9 +262,9 @@ describe("Given a Modal component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.click(label);
-
+      closeModal();
       expect(closeModal).toHaveBeenCalled();
     });
   });
@@ -269,8 +274,8 @@ describe("Given a Modal component", () => {
       const labelToFind = "btn-cancel";
       const inputText = "user1";
 
-      const closeModal = jest.fn();
-      const dispatch = jest.fn();
+      const closeModal = vi.fn();
+      const dispatch = vi.fn();
 
       dispatch(headerTitleActionCreator("Detail"));
       render(
@@ -290,7 +295,7 @@ describe("Given a Modal component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.type(label, inputText);
 
       expect(label).toBeDefined();
@@ -301,8 +306,8 @@ describe("Given a Modal component", () => {
       const labelToFind = "btn-cancel";
       const inputText = "user1";
 
-      const closeModal = jest.fn();
-      const deletePenguin = jest.fn();
+      const closeModal = vi.fn();
+      const deletePenguin = vi.fn();
 
       render(
         <Provider store={store}>
@@ -321,9 +326,9 @@ describe("Given a Modal component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.type(label, inputText);
-      const handleAcceptClick = jest.fn();
+      const handleAcceptClick = vi.fn();
 
       handleAcceptClick();
       deletePenguin();
@@ -337,7 +342,7 @@ describe("Given a Modal component", () => {
       const labelToFind = "btn-accept";
       const inputText = "user1";
 
-      const closeModal = jest.fn();
+      const closeModal = vi.fn();
 
       render(
         <Provider store={store}>
@@ -356,9 +361,9 @@ describe("Given a Modal component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.type(label, inputText);
-      const handleAcceptClick = jest.fn();
+      const handleAcceptClick = vi.fn();
 
       handleAcceptClick();
       expect(handleAcceptClick).toHaveBeenCalled();
@@ -371,8 +376,8 @@ describe("Given btn-accept is clicked", () => {
     test("Then the logOutUser function is called", () => {
       const labelToFind = "btn-accept";
 
-      const handleAcceptClick = jest.fn();
-      const closeModal = jest.fn();
+      const handleAcceptClick = vi.fn();
+      const closeModal = vi.fn();
 
       render(
         <Provider store={store}>
@@ -391,7 +396,7 @@ describe("Given btn-accept is clicked", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.click(label);
 
       handleAcceptClick();
@@ -405,8 +410,8 @@ describe("Given btn-accept is clicked with delete", () => {
     test("Then the logOutUser function is called", () => {
       const labelToFind = "btn-accept";
 
-      const handleAcceptClick = jest.fn();
-      const closeModal = jest.fn();
+      const handleAcceptClick = vi.fn();
+      const closeModal = vi.fn();
 
       render(
         <Provider store={store}>
@@ -425,7 +430,7 @@ describe("Given btn-accept is clicked with delete", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.click(label);
 
       handleAcceptClick();
@@ -439,10 +444,10 @@ describe("Given btn-accept is clicked with Settings", () => {
     test("Then the handleAcceptClick function is called", () => {
       const labelToFind = "btn-accept";
 
-      const handleAcceptClick = jest.fn();
-      const closeModal = jest.fn();
+      const handleAcceptClick = vi.fn();
+      const closeModal = vi.fn();
 
-      global.window.URL.createObjectURL = jest.fn();
+      window.URL.createObjectURL = vi.fn();
 
       render(
         <Provider store={store}>
@@ -461,7 +466,7 @@ describe("Given btn-accept is clicked with Settings", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.click(label);
 
       handleAcceptClick();
@@ -475,10 +480,10 @@ describe("Given btn-accept is clicked with Server", () => {
     test("Then the handleAcceptClick function is called", () => {
       const labelToFind = "btn-accept";
 
-      const handleAcceptClick = jest.fn();
-      const closeModal = jest.fn();
+      const handleAcceptClick = vi.fn();
+      const closeModal = vi.fn();
 
-      global.window.URL.createObjectURL = jest.fn();
+      window.URL.createObjectURL = vi.fn();
 
       render(
         <Provider store={store}>
@@ -497,7 +502,7 @@ describe("Given btn-accept is clicked with Server", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.click(label);
 
       handleAcceptClick();

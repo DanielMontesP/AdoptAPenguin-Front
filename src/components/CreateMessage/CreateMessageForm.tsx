@@ -32,8 +32,8 @@ const CreateMessageForm = ({ message }: Props): ReactElement => {
   const { penguin } = useAppSelector((state) => state.penguins);
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  const isCreate = headerTitle.includes("New");
-  const isReply = headerTitle.includes("Reply");
+  const isCreate = headerTitle?.includes("New");
+  const isReply = headerTitle?.includes("Reply");
 
   const thisFormData: any = isReply
     ? newReply(message.id, idUser, penguin.id, message.subject)
@@ -70,7 +70,7 @@ const CreateMessageForm = ({ message }: Props): ReactElement => {
     dispatch(
       editMessageThunk(formData, "Update fields: " + modFields.join(", ")),
     );
-    dispatch(getMessagesThunk(penguin.id));
+    dispatch(getMessagesThunk(penguin?.id));
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -78,20 +78,20 @@ const CreateMessageForm = ({ message }: Props): ReactElement => {
 
     if (isCreate) {
       processCreate("New");
-      dispatch(getMessagesThunk(penguin.id));
+      dispatch(getMessagesThunk(penguin?.id));
       setFormData(blankMessageData);
       dispatch(resetMessageThunk());
 
-      navigate(`/detail/${penguin.id}#messages`);
+      navigate(`/detail/${penguin?.id}#messages`);
     } else if (event.currentTarget.outerText?.includes("Reply")) {
       handleCreateReply();
     } else {
       processEdit();
-      dispatch(getMessagesThunk(penguin.id));
+      dispatch(getMessagesThunk(penguin?.id));
       setFormData(blankMessageData);
       dispatch(resetMessageThunk());
 
-      navigate(`/detail/${penguin.id}#messages`);
+      navigate(`/detail/${penguin?.id}#messages`);
     }
   };
 
@@ -104,17 +104,17 @@ const CreateMessageForm = ({ message }: Props): ReactElement => {
   };
 
   const subjectValue = () => {
-    if (formData.subject) {
-      return formData.subject;
+    if (formData?.subject) {
+      return formData?.subject;
     } else if (isCreate && isReply) {
-      return `RE: ${message.subject}`;
+      return `RE: ${message?.subject}`;
     } else {
-      return message.subject;
+      return message?.subject;
     }
   };
 
-  const classRead = message.read ? "message-read" : "message-unread";
-  const textRead = message.read ? "Mark as unread" : "Mark as read";
+  const classRead = message?.read ? "message-read" : "message-unread";
+  const textRead = message?.read ? "Mark as unread" : "Mark as read";
 
   const classInput =
     !isCreate && !isReply ? "form-input-disabled" : "form-input";
@@ -147,7 +147,7 @@ const CreateMessageForm = ({ message }: Props): ReactElement => {
         type="text"
         placeholder="Send To"
         className={`form-input-disabled`}
-        value={penguin.name}
+        value={penguin?.name}
         readOnly
       />
       <label htmlFor="subject" className="form-label">
@@ -170,8 +170,8 @@ const CreateMessageForm = ({ message }: Props): ReactElement => {
       <input
         id="content"
         type="text"
-        placeholder="Message"
-        value={formData.content || message.content}
+        title="Message"
+        value={formData?.content || message?.content}
         autoComplete="off"
         className={`${classInputDescription}`}
         onChange={handleInputChange}
@@ -183,7 +183,12 @@ const CreateMessageForm = ({ message }: Props): ReactElement => {
           Send
         </button>
       ) : (
-        <button type="submit" className="bt-message-save" id="bt-reply">
+        <button
+          type="submit"
+          className="bt-message-save"
+          title="bt-reply"
+          id="bt-reply"
+        >
           Reply
         </button>
       )}

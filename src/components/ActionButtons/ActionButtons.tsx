@@ -123,6 +123,7 @@ const ActionButtons = ({ penguin }: Props) => {
       <button
         onClick={handleFavs}
         className={`${classContainer}${selectIconFav}`}
+        title="btn-favs"
       />
     </div>
   );

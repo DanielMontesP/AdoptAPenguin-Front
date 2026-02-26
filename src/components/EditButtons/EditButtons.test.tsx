@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
@@ -19,7 +20,7 @@ describe("When handleEdit clicked and is already fav", () => {
         </Provider>
       );
 
-      const handleEdit = jest.fn().mockReturnValue(true);
+      const handleEdit = vi.fn().mockReturnValue(true);
       const label = screen.getByTitle(labelToFind);
 
       userEvent.click(label);
@@ -40,7 +41,7 @@ describe("When handleEdit clicked and is already fav", () => {
         </Provider>
       );
 
-      const handleDelete = jest.fn().mockReturnValue(true);
+      const handleDelete = vi.fn().mockReturnValue(true);
       const label = screen.getByTitle(labelToFind);
 
       userEvent.click(label);

@@ -21,7 +21,7 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
   const { user } = useAppSelector((state) => state);
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  const isCreate = headerTitle.includes("New");
+  const isCreate = headerTitle?.includes("New");
 
   const initialFormData = isCreate ? newPenguinFormData(user.id) : penguin;
 
@@ -67,7 +67,7 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
   };
 
   const [{ alt, src }, setImg] = useState({
-    src: formData.imageBackup || formData.image || penguin.imageBackup,
+    src: formData?.imageBackup || formData?.image || penguin?.imageBackup,
     alt: "Add photo",
   });
 
@@ -120,14 +120,14 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
     }
   };
 
-  const pathImage = src.toString() || penguin.imageBackup.toString();
+  const pathImage = src?.toString() || penguin?.imageBackup.toString();
 
   const penguinImage = pathImage;
 
-  const HidderBackground = formData.image !== "" ? " opacity-mid" : "";
+  const HidderBackground = formData?.image !== "" ? " opacity-mid" : "";
 
   const classImage =
-    penguin.imageBackup || src.toString()
+    penguin?.imageBackup || src?.toString()
       ? "form-img__img-preview-Hidden"
       : "form-img__img-preview";
 
@@ -146,7 +146,7 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
           id="photo"
           className="visually-hidden"
           onChange={handleImg}
-          placeholder="image-input"
+          title="image-input"
         />
         <label
           htmlFor="photo"
@@ -163,7 +163,8 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
           id="name"
           type="text"
           placeholder="Name"
-          value={formData.name || penguin.name}
+          title="Name"
+          value={formData?.name || penguin?.name}
           autoComplete="off"
           onChange={handleInputChange}
           className="form-input"
@@ -176,7 +177,7 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
           id="category"
           type="text"
           placeholder="Category"
-          value={formData.category || penguin.category}
+          value={formData?.category || penguin?.category}
           autoComplete="off"
           onChange={handleInputChange}
           className="form-input"
@@ -188,13 +189,18 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
         <textarea
           id="description"
           placeholder="Description"
-          value={formData.description || penguin.description}
+          value={formData?.description || penguin?.description}
           autoComplete="off"
           className="form-text-description"
           onChange={handleInputChange}
         />
 
-        <button type="submit" className="form-bt-save" value="Save">
+        <button
+          type="submit"
+          title="bt-save"
+          className="form-bt-save"
+          value="Save"
+        >
           Save
         </button>
       </div>

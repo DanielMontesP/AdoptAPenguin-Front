@@ -93,11 +93,7 @@ const RegisterForm = (): ReactElement => {
         </Link>
       </div>
       <div className="submitContainer">
-        <button
-          type="submit"
-          className="bt-register"
-          // placeholder="bt-submit"
-        >
+        <button type="submit" className="bt-register" title="bt-submit">
           Register
         </button>
         <div className="footer-home">2022 Penguins Inc.</div>

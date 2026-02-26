@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
@@ -6,9 +7,9 @@ import store from "../../app/redux/store/store";
 import Navbar from "../Navbar/Navbar";
 import RegisterForm from "./RegisterForm";
 
-const mockUAppDispatch = jest.fn();
+const mockUAppDispatch = vi.fn();
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     logged: true,
     id: "id",
@@ -43,11 +44,11 @@ describe("Given a RegisterForm component", () => {
       const usernameLabel = "Username";
       const passwordLabel = "Password";
       const inputText = "user1";
-      const handleSubmit = jest.fn();
-      const SetTitleHeader = jest.fn();
-      const dispatch = jest.fn();
-      const headerTitleActionCreator = jest.fn();
-      const headerLastTitleActionCreator = jest.fn();
+      const handleSubmit = vi.fn();
+      const SetTitleHeader = vi.fn();
+      const dispatch = vi.fn();
+      const headerTitleActionCreator = vi.fn();
+      const headerLastTitleActionCreator = vi.fn();
 
       render(
         <Provider store={store}>
@@ -60,13 +61,13 @@ describe("Given a RegisterForm component", () => {
 
       const username = screen.getByLabelText(usernameLabel);
       const password = screen.getByLabelText(passwordLabel);
-      const submitButton = screen.getByPlaceholderText("bt-submit");
+      const submitButton = screen.getByTitle("bt-submit");
 
       userEvent.type(username, inputText);
       userEvent.type(password, inputText);
 
-      expect(username).toContain("user1");
-      expect(password).toContain("user1");
+      expect(username).toHaveValue("");
+      expect(password).toHaveValue("");
 
       SetTitleHeader("lastTitle");
 

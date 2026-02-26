@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../../app/redux/store/store";
@@ -6,11 +7,11 @@ import "../../styles/PagesStyles.css";
 import { loadLikesThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
 import { mockPenguin, mockPenguins } from "../../mocks/penguins";
 
-jest.mock("react-router-dom", () => ({
-  useNavigate: () => jest.fn(),
+vi.mock("react-router-dom", () => ({
+  useNavigate: () => vi.fn(),
 }));
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     connected: true,
     headerTitle: "Favorites",
@@ -18,7 +19,7 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
     penguins: { allPenguins: mockPenguins, penguin: mockPenguin },
     allPenguins: mockPenguins,
   }),
-  useAppDispatch: () => jest.fn(),
+  useAppDispatch: () => vi.fn(),
 }));
 
 describe("Given page of penguins", () => {
@@ -26,7 +27,7 @@ describe("Given page of penguins", () => {
     test("Then it should show a div with title 'penguins-container'", () => {
       const expectedResult = "penguins-container";
 
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
       render(
         <Provider store={store}>

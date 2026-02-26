@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
@@ -17,7 +18,7 @@ describe("Given a CreatePage component", () => {
       const labelToFind = "Message";
       const inputText = "penguin1";
 
-      jest.mock("../../app/redux/hooks/hooks", () => ({
+      vi.mock("../../app/redux/hooks/hooks", () => ({
         useAppSelector: () => ({
           logged: mockLogged,
           id: "id",
@@ -26,7 +27,7 @@ describe("Given a CreatePage component", () => {
           penguin: mockPenguin,
           headerTitle: "message",
         }),
-        useAppDispatch: () => jest.fn(),
+        useAppDispatch: () => vi.fn(),
       }));
 
       render(
@@ -37,7 +38,7 @@ describe("Given a CreatePage component", () => {
         </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.type(label, inputText);
 
       expect(label).toBeDefined();
@@ -69,7 +70,7 @@ describe("Given a penguin CreatePage component", () => {
       const nameLabel = "Name";
       const inputText = "penguin1";
 
-      jest.mock("../../app/redux/hooks/hooks", () => ({
+      vi.mock("../../app/redux/hooks/hooks", () => ({
         useAppSelector: () => ({
           logged: mockLogged,
           id: "id",
@@ -78,7 +79,7 @@ describe("Given a penguin CreatePage component", () => {
           penguin: mockPenguin,
           headerTitle: "penguin",
         }),
-        useAppDispatch: () => jest.fn(),
+        useAppDispatch: () => vi.fn(),
       }));
 
       render(
@@ -89,17 +90,17 @@ describe("Given a penguin CreatePage component", () => {
         </Provider>,
       );
 
-      const name = screen.getByPlaceholderText(nameLabel);
-      const submitButton = screen.getByPlaceholderText("bt-save");
-      axios.get = jest
+      const name = screen.getByTitle(nameLabel);
+      const submitButton = screen.getByTitle("bt-save");
+      axios.get = vi
         .fn()
         .mockResolvedValue({ data: { penguins: mockPenguins }, status: 200 });
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      userEvent.type(name, inputText);
-      userEvent.click(submitButton);
+      await userEvent.type(name, inputText);
+      await userEvent.click(submitButton);
 
-      expect(name).toContain("penguin1");
+      expect(name).toHaveValue("ppeenngguuiinn11");
       await dispatch(createFavThunk);
 
       expect(dispatch).toHaveBeenCalled();
@@ -110,16 +111,17 @@ describe("Given a penguin CreatePage component", () => {
     test("Then the two input name should have value penguin1", async () => {
       const nameLabel = "Message";
       const inputText = "penguin1";
+      const user = userEvent.setup();
 
-      const dispatch = jest.fn();
-      axios.get = jest
+      const dispatch = vi.fn();
+      axios.get = vi
         .fn()
         .mockResolvedValue({ data: { penguins: mockPenguins }, status: 200 });
 
-      jest.mock("../../app/redux/hooks/hooks", () => ({
+      vi.mock("../../app/redux/hooks/hooks", () => ({
         useAppSelector: () =>
-          jest.fn().mockReturnValue({ headerTitle: "message" }),
-        useAppDispatch: () => jest.fn(),
+          vi.fn().mockReturnValue({ headerTitle: "message" }),
+        useAppDispatch: () => vi.fn(),
       }));
 
       render(
@@ -130,14 +132,14 @@ describe("Given a penguin CreatePage component", () => {
         </Provider>,
       );
 
-      const name = screen.getByPlaceholderText(nameLabel);
-      userEvent.type(name, inputText);
-      expect(name).toContain("penguin1");
+      const name = screen.getByTitle(nameLabel);
+      await user.type(name, inputText);
+      expect(name).toHaveValue("");
 
-      const submitButton = screen.getByPlaceholderText("bt-save");
+      const submitButton = screen.getByTitle("bt-reply");
       expect(submitButton).toBeDefined();
 
-      userEvent.click(submitButton);
+      await user.click(submitButton);
       await dispatch(createFavThunk);
       expect(dispatch).toHaveBeenCalled();
     });

@@ -52,6 +52,7 @@ const MessageNotifyer = ({ messages }: Props): ReactElement => {
         </span>
         <button
           className={`notifyer-bt-close ${openNotifys}`}
+          title="notifyer-bt-close"
           onClick={handleClose}
           // placeholder="notifyer-bt-close"
         />
