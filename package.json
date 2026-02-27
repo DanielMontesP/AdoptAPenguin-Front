@@ -7,6 +7,7 @@
     "@vitejs/plugin-react-swc": "^4.2.3",
     "axios": "^1.13.2",
     "eslint": "^10.0.2",
+    "eslint-plugin-jsdoc": "^62.7.1",
     "firebase": "^12.6.0",
     "jwt-decode": "^4.0.0",
     "react": "^19.2.1",
