@@ -13,10 +13,10 @@ jobs:
 
       - name: Install modules
         run: npm i
-        working-directory: "./../../"
+        working-directory: "./../../AdoptAPenguin 3.0"
         # working-directory: "/AdoptAPenguin 3.0"
 
       - name: ESLint validation
         run: npx eslint .
-        working-directory: "./../../"
+        working-directory: "./../../AdoptAPenguin 3.0"
         # working-directory: "/AdoptAPenguin 3.0"
