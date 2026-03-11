@@ -11,24 +11,10 @@ jobs:
       # - name: Git checkout
       #   uses: actions/checkout@v4
 
-      # - name: Check if .editorconfig exists
-      #   uses: andstor/file-existence-action@v3
-      #   with:
-      #     files: ".editorconfig"
-      #     allow_failure: true
-
-      # - name: EditorConfig validation
-      #   uses: snow-actions/eclint@v1.0.1
-      #   with:
-      #     args: "fix *.snap"
-
-      # - name: Ensure node_modules is ignored by Git
-      #   uses: dkershner6/gitignore-parser@v1
-      #   with:
-      #     must_deny: "node_modules"
-
       - name: Install modules
-        run: npm i
+        run: npm ci
+        working-directory: ./AdoptAPenguin 3.0
 
       - name: ESLint validation
         run: npx eslint .
+        working-directory: ./AdoptAPenguin 3.0
