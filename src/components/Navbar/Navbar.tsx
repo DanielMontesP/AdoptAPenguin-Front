@@ -54,12 +54,12 @@ const Navbar = ({
 
   const isOpen = isMenuOpen || isModalOpen || isSearchOpen;
 
-  const getModalType = () => {
+  const getModalType = (): void => {
     const newModalType = modalType;
     return newModalType;
   };
 
-  const handleSearchSubmitCall = () => {
+  const handleSearchSubmitCall = (): void => {
     dispatch(isSearchOpenActionCreator(false));
     dispatch(stringToSearchActionCreator(stringToSearch));
     handleSearchSubmit(dispatch, headerTitle, stringToSearch);
@@ -75,15 +75,15 @@ const Navbar = ({
     handleSearchEnter(event, stringToSearch, dispatch, headerTitle);
   };
 
-  const handleDimmer = () => {
+  const handleDimmer = (): void => {
     dispatch(isMenuOpenActionCreator(false));
     dispatch(isModalOpenActionCreator(false));
     dispatch(isSearchOpenActionCreator(false));
     setSearch(false);
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
+  useEffect((): void => {
+    window.addEventListener("scroll", (): void => {
       if (window.scrollY > 400) {
         setShowTopBtn(true);
       } else {

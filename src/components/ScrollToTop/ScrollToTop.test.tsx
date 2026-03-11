@@ -9,9 +9,9 @@ import ScrollToTop from "./ScrollToTop";
 import { mockPenguins } from "../../mocks/penguins";
 import userEvent from "@testing-library/user-event";
 
-describe("Given a ScrollToTop Component", () => {
-  describe("When it's rendered", () => {
-    test("Then it should render messages-container div'", () => {
+describe("Given a ScrollToTop Component", (): void => {
+  describe("When it's rendered", (): void => {
+    test("Then it should render messages-container div'", (): void => {
       const expectedResult = "scroll-top-container";
 
       vi.mock("../../app/redux/hooks/hooks", () => ({

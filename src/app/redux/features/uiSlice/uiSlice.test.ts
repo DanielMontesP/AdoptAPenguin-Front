@@ -53,9 +53,9 @@ const process = {
   loadedProcess: { process: "Loading LoadHome", loading: true },
 };
 
-describe("Given the loadingActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the loading ui state should change to true", () => {
+describe("Given the loadingActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then the loading ui state should change to true", (): void => {
       const action = loadingActionCreator(process);
       const loadedState = uiReducer(expectedLoadingState, action);
 
@@ -64,9 +64,9 @@ describe("Given the loadingActionCreator", () => {
   });
 });
 
-describe("Given the finiushedLoadingActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the loading ui state should change to false", () => {
+describe("Given the finiushedLoadingActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then the loading ui state should change to false", (): void => {
       const action = finishedLoadingActionCreator("loadingActionCreator");
       const loadedState = uiReducer(expectedState, action);
 
@@ -75,9 +75,9 @@ describe("Given the finiushedLoadingActionCreator", () => {
   });
 });
 
-describe("Given the modalMessage", () => {
-  describe("When invoked", () => {
-    test("Then the feedback ui state should change to true", () => {
+describe("Given the modalMessage", (): void => {
+  describe("When invoked", (): void => {
+    test("Then the feedback ui state should change to true", (): void => {
       const action = modalMessageActionCreator("");
       const loadedState = uiReducer(initialState, action);
 
@@ -85,9 +85,9 @@ describe("Given the modalMessage", () => {
     });
   });
 
-  describe("Given the isDesktopActionCreator", () => {
-    describe("When invoked", () => {
-      test("Then the feedback ui state should change to true", () => {
+  describe("Given the isDesktopActionCreator", (): void => {
+    describe("When invoked", (): void => {
+      test("Then the feedback ui state should change to true", (): void => {
         const action = isDesktopActionCreator(false);
         const loadedState = uiReducer(initialState, action);
 
@@ -96,9 +96,9 @@ describe("Given the modalMessage", () => {
     });
   });
 });
-describe("Given the stringToSearchActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the feedback ui state should change", () => {
+describe("Given the stringToSearchActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then the feedback ui state should change", (): void => {
       const action = stringToSearchActionCreator("search");
       const loadedState = uiReducer(expectedState, action);
 
@@ -107,9 +107,9 @@ describe("Given the stringToSearchActionCreator", () => {
   });
 });
 
-describe("Given the isSearchOpenActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the feedback ui state should change", () => {
+describe("Given the isSearchOpenActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then the feedback ui state should change", (): void => {
       const action = isSearchOpenActionCreator(false);
       const loadedState = uiReducer(expectedState, action);
 

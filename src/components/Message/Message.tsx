@@ -17,7 +17,7 @@ const Message = ({ message }: Props): ReactElement => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     const idMessage = message.id;
     if (idMessage === "" || idMessage === undefined) {
       const message = "Message id not found.";
@@ -34,7 +34,7 @@ const Message = ({ message }: Props): ReactElement => {
     }
   };
 
-  const handleDelete = () => {
+  const handleDelete = (): void => {
     const message = "Delete message permanently from database? ";
     const newModalType = "delete";
 

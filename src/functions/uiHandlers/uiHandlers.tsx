@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { KeyboardEvent } from "react";
 import {
   headerLastTitleActionCreator,
@@ -27,7 +28,7 @@ export const loadHome = (
   dispatch: any,
   headerTitle: string,
   navigate: any,
-): any => {
+): void => {
   dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator(""));
@@ -37,7 +38,7 @@ export const loadHome = (
   navigate("/penguins");
 };
 
-export const handleLogoutPrompt = (dispatch: any, navigate: any): void => {
+export const handleLogoutPrompt = (dispatch: any): void => {
   const message = "Log out?";
   const newModalType = "logOutUser";
 
@@ -72,7 +73,7 @@ export const loadFavs = (
   dispatch: any,
   headerTitle: string,
   navigate: any,
-): any => {
+): void => {
   dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator(""));
@@ -100,7 +101,7 @@ export const handleSearchSubmit = (
   dispatch: any,
   headerTitle: string,
   stringToSearch: string,
-) => {
+): void => {
   dispatch(isMenuOpenActionCreator(false));
 
   if (stringToSearch !== "") {
@@ -122,7 +123,7 @@ export const handleSearchEnter = (
   stringToSearch: string,
   dispatch: any,
   headerTitle: string,
-) => {
+): void => {
   if (event.key === "Enter") {
     dispatch(isSearchOpenActionCreator(false));
     dispatch(stringToSearchActionCreator(stringToSearch));
@@ -130,27 +131,27 @@ export const handleSearchEnter = (
   }
 };
 
-export const loadHelp = (dispatch: any) => {
+export const loadHelp = (dispatch: any): void => {
   dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator("Help"));
   dispatch(isModalOpenActionCreator(true));
 };
 
-export const loadAbout = (dispatch: any) => {
+export const loadAbout = (dispatch: any): void => {
   dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator("About"));
   dispatch(isModalOpenActionCreator(true));
 };
 
-export const addNewFav = (dispatch: any, navigate: any) => {
+export const addNewFav = (dispatch: any, navigate: any): void => {
   dispatch(resetPenguinThunk());
 
   navigate("/create");
 };
 
-export const handleNoConexion = (dispatch: any, idUser: string) => {
+export const handleNoConexion = (dispatch: any): void => {
   let textNoConnection = "";
   const textFirstLoad =
     "Sorry, server is still starting. Navigation enable but data will be not editable until server is restarted";

@@ -39,7 +39,7 @@ const ActionButtons = ({ penguin }: Props) => {
   const selectIconFav = isFav ? "bt-delfav" : "bt-addfav";
   const selectIconLike = isLiker ? "bt-addlike" : `bt-dellike`;
 
-  const handleMessage = () => {
+  const handleMessage = (): void => {
     if (connected) {
       dispatch(getPenguinThunk(penguin.id));
       dispatch(getMessagesThunk(penguin.id));
@@ -48,7 +48,7 @@ const ActionButtons = ({ penguin }: Props) => {
     }
   };
 
-  const deleteFromLikers = () => {
+  const deleteFromLikers = (): void => {
     const newData = { ...penguin };
     newData.likers = newData.likers.filter((liker) => liker !== idUser);
     newData.likes = penguin.likes >= 1 ? penguin.likes - 1 : penguin.likes;
@@ -57,7 +57,7 @@ const ActionButtons = ({ penguin }: Props) => {
     dispatch(editPenguinThunk(newData, penguin.id, "Delete Like."));
   };
 
-  const addToLikers = () => {
+  const addToLikers = (): void => {
     const newData = { ...penguin };
     newData.likers = newData.likers.concat(idUser);
     newData.likes = penguin.likes + 1;
@@ -67,7 +67,7 @@ const ActionButtons = ({ penguin }: Props) => {
     dispatch(editPenguinThunk(newData, penguin.id, "Add Like."));
   };
 
-  const handleLikes = () => {
+  const handleLikes = (): void => {
     if (Array(penguin.likers)) {
       cleanArray(penguin.likers);
 
@@ -77,7 +77,7 @@ const ActionButtons = ({ penguin }: Props) => {
     }
   };
 
-  const deleteFromFavs = () => {
+  const deleteFromFavs = (): void => {
     const newData = { ...penguin };
     newData.favs = penguin.favs.filter((fav) => fav !== idUser);
 
@@ -85,7 +85,7 @@ const ActionButtons = ({ penguin }: Props) => {
     dispatch(editPenguinThunk(newData, penguin.id, "Delete from favorites."));
   };
 
-  const addToFavs = () => {
+  const addToFavs = (): void => {
     const newData = { ...penguin };
     newData.favs = penguin.favs.concat(idUser);
 
@@ -93,7 +93,7 @@ const ActionButtons = ({ penguin }: Props) => {
     dispatch(editPenguinThunk(newData, penguin.id, "Add to favorites."));
   };
 
-  const handleFavs = () => {
+  const handleFavs = (): void => {
     if (Array(penguin.favs)) {
       cleanArray(penguin.favs);
 

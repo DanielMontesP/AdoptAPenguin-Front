@@ -94,7 +94,7 @@ export const getMessageThunk =
   };
 
 export const createMessageThunk =
-  (formMessage: any) => async (dispatch: AppDispatch) => {
+  (formMessage: void) => async (dispatch: AppDispatch) => {
     setLoadingOn(`CREATE Message: Creating Message...`);
 
     const token = localStorage.getItem("token");
@@ -125,7 +125,7 @@ export const createMessageThunk =
   };
 
 export const editMessageThunk =
-  (formMessage: any, type: string) => async (dispatch: AppDispatch) => {
+  (formMessage: void, type: string) => async (dispatch: AppDispatch) => {
     setLoadingOn("EDIT Message...");
 
     const token = localStorage.getItem("token");

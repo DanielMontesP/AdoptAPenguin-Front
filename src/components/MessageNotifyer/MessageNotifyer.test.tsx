@@ -15,9 +15,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => vi.fn(),
 }));
 
-describe("Given a NewMessagesNotify component", () => {
-  describe("When click close button", () => {
-    test("Then handleClick have to been called and show error prompt", () => {
+describe("Given a NewMessagesNotify component", (): void => {
+  describe("When click close button", (): void => {
+    test("Then handleClick have to been called and show error prompt", (): void => {
       const handleClose = vi.fn();
       const dispatch = vi.fn();
 
@@ -39,8 +39,8 @@ describe("Given a NewMessagesNotify component", () => {
     });
   });
 
-  describe("When click submit with data", () => {
-    test("Then handleClick have to been called and show error prompt", () => {
+  describe("When click submit with data", (): void => {
+    test("Then handleClick have to been called and show error prompt", (): void => {
       const handleClick = vi.fn();
       render(
         <Provider store={store}>

@@ -6,14 +6,12 @@ import Messages from "./Messages";
 import store from "../../app/redux/store/store";
 import { mockMessages } from "../../mocks/messages";
 import { mockPenguin } from "../../mocks/penguins";
-import userEvent from "@testing-library/user-event";
 
-describe("Given a Messages component", () => {
-  describe("When rendered", () => {
-    test("Then text 'result/s found` have to been called", () => {
+describe("Given a Messages component", (): void => {
+  describe("When rendered", (): void => {
+    test("Then text 'result/s found` have to been called", (): void => {
       const stringToFind1 = "data";
       const stringToFind2 = "subject";
-      const btSubmitLabel = "bt-submit";
 
       const handleClick = vi.fn();
 

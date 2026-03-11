@@ -7,9 +7,9 @@ import store from "../../app/redux/store/store";
 import { mockMessage, mockMessageEmpty } from "../../mocks/messages";
 import userEvent from "@testing-library/user-event";
 
-describe("Given a Message componen", () => {
-  describe("When click submit with data", () => {
-    test("Then handleClick have to been called and show error prompt", () => {
+describe("Given a Message componen", (): void => {
+  describe("When click submit with data", (): void => {
+    test("Then handleClick have to been called and show error prompt", (): void => {
       const buttonClick = "bt-view";
       const handleClick = vi.fn();
 
@@ -31,8 +31,8 @@ describe("Given a Message componen", () => {
     });
   });
 
-  describe("When click submit with no data", () => {
-    test("Then handleClick have to been called", () => {
+  describe("When click submit with no data", (): void => {
+    test("Then handleClick have to been called", (): void => {
       const buttonClick = "bt-view";
       const handleClick = vi.fn();
 
@@ -55,9 +55,9 @@ describe("Given a Message componen", () => {
   });
 });
 
-describe("Given a Message component with data", () => {
-  describe("When rendered", () => {
-    test("Then handleDelete have to been called", () => {
+describe("Given a Message component with data", (): void => {
+  describe("When rendered", (): void => {
+    test("Then handleDelete have to been called", (): void => {
       const stringToFind1 = "subject";
       const buttonClick = "bt-delete";
       const handleDelete = vi.fn();

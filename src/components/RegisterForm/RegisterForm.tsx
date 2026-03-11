@@ -29,7 +29,7 @@ const RegisterForm = (): ReactElement => {
     });
   };
 
-  const processRegistration = () => {
+  const processRegistration = (): void => {
     dispatch(registerThunk(formData, formData.password));
   };
 
@@ -41,7 +41,7 @@ const RegisterForm = (): ReactElement => {
     setFormData(initialFormData);
   };
 
-  useEffect(() => {
+  useEffect((): void => {
     const SetTitleHeader = (title: string, lastTitle: string) => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));

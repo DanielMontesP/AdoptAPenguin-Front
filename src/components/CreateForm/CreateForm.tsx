@@ -104,7 +104,7 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
     }
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (): void => {
     try {
       if (isCreate) {
         processCreate("New");
@@ -116,7 +116,7 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
         navigate(`/detail/${formData.id || penguin.id}`);
       }
     } catch (error) {
-      wrongAction("Error:" + error);
+      wrongAction(error.toString());
     }
   };
 

@@ -10,7 +10,7 @@ const Favs = ({ allPenguins }: Props): ReactElement => {
   return (
     <div className={`penguins-container`}>
       <h1 className="display-none">AdoptAPenguin.com</h1>
-      {allPenguins.map((penguin, index) => {
+      {allPenguins.map((penguin) => {
         return <Penguin key={penguin.id} penguin={penguin} />;
       })}
     </div>

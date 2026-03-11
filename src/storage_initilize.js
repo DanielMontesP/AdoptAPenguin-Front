@@ -11,5 +11,5 @@ export const initializeFirebase = () => {
     appId: "1:715282969976:web:9cbcd8c736529293f3848d",
   };
   const firebaseApp = initializeApp(firebaseConfig);
-  getStorage(firebaseApp); //eslint-disable-line no-unused-vars
+  getStorage(firebaseApp);
 };

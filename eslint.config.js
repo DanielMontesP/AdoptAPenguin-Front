@@ -1,19 +1,45 @@
 import { defineConfig } from "eslint/config";
 import jsdoc from "eslint-plugin-jsdoc";
+import jest from "eslint-plugin-jest";
+import typescriptESLint from "@typescript-eslint/eslint-plugin";
+import typescriptparser from "@typescript-eslint/parser";
 
 export default defineConfig([
   {
     files: ["**/*.js"],
     plugins: {
       jsdoc: jsdoc,
+      jest: jest,
     },
-    plugins: ["jest", "@typescript-eslint"],
-    extends: ["plugin:github/recommended"],
-    parser: "@typescript-eslint/parser",
-    parserOptions: {
-      ecmaVersion: 9,
+    languageOptions: {
       sourceType: "module",
-      project: "./tsconfig.json",
+      ecmaVersion: 2022,
+      globals: {
+        "jest/globals": true,
+      },
+    },
+    rules: {
+      "no-unused-vars": "warn",
+    },
+    ignores: ["coverage/**", "dist/**", "lib/**", "node_modules/**"],
+  },
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    plugins: {
+      jsdoc: jsdoc,
+      jest: jest,
+      "@typescript-eslint": typescriptESLint,
+    },
+    languageOptions: {
+      parser: typescriptparser,
+      sourceType: "module",
+      ecmaVersion: 2022,
+      parserOptions: {
+        project: "./tsconfig.json",
+      },
+      globals: {
+        "jest/globals": true,
+      },
     },
     rules: {
       "i18n-text/no-en": "off",
@@ -35,7 +61,6 @@ export default defineConfig([
         "error",
         { allowExpressions: true },
       ],
-      "@typescript-eslint/func-call-spacing": ["error", "never"],
       "@typescript-eslint/no-array-constructor": "error",
       "@typescript-eslint/no-empty-interface": "error",
       "@typescript-eslint/no-explicit-any": "error",
@@ -57,15 +82,9 @@ export default defineConfig([
       "@typescript-eslint/require-array-sort-compare": "error",
       "@typescript-eslint/restrict-plus-operands": "error",
       semi: "off",
-      "@typescript-eslint/semi": ["error", "never"],
-      "@typescript-eslint/type-annotation-spacing": "error",
       "@typescript-eslint/unbound-method": "error",
     },
-    env: {
-      node: true,
-      es6: true,
-      "jest/globals": true,
-    },
+
     ignores: [
       "coverage/**",
       "dist/**",

@@ -14,9 +14,9 @@ const HomePage = (): ReactElement => {
 
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  useEffect(() => {
+  useEffect((): void => {
     connectedToServer();
-    const SetTitleHeader = (title: string, lastTitle: string) => {
+    const SetTitleHeader = (title: string, lastTitle: string): void => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));
     };

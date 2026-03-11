@@ -5,7 +5,7 @@ import { AppDispatch } from "../../app/redux/store/store";
 import { editMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 
-export function getCurrentDate(separator = "/") {
+export function getCurrentDate() {
   let newDate = new Date();
 
   return `${newDate.toLocaleString()}`;
@@ -13,8 +13,8 @@ export function getCurrentDate(separator = "/") {
 export function handleServerInfo(
   connected: boolean,
   server: string,
-  status: any,
-  dispatch: any,
+  status: string,
+  dispatch: void,
 ) {
   dispatch(
     serverInfoActionCreator({
@@ -42,7 +42,10 @@ export function hasNewMessages(allMessages: IMessage[], idPenguin: string) {
   }
 }
 
-export const getUserNewMessages = (messages: IMessage[], dispatch: any) => {
+export const getUserNewMessages = (
+  messages: IMessage[],
+  dispatch: void,
+): void => {
   const newMessages: IMessage[] = [];
   messages.forEach((message) => {
     if (!message.read) {
@@ -61,30 +64,30 @@ export const getUserNewMessages = (messages: IMessage[], dispatch: any) => {
   dispatch(getUserNewMessagesActionCreator(newMessages));
 };
 
-export const setMessageRead = (message: IMessage, dispatch: any) => {
+export const setMessageRead = (message: IMessage, dispatch: void): void => {
   const newData = { ...message };
   newData.read = !message.read ? true : false;
 
   dispatch(editMessageThunk(newData, "Finished successfully ."));
 };
 
-export const toPascalCase = (strValue: string) => {
+export const toPascalCase = (strValue: string): string => {
   return strValue.replace(/\w+/g, function (w) {
     return w[0].toUpperCase() + w.slice(1).toLowerCase();
   });
 };
 
-export const cleanArray = (array: any): any => {
+export const cleanArray = (array: void) => {
   array = Array.from(new Set(array));
-  array = array.filter(function (field: any) {
+  array = array.filter(function (field: void) {
     return field != null && field !== "" && field !== "undefined";
   });
 
   return array;
 };
 
-export const resizeFile = (file: File): any =>
-  new Promise((resolve): any => {
+export const resizeFile = (file: File): void =>
+  new Promise((resolve): void => {
     Resizer.imageFileResizer(
       file,
       300,
@@ -99,7 +102,7 @@ export const resizeFile = (file: File): any =>
     );
   });
 
-export const writeFile = (type: string, data: any) => {
+export const writeFile = (type: string, data: void) => {
   const element = document.createElement("a");
   let searchParam = {};
 
@@ -139,11 +142,11 @@ export const connectedToServer = () => async (dispatch: AppDispatch) => {
         return false;
       }
     })
-    .then(() => {
+    .then((): void => {
       handleServerInfo(false, `local`, "Unavailable", dispatch);
       return false;
     })
-    .catch((error) => {
+    .catch(() => {
       handleServerInfo(false, `local`, "Unavailable", dispatch);
       return false;
     });

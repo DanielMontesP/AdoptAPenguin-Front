@@ -1,7 +1,8 @@
 import { IMessage } from "../app/redux/types/message/messageInterfaces";
 
-export const mockMessage: any = {
+export const mockMessage: IMessage = {
   idUser: "idUser",
+  idParent: "",
   idPenguin: "idPenguin",
   subject: "subject",
   content: "content",

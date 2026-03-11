@@ -17,13 +17,13 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => mockUAppDispatch,
 }));
 
-describe("Given an CheckInSecurity and logged function", () => {
-  describe("When it's invoked", () => {
-    test("Then it should navigate to the home when the user is logged", () => {
+describe("Given an CheckInSecurity and logged function", (): void => {
+  describe("When it's invoked", (): void => {
+    test("Then it should navigate to the home when the user is logged", (): void => {
       render(
         <CheckInSecurity>
           <h1>Penguins</h1>
-        </CheckInSecurity>
+        </CheckInSecurity>,
       );
 
       expect(mockUseNavigate).not.toHaveBeenCalledWith("/penguins");
@@ -31,9 +31,9 @@ describe("Given an CheckInSecurity and logged function", () => {
   });
 });
 
-describe("Given an CheckOutSecurity and not logged function", () => {
-  describe("When it's invoked", () => {
-    test("Then it should navigate to the home when the user is not logged", () => {
+describe("Given an CheckOutSecurity and not logged function", (): void => {
+  describe("When it's invoked", (): void => {
+    test("Then it should navigate to the home when the user is not logged", (): void => {
       mockLogged = false;
       const navigate = vi.fn();
 
@@ -45,7 +45,7 @@ describe("Given an CheckOutSecurity and not logged function", () => {
       render(
         <CheckInSecurity>
           <h1>Penguins</h1>
-        </CheckInSecurity>
+        </CheckInSecurity>,
       );
 
       expect(navigate).not.toHaveBeenCalled();

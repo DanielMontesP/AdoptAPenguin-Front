@@ -32,7 +32,7 @@ export const loginThunk =
       setLoadingOn(
         `LOGIN:...Service render.com is starting...Be watter penguin...Load will finish as soon as possible.`,
       );
-      const url: string = `${import.meta.env.VITE_APP_API_URL}users/login`;
+      const url = `${import.meta.env.VITE_APP_API_URL}users/login`;
 
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
 
@@ -66,7 +66,7 @@ export const loginThunk =
 
         dispatch(getUserMessagesThunk(id));
       }
-    } catch (error: any) {
+    } catch (error: void) {
       handleNoConexion(dispatch, "user.id");
       setLoadingOffWithMessage(
         "Login failed!\nCheck credentials for username: " + userData.username,
@@ -78,7 +78,7 @@ export const loginThunk =
   };
 
 export const registerThunk =
-  (userData: any, password: string) => async (dispatch: AppDispatch) => {
+  (userData: void, password: string) => async (dispatch: AppDispatch) => {
     try {
       setLoadingOn(
         `REGISTER:...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`,
@@ -100,7 +100,7 @@ export const registerThunk =
       }
 
       setLoadingOffWithMessage(message, false);
-    } catch (error: any) {
+    } catch (error: void) {
       setLoadingOffWithMessage(
         "Registration failed!: \nUsername: " +
           userData.username +
@@ -137,27 +137,28 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
   }
 };
 
-export const editUserThunk = (idUser: any) => async (dispatch: AppDispatch) => {
-  setLoadingOn("EDIT User...");
+export const editUserThunk =
+  (idUser: void) => async (dispatch: AppDispatch) => {
+    setLoadingOn("EDIT User...");
 
-  const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-  if (token) {
-    const { data: user } = await axios.put(
-      `${import.meta.env.VITE_APP_API_URL}users/edit/${idUser}`,
-      idUser,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
+    if (token) {
+      const { data: user } = await axios.put(
+        `${import.meta.env.VITE_APP_API_URL}users/edit/${idUser}`,
+        idUser,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      },
-    );
+      );
 
-    dispatch(editUserActionCreator(user));
+      dispatch(editUserActionCreator(user));
 
-    setLoadingOffWithMessage(`EDIT user: Finished successfully.`, false);
-  }
-};
+      setLoadingOffWithMessage(`EDIT user: Finished successfully.`, false);
+    }
+  };
 
 export const getUserMessagesThunk =
   (idUser: string) => async (dispatch: AppDispatch) => {

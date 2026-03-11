@@ -57,7 +57,7 @@ export const infoAction = (message: string) => {
   toast.clearWaitingQueue();
 };
 
-export const stopLoadingAction = () => {
+export const stopLoadingAction = (): void => {
   toast?.dismiss(customID);
   toast?.clearWaitingQueue();
 };
@@ -70,7 +70,7 @@ export const setLoadingOn = (message: string) => {
   });
 };
 
-export const setLoadingOff = () => {
+export const setLoadingOff = (): void => {
   toast.dismiss(customID);
   toast.clearWaitingQueue();
 };

@@ -14,9 +14,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => vi.fn(),
 }));
 
-describe("Given a Modal component", () => {
-  describe("When asked to delete a penguin and user click Accept button", () => {
-    test("Then delete function has to be callled", () => {
+describe("Given a Modal component", (): void => {
+  describe("When asked to delete a penguin and user click Accept button", (): void => {
+    test("Then delete function has to be callled", (): void => {
       const labelToFind = "btn-accept";
       const inputText = "user1";
 
@@ -54,8 +54,8 @@ describe("Given a Modal component", () => {
     });
   });
 
-  describe("When asked to delete message and user click Accept button", () => {
-    test("Then delete function has to be callled", () => {
+  describe("When asked to delete message and user click Accept button", (): void => {
+    test("Then delete function has to be callled", (): void => {
       const labelToFind = "btn-accept";
       const inputText = "user1";
 
@@ -93,8 +93,8 @@ describe("Given a Modal component", () => {
     });
   });
 
-  describe("When logout", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+  describe("When logout", (): void => {
+    test("Then the value of the username input field should be 'user1'", (): void => {
       const labelToFind = "btn-accept";
       const inputText = "user1";
 
@@ -124,8 +124,8 @@ describe("Given a Modal component", () => {
       expect(label).toBeDefined();
     });
   });
-  describe("When error", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+  describe("When error", (): void => {
+    test("Then the value of the username input field should be 'user1'", (): void => {
       const labelToFind = "btn-accept";
       const inputText = "user1";
 
@@ -153,8 +153,8 @@ describe("Given a Modal component", () => {
     });
   });
 
-  describe("Given About modal", () => {
-    test("Then closeModal should be called", () => {
+  describe("Given About modal", (): void => {
+    test("Then closeModal should be called", (): void => {
       const labelToFind = "btn-close";
       const user = userEvent.setup();
       const closeModal = vi.fn().mockReturnValue(() => true);
@@ -183,8 +183,8 @@ describe("Given a Modal component", () => {
     });
   });
 
-  describe("Given Help modal", () => {
-    test("Then Help Modal should be called", () => {
+  describe("Given Help modal", (): void => {
+    test("Then Help Modal should be called", (): void => {
       const labelToFind = "btn-close";
 
       const closeModal = vi.fn();
@@ -211,8 +211,8 @@ describe("Given a Modal component", () => {
     });
   });
 
-  describe("Given Validation modal", () => {
-    test("Then Help Validation should be called", () => {
+  describe("Given Validation modal", (): void => {
+    test("Then Help Validation should be called", (): void => {
       const labelToFind = "btn-accept";
 
       const closeModal = vi.fn();
@@ -240,8 +240,8 @@ describe("Given a Modal component", () => {
     });
   });
 
-  describe("Given no modal type", () => {
-    test("Then closeModal should be called", () => {
+  describe("Given no modal type", (): void => {
+    test("Then closeModal should be called", (): void => {
       const labelToFind = "btn-accept";
 
       const closeModal = vi.fn();
@@ -269,8 +269,8 @@ describe("Given a Modal component", () => {
     });
   });
 
-  describe("When cancel", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+  describe("When cancel", (): void => {
+    test("Then the value of the username input field should be 'user1'", (): void => {
       const labelToFind = "btn-cancel";
       const inputText = "user1";
 
@@ -301,8 +301,8 @@ describe("Given a Modal component", () => {
       expect(label).toBeDefined();
     });
   });
-  describe("When delete penguin", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+  describe("When delete penguin", (): void => {
+    test("Then the value of the username input field should be 'user1'", (): void => {
       const labelToFind = "btn-cancel";
       const inputText = "user1";
 
@@ -337,8 +337,8 @@ describe("Given a Modal component", () => {
       expect(deletePenguin).toHaveBeenCalled();
     });
   });
-  describe("When Error modal", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+  describe("When Error modal", (): void => {
+    test("Then the value of the username input field should be 'user1'", (): void => {
       const labelToFind = "btn-accept";
       const inputText = "user1";
 
@@ -371,9 +371,9 @@ describe("Given a Modal component", () => {
   });
 });
 
-describe("Given btn-accept is clicked", () => {
-  describe("When modal type is logOutUser", () => {
-    test("Then the logOutUser function is called", () => {
+describe("Given btn-accept is clicked", (): void => {
+  describe("When modal type is logOutUser", (): void => {
+    test("Then the logOutUser function is called", (): void => {
       const labelToFind = "btn-accept";
 
       const handleAcceptClick = vi.fn();
@@ -405,9 +405,9 @@ describe("Given btn-accept is clicked", () => {
   });
 });
 
-describe("Given btn-accept is clicked with delete", () => {
-  describe("When modal type is logOutUser", () => {
-    test("Then the logOutUser function is called", () => {
+describe("Given btn-accept is clicked with delete", (): void => {
+  describe("When modal type is logOutUser", (): void => {
+    test("Then the logOutUser function is called", (): void => {
       const labelToFind = "btn-accept";
 
       const handleAcceptClick = vi.fn();
@@ -439,9 +439,9 @@ describe("Given btn-accept is clicked with delete", () => {
   });
 });
 
-describe("Given btn-accept is clicked with Settings", () => {
-  describe("When modal type is logOutUser", () => {
-    test("Then the handleAcceptClick function is called", () => {
+describe("Given btn-accept is clicked with Settings", (): void => {
+  describe("When modal type is logOutUser", (): void => {
+    test("Then the handleAcceptClick function is called", (): void => {
       const labelToFind = "btn-accept";
 
       const handleAcceptClick = vi.fn();
@@ -475,9 +475,9 @@ describe("Given btn-accept is clicked with Settings", () => {
   });
 });
 
-describe("Given btn-accept is clicked with Server", () => {
-  describe("When modal type is logOutUser", () => {
-    test("Then the handleAcceptClick function is called", () => {
+describe("Given btn-accept is clicked with Server", (): void => {
+  describe("When modal type is logOutUser", (): void => {
+    test("Then the handleAcceptClick function is called", (): void => {
       const labelToFind = "btn-accept";
 
       const handleAcceptClick = vi.fn();

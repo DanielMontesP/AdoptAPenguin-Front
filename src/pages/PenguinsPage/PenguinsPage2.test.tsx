@@ -15,9 +15,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => vi.fn(),
 }));
 
-describe("Given Favs it's rendered", () => {
-  describe("When Favs it's rendered", () => {
-    test("Then it should show the role 'penguins-page'", () => {
+describe("Given Favs it's rendered", (): void => {
+  describe("When Favs it's rendered", (): void => {
+    test("Then it should show the role 'penguins-page'", (): void => {
       const expectedResult = "penguins-container";
       const loadLikesThunk = vi.fn();
 

@@ -36,7 +36,7 @@ const EditButtons = ({ penguin }: Props): ReactElement => {
     }
   };
 
-  const handleEdit = () => {
+  const handleEdit = (): void => {
     if (!loading) {
       dispatch(getPenguinThunk(penguin.id));
       if (penguin.id !== "") {

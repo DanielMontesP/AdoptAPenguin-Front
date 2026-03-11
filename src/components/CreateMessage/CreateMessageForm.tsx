@@ -35,13 +35,13 @@ const CreateMessageForm = ({ message }: Props): ReactElement => {
   const isCreate = headerTitle?.includes("New");
   const isReply = headerTitle?.includes("Reply");
 
-  const thisFormData: any = isReply
+  const thisFormData: void = isReply
     ? newReply(message.id, idUser, penguin.id, message.subject)
     : blankMessageData;
 
   const [formData, setFormData] = useState(thisFormData);
 
-  const processCreate = (type: string) => {
+  const processCreate = () => {
     formData.idPenguin = penguin.id;
     formData.idUser = idUser;
     formData.data = getCurrentDate();
@@ -64,7 +64,7 @@ const CreateMessageForm = ({ message }: Props): ReactElement => {
     modFields.push(event.target.id);
   };
 
-  const processEdit = () => {
+  const processEdit = (): void => {
     modFields = cleanArray(modFields);
 
     dispatch(
@@ -99,11 +99,11 @@ const CreateMessageForm = ({ message }: Props): ReactElement => {
     navigate(`/reply/create`);
   };
 
-  const handleMessageRead = () => {
+  const handleMessageRead = (): void => {
     setMessageRead(message, dispatch);
   };
 
-  const subjectValue = () => {
+  const subjectValue = (): void => {
     if (formData?.subject) {
       return formData?.subject;
     } else if (isCreate && isReply) {

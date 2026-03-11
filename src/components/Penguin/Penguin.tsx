@@ -17,7 +17,7 @@ const Penguin = ({ penguin }: Props): ReactElement => {
 
   const navigate = useNavigate();
 
-  const handleMoreDetail = () => {
+  const handleMoreDetail = (): void => {
     dispatch(getPenguinThunk(penguin.id));
     dispatch(getMessagesThunk(penguin.id));
 

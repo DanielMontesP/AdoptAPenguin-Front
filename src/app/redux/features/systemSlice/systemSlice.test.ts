@@ -4,16 +4,16 @@ import systemReducer, {
   serverFinishedLoadActionCreator,
 } from "./systemSlice";
 
-describe("Given the loadPenguinsActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the loading ui state should change to true", () => {
+describe("Given the loadPenguinsActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then the loading ui state should change to true", (): void => {
       const action = serverLoadingActionCreator(mockProcesses);
       const loadedState = systemReducer(
         {
           allProcess: mockProcesses,
           server: { path: "Test", connected: true, status: "Test" },
         },
-        action
+        action,
       );
 
       expect(loadedState).toEqual({
@@ -25,16 +25,16 @@ describe("Given the loadPenguinsActionCreator", () => {
   });
 });
 
-describe("Given the serverFinishedLoadActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the loading ui state should change to true", () => {
+describe("Given the serverFinishedLoadActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then the loading ui state should change to true", (): void => {
       const action = serverFinishedLoadActionCreator(mockProcesses);
       const loadedState = systemReducer(
         {
           allProcess: mockProcesses,
           server: { path: "Test", connected: false, status: "Test" },
         },
-        action
+        action,
       );
 
       expect(loadedState).toEqual({

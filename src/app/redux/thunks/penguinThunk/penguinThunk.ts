@@ -60,7 +60,7 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
       dispatch(finishedLoadingActionCreator("loadingActionCreator"));
       penguins && dispatch(loadPenguinsActionCreator(penguins));
     }
-  } catch (error) {
+  } catch () {
     handleNoConexion(dispatch, "user.id");
     dispatch(loadPenguinsActionCreator(penguins));
     setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
@@ -97,7 +97,7 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
   } catch (error) {
     dispatch(loadPenguinsActionCreator(penguins));
     handleNoConexion(dispatch, "user.id");
-    handleServerInfo(false, "local", error, dispatch);
+    handleServerInfo(false, "local", error , dispatch);
     setLoadingOffWithMessage(`GET Favs: ${textNoConnection}`, false);
   }
 };
@@ -126,7 +126,7 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
 
       setLoadingOffWithMessage("GET Favorites: Finished successfully.", false);
     }
-  } catch (error) {
+  } catch () {
     handleNoConexion(dispatch, "user.id");
     dispatch(loadPenguinsActionCreator(penguins));
     handleServerInfo(false, "local", error, dispatch);
@@ -136,7 +136,7 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
 };
 
 export const createFavThunk =
-  (formPenguin: any) => async (dispatch: AppDispatch) => {
+  (formPenguin: void) => async (dispatch: AppDispatch) => {
     try {
       setLoadingOn(`CREATE Favorites: Creating fav...`);
       const token = localStorage.getItem("token");
@@ -163,9 +163,9 @@ export const createFavThunk =
         );
       }
     } catch (error) {
-      handleNoConexion(dispatch, "user.id");
+      handleNoConexion(dispatch);
       dispatch(loadPenguinsActionCreator(penguins));
-      setLoadingOffWithMessage(`CREATE Favorite: ${textNoConnection}`, false);
+      setLoadingOffWithMessage(`CREATE Favorite: ${textNoConnection} ` + error, false);
     }
   };
 
@@ -221,7 +221,7 @@ export const searchPenguinThunk =
 
         setLoadingOffWithMessage(`SEARCH: ${search} finished.`, false);
       }
-    } catch (error: any) {
+    } catch (error: void) {
       handleNoConexion(dispatch, "user.id");
       dispatch(loadPenguinsActionCreator(penguins));
       setLoadingOffWithMessage(`GET Penguin: ${textNoConnection}`, false);
@@ -262,7 +262,7 @@ export const deletePenguinThunk =
   };
 
 export const editPenguinThunk =
-  (formPenguin: any, idPenguin: string, type: string) =>
+  (formPenguin: void, idPenguin: string, type: string) =>
   async (dispatch: AppDispatch) => {
     try {
       setLoadingOn("EDIT Penguin...");

@@ -12,7 +12,7 @@ const CheckInSecurity = ({ children }: Props) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
+  useEffect((): void => {
     if (!logged || !id) {
       navigate("../login");
       dispatch(resetMessagesThunk);

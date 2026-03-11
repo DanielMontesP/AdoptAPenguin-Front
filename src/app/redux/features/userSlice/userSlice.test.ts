@@ -10,17 +10,17 @@ import userReducer, {
   logOutActionCreator,
 } from "./userSlice";
 
-describe("Given a userSlice reducer", () => {
-  describe("When it receives a user and a login action", () => {
-    test("Then it should return the same user but logged", () => {
+describe("Given a userSlice reducer", (): void => {
+  describe("When it receives a user and a login action", (): void => {
+    test("Then it should return the same user but logged", (): void => {
       const action = logInActionCreator(mocklogOutUser);
       const loggedUser = userReducer(mocklogOutUser, action);
 
       expect(loggedUser).toEqual(mockloggedUser);
     });
   });
-  describe("When it receives a logout action", () => {
-    test("Then it should switch the user logged property at false", () => {
+  describe("When it receives a logout action", (): void => {
+    test("Then it should switch the user logged property at false", (): void => {
       const expectedUserStatus = false;
 
       const logoutAction = logOutActionCreator();
@@ -29,8 +29,8 @@ describe("Given a userSlice reducer", () => {
       expect(loggedoutUser.logged).toEqual(expectedUserStatus);
     });
   });
-  describe("When loadUserData is called", () => {
-    test("Then it should switch the user logged property at false", () => {
+  describe("When loadUserData is called", (): void => {
+    test("Then it should switch the user logged property at false", (): void => {
       const expectedUserStatus = true;
 
       const loadUser = loadUserDataActionCreator(mockloggedUser);
@@ -39,8 +39,8 @@ describe("Given a userSlice reducer", () => {
       expect(loggedoutUser.logged).toEqual(expectedUserStatus);
     });
   });
-  describe("When editUser is called", () => {
-    test("Then it should switch the user logged property at false", () => {
+  describe("When editUser is called", (): void => {
+    test("Then it should switch the user logged property at false", (): void => {
       const expectedUserStatus = true;
 
       const editUser = editUserActionCreator(mockloggedUser);
@@ -50,8 +50,8 @@ describe("Given a userSlice reducer", () => {
     });
   });
 
-  describe("When createUser is called", () => {
-    test("Then it should switch the user logged property at false", () => {
+  describe("When createUser is called", (): void => {
+    test("Then it should switch the user logged property at false", (): void => {
       const expectedUserStatus = true;
 
       const createUser = createUserDataActionCreator(mockloggedUser);
@@ -61,8 +61,8 @@ describe("Given a userSlice reducer", () => {
     });
   });
 
-  describe("When getUserMessages is called", () => {
-    test("Then it should switch the user logged property at false", () => {
+  describe("When getUserMessages is called", (): void => {
+    test("Then it should switch the user logged property at false", (): void => {
       const expectedUserStatus = true;
 
       const getUserMessages = getUserMessagesActionCreator(mockMessages);
@@ -72,8 +72,8 @@ describe("Given a userSlice reducer", () => {
     });
   });
 
-  describe("When getUserNewMessages is called", () => {
-    test("Then it should switch the user logged property at false", () => {
+  describe("When getUserNewMessages is called", (): void => {
+    test("Then it should switch the user logged property at false", (): void => {
       const expectedUserStatus = true;
 
       const getUserNewMessages = getUserNewMessagesActionCreator(mockMessages);

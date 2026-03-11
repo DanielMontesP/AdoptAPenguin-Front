@@ -21,14 +21,14 @@ const MessageNotifyer = ({ messages }: Props): ReactElement => {
 
   const dispatch = useAppDispatch();
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     const newHidder = " display-none";
     setHidder((prevState) => !prevState);
 
     return newHidder;
   };
 
-  const handleInbox = () => {
+  const handleInbox = (): void => {
     setHidder(true);
     dispatch(getUserMessagesThunk(userId));
     navigate(`/users/messages/${userId}`);
@@ -67,7 +67,7 @@ const MessageNotifyer = ({ messages }: Props): ReactElement => {
             Inbox
           </span>
           {messages?.length > 0
-            ? messages.map((message, index) => {
+            ? messages.map((message) => {
                 return (
                   <div
                     className={`notify`}

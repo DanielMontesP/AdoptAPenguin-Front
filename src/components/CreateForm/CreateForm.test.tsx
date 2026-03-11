@@ -29,9 +29,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
 
 const processEdit = vi.fn();
 
-describe("Given a CreateForm component", () => {
-  describe("When the word 'user1' is written to the username input field", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+describe("Given a CreateForm component", (): void => {
+  describe("When the word 'user1' is written to the username input field", (): void => {
+    test("Then the value of the username input field should be 'user1'", (): void => {
       const labelName = "Name";
       const labelSubmit = "bt-save";
       const PlaceHolderInputImage = "image-input";

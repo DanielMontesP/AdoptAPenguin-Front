@@ -19,9 +19,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => mockUAppDispatch,
 }));
 
-describe("Given a RegisterForm component", () => {
-  describe("When the word 'user1' is written to the username input field", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+describe("Given a RegisterForm component", (): void => {
+  describe("When the word 'user1' is written to the username input field", (): void => {
+    test("Then the value of the username input field should be 'user1'", (): void => {
       const labelToFind = "Username";
       const inputText = "user1";
 
@@ -39,8 +39,8 @@ describe("Given a RegisterForm component", () => {
       expect(label).toBeDefined();
     });
   });
-  describe("When the two inputs have text and the submit button is clicked", () => {
-    test("Then the two inputs should be empty", () => {
+  describe("When the two inputs have text and the submit button is clicked", (): void => {
+    test("Then the two inputs should be empty", (): void => {
       const usernameLabel = "Username";
       const passwordLabel = "Password";
       const inputText = "user1";

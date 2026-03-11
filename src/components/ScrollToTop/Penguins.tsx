@@ -12,7 +12,7 @@ const Penguins = ({ allPenguins }: Props): ReactElement => {
       <h3 className={"penguins-counter"}>
         {allPenguins.length} results found.
       </h3>
-      {allPenguins.map((penguin, index) => {
+      {allPenguins.map((penguin) => {
         return <Penguin key={penguin.id} penguin={penguin} />;
       })}
     </div>

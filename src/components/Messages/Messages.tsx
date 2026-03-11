@@ -24,7 +24,7 @@ const Messages = ({ allMessages, penguin }: Props): ReactElement => {
 
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     dispatch(resetMessageThunk());
 
     dispatch(headerTitleActionCreator("New message"));
@@ -58,7 +58,7 @@ const Messages = ({ allMessages, penguin }: Props): ReactElement => {
           {counterNewMessages} unread messages.
         </h3>
       </div>
-      {allMessages.map((message, index) => {
+      {allMessages.map((message) => {
         return <Message key={message.id} message={message} />;
       })}
     </div>

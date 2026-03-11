@@ -22,9 +22,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => mockUAppDispatch,
 }));
 
-describe("Given a Navbar component", () => {
-  describe("When it's invoked with headerTitle Detail", () => {
-    test("Then it should render a nav with title Detail", () => {
+describe("Given a Navbar component", (): void => {
+  describe("When it's invoked with headerTitle Detail", (): void => {
+    test("Then it should render a nav with title Detail", (): void => {
       render(
         <BrowserRouter>
           <Provider store={store}>
@@ -38,8 +38,8 @@ describe("Given a Navbar component", () => {
     });
   });
 
-  describe("When search button is clicked", () => {
-    test("Then handleSearchSubmitCall is called", () => {
+  describe("When search button is clicked", (): void => {
+    test("Then handleSearchSubmitCall is called", (): void => {
       const handleSearchSubmitCall = vi.fn();
 
       render(
@@ -60,8 +60,8 @@ describe("Given a Navbar component", () => {
     });
   });
 
-  describe("When search input change", () => {
-    test("Then handleSearchChange is called", () => {
+  describe("When search input change", (): void => {
+    test("Then handleSearchChange is called", (): void => {
       const handleSearchChange = vi.fn();
       const searchPlaceHolderText = "Search by name/category/description...";
       const handleDimmer = vi.fn();

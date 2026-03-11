@@ -16,9 +16,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => vi.fn(),
 }));
 
-describe("Given a NavDesktop component", () => {
-  describe("When click AddFav", () => {
-    test("Then AddFav have to been called", () => {
+describe("Given a NavDesktop component", (): void => {
+  describe("When click AddFav", (): void => {
+    test("Then AddFav have to been called", (): void => {
       const stringToFind = "AdoptApenguin.com";
       const labelAddFav = "btn-addFav";
 
@@ -44,9 +44,9 @@ describe("Given a NavDesktop component", () => {
   });
 });
 
-describe("Given a NavWellcome component", () => {
-  describe("When headerTitle is New...", () => {
-    test("Then AdoptApenguin.com have to been in the document", () => {
+describe("Given a NavWellcome component", (): void => {
+  describe("When headerTitle is New...", (): void => {
+    test("Then AdoptApenguin.com have to been in the document", (): void => {
       const stringToFind = "AdoptApenguin.com";
 
       render(
@@ -63,9 +63,9 @@ describe("Given a NavWellcome component", () => {
   });
 });
 
-describe("Given a NavWellcome with headerTitle  Likes", () => {
-  describe("When rendered", () => {
-    test("Then AdoptApenguin.com have to been in the document", () => {
+describe("Given a NavWellcome with headerTitle  Likes", (): void => {
+  describe("When rendered", (): void => {
+    test("Then AdoptApenguin.com have to been in the document", (): void => {
       const stringToFind = "AdoptApenguin.com";
 
       render(
@@ -82,9 +82,9 @@ describe("Given a NavWellcome with headerTitle  Likes", () => {
   });
 });
 
-describe("Given a NavWellcome with headerTitle Favorites", () => {
-  describe("When rendered", () => {
-    test("Then AdoptApenguin.com have to been in the document", () => {
+describe("Given a NavWellcome with headerTitle Favorites", (): void => {
+  describe("When rendered", (): void => {
+    test("Then AdoptApenguin.com have to been in the document", (): void => {
       const stringToFind = "AdoptApenguin.com";
 
       render(
@@ -101,9 +101,9 @@ describe("Given a NavWellcome with headerTitle Favorites", () => {
   });
 });
 
-describe("Given a handleMenu button NavDesktop component", () => {
-  describe("When click handleMenu", () => {
-    test("Then AddFav have to been called", () => {
+describe("Given a handleMenu button NavDesktop component", (): void => {
+  describe("When click handleMenu", (): void => {
+    test("Then AddFav have to been called", (): void => {
       const stringToFind = "AdoptApenguin.com";
       const labelAddFav = "btn-addFav";
       const labelUserMenu = "btn-user";
@@ -137,9 +137,9 @@ describe("Given a handleMenu button NavDesktop component", () => {
   });
 });
 
-describe("Given a handleLogoutCall button NavDesktop component", () => {
-  describe("When click handleMenu", () => {
-    test("Then AddFav have to been called", () => {
+describe("Given a handleLogoutCall button NavDesktop component", (): void => {
+  describe("When click handleMenu", (): void => {
+    test("Then AddFav have to been called", (): void => {
       const stringToFind = "AdoptApenguin.com";
 
       const labelHome = "btn-home";

@@ -15,8 +15,8 @@ const LoginPage = (): ReactElement => {
 
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  useEffect(() => {
-    const SetTitleHeader = (title: string, lastTitle: string) => {
+  useEffect((): void => {
+    const SetTitleHeader = (title: string, lastTitle: string): void => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));
     };

@@ -26,9 +26,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => vi.fn(),
 }));
 
-describe("When bt-prev is clicked", () => {
-  describe("When bt-prev is clicked", () => {
-    test("getDetailPrev is called", () => {
+describe("When bt-prev is clicked", (): void => {
+  describe("When bt-prev is clicked", (): void => {
+    test("getDetailPrev is called", (): void => {
       const ToFind = "button";
       const expectedButtons = 8;
 
@@ -39,7 +39,7 @@ describe("When bt-prev is clicked", () => {
           <BrowserRouter>
             <PenguinDetail allPenguins={mockPenguins} penguin={mockPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const bt = screen.getAllByRole(ToFind);
@@ -54,8 +54,8 @@ describe("When bt-prev is clicked", () => {
     });
   });
 
-  describe("When bt-next is clicked", () => {
-    test("getDetailNext is called", () => {
+  describe("When bt-next is clicked", (): void => {
+    test("getDetailNext is called", (): void => {
       const getDetailNext = vi.fn();
 
       render(
@@ -63,7 +63,7 @@ describe("When bt-prev is clicked", () => {
           <BrowserRouter>
             <PenguinDetail allPenguins={mockPenguins} penguin={mockPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const btToClick = screen.getByTitle("btn-next");
@@ -75,8 +75,8 @@ describe("When bt-prev is clicked", () => {
     });
   });
 
-  describe("When bt-next is clicked and array is empty", () => {
-    test("getDetailNext is called", () => {
+  describe("When bt-next is clicked and array is empty", (): void => {
+    test("getDetailNext is called", (): void => {
       const getDetailNext = vi.fn();
 
       render(
@@ -87,7 +87,7 @@ describe("When bt-prev is clicked", () => {
               penguin={mockPenguin}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const btToClick = screen.getByTitle("btn-next");
@@ -98,8 +98,8 @@ describe("When bt-prev is clicked", () => {
       expect(getDetailNext).toHaveBeenCalled();
     });
   });
-  describe("When handleTab is clicked and array is empty", () => {
-    test("handleTab is called", () => {
+  describe("When handleTab is clicked and array is empty", (): void => {
+    test("handleTab is called", (): void => {
       const handleTab = vi.fn();
 
       const mockResponse = vi.fn();
@@ -118,7 +118,7 @@ describe("When bt-prev is clicked", () => {
           <BrowserRouter>
             <PenguinDetail allPenguins={mockPenguins} penguin={mockPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const btToClick = screen.getByTitle("messages");

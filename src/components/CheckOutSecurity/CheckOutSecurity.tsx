@@ -10,7 +10,7 @@ const CheckOutSecurity = ({ children }: Props) => {
   const { logged, id } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect((): void => {
     if (logged && id) {
       navigate("/penguins");
     }

@@ -15,8 +15,8 @@ const UserMessagesPage = (): ReactElement => {
 
   const thisTitle = "Inbox";
 
-  useEffect(() => {
-    const SetTitleHeader = (title: string, lastTitle: string) => {
+  useEffect((): void => {
+    const SetTitleHeader = (title: string, lastTitle: string): void => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));
     };

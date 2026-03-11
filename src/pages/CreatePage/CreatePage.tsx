@@ -24,8 +24,8 @@ const CreatePage = ({ type, form }: Props): ReactElement => {
 
   const thisTitle = isCreate ? `New ${form}` : `${form}`;
 
-  useEffect(() => {
-    const SetTitleHeader = (title: string, lastTitle: string) => {
+  useEffect((): void => {
+    const SetTitleHeader = (title: string, lastTitle: string): void => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));
     };

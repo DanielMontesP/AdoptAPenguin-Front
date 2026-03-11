@@ -22,9 +22,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => vi.fn(),
 }));
 
-describe("Given page of penguins", () => {
-  describe("When type Likes it's rendered", () => {
-    test("Then it should show a div with title 'penguins-container'", () => {
+describe("Given page of penguins", (): void => {
+  describe("When type Likes it's rendered", (): void => {
+    test("Then it should show a div with title 'penguins-container'", (): void => {
       const expectedResult = "penguins-container";
 
       const dispatch = vi.fn();

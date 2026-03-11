@@ -7,7 +7,6 @@ import { mockPenguins } from "../../mocks/penguins";
 import store from "../../app/redux/store/store";
 import Penguin from "./Penguin";
 import userEvent from "@testing-library/user-event";
-import { use } from "react";
 
 const mockDispatch = vi.fn();
 
@@ -21,9 +20,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   }),
 }));
 
-describe("Given the Penguin component", () => {
-  describe("When it's invoked", () => {
-    test("Then it should render one heading element", () => {
+describe("Given the Penguin component", (): void => {
+  describe("When it's invoked", (): void => {
+    test("Then it should render one heading element", (): void => {
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -38,8 +37,8 @@ describe("Given the Penguin component", () => {
     });
   });
 
-  describe("when its clicked the button", () => {
-    test("then it should call dispatch", () => {
+  describe("when its clicked the button", (): void => {
+    test("then it should call dispatch", (): void => {
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -52,8 +51,8 @@ describe("Given the Penguin component", () => {
       expect(buttons.length).toBeGreaterThan(2);
     });
   });
-  describe("When handleMoreDetail clicked", () => {
-    test("then it should call dispatch", () => {
+  describe("When handleMoreDetail clicked", (): void => {
+    test("then it should call dispatch", (): void => {
       const labelToFind = "bt-more-detail";
 
       render(

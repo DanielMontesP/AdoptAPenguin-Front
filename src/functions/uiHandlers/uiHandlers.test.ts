@@ -10,9 +10,9 @@ import {
   loadLikes,
 } from "./uiHandlers";
 
-describe("Given a loadFavs function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
+describe("Given a loadFavs function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
       const dispatch = vi.fn();
       const setMenu = vi.fn();
 
@@ -23,9 +23,9 @@ describe("Given a loadFavs function", () => {
   });
 });
 
-describe("Given a loadHome function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
+describe("Given a loadHome function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
       const dispatch = vi.fn();
       const navigate = vi.fn();
 
@@ -36,9 +36,9 @@ describe("Given a loadHome function", () => {
   });
 });
 
-describe("Given a handleLogout function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
+describe("Given a handleLogout function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
       const dispatch = vi.fn();
       const navigate = vi.fn();
 
@@ -49,9 +49,9 @@ describe("Given a handleLogout function", () => {
   });
 });
 
-describe("Given a loadLikes function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
+describe("Given a loadLikes function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
       const dispatch = vi.fn();
       const navigate = vi.fn();
 
@@ -62,11 +62,11 @@ describe("Given a loadLikes function", () => {
   });
 });
 
-describe("Given a handleSearchEnter function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
+describe("Given a handleSearchEnter function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
       const dispatch = vi.fn();
-      const event: any = vi.fn();
+      const event: void = vi.fn();
 
       dispatch(handleSearchEnter(event, "", dispatch, "Test"));
 
@@ -76,9 +76,9 @@ describe("Given a handleSearchEnter function", () => {
   });
 });
 
-describe("Given a handleNoConexion function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
+describe("Given a handleNoConexion function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
       const dispatch = vi.fn();
 
       userEvent.keyboard("[Enter]");
@@ -90,11 +90,11 @@ describe("Given a handleNoConexion function", () => {
   });
 });
 
-describe("Given a handleSearchSubmit function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
+describe("Given a handleSearchSubmit function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
       const dispatch = vi.fn();
-      const event: any = vi.fn();
+      const event: void = vi.fn();
 
       dispatch(handleSearchEnter(event, "", dispatch, "Test"));
 
@@ -104,10 +104,12 @@ describe("Given a handleSearchSubmit function", () => {
     });
   });
 
-  describe("When handleSearchSubmit with stringToSearch called", () => {
-    test("Then dispatch have to been called", () => {
+  describe("When handleSearchSubmit with stringToSearch called", (): void => {
+    test("Then dispatch have to been called", (): void => {
       const dispatch = vi.fn();
-      const event: any = vi.fn().mockResolvedValue({ event: { key: "Enter" } });
+      const event: void = vi
+        .fn()
+        .mockResolvedValue({ event: { key: "Enter" } });
 
       dispatch(handleSearchEnter(event, "", dispatch, "Test"));
 

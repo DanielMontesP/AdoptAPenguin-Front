@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../app/redux/hooks/hooks";
 import { LoginData } from "../../app/redux/types/userInterfaces/userInterfaces";
 import { loginThunk } from "../../app/redux/thunks/userThunk/userThunk";
 
-const LoginForm = () => {
+const LoginForm = (): void => {
   const blankData: LoginData = {
     username: "",
     password: "",
@@ -13,7 +13,7 @@ const LoginForm = () => {
   const buttonDisabled = formData.password === "" || formData.username === "";
   const dispatch = useAppDispatch();
 
-  const resetForm = () => {
+  const resetForm = (): void => {
     setFormData(blankData);
   };
 

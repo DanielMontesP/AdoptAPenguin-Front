@@ -41,7 +41,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): ReactElement => {
 
   const penguinImage = noImage ? iconPhotoEmpty : pathImage;
 
-  const getDetailPrev = () => {
+  const getDetailPrev = (): void => {
     const actualPos = allPenguins
       .map((penguin) => penguin.id)
       .indexOf(thisPenguin.id);
@@ -61,7 +61,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): ReactElement => {
     dispatch(getMessagesThunk(prevPenguinId));
   };
 
-  const getDetailNext = () => {
+  const getDetailNext = (): void => {
     const actualPos = allPenguins.map((e) => e.id).indexOf(thisPenguin.id);
     let nextPenguinId = "";
 
@@ -78,7 +78,7 @@ const PenguinDetail = ({ penguin, allPenguins }: Props): ReactElement => {
     dispatch(getMessagesThunk(nextPenguinId));
   };
 
-  const handleTab = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleTab = (event: MouseEvent<HTMLButtonElement>): void => {
     if (event.currentTarget.title === "messages") {
       setMessageSelected(true);
       navigate("#messages");

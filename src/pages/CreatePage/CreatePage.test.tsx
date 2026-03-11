@@ -12,9 +12,9 @@ import CreatePage from "./CreatePage";
 
 let mockLogged = true;
 
-describe("Given a CreatePage component", () => {
-  describe("When the word 'penguin' is written to the username input field", () => {
-    test("Then the value of the username input field should be 'penguin'", () => {
+describe("Given a CreatePage component", (): void => {
+  describe("When the word 'penguin' is written to the username input field", (): void => {
+    test("Then the value of the username input field should be 'penguin'", (): void => {
       const labelToFind = "Message";
       const inputText = "penguin1";
 
@@ -46,9 +46,9 @@ describe("Given a CreatePage component", () => {
   });
 });
 
-describe("Given a penguin CreatePage component", () => {
-  describe("When CreatePage is rendered with type penguin", () => {
-    test("Then the value of the Name input field should be 'penguin'", () => {
+describe("Given a penguin CreatePage component", (): void => {
+  describe("When CreatePage is rendered with type penguin", (): void => {
+    test("Then the value of the Name input field should be 'penguin'", (): void => {
       const textToFind = "Name";
 
       render(
@@ -65,8 +65,8 @@ describe("Given a penguin CreatePage component", () => {
     });
   });
 
-  describe("When the two inputs have text and the submit button is clicked", () => {
-    test("Then the two input name should have value penguin1", async () => {
+  describe("When the two inputs have text and the submit button is clicked", (): void => {
+    test("Then the two input name should have value penguin1", async (): void => {
       const nameLabel = "Name";
       const inputText = "penguin1";
 
@@ -107,8 +107,8 @@ describe("Given a penguin CreatePage component", () => {
     });
   });
 
-  describe("When the render message form with two inputs have text and the submit button is clicked", () => {
-    test("Then the two input name should have value penguin1", async () => {
+  describe("When the render message form with two inputs have text and the submit button is clicked", (): void => {
+    test("Then the two input name should have value penguin1", async (): void => {
       const nameLabel = "Message";
       const inputText = "penguin1";
       const user = userEvent.setup();

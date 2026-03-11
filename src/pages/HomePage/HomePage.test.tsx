@@ -21,9 +21,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => vi.fn(),
 }));
 
-describe("Given a HomePage Component", () => {
-  describe("When it's rendered", () => {
-    test("Then it should show the text 'Login'", () => {
+describe("Given a HomePage Component", (): void => {
+  describe("When it's rendered", (): void => {
+    test("Then it should show the text 'Login'", (): void => {
       const expectedResult = "Adopt Apenguin .com";
 
       render(

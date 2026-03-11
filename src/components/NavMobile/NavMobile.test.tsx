@@ -6,9 +6,9 @@ import NavMobile from "./NavMobile";
 import store from "../../app/redux/store/store";
 import userEvent from "@testing-library/user-event";
 
-describe("Given a NavMobile component", () => {
-  describe("When click AddFav", () => {
-    test("Then AddFav have to been called", () => {
+describe("Given a NavMobile component", (): void => {
+  describe("When click AddFav", (): void => {
+    test("Then AddFav have to been called", (): void => {
       const stringToFind = "Home";
 
       render(
@@ -16,7 +16,7 @@ describe("Given a NavMobile component", () => {
           <BrowserRouter>
             <NavMobile headerTitle="Home" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getAllByText(stringToFind);
@@ -25,9 +25,9 @@ describe("Given a NavMobile component", () => {
   });
 });
 
-describe("Given a NavMobile and headerTitle New component", () => {
-  describe("When headerTitle is New...", () => {
-    test("Then AdoptApenguin.com have to been in the document", () => {
+describe("Given a NavMobile and headerTitle New component", (): void => {
+  describe("When headerTitle is New...", (): void => {
+    test("Then AdoptApenguin.com have to been in the document", (): void => {
       const stringToFind = "New...";
 
       render(
@@ -35,7 +35,7 @@ describe("Given a NavMobile and headerTitle New component", () => {
           <BrowserRouter>
             <NavMobile headerTitle="New..." />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getAllByText(stringToFind);
@@ -44,9 +44,9 @@ describe("Given a NavMobile and headerTitle New component", () => {
   });
 });
 
-describe("Given a NavWellcome with headerTitle  Likes", () => {
-  describe("When rendered", () => {
-    test("Then AdoptApenguin.com have to been in the document", () => {
+describe("Given a NavWellcome with headerTitle  Likes", (): void => {
+  describe("When rendered", (): void => {
+    test("Then AdoptApenguin.com have to been in the document", (): void => {
       const stringToFind = "Likes";
 
       render(
@@ -54,7 +54,7 @@ describe("Given a NavWellcome with headerTitle  Likes", () => {
           <BrowserRouter>
             <NavMobile headerTitle="Likes" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getAllByText(stringToFind);
@@ -63,9 +63,9 @@ describe("Given a NavWellcome with headerTitle  Likes", () => {
   });
 });
 
-describe("Given a NavWellcome with headerTitle Favorites", () => {
-  describe("When rendered", () => {
-    test("Then AdoptApenguin.com have to been in the document", () => {
+describe("Given a NavWellcome with headerTitle Favorites", (): void => {
+  describe("When rendered", (): void => {
+    test("Then AdoptApenguin.com have to been in the document", (): void => {
       const stringToFind = "Favorites";
 
       render(
@@ -73,7 +73,7 @@ describe("Given a NavWellcome with headerTitle Favorites", () => {
           <BrowserRouter>
             <NavMobile headerTitle="Favorites" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getAllByText(stringToFind);
@@ -82,9 +82,9 @@ describe("Given a NavWellcome with headerTitle Favorites", () => {
   });
 });
 
-describe("Given a handleBack button NavDesktop component", () => {
-  describe("When click handleBack", () => {
-    test("Then AddFav have to been called", () => {
+describe("Given a handleBack button NavDesktop component", (): void => {
+  describe("When click handleBack", (): void => {
+    test("Then AddFav have to been called", (): void => {
       const stringToFind = "Likes";
       const labelBack = "btn-back";
 
@@ -94,7 +94,7 @@ describe("Given a handleBack button NavDesktop component", () => {
           <BrowserRouter>
             <NavMobile headerTitle="Likes" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getAllByText(stringToFind);
@@ -108,8 +108,8 @@ describe("Given a handleBack button NavDesktop component", () => {
     });
   });
 
-  describe("When click btn-back and title Detail", () => {
-    test("Then handleBack have to been called", () => {
+  describe("When click btn-back and title Detail", (): void => {
+    test("Then handleBack have to been called", (): void => {
       const stringToFind = "Detail";
       const labelAddFav = "btn-back";
 
@@ -120,7 +120,7 @@ describe("Given a handleBack button NavDesktop component", () => {
           <BrowserRouter>
             <NavMobile headerTitle="Detail" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getAllByText(stringToFind);
@@ -133,8 +133,8 @@ describe("Given a handleBack button NavDesktop component", () => {
       expect(handleBack).toHaveBeenCalled();
     });
   });
-  describe("When click btn-back and title Edit..", () => {
-    test("Then handleBack have to been called", () => {
+  describe("When click btn-back and title Edit..", (): void => {
+    test("Then handleBack have to been called", (): void => {
       const stringToFind = "Edit...";
       const labelAddFav = "btn-back";
 
@@ -153,7 +153,7 @@ describe("Given a handleBack button NavDesktop component", () => {
           <BrowserRouter>
             <NavMobile headerTitle="Edit..." />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getAllByText(stringToFind);

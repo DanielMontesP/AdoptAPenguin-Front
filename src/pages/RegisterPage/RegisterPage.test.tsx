@@ -4,9 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
 import RegisterPage from "./RegisterPage";
 
-describe("Given a RegisterPage Component", () => {
-  describe("When it's rendered", () => {
-    test("Then it should show the text 'Register'", () => {
+describe("Given a RegisterPage Component", (): void => {
+  describe("When it's rendered", (): void => {
+    test("Then it should show the text 'Register'", (): void => {
       const expectedResult = "Register";
 
       render(

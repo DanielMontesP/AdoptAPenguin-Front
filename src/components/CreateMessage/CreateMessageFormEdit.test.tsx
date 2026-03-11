@@ -23,9 +23,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => vi.fn(),
 }));
 
-describe("Given a CreateMessageForm component", () => {
-  describe("When edit Message is submited", () => {
-    test("Then processEdit is called", () => {
+describe("Given a CreateMessageForm component", (): void => {
+  describe("When edit Message is submited", (): void => {
+    test("Then processEdit is called", (): void => {
       const textToFind = "Subject";
       const placeHolderSubmit = "bt-reply";
 

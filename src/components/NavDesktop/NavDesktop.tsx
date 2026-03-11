@@ -51,32 +51,32 @@ const NavDektop = ({ headerTitle }: Props): ReactElement => {
     default:
   }
 
-  const addFav = () => {
+  const addFav = (): void => {
     dispatch(resetPenguinThunk());
 
     navigate("/create");
   };
 
-  const handleUserMenu = () => {
+  const handleUserMenu = (): void => {
     dispatch(isMenuOpenActionCreator(!isMenuOpen));
   };
 
-  const handleSearch = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleSearch = (): void => {
     handleFocusCall(".search-input");
 
     setSearch((prevState) => !prevState);
     dispatch(isSearchOpenActionCreator(true));
   };
 
-  const loadHomeCall = () => {
+  const loadHomeCall = (): void => {
     loadHome(dispatch, headerTitle, navigate);
   };
 
-  const loadLikesCall = () => {
+  const loadLikesCall = (): void => {
     loadLikes(dispatch, headerTitle, navigate);
   };
 
-  const loadFavsCall = () => {
+  const loadFavsCall = (): void => {
     loadFavs(dispatch, headerTitle, navigate);
   };
 

@@ -42,11 +42,11 @@ const NavMobile = ({ headerTitle }: Props): ReactElement => {
   let classHeaderTitle = "nav-title";
   let HidderDesktopButtons = "";
 
-  const handleMenu = () => {
+  const handleMenu = (): void => {
     dispatch(isMenuOpenActionCreator(true));
   };
 
-  const handleBack = () => {
+  const handleBack = (): void => {
     setFormData(blankData);
     dispatch(modalTypeActionCreator(""));
 
@@ -86,8 +86,8 @@ const NavMobile = ({ headerTitle }: Props): ReactElement => {
     headerTitle !== "Message" &&
     headerTitle !== "Detail";
 
-  useEffect(() => {
-    const handleScroll = () => {
+  useEffect((): void => {
+    const handleScroll = (): void => {
       const position = window.scrollY;
       setScrollPosition(position);
 
@@ -100,7 +100,7 @@ const NavMobile = ({ headerTitle }: Props): ReactElement => {
     };
     window.addEventListener("scroll", handleScroll);
 
-    return () => {
+    return (): void => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastPosition, scrollPosition]);

@@ -9,13 +9,12 @@ import {
   registerThunk,
 } from "./userThunk";
 import axios from "axios";
-import { mockMessages } from "../../../../mocks/messages";
 
-beforeAll(() => {
+beforeAll((): void => {
   server.listen({ onUnhandledRequest: "bypass" });
 });
 
-beforeEach(() => {
+beforeEach((): void => {
   server.listen();
 });
 
@@ -42,9 +41,9 @@ vi.mock("../../hooks/hooks", () => ({
 HTMLAnchorElement.prototype.click = vi.fn();
 window.URL.createObjectURL = vi.fn();
 
-describe("Given the getuserThunk function", () => {
-  describe("When it's called with an user", () => {
-    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
+describe("Given the getuserThunk function", (): void => {
+  describe("When it's called with an user", (): void => {
+    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async (): void => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -57,8 +56,8 @@ describe("Given the getuserThunk function", () => {
     });
   });
 
-  describe("When getUserThunk is called badly", () => {
-    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async () => {
+  describe("When getUserThunk is called badly", (): void => {
+    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async (): void => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -71,8 +70,8 @@ describe("Given the getuserThunk function", () => {
     });
   });
 
-  describe("When invoked with a valid user and axios throws an error", () => {
-    test("Then it should not call the dispatch", async () => {
+  describe("When invoked with a valid user and axios throws an error", (): void => {
+    test("Then it should not call the dispatch", async (): void => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
@@ -88,8 +87,8 @@ describe("Given the getuserThunk function", () => {
     });
   });
 
-  describe("When invoked with a valid user and axios", () => {
-    test("Then it should call the dispatch", async () => {
+  describe("When invoked with a valid user and axios", (): void => {
+    test("Then it should call the dispatch", async (): void => {
       const dispatch = vi.fn();
       vi.mock("../../features/uiSlice/uiSlice", () => ({
         loginActionCreator: vi.fn().mockReturnThis(),
@@ -117,8 +116,8 @@ describe("Given the getuserThunk function", () => {
     });
   });
 
-  describe("When invoked with a invalid user and axios throws an error", () => {
-    test("Then it should not call the dispatch", async () => {
+  describe("When invoked with a invalid user and axios throws an error", (): void => {
+    test("Then it should not call the dispatch", async (): void => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
@@ -134,8 +133,8 @@ describe("Given the getuserThunk function", () => {
     });
   });
 
-  describe("When invoked editUser", () => {
-    test("Then it should not call the dispatch", async () => {
+  describe("When invoked editUser", (): void => {
+    test("Then it should not call the dispatch", async (): void => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
@@ -152,8 +151,8 @@ describe("Given the getuserThunk function", () => {
     });
   });
 
-  describe("When registerThunk invoked editUser", () => {
-    test("Then it should not call the dispatch", async () => {
+  describe("When registerThunk invoked editUser", (): void => {
+    test("Then it should not call the dispatch", async (): void => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
@@ -172,8 +171,8 @@ describe("Given the getuserThunk function", () => {
     });
   });
 
-  describe("When registerThunk invoked editUser badly", () => {
-    test("Then it should not call the dispatch", async () => {
+  describe("When registerThunk invoked editUser badly", (): void => {
+    test("Then it should not call the dispatch", async (): void => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
@@ -193,8 +192,8 @@ describe("Given the getuserThunk function", () => {
     });
   });
 
-  describe("When getUserMessagesThunk is called with no connection", () => {
-    test("Then it should call not call dispatch", async () => {
+  describe("When getUserMessagesThunk is called with no connection", (): void => {
+    test("Then it should call not call dispatch", async (): void => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();

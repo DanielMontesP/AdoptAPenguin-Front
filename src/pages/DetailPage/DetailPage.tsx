@@ -20,12 +20,12 @@ const DetailPage = (): ReactElement => {
 
   const thisTitle = "Detail";
 
-  useEffect(() => {
+  useEffect((): void => {
     headerLastTitle === "Favorites"
       ? dispatch(loadFavsThunk())
       : dispatch(loadPenguinsThunk());
 
-    const SetTitleHeader = (title: string, lastTitle: string) => {
+    const SetTitleHeader = (title: string, lastTitle: string): void => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));
     };

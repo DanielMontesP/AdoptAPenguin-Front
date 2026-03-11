@@ -16,9 +16,9 @@ vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => vi.fn(),
 }));
 
-describe("Given a btn-delete action", () => {
-  describe("When clicked action is called", () => {
-    test("Then deleteFromLikers have to been called", () => {
+describe("Given a btn-delete action", (): void => {
+  describe("When clicked action is called", (): void => {
+    test("Then deleteFromLikers have to been called", (): void => {
       const labelToFind = "btn-likes";
       const handleLikes = vi.fn().mockReturnValue(true);
 
@@ -40,9 +40,9 @@ describe("Given a btn-delete action", () => {
   });
 });
 
-describe("Given a ActionButtons component", () => {
-  describe("When btn-likes is clicked", () => {
-    test("Then handleLikes have to been called", () => {
+describe("Given a ActionButtons component", (): void => {
+  describe("When btn-likes is clicked", (): void => {
+    test("Then handleLikes have to been called", (): void => {
       const labelToFind = "btn-likes";
       const handleLikes = vi.fn().mockReturnValue(true);
 
@@ -64,9 +64,9 @@ describe("Given a ActionButtons component", () => {
   });
 });
 
-describe("Given btn-favs button", () => {
-  describe("When clicked", () => {
-    test("Then handlefavs function has to been called", () => {
+describe("Given btn-favs button", (): void => {
+  describe("When clicked", (): void => {
+    test("Then handlefavs function has to been called", (): void => {
       const labelToFind = "btn-favs";
 
       render(
@@ -87,8 +87,8 @@ describe("Given btn-favs button", () => {
     });
   });
 
-  describe("When handleFavs clicked and is already fav", () => {
-    test("Then handlefavs function has to been called to delete", () => {
+  describe("When handleFavs clicked and is already fav", (): void => {
+    test("Then handlefavs function has to been called to delete", (): void => {
       const labelToFind = "btn-favs";
 
       render(
@@ -109,8 +109,8 @@ describe("Given btn-favs button", () => {
     });
   });
 
-  describe("When handleEdit is called", () => {
-    test("Then bt-message is rendered", () => {
+  describe("When handleEdit is called", (): void => {
+    test("Then bt-message is rendered", (): void => {
       const labelToFind = "bt-message";
 
       render(
@@ -130,8 +130,8 @@ describe("Given btn-favs button", () => {
       expect(handleEdit).toHaveBeenCalled();
     });
   });
-  describe("When likes action is called", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+  describe("When likes action is called", (): void => {
+    test("Then the value of the username input field should be 'user1'", (): void => {
       const labelToFind = "btn-likes";
 
       render(
@@ -156,8 +156,8 @@ describe("Given btn-favs button", () => {
     });
   });
 
-  describe("When message action is called", () => {
-    test("Then the value of the username input field should be 'user1'", () => {
+  describe("When message action is called", (): void => {
+    test("Then the value of the username input field should be 'user1'", (): void => {
       const labelToFind = "bt-message";
       const handleMessage = vi.fn();
 

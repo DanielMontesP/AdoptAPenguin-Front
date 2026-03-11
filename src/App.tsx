@@ -6,7 +6,7 @@ import CheckInSecurity from "./components/CheckInSecurity/CheckInSecurity";
 import CreatePage from "./pages/CreatePage/CreatePage";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import { useAppDispatch, useAppSelector } from "./app/redux/hooks/hooks";
-import { useEffect, useState } from "react";
+import { useEffect, useState, JSX } from "react";
 import { UserInfo } from "./app/redux/types/userInterfaces/userInterfaces";
 import { jwtDecode } from "jwt-decode";
 import { logInActionCreator } from "./app/redux/features/userSlice/userSlice";
@@ -19,7 +19,7 @@ import UserMessagesPage from "./pages/UserMessagesPage/UserMessagesPage";
 import Navbar from "./components/Navbar/Navbar";
 import { connectedToServer } from "./functions/sysHandlers/sysHandlers";
 
-function App() {
+function App(): JSX.Element {
   const { logged, id } = useAppSelector((state) => state.user);
   const { headerTitle, isMenuOpen } = useAppSelector((state) => state.ui);
   const { connected } = useAppSelector((state) => state.system.server);
@@ -28,13 +28,13 @@ function App() {
 
   const [isDesktop, setDesktop] = useState(window.innerWidth > 421);
 
-  const updateMedia = () => {
+  const updateMedia = (): void => {
     setDesktop(window.innerWidth > 420);
   };
 
   let result = <></>;
 
-  const handleNav = () => {
+  const handleNav = (): void => {
     if (logged) {
       result = (
         <Navbar
@@ -48,7 +48,7 @@ function App() {
 
   handleNav();
   connectedToServer();
-  useEffect(() => {
+  useEffect((): void => {
     window.addEventListener("resize", updateMedia);
 
     const token = localStorage.getItem("token");
@@ -63,7 +63,7 @@ function App() {
 
       dispatch(isDesktopActionCreator(isDesktop));
 
-      return () => {
+      return (): void => {
         window.removeEventListener("resize", updateMedia);
       };
     }

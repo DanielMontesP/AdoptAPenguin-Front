@@ -7,7 +7,8 @@ export interface IPenguin {
   favs: {}[];
   image: string | File;
   imageBackup: string;
-  imageResized: Blob | MediaSource | any;
+  imageResized: string;
+  // Blob | MediaSource | void;
   // imageOpenai: Blob | MediaSource | any;
   description: string;
 }

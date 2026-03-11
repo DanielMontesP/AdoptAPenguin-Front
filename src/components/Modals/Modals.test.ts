@@ -12,9 +12,9 @@ import { toast } from "react-toastify";
 
 vi.mock("react-toastify");
 
-describe("Given a correct Modal component", () => {
-  describe("When the word 'penguin' is written", () => {
-    test("Then the value of the message input field should be 'penguin'", () => {
+describe("Given a correct Modal component", (): void => {
+  describe("When the word 'penguin' is written", (): void => {
+    test("Then the value of the message input field should be 'penguin'", (): void => {
       const message = "penguin";
 
       correctAction(message);
@@ -25,9 +25,9 @@ describe("Given a correct Modal component", () => {
   });
 });
 
-describe("Given a wrong Modal component", () => {
-  describe("When the word 'penguin' is written", () => {
-    test("Then the value of the message input field should be 'penguin'", () => {
+describe("Given a wrong Modal component", (): void => {
+  describe("When the word 'penguin' is written", (): void => {
+    test("Then the value of the message input field should be 'penguin'", (): void => {
       const message = "penguin";
 
       wrongAction(message);
@@ -38,9 +38,9 @@ describe("Given a wrong Modal component", () => {
   });
 });
 
-describe("Given a warning Modal component", () => {
-  describe("When the word 'penguin' is written", () => {
-    test("Then the value of the message input field should be 'penguin'", () => {
+describe("Given a warning Modal component", (): void => {
+  describe("When the word 'penguin' is written", (): void => {
+    test("Then the value of the message input field should be 'penguin'", (): void => {
       const message = "penguin";
 
       warnAction(message);
@@ -51,9 +51,9 @@ describe("Given a warning Modal component", () => {
   });
 });
 
-describe("Given a info Modal component", () => {
-  describe("When the word 'penguin' is written", () => {
-    test("Then the value of the message input field should be 'penguin'", () => {
+describe("Given a info Modal component", (): void => {
+  describe("When the word 'penguin' is written", (): void => {
+    test("Then the value of the message input field should be 'penguin'", (): void => {
       const message = "penguin";
 
       infoAction(message);
@@ -64,9 +64,9 @@ describe("Given a info Modal component", () => {
   });
 });
 
-describe("Given a stopLoad Modal component", () => {
-  describe("When the word 'penguin' is written", () => {
-    test("Then the value of the message input field should be 'penguin'", () => {
+describe("Given a stopLoad Modal component", (): void => {
+  describe("When the word 'penguin' is written", (): void => {
+    test("Then the value of the message input field should be 'penguin'", (): void => {
       stopLoadingAction();
       const result = toast.clearWaitingQueue;
 
@@ -75,9 +75,9 @@ describe("Given a stopLoad Modal component", () => {
   });
 });
 
-describe("Given a setLoading Modal component", () => {
-  describe("When the word 'penguin' is written", () => {
-    test("Then the value of the message input field should be 'penguin'", () => {
+describe("Given a setLoading Modal component", (): void => {
+  describe("When the word 'penguin' is written", (): void => {
+    test("Then the value of the message input field should be 'penguin'", (): void => {
       const message = "penguin";
 
       setLoadingOn(message);
@@ -88,9 +88,9 @@ describe("Given a setLoading Modal component", () => {
   });
 });
 
-describe("Given a setLoadingOff Modal component", () => {
-  describe("When the word 'penguin' is written", () => {
-    test("Then the value of the message input field should be 'penguin'", () => {
+describe("Given a setLoadingOff Modal component", (): void => {
+  describe("When the word 'penguin' is written", (): void => {
+    test("Then the value of the message input field should be 'penguin'", (): void => {
       setLoadingOff();
       const result = toast.clearWaitingQueue;
 

@@ -27,9 +27,7 @@ export const Modal = ({
   content,
   type,
   form,
-  posX,
-  posY,
-}: IModalProps) => {
+}: IModalProps): React.JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -85,7 +83,7 @@ export const Modal = ({
       windowTitle = "Please confirm";
   }
 
-  const logOutUser = () => {
+  const logOutUser = (): void => {
     handleLogout(dispatch, navigate);
   };
 
@@ -103,7 +101,7 @@ export const Modal = ({
     return type !== "Edit" ? <h3 className="modal-message">{content}</h3> : "";
   };
 
-  const deletePenguin = () => {
+  const deletePenguin = (): void => {
     if (idToProcess) {
       dispatch(deletePenguinThunk(`${idToProcess}`));
       if (headerTitle === "Detail") {
@@ -112,7 +110,7 @@ export const Modal = ({
     }
   };
 
-  const deleteMessage = () => {
+  const deleteMessage = (): void => {
     if (idToProcess) {
       dispatch(deleteMessageThunk(idToProcess));
     }
@@ -153,7 +151,7 @@ export const Modal = ({
     dispatch(isModalOpenActionCreator(false));
   };
 
-  const handleCancelClick = () => {
+  const handleCancelClick = (): void => {
     closeModal(false);
     dispatch(isModalOpenActionCreator(false));
   };
