@@ -13,6 +13,8 @@ jobs:
 
       - name: Install modules
         run: npm i
+        working-directory: "../AdoptAPenguin 3.0"
 
       - name: Testing
         run: npm run test
+        working-directory: "../AdoptAPenguin 3.0"
