@@ -8,8 +8,8 @@ jobs:
     name: Audit
 
     steps:
-      # - name: Git checkout
-      #   uses: actions/checkout@v4
+      - name: Git checkout
+        uses: actions/checkout@v3
 
       - name: Install modules
         run: npm i
