@@ -15,10 +15,10 @@ jobs:
           fetch-depth: 0
       - name: Install modules
         run: npm ci
-        working-directory: "./AdoptAPenguin 3.0"
+        working-directory: "./"
       - name: Testing coverage
         run: npm run test:coverage
-        working-directory: "./AdoptAPenguin 3.0"
+        working-directory: "./"
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
