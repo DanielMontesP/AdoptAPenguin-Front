@@ -10,6 +10,7 @@
     "eslint-plugin-jsdoc": "^62.7.1",
     "firebase": "^12.6.0",
     "jwt-decode": "^4.0.0",
+    "ntypescript": "^1.201706190042.1",
     "react": "^19.2.1",
     "react-app-polyfill": "^3.0.0",
     "react-dimmer": "^1.0.7",
@@ -28,7 +29,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "tsc && vite build",
+    "build": "ntypescript && vite build",
     "serve": "vite preview",
     "test": "vitest",
     "test:coverage": "vitest run --coverage --watch=false"
