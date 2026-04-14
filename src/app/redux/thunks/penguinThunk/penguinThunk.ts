@@ -19,6 +19,7 @@ import { blankFormData } from "../../initializers/iniPenguins";
 import { finishedLoadingActionCreator } from "../../features/uiSlice/uiSlice";
 import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
 import { handleServerInfo } from "../../../../functions/sysHandlers/sysHandlers";
+import { IPenguin } from "../../types/penguin/penguinInterfaces";
 
 let firstLoad = false;
 let textNoConnection = "";
@@ -60,8 +61,8 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
       dispatch(finishedLoadingActionCreator("loadingActionCreator"));
       penguins && dispatch(loadPenguinsActionCreator(penguins));
     }
-  } catch () {
-    handleNoConexion(dispatch, "user.id");
+  } catch {
+    handleNoConexion(dispatch);
     dispatch(loadPenguinsActionCreator(penguins));
     setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
   }
@@ -94,10 +95,10 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
 
       setLoadingOffWithMessage("GET Favorites: Finished successfully.", false);
     }
-  } catch (error) {
+  } catch {
     dispatch(loadPenguinsActionCreator(penguins));
-    handleNoConexion(dispatch, "user.id");
-    handleServerInfo(false, "local", error , dispatch);
+    handleNoConexion(dispatch);
+    handleServerInfo(false, "local", textNoConnection, dispatch);
     setLoadingOffWithMessage(`GET Favs: ${textNoConnection}`, false);
   }
 };
@@ -126,17 +127,17 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
 
       setLoadingOffWithMessage("GET Favorites: Finished successfully.", false);
     }
-  } catch () {
-    handleNoConexion(dispatch, "user.id");
+  } catch {
+    handleNoConexion(dispatch);
     dispatch(loadPenguinsActionCreator(penguins));
-    handleServerInfo(false, "local", error, dispatch);
+    handleServerInfo(false, "local", textNoConnection, dispatch);
 
     setLoadingOffWithMessage(`GET Likes: ${textNoConnection}`, false);
   }
 };
 
 export const createFavThunk =
-  (formPenguin: void) => async (dispatch: AppDispatch) => {
+  (formPenguin: FormData) => async (dispatch: AppDispatch) => {
     try {
       setLoadingOn(`CREATE Favorites: Creating fav...`);
       const token = localStorage.getItem("token");
@@ -162,10 +163,10 @@ export const createFavThunk =
           false,
         );
       }
-    } catch (error) {
+    } catch {
       handleNoConexion(dispatch);
       dispatch(loadPenguinsActionCreator(penguins));
-      setLoadingOffWithMessage(`CREATE Favorite: ${textNoConnection} ` + error, false);
+      setLoadingOffWithMessage(`CREATE Favorite: ${textNoConnection} `, false);
     }
   };
 
@@ -193,8 +194,8 @@ export const getPenguinThunk =
           );
         }
       }
-    } catch (error) {
-      handleNoConexion(dispatch, "user.id");
+    } catch {
+      handleNoConexion(dispatch);
       dispatch(loadPenguinsActionCreator(penguins));
       setLoadingOffWithMessage(`GET Penguin: ${textNoConnection}`, false);
     }
@@ -221,8 +222,8 @@ export const searchPenguinThunk =
 
         setLoadingOffWithMessage(`SEARCH: ${search} finished.`, false);
       }
-    } catch (error: void) {
-      handleNoConexion(dispatch, "user.id");
+    } catch {
+      handleNoConexion(dispatch);
       dispatch(loadPenguinsActionCreator(penguins));
       setLoadingOffWithMessage(`GET Penguin: ${textNoConnection}`, false);
     }
@@ -254,22 +255,24 @@ export const deletePenguinThunk =
           );
         }
       }
-    } catch (error) {
-      handleNoConexion(dispatch, "user.id");
+    } catch {
+      handleNoConexion(dispatch);
       dispatch(loadPenguinsActionCreator(penguins));
       setLoadingOffWithMessage(`DELETE Penguin: ${textNoConnection}`, false);
     }
   };
 
 export const editPenguinThunk =
-  (formPenguin: void, idPenguin: string, type: string) =>
+  (formPenguin: IPenguin | FormData, idPenguin: string, type: string) =>
   async (dispatch: AppDispatch) => {
     try {
       setLoadingOn("EDIT Penguin...");
 
       const token = localStorage.getItem("token");
       const ifIsForm =
-        formPenguin.id === "" ? `"Content-Type": "multipart/form-data"` : "";
+        formPenguin instanceof FormData || formPenguin.id === ""
+          ? `"Content-Type": "multipart/form-data"`
+          : "";
 
       if (token) {
         const { data: penguin } = await axios.put(
@@ -288,9 +291,9 @@ export const editPenguinThunk =
 
         setLoadingOffWithMessage(`${type}`, false);
       }
-    } catch (error) {
+    } catch {
       dispatch(loadPenguinsActionCreator(penguins));
-      handleNoConexion(dispatch, "user.id");
+      handleNoConexion(dispatch);
 
       setLoadingOffWithMessage(`EDIT Penguin:: ${textNoConnection}`, false);
     }

@@ -28,61 +28,100 @@ const toastOptionsWrong = {
   toastId: `${customID}`,
 };
 
-export const correctAction = (message: string) => {
-  if (!toast?.isActive(customID)) {
-    customID = toast.success(message, toastOptionsSuccess);
+export const correctAction = (message: string): boolean => {
+  try {
+    if (!toast?.isActive(customID)) {
+      customID = toast.success(message, toastOptionsSuccess);
+    }
+    toast.clearWaitingQueue();
+    return true;
+  } catch {
+    return false;
   }
-
-  toast.clearWaitingQueue();
 };
 
-export const wrongAction = (message: string) => {
-  if (!toast?.isActive(customID)) {
-    customID = toast.error(message, toastOptionsWrong);
+export const wrongAction = (message: string): boolean => {
+  try {
+    if (!toast?.isActive(customID)) {
+      customID = toast.error(message, toastOptionsWrong);
+    }
+    toast.clearWaitingQueue();
+    return true;
+  } catch {
+    return false;
   }
-  toast.clearWaitingQueue();
 };
 
-export const warnAction = (message: string) => {
-  if (!toast?.isActive(customID)) {
-    customID = toast.warning(message, toastOptionsSuccess);
+export const warnAction = (message: string): boolean => {
+  try {
+    if (!toast?.isActive(customID)) {
+      customID = toast.warning(message, toastOptionsSuccess);
+    }
+    toast.clearWaitingQueue();
+    return true;
+  } catch {
+    return false;
   }
-  toast.clearWaitingQueue();
 };
 
-export const infoAction = (message: string) => {
-  if (!toast?.isActive(customID)) {
-    customID = toast.loading(message, toastOptions);
+export const infoAction = (message: string): boolean => {
+  try {
+    if (!toast?.isActive(customID)) {
+      customID = toast.loading(message, toastOptions);
+    }
+    toast.clearWaitingQueue();
+    return true;
+  } catch {
+    return false;
   }
-  toast.clearWaitingQueue();
 };
 
-export const stopLoadingAction = (): void => {
-  toast?.dismiss(customID);
-  toast?.clearWaitingQueue();
+export const stopLoadingAction = (): boolean => {
+  try {
+    toast?.dismiss(customID);
+    toast?.clearWaitingQueue();
+    return true;
+  } catch {
+    return false;
+  }
 };
 
-export const setLoadingOn = (message: string) => {
-  toast?.loading(message, {
-    position: "bottom-center" as const,
-    closeOnClick: true,
-    toastId: `${customID}`,
-  });
+export const setLoadingOn = (message: string): boolean => {
+  try {
+    toast?.loading(message, {
+      position: "bottom-center" as const,
+      closeOnClick: true,
+      toastId: `${customID}`,
+    });
+    return true;
+  } catch {
+    return false;
+  }
 };
 
-export const setLoadingOff = (): void => {
-  toast.dismiss(customID);
-  toast.clearWaitingQueue();
+export const setLoadingOff = (): boolean => {
+  try {
+    toast.dismiss(customID);
+    toast.clearWaitingQueue();
+    return true;
+  } catch {
+    return false;
+  }
 };
 
-export const setLoadingOffWithMessage = (message: string, error: boolean) => {
-  toast.update(customID, {
-    render: message,
-    type: error ? "error" : "success",
-    isLoading: false,
-    autoClose: 2000,
-    closeOnClick: true,
-    transition: Bounce,
-  });
-  toast.clearWaitingQueue();
+export const setLoadingOffWithMessage = (message: string, error: boolean): boolean => {
+  try {
+    toast.update(customID, {
+      render: message,
+      type: error ? "error" : "success",
+      isLoading: false,
+      autoClose: 2000,
+      closeOnClick: true,
+      transition: Bounce,
+    });
+    toast.clearWaitingQueue();
+    return true;
+  } catch {
+    return false;
+  }
 };

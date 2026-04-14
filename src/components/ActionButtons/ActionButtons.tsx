@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { blankFormData } from "../../app/redux/initializers/iniPenguins";
@@ -17,7 +17,7 @@ interface Props {
   penguin: IPenguin;
 }
 
-const ActionButtons = ({ penguin }: Props) => {
+const ActionButtons = ({ penguin }: Props): ReactElement | null => {
   const idUser = useAppSelector((state) => state.user.id);
   const { allMessages } = useAppSelector((state) => state.user);
   const { connected } = useAppSelector((state) => state.system.server);
@@ -26,7 +26,7 @@ const ActionButtons = ({ penguin }: Props) => {
 
   const iconType = "bt-message-got";
 
-  const countNewMessages = (penguin: IPenguin) => {
+  const countNewMessages = (penguin: IPenguin): number => {
     return hasNewMessages(allMessages, penguin.id);
   };
 
@@ -67,14 +67,11 @@ const ActionButtons = ({ penguin }: Props) => {
     dispatch(editPenguinThunk(newData, penguin.id, "Add Like."));
   };
 
-  const handleLikes = (): void => {
-    if (Array(penguin.likers)) {
-      cleanArray(penguin.likers);
-
-      if (connected) {
-        isLiker ? deleteFromLikers() : addToLikers();
-      }
+  const handleLikes = (): boolean => {
+    if (connected) {
+      isLiker ? deleteFromLikers() : addToLikers();
     }
+    return true;
   };
 
   const deleteFromFavs = (): void => {

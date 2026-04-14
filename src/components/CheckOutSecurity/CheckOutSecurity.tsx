@@ -6,7 +6,7 @@ type Props = {
   children: ReactElement;
 };
 
-const CheckOutSecurity = ({ children }: Props) => {
+const CheckOutSecurity = ({ children }: Props): ReactElement | null => {
   const { logged, id } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 

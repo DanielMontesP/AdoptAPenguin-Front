@@ -66,19 +66,19 @@ export const loginThunk =
 
         dispatch(getUserMessagesThunk(id));
       }
-    } catch (error: void) {
-      handleNoConexion(dispatch, "user.id");
-      setLoadingOffWithMessage(
-        "Login failed!\nCheck credentials for username: " + userData.username,
-        false,
-      );
+    } catch {
+      const errorMessage =
+        "Login failed!\nCheck credentials for username: " + userData.username;
+      handleNoConexion(dispatch);
+      setLoadingOffWithMessage(errorMessage, false);
 
-      return error.message;
+      return errorMessage;
     }
   };
 
 export const registerThunk =
-  (userData: void, password: string) => async (dispatch: AppDispatch) => {
+  (userData: UserRegister, password: string) =>
+  async (dispatch: AppDispatch) => {
     try {
       setLoadingOn(
         `REGISTER:...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`,
@@ -100,16 +100,16 @@ export const registerThunk =
       }
 
       setLoadingOffWithMessage(message, false);
-    } catch (error: void) {
-      setLoadingOffWithMessage(
+    } catch {
+      const errorMessage =
         "Registration failed!: \nUsername: " +
-          userData.username +
-          ", this username all ready exist. " +
-          userData.password,
-        true,
-      );
+        userData.username +
+        ", this username all ready exist. " +
+        userData.password;
 
-      return error.message;
+      setLoadingOffWithMessage(errorMessage, true);
+
+      return errorMessage;
     }
   };
 
@@ -138,7 +138,7 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
 };
 
 export const editUserThunk =
-  (idUser: void) => async (dispatch: AppDispatch) => {
+  (idUser: string) => async (dispatch: AppDispatch) => {
     setLoadingOn("EDIT User...");
 
     const token = localStorage.getItem("token");

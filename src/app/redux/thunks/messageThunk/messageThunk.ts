@@ -17,7 +17,8 @@ import { blankMessageData } from "../../initializers/iniMessages";
 import { getPenguinThunk } from "../penguinThunk/penguinThunk";
 import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
 import { getUserNewMessagesActionCreator } from "../../features/userSlice/userSlice";
-import { mockMessage } from "../../../../mocks/messages";
+import { mockMessage, mockMessages } from "../../../../mocks/messages";
+import { IMessage } from "../../types/message/messageInterfaces";
 
 let firstLoad = false;
 let textNoConnection = "";
@@ -51,12 +52,12 @@ export const getMessagesThunk =
 
         dispatch(getMessagesActionCreator(messages));
       } else {
-        handleNoConexion(dispatch, "user.id");
+        handleNoConexion(dispatch);
         setLoadingOffWithMessage(`GET Messages: ${textNoConnection}`, false);
       }
-    } catch (error) {
-      handleNoConexion(dispatch, "user.id");
-      dispatch(getUserNewMessagesActionCreator(mockMessage));
+    } catch {
+      handleNoConexion(dispatch);
+      dispatch(getUserNewMessagesActionCreator(mockMessages));
       setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
     }
   };
@@ -94,7 +95,7 @@ export const getMessageThunk =
   };
 
 export const createMessageThunk =
-  (formMessage: void) => async (dispatch: AppDispatch) => {
+  (formMessage: IMessage) => async (dispatch: AppDispatch) => {
     setLoadingOn(`CREATE Message: Creating Message...`);
 
     const token = localStorage.getItem("token");
@@ -125,7 +126,7 @@ export const createMessageThunk =
   };
 
 export const editMessageThunk =
-  (formMessage: void, type: string) => async (dispatch: AppDispatch) => {
+  (formMessage: IMessage, type: string) => async (dispatch: AppDispatch) => {
     setLoadingOn("EDIT Message...");
 
     const token = localStorage.getItem("token");

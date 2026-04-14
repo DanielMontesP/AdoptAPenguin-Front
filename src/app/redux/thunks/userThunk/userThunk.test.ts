@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 import { vi } from "vitest";
 import { mockUser } from "../../../../mocks/users";
 import { server } from "../../../../mocks/server";
@@ -10,6 +11,7 @@ import {
 } from "./userThunk";
 import axios from "axios";
 import { mockMessages } from "../../../../mocks/messages";
+import { UserRegister } from "../../types/userInterfaces/userInterfaces";
 
 beforeAll((): void => {
   server.listen({ onUnhandledRequest: "bypass" });
@@ -30,8 +32,8 @@ vi.mock("jwt-decode", () => ({
 
 vi.mock("axios");
 
-HTMLAnchorElement.prototype.click = vi.fn();
-window.URL.createObjectURL = vi.fn();
+HTMLAnchorElement.prototype.click = function (this: void) {};
+window.URL.createObjectURL = function (this: void) { return ""; };
 
 vi.mock("../../hooks/hooks", () => ({
   useAppSelector: () => ({
@@ -160,7 +162,7 @@ describe("Given the getuserThunk function", (): void => {
   });
 
   describe("When invoked editUser", () => {
-    test("Then it should not call the dispatch", async (): Promise<void> => {
+    test("Then it should not call the dispatch", async (): Promise<UserRegister> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
@@ -178,7 +180,7 @@ describe("Given the getuserThunk function", (): void => {
   });
 
   describe("When registerThunk invoked editUser", () => {
-    test("Then it should not call the dispatch", async (): Promise<void> => {
+    test("Then it should not call the dispatch", async (): Promise<I> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
@@ -190,6 +192,7 @@ describe("Given the getuserThunk function", (): void => {
         username: mockUser.username,
         password: mockUser.password,
       };
+
       const thunk = registerThunk(mockData, mockUser.password);
       await thunk(dispatch);
 

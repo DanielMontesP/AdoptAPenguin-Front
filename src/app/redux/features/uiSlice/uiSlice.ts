@@ -18,12 +18,12 @@ const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    loading: (ui: UISliceState, action: PayloadAction<any>) => ({
+    loading: (ui: UISliceState) => ({
       ...ui,
       loading: true,
     }),
 
-    finishedLoading: (ui: UISliceState, action: PayloadAction<any>) => ({
+    finishedLoading: (ui: UISliceState) => ({
       ...ui,
       loading: false,
     }),
@@ -48,27 +48,27 @@ const uiSlice = createSlice({
       headerLastTitle: action.payload,
     }),
 
-    isDesktop: (ui: UISliceState, action: PayloadAction<any>) => ({
+    isDesktop: (ui: UISliceState, action: PayloadAction<boolean>) => ({
       ...ui,
       isDesktop: action.payload,
     }),
 
-    stringToSearch: (ui: UISliceState, action: PayloadAction<any>) => ({
+    stringToSearch: (ui: UISliceState, action: PayloadAction<string>) => ({
       ...ui,
       stringToSearch: action.payload,
     }),
 
-    isMenuOpen: (ui: UISliceState, action: PayloadAction<any>) => ({
+    isMenuOpen: (ui: UISliceState, action: PayloadAction<boolean>) => ({
       ...ui,
       isMenuOpen: action.payload,
     }),
 
-    isModalOpen: (ui: UISliceState, action: PayloadAction<any>) => ({
+    isModalOpen: (ui: UISliceState, action: PayloadAction<boolean>) => ({
       ...ui,
       isModalOpen: action.payload,
     }),
 
-    isSearchOpen: (ui: UISliceState, action: PayloadAction<any>) => ({
+    isSearchOpen: (ui: UISliceState, action: PayloadAction<boolean>) => ({
       ...ui,
       isSearchOpen: action.payload,
     }),

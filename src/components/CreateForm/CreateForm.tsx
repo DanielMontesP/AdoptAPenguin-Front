@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState, ReactElement } from "react";
+import { ChangeEvent, useState, ReactElement } from "react";
 import { wrongAction } from "../Modals/Modals";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import {
@@ -25,10 +25,10 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
 
   const initialFormData = isCreate ? newPenguinFormData(user.id) : penguin;
 
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, setFormData] = useState<IPenguin>(initialFormData);
   const [imageAdded, setImageAdded] = useState(false);
 
-  const processCreate = (type: string) => {
+  const processCreate = (): boolean => {
     const newFormData = new FormData();
 
     newFormData.append("name", formData.name);
@@ -42,9 +42,10 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
     newFormData.append("description", formData.description);
 
     dispatch(createFavThunk(newFormData));
+    return true;
   };
 
-  const processEdit = (imageAdded: boolean) => {
+  const processEdit = (imageAdded: boolean): boolean => {
     modFields = cleanArray(modFields);
 
     let newFormData = new FormData();
@@ -64,6 +65,8 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
         "Update fields: " + modFields.join(", "),
       ),
     );
+
+    return true;
   };
 
   const [{ alt, src }, setImg] = useState({
@@ -84,30 +87,38 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
     modFields.push(event.target.id);
   };
 
-  const handleImg = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+  const handleImg = async (
+    event: ChangeEvent<HTMLInputElement>,
+  ): Promise<boolean> => {
+    try {
+      const file = event.target.files?.[0];
 
-    setImageAdded(true);
+      setImageAdded(true);
 
-    if (file) {
-      setFormData({
-        ...formData,
-        image: file,
-      });
+      if (file) {
+        setFormData({
+          ...formData,
+          image: file,
+        });
 
-      setImg({
-        src: URL.createObjectURL(file),
-        alt: file.name,
-      });
+        setImg({
+          src: URL.createObjectURL(file),
+          alt: file.name,
+        });
 
-      modFields.push(event.target.id);
+        modFields.push(event.target.id);
+      }
+
+      return true;
+    } catch {
+      return false;
     }
   };
 
   const handleSubmit = (): void => {
     try {
       if (isCreate) {
-        processCreate("New");
+        processCreate();
 
         navigate(`/penguins/favs`);
       } else {
@@ -116,7 +127,7 @@ const CreateForm = ({ penguin }: Props): ReactElement => {
         navigate(`/detail/${formData.id || penguin.id}`);
       }
     } catch (error) {
-      wrongAction(error.toString());
+      wrongAction((error as Error).toString());
     }
   };
 

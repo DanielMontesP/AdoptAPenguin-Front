@@ -9,8 +9,7 @@ export const mockPenguin: IPenguin = {
   favs: ["idUser1", "id2"],
   image: "image1",
   imageBackup: "sadsadasd.jpg",
-  imageResized: 
-  // "ImageBackup.jpg",
+  imageResized: "ImageBackup.jpg",
   // imageOpenai: "",
   description: "description1",
 };

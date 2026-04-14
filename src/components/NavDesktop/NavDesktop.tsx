@@ -1,4 +1,4 @@
-import { MouseEvent, useState, ReactElement } from "react";
+import { useState, ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";

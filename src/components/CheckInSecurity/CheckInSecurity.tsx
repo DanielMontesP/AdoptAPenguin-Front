@@ -7,7 +7,7 @@ type Props = {
   children: ReactElement;
 };
 
-const CheckInSecurity = ({ children }: Props) => {
+const CheckInSecurity = ({ children }: Props): ReactElement | null => {
   const { id, logged } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

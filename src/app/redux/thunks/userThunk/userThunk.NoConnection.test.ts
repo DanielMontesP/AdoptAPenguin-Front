@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 import { vi } from "vitest";
 import { mockUser } from "../../../../mocks/users";
 import { server } from "../../../../mocks/server";
@@ -38,12 +39,12 @@ vi.mock("../../hooks/hooks", () => ({
   useAppDispatch: () => vi.fn(),
 }));
 
-HTMLAnchorElement.prototype.click = vi.fn();
-window.URL.createObjectURL = vi.fn();
+HTMLAnchorElement.prototype.click = function (this: void) {};
+window.URL.createObjectURL = function (this: void) { return ""; };
 
 describe("Given the getuserThunk function", (): void => {
   describe("When it's called with an user", (): void => {
-    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async (): void => {
+    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -57,7 +58,7 @@ describe("Given the getuserThunk function", (): void => {
   });
 
   describe("When getUserThunk is called badly", (): void => {
-    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async (): void => {
+    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -71,7 +72,7 @@ describe("Given the getuserThunk function", (): void => {
   });
 
   describe("When invoked with a valid user and axios throws an error", (): void => {
-    test("Then it should not call the dispatch", async (): void => {
+    test("Then it should not call the dispatch", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
@@ -88,7 +89,7 @@ describe("Given the getuserThunk function", (): void => {
   });
 
   describe("When invoked with a valid user and axios", (): void => {
-    test("Then it should call the dispatch", async (): void => {
+    test("Then it should call the dispatch", async (): Promise<void> => {
       const dispatch = vi.fn();
       vi.mock("../../features/uiSlice/uiSlice", () => ({
         loginActionCreator: vi.fn().mockReturnThis(),
@@ -117,7 +118,7 @@ describe("Given the getuserThunk function", (): void => {
   });
 
   describe("When invoked with a invalid user and axios throws an error", (): void => {
-    test("Then it should not call the dispatch", async (): void => {
+    test("Then it should not call the dispatch", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
@@ -134,17 +135,14 @@ describe("Given the getuserThunk function", (): void => {
   });
 
   describe("When invoked editUser", (): void => {
-    test("Then it should not call the dispatch", async (): void => {
+    test("Then it should not call the dispatch", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
       axios.put = vi.fn().mockReturnValue({});
 
-      const thunk = editUserThunk({
-        username: mockUser.username,
-        password: "",
-      });
+      const thunk = editUserThunk(mockUser.id);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
@@ -152,7 +150,7 @@ describe("Given the getuserThunk function", (): void => {
   });
 
   describe("When registerThunk invoked editUser", (): void => {
-    test("Then it should not call the dispatch", async (): void => {
+    test("Then it should not call the dispatch", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
@@ -172,7 +170,7 @@ describe("Given the getuserThunk function", (): void => {
   });
 
   describe("When registerThunk invoked editUser badly", (): void => {
-    test("Then it should not call the dispatch", async (): void => {
+    test("Then it should not call the dispatch", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
@@ -184,6 +182,8 @@ describe("Given the getuserThunk function", (): void => {
           username: mockUser.username,
           password: mockUser.password,
         },
+        username: mockUser.username,
+        password: mockUser.password,
       };
       const thunk = registerThunk(mockData, mockUser.password);
       await thunk(dispatch);
@@ -193,7 +193,7 @@ describe("Given the getuserThunk function", (): void => {
   });
 
   describe("When getUserMessagesThunk is called with no connection", (): void => {
-    test("Then it should call not call dispatch", async (): void => {
+    test("Then it should call not call dispatch", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();

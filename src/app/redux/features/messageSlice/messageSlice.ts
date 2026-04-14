@@ -31,7 +31,7 @@ const messagesSlice = createSlice({
 
     getMessages: (
       messages,
-      action: PayloadAction<IMessage[]>
+      action: PayloadAction<IMessage[]>,
     ): SliceIniState => ({
       ...messages,
       allMessages: [...action.payload],
@@ -39,7 +39,7 @@ const messagesSlice = createSlice({
 
     createMessage: (
       messages,
-      action: PayloadAction<IMessage>
+      action: PayloadAction<IMessage>,
     ): SliceIniState => ({
       ...messages,
       message: action.payload,
@@ -47,40 +47,34 @@ const messagesSlice = createSlice({
 
     deleteMessage: (
       messages,
-      action: PayloadAction<string>
+      action: PayloadAction<string>,
     ): SliceIniState => ({
       ...messages,
       allMessages: messages.allMessages.filter(
-        (message) => message.id !== action.payload
+        (message) => message.id !== action.payload,
       ),
       message: initialState.message,
     }),
 
     editMessage: (
       messages,
-      action: PayloadAction<IMessage>
+      action: PayloadAction<IMessage>,
     ): SliceIniState => ({
       ...messages,
       allMessages: messages.allMessages.map((message) =>
         message.id === action.payload.id
           ? { ...action.payload }
-          : { ...message }
+          : { ...message },
       ),
       message: action.payload,
     }),
 
-    resetMessage: (
-      messages,
-      action: PayloadAction<IMessage>
-    ): SliceIniState => ({
+    resetMessage: (messages): SliceIniState => ({
       ...messages,
       message: initialState.message,
     }),
 
-    resetMessages: (
-      messages,
-      action: PayloadAction<IMessage>
-    ): SliceIniState => ({
+    resetMessages: (messages): SliceIniState => ({
       ...messages,
       allMessages: initialState.allMessages,
     }),

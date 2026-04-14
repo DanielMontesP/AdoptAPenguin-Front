@@ -28,7 +28,7 @@ const penguinSlice = createSlice({
   reducers: {
     loadPenguin: (
       penguins,
-      action: PayloadAction<IPenguin>
+      action: PayloadAction<IPenguin>,
     ): SliceIniState => ({
       ...penguins,
       penguin: action.payload,
@@ -36,7 +36,7 @@ const penguinSlice = createSlice({
 
     loadPenguins: (
       penguins,
-      action: PayloadAction<IPenguin[]>
+      action: PayloadAction<IPenguin[]>,
     ): SliceIniState => ({
       ...penguins,
       allPenguins: [...action.payload],
@@ -44,7 +44,7 @@ const penguinSlice = createSlice({
 
     createPenguin: (
       penguins,
-      action: PayloadAction<IPenguin>
+      action: PayloadAction<IPenguin>,
     ): SliceIniState => ({
       ...penguins,
       penguin: action.payload,
@@ -52,47 +52,41 @@ const penguinSlice = createSlice({
 
     deletePenguin: (
       penguins,
-      action: PayloadAction<string>
+      action: PayloadAction<string>,
     ): SliceIniState => ({
       ...penguins,
       allPenguins: penguins.allPenguins.filter(
-        (penguin) => penguin.id !== action.payload
+        (penguin) => penguin.id !== action.payload,
       ),
       penguin: initialState.penguin,
     }),
 
     editPenguin: (
       penguins,
-      action: PayloadAction<IPenguin>
+      action: PayloadAction<IPenguin>,
     ): SliceIniState => ({
       ...penguins,
       allPenguins: penguins.allPenguins.map((penguin) =>
         penguin.id === action.payload.id
           ? { ...action.payload }
-          : { ...penguin }
+          : { ...penguin },
       ),
       penguin: action.payload,
     }),
 
-    resetPenguin: (
-      penguins,
-      action: PayloadAction<IPenguin>
-    ): SliceIniState => ({
+    resetPenguin: (penguins): SliceIniState => ({
       ...penguins,
       penguin: initialState.penguin,
     }),
 
-    resetPenguins: (
-      penguins,
-      action: PayloadAction<IPenguin>
-    ): SliceIniState => ({
+    resetPenguins: (penguins): SliceIniState => ({
       ...penguins,
       allPenguins: initialState.allPenguins,
     }),
 
     searchPenguins: (
       penguins,
-      action: PayloadAction<IPenguin[]>
+      action: PayloadAction<IPenguin[]>,
     ): SliceIniState => ({
       ...penguins,
       allPenguins: [...action.payload],

@@ -22,31 +22,48 @@ const RegisterForm = (): ReactElement => {
 
   const dispatch = useAppDispatch();
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    setFormData({
-      ...formData,
-      [event.target.id]: event.target.value,
-    });
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): boolean => {
+    try {
+      setFormData({
+        ...formData,
+        [event.target.id]: event.target.value,
+      });
+      return true;
+    } catch {
+      return false;
+    }
   };
 
-  const processRegistration = (): void => {
-    dispatch(registerThunk(formData, formData.password));
+  const processRegistration = (): boolean => {
+    try {
+      dispatch(registerThunk(formData, formData.password));
+      return true;
+    } catch {
+      return false;
+    }
   };
 
-  const handleSubmit = (event: ChangeEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-
-    processRegistration();
-
-    setFormData(initialFormData);
+  const handleSubmit = (event: ChangeEvent<HTMLFormElement>): boolean => {
+    try {
+      event.preventDefault();
+      processRegistration();
+      setFormData(initialFormData);
+      return true;
+    } catch {
+      return false;
+    }
   };
 
   useEffect((): void => {
-    const SetTitleHeader = (title: string, lastTitle: string) => {
-      dispatch(headerTitleActionCreator(title));
-      dispatch(headerLastTitleActionCreator(lastTitle));
+    const SetTitleHeader = (title: string, lastTitle: string): boolean => {
+      try {
+        dispatch(headerTitleActionCreator(title));
+        dispatch(headerLastTitleActionCreator(lastTitle));
+        return true;
+      } catch {
+        return false;
+      }
     };
-
     if (headerTitle !== thisTitle) SetTitleHeader(thisTitle, headerTitle);
   }, [dispatch, headerTitle]);
 
