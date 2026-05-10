@@ -168,5 +168,5 @@ export const handleNoConexion = (dispatch: any): void => {
   dispatch(modalMessageActionCreator(textNoConnection));
   dispatch(isModalOpenActionCreator(true));
 
-  handleServerInfo(false, "local", "Unavailable", dispatch);
+  handleServerInfo(false, "local", "Unavailable");
 };

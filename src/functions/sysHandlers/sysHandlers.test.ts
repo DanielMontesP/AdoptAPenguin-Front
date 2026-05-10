@@ -135,7 +135,7 @@ describe("Given getUserNewMessages function", (): void => {
     test("Then it should call the dispatch function", async (): Promise<void> => {
       const dispatch = vi.fn();
 
-      dispatch(getUserNewMessages(mockMessages, dispatch));
+      dispatch(getUserNewMessages(mockMessages));
 
       expect(dispatch).toHaveBeenCalled();
     });

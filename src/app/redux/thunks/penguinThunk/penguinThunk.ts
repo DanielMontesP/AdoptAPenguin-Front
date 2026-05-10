@@ -53,7 +53,6 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
         true,
         `${import.meta.env.VITE_APP_API_URL}penguins`,
         "Connected",
-        dispatch,
       );
 
       setLoadingOffWithMessage(`GET Penguins: Finished successfully`, false);
@@ -97,7 +96,7 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
   } catch {
     dispatch(loadPenguinsActionCreator(penguins));
     handleNoConexion(dispatch);
-    handleServerInfo(false, "local", textNoConnection, dispatch);
+    handleServerInfo(false, "local", textNoConnection);
     setLoadingOffWithMessage(`GET Favs: ${textNoConnection}`, false);
   }
 };
@@ -129,7 +128,7 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
   } catch {
     handleNoConexion(dispatch);
     dispatch(loadPenguinsActionCreator(penguins));
-    handleServerInfo(false, "local", textNoConnection, dispatch);
+    handleServerInfo(false, "local", textNoConnection);
 
     setLoadingOffWithMessage(`GET Likes: ${textNoConnection}`, false);
   }

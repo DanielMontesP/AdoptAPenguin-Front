@@ -126,7 +126,6 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
         true,
         `${import.meta.env.VITE_APP_API_URL}`,
         "Connected to server",
-        dispatch,
       );
 
       dispatch(getUserMessagesThunk(id));
@@ -179,10 +178,9 @@ export const getUserMessagesThunk =
         true,
         `${import.meta.env.VITE_APP_API_URL}`,
         "Connected to server",
-        dispatch,
       );
       if (messages?.length > 0) {
-        getUserNewMessages(messages, dispatch);
+        getUserNewMessages(messages);
         dispatch(getUserMessagesActionCreator(messages));
       }
     }
