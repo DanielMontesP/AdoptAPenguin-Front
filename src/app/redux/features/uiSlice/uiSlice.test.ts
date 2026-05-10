@@ -49,10 +49,6 @@ const expectedLoadingState = {
   isSearchOpen: false,
 };
 
-const process = {
-  loadedProcess: { process: "Loading LoadHome", loading: true },
-};
-
 describe("Given the loadingActionCreator", (): void => {
   describe("When invoked", (): void => {
     test("Then the loading ui state should change to true", (): void => {

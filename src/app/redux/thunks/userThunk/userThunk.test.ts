@@ -11,7 +11,6 @@ import {
 } from "./userThunk";
 import axios from "axios";
 import { mockMessages } from "../../../../mocks/messages";
-import { UserRegister } from "../../types/userInterfaces/userInterfaces";
 
 beforeAll((): void => {
   server.listen({ onUnhandledRequest: "bypass" });
@@ -33,7 +32,9 @@ vi.mock("jwt-decode", () => ({
 vi.mock("axios");
 
 HTMLAnchorElement.prototype.click = function (this: void) {};
-window.URL.createObjectURL = function (this: void) { return ""; };
+window.URL.createObjectURL = function (this: void) {
+  return "";
+};
 
 vi.mock("../../hooks/hooks", () => ({
   useAppSelector: () => ({

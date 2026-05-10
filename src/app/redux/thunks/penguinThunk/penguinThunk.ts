@@ -15,7 +15,6 @@ import {
   searchPenguinsActionCreator,
 } from "../../features/penguinSlice/penguinSlice";
 import { penguins } from "../../../../export/penguins-export";
-import { blankFormData } from "../../initializers/iniPenguins";
 import { finishedLoadingActionCreator } from "../../features/uiSlice/uiSlice";
 import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
 import { handleServerInfo } from "../../../../functions/sysHandlers/sysHandlers";

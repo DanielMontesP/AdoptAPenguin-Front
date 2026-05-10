@@ -13,7 +13,6 @@ import {
   resetMessageActionCreator,
   resetMessagesActionCreator,
 } from "../../features/messageSlice/messageSlice";
-import { blankMessageData } from "../../initializers/iniMessages";
 import { getPenguinThunk } from "../penguinThunk/penguinThunk";
 import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
 import { getUserNewMessagesActionCreator } from "../../features/userSlice/userSlice";
