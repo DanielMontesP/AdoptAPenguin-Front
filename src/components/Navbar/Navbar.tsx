@@ -54,7 +54,7 @@ const Navbar = ({
 
   const isOpen = isMenuOpen || isModalOpen || isSearchOpen;
 
-  const getModalType = (): void => {
+  const getModalType = (): string => {
     const newModalType = modalType;
     return newModalType;
   };
@@ -146,7 +146,7 @@ const Navbar = ({
         <div onClick={handleDimmer} role="tabpanel">
           <ReactDimmer
             isOpen={isOpen}
-            exitDimmer={setMenu || setModal || setSearch}
+            exitDimmer={() => { setMenu(false); setModal(false); setSearch(false); }}
             zIndex={90}
             blur={1.5}
           />

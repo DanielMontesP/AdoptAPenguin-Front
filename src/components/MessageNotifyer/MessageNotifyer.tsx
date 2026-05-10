@@ -21,7 +21,7 @@ const MessageNotifyer = ({ messages }: Props): ReactElement => {
 
   const dispatch = useAppDispatch();
 
-  const handleClose = (): void => {
+  const handleClose = (): string => {
     const newHidder = " display-none";
     setHidder((prevState) => !prevState);
 

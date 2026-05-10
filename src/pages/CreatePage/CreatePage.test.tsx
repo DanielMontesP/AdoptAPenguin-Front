@@ -66,7 +66,7 @@ describe("Given a penguin CreatePage component", (): void => {
   });
 
   describe("When the two inputs have text and the submit button is clicked", (): void => {
-    test("Then the two input name should have value penguin1", async (): void => {
+    test("Then the two input name should have value penguin1", async (): Promise<void> => {
       const nameLabel = "Name";
       const inputText = "penguin1";
 
@@ -108,7 +108,7 @@ describe("Given a penguin CreatePage component", (): void => {
   });
 
   describe("When the render message form with two inputs have text and the submit button is clicked", (): void => {
-    test("Then the two input name should have value penguin1", async (): void => {
+    test("Then the two input name should have value penguin1", async (): Promise<void> => {
       const nameLabel = "Message";
       const inputText = "penguin1";
       const user = userEvent.setup();

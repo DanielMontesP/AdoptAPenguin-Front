@@ -100,7 +100,7 @@ describe("Given the editPenguinActionCreator", (): void => {
 describe("Given the resetPenguinActionCreator", (): void => {
   describe("When invoked", (): void => {
     test("Then penguin data will be reseted", (): void => {
-      const action = resetPenguinActionCreator(mockPenguin);
+      const action = resetPenguinActionCreator();
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },
         action,
@@ -113,8 +113,8 @@ describe("Given the resetPenguinActionCreator", (): void => {
 
 describe("Given resetPenguinsActionCreator", (): void => {
   describe("When  invoked", (): void => {
-    test("Then  penguins data will be reseted", async (): void => {
-      const action = resetPenguinsActionCreator(mockEmptyDataPenguin);
+    test("Then  penguins data will be reseted", async (): Promise<void> => {
+      const action = resetPenguinsActionCreator();
       const loadedState = penguinReducer(
         { allPenguins: mockPenguinsEmpty, penguin: mockEmptyDataPenguin },
         action,
@@ -127,7 +127,7 @@ describe("Given resetPenguinsActionCreator", (): void => {
 
 describe("Given searchPenguinActionCreator", (): void => {
   describe("When  invoked", (): void => {
-    test("Then string will be used to find penguin data matches", async (): void => {
+    test("Then string will be used to find penguin data matches", async (): Promise<void> => {
       const action = searchPenguinsActionCreator(mockPenguins);
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },

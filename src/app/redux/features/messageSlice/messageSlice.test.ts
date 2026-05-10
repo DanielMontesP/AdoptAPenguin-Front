@@ -69,7 +69,7 @@ describe("Given the editMessageActionCreator", (): void => {
 describe("Given the resetMessageActionCreator", (): void => {
   describe("When invoked", (): void => {
     test("Then rest message data", (): void => {
-      const action = resetMessageActionCreator(mockMessage);
+      const action = resetMessageActionCreator();
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
         action,
@@ -83,7 +83,7 @@ describe("Given the resetMessageActionCreator", (): void => {
 describe("Given resetPenguinsActionCreator", (): void => {
   describe("When  invoked", (): void => {
     test("Then load list with no messages", (): void => {
-      const action = resetMessagesActionCreator(mockMessage);
+      const action = resetMessagesActionCreator();
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
         action,

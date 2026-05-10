@@ -56,7 +56,7 @@ const process = {
 describe("Given the loadingActionCreator", (): void => {
   describe("When invoked", (): void => {
     test("Then the loading ui state should change to true", (): void => {
-      const action = loadingActionCreator(process);
+      const action = loadingActionCreator();
       const loadedState = uiReducer(expectedLoadingState, action);
 
       expect(loadedState).toEqual(expectedLoadingState);
@@ -67,7 +67,7 @@ describe("Given the loadingActionCreator", (): void => {
 describe("Given the finiushedLoadingActionCreator", (): void => {
   describe("When invoked", (): void => {
     test("Then the loading ui state should change to false", (): void => {
-      const action = finishedLoadingActionCreator("loadingActionCreator");
+      const action = finishedLoadingActionCreator();
       const loadedState = uiReducer(expectedState, action);
 
       expect(loadedState).toEqual(expectedState);

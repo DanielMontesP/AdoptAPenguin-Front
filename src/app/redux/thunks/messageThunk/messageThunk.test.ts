@@ -15,7 +15,7 @@ import {
 
 describe("Given the getMessagesThunk function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -34,7 +34,7 @@ describe("Given the getMessagesThunk function", (): void => {
 
 describe("Given the getMessagesThunk with error function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -53,7 +53,7 @@ describe("Given the getMessagesThunk with error function", (): void => {
 
 describe("Given the getMessageThunk function", (): void => {
   describe("When it's called with an user", (): void => {
-    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async (): void => {
+    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -67,7 +67,7 @@ describe("Given the getMessageThunk function", (): void => {
   });
 
   describe("When it's called with id message undefined", (): void => {
-    test("Then it should call dispatch the axios request", async (): void => {
+    test("Then it should call dispatch the axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -83,7 +83,7 @@ describe("Given the getMessageThunk function", (): void => {
 
 describe("Given the resetMessageThunk function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -102,7 +102,7 @@ describe("Given the resetMessageThunk function", (): void => {
 
 describe("Given the resetMessagesThunk function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -121,7 +121,7 @@ describe("Given the resetMessagesThunk function", (): void => {
 
 describe("Given the createMessageThunk function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -140,7 +140,7 @@ describe("Given the createMessageThunk function", (): void => {
 
 describe("Given the editMessageThunk function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -149,7 +149,7 @@ describe("Given the editMessageThunk function", (): void => {
         status: 200,
       });
 
-      const thunk = editMessageThunk(mockMessage.id, "Message");
+      const thunk = editMessageThunk(mockMessage, "Message");
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledTimes(2);
@@ -159,7 +159,7 @@ describe("Given the editMessageThunk function", (): void => {
 
 describe("Given the editMessageThunk with no token function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("error");
@@ -168,7 +168,7 @@ describe("Given the editMessageThunk with no token function", (): void => {
         status: 200,
       });
 
-      const thunk = editMessageThunk(mockMessage.id, "Message");
+      const thunk = editMessageThunk(mockMessage, "Message");
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledTimes(2);
@@ -178,7 +178,7 @@ describe("Given the editMessageThunk with no token function", (): void => {
 
 describe("Given the deleteMessageThunk", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the deleteMessage  action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the deleteMessage  action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");

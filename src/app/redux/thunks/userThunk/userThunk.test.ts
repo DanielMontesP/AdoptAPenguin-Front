@@ -162,17 +162,14 @@ describe("Given the getuserThunk function", (): void => {
   });
 
   describe("When invoked editUser", () => {
-    test("Then it should not call the dispatch", async (): Promise<UserRegister> => {
+    test("Then it should not call the dispatch", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
       axios.put = vi.fn().mockReturnValue({});
 
-      const thunk = editUserThunk({
-        username: mockUser.username,
-        password: "",
-      });
+      const thunk = editUserThunk(mockUser.id);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
@@ -180,7 +177,7 @@ describe("Given the getuserThunk function", (): void => {
   });
 
   describe("When registerThunk invoked editUser", () => {
-    test("Then it should not call the dispatch", async (): Promise<I> => {
+    test("Then it should not call the dispatch", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "setItem").mockReturnValue();
@@ -209,10 +206,8 @@ describe("Given the getuserThunk function", (): void => {
       axios.post = vi.fn().mockRejectedValue(false);
 
       const mockData = {
-        userData: {
-          username: mockUser.username,
-          password: mockUser.password,
-        },
+        username: mockUser.username,
+        password: mockUser.password,
       };
       const thunk = registerThunk(mockData, mockUser.password);
       await thunk(dispatch);

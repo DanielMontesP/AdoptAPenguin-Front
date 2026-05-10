@@ -38,7 +38,7 @@ vi.mock("../../hooks/hooks", () => ({
 
 describe("Given the loadPenguinsThunk function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -57,7 +57,7 @@ describe("Given the loadPenguinsThunk function", (): void => {
 
 describe("Given the loadFavsThunk function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
       loadPenguinsActionCreator(mockPenguins);
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -74,7 +74,7 @@ describe("Given the loadFavsThunk function", (): void => {
   });
 
   describe("When it's called with empty array", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
       loadFavsThunk();
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -91,7 +91,7 @@ describe("Given the loadFavsThunk function", (): void => {
   });
 
   describe("When loadLikesThunk is called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
       loadPenguinsActionCreator(mockPenguins);
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -108,7 +108,7 @@ describe("Given the loadFavsThunk function", (): void => {
   });
 
   describe("When loadLikesThunk with no results called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
       loadPenguinsActionCreator(mockPenguins);
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -124,7 +124,7 @@ describe("Given the loadFavsThunk function", (): void => {
     });
   });
   describe("When loadLikesThunk with 0 is called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
       loadPenguinsActionCreator(mockPenguinsEmpty);
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -143,7 +143,7 @@ describe("Given the loadFavsThunk function", (): void => {
 
 describe("Given createFavThunk", (): void => {
   describe("when it's called", (): void => {
-    test("Then it should call the dispatch function", async (): void => {
+    test("Then it should call the dispatch function", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -151,14 +151,14 @@ describe("Given createFavThunk", (): void => {
         data: { penguin: newPenguinFormData(mockPenguin.id) },
         status: 200,
       });
-      const thunk = createFavThunk({ mockPenguin });
+      const thunk = createFavThunk(mockPenguin as unknown as FormData);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
     });
   });
   describe("when it's called with no token data", (): void => {
-    test("Then it should call the dispatch function", async (): void => {
+    test("Then it should call the dispatch function", async (): Promise<void> => {
       const dispatch = vi.fn();
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
 
@@ -166,7 +166,7 @@ describe("Given createFavThunk", (): void => {
         data: { penguin: mockPenguin },
         status: 200,
       });
-      const thunk = createFavThunk({ mockPenguin });
+      const thunk = createFavThunk(mockPenguin as unknown as FormData);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
@@ -176,7 +176,7 @@ describe("Given createFavThunk", (): void => {
 
 describe("Given the getPenguinThunk function", (): void => {
   describe("When it's called with an user", (): void => {
-    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async (): void => {
+    test("Then it should call dispatch with the set notes to show action with the notes received from the axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -192,7 +192,7 @@ describe("Given the getPenguinThunk function", (): void => {
 
 describe("Given the resetPenguinsThunk function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -211,7 +211,7 @@ describe("Given the resetPenguinsThunk function", (): void => {
 
 describe("Given the resetPenguinThunk function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -230,7 +230,7 @@ describe("Given the resetPenguinThunk function", (): void => {
 
 describe("Given the editPenguinThunk function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -250,7 +250,7 @@ describe("Given the editPenguinThunk function", (): void => {
   });
 
   describe("When editPenguinThunk with likes it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -269,7 +269,7 @@ describe("Given the editPenguinThunk function", (): void => {
   });
 
   describe("When editPenguinThunk with favs it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -288,7 +288,7 @@ describe("Given the editPenguinThunk function", (): void => {
   });
 
   describe("When delete is called", (): void => {
-    test("Then it should call dispatch", async (): void => {
+    test("Then it should call dispatch", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -305,7 +305,7 @@ describe("Given the editPenguinThunk function", (): void => {
     });
   });
   describe("When search is called", (): void => {
-    test("Then it should call dispatch", async (): void => {
+    test("Then it should call dispatch", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -323,7 +323,7 @@ describe("Given the editPenguinThunk function", (): void => {
   });
 
   describe("When search error is called", (): void => {
-    test("Then it should call dispatch", async (): void => {
+    test("Then it should call dispatch", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");

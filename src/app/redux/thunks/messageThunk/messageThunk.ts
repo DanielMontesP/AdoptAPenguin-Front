@@ -171,11 +171,11 @@ export const deleteMessageThunk =
   };
 
 export const resetMessageThunk = () => async (dispatch: AppDispatch) => {
-  dispatch(resetMessageActionCreator(blankMessageData));
+  dispatch(resetMessageActionCreator());
 };
 
 export const resetMessagesThunk = () => async (dispatch: AppDispatch) => {
-  dispatch(resetMessagesActionCreator(blankMessageData));
+  dispatch(resetMessagesActionCreator());
 
   setLoadingOffWithMessage("RESET Messages: Finished successfully.", false);
 };

@@ -48,7 +48,7 @@ function App(): JSX.Element {
 
   handleNav();
   connectedToServer();
-  useEffect((): void => {
+  useEffect(() => {
     window.addEventListener("resize", updateMedia);
 
     const token = localStorage.getItem("token");
@@ -63,7 +63,7 @@ function App(): JSX.Element {
 
       dispatch(isDesktopActionCreator(isDesktop));
 
-      return (): void => {
+      return () => {
         window.removeEventListener("resize", updateMedia);
       };
     }

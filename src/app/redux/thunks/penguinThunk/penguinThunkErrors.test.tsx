@@ -22,7 +22,7 @@ vi.mock("../../../../functions/sysHandlers/sysHandlers", () => ({
 
 describe("Given the editPenguin function", (): void => {
   describe("When it's called and not connected", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -37,7 +37,7 @@ describe("Given the editPenguin function", (): void => {
   });
 
   describe("When it's called with error", (): void => {
-    test("Then it should not call editPenguinThunk", async (): void => {
+    test("Then it should not call editPenguinThunk", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       vi.mock("../../../../components/Modals/Modals", () => ({
@@ -55,7 +55,7 @@ describe("Given the editPenguin function", (): void => {
 
 describe("Given the loadPenguinsThunk function", (): void => {
   describe("When it's called", (): void => {
-    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): void => {
+    test("Then it should call dispatch with the load penguins action with penguins received from axios request", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       axios.get = vi.fn().mockResolvedValue({

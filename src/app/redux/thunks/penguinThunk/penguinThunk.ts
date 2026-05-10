@@ -58,7 +58,7 @@ export const loadPenguinsThunk = () => async (dispatch: AppDispatch) => {
       );
 
       setLoadingOffWithMessage(`GET Penguins: Finished successfully`, false);
-      dispatch(finishedLoadingActionCreator("loadingActionCreator"));
+      dispatch(finishedLoadingActionCreator());
       penguins && dispatch(loadPenguinsActionCreator(penguins));
     }
   } catch {
@@ -90,7 +90,7 @@ export const loadFavsThunk = () => async (dispatch: AppDispatch) => {
         );
       }
 
-      dispatch(finishedLoadingActionCreator("loadingActionCreator"));
+      dispatch(finishedLoadingActionCreator());
       penguins && dispatch(loadPenguinsActionCreator(penguins));
 
       setLoadingOffWithMessage("GET Favorites: Finished successfully.", false);
@@ -122,7 +122,7 @@ export const loadLikesThunk = () => async (dispatch: AppDispatch) => {
         setLoadingOffWithMessage("GET Likes: No likes added yet", false);
       }
 
-      dispatch(finishedLoadingActionCreator("loadingActionCreator"));
+      dispatch(finishedLoadingActionCreator());
       dispatch(loadPenguinsActionCreator(penguins));
 
       setLoadingOffWithMessage("GET Favorites: Finished successfully.", false);
@@ -300,9 +300,9 @@ export const editPenguinThunk =
   };
 
 export const resetPenguinThunk = () => async (dispatch: AppDispatch) => {
-  dispatch(resetPenguinActionCreator(blankFormData));
+  dispatch(resetPenguinActionCreator());
 };
 
 export const resetPenguinsThunk = () => async (dispatch: AppDispatch) => {
-  dispatch(resetPenguinsActionCreator(blankFormData));
+  dispatch(resetPenguinsActionCreator());
 };

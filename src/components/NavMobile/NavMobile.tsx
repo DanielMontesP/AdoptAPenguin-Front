@@ -86,7 +86,7 @@ const NavMobile = ({ headerTitle }: Props): ReactElement => {
     headerTitle !== "Message" &&
     headerTitle !== "Detail";
 
-  useEffect((): void => {
+  useEffect(() => {
     const handleScroll = (): void => {
       const position = window.scrollY;
       setScrollPosition(position);

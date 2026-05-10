@@ -70,7 +70,7 @@ describe("Given a setMessageRead function", (): void => {
   describe("When called", (): void => {
     test("Then it return number of messages with unread flag", (): void => {
       const dispatch = vi.fn();
-      dispatch(setMessageRead(mockMessage, dispatch));
+      dispatch(setMessageRead(mockMessage));
 
       expect(dispatch).toHaveBeenCalled();
     });
@@ -79,7 +79,7 @@ describe("Given a setMessageRead function", (): void => {
 
 describe("Given writeFile with default type", (): void => {
   describe("when it's called", (): void => {
-    test("Then it should call the dispatch function", async (): void => {
+    test("Then it should call the dispatch function", async (): Promise<void> => {
       const file = penguins;
       const dispatch = vi.fn();
 
@@ -92,7 +92,7 @@ describe("Given writeFile with default type", (): void => {
   });
 
   describe("when it's called with notifys type", (): void => {
-    test("Then it should call the dispatch function", async (): void => {
+    test("Then it should call the dispatch function", async (): Promise<void> => {
       const file = penguins;
       const dispatch = vi.fn();
 
@@ -105,7 +105,7 @@ describe("Given writeFile with default type", (): void => {
   });
 
   describe("when it's called with messages type", (): void => {
-    test("Then it should call the dispatch function", async (): void => {
+    test("Then it should call the dispatch function", async (): Promise<void> => {
       const file = penguins;
       const dispatch = vi.fn();
 
@@ -120,7 +120,7 @@ describe("Given writeFile with default type", (): void => {
 
 describe("Given connectedToServer", (): void => {
   describe("when it's called", (): void => {
-    test("Then it should call the dispatch function", async (): void => {
+    test("Then it should call the dispatch function", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       dispatch(connectedToServer());
@@ -132,7 +132,7 @@ describe("Given connectedToServer", (): void => {
 
 describe("Given getUserNewMessages function", (): void => {
   describe("when it's called", (): void => {
-    test("Then it should call the dispatch function", async (): void => {
+    test("Then it should call the dispatch function", async (): Promise<void> => {
       const dispatch = vi.fn();
 
       dispatch(getUserNewMessages(mockMessages, dispatch));

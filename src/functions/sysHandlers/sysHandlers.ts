@@ -14,6 +14,7 @@ export function handleServerInfo(
   connected: boolean,
   server: string,
   status: string,
+  dispatch?: unknown,
 ): boolean {
   try {
     serverInfoActionCreator({
@@ -53,7 +54,10 @@ export function hasNewMessages(
   }
 }
 
-export const getUserNewMessages = (messages: IMessage[]): boolean => {
+export const getUserNewMessages = (
+  messages: IMessage[],
+  dispatch?: unknown,
+): boolean => {
   try {
     const newMessages: IMessage[] = [];
     messages.forEach((message) => {
