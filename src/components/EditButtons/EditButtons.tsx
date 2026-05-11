@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   headerLastTitleActionCreator,
@@ -15,7 +16,7 @@ interface Props {
   penguin: IPenguin;
 }
 
-const EditButtons = ({ penguin }: Props): JSX.Element => {
+const EditButtons = ({ penguin }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -35,7 +36,7 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
     }
   };
 
-  const handleEdit = () => {
+  const handleEdit = (): void => {
     if (!loading) {
       dispatch(getPenguinThunk(penguin.id));
       if (penguin.id !== "") {
@@ -57,7 +58,6 @@ const EditButtons = ({ penguin }: Props): JSX.Element => {
       </button>
       <button
         title="btn-delete"
-        placeholder="btn-delete"
         className={`modal-delete`}
         onClick={handleDelete}
       >

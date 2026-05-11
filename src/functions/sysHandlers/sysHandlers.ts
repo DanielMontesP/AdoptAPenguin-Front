@@ -1,11 +1,11 @@
 import Resizer from "react-image-file-resizer";
 import { serverInfoActionCreator } from "../../app/redux/features/systemSlice/systemSlice";
 import { getUserNewMessagesActionCreator } from "../../app/redux/features/userSlice/userSlice";
-import { AppDispatch } from "../../app/redux/store/store";
 import { editMessageThunk } from "../../app/redux/thunks/messageThunk/messageThunk";
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
+import { IPenguin } from "../../app/redux/types/penguin/penguinInterfaces";
 
-export function getCurrentDate(separator = "/") {
+export function getCurrentDate(): string {
   let newDate = new Date();
 
   return `${newDate.toLocaleString()}`;
@@ -13,78 +13,100 @@ export function getCurrentDate(separator = "/") {
 export function handleServerInfo(
   connected: boolean,
   server: string,
-  status: any,
-  dispatch: any
-) {
-  dispatch(
+  status: string,
+): boolean {
+  try {
     serverInfoActionCreator({
       connected,
       path: `${server}`,
       status: `${status}`,
-    })
-  );
-}
-
-export function hasNewMessages(allMessages: IMessage[], idPenguin: string) {
-  if (allMessages !== undefined) {
-    let countNewMessages = 0;
-
-    allMessages.forEach((message) => {
-      if (
-        !message.read &&
-        idPenguin === message.idPenguin &&
-        idPenguin !== ""
-      ) {
-        countNewMessages += 1;
-      }
     });
-    return countNewMessages;
+
+    return true;
+  } catch {
+    return false;
   }
 }
 
-export const getUserNewMessages = (messages: IMessage[], dispatch: any) => {
-  const newMessages: IMessage[] = [];
-  messages.forEach((message) => {
-    if (!message.read) {
-      newMessages.push({
-        id: message.id,
-        idParent: message.idParent,
-        idUser: message.idUser,
-        idPenguin: message.idPenguin,
-        subject: message.subject,
-        data: message.data,
-        content: message.content,
-        read: message.read,
+export function hasNewMessages(
+  allMessages: IMessage[],
+  idPenguin: string,
+): number {
+  try {
+    if (allMessages !== undefined) {
+      let countNewMessages = 0;
+
+      allMessages.forEach((message) => {
+        if (
+          !message.read &&
+          idPenguin === message.idPenguin &&
+          idPenguin !== ""
+        ) {
+          countNewMessages += 1;
+        }
       });
+      return countNewMessages;
     }
-  });
-  dispatch(getUserNewMessagesActionCreator(newMessages));
+    return 0;
+  } catch {
+    return 0;
+  }
+}
+
+export const getUserNewMessages = (messages: IMessage[]): boolean => {
+  try {
+    const newMessages: IMessage[] = [];
+    messages.forEach((message) => {
+      if (!message.read) {
+        newMessages.push({
+          id: message.id,
+          idParent: message.idParent,
+          idUser: message.idUser,
+          idPenguin: message.idPenguin,
+          subject: message.subject,
+          data: message.data,
+          content: message.content,
+          read: message.read,
+        });
+      }
+    });
+    getUserNewMessagesActionCreator(newMessages);
+    return true;
+  } catch {
+    return false;
+  }
 };
 
-export const setMessageRead = (message: IMessage, dispatch: any) => {
-  const newData = { ...message };
-  newData.read = !message.read ? true : false;
+export const setMessageRead = (message: IMessage): boolean => {
+  try {
+    const newData = { ...message };
+    newData.read = !message.read ? true : false;
 
-  dispatch(editMessageThunk(newData, "Finished successfully ."));
+    editMessageThunk(newData, "Finished successfully .");
+
+    return true;
+  } catch {
+    return false;
+  }
 };
 
-export const toPascalCase = (strValue: string) => {
+export const toPascalCase = (strValue: string): string => {
   return strValue.replace(/\w+/g, function (w) {
     return w[0].toUpperCase() + w.slice(1).toLowerCase();
   });
 };
 
-export const cleanArray = (array: any): any => {
+export const cleanArray = (array: string[]): string[] => {
   array = Array.from(new Set(array));
-  array = array.filter(function (field: any) {
+  array = array.filter((field: string) => {
     return field != null && field !== "" && field !== "undefined";
   });
 
   return array;
 };
 
-export const resizeFile = (file: File): any =>
-  new Promise((resolve): any => {
+export const resizeFile = async (file: File): Promise<string> =>
+  new Promise((resolve): void => {
     Resizer.imageFileResizer(
       file,
       300,
@@ -93,58 +115,65 @@ export const resizeFile = (file: File): any =>
       100,
       0,
       (uri) => {
-        resolve(uri);
+        resolve(uri as string);
       },
-      "base64"
+      "base64",
     );
   });
 
-export const writeFile = (type: string, data: any) => {
-  const element = document.createElement("a");
-  let searchParam = {};
+export const writeFile = (
+  type: string,
+  data: IPenguin[] | IMessage[],
+): boolean => {
+  try {
+    const element = document.createElement("a");
+    let searchParam = {};
 
-  switch (type) {
-    case "notifys":
-      searchParam = { notifys: data };
-      break;
-    case "messages":
-      searchParam = { messages: data };
-      break;
-    default:
-      searchParam = { penguins: data };
+    switch (type) {
+      case "notifys":
+        searchParam = { notifys: data };
+        break;
+      case "messages":
+        searchParam = { messages: data };
+        break;
+      default:
+        searchParam = { penguins: data };
+    }
+    const textFile = new Blob([JSON.stringify(searchParam)], {
+      type: "text/plain",
+    });
+    element.href = URL.createObjectURL(textFile);
+    element.download = `${type}-export.json`;
+    document.body.appendChild(element);
+    element.click();
+    return true;
+  } catch {
+    return false;
   }
-  const textFile = new Blob([JSON.stringify(searchParam)], {
-    type: "text/plain",
-  });
-  element.href = URL.createObjectURL(textFile);
-  element.download = `${type}-export.json`;
-  document.body.appendChild(element);
-  element.click();
 };
 
-export const connectedToServer = () => async (dispatch: AppDispatch) => {
-  return await fetch(`${process.env.REACT_APP_API_URL}penguins`)
+export const connectedToServer = () => async (): Promise<boolean> => {
+  return await fetch(`${import.meta.env.VITE_APP_API_URL}penguins`)
     .then((resp) => {
       if (resp.status === 200) {
         handleServerInfo(
           true,
-          `${process.env.REACT_APP_API_URL}`,
+          `${import.meta.env.VITE_APP_API_URL}`,
           "Connected to server",
-          dispatch
         );
         return true;
       } else {
-        handleServerInfo(false, `local`, "Unavailable", dispatch);
+        handleServerInfo(false, `local`, "Unavailable");
         Promise.reject(new Error("Server unavailable"));
         return false;
       }
     })
-    .then(() => {
-      handleServerInfo(false, `local`, "Unavailable", dispatch);
+    .then((): boolean => {
+      handleServerInfo(false, `local`, "Unavailable");
       return false;
     })
-    .catch((error) => {
-      handleServerInfo(false, `local`, "Unavailable", dispatch);
+    .catch(() => {
+      handleServerInfo(false, `local`, "Unavailable");
       return false;
     });
 };

@@ -15,13 +15,13 @@ import penguinReducer, {
   searchPenguinsActionCreator,
 } from "./penguinSlice";
 
-describe("Given the loadPenguinsActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the loading ui state should change to true", () => {
+describe("Given the loadPenguinsActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then the loading ui state should change to true", (): void => {
       const action = loadPenguinsActionCreator(mockPenguins);
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },
-        action
+        action,
       );
 
       expect(loadedState).toEqual({
@@ -32,13 +32,13 @@ describe("Given the loadPenguinsActionCreator", () => {
   });
 });
 
-describe("Given the loadPenguinActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the loading ui state should change to true", () => {
+describe("Given the loadPenguinActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then the loading ui state should change to true", (): void => {
       const action = loadPenguinActionCreator(mockPenguin);
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },
-        action
+        action,
       );
 
       expect(loadedState).toEqual({
@@ -49,13 +49,13 @@ describe("Given the loadPenguinActionCreator", () => {
   });
 });
 
-describe("Given the deletePenguinActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then delete penguin from list", () => {
+describe("Given the deletePenguinActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then delete penguin from list", (): void => {
       const action = deletePenguinActionCreator(mockPenguin.id);
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },
-        action
+        action,
       );
 
       expect(loadedState.allPenguins.length).toEqual(1);
@@ -63,13 +63,13 @@ describe("Given the deletePenguinActionCreator", () => {
   });
 });
 
-describe("Given the createPenguinActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then it will create a penguin", () => {
+describe("Given the createPenguinActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then it will create a penguin", (): void => {
       const action = createPenguinActionCreator(mockPenguin);
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },
-        action
+        action,
       );
 
       expect(loadedState).toEqual({
@@ -80,13 +80,13 @@ describe("Given the createPenguinActionCreator", () => {
   });
 });
 
-describe("Given the editPenguinActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then penguin will be edited", () => {
+describe("Given the editPenguinActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then penguin will be edited", (): void => {
       const action = editPenguinActionCreator(mockPenguin);
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },
-        action
+        action,
       );
 
       expect(loadedState).toEqual({
@@ -97,13 +97,13 @@ describe("Given the editPenguinActionCreator", () => {
   });
 });
 
-describe("Given the resetPenguinActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then penguin data will be reseted", () => {
-      const action = resetPenguinActionCreator(mockPenguin);
+describe("Given the resetPenguinActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then penguin data will be reseted", (): void => {
+      const action = resetPenguinActionCreator();
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },
-        action
+        action,
       );
 
       expect(loadedState.penguin.id).toBe("");
@@ -111,13 +111,13 @@ describe("Given the resetPenguinActionCreator", () => {
   });
 });
 
-describe("Given resetPenguinsActionCreator", () => {
-  describe("When  invoked", () => {
-    test("Then  penguins data will be reseted", async () => {
-      const action = resetPenguinsActionCreator(mockEmptyDataPenguin);
+describe("Given resetPenguinsActionCreator", (): void => {
+  describe("When  invoked", (): void => {
+    test("Then  penguins data will be reseted", async (): Promise<void> => {
+      const action = resetPenguinsActionCreator();
       const loadedState = penguinReducer(
         { allPenguins: mockPenguinsEmpty, penguin: mockEmptyDataPenguin },
-        action
+        action,
       );
 
       expect(loadedState.allPenguins.length).toEqual(0);
@@ -125,13 +125,13 @@ describe("Given resetPenguinsActionCreator", () => {
   });
 });
 
-describe("Given searchPenguinActionCreator", () => {
-  describe("When  invoked", () => {
-    test("Then string will be used to find penguin data matches", async () => {
+describe("Given searchPenguinActionCreator", (): void => {
+  describe("When  invoked", (): void => {
+    test("Then string will be used to find penguin data matches", async (): Promise<void> => {
       const action = searchPenguinsActionCreator(mockPenguins);
       const loadedState = penguinReducer(
         { allPenguins: mockPenguins, penguin: mockPenguin },
-        action
+        action,
       );
 
       expect(loadedState).toEqual({

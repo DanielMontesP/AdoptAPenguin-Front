@@ -1,6 +1,7 @@
+import { JSX } from "react";
 import Error404Styles from "./Error404Styles";
 
-export const Error404Page = () => {
+export const Error404Page = (): JSX.Element => {
   return (
     <Error404Styles>
       <div className="notfound-container">

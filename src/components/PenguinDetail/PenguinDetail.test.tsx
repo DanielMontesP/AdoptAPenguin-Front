@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
@@ -13,7 +14,7 @@ import PenguinDetail from "./PenguinDetail";
 
 let mockLogged = true;
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     logged: mockLogged,
     id: "id",
@@ -22,23 +23,23 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
     allMessages: mockMessages,
     penguin: mockPenguin,
   }),
-  useAppDispatch: () => jest.fn(),
+  useAppDispatch: () => vi.fn(),
 }));
 
-describe("When bt-prev is clicked", () => {
-  describe("When bt-prev is clicked", () => {
-    test("getDetailPrev is called", () => {
+describe("When bt-prev is clicked", (): void => {
+  describe("When bt-prev is clicked", (): void => {
+    test("getDetailPrev is called", (): void => {
       const ToFind = "button";
       const expectedButtons = 8;
 
-      const getDetailPrev = jest.fn();
+      const getDetailPrev = vi.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <PenguinDetail allPenguins={mockPenguins} penguin={mockPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const bt = screen.getAllByRole(ToFind);
@@ -53,16 +54,16 @@ describe("When bt-prev is clicked", () => {
     });
   });
 
-  describe("When bt-next is clicked", () => {
-    test("getDetailNext is called", () => {
-      const getDetailNext = jest.fn();
+  describe("When bt-next is clicked", (): void => {
+    test("getDetailNext is called", (): void => {
+      const getDetailNext = vi.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <PenguinDetail allPenguins={mockPenguins} penguin={mockPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const btToClick = screen.getByTitle("btn-next");
@@ -74,9 +75,9 @@ describe("When bt-prev is clicked", () => {
     });
   });
 
-  describe("When bt-next is clicked and array is empty", () => {
-    test("getDetailNext is called", () => {
-      const getDetailNext = jest.fn();
+  describe("When bt-next is clicked and array is empty", (): void => {
+    test("getDetailNext is called", (): void => {
+      const getDetailNext = vi.fn();
 
       render(
         <Provider store={store}>
@@ -86,7 +87,7 @@ describe("When bt-prev is clicked", () => {
               penguin={mockPenguin}
             />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const btToClick = screen.getByTitle("btn-next");
@@ -97,11 +98,11 @@ describe("When bt-prev is clicked", () => {
       expect(getDetailNext).toHaveBeenCalled();
     });
   });
-  describe("When handleTab is clicked and array is empty", () => {
-    test("handleTab is called", () => {
-      const handleTab = jest.fn();
+  describe("When handleTab is clicked and array is empty", (): void => {
+    test("handleTab is called", (): void => {
+      const handleTab = vi.fn();
 
-      const mockResponse = jest.fn();
+      const mockResponse = vi.fn();
       Object.defineProperty(window, "location", {
         value: {
           hash: {
@@ -117,7 +118,7 @@ describe("When bt-prev is clicked", () => {
           <BrowserRouter>
             <PenguinDetail allPenguins={mockPenguins} penguin={mockPenguin} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const btToClick = screen.getByTitle("messages");

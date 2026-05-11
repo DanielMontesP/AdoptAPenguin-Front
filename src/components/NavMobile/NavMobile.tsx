@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import "../../styles/NavbarStyles.css";
@@ -14,7 +14,7 @@ interface Props {
   headerTitle: string;
 }
 
-const NavMobile = ({ headerTitle }: Props): JSX.Element => {
+const NavMobile = ({ headerTitle }: Props): ReactElement => {
   const blankData: BlankMessageDataInterface = {
     idPenguin: "",
     idUser: "",
@@ -42,11 +42,11 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
   let classHeaderTitle = "nav-title";
   let HidderDesktopButtons = "";
 
-  const handleMenu = () => {
+  const handleMenu = (): void => {
     dispatch(isMenuOpenActionCreator(true));
   };
 
-  const handleBack = () => {
+  const handleBack = (): void => {
     setFormData(blankData);
     dispatch(modalTypeActionCreator(""));
 
@@ -87,7 +87,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
     headerTitle !== "Detail";
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       const position = window.scrollY;
       setScrollPosition(position);
 
@@ -100,7 +100,7 @@ const NavMobile = ({ headerTitle }: Props): JSX.Element => {
     };
     window.addEventListener("scroll", handleScroll);
 
-    return () => {
+    return (): void => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastPosition, scrollPosition]);

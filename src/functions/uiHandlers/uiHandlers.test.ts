@@ -1,4 +1,6 @@
+import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
+import { KeyboardEvent } from "react";
 import {
   handleLogout,
   handleNoConexion,
@@ -9,11 +11,11 @@ import {
   loadLikes,
 } from "./uiHandlers";
 
-describe("Given a loadFavs function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const setMenu = jest.fn();
+describe("Given a loadFavs function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
+      const dispatch = vi.fn();
+      const setMenu = vi.fn();
 
       loadFavs(dispatch, "Test", setMenu);
 
@@ -22,11 +24,11 @@ describe("Given a loadFavs function", () => {
   });
 });
 
-describe("Given a loadHome function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const navigate = jest.fn();
+describe("Given a loadHome function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
+      const dispatch = vi.fn();
+      const navigate = vi.fn();
 
       loadHome(dispatch, "Test", navigate);
 
@@ -35,11 +37,11 @@ describe("Given a loadHome function", () => {
   });
 });
 
-describe("Given a handleLogout function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const navigate = jest.fn();
+describe("Given a handleLogout function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
+      const dispatch = vi.fn();
+      const navigate = vi.fn();
 
       handleLogout(dispatch, navigate);
 
@@ -48,11 +50,11 @@ describe("Given a handleLogout function", () => {
   });
 });
 
-describe("Given a loadLikes function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const navigate = jest.fn();
+describe("Given a loadLikes function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
+      const dispatch = vi.fn();
+      const navigate = vi.fn();
 
       loadLikes(dispatch, "Test", navigate);
 
@@ -61,11 +63,11 @@ describe("Given a loadLikes function", () => {
   });
 });
 
-describe("Given a handleSearchEnter function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const event: any = jest.fn();
+describe("Given a handleSearchEnter function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
+      const dispatch = vi.fn();
+      const event = {} as KeyboardEvent<HTMLInputElement>;
 
       dispatch(handleSearchEnter(event, "", dispatch, "Test"));
 
@@ -75,25 +77,25 @@ describe("Given a handleSearchEnter function", () => {
   });
 });
 
-describe("Given a handleNoConexion function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
+describe("Given a handleNoConexion function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
+      const dispatch = vi.fn();
 
       userEvent.keyboard("[Enter]");
 
-      dispatch(handleNoConexion(dispatch, "id"));
+      dispatch(handleNoConexion(dispatch));
 
       expect(dispatch).toHaveBeenCalled();
     });
   });
 });
 
-describe("Given a handleSearchSubmit function", () => {
-  describe("When called", () => {
-    test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const event: any = jest.fn();
+describe("Given a handleSearchSubmit function", (): void => {
+  describe("When called", (): void => {
+    test("Then dispatch have to been called", (): void => {
+      const dispatch = vi.fn();
+      const event = {} as KeyboardEvent<HTMLInputElement>;
 
       dispatch(handleSearchEnter(event, "", dispatch, "Test"));
 
@@ -103,12 +105,10 @@ describe("Given a handleSearchSubmit function", () => {
     });
   });
 
-  describe("When handleSearchSubmit with stringToSearch called", () => {
-    test("Then dispatch have to been called", () => {
-      const dispatch = jest.fn();
-      const event: any = jest
-        .fn()
-        .mockResolvedValue({ event: { key: "Enter" } });
+  describe("When handleSearchSubmit with stringToSearch called", (): void => {
+    test("Then dispatch have to been called", (): void => {
+      const dispatch = vi.fn();
+      const event = {} as KeyboardEvent<HTMLInputElement>;
 
       dispatch(handleSearchEnter(event, "", dispatch, "Test"));
 

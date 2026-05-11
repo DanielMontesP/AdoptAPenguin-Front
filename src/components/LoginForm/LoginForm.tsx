@@ -1,10 +1,10 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../app/redux/hooks/hooks";
 import { LoginData } from "../../app/redux/types/userInterfaces/userInterfaces";
 import { loginThunk } from "../../app/redux/thunks/userThunk/userThunk";
 
-const LoginForm = () => {
+const LoginForm = (): ReactElement => {
   const blankData: LoginData = {
     username: "",
     password: "",
@@ -13,20 +13,33 @@ const LoginForm = () => {
   const buttonDisabled = formData.password === "" || formData.username === "";
   const dispatch = useAppDispatch();
 
-  const resetForm = () => {
-    setFormData(blankData);
+  const resetForm = (): boolean => {
+    try {
+      setFormData(blankData);
+      return true;
+    } catch {
+      return false;
+    }
   };
 
-  const changeData = (event: ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [event.target.id]: event.target.value });
+  const changeData = (event: ChangeEvent<HTMLInputElement>): boolean => {
+    try {
+      setFormData({ ...formData, [event.target.id]: event.target.value });
+      return true;
+    } catch {
+      return false;
+    }
   };
 
-  const submitLogin = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    dispatch(loginThunk(formData));
-
-    resetForm();
+  const submitLogin = (event: FormEvent<HTMLFormElement>): boolean => {
+    try {
+      event.preventDefault();
+      dispatch(loginThunk(formData));
+      resetForm();
+      return true;
+    } catch {
+      return false;
+    }
   };
 
   return (
@@ -38,7 +51,7 @@ const LoginForm = () => {
         id="username"
         value={formData.username}
         onChange={changeData}
-        placeholder="Username"
+        title="Username"
         autoComplete="off"
         alt="Username"
         className="form-input"
@@ -52,7 +65,7 @@ const LoginForm = () => {
         type="password"
         value={formData.password}
         onChange={changeData}
-        placeholder="Password"
+        title="Password"
         autoComplete="off"
         alt="Password"
         className="form-input"

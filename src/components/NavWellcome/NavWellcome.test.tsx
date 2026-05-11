@@ -4,9 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import { NavWellcome } from "./NavWellcome";
 import store from "../../app/redux/store/store";
 
-describe("Given a NavWellcome component", () => {
-  describe("When rendered", () => {
-    test("Then place holder text header-wellcome is rendered", () => {
+describe("Given a NavWellcome component", (): void => {
+  describe("When rendered", (): void => {
+    test("Then place holder text header-wellcome is rendered", (): void => {
       const stringToFind = "header-wellcome";
 
       render(
@@ -14,12 +14,12 @@ describe("Given a NavWellcome component", () => {
           <BrowserRouter>
             <NavWellcome headerTitle="HomePage" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(stringToFind);
+      const label = screen.getByTitle(stringToFind);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });

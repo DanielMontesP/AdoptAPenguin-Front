@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   isModalOpenActionCreator,
@@ -12,11 +13,11 @@ interface Props {
   message: IMessage;
 }
 
-const Message = ({ message }: Props): JSX.Element => {
+const Message = ({ message }: Props): ReactElement => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     const idMessage = message.id;
     if (idMessage === "" || idMessage === undefined) {
       const message = "Message id not found.";
@@ -33,7 +34,7 @@ const Message = ({ message }: Props): JSX.Element => {
     }
   };
 
-  const handleDelete = () => {
+  const handleDelete = (): void => {
     const message = "Delete message permanently from database? ";
     const newModalType = "delete";
 
@@ -51,12 +52,12 @@ const Message = ({ message }: Props): JSX.Element => {
       <button
         className={"message-read-img"}
         onClick={handleClick}
-        placeholder="bt-view"
+        title="bt-view"
       />
       <button
         className={"message-delete"}
         onClick={handleDelete}
-        placeholder="bt-delete"
+        title="bt-delete"
       />
     </div>
   );

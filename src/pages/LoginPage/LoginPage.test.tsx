@@ -5,9 +5,9 @@ import LoginPage from "./LoginPage";
 import { BrowserRouter } from "react-router-dom";
 import "../../styles/FormsStyles.css";
 
-describe("Given a LoginPage Component", () => {
-  describe("When it's rendered", () => {
-    test("Then it should show the text 'Register'", () => {
+describe("Given a LoginPage Component", (): void => {
+  describe("When it's rendered", (): void => {
+    test("Then it should show the text 'Register'", (): void => {
       const expectedResult = "Register";
 
       render(
@@ -15,11 +15,11 @@ describe("Given a LoginPage Component", () => {
           <Provider store={store}>
             <LoginPage />
           </Provider>
-        </BrowserRouter>
+        </BrowserRouter>,
       );
 
       const receivedResult = screen.getByText(expectedResult);
-      expect(receivedResult).toBeInTheDocument();
+      expect(receivedResult).toBeDefined();
     });
   });
 });

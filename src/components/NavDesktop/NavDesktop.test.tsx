@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -5,34 +6,34 @@ import NavDesktop from "./NavDesktop";
 import store from "../../app/redux/store/store";
 import userEvent from "@testing-library/user-event";
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     connected: false,
     headerTitle: "Favorites",
     isDesktop: true,
     ui: { isMenuOpen: true },
   }),
-  useAppDispatch: () => jest.fn(),
+  useAppDispatch: () => vi.fn(),
 }));
 
-describe("Given a NavDesktop component", () => {
-  describe("When click AddFav", () => {
-    test("Then AddFav have to been called", () => {
+describe("Given a NavDesktop component", (): void => {
+  describe("When click AddFav", (): void => {
+    test("Then AddFav have to been called", (): void => {
       const stringToFind = "AdoptApenguin.com";
       const labelAddFav = "btn-addFav";
 
-      const addFav = jest.fn();
+      const addFav = vi.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <NavDesktop headerTitle="Home" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(stringToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
 
       const buttonAddFav = screen.getByTitle(labelAddFav);
       userEvent.click(buttonAddFav);
@@ -43,9 +44,9 @@ describe("Given a NavDesktop component", () => {
   });
 });
 
-describe("Given a NavWellcome component", () => {
-  describe("When headerTitle is New...", () => {
-    test("Then AdoptApenguin.com have to been in the document", () => {
+describe("Given a NavWellcome component", (): void => {
+  describe("When headerTitle is New...", (): void => {
+    test("Then AdoptApenguin.com have to been in the document", (): void => {
       const stringToFind = "AdoptApenguin.com";
 
       render(
@@ -53,18 +54,18 @@ describe("Given a NavWellcome component", () => {
           <BrowserRouter>
             <NavDesktop headerTitle="New..." />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(stringToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });
 
-describe("Given a NavWellcome with headerTitle  Likes", () => {
-  describe("When rendered", () => {
-    test("Then AdoptApenguin.com have to been in the document", () => {
+describe("Given a NavWellcome with headerTitle  Likes", (): void => {
+  describe("When rendered", (): void => {
+    test("Then AdoptApenguin.com have to been in the document", (): void => {
       const stringToFind = "AdoptApenguin.com";
 
       render(
@@ -72,18 +73,18 @@ describe("Given a NavWellcome with headerTitle  Likes", () => {
           <BrowserRouter>
             <NavDesktop headerTitle="Likes" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(stringToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });
 
-describe("Given a NavWellcome with headerTitle Favorites", () => {
-  describe("When rendered", () => {
-    test("Then AdoptApenguin.com have to been in the document", () => {
+describe("Given a NavWellcome with headerTitle Favorites", (): void => {
+  describe("When rendered", (): void => {
+    test("Then AdoptApenguin.com have to been in the document", (): void => {
       const stringToFind = "AdoptApenguin.com";
 
       render(
@@ -91,35 +92,35 @@ describe("Given a NavWellcome with headerTitle Favorites", () => {
           <BrowserRouter>
             <NavDesktop headerTitle="Favorites" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(stringToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });
 
-describe("Given a handleMenu button NavDesktop component", () => {
-  describe("When click handleMenu", () => {
-    test("Then AddFav have to been called", () => {
+describe("Given a handleMenu button NavDesktop component", (): void => {
+  describe("When click handleMenu", (): void => {
+    test("Then AddFav have to been called", (): void => {
       const stringToFind = "AdoptApenguin.com";
       const labelAddFav = "btn-addFav";
       const labelUserMenu = "btn-user";
 
-      const handleMenu = jest.fn();
-      const handleUserMenu = jest.fn();
+      const handleMenu = vi.fn();
+      const handleUserMenu = vi.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <NavDesktop headerTitle="Home" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(stringToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
 
       const buttonAddFav = screen.getByTitle(labelAddFav);
       userEvent.click(buttonAddFav);
@@ -136,29 +137,29 @@ describe("Given a handleMenu button NavDesktop component", () => {
   });
 });
 
-describe("Given a handleLogoutCall button NavDesktop component", () => {
-  describe("When click handleMenu", () => {
-    test("Then AddFav have to been called", () => {
+describe("Given a handleLogoutCall button NavDesktop component", (): void => {
+  describe("When click handleMenu", (): void => {
+    test("Then AddFav have to been called", (): void => {
       const stringToFind = "AdoptApenguin.com";
 
       const labelHome = "btn-home";
       const labelFavs = "btn-favs";
       const labelLikes = "btn-likes";
-      const loadHomeCall = jest.fn();
-      const loadLikesCall = jest.fn();
-      const loadFavsCall = jest.fn();
-      const handleSearchEnter = jest.fn();
+      const loadHomeCall = vi.fn();
+      const loadLikesCall = vi.fn();
+      const loadFavsCall = vi.fn();
+      const handleSearchEnter = vi.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <NavDesktop headerTitle="Home" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(stringToFind);
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
 
       const button6 = screen.getByTitle(labelHome);
       userEvent.click(button6);

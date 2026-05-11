@@ -1,49 +1,38 @@
 {
-  "name": "rustik-front",
+  "name": "front-adoptapenguin",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.8.2",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/node": "^16.11.36",
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.5",
-    "@types/react-redux": "^7.1.24",
-    "@types/styled-components": "^5.1.25",
-    "axios": "^0.27.2",
-    "chalk": "^5.0.1",
-    "firebase": "^9.8.4",
-    "fs": "^0.0.1-security",
-    "jwt-decode": "^3.1.2",
-    "msw": "^0.42.0",
-    "nodemon": "^2.0.16",
-    "openai": "^3.1.0",
-    "react": "^18.1.0",
+    "@reduxjs/toolkit": "^2.5.0",
+    "@vitejs/plugin-react-swc": "^4.2.3",
+    "axios": "^1.13.2",
+    "eslint-plugin-jsdoc": "^62.7.1",
+    "firebase": "^12.6.0",
+    "jwt-decode": "^4.0.0",
+    "ntypescript": "^1.201706190042.1",
+    "react": "^19.2.1",
     "react-app-polyfill": "^3.0.0",
     "react-dimmer": "^1.0.7",
-    "react-dom": "^18.1.0",
-    "react-icons": "^4.7.1",
+    "react-dom": "^19.2.1",
+    "react-icons": "^4.12.0",
     "react-image-file-resizer": "^0.4.8",
-    "react-media": "^1.10.0",
-    "react-native-indicator": "^1.2.2",
-    "react-redux": "^8.0.2",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
-    "react-toastify": "^9.0.3",
-    "styled-components": "^5.3.5",
-    "typescript": "^4.7.2",
-    "web-vitals": "^2.1.4"
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.1.3",
+    "react-toastify": "^11.0.3",
+    "styled-components": "^6.1.15",
+    "typescript-eslint": "^8.56.1",
+    "vite": "^7.3.1",
+    "vite-plugin-svgr": "^4.5.0",
+    "vite-tsconfig-paths": "^6.1.1",
+    "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start-dev": "nodemon src -q",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test-coverage": "react-scripts test --coverage --watchAll=false",
-    "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "start": "vite",
+    "build": "tsc --noEmit && vite build",
+    "serve": "vite preview",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage --watch=false"
   },
   "eslintConfig": {
     "extends": [
@@ -63,9 +52,28 @@
       "last 1 safari version"
     ]
   },
+  "overrides": {
+    "@pmmmwh/react-refresh-webpack-plugin": {
+      "webpack-dev-server": "^4.15.2"
+    }
+  },
   "devDependencies": {
-    "@types/jest": "^29.2.3",
-    "husky": "^7.0.0"
+    "@eslint/js": "^10.0.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.6",
+    "@types/react-dom": "^19.0.2",
+    "@types/styled-components": "^5.1.34",
+    "@vitest/coverage-v8": "^4.0.18",
+    "eslint": "^10.0.2",
+    "eslint-plugin-jest": "^29.15.0",
+    "husky": "^9.1.7",
+    "jsdom": "^28.1.0",
+    "msw": "^2.12.4",
+    "vitest": "^4.0.18"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -81,5 +89,9 @@
       "!src/**/*.test.tsx.snap",
       "!src/react-app-env.d.ts"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andstor/file-existence-action.git"
   }
 }

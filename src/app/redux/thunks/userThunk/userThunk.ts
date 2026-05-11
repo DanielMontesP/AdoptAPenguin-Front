@@ -1,5 +1,5 @@
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import {
   DataAxiosLogin,
   LoginResponse,
@@ -30,9 +30,9 @@ export const loginThunk =
   (userData: UserRegister) => async (dispatch: AppDispatch) => {
     try {
       setLoadingOn(
-        `LOGIN:...Service render.com is starting...Be watter penguin...Load will finish as soon as possible.`
+        `LOGIN:...Service render.com is starting...Be watter penguin...Load will finish as soon as possible.`,
       );
-      const url: string = `${process.env.REACT_APP_API_URL}users/login`;
+      const url = `${import.meta.env.VITE_APP_API_URL}users/login`;
 
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
 
@@ -44,7 +44,7 @@ export const loginThunk =
           image,
           allMessages,
           newMessages,
-        }: LoginResponse = jwt_decode(data.token);
+        }: LoginResponse = jwtDecode(data.token);
         const logged = false;
 
         localStorage.setItem("token", data.token);
@@ -58,7 +58,7 @@ export const loginThunk =
             image,
             allMessages,
             newMessages,
-          })
+          }),
         );
 
         setLoadingOffWithMessage(`LOGIN: logged successfully `, false);
@@ -66,26 +66,26 @@ export const loginThunk =
 
         dispatch(getUserMessagesThunk(id));
       }
-    } catch (error: any) {
-      handleNoConexion(dispatch, "user.id");
-      setLoadingOffWithMessage(
-        "Login failed!\nCheck credentials for username: " + userData.username,
-        false
-      );
+    } catch {
+      const errorMessage =
+        "Login failed!\nCheck credentials for username: " + userData.username;
+      handleNoConexion(dispatch);
+      setLoadingOffWithMessage(errorMessage, false);
 
-      return error.message;
+      return errorMessage;
     }
   };
 
 export const registerThunk =
-  (userData: any, password: string) => async (dispatch: AppDispatch) => {
+  (userData: UserRegister, password: string) =>
+  async (dispatch: AppDispatch) => {
     try {
       setLoadingOn(
-        `REGISTER:...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`
+        `REGISTER:...Probably service render.com is sleeping...Be watter penguin...it will start as soon as possible.`,
       );
       const { data } = await axios.post(
-        `${process.env.REACT_APP_API_URL}users/register`,
-        userData
+        `${import.meta.env.VITE_APP_API_URL}users/register`,
+        userData,
       );
 
       if (data) {
@@ -100,16 +100,16 @@ export const registerThunk =
       }
 
       setLoadingOffWithMessage(message, false);
-    } catch (error: any) {
-      setLoadingOffWithMessage(
+    } catch {
+      const errorMessage =
         "Registration failed!: \nUsername: " +
-          userData.username +
-          ", this username all ready exist. " +
-          userData.password,
-        true
-      );
+        userData.username +
+        ", this username all ready exist. " +
+        userData.password;
 
-      return error.message;
+      setLoadingOffWithMessage(errorMessage, true);
+
+      return errorMessage;
     }
   };
 
@@ -119,14 +119,13 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
 
     if (token && id) {
       const { data: user } = await axios.get(
-        `${process.env.REACT_APP_API_URL}users/${id}`
+        `${import.meta.env.VITE_APP_API_URL}users/${id}`,
       );
 
       handleServerInfo(
         true,
-        `${process.env.REACT_APP_API_URL}`,
+        `${import.meta.env.VITE_APP_API_URL}`,
         "Connected to server",
-        dispatch
       );
 
       dispatch(getUserMessagesThunk(id));
@@ -137,27 +136,28 @@ export const getUserThunk = (id: string) => async (dispatch: AppDispatch) => {
   }
 };
 
-export const editUserThunk = (idUser: any) => async (dispatch: AppDispatch) => {
-  setLoadingOn("EDIT User...");
+export const editUserThunk =
+  (idUser: string) => async (dispatch: AppDispatch) => {
+    setLoadingOn("EDIT User...");
 
-  const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-  if (token) {
-    const { data: user } = await axios.put(
-      `${process.env.REACT_APP_API_URL}users/edit/${idUser}`,
-      idUser,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
+    if (token) {
+      const { data: user } = await axios.put(
+        `${import.meta.env.VITE_APP_API_URL}users/edit/${idUser}`,
+        idUser,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      }
-    );
+      );
 
-    dispatch(editUserActionCreator(user));
+      dispatch(editUserActionCreator(user));
 
-    setLoadingOffWithMessage(`EDIT user: Finished successfully.`, false);
-  }
-};
+      setLoadingOffWithMessage(`EDIT user: Finished successfully.`, false);
+    }
+  };
 
 export const getUserMessagesThunk =
   (idUser: string) => async (dispatch: AppDispatch) => {
@@ -167,21 +167,20 @@ export const getUserMessagesThunk =
       const {
         data: { messages },
       } = await axios.get(
-        `${process.env.REACT_APP_API_URL}users/messages/${idUser}`,
+        `${import.meta.env.VITE_APP_API_URL}users/messages/${idUser}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       handleServerInfo(
         true,
-        `${process.env.REACT_APP_API_URL}`,
+        `${import.meta.env.VITE_APP_API_URL}`,
         "Connected to server",
-        dispatch
       );
       if (messages?.length > 0) {
-        getUserNewMessages(messages, dispatch);
+        getUserNewMessages(messages);
         dispatch(getUserMessagesActionCreator(messages));
       }
     }

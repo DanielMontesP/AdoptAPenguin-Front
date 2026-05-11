@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState, ReactElement } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { registerThunk } from "../../app/redux/thunks/userThunk/userThunk";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ import { UserRegister } from "../../app/redux/types/userInterfaces/userInterface
 
 const thisTitle = "AdoptAPenguin.com";
 
-const RegisterForm = (): JSX.Element => {
+const RegisterForm = (): ReactElement => {
   const initialFormData: UserRegister = {
     username: "",
     password: "",
@@ -22,31 +22,48 @@ const RegisterForm = (): JSX.Element => {
 
   const dispatch = useAppDispatch();
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    setFormData({
-      ...formData,
-      [event.target.id]: event.target.value,
-    });
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): boolean => {
+    try {
+      setFormData({
+        ...formData,
+        [event.target.id]: event.target.value,
+      });
+      return true;
+    } catch {
+      return false;
+    }
   };
 
-  const processRegistration = () => {
-    dispatch(registerThunk(formData, formData.password));
+  const processRegistration = (): boolean => {
+    try {
+      dispatch(registerThunk(formData, formData.password));
+      return true;
+    } catch {
+      return false;
+    }
   };
 
-  const handleSubmit = (event: ChangeEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-
-    processRegistration();
-
-    setFormData(initialFormData);
+  const handleSubmit = (event: ChangeEvent<HTMLFormElement>): boolean => {
+    try {
+      event.preventDefault();
+      processRegistration();
+      setFormData(initialFormData);
+      return true;
+    } catch {
+      return false;
+    }
   };
 
-  useEffect(() => {
-    const SetTitleHeader = (title: string, lastTitle: string) => {
-      dispatch(headerTitleActionCreator(title));
-      dispatch(headerLastTitleActionCreator(lastTitle));
+  useEffect((): void => {
+    const SetTitleHeader = (title: string, lastTitle: string): boolean => {
+      try {
+        dispatch(headerTitleActionCreator(title));
+        dispatch(headerLastTitleActionCreator(lastTitle));
+        return true;
+      } catch {
+        return false;
+      }
     };
-
     if (headerTitle !== thisTitle) SetTitleHeader(thisTitle, headerTitle);
   }, [dispatch, headerTitle]);
 
@@ -93,7 +110,7 @@ const RegisterForm = (): JSX.Element => {
         </Link>
       </div>
       <div className="submitContainer">
-        <button type="submit" className="bt-register" placeholder="bt-submit">
+        <button type="submit" className="bt-register" title="bt-submit">
           Register
         </button>
         <div className="footer-home">2022 Penguins Inc.</div>

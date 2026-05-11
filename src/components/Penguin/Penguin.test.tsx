@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -7,22 +8,27 @@ import store from "../../app/redux/store/store";
 import Penguin from "./Penguin";
 import userEvent from "@testing-library/user-event";
 
-const mockDispatch = jest.fn();
+const mockDispatch = vi.fn();
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
-  ...jest.requireActual("../../app/redux/hooks/hooks"),
+vi.mock("../../app/redux/hooks/hooks", () => ({
+  ...vi.importActual("../../app/redux/hooks/hooks"),
   useAppDispatch: () => mockDispatch,
+  useAppSelector: () => ({
+    isMenuOpen: true,
+    headerTitle: "test",
+    user: { id: "id" },
+  }),
 }));
 
-describe("Given the Penguin component", () => {
-  describe("When it's invoked", () => {
-    test("Then it should render one heading element", () => {
+describe("Given the Penguin component", (): void => {
+  describe("When it's invoked", (): void => {
+    test("Then it should render one heading element", (): void => {
       render(
         <Provider store={store}>
           <BrowserRouter>
             <Penguin penguin={mockPenguins[0]} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const result = screen.getAllByText("Penguin1");
@@ -31,22 +37,22 @@ describe("Given the Penguin component", () => {
     });
   });
 
-  describe("when its clicked the button", () => {
-    test("then it should call dispatch", () => {
+  describe("when its clicked the button", (): void => {
+    test("then it should call dispatch", (): void => {
       render(
         <Provider store={store}>
           <BrowserRouter>
             <Penguin penguin={mockPenguins[0]} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const buttons = screen.getAllByRole("button");
       expect(buttons.length).toBeGreaterThan(2);
     });
   });
-  describe("When handleMoreDetail clicked", () => {
-    test("then it should call dispatch", () => {
+  describe("When handleMoreDetail clicked", (): void => {
+    test("then it should call dispatch", (): void => {
       const labelToFind = "bt-more-detail";
 
       render(
@@ -54,11 +60,11 @@ describe("Given the Penguin component", () => {
           <BrowserRouter>
             <Penguin penguin={mockPenguins[0]} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
-      const handleMoreDetail = jest.fn().mockReturnValue(true);
-      const label = screen.getByPlaceholderText(labelToFind);
+      const handleMoreDetail = vi.fn().mockReturnValue(true);
+      const label = screen.getByTitle(labelToFind);
       userEvent.click(label);
 
       handleMoreDetail();

@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -8,7 +9,7 @@ import HomePage from "./HomePage";
 
 let mockLogged = true;
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     user: {
       logged: mockLogged,
@@ -17,12 +18,12 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
     penguin: mockPenguin,
     headerTitle: "New message...",
   }),
-  useAppDispatch: () => jest.fn(),
+  useAppDispatch: () => vi.fn(),
 }));
 
-describe("Given a HomePage Component", () => {
-  describe("When it's rendered", () => {
-    test("Then it should show the text 'Login'", () => {
+describe("Given a HomePage Component", (): void => {
+  describe("When it's rendered", (): void => {
+    test("Then it should show the text 'Login'", (): void => {
       const expectedResult = "Adopt Apenguin .com";
 
       render(
@@ -30,12 +31,12 @@ describe("Given a HomePage Component", () => {
           <BrowserRouter>
             <HomePage />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const receivedResult = screen.getByText(expectedResult);
 
-      expect(receivedResult).toBeInTheDocument();
+      expect(receivedResult).toBeDefined();
     });
   });
 });

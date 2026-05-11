@@ -1,26 +1,27 @@
+import { vi } from "vitest";
 import { render } from "@testing-library/react";
 
 import CheckOutSecurity from "./CheckOutSecurity";
 
-const mockUseNavigate = jest.fn();
+const mockUseNavigate = vi.fn();
 
-jest.mock("react-router-dom", () => ({
+vi.mock("react-router-dom", () => ({
   useNavigate: () => mockUseNavigate,
 }));
 
 let mockLogged = true;
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({ logged: mockLogged, id: "id" }),
 }));
 
-describe("Given an CheckOutSecurity and logged function", () => {
-  describe("When it's invoked", () => {
-    test("Then it should navigate to the home when the user is logged", () => {
+describe("Given an CheckOutSecurity and logged function", (): void => {
+  describe("When it's invoked", (): void => {
+    test("Then it should navigate to the home when the user is logged", (): void => {
       render(
         <CheckOutSecurity>
           <h1>Penguins</h1>
-        </CheckOutSecurity>
+        </CheckOutSecurity>,
       );
 
       expect(mockUseNavigate).toHaveBeenCalledWith("/penguins");
@@ -28,20 +29,20 @@ describe("Given an CheckOutSecurity and logged function", () => {
   });
 });
 
-describe("Given an CheckOutSecurity and not logged function", () => {
-  describe("When it's invoked", () => {
-    test("Then it should navigate to the home when the user is not logged", () => {
+describe("Given an CheckOutSecurity and not logged function", (): void => {
+  describe("When it's invoked", (): void => {
+    test("Then it should navigate to the home when the user is not logged", (): void => {
       mockLogged = false;
-      const navigate = jest.fn();
+      const navigate = vi.fn();
 
-      jest.mock("../../app/redux/hooks/hooks", () => ({
+      vi.mock("../../app/redux/hooks/hooks", () => ({
         useAppSelector: () => ({ logged: mockLogged, id: "id" }),
       }));
 
       render(
         <CheckOutSecurity>
           <h1>Penguins</h1>
-        </CheckOutSecurity>
+        </CheckOutSecurity>,
       );
 
       expect(navigate).not.toHaveBeenCalled();

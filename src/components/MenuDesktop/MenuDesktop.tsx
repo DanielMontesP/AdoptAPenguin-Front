@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   isMenuOpenActionCreator,
@@ -17,7 +18,7 @@ interface Props {
   isMenuOpened: boolean;
 }
 
-const MenuDesktop = ({ isMenuOpened }: Props): JSX.Element => {
+const MenuDesktop = ({}: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -27,35 +28,35 @@ const MenuDesktop = ({ isMenuOpened }: Props): JSX.Element => {
 
   const userImage = user.image || noPhoto;
 
-  const handleLogoutCall = () => {
-    handleLogoutPrompt(dispatch, navigate);
+  const handleLogoutCall = (): void => {
+    handleLogoutPrompt(dispatch);
   };
 
-  const handleAbout = () => {
+  const handleAbout = (): void => {
     loadAbout(dispatch);
   };
 
-  const handleHelp = () => {
+  const handleHelp = (): void => {
     loadHelp(dispatch);
   };
 
-  const handleSettings = () => {
+  const handleSettings = (): void => {
     dispatch(modalTypeActionCreator("Settings"));
     dispatch(isMenuOpenActionCreator(false));
     dispatch(isModalOpenActionCreator(true));
   };
 
-  const handleInbox = () => {
+  const handleInbox = (): void => {
     dispatch(isMenuOpenActionCreator(false));
     dispatch(isMenuOpenActionCreator(false));
     navigate(`/users/messages/${user.id}`);
   };
 
-  const handleUserMenu = () => {
+  const handleUserMenu = (): void => {
     dispatch(isMenuOpenActionCreator(!isMenuOpen));
   };
 
-  const handleStatus = () => {
+  const handleStatus = (): string => {
     return connected ? " Connected" : " local";
   };
   const classServerStatus = connected ? "server" : "local";

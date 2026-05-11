@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
@@ -10,7 +11,7 @@ import CreateMessageForm from "./CreateMessageForm";
 
 let mockLogged = true;
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     user: {
       logged: mockLogged,
@@ -19,31 +20,31 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
     penguin: mockPenguin,
     headerTitle: "Test",
   }),
-  useAppDispatch: () => jest.fn(),
+  useAppDispatch: () => vi.fn(),
 }));
 
-describe("Given a CreateMessageForm component", () => {
-  describe("When edit Message is submited", () => {
-    test("Then processEdit is called", () => {
+describe("Given a CreateMessageForm component", (): void => {
+  describe("When edit Message is submited", (): void => {
+    test("Then processEdit is called", (): void => {
       const textToFind = "Subject";
       const placeHolderSubmit = "bt-reply";
 
-      const handleSubmit = jest.fn();
-      const processEdit = jest.fn();
+      const handleSubmit = vi.fn();
+      const processEdit = vi.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <CreateMessageForm message={mockMessage} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const textSubject = screen.getByPlaceholderText(textToFind);
-      const btSave = screen.getByPlaceholderText(placeHolderSubmit);
+      const btSave = screen.getByTitle(placeHolderSubmit);
 
-      expect(textSubject).toBeInTheDocument();
-      expect(btSave).toBeInTheDocument();
+      expect(textSubject).toBeDefined();
+      expect(btSave).toBeDefined();
 
       userEvent.click(btSave);
 

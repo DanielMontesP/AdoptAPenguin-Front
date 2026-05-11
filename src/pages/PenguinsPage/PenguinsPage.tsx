@@ -1,5 +1,5 @@
 import Penguins from "../../components/ScrollToTop/Penguins";
-import { useEffect } from "react";
+import { JSX, useEffect } from "react";
 import {
   loadFavsThunk,
   loadLikesThunk,
@@ -18,17 +18,17 @@ interface Props {
   type: string;
 }
 
-const PenguinsPage = ({ type }: Props) => {
+const PenguinsPage = ({ type }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const idUser = useAppSelector((state) => state.user.id);
 
   const { allPenguins, penguin } = useAppSelector((state) => state.penguins);
   const { headerTitle, modalType, headerLastTitle, isDesktop } = useAppSelector(
-    (state) => state.ui
+    (state) => state.ui,
   );
 
-  useEffect(() => {
-    const SetTitleHeader = (title: string, lastTitle: string) => {
+  useEffect((): void => {
+    const SetTitleHeader = (title: string, lastTitle: string): void => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));
     };

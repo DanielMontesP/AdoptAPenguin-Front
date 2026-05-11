@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import { useState, ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { resetPenguinThunk } from "../../app/redux/thunks/penguinThunk/penguinThunk";
@@ -18,7 +18,7 @@ interface Props {
   headerTitle: string;
 }
 
-const NavDektop = ({ headerTitle }: Props): JSX.Element => {
+const NavDektop = ({ headerTitle }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -51,32 +51,32 @@ const NavDektop = ({ headerTitle }: Props): JSX.Element => {
     default:
   }
 
-  const addFav = () => {
+  const addFav = (): void => {
     dispatch(resetPenguinThunk());
 
     navigate("/create");
   };
 
-  const handleUserMenu = () => {
+  const handleUserMenu = (): void => {
     dispatch(isMenuOpenActionCreator(!isMenuOpen));
   };
 
-  const handleSearch = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleSearch = (): void => {
     handleFocusCall(".search-input");
 
     setSearch((prevState) => !prevState);
     dispatch(isSearchOpenActionCreator(true));
   };
 
-  const loadHomeCall = () => {
+  const loadHomeCall = (): void => {
     loadHome(dispatch, headerTitle, navigate);
   };
 
-  const loadLikesCall = () => {
+  const loadLikesCall = (): void => {
     loadLikes(dispatch, headerTitle, navigate);
   };
 
-  const loadFavsCall = () => {
+  const loadFavsCall = (): void => {
     loadFavs(dispatch, headerTitle, navigate);
   };
 

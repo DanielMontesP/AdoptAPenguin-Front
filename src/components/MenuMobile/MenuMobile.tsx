@@ -1,4 +1,5 @@
-import { MouseEvent, useState } from "react";
+import { ReactElement } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   isMenuOpenActionCreator,
@@ -23,7 +24,7 @@ interface Props {
   isMenuOpened: boolean;
 }
 
-const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
+const MenuMobile = ({}: Props): ReactElement => {
   const { headerTitle } = useAppSelector((state) => state.ui);
 
   const { user } = useAppSelector((state) => state);
@@ -36,56 +37,56 @@ const MenuMobile = ({ isMenuOpened }: Props): JSX.Element => {
 
   const userImage = user.image || noPhoto;
 
-  const handleFavs = () => {
+  const handleFavs = (): void => {
     loadFavs(dispatch, headerTitle, navigate);
     dispatch(isMenuOpenActionCreator(false));
   };
 
-  const handleLikes = () => {
+  const handleLikes = (): void => {
     loadLikes(dispatch, headerTitle, navigate);
     dispatch(isMenuOpenActionCreator(false));
   };
 
-  const handleHome = () => {
+  const handleHome = (): void => {
     loadHome(dispatch, headerTitle, navigate);
     dispatch(isMenuOpenActionCreator(false));
   };
 
-  const addFav = () => {
+  const addFav = (): void => {
     addNewFav(dispatch, navigate);
     dispatch(isMenuOpenActionCreator(false));
   };
 
-  const handleLogoutCall = () => {
-    handleLogoutPrompt(dispatch, navigate);
+  const handleLogoutCall = (): void => {
+    handleLogoutPrompt(dispatch);
   };
 
-  const handleAbout = () => {
+  const handleAbout = (): void => {
     loadAbout(dispatch);
   };
 
-  const handleHelp = () => {
+  const handleHelp = (): void => {
     loadHelp(dispatch);
   };
 
-  const handleSearch = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleSearch = (): void => {
     dispatch(isMenuOpenActionCreator(false));
     dispatch(isSearchOpenActionCreator(true));
   };
 
-  const handleSettings = () => {
+  const handleSettings = (): void => {
     dispatch(modalTypeActionCreator("Settings"));
     dispatch(isMenuOpenActionCreator(false));
     dispatch(isModalOpenActionCreator(true));
   };
 
-  const handleInbox = () => {
+  const handleInbox = (): void => {
     dispatch(isMenuOpenActionCreator(false));
     dispatch(isMenuOpenActionCreator(false));
     navigate(`/users/messages/${user.id}`);
   };
 
-  const handleStatus = () => {
+  const handleStatus = (): string => {
     return connected ? " Connected" : " local";
   };
   const classServerStatus = connected ? "server" : "local";

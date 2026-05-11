@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { KeyboardEvent } from "react";
 import {
   headerLastTitleActionCreator,
@@ -21,13 +22,13 @@ import {
 import { logOutActionCreator } from "../../app/redux/features/userSlice/userSlice";
 import { handleServerInfo } from "../sysHandlers/sysHandlers";
 
-let firstLoad = true;
+let firstLoad = false;
 
 export const loadHome = (
   dispatch: any,
   headerTitle: string,
-  navigate: any
-): any => {
+  navigate: any,
+): void => {
   dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator(""));
@@ -37,7 +38,7 @@ export const loadHome = (
   navigate("/penguins");
 };
 
-export const handleLogoutPrompt = (dispatch: any, navigate: any): void => {
+export const handleLogoutPrompt = (dispatch: any): void => {
   const message = "Log out?";
   const newModalType = "logOutUser";
 
@@ -71,8 +72,8 @@ export const handleFocus = (field: string): void => {
 export const loadFavs = (
   dispatch: any,
   headerTitle: string,
-  navigate: any
-): any => {
+  navigate: any,
+): void => {
   dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator(""));
@@ -85,7 +86,7 @@ export const loadFavs = (
 export const loadLikes = (
   dispatch: any,
   headerTitle: string,
-  navigate: any
+  navigate: any,
 ): void => {
   dispatch(isMenuOpenActionCreator(false));
 
@@ -99,8 +100,8 @@ export const loadLikes = (
 export const handleSearchSubmit = (
   dispatch: any,
   headerTitle: string,
-  stringToSearch: string
-) => {
+  stringToSearch: string,
+): void => {
   dispatch(isMenuOpenActionCreator(false));
 
   if (stringToSearch !== "") {
@@ -121,8 +122,8 @@ export const handleSearchEnter = (
   event: KeyboardEvent<HTMLInputElement>,
   stringToSearch: string,
   dispatch: any,
-  headerTitle: string
-) => {
+  headerTitle: string,
+): void => {
   if (event.key === "Enter") {
     dispatch(isSearchOpenActionCreator(false));
     dispatch(stringToSearchActionCreator(stringToSearch));
@@ -130,27 +131,27 @@ export const handleSearchEnter = (
   }
 };
 
-export const loadHelp = (dispatch: any) => {
+export const loadHelp = (dispatch: any): void => {
   dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator("Help"));
   dispatch(isModalOpenActionCreator(true));
 };
 
-export const loadAbout = (dispatch: any) => {
+export const loadAbout = (dispatch: any): void => {
   dispatch(isMenuOpenActionCreator(false));
 
   dispatch(modalTypeActionCreator("About"));
   dispatch(isModalOpenActionCreator(true));
 };
 
-export const addNewFav = (dispatch: any, navigate: any) => {
+export const addNewFav = (dispatch: any, navigate: any): void => {
   dispatch(resetPenguinThunk());
 
   navigate("/create");
 };
 
-export const handleNoConexion = (dispatch: any, idUser: string) => {
+export const handleNoConexion = (dispatch: any): void => {
   let textNoConnection = "";
   const textFirstLoad =
     "Sorry, server is still starting. Navigation enable but data will be not editable until server is restarted";
@@ -167,5 +168,5 @@ export const handleNoConexion = (dispatch: any, idUser: string) => {
   dispatch(modalMessageActionCreator(textNoConnection));
   dispatch(isModalOpenActionCreator(true));
 
-  handleServerInfo(false, "local", "Unavailable", dispatch);
+  handleServerInfo(false, "local", "Unavailable");
 };

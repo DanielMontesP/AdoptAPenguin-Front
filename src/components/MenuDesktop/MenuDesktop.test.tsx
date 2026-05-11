@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -5,23 +6,23 @@ import Menu from "./MenuDesktop";
 import store from "../../app/redux/store/store";
 import userEvent from "@testing-library/user-event";
 
-describe("Given a MenuDesktop component", () => {
-  describe("When bt-logout clicked", () => {
-    test("Then handleLogoutCall is called", () => {
+describe("Given a MenuDesktop component", (): void => {
+  describe("When bt-logout clicked", (): void => {
+    test("Then handleLogoutCall is called", (): void => {
       const labelButtonLogout = "btn-logout";
-      const handleLogoutCall = jest.fn();
-      const handleLogoutPrompt = jest.fn();
+      const handleLogoutCall = vi.fn();
+      const handleLogoutPrompt = vi.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <Menu isMenuOpened={true} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const btLogout = screen.getByTitle(labelButtonLogout);
-      expect(btLogout).toBeInTheDocument();
+      expect(btLogout).toBeDefined();
 
       userEvent.click(btLogout);
 
@@ -33,21 +34,21 @@ describe("Given a MenuDesktop component", () => {
     });
   });
 
-  describe("When bt-about clicked", () => {
-    test("Then handleAbout is called", () => {
+  describe("When bt-about clicked", (): void => {
+    test("Then handleAbout is called", (): void => {
       const labelButton = "bt-about";
-      const handleAbout = jest.fn();
+      const handleAbout = vi.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <Menu isMenuOpened={true} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const btAbout = screen.getByTitle(labelButton);
-      expect(btAbout).toBeInTheDocument();
+      expect(btAbout).toBeDefined();
 
       userEvent.click(btAbout);
       handleAbout();
@@ -55,21 +56,21 @@ describe("Given a MenuDesktop component", () => {
     });
   });
 
-  describe("When bt-help clicked", () => {
-    test("Then handleAbout is called", () => {
+  describe("When bt-help clicked", (): void => {
+    test("Then handleAbout is called", (): void => {
       const labelButton = "bt-help";
-      const handleHelp = jest.fn();
+      const handleHelp = vi.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <Menu isMenuOpened={true} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const button = screen.getByTitle(labelButton);
-      expect(button).toBeInTheDocument();
+      expect(button).toBeDefined();
 
       userEvent.click(button);
       handleHelp();
@@ -77,21 +78,21 @@ describe("Given a MenuDesktop component", () => {
     });
   });
 
-  describe("When bt-settings clicked", () => {
-    test("Then handleSettings is called", () => {
+  describe("When bt-settings clicked", (): void => {
+    test("Then handleSettings is called", (): void => {
       const labelButton = "bt-settings";
-      const handleSettings = jest.fn();
+      const handleSettings = vi.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <Menu isMenuOpened={true} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const button = screen.getByTitle(labelButton);
-      expect(button).toBeInTheDocument();
+      expect(button).toBeDefined();
 
       userEvent.click(button);
       handleSettings();
@@ -99,21 +100,21 @@ describe("Given a MenuDesktop component", () => {
     });
   });
 
-  describe("When bt-inbox clicked", () => {
-    test("Then handleInbox is called", () => {
+  describe("When bt-inbox clicked", (): void => {
+    test("Then handleInbox is called", (): void => {
       const labelButton = "bt-view-messages";
-      const handleInbox = jest.fn();
+      const handleInbox = vi.fn();
 
       render(
         <Provider store={store}>
           <BrowserRouter>
             <Menu isMenuOpened={true} />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const button = screen.getByTitle(labelButton);
-      expect(button).toBeInTheDocument();
+      expect(button).toBeDefined();
 
       userEvent.click(button);
       handleInbox();

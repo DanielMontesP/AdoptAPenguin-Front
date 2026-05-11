@@ -4,15 +4,15 @@ import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
 import { Error404Page } from "./Error404";
 
-describe("Given a Error404Page", () => {
-  describe("when its invoked", () => {
-    test("Then it should render", () => {
+describe("Given a Error404Page", (): void => {
+  describe("when its invoked", (): void => {
+    test("Then it should render", (): void => {
       render(
         <BrowserRouter>
           <Provider store={store}>
             <Error404Page></Error404Page>
           </Provider>
-        </BrowserRouter>
+        </BrowserRouter>,
       );
 
       const altMessageLogo = "Page Not Found!";
@@ -20,8 +20,8 @@ describe("Given a Error404Page", () => {
       const messageError = "Page Not Found!";
 
       const espctedMessage = screen.getByText(messageError);
-      expect(expectedLogo).toBeInTheDocument();
-      expect(espctedMessage).toBeInTheDocument();
+      expect(expectedLogo).toBeDefined();
+      expect(espctedMessage).toBeDefined();
     });
   });
 });

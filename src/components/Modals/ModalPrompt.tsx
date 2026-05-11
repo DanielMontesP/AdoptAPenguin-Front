@@ -27,9 +27,7 @@ export const Modal = ({
   content,
   type,
   form,
-  posX,
-  posY,
-}: IModalProps) => {
+}: IModalProps): React.JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -85,77 +83,105 @@ export const Modal = ({
       windowTitle = "Please confirm";
   }
 
-  const logOutUser = () => {
-    handleLogout(dispatch, navigate);
+  const logOutUser = (): boolean => {
+    try {
+      handleLogout(dispatch, navigate);
+      return true;
+    } catch {
+      return false;
+    }
   };
 
   const getMessage = (): React.ReactNode => {
-    if (isWellcome) {
-      return <WellcomeComments />;
-    } else if (isHelp) {
-      return <Help />;
-    } else if (type === "FFeature") {
-      content = "This feature will be available soon.";
-    } else if (type === "Settings") {
-      content = "Export penguins and personal messages list?";
-    }
-
-    return type !== "Edit" ? <h3 className="modal-message">{content}</h3> : "";
-  };
-
-  const deletePenguin = () => {
-    if (idToProcess) {
-      dispatch(deletePenguinThunk(`${idToProcess}`));
-      if (headerTitle === "Detail") {
-        navigate("/penguins/favs");
+    try {
+      if (isWellcome) {
+        return <WellcomeComments />;
+      } else if (isHelp) {
+        return <Help />;
+      } else if (type === "FFeature") {
+        content = "This feature will be available soon.";
+      } else if (type === "Settings") {
+        content = "Export penguins and personal messages list?";
       }
+      return type !== "Edit" ? <h3 className="modal-message">{content}</h3> : "";
+    } catch {
+      return null;
     }
   };
 
-  const deleteMessage = () => {
-    if (idToProcess) {
-      dispatch(deleteMessageThunk(idToProcess));
+  const deletePenguin = (): boolean => {
+    try {
+      if (idToProcess) {
+        dispatch(deletePenguinThunk(`${idToProcess}`));
+        if (headerTitle === "Detail") {
+          navigate("/penguins/favs");
+        }
+      }
+      return true;
+    } catch {
+      return false;
     }
   };
 
-  const handleAcceptClick = () => {
-    switch (type) {
-      case "delete":
-        isMessage ? deleteMessage() : deletePenguin();
-        break;
-      case "logOutUser":
-        logOutUser();
-        break;
-      case "Wellcome":
-        break;
-      case "About":
-        break;
-      case "Validation":
-        break;
-      case "Help":
-        break;
-      case "Search":
-        break;
-      case "Error":
-        break;
-      case "Settings":
-        writeFile("penguins", listPenguins);
-        writeFile("messages", listMessages);
-        writeFile("notifys", listNotifys);
-        break;
-      case "Server":
-        navigate("./");
-        break;
-      default:
-        correctAction("Sorry, this feature is not available yet.");
+  const deleteMessage = (): boolean => {
+    try {
+      if (idToProcess) {
+        dispatch(deleteMessageThunk(idToProcess));
+      }
+      return true;
+    } catch {
+      return false;
     }
-    closeModal(false);
-    dispatch(isModalOpenActionCreator(false));
   };
 
-  const handleCancelClick = () => {
-    closeModal(false);
-    dispatch(isModalOpenActionCreator(false));
+  const handleAcceptClick = (): boolean => {
+    try {
+      switch (type) {
+        case "delete":
+          isMessage ? deleteMessage() : deletePenguin();
+          break;
+        case "logOutUser":
+          logOutUser();
+          break;
+        case "Wellcome":
+          break;
+        case "About":
+          break;
+        case "Validation":
+          break;
+        case "Help":
+          break;
+        case "Search":
+          break;
+        case "Error":
+          break;
+        case "Settings":
+          writeFile("penguins", listPenguins);
+          writeFile("messages", listMessages);
+          writeFile("notifys", listNotifys);
+          break;
+        case "Server":
+          navigate("./");
+          break;
+        default:
+          correctAction("Sorry, this feature is not available yet.");
+      }
+      closeModal(false);
+      dispatch(isModalOpenActionCreator(false));
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const handleCancelClick = (): boolean => {
+    try {
+      closeModal(false);
+      dispatch(isModalOpenActionCreator(false));
+      return true;
+    } catch {
+      return false;
+    }
   };
 
   const cancelClass =
@@ -176,7 +202,7 @@ export const Modal = ({
         onClick={handleCancelClick}
         className="modal-btn-close"
         title="btn-close"
-        placeholder="btn-close"
+        // placeholder="btn-close"
       />
       {getMessage()}
       {isEditPage ? (
@@ -187,7 +213,6 @@ export const Modal = ({
             onClick={handleAcceptClick}
             className="modal-btn-accept"
             title="btn-accept"
-            placeholder="btn-accept"
           >
             Ok
           </button>
@@ -196,7 +221,7 @@ export const Modal = ({
               onClick={handleCancelClick}
               className={cancelClass}
               title="btn-cancel"
-              placeholder="btn-cancel"
+              // placeholder="btn-cancel"
             >
               Cancel
             </button>

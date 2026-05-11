@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, ReactElement } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import {
@@ -24,7 +24,7 @@ interface Props {
   message: IMessage;
 }
 
-const CreateMessageForm = ({ message }: Props): JSX.Element => {
+const CreateMessageForm = ({ message }: Props): ReactElement => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -32,16 +32,16 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
   const { penguin } = useAppSelector((state) => state.penguins);
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  const isCreate = headerTitle.includes("New");
-  const isReply = headerTitle.includes("Reply");
+  const isCreate = headerTitle?.includes("New");
+  const isReply = headerTitle?.includes("Reply");
 
-  const thisFormData: any = isReply
+  const thisFormData: IMessage = isReply
     ? newReply(message.id, idUser, penguin.id, message.subject)
     : blankMessageData;
 
   const [formData, setFormData] = useState(thisFormData);
 
-  const processCreate = (type: string) => {
+  const processCreate = (): boolean => {
     formData.idPenguin = penguin.id;
     formData.idUser = idUser;
     formData.data = getCurrentDate();
@@ -49,10 +49,12 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
       formData.subject = thisFormData.subject;
     }
     dispatch(createMessageThunk(formData));
+
+    return true;
   };
 
   const handleInputChange = (
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
   ): void => {
     event.preventDefault();
 
@@ -64,34 +66,34 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
     modFields.push(event.target.id);
   };
 
-  const processEdit = () => {
+  const processEdit = (): void => {
     modFields = cleanArray(modFields);
 
     dispatch(
-      editMessageThunk(formData, "Update fields: " + modFields.join(", "))
+      editMessageThunk(formData, "Update fields: " + modFields.join(", ")),
     );
-    dispatch(getMessagesThunk(penguin.id));
+    dispatch(getMessagesThunk(penguin?.id));
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
     if (isCreate) {
-      processCreate("New");
-      dispatch(getMessagesThunk(penguin.id));
+      processCreate();
+      dispatch(getMessagesThunk(penguin?.id));
       setFormData(blankMessageData);
       dispatch(resetMessageThunk());
 
-      navigate(`/detail/${penguin.id}#messages`);
+      navigate(`/detail/${penguin?.id}#messages`);
     } else if (event.currentTarget.outerText?.includes("Reply")) {
       handleCreateReply();
     } else {
       processEdit();
-      dispatch(getMessagesThunk(penguin.id));
+      dispatch(getMessagesThunk(penguin?.id));
       setFormData(blankMessageData);
       dispatch(resetMessageThunk());
 
-      navigate(`/detail/${penguin.id}#messages`);
+      navigate(`/detail/${penguin?.id}#messages`);
     }
   };
 
@@ -99,22 +101,22 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
     navigate(`/reply/create`);
   };
 
-  const handleMessageRead = () => {
-    setMessageRead(message, dispatch);
+  const handleMessageRead = (): void => {
+    setMessageRead(message);
   };
 
-  const subjectValue = () => {
-    if (formData.subject) {
-      return formData.subject;
+  const subjectValue = (): string => {
+    if (formData?.subject) {
+      return formData?.subject;
     } else if (isCreate && isReply) {
-      return `RE: ${message.subject}`;
+      return `RE: ${message?.subject}`;
     } else {
-      return message.subject;
+      return message?.subject;
     }
   };
 
-  const classRead = message.read ? "message-read" : "message-unread";
-  const textRead = message.read ? "Mark as unread" : "Mark as read";
+  const classRead = message?.read ? "message-read" : "message-unread";
+  const textRead = message?.read ? "Mark as unread" : "Mark as read";
 
   const classInput =
     !isCreate && !isReply ? "form-input-disabled" : "form-input";
@@ -147,7 +149,7 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
         type="text"
         placeholder="Send To"
         className={`form-input-disabled`}
-        value={penguin.name}
+        value={penguin?.name}
         readOnly
       />
       <label htmlFor="subject" className="form-label">
@@ -170,8 +172,8 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
       <input
         id="content"
         type="text"
-        placeholder="Message"
-        value={formData.content || message.content}
+        title="Message"
+        value={formData?.content || message?.content}
         autoComplete="off"
         className={`${classInputDescription}`}
         onChange={handleInputChange}
@@ -179,14 +181,14 @@ const CreateMessageForm = ({ message }: Props): JSX.Element => {
       />
 
       {isCreate ? (
-        <button type="submit" className="bt-message-save" placeholder="bt-save">
+        <button type="submit" className="bt-message-save">
           Send
         </button>
       ) : (
         <button
           type="submit"
           className="bt-message-save"
-          placeholder="bt-reply"
+          title="bt-reply"
           id="bt-reply"
         >
           Reply

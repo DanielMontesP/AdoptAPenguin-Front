@@ -1,4 +1,10 @@
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
+import {
+  ReactElement,
+  ChangeEvent,
+  KeyboardEvent,
+  useEffect,
+  useState,
+} from "react";
 import { ReactDimmer } from "react-dimmer";
 import { ToastContainer } from "react-toastify";
 import {
@@ -26,11 +32,15 @@ interface Props {
   isDesktop: boolean;
 }
 
-const Navbar = ({ headerTitle, isMenuOpen, isDesktop }: Props): JSX.Element => {
+const Navbar = ({
+  headerTitle,
+  isMenuOpen,
+  isDesktop,
+}: Props): ReactElement => {
   const dispatch = useAppDispatch();
 
   const { modalMessage, modalType, isModalOpen, isSearchOpen } = useAppSelector(
-    (state) => state.ui
+    (state) => state.ui,
   );
 
   const { penguin } = useAppSelector((state) => state.penguins);
@@ -44,12 +54,12 @@ const Navbar = ({ headerTitle, isMenuOpen, isDesktop }: Props): JSX.Element => {
 
   const isOpen = isMenuOpen || isModalOpen || isSearchOpen;
 
-  const getModalType = () => {
+  const getModalType = (): string => {
     const newModalType = modalType;
     return newModalType;
   };
 
-  const handleSearchSubmitCall = () => {
+  const handleSearchSubmitCall = (): void => {
     dispatch(isSearchOpenActionCreator(false));
     dispatch(stringToSearchActionCreator(stringToSearch));
     handleSearchSubmit(dispatch, headerTitle, stringToSearch);
@@ -60,20 +70,20 @@ const Navbar = ({ headerTitle, isMenuOpen, isDesktop }: Props): JSX.Element => {
   };
 
   const handleSearchEnterCall = (
-    event: KeyboardEvent<HTMLInputElement>
+    event: KeyboardEvent<HTMLInputElement>,
   ): void => {
     handleSearchEnter(event, stringToSearch, dispatch, headerTitle);
   };
 
-  const handleDimmer = () => {
+  const handleDimmer = (): void => {
     dispatch(isMenuOpenActionCreator(false));
     dispatch(isModalOpenActionCreator(false));
     dispatch(isSearchOpenActionCreator(false));
     setSearch(false);
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
+  useEffect((): void => {
+    window.addEventListener("scroll", (): void => {
       if (window.scrollY > 400) {
         setShowTopBtn(true);
       } else {
@@ -136,7 +146,7 @@ const Navbar = ({ headerTitle, isMenuOpen, isDesktop }: Props): JSX.Element => {
         <div onClick={handleDimmer} role="tabpanel">
           <ReactDimmer
             isOpen={isOpen}
-            exitDimmer={setMenu || setModal || setSearch}
+            exitDimmer={() => { setMenu(false); setModal(false); setSearch(false); }}
             zIndex={90}
             blur={1.5}
           />

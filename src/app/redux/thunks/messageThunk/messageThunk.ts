@@ -13,14 +13,15 @@ import {
   resetMessageActionCreator,
   resetMessagesActionCreator,
 } from "../../features/messageSlice/messageSlice";
-import { messages } from "../../../../export/messages-export.js";
-import { blankMessageData } from "../../initializers/iniMessages";
 import { getPenguinThunk } from "../penguinThunk/penguinThunk";
 import { handleNoConexion } from "../../../../functions/uiHandlers/uiHandlers";
 import { getUserNewMessagesActionCreator } from "../../features/userSlice/userSlice";
+import { mockMessage, mockMessages } from "../../../../mocks/messages";
+import { IMessage } from "../../types/message/messageInterfaces";
 
-let firstLoad = true;
+let firstLoad = false;
 let textNoConnection = "";
+
 const textFirstLoad = "Server is still loading, functionality will be disabled";
 const textNextLoadsNoConnection =
   "Please try again in few seconds. Service render.com is still initializing";
@@ -40,22 +41,22 @@ export const getMessagesThunk =
         const {
           data: { messages },
         } = await axios.get(
-          `${process.env.REACT_APP_API_URL}messages/${idPenguin}`,
+          `${import.meta.env.VITE_APP_API_URL}messages/${idPenguin}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         dispatch(getMessagesActionCreator(messages));
       } else {
-        handleNoConexion(dispatch, "user.id");
+        handleNoConexion(dispatch);
         setLoadingOffWithMessage(`GET Messages: ${textNoConnection}`, false);
       }
-    } catch (error) {
-      handleNoConexion(dispatch, "user.id");
-      dispatch(getUserNewMessagesActionCreator(messages));
+    } catch {
+      handleNoConexion(dispatch);
+      dispatch(getUserNewMessagesActionCreator(mockMessages));
       setLoadingOffWithMessage(`GET Penguins: ${textNoConnection}`, false);
     }
   };
@@ -69,75 +70,75 @@ export const getMessageThunk =
 
       if (token) {
         const { data: message } = await axios.get(
-          `${process.env.REACT_APP_API_URL}messages/message/${idMessage}`,
+          `${import.meta.env.VITE_APP_API_URL}messages/message/${idMessage}`,
           {
             headers: {
               authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         dispatch(getPenguinThunk(message.idPenguin));
         dispatch(getMessageActionCreator(message));
         setLoadingOffWithMessage(
           `GET Message: ${message.subject} successfully.`,
-          false
+          false,
         );
       }
     } else {
       setLoadingOffWithMessage(
         `GET Message: id undefined, process canceled.`,
-        false
+        false,
       );
     }
   };
 
 export const createMessageThunk =
-  (formMessage: any) => async (dispatch: AppDispatch) => {
+  (formMessage: IMessage) => async (dispatch: AppDispatch) => {
     setLoadingOn(`CREATE Message: Creating Message...`);
 
     const token = localStorage.getItem("token");
     if (token) {
       const { data: message } = await axios.post(
-        `${process.env.REACT_APP_API_URL}messages/create`,
+        `${import.meta.env.VITE_APP_API_URL}messages/create`,
         formMessage,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
-      dispatch(createMessageActionCreator(message));
+      dispatch(createMessageActionCreator(mockMessage));
 
       dispatch(getMessagesThunk(formMessage.idPenguin));
       setLoadingOffWithMessage(
         `CREATE Message: ${message.subject} created successfully.`,
-        false
+        false,
       );
     } else {
       setLoadingOffWithMessage(
         "CREATE Message: Sorry, no token no cookies...",
-        true
+        true,
       );
     }
   };
 
 export const editMessageThunk =
-  (formMessage: any, type: string) => async (dispatch: AppDispatch) => {
+  (formMessage: IMessage, type: string) => async (dispatch: AppDispatch) => {
     setLoadingOn("EDIT Message...");
 
     const token = localStorage.getItem("token");
 
     if (token) {
       const { data: message } = await axios.put(
-        `${process.env.REACT_APP_API_URL}messages/${formMessage.id}?task=${type}`,
+        `${import.meta.env.VITE_APP_API_URL}messages/${formMessage.id}?task=${type}`,
         formMessage,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       dispatch(editMessageActionCreator(message));
@@ -153,12 +154,12 @@ export const deleteMessageThunk =
     const token = localStorage.getItem("token");
 
     const { status } = await axios.delete(
-      `${process.env.REACT_APP_API_URL}messages/${id}`,
+      `${import.meta.env.VITE_APP_API_URL}messages/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
 
     if (status === 200) {
@@ -169,11 +170,11 @@ export const deleteMessageThunk =
   };
 
 export const resetMessageThunk = () => async (dispatch: AppDispatch) => {
-  dispatch(resetMessageActionCreator(blankMessageData));
+  dispatch(resetMessageActionCreator());
 };
 
 export const resetMessagesThunk = () => async (dispatch: AppDispatch) => {
-  dispatch(resetMessagesActionCreator(blankMessageData));
+  dispatch(resetMessagesActionCreator());
 
   setLoadingOffWithMessage("RESET Messages: Finished successfully.", false);
 };

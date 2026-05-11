@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
@@ -6,9 +7,9 @@ import store from "../../app/redux/store/store";
 import { mockPenguin } from "../../mocks/penguins";
 import Navbar from "./Navbar";
 
-const mockUAppDispatch = jest.fn();
+const mockUAppDispatch = vi.fn();
 
-jest.mock("../../app/redux/hooks/hooks", () => ({
+vi.mock("../../app/redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     logged: true,
     id: "id",
@@ -21,36 +22,36 @@ jest.mock("../../app/redux/hooks/hooks", () => ({
   useAppDispatch: () => mockUAppDispatch,
 }));
 
-describe("Given a Navbar component", () => {
-  describe("When it's invoked with headerTitle Detail", () => {
-    test("Then it should render a nav with title Detail", () => {
+describe("Given a Navbar component", (): void => {
+  describe("When it's invoked with headerTitle Detail", (): void => {
+    test("Then it should render a nav with title Detail", (): void => {
       render(
         <BrowserRouter>
           <Provider store={store}>
             <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
           </Provider>
-        </BrowserRouter>
+        </BrowserRouter>,
       );
 
       const title = screen.getByText("Detail");
-      expect(title).toBeInTheDocument();
+      expect(title).toBeDefined();
     });
   });
 
-  describe("When search button is clicked", () => {
-    test("Then handleSearchSubmitCall is called", () => {
-      const handleSearchSubmitCall = jest.fn();
+  describe("When search button is clicked", (): void => {
+    test("Then handleSearchSubmitCall is called", (): void => {
+      const handleSearchSubmitCall = vi.fn();
 
       render(
         <BrowserRouter>
           <Provider store={store}>
             <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={false} />
           </Provider>
-        </BrowserRouter>
+        </BrowserRouter>,
       );
 
       const btSearch = screen.getByTitle("bt-search-submit");
-      expect(btSearch).toBeInTheDocument();
+      expect(btSearch).toBeDefined();
 
       userEvent.click(btSearch);
 
@@ -59,23 +60,23 @@ describe("Given a Navbar component", () => {
     });
   });
 
-  describe("When search input change", () => {
-    test("Then handleSearchChange is called", () => {
-      const handleSearchChange = jest.fn();
+  describe("When search input change", (): void => {
+    test("Then handleSearchChange is called", (): void => {
+      const handleSearchChange = vi.fn();
       const searchPlaceHolderText = "Search by name/category/description...";
-      const handleDimmer = jest.fn();
+      const handleDimmer = vi.fn();
 
       render(
         <BrowserRouter>
           <Provider store={store}>
             <Navbar headerTitle="Detail" isMenuOpen={false} isDesktop={true} />
           </Provider>
-        </BrowserRouter>
+        </BrowserRouter>,
       );
 
       const inputSearch = screen.getByPlaceholderText(searchPlaceHolderText);
 
-      expect(inputSearch).toBeInTheDocument();
+      expect(inputSearch).toBeDefined();
 
       userEvent.type(inputSearch, "test");
 
@@ -84,7 +85,7 @@ describe("Given a Navbar component", () => {
 
       const dimmer = screen.getByRole("tabpanel");
 
-      expect(dimmer).toBeInTheDocument();
+      expect(dimmer).toBeDefined();
 
       userEvent.click(dimmer);
 

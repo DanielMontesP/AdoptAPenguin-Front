@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 import { Provider } from "react-redux";
@@ -8,12 +9,12 @@ import ScrollToTop from "./ScrollToTop";
 import { mockPenguins } from "../../mocks/penguins";
 import userEvent from "@testing-library/user-event";
 
-describe("Given a ScrollToTop Component", () => {
-  describe("When it's rendered", () => {
-    test("Then it should render messages-container div'", () => {
+describe("Given a ScrollToTop Component", (): void => {
+  describe("When it's rendered", (): void => {
+    test("Then it should render messages-container div'", (): void => {
       const expectedResult = "scroll-top-container";
 
-      jest.mock("../../app/redux/hooks/hooks", () => ({
+      vi.mock("../../app/redux/hooks/hooks", () => ({
         useAppSelector: () => ({
           logged: mockloggedUser,
           headerTitle: "Favorites",
@@ -23,11 +24,11 @@ describe("Given a ScrollToTop Component", () => {
           id: "idUser1",
         }),
 
-        useAppDispatch: () => jest.fn(),
+        useAppDispatch: () => vi.fn(),
       }));
 
-      jest.mock("react", () => ({
-        ...jest.requireActual("react"),
+      vi.mock("react", () => ({
+        ...vi.importActual("react"),
         useState: () => ({ showTopBtn: 500 }),
       }));
 
@@ -36,16 +37,16 @@ describe("Given a ScrollToTop Component", () => {
           <BrowserRouter>
             <ScrollToTop />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
       const btScrollToTop = screen.getByTitle("bt-totop");
-      expect(btScrollToTop).toBeInTheDocument();
+      expect(btScrollToTop).toBeDefined();
 
       userEvent.click(btScrollToTop);
       ScrollToTop();
 
       const scrollContainer = screen.getByTitle(expectedResult);
-      expect(scrollContainer).toBeInTheDocument();
+      expect(scrollContainer).toBeDefined();
     });
   });
 });

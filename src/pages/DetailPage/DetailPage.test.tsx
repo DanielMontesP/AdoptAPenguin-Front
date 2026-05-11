@@ -4,9 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
 import DetailPage from "./DetailPage";
 
-describe("Given a CreatePage component", () => {
-  describe("When the word 'penguin' is written to the username input field", () => {
-    test("Then the value of the username input field should be 'penguin'", () => {
+describe("Given a CreatePage component", (): void => {
+  describe("When the word 'penguin' is written to the username input field", (): void => {
+    test("Then the value of the username input field should be 'penguin'", (): void => {
       const stringToFind1 = "Messages";
       const stringToFind2 = "Description";
 
@@ -15,14 +15,14 @@ describe("Given a CreatePage component", () => {
           <BrowserRouter>
             <DetailPage />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label1 = screen.getByText(stringToFind1);
       const label2 = screen.getByText(stringToFind2);
 
-      expect(label1).toHaveTextContent(stringToFind1);
-      expect(label2).toHaveTextContent(stringToFind2);
+      expect(label1).toBeInTheDocument();
+      expect(label2).toBeInTheDocument();
     });
   });
 });

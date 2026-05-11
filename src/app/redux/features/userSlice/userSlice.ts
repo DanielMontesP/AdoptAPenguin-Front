@@ -15,7 +15,7 @@ interface SliceIniState {
 const initialState: SliceIniState = {
   id: "",
   username: "",
-  logged: localStorage.getItem("token") ? true : false,
+  logged: typeof localStorage !== "undefined" && localStorage.getItem("token") ? true : false,
   isAdmin: false,
   image: "",
   allMessages: [],

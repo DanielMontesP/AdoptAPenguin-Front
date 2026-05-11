@@ -4,9 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import store from "../../app/redux/store/store";
 import UserMessagesPage from "./UserMessagesPage";
 
-describe("Given a UserMessagesPage Component", () => {
-  describe("When it's rendered", () => {
-    test("Then it should render messages-container div'", () => {
+describe("Given a UserMessagesPage Component", (): void => {
+  describe("When it's rendered", (): void => {
+    test("Then it should render messages-container div'", (): void => {
       const expectedResult = "messages-container";
 
       render(
@@ -14,12 +14,12 @@ describe("Given a UserMessagesPage Component", () => {
           <BrowserRouter>
             <UserMessagesPage />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const receivedResult = screen.getByTitle(expectedResult);
 
-      expect(receivedResult).toBeInTheDocument();
+      expect(receivedResult).toBeDefined();
     });
   });
 });

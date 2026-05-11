@@ -21,13 +21,13 @@ const initialState: SliceIniState = {
   message: mockMessage,
 };
 
-describe("Given the getMessagesActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then load list with messages", () => {
+describe("Given the getMessagesActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then load list with messages", (): void => {
       const action = getMessagesActionCreator(mockMessages);
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
-        action
+        action,
       );
 
       expect(loadedState.allMessages).toEqual(mockMessages);
@@ -35,13 +35,13 @@ describe("Given the getMessagesActionCreator", () => {
   });
 });
 
-describe("Given the getMessageActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the loading ui state should change to true", () => {
+describe("Given the getMessageActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then the loading ui state should change to true", (): void => {
       const action = getMessageActionCreator(mockMessage);
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
-        action
+        action,
       );
 
       expect(loadedState).toEqual(initialState);
@@ -49,13 +49,13 @@ describe("Given the getMessageActionCreator", () => {
   });
 });
 
-describe("Given the editMessageActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the loading ui state should change to true", () => {
+describe("Given the editMessageActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then the loading ui state should change to true", (): void => {
       const action = editMessageActionCreator(mockMessage);
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
-        action
+        action,
       );
 
       expect(loadedState).toEqual({
@@ -66,13 +66,13 @@ describe("Given the editMessageActionCreator", () => {
   });
 });
 
-describe("Given the resetMessageActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then rest message data", () => {
-      const action = resetMessageActionCreator(mockMessage);
+describe("Given the resetMessageActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then rest message data", (): void => {
+      const action = resetMessageActionCreator();
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
-        action
+        action,
       );
 
       expect(loadedState.message.id).toBe("");
@@ -80,13 +80,13 @@ describe("Given the resetMessageActionCreator", () => {
   });
 });
 
-describe("Given resetPenguinsActionCreator", () => {
-  describe("When  invoked", () => {
-    test("Then load list with no messages", async () => {
-      const action = resetMessagesActionCreator(mockMessage);
+describe("Given resetPenguinsActionCreator", (): void => {
+  describe("When  invoked", (): void => {
+    test("Then load list with no messages", (): void => {
+      const action = resetMessagesActionCreator();
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
-        action
+        action,
       );
 
       expect(loadedState.allMessages.length).toEqual(0);
@@ -94,13 +94,13 @@ describe("Given resetPenguinsActionCreator", () => {
   });
 });
 
-describe("Given deletePenguinActionCreator", () => {
-  describe("When  invoked", () => {
-    test("Then load list without deleted penguin", async () => {
+describe("Given deletePenguinActionCreator", (): void => {
+  describe("When  invoked", (): void => {
+    test("Then load list without deleted penguin", (): void => {
       const action = deleteMessageActionCreator(mockMessage.id);
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
-        action
+        action,
       );
 
       expect(loadedState.allMessages.length).toEqual(2);
@@ -108,13 +108,13 @@ describe("Given deletePenguinActionCreator", () => {
   });
 });
 
-describe("Given the createPenguinActionCreator", () => {
-  describe("When invoked", () => {
-    test("Then the load list with new penguin", () => {
+describe("Given the createPenguinActionCreator", (): void => {
+  describe("When invoked", (): void => {
+    test("Then the load list with new penguin", (): void => {
       const action = createMessageActionCreator(mockMessage);
       const loadedState = penguinReducer(
         { allMessages: mockMessages, message: mockMessage },
-        action
+        action,
       );
 
       expect(loadedState).toEqual(initialState);

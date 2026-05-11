@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import { blankFormData } from "../../app/redux/initializers/iniPenguins";
@@ -17,7 +17,7 @@ interface Props {
   penguin: IPenguin;
 }
 
-const ActionButtons = ({ penguin }: Props): JSX.Element => {
+const ActionButtons = ({ penguin }: Props): ReactElement | null => {
   const idUser = useAppSelector((state) => state.user.id);
   const { allMessages } = useAppSelector((state) => state.user);
   const { connected } = useAppSelector((state) => state.system.server);
@@ -26,7 +26,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
 
   const iconType = "bt-message-got";
 
-  const countNewMessages = (penguin: IPenguin) => {
+  const countNewMessages = (penguin: IPenguin): number => {
     return hasNewMessages(allMessages, penguin.id);
   };
 
@@ -39,7 +39,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
   const selectIconFav = isFav ? "bt-delfav" : "bt-addfav";
   const selectIconLike = isLiker ? "bt-addlike" : `bt-dellike`;
 
-  const handleMessage = () => {
+  const handleMessage = (): void => {
     if (connected) {
       dispatch(getPenguinThunk(penguin.id));
       dispatch(getMessagesThunk(penguin.id));
@@ -48,7 +48,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     }
   };
 
-  const deleteFromLikers = () => {
+  const deleteFromLikers = (): void => {
     const newData = { ...penguin };
     newData.likers = newData.likers.filter((liker) => liker !== idUser);
     newData.likes = penguin.likes >= 1 ? penguin.likes - 1 : penguin.likes;
@@ -57,7 +57,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     dispatch(editPenguinThunk(newData, penguin.id, "Delete Like."));
   };
 
-  const addToLikers = () => {
+  const addToLikers = (): void => {
     const newData = { ...penguin };
     newData.likers = newData.likers.concat(idUser);
     newData.likes = penguin.likes + 1;
@@ -67,17 +67,14 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     dispatch(editPenguinThunk(newData, penguin.id, "Add Like."));
   };
 
-  const handleLikes = () => {
-    if (Array(penguin.likers)) {
-      cleanArray(penguin.likers);
-
-      if (connected) {
-        isLiker ? deleteFromLikers() : addToLikers();
-      }
+  const handleLikes = (): boolean => {
+    if (connected) {
+      isLiker ? deleteFromLikers() : addToLikers();
     }
+    return true;
   };
 
-  const deleteFromFavs = () => {
+  const deleteFromFavs = (): void => {
     const newData = { ...penguin };
     newData.favs = penguin.favs.filter((fav) => fav !== idUser);
 
@@ -85,7 +82,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     dispatch(editPenguinThunk(newData, penguin.id, "Delete from favorites."));
   };
 
-  const addToFavs = () => {
+  const addToFavs = (): void => {
     const newData = { ...penguin };
     newData.favs = penguin.favs.concat(idUser);
 
@@ -93,7 +90,7 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
     dispatch(editPenguinThunk(newData, penguin.id, "Add to favorites."));
   };
 
-  const handleFavs = () => {
+  const handleFavs = (): void => {
     if (Array(penguin.favs)) {
       cleanArray(penguin.favs);
 
@@ -121,9 +118,9 @@ const ActionButtons = ({ penguin }: Props): JSX.Element => {
       <span className="new-messages-counter">{countNewMessages(penguin)}</span>
 
       <button
-        placeholder="btn-favs"
         onClick={handleFavs}
         className={`${classContainer}${selectIconFav}`}
+        title="btn-favs"
       />
     </div>
   );

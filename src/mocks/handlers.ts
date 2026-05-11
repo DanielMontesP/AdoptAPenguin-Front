@@ -1,9 +1,9 @@
-import { rest } from "msw";
+import { http, HttpResponse } from "msw";
 
-export const mockTokenKey: string = "xxx";
+export const mockTokenKey = "xxx";
 
 export const usersHandlers = [
-  rest.post(`${process.env.REACT_APP_API_URL}users/login`, (_, res, ctx) =>
-    res(ctx.status(200), ctx.json({ token: mockTokenKey }))
-  ),
+  http.post(`${import.meta.env.VITE_APP_API_URL}users/login`, () => {
+    return HttpResponse.json({ token: mockTokenKey }, { status: 200 });
+  }),
 ];

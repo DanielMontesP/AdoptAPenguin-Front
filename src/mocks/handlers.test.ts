@@ -1,13 +1,14 @@
-import { rest } from "msw";
+import { http } from "msw";
 import { mockTokenKey } from "./handlers";
+import { vi } from "vitest";
 
-describe("Given usersHandlers function", () => {
-  describe("When it's called with an user", () => {
-    test("Then it should call usersHandlers with rest response", async () => {
-      const usersHandlers = jest.fn();
+describe("Given usersHandlers function", (): void => {
+  describe("When it's called with an user", (): void => {
+    test("Then it should call usersHandlers with rest response", async (): Promise<void> => {
+      const usersHandlers = vi.fn();
 
-      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
-      rest.post = jest
+      vi.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      http.post = vi
         .fn()
         .mockReturnValue({ status: 200, data: { token: mockTokenKey } });
 

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, ReactElement } from "react";
 import {
   headerLastTitleActionCreator,
   headerTitleActionCreator,
@@ -7,16 +7,16 @@ import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
 import Home from "../../components/Home/Home";
 import { connectedToServer } from "../../functions/sysHandlers/sysHandlers";
 
-const HomePage = (): JSX.Element => {
+const HomePage = (): ReactElement => {
   const dispatch = useAppDispatch();
 
   const thisTitle = "HomePage";
 
   const { headerTitle } = useAppSelector((state) => state.ui);
 
-  useEffect(() => {
+  useEffect((): void => {
     connectedToServer();
-    const SetTitleHeader = (title: string, lastTitle: string) => {
+    const SetTitleHeader = (title: string, lastTitle: string): void => {
       dispatch(headerTitleActionCreator(title));
       dispatch(headerLastTitleActionCreator(lastTitle));
     };

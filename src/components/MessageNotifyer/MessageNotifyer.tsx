@@ -1,4 +1,4 @@
-import "../../styles/PagesStyles.css";
+import { ReactElement } from "react";
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/redux/hooks/hooks";
@@ -6,12 +6,13 @@ import { getMessageThunk } from "../../app/redux/thunks/messageThunk/messageThun
 import { IMessage } from "../../app/redux/types/message/messageInterfaces";
 import { getUserMessagesThunk } from "../../app/redux/thunks/userThunk/userThunk";
 
+import "../../styles/PagesStyles.css";
 interface Props {
   messages: IMessage[];
 }
 
-const MessageNotifyer = ({ messages }: Props): JSX.Element => {
-  const { user } = useAppSelector((state) => state);
+const MessageNotifyer = ({ messages }: Props): ReactElement => {
+  const userId = useAppSelector((state) => state.user.id);
 
   const [isHide, setHidder] = useState(true);
   const [, setHidderContainer] = useState(false);
@@ -20,17 +21,17 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
 
   const dispatch = useAppDispatch();
 
-  const handleClose = () => {
+  const handleClose = (): string => {
     const newHidder = " display-none";
     setHidder((prevState) => !prevState);
 
     return newHidder;
   };
 
-  const handleInbox = () => {
+  const handleInbox = (): void => {
     setHidder(true);
-    dispatch(getUserMessagesThunk(user.id));
-    navigate(`/users/messages/${user.id}`);
+    dispatch(getUserMessagesThunk(userId));
+    navigate(`/users/messages/${userId}`);
   };
 
   const handleClick = (event: FormEvent<HTMLDivElement>): void => {
@@ -51,8 +52,9 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
         </span>
         <button
           className={`notifyer-bt-close ${openNotifys}`}
+          title="notifyer-bt-close"
           onClick={handleClose}
-          placeholder="notifyer-bt-close"
+          // placeholder="notifyer-bt-close"
         />
       </div>
       {!isHide ? (
@@ -60,25 +62,25 @@ const MessageNotifyer = ({ messages }: Props): JSX.Element => {
           <span
             className={`notifiyer-bt-inbox`}
             onClick={handleInbox}
-            placeholder="bt-inbox"
+            // placeholder="bt-inbox"
           >
             Inbox
           </span>
           {messages?.length > 0
-            ? messages.map((message, index) => {
+            ? messages.map((message) => {
                 return (
                   <div
                     className={`notify`}
                     key={message.id}
                     onClick={handleClick}
                     id={message.id}
-                    placeholder="notify"
+                    // placeholder="notify"
                   >
                     <div
                       className={`notify-read-img`}
                       onClick={handleClick}
                       id={message.id}
-                      placeholder="notify-read"
+                      // placeholder="notify-read"
                     />
 
                     <span className="notify-data">

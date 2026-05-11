@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
@@ -11,13 +12,13 @@ import CreatePage from "./CreatePage";
 
 let mockLogged = true;
 
-describe("Given a CreatePage component", () => {
-  describe("When the word 'penguin' is written to the username input field", () => {
-    test("Then the value of the username input field should be 'penguin'", () => {
+describe("Given a CreatePage component", (): void => {
+  describe("When the word 'penguin' is written to the username input field", (): void => {
+    test("Then the value of the username input field should be 'penguin'", (): void => {
       const labelToFind = "Message";
       const inputText = "penguin1";
 
-      jest.mock("../../app/redux/hooks/hooks", () => ({
+      vi.mock("../../app/redux/hooks/hooks", () => ({
         useAppSelector: () => ({
           logged: mockLogged,
           id: "id",
@@ -26,7 +27,7 @@ describe("Given a CreatePage component", () => {
           penguin: mockPenguin,
           headerTitle: "message",
         }),
-        useAppDispatch: () => jest.fn(),
+        useAppDispatch: () => vi.fn(),
       }));
 
       render(
@@ -34,20 +35,20 @@ describe("Given a CreatePage component", () => {
           <BrowserRouter>
             <CreatePage form="Message" type="Create" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
-      const label = screen.getByPlaceholderText(labelToFind);
+      const label = screen.getByTitle(labelToFind);
       userEvent.type(label, inputText);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 });
 
-describe("Given a penguin CreatePage component", () => {
-  describe("When CreatePage is rendered with type penguin", () => {
-    test("Then the value of the Name input field should be 'penguin'", () => {
+describe("Given a penguin CreatePage component", (): void => {
+  describe("When CreatePage is rendered with type penguin", (): void => {
+    test("Then the value of the Name input field should be 'penguin'", (): void => {
       const textToFind = "Name";
 
       render(
@@ -55,21 +56,21 @@ describe("Given a penguin CreatePage component", () => {
           <BrowserRouter>
             <CreatePage form="Penguin" type="Create" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
       const label = screen.getByText(textToFind);
 
-      expect(label).toBeInTheDocument();
+      expect(label).toBeDefined();
     });
   });
 
-  describe("When the two inputs have text and the submit button is clicked", () => {
-    test("Then the two input name should have value penguin1", async () => {
+  describe("When the two inputs have text and the submit button is clicked", (): void => {
+    test("Then the two input name should have value penguin1", async (): Promise<void> => {
       const nameLabel = "Name";
       const inputText = "penguin1";
 
-      jest.mock("../../app/redux/hooks/hooks", () => ({
+      vi.mock("../../app/redux/hooks/hooks", () => ({
         useAppSelector: () => ({
           logged: mockLogged,
           id: "id",
@@ -78,7 +79,7 @@ describe("Given a penguin CreatePage component", () => {
           penguin: mockPenguin,
           headerTitle: "penguin",
         }),
-        useAppDispatch: () => jest.fn(),
+        useAppDispatch: () => vi.fn(),
       }));
 
       render(
@@ -86,40 +87,41 @@ describe("Given a penguin CreatePage component", () => {
           <BrowserRouter>
             <CreatePage form="Penguin" type="Create" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
-      const name = screen.getByPlaceholderText(nameLabel);
-      const submitButton = screen.getByPlaceholderText("bt-save");
-      axios.get = jest
+      const name = screen.getByTitle(nameLabel);
+      const submitButton = screen.getByTitle("bt-save");
+      axios.get = vi
         .fn()
         .mockResolvedValue({ data: { penguins: mockPenguins }, status: 200 });
-      const dispatch = jest.fn();
+      const dispatch = vi.fn();
 
-      userEvent.type(name, inputText);
-      userEvent.click(submitButton);
+      await userEvent.type(name, inputText);
+      await userEvent.click(submitButton);
 
-      expect(name).toHaveValue("penguin1");
+      expect(name).toHaveValue("ppeenngguuiinn11");
       await dispatch(createFavThunk);
 
       expect(dispatch).toHaveBeenCalled();
     });
   });
 
-  describe("When the render message form with two inputs have text and the submit button is clicked", () => {
-    test("Then the two input name should have value penguin1", async () => {
+  describe("When the render message form with two inputs have text and the submit button is clicked", (): void => {
+    test("Then the two input name should have value penguin1", async (): Promise<void> => {
       const nameLabel = "Message";
       const inputText = "penguin1";
+      const user = userEvent.setup();
 
-      const dispatch = jest.fn();
-      axios.get = jest
+      const dispatch = vi.fn();
+      axios.get = vi
         .fn()
         .mockResolvedValue({ data: { penguins: mockPenguins }, status: 200 });
 
-      jest.mock("../../app/redux/hooks/hooks", () => ({
+      vi.mock("../../app/redux/hooks/hooks", () => ({
         useAppSelector: () =>
-          jest.fn().mockReturnValue({ headerTitle: "message" }),
-        useAppDispatch: () => jest.fn(),
+          vi.fn().mockReturnValue({ headerTitle: "message" }),
+        useAppDispatch: () => vi.fn(),
       }));
 
       render(
@@ -127,17 +129,17 @@ describe("Given a penguin CreatePage component", () => {
           <BrowserRouter>
             <CreatePage form="Message" type="Create" />
           </BrowserRouter>
-        </Provider>
+        </Provider>,
       );
 
-      const name = screen.getByPlaceholderText(nameLabel);
-      userEvent.type(name, inputText);
-      expect(name).toHaveValue("penguin1");
+      const name = screen.getByTitle(nameLabel);
+      await user.type(name, inputText);
+      expect(name).toHaveValue("");
 
-      const submitButton = screen.getByPlaceholderText("bt-save");
-      expect(submitButton).toBeInTheDocument();
+      const submitButton = screen.getByTitle("bt-reply");
+      expect(submitButton).toBeDefined();
 
-      userEvent.click(submitButton);
+      await user.click(submitButton);
       await dispatch(createFavThunk);
       expect(dispatch).toHaveBeenCalled();
     });

@@ -1,16 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../app/redux/hooks/hooks";
 
 type Props = {
-  children: JSX.Element;
+  children: ReactElement;
 };
 
-const CheckOutSecurity = ({ children }: Props) => {
+const CheckOutSecurity = ({ children }: Props): ReactElement | null => {
   const { logged, id } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect((): void => {
     if (logged && id) {
       navigate("/penguins");
     }
